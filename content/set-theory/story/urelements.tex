@@ -1,0 +1,81 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{story}{urelements}
+\olsection{Urelementos ou Não?}
+
+Nos próximos capítulos, tentaremos extrair axiomas da
+concepção cumulativa-iterativa do conjunto. Mas, antes de avançar mais,
+precisamos de dizer algo mais sobre os \emph{urelementos}. 
+
+A imagem de \olref[approach]{sec} só nos permitia formar novos conjuntos
+a partir de \emph{conjuntos} antigos. Contudo, podemos querer admitir que certos
+\emph{não-conjuntos}---vacas, porcos, grãos de areia, ou o que seja---possam ser
+!!{element}s de conjuntos. Nesse caso, começaríamos com certos elementos básicos,
+\emph{urelementos}, e diríamos que em cada estágio $S$ formaríamos ``todos os possíveis'' conjuntos constituídos por urelementos ou conjuntos
+formados em estágios anteriores a $S$ (em qualquer combinação). A imagem
+resultante parecer-se-ia mais com isto:
+\begin{center}
+	\begin{tikzpicture}[scale=0.6]
+	\tikzset{cut_here/.style={densely dotted}}
+	\draw (-4,6) -- (-1, 0) -- (1,0) -- (4,6); 
+	\draw[cut_here] (-5,8)--(-4,6);
+	\draw[cut_here] (5,8)--(4,6);
+	\draw(-1.5, 1)--(1.5, 1);
+	\draw(-2, 2)--(2, 2);
+	\draw(-2.5, 3)--(2.5,3);
+	\draw(-3, 4)--(3, 4);
+	\draw(-3.5, 5)--(3.5, 5);
+	\draw(-4, 6)--(4, 6);
+	\node[label] at (2, 0) {\small 0};
+	\node[label] at (2.5, 1) {\small 1};
+	\node[label] at (3, 2) {\small 2};
+	\node[label] at (3.5, 3) {\small 3};
+	\node[label] at (4, 4) {\small 4};
+	\node[label] at (4.5, 5) {\small 5};
+	\node[label] at (5, 6) {\small 6};
+	\end{tikzpicture}
+\end{center}
+Temos pois uma decisão a tomar: \emph{devemos admitir urelementos?}
+
+Do ponto de vista filosófico, faz sentido incluir urelementos na nossa
+teorização. A principal razão é tornar a teoria dos conjuntos
+\emph{aplicável}. Para ilustrar, recordemos de
+\olref[sfr][siz][]{chap} que dizemos que dois conjuntos $A$ e~$B$ têm
+o mesmo tamanho, O.s.\@, $\cardeq{A}{B}$, sse existe uma bijeção entre
+eles. Agora, se as vacas no campo e os porcos no chiqueiro constituem ambos
+conjuntos, podemos oferecer um tratamento conjunto-teórico da afirmação ``há
+tantas vacas como porcos''. Mas se proibirmos urelementos, de modo que as vacas
+e os porcos \emph{não} constituem conjuntos, esse tratamento conjunto-teórico
+deixará de estar disponível. De fato, não teremos capacidade direta de
+aplicar a teoria dos conjuntos a mais nada além dos próprios conjuntos.
+(Para mais razões para incluir urelementos, ver \citealt[pp.~vi, 24,
+50--1]{Potter2004}.)
+
+Matematicamente, contudo, é bastante raro admitir urelementos. Em
+parte, porque é \emph{ligeiramente} mais fácil formular a
+teoria dos conjuntos sem urelementos. Mas, ocasionalmente, encontram-se justificações
+mais interessantes para excluir urelementos da teoria dos conjuntos:
+\begin{quote}
+	De acordo com a convicção de que a teoria dos conjuntos é o fundamento da
+	matemática, devemos ser capazes de captar toda a matemática
+	apenas falando de conjuntos, pelo que as nossas variáveis não devem quantificar sobre
+	objetos como vacas e porcos. 
+	%But if $C$ is a cow, $\{C\}$ is a set, but not a legitimate mathematical object. 
+	\citep[p.~8]{Kunen1980}
+\end{quote}
+Assim: um foco na aplicabilidade sugeriria \emph{incluir}
+urelementos; um foco num objetivo fundacional redutivo (reduzir a
+matemática à teoria pura dos conjuntos) poderia sugerir \emph{excluí-los}.
+Uma ligeira preguiça também aponta no sentido de excluir urelementos. 
+
+Seguiremos o caminho mais preguiçoso. Em parte, há também uma justificação
+pedagógica. O nosso objetivo é introduzir os elementos
+da teoria dos conjuntos de que precisa para começar na
+filosofia da teoria dos conjuntos. E a maior parte dessa literatura filosófica
+discute teorias dos conjuntos formuladas \emph{sem} urelementos. Logo este
+livro será, talvez, mais útil se se mantiver bastante próximo dessa
+literatura.
+
+\end{document}

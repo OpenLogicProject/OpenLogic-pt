@@ -1,0 +1,62 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{ordinals}{vn}	
+\olsection[Construção de Von Neumann]{Construção de Von Neumann dos Ordinais}
+
+\olref[sth][ordinals][iso]{thm:woalwayscomparable} sugere uma ideia.
+Poderíamos introduzir certos objetos, chamados \emph{tipos de ordem},
+para servirem de representantes das boas ordenações. Escrevendo
+$\ordtype{A, <}$ para o tipo de ordem da boa ordenação $\tuple{A, <}$,
+gostaríamos de garantir os dois princípios seguintes:
+\begin{align*}
+	\ordtype{A, <} = \ordtype{B, \lessdot} & 
+	\text{ sse } \ordeq{\tuple{A, <}}{\tuple{B, \lessdot}}\\
+	\ordtype{A, <} < \ordtype{B, \lessdot}&
+	\text{ sse }\ordeq{\tuple{A, <}}{\tuple{B_b, \lessdot_b}}\text{ para algum }b \in B
+\end{align*}
+Além disso, poderíamos esperar introduzir tipos de ordem \emph{como
+certos conjuntos}, tal como podemos introduzir os números naturais como
+certos conjuntos.
+
+A forma mais comum de o fazer---e a abordagem que seguiremos---é definir
+estes tipos de ordem via certos conjuntos bem ordenados
+\emph{canónicos}. Estes conjuntos canónicos foram introduzidos pela
+primeira vez por von Neumann:
+
+\begin{defn}
+O conjunto $A$ é \emph{transitivo} {sse} $(\forall x \in A)x \subseteq
+A$. Então $A$ é um \emph{ordinal} {sse} $A$ é transitivo e bem ordenado
+por $\in$.
+\end{defn}
+\noindent
+Daqui em diante, usaremos letras gregas para ordinais. Segue-se
+imediatamente da definição que, se $\alpha$ é um ordinal, então
+$\tuple{\alpha, \in_\alpha}$ é uma boa ordenação, onde $\in_\alpha =
+\Setabs{\tuple{x, y} \in \alpha^2}{x \in y}$. Assim, abusando um pouco da
+notação, podemos dizer que o próprio $\alpha$ \emph{é} uma boa ordenação.
+
+Eis os primeiros ordinais:
+\[
+	\emptyset, \{\emptyset\}, 
+	\{\emptyset, \{\emptyset\}\}, 
+	\{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}, \ldots
+\]
+Repare que estes são precisamente os primeiros ordinais que
+encontramos no nosso Axioma do Infinito, isto é, na definição de von
+Neumann de $\omega$ (ver \olref[sth][z][infinity-again]{sec}). Isto não é
+coincidência. A definição de von Neumann dos ordinais trata os números
+naturais como ordinais, mas permite também ordinais transfinitos.
+
+Como sempre, podemos agora perguntar: \emph{são} estes os ordinais? Ou
+von Neumann deu-nos apenas alguns conjuntos que podemos \emph{tratar}
+como os ordinais? O tipo de discussões que se podem ter sobre esta
+questão é semelhante às que tivemos na \olref[sfr][rel][ref]{sec},
+\olref[sfr][arith][ref]{sec},
+\olref[sfr][infinite][dedekindsproof]{sec}, e
+\olref[sth][z][nat]{sec}, pelo que não insistiremos no ponto.
+Em vez disso, daqui em diante usaremos ``os ordinais'' para falar dos
+``ordinais de von Neumann''.
+
+\end{document}

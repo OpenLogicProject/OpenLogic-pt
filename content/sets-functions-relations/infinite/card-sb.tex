@@ -1,0 +1,105 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{infinite}{card-sb}
+
+\olsection{Apêndice: Provando Schröder-Bernstein}
+
+Antes de deixarmos a teoria ingênua dos conjuntos, há ainda uma última
+prova ingênua (mas sofisticada!) a considerar. Trata-se de uma prova de
+Schr\"oder-Bernstein (\olref[sfr][siz][sb]{thm:schroder-bernstein}): se
+$\cardle{A}{B}$ e $\cardle{B}{A}$ então $\cardeq{A}{B}$; O.s.\@, dados
+!!{injection}s $f \colon A \to B$ e $g \colon B \to A$, existe
+!!a{bijection} $h \colon A \to B$.
+
+Neste capítulo, seguimos a noção dedekindiana de \emph{fechos}. De
+fato, Dedekind deu uma prova muito elegante de Schr\"oder-Bernstein com
+esta noção, e aqui a apresentamos. A prova segue de perto
+\citet[pp.~157--8]{Potter2004}, se quiser um tratamento ligeiramente
+diferente mas essencialmente semelhante. Uma breve pesquisa na Internet
+também convencerá o leitor de que este é um teorema---tal como a
+irracionalidade de $\sqrt{2}$---para o qual existem \emph{muitas}
+provas interessantes e distintas.
+
+Usando notação semelhante à de \olref[sfr][infinite][dedekind]{Closure},
+seja
+\[
+\Closureofunder{f}{B} = \bigcap \Setabs{X}{B \subseteq X 
+\text{ e $X$ é $f$-fechado}}
+\]
+para cada conjunto $B$ e função~$f$. Assim definido,
+$\Closureofunder{f}{B}$ é o menor conjunto $f$-fechado que contém~$B$,
+no sentido de que:
+
+\begin{lem}\ollabel{Closureprops}
+	Para qualquer função $f$, e qualquer $B$:
+	\begin{enumerate}
+		\item\ollabel{Closurehaselem} $B \subseteq \Closureofunder{f}{B}$; e
+		\item\ollabel{Closureclosed} $\Closureofunder{f}{B}$ é $f$-fechado; e
+		\item\ollabel{Closuresmallest} se $X$ é $f$-fechado e $B
+		\subseteq X$, então $\Closureofunder{f}{B} \subseteq X$.
+	\end{enumerate}
+\end{lem}
+
+\begin{proof}
+Exatamente como no \olref[sfr][infinite][dedekind]{closureproperties}.
+\end{proof}
+
+Precisamos de mais um fato para chegar a Schr\"oder-Bernstein:
+
+\begin{prop}\ollabel{sbhelper}
+Se $A \subseteq B \subseteq C$ e $A \approx C$, então $\cardeq{\cardeq{A}{B}}{C}$.
+\end{prop}
+
+\begin{proof}
+Dada !!a{bijection} $f \colon C \to A$, seja $F =
+\Closureofunder{f}{C \setminus B}$ e defina-se uma função $g$ com
+domínio $C$ do seguinte modo:
+\[
+	g(x) = 
+	\begin{cases}
+			f(x) &\text{se $x \in F$}\\
+			x & \text{caso contrário}
+		\end{cases}
+\]
+Mostraremos que $g$ é !!a{bijection} de $C$ para $B$, donde seguirá que
+$\comp{f^{-1}}{g} \colon A \to B$ é !!a{bijection}, completando a
+prova.
+
+Primeiro alegamos que, se $x \in F$ mas $y\notin F$, então $g(x) \neq
+g(y)$. Por reductio, suponhamos o contrário, de modo que $y = g(y) = g(x) =
+f(x)$. Como $x \in F$ e $F$ é $f$-fechado por \olref{Closureprops},
+temos $y = f(x) \in F$, contradição.
+
+Suponhamos agora $g(x) = g(y)$. Então, pelo que precede, $x \in F$ sse
+$y \in F$. Se $x, y \in F$, então $f(x) = g (x) = g(y) = f(y)$, logo
+$x = y$ pois $f$ é !!a{bijection}. Se $x, y \notin F$, então $x = g(x) =
+g(y) = y$. Logo $g$ é !!a{injection}.
+
+Resta mostrar que $\ran{g} = B$. Fixemos $x \in B \subseteq C$. Se $x
+\notin F$, então $g(x) = x$. Se $x \in F$, então $x = f(y)$ para algum
+$y \in F$, pois caso contrário $F \setminus \{x\}$ seria $f$-fechado e
+estenderia $C\setminus B$, o que é impossível por \olref{Closureprops};
+agora $g(y) = f(y) = x$.
+\end{proof}
+
+Finalmente, eis a prova do resultado principal. Recordemos que, dada uma
+função $h$ e um conjunto $D$, definimos $\funimage{h}{D} = \Setabs{h(x)}{x
+\in D}$.
+
+\begin{proof}[Prova de Schr\"oder-Bernstein] Sejam $f \colon A \to B$
+e $g \colon B \to A$ !!{injection}s. Como $\funimage{f}{A}
+\subseteq B$, temos $\funimage{g}{\funimage{f}{A}} \subseteq
+g[B] \subseteq A$. Além disso, $\comp{f}{g} \colon A \to
+\funimage{g}{\funimage{f}{A}}$ é !!a{injection}, pois tanto $g$ como
+$f$ o são; e de fato $\comp{f}{g}$ é !!a{bijection}, apenas pela forma
+como definimos o seu contradomínio. Logo
+$\cardeq{\funimage{g}{\funimage{f}{A}}}{A}$, e portanto, por
+\olref{sbhelper}, existe !!a{bijection} $h \colon A \to
+\funimage{g}{B}$. Além disso, $g^{-1}$ é !!a{bijection}
+$\funimage{g}{B} \to B$. Logo $\comp{h}{g^{-1}} \colon A \to B$ é
+!!a{bijection}.
+\end{proof}
+
+\end{document}

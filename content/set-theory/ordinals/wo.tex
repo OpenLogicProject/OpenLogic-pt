@@ -1,0 +1,65 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{ordinals}{wo}
+\olsection{Boas Ordenações}
+
+A noção fundamental é a seguinte:
+
+\begin{defn}
+A relação $<$ \emph{bem ordena} $A$ sse cumpre estas duas condições:
+\begin{enumerate}
+	\item $<$ é conexa, isto é, para todos $a, b \in A$, ou $a < b$
+	ou $a = b$ ou $b < a$;
+	\item todo o subconjunto não vazio de $A$ tem um !!{element}
+	$<$-minimal, isto é, se $\emptyset \neq X \subseteq A$ então $(\exists m \in
+	X)(\forall z \in X)z \nless m$
+\end{enumerate}
+\end{defn}
+
+É fácil ver que os três exemplos que acabamos de considerar eram de fato
+relações de boa ordenação.
+
+\begin{prob}
+\Olref[sth][ordinals][idea]{sec} apresentou três ordenações exemplo
+sobre os números naturais. Verifique que cada uma é uma boa ordenação.
+\end{prob}
+
+Eis algumas observações elementares mas extremamente importantes sobre
+boa ordenação.
+
+\begin{prop}\ollabel{wo:strictorder}
+Se $<$ bem ordena $A$, então todo o subconjunto não vazio de $A$ tem um
+único membro $<$-mínimo, e $<$ é irreflexiva, assimétrica e transitiva.
+\end{prop}
+
+\begin{proof}
+Se $X$ é um subconjunto não vazio de $A$, tem um !!{element} $<$-minimal
+$m$, isto é, $(\forall z \in X)z \nless m$. Como $<$ é conexa,
+$(\forall z \in X)m \leq z$. Logo $m$ é o !!{element} $<$-mínimo de $X$.
+
+Para a irreflexividade, fixe $a \in A$; o !!{element} $<$-mínimo de $\{a\}$ é $a$, logo $a \nless a$. Para a transitividade, se $a < b < c$, então
+como $\{a, b, c\}$ tem um !!{element} $<$-mínimo, $a < c$. A assimetria
+segue da irreflexividade e da transitividade
+\end{proof}
+
+\begin{prop}\ollabel{propwoinduction}
+Se $<$ bem ordena $A$, então para qualquer fórmula $\phi(x)$:
+\[
+	\text{se }(\forall a \in A)((\forall b < a)\phi(b) \lif 
+		\phi(a))\text{, então }(\forall a \in A)\phi(a).
+\]
+\end{prop}
+
+\begin{proof}
+Provaremos a contrapositiva. Suponha $\lnot(\forall a \in
+A)\phi(a)$, isto é, que $X = \Setabs{x \in A}{\lnot\phi(x)} \neq
+\emptyset$. Então $X$ tem um !!{element} $<$-minimal, $a$. Logo $(\forall
+b < a)\phi(b)$ mas $\lnot \phi(a)$. \end{proof}\noindent Esta última
+propriedade deve recordar-lhe o princípio de indução forte nos naturais,
+isto é: se $(\forall n \in \omega)((\forall m < n)\phi(m)
+\lif \phi(n))$, então $(\forall n \in \omega)\phi(n)$. E esta
+propriedade torna a boa ordenação numa noção muito \emph{robusta}.\footnote{Lembrete: todas as fórmulas podem ter parâmetros (salvo indicação em contrário).} 
+
+\end{document}

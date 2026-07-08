@@ -1,0 +1,71 @@
+% Part: sets-functions-relations
+% Chapter: relations
+% Section: operations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{rel}{ops}
+\olsection{Operações sobre Relações}
+
+É frequentemente útil modificar ou combinar relações. Em
+\olref[sfr][rel][ord]{prop:stricttopartial}, consideramos a \emph{união}
+de relações, que é apenas a união de duas relações vistas como
+conjuntos de pares. Do mesmo modo, na \olref[sfr][rel][ord]{prop:partialtostrict},
+consideramos a diferença relativa de relações. Eis algumas
+outras operações que podemos efetuar sobre relações.
+
+\begin{defn}\ollabel{relationoperations}
+Sejam $R$ e $S$ relações, e $A$ um conjunto qualquer.
+
+A \emph{inversa} de $R$ é $R^{-1} = \Setabs{\tuple{y, x}}{\tuple{x,
+    y} \in R}$.
+
+O \emph{produto relativo} de $R$ e $S$ é $(R \mid S) =
+\{\tuple{x, z} : \exists y(Rxy \land Syz)\}$.
+
+A \emph{restrição} de $R$ a $A$ é $\funrestrictionto{R}{A}= R
+\cap A^2$.
+
+A \emph{aplicação} de $R$ a $A$ é $\funimage{R}{A} = \{y :
+(\exists x \in A)Rxy\}$
+\end{defn}
+
+\begin{ex}
+Seja $S \subseteq \Int^2$ a relação sucessora sobre~$\Int$, O.s.\@,
+$S = \Setabs{\tuple{x, y} \in \Int^2}{x + 1 = y}$, de modo que $Sxy$ sse $x + 1 = y$.
+
+$S^{-1}$ é a relação antecessora sobre $\Int$, O.s.\@,
+$\Setabs{\tuple{x,y}\in\Int^2}{x -1 =y}$.
+
+$S\mid S$ é
+$ \Setabs{\tuple{x,y}\in\Int^2}{x + 2 =y}$
+
+$\funrestrictionto{S}{\Nat}$ é a relação sucessora sobre~$\Nat$.
+
+$\funimage{S}{\{1,2,3\}}$ é $\{2, 3, 4\}$.
+\end{ex}
+
+\begin{defn}[Fecho transitivo]Seja $R \subseteq A^2$ uma relação binária.
+
+O \emph{fecho transitivo} de~$R$ é $R^+ = \bigcup_{0 < n \in
+\Nat} R^n$, onde definimos recursivamente $R^1 = R$ e $R^{n+1} = R^n
+\mid R$.
+
+O \emph{fecho reflexivo transitivo} de $R$ é $R^* = R^+ \cup
+\Id{A}$.
+\end{defn}
+
+\begin{ex}
+Tome a relação sucessora $S \subseteq \Int^2$. $S^2xy$ sse $x + 2 =
+y$, $S^3xy$ sse $x + 3 = y$, etc. Logo $S^+xy$ sse $x + n = y$ para algum
+$n \geq 1$. Em outras palavras, $S^+xy$ sse $x < y$, e $S^*xy$ sse $x \le
+y$.
+\end{ex}
+
+\begin{prob}
+Mostre que o fecho transitivo de $R$ é de fato transitivo.
+\end{prob}
+
+\end{document}

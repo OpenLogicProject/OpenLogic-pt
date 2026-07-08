@@ -1,0 +1,88 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{cardinals}{hp}
+\olsection{Apêndice: Princípio de Hume}
+
+Na \olref[cp]{sec}, descrevemos o Princípio de Cantor. Era:
+\begin{align*}
+	\card{A} = \card{B} & \text{ sse } A \approx B.
+\intertext{Isto é muito semelhante ao que hoje se chama
+\emph{Princípio de Hume}, que diz:}
+	\fregenum{x} {F(x)} = \fregenum{x}{G(x)} & \text{ sse } F \sim G
+\end{align*}
+onde `$F \sim G$' abrevia que há tantos $F$ quantos
+$G$, O.s.\@, os $F$ podem pôr-se em bijeção com os $G$, O.s.:
+\begin{align*}
+	\exists R(&\forall v\forall y(Rvy \lif (Fv \land Gy)) \land {}\\
+		&\forall v(Fv \lif \lexists![y][Rvy]) \land {}\\
+		&\forall y(Gy \lif \lexists![v][Rvy]))
+\end{align*}
+Mas há uma diferença de tipo entre o Princípio de Hume e o Princípio
+de Cantor. No enunciado do Princípio de Cantor, as variáveis
+``$A$'' e ``$B$'' são termos de primeira ordem que denotam \emph{conjuntos}.
+No enunciado do Princípio de Hume, ``$F$'', ``$G$'' e ``$R$'' \emph{não}
+são termos de primeira ordem; estão em \emph{posição de predicado}.
+(Talvez denotem \emph{propriedades}.) Assim, o Princípio de Hume pode parafrasear-se em português: o número de $F$s é o número de
+$G$s sse os $F$s estão em bijeção com os~$G$s. Chama-se
+\emph{Princípio de Hume} porque Hume escreveu o seguinte:
+\begin{quote}
+  Quando dois números se combinam de tal modo que a cada unidade de um
+  corresponde sempre uma unidade do outro, dizemos que são iguais.
+  \citep[Pt.III Bk.1 \S1]{Hume1740}
+\end{quote}
+E o Princípio de Hume foi trazido à proeminência matemático-lógica contemporânea por \citet[\S63]{Frege1884}, que citou esta passagem de
+Hume antes de (em efeito) esboçar (o que chamamos) Princípio de
+Hume.
+
+Note a semelhança estrutural entre o Princípio de Hume e a Lei Básica~V. A formulamos na \olref[story][blv]{sec} do seguinte modo:
+\[
+	\fregeext{x}{F(x)} = \fregeext{x}{G(x)} \text{sse } \lforall[x][(F(x) \liff G(x))].
+\]
+E, neste ponto, alguns comentários e comparações podem ajudar.
+
+Há duas maneiras de entender um princípio como o Princípio de Hume ou a Lei Básica~V: \emph{predicativamente} ou \emph{impredicativamente} (recorde
+\olref[story][predicative]{sec}). Na leitura impredicativa da
+Lei Básica~V, para cada~$F$, o objeto $\fregeext{x}{F(x)}$ pertence
+ao domínio de quantificação usado na própria formulação da Lei
+Básica~V. Do mesmo modo, na leitura impredicativa do Princípio
+de Hume, para cada~$F$, o objeto $\fregenum{x}{F(x)}$ pertence
+ao domínio de quantificação usado na formulação do Princípio de
+Hume. Em contraste, na compreensão \emph{predicativa}, os
+objetos $\fregeext{x}{F(x)}$ e~$\fregenum{x}{F(x)}$ seriam
+entidades de um domínio \emph{diferente}.
+
+Agora, se a Lei Básica~V se lê impredicativamente, conduz à
+inconsistência, via Compreensão ingênua (para pormenores, ver
+\olref[story][blv]{sec}). Tal como a Compreensão ingênua, pode tornar-se
+consistente se se lê \emph{predicativamente}. Mas provavelmente não fará
+tudo o que desejávamos.
+
+O Princípio de Hume, porém, \emph{pode} ser lido de modo consistente
+impredicativamente. E, assim lido, é bastante poderoso.
+
+Para ilustrar: considere-se o predicado ``$x \neq x$'', que obviamente
+nada satisfaz. O Princípio de Hume fornece agora um objeto $\# x( x\neq
+x)$. Podemos tratá-lo como o número~$0$. Agora, na compreensão
+\emph{impredicativa}---mas \emph{só} na
+impredicativa---esta entidade $0$ pertence ao nosso
+domínio original de quantificação. Logo podemos aplicar sensatamente o Princípio de
+Hume com o predicado ``$x = 0$'' para obter um objeto $\#x (x =
+0)$. Podemos tratá-lo como o número~$1$. Além disso, o Princípio de Hume
+implica que $0 \neq 1$, pois não pode haver bijeção dos objetos não auto-idênticos para os objetos idênticos a $0$ (não há dos primeiros, mas há um dos segundos). Agora, de novo impredicativamente, $1$~pertence ao domínio original de
+quantificação. Logo podemos aplicar o Princípio de Hume com o
+predicado ``$(x = 0 \lor x = 1)$'' para obter um objeto $\#x(x = 0 \lor
+x = 1)$. Podemos tratá-lo como o número~$2$, e mostrar que
+$0\neq 2$ e $1 \neq 2$, e assim por diante.
+
+Em suma, tomado impredicativamente, o Princípio de Hume implica que há
+\emph{infinitamente muitos objetos}. E isto encorajou os
+\emph{logicistas neo-fregeanos} a tomar o Princípio de Hume como
+fundação da aritmética.
+
+O próprio Frege, contudo, não tomou o Princípio de Hume como fundação da aritmética. Em vez disso, Frege provou o Princípio de Hume a partir de
+uma definição explícita: $\fregenum{x}{F(x)}$ é definido como a extensão do
+conceito $F \sim \Phi$. Em termos modernos, poder-se-ia tentar render isto como $\fregenum{x}{F(x)} = \Setabs{G}{F \sim G}$; mas isto volta a arrastar-nos para os problemas da Compreensão ingênua.
+
+\end{document}

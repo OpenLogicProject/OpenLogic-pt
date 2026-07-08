@@ -1,0 +1,102 @@
+% Part: sets-functions-relations
+% Chapter: functions
+% Section: functions-relations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+
+\begin{document}
+
+\olfileid[pt]{sfr}{fun}{rel}
+
+\olsection{Funções como Relações}
+
+\begin{explain}
+Uma função que mapeia !!{element}s de~$A$ para !!{element}s de~$B$
+define obviamente uma relação entre $A$ e~$B$, nomeadamente a relação
+que se verifica entre $x$ e $y$ se e só se $f(x) = y$. De fato, podemos
+até---se nos interessa reduzir os blocos de construção da
+matemática, por exemplo---\emph{identificar} a função~$f$ com esta
+relação, O.s.\@, com um conjunto de pares. Isto levanta então a questão:
+que relações definem funções deste modo?
+\end{explain}
+
+\begin{defn}[Gráfico de uma função] Seja $f\colon A \to B$ uma função.
+O \emph{gráfico} de~$f$ é a relação $R_f \subseteq A \times B$
+definida por
+\[
+R_f = \Setabs{\tuple{x,y}}{f(x) = y}.
+\]
+\end{defn}
+
+\begin{explain}
+O gráfico de uma função fica unicamente determinado, pela extensionalidade.
+Além disso, a extensionalidade (sobre conjuntos) justifica de imediato o
+princípio implícito de extensionalidade para funções,
+segundo o qual, se $f$ e~$g$ partilham domínio e contradomínio, então são
+idênticas se coincidem em todos os valores.
+
+Do mesmo modo, se uma relação é ``funcional'', então é o gráfico de uma função.
+\end{explain}
+
+\begin{prop}\ollabel{prop:graph-function}
+Seja $R \subseteq A \times B$ tal que:
+\begin{enumerate}
+\item Se $Rxy$ e $Rxz$, então $y = z$; e
+\item para todo $x \in A$ existe algum $y \in B$ tal que $\tuple{x,
+y} \in R$.
+\end{enumerate}
+Então $R$ é o gráfico da função $f\colon A \to B$ definida por
+$f(x) = y$ se e só se $Rxy$.
+\end{prop}
+
+\begin{proof}
+Suponhamos que existe $y$ tal que $Rxy$. Se existisse outro $z \neq
+y$ tal que $Rxz$, a condição sobre~$R$ seria violada. Logo, se
+existe $y$ tal que $Rxy$, esse $y$ é único, e assim $f$ está
+bem definida. Obviamente, $R_f = R$.
+\end{proof}
+
+\begin{explain}
+Toda função $f\colon A \to B$ tem um gráfico, O.s.\@, uma relação em $A
+\times B$ definida por $f(x) = y$. Por outro lado, toda relação~$R
+\subseteq A \times B$ com as propriedades dadas em
+\olref{prop:graph-function} é o gráfico de uma função~$f \colon A \to
+B$. Por causa desta ligação estreita entre funções e os seus
+gráficos, podemos pensar numa função simplesmente como o seu gráfico. Noutras
+palavras, funções podem identificar-se com certas relações, O.s.\@, com
+certos conjuntos de tuplos. \oliflabeldef{sfr:rel:ref:sec}{Note, contudo,
+que o espírito desta ``identificação'' é como em
+\olref[sfr][rel][ref]{sec}: não é uma afirmação sobre a metafísica das
+funções, mas a observação de que é conveniente \emph{tratar}
+funções como certos conjuntos. Uma razão pela qual isto é tão conveniente é que p}{P}odemos agora considerar fazer operações semelhantes sobre
+funções às que fizemos sobre relações (ver
+\olref[sfr][rel][ops]{sec}). Em particular:
+\end{explain}
+
+\begin{defn}\ollabel{defn:funimage}
+Seja $f \colon A \to B$ uma função com $C\subseteq A$.
+
+A \emph{restrição} de~$f$ a~$C$ é a
+função~$\funrestrictionto{f}{C}\colon C \to B$ definida por
+$(\funrestrictionto{f}{C})(x) = f(x)$ para todo $x \in C$. Noutras
+palavras, $\funrestrictionto{f}{C} = \Setabs{\tuple{x, y} \in R_f}{x \in
+C}$.
+
+A \emph{aplicação} de~$f$ a~$C$ é $\funimage{f}{C} =
+\Setabs{f(x)}{x \in C}$. Chamamos-lhe também a \emph{imagem} de~$C$
+por~$f$.
+\end{defn}
+
+\begin{explain}
+Segue-se destas definições que $\ran{f} =
+\funimage{f}{\dom{f}}$, para qualquer função~$f$.
+\oliflabeldef{sfr:rel:ops:sec}{Estas noções são exatamente as que se
+esperaria, dadas as definições na \olref[sfr][rel][ops]{sec} e a nossa
+identificação de funções com relações. Mas outras duas
+operações---inversas e produtos relativos---exigem um pouco mais de
+pormenor. Trataremos disso na \olref[inv]{sec} e
+\olref[cmp]{sec}.}{}
+\end{explain}
+
+\end{document}

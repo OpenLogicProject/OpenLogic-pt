@@ -1,0 +1,79 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{choice}{woproblem}
+\olsection{O Problema da Boa Ordenação}
+
+Evidentemente que muito depende de aceitarmos ou não a Boa Ordenação. Mas
+a discussão deste princípio tendeu a concentrar-se num equivalente,
+o Axioma da Escolha. Voltemos então a atenção para esse axioma
+(e provemos a equivalência). 
+
+Em \citeyear{Cantor1883}, Cantor exprimiu o seu apoio ao Axioma
+da Boa Ordenação, chamando-lhe ``uma lei do pensamento que me parece
+fundamental, rica nas suas consequências e particularmente notável
+pela sua generalidade'' (citado em \citeauthor{Potter2004}
+\citeyear[p.~243]{Potter2004}). Mas Cantor acabou por convencer-se
+de que o ``Axioma'' precisava de prova. A comunidade matemática
+também. 
+
+O problema foi ``resolvido'' por Zermelo em \citeyear{Zermelo1904}. Para
+explicar a solução, precisamos de algumas definições. 
+
+\begin{defn}
+Uma função $f$ é uma \emph{função de escolha} sse $f(x) \in x$ para todo o $x \in \dom{f}$. Dizemos que $f$ é uma \emph{função de escolha para $A$} sse $f$ é uma função de escolha com $\dom{f} = A \setminus \{\emptyset\}$.
+\end{defn}
+
+Intuitivamente, para cada conjunto (não vazio) $x \in A$, uma função de escolha
+para $A$ \emph{escolhe} um elemento particular, $f(x)$, de $x$. O
+Axioma da Escolha é então:
+
+\begin{axiom}[Escolha]
+	Todo o conjunto tem uma função de escolha.
+\end{axiom}
+
+Zermelo mostrou que a Escolha implica a boa ordenação, e vice-versa:
+
+\begin{thm}[em $\ZF$]\ollabel{thmwochoice}
+A Boa Ordenação e a Escolha são equivalentes.
+\end{thm}
+
+\begin{proof}
+\emph{Da esquerda para a direita.} Seja $A$ um conjunto de conjuntos. Então $\bigcup A$
+existe pelo Axioma da União, e logo, pela Boa Ordenação, existe alguma relação
+$<$ que bem ordena $\bigcup A$. Seja agora $f(x) = \text{o membro $<$-mínimo de }x$. Isto é uma função de escolha para $A$.
+
+\emph{Da direita para a esquerda.} Fixe-se $A$. Pela Escolha, existe uma função de escolha,
+$f$, para $\Pow{A} \setminus \{\emptyset\}$. Usando Recursão Transfinita, defina-se uma função:
+\begin{align*}
+	g(0) &= f(A)\\
+	g(\alpha) &= 
+		\begin{cases}
+			\text{parar!{}} &\text{se }A = \funimage{g}{\alpha}\\
+			f(A \setminus \funimage{g}{\alpha}) & \text{caso contrário}\\	
+		\end{cases}
+\end{align*}
+A indicação ``parar!'' é apenas uma abreviatura para o que seria
+de outro modo uma definição mais longa. Ou seja, quando $A =
+\funimage{g}{\alpha}$ pela primeira vez, seja $g(\delta) = A$ para todo o
+$\delta \leq \alpha$. Agora, em primeiro lugar, só podemos ter a certeza de que isto define um \emph{termo} (ver as observações após \olref[sth][spine][recursion]{transrecursionschema}); mas mostraremos que de fato temos uma função.
+
+Como $f$ é função de escolha, para cada $\alpha$ (quando definido) temos $g(\alpha) =
+f(A \setminus \funimage{g}{\alpha}) \in A \setminus
+\funimage{g}{\alpha}$; O.s.\@, $g(\alpha) \notin \funimage{g}{\alpha}$.
+Logo, se $g(\alpha) = g(\beta)$ então $g(\beta) \notin
+\funimage{g}{\alpha}$, O.s.\@, $\beta \notin \alpha$, e analogamente
+$\alpha \notin \beta$. Logo $\alpha = \beta$, por Tricotomia. Assim, $g$ é
+!!{injective}.
+
+Observe-se a seguir que de fato paramos!{}, O.s.\@, que existe algum ordinal mínimo $\alpha$ tal que $A = g[\alpha]$. De fato, suponhamos o contrário; então, como $g$ é !!{injective}, teríamos $\cardless{\alpha}{\Pow{A} \setminus \{\emptyset\}}$ para
+todo o ordinal $\alpha$, contradizendo \olref[hartogs]{HartogsLemma}. Daí também $\ran{g} = A$.
+
+Reunindo estes fatos, $g$ é !!a{bijection} de algum ordinal para $A$. Agora, $g$ pode ser usada para bem ordenar $A$.
+\end{proof}
+
+Assim, a Boa Ordenação e a Escolha estão de pé ou caem juntas. Mas a questão
+permanece: estão de pé ou caem?
+
+\end{document}

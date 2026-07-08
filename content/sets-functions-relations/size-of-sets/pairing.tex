@@ -1,0 +1,111 @@
+% Part:sets-functions-relations
+% Chapter: size-of-sets
+% Section: pairing
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{siz}{pai}
+\olsection{Funções de Pareamento e Códigos}
+
+\begin{explain}
+O método do zigue-zague de Cantor torna visualmente evidente a
+enumerabilidade de~$\Nat^n$. Mas vamos concentrar-nos na nossa matriz que
+representa~$\Nat^2$. Seguindo a linha em zigue-zague na matriz e contando as
+posições, podemos verificar que $\tuple{1,2}$ fica associado ao
+número~$7$. Seria útil, contudo, poder calcular isto de modo mais direto. Ou
+seja, seria útil dispor da \emph{inversa} da enumeração em zigue-zague,
+$g\colon \Nat^2 \to \Nat$, tal que
+\[
+g(\tuple{0,0}) = 0, \;
+g(\tuple{0,1}) = 1, \;
+g(\tuple{1,0}) = 2, \; \dots,  
+g(\tuple{1,2}) = 7, \; \dots
+\]
+Isto permitir-nos-ia calcular exatamente em que posição da enumeração cai
+$\tuple{n, m}$.
+
+De fato, podemos definir $g$ diretamente com base em duas observações.
+Primeiro: se a $n$-ésima linha e a $m$-ésima coluna contêm o valor~$v$, então a
+$(n+1)$-ésima linha e a $(m-1)$-ésima coluna contêm o valor $v + 1$. Segundo: a
+primeira linha da nossa enumeração consiste nos números triangulares, começando
+por $0$, $1$, $3$, $6$, etc. O $k$-ésimo número triangular é a soma dos números
+naturais $< k$, que se pode calcular como $k(k+1)/2$. Juntando estas duas
+observações, consideremos a função:
+\[
+  g(n,m) = \frac{(n+m+1)(n+m)}{2} + n
+\]
+Escreve-se frequentemente $g(n, m)$ em vez de $g(\tuple{n, m})$, já que é mais
+fácil para os olhos. Isto diz-nos que se determine primeiro o $(n+m)$-ésimo número
+triangular e depois que lhe somemos~$n$. A função preenche a matriz exatamente da maneira
+que desejamos. Em particular, o par $\tuple{1, 2}$ é enviado para $\frac{4 \times 3}{2} +
+1 = 7$.
+
+Esta função $g$ é a \emph{inversa} de uma enumeração de um conjunto de pares.
+Tais funções chamam-se \emph{funções de pareamento}.
+\end{explain}
+
+\begin{defn}[Função de pareamento] 
+  Uma função $f\colon A \times B \to \Nat$ é uma \emph{função de pareamento}
+  aritmética se $f$ for injetiva. Dizemos também que $f$ \emph{codifica}
+  $A \times B$, e que $f(x,y)$ é o \emph{código} de $\tuple{x,y}$.
+\end{defn}
+
+\begin{explain}
+Podemos usar funções de pareamento para codificar, por exemplo, pares de
+números naturais; ou, noutras palavras, podemos representar cada \emph{par} de
+elementos por um \emph{único} número. Usando a inversa da função de
+pareamento, podemos \emph{descodificar} o número, O.s.\@, determinar que par
+representa.
+\end{explain}
+
+\begin{prob}
+Dê uma enumeração do conjunto de todos os números racionais não negativos.
+\end{prob}
+
+\begin{prob}
+Mostre que $\Rat$ é !!{enumerable}. Recordemos que qualquer número racional
+se pode escrever como uma fração $z/m$ com $z \in \Int$, $m \in \Nat^+$.
+\end{prob}
+
+\begin{prob}
+Defina uma enumeração de $\Bin^*$.
+\end{prob}
+
+\begin{prob}
+Recordando o curso introdutório de lógica, cada tabela de verdade possível
+exprime uma função de verdade. Noutras palavras, as funções de verdade são todas
+as funções de $\Bin^k \to \Bin$ para algum~$k$. Prove que o conjunto de todas as
+funções de verdade é !!{enumerable}.
+\end{prob}
+
+\begin{prob}
+Mostre que o conjunto de todos os subconjuntos finitos de um conjunto infinito
+!!{enumerable} arbitrário é !!{enumerable}.
+\end{prob}
+
+\begin{prob}
+Um subconjunto de $\Nat$ diz-se \emph{confinito} sse for o complemento de um
+conjunto finito; isto é, $A \subseteq \Nat$ é confinito sse $\Nat\setminus A$ for
+finito. Seja $I$ o conjunto cujos !!{element}s são exatamente os subconjuntos
+finitos e confinitos de~$\Nat$. Mostre que $I$ é !!{enumerable}.
+\end{prob}
+
+\begin{prob}
+Mostre que a união !!{enumerable} de conjuntos !!{enumerable}s é !!{enumerable}.
+Isto é, sempre que $A_1$, $A_2$, \dots{} são conjuntos e cada $A_i$ é
+!!{enumerable}, então a união $\bigcup_{i=1}^\infty A_i$ de todos eles também é
+!!{enumerable}. [Nota: isto é difícil!]
+\end{prob}
+
+\begin{prob}
+Seja $f \colon A \times B \to \Nat$ uma função de pareamento arbitrária. Mostre
+que a inversa de~$f$ é uma enumeração de $A \times B$.
+\end{prob}
+
+\begin{prob}
+Especifique uma função que codifique $\Nat^3$.
+\end{prob}
+
+\end{document}

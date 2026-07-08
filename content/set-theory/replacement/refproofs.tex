@@ -1,0 +1,174 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{replacement}{refproofs}
+\olsection{Apêndice: Resultados sobre Substituição}
+
+A seguir, provaremos a Reflexão dentro de $\ZF$. Provaremos também
+em que sentido a Reflexão é equivalente à Substituição. E
+provaremos uma consequência interessante de tudo isto, relativa à
+força da Reflexão/Substituição. \emph{Aviso: isto é, de longe, a parte mais avançada de matemática deste manual.} 
+
+Começamos com um lema que, por brevidade, recorre ao expediente notacional
+do \emph{sobrelinhado} para lidar com sequências de variáveis ou
+objetos. Assim: ``$\overline{a}_k$'' abrevia ``$a_{k_1}$, \dots,
+$a_{k_n}$'', onde $n$ é determinado pelo contexto.
+
+\begin{lem}\ollabel{lemreflection}
+Para cada $1 \leq i \leq k$, seja $\phi_i(\overline{v}_i, x)$ uma
+fórmula. Então, para cada $\alpha$
+existe algum $\beta > \alpha$ tal que, para quaisquer $\overline{a}_1,
+\ldots, \overline{a}_k \in V_\beta$ e cada $1 \leq i \leq k$:
+\[
+	\exists x\phi_i(\overline{a}_i, x) \rightarrow (\exists x \in V_\beta) \phi_i(\overline{a}_i, x)
+\]
+\end{lem}
+
+\begin{proof}
+Definimos um termo $\mu$ como segue: $\mu(\overline{a}_1, \ldots,
+\overline{a}_k)$ é o estágio mínimo, $V$, que satisfaz todos os
+seguintes condicionais, para $1 \leq i \leq k$:
+\[
+\exists x\phi_i(\overline{a}_i, x) \rightarrow (\exists x \in V) \phi_i(\overline{a}_i, x))
+\]
+É fácil verificar que $\mu(\overline{a}_1, \ldots, \overline{a}_k)$ existe para todos $\overline{a}_1, \ldots, \overline{a}_k$. Ora, usando a Substituição e o nosso teorema de recursão, definimos:
+\begin{align*}
+	S_0 & = V_{\alpha+1}\\
+	S_{n+1} & = S_n \cup \bigcup
+	\Setabs{\mu(\overline{a}_1, \ldots, \overline{a}_k)}
+	{\overline{a}_1, \ldots, \overline{a}_k \in S_n} \\
+	S &= \bigcup_{m < \omega} S_n.
+\end{align*}
+Cada $S_n$, e portanto o próprio $S$, é um estágio depois de $V_\alpha$. Fixemos
+$\overline{a}_1$, \dots,~$\overline{a}_k \in S$; logo existe algum $n <
+\omega$ tal que $\overline{a}_1$, \dots, $\overline{a}_k \in S_n$.
+Fixemos algum $1 \leq i \leq k$, e suponhamos que $\exists x
+\phi_i(\overline{a}_i,x)$. Então $(\exists x \in \mu(\overline{a}_1,
+\ldots, \overline{a}_k))\phi_i(\overline{a}_i, x)$ por construção, logo
+$(\exists x \in S_{n+1})\phi_i(\overline{a}_i, x)$ e portanto
+$(\exists x \in S)\phi_i(\overline{a}_i, x)$. Logo $S$ é o nosso $V_\beta$.
+\end{proof}
+\noindent 
+Podemos agora provar \olref[sth][replacement][ref]{reflectionschema} de
+forma bastante direta:
+
+\begin{proof}[Prova] 
+Fixemos $\alpha$. Sem perda de generalidade, podemos assumir que os únicos conectivos de $\phi$ são $\exists$, $\lnot$ e $\land$ (pois estes são
+expressivamente adequados). Sejam $\psi_1, \ldots, \psi_k$ uma enumeração de
+cada uma das subfórmulas de $\phi$ por ordem de complexidade, de modo que $\psi_k = \phi$.
+Por \olref{lemreflection}, existe um $\beta > \alpha$ tal que, para
+qualquer $\overline{a}_i \in V_\beta$ e cada $1 \leq i \leq k$:
+\begin{align}\label{reflectionnicelybehaved}
+	\exists x\psi_i(\overline{a}_i, x) \rightarrow 
+	(\exists x \in V_\beta) \psi_i(\overline{a}_i, x)\tag{*}
+\end{align}
+Por indução na complexidade de $\psi_i$, mostraremos que
+$\psi_i(\overline{a}_i) \leftrightarrow
+\psi_i^{V_\beta}(\overline{a}_i)$, para qualquer  $\overline{a}_i \in
+V_\beta$. 	Se $\psi_i$ é atómica, isto é trivial. A bicondicional
+estabelece também que, quando $\psi_i$ é uma negação ou conjunção de
+subfórmulas que satisfazem esta propriedade, a própria $\psi_i$ satisfaz esta
+propriedade. Logo o único caso interessante é o da quantificação. Fixemos
+$\overline{a}_i \in V_\beta$; então:
+\begin{align*}
+	(\exists x \psi_i(\overline{a}_i, x))^{V_\beta}
+	&\text{ sse }
+	(\exists x \in V_\beta)\psi_i^{V_\beta}(\overline{a}_i, x)
+	&&\text{por definição}\\
+	&\text{ sse }
+	(\exists x \in V_\beta)\psi_i(\overline{a}_i,  x)
+	&&\text{por hipótese}\\
+	&\text{ sse }
+	\exists x \psi_i(\overline{a}_i, x)
+	&&\text{por \eqref{reflectionnicelybehaved}}
+\end{align*}
+Isto completa a indução; o resultado segue pois $\psi_k = \phi$.
+\end{proof}
+
+Provamos a Reflexão em $\ZF$. A nossa prova seguiu essencialmente
+\citet{Montague1961}. Queremos agora provar em $\Z$ que a
+Reflexão implica a Substituição. A prova segue \citet{Levy1960},
+com uma simplificação. 
+
+Como trabalhamos em $\Z$, não podemos apresentar a Reflexão exatamente na
+forma dada acima. Afinal, formulamos a Reflexão usando a
+notação ``$V_\alpha$'', e isso não pode ser definido em $\Z$ (ver
+\olref[sth][spine][zf]{sec}). Em vez disso, ofereceremos uma formulação
+aparentemente mais fraca da Substituição, como segue:
+
+\begin{defish}
+\emph{Reflexão fraca.} Para qualquer fórmula $\phi$, existe um conjunto
+transitivo $S$ tal que $0$, $1$ e quaisquer parâmetros de $\phi$ são
+!!{element}os de $S$, e $(\forall \overline{x} \in S)(\phi \liff
+\phi^S)$.
+\end{defish}
+
+Para usar isto na prova da Substituição, seguiremos primeiro \citet[primeira parte do Teorema 2]{Levy1960} e mostraremos que podemos ``refletir'' duas
+fórmulas de uma vez:
+
+\begin{lem}[em $\Z + \text{Reflexão fraca}$.]\ollabel{lem:reflect}
+Para quaisquer fórmulas $\psi, \chi$, existe um conjunto transitivo $S$ tal que
+$0$ e $1$ (e quaisquer parâmetros das fórmulas) são !!{element}os de
+$S$, e $(\forall \overline{x} \in S)((\psi \liff \psi^S) \land (\chi
+\liff \chi^S))$.
+\end{lem}
+
+\begin{proof}
+Seja $\phi$ a fórmula $(z = 0 \land \psi) \lor (z = 1 \land \chi)$. 
+
+Aqui usamos uma abreviatura; devemos explicitar ``$z = 0$'' como
+``$\forall t\, t \notin z$'' e ``$z =1$'' como ``$\forall s(s \in z
+\liff \forall t\, t \notin s)$''. Mas como $0, 1 \in S$ e $S$ é
+transitivo, estas fórmulas são \emph{absolutas} para $S$; isto é, aplicam-se ao mesmo objeto quer restrinjamos os seus quantificadores a
+$S$.\footnote{Mais formalmente, seja $\xi$ qualquer uma destas
+fórmulas; então $\xi(z) \liff \xi^S(z)$.}
+
+Pela Reflexão fraca, temos algum $S$ adequado tal que:
+\begin{align*}
+	(\forall z, \overline{x} \in S)(&\phi \liff \phi^S)\\
+	\text{O.s.\ }(\forall z, \overline{x} \in S)(&((z = 0 \land \psi) \lor (z = 1 \land \chi)) \liff {}\\
+	&\phantom{(}((z = 0 \land \psi) \lor (z = 1 \land \chi))^S)\\
+	\text{O.s.\ }(\forall z, \overline{x} \in S)(&((z = 0 \land \psi) \lor (z = 1 \land \chi))\liff {}\\
+	&\phantom{(}((z = 0 \land \psi^S) \lor (z = 1 \land \chi^S)))\\
+	\text{O.s.\ }(\forall \overline{x} \in S)(&(\psi \liff \psi^S) \land (\chi \liff \chi^S))
+\end{align*}
+A segunda afirmação implica a terceira porque ``$z = 0$'' e ``$z=1$''
+são absolutas para $S$; a quarta segue pois $0 \neq 1$.
+\end{proof}\noindent Podemos agora obter a Substituição, seguindo e simplificando 
+\citet[Teorema 6]{Levy1960}:
+
+\begin{thm}[em $\Z$ + Reflexão fraca]\label{thm:replacement} 
+Para qualquer fórmula $\phi(v,w)$, e qualquer $A$, se $(\forall x \in A)\lexists![y][\phi(x,y)]$, então
+$\Setabs{y}{(\exists x \in A)\phi(x,y}$ existe.
+\end{thm}
+
+\begin{proof}
+Fixemos $A$ tal que $(\forall x \in A)\lexists![y][\phi(x,y)]$, e
+definimos fórmulas:
+\begin{align*}
+	\psi &\text{ é } (\phi(x, z) \land A = A)\\
+	\chi &\text{ é } \lexists[y][\phi(x, y)]
+\end{align*}
+Usando \olref{lem:reflect}, como $A$ é um parâmetro de $\psi$, existe
+um conjunto transitivo~$S$ tal que $0, 1, A \in S$  (juntamente com quaisquer outros
+parâmetros), e tal que:
+\[
+	(\forall x,z \in S)((\psi \liff \psi^S) \land (\chi \liff \chi^S))
+\]
+Logo, em particular:
+\begin{align*}
+	(\forall  x, z \in S)(&\phi(x, z) \liff \phi^S(x, z))\\
+	(\forall x \in S)(&\exists y\phi(x, y) \liff (\exists y \in S)\phi^S(x, y)) 
+\end{align*}
+Combinando isto, e observando que $A \subseteq S$ pois $A \in S$ e $S$ é transitivo:
+\begin{align*}
+	(\forall x \in A)(&\exists y\phi(x, y) \liff (\exists y \in S)\phi(x, y))
+\end{align*}
+Ora, $(\forall x \in A)(\lexists![y \in S])\phi(x, y)$, porque
+$(\forall x \in A)\lexists![y][\phi(x, y)]$. Ora, a Separação dá
+$\Setabs{y \in S}{(\exists x \in A) \phi(x, y)} = \Setabs{y}{(\exists
+x \in A) \phi(x, y)}$. 
+\end{proof}
+
+\end{document}

@@ -1,0 +1,164 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{ordinals}{iso}
+\olsection{Isomorfismos de Ordem}
+
+Para explicar \emph{quão} robusta é a boa ordenação, começaremos por
+introduzir um método para comparar boas ordenações.
+
+\begin{defn}
+Uma \emph{boa ordenação} é um par $\tuple{A, <}$, tal que $<$
+bem ordena $A$. As boas ordenações $\tuple{A, <}$ e $\tuple{B,
+\lessdot}$ são \emph{isomorfas por ordem} {sse} existe !!a{bijection}
+$f \colon A \to B$ tal que: $x < y$ sse $f(x) \lessdot  f(y)$. Neste
+caso, escrevemos $\ordeq{\tuple{A, <}}{\tuple{B, \lessdot}}$, e
+dizemos que $f$ é um \emph{isomorfismo de ordem}.
+\end{defn}
+\noindent
+Daqui em diante, por brevidade, falaremos em ``isomorfismos'' em vez de
+``isomorfismos de ordem''. Intuitivamente, os isomorfismos são
+!!{bijection}s que preservam estrutura. Eis alguns fatos simples sobre
+isomorfismos.
+
+\begin{lem}\ollabel{isoscompose}
+Composições de isomorfismos são isomorfismos, isto é: se $f \colon A
+\to B$ e $g \colon B \to C$ são isomorfismos, então $(g \circ f)
+\colon A \to C$ é um isomorfismo.
+\end{lem}
+\begin{prob}
+	Prove \olref[sth][ordinals][iso]{isoscompose}.
+\end{prob}
+\begin{proof}
+Fica como exercício.
+\end{proof}
+\begin{cor}\ollabel{ordisoisequiv}
+	$\ordeq{X}{Y}$ é uma relação de equivalência.
+\end{cor}
+\begin{prop}\ollabel{ordisounique}
+Se $\tuple{A, <}$ e $\tuple{B, \lessdot}$ são boas ordenações isomorfas,
+então o isomorfismo entre elas é único.
+\end{prop}
+
+\begin{proof}
+Sejam $f$ e $g$ isomorfismos $A \to B$. Provaremos o resultado por indução, isto é, usando \olref[wo]{propwoinduction}. 
+Fixe $a\in A$, e suponha (para indução) que $(\forall b < a)f(b) = g(b)$. Fixe $x \in B$. 
+
+Se $x \lessdot f(a)$, então $f^{-1}(x) < a$, logo $g(f^{-1}(x)) \lessdot
+g(a)$, invocando o fato de $f$ e $g$ serem isomorfismos. Mas como
+$f^{-1}(x) < a$, pela suposição $x =f(f^{-1}(x)) = g(f^{-1}(x))$.
+Logo $x \lessdot g(a)$. Analogamente, se $x \lessdot g(a)$ então $x \lessdot
+f(a)$. 
+
+Generalizando, $(\forall x \in B)(x \lessdot f(a) \liff x \lessdot
+g(a))$. Segue que $f(a) = g(a)$ por
+\olref[sfr][rel][ord]{prop:extensionality-strictlinearorders}. Logo $(\forall
+a \in A)f(a) = g(a)$ por \olref[wo]{propwoinduction}.
+\end{proof}\noindent 
+Isto dá alguma ideia de que as boas ordenações são robustas. Mas para
+continuar a explicar isto, convém introduzir mais notação.
+
+\begin{defn}
+Quando $\tuple{A, <}$ é uma boa ordenação com $a \in A$, seja $A_a = \Setabs{x \in A}{x
+< a}$. Dizemos que $A_a$ é um \emph{segmento inicial} próprio de $A$ (e permitimos que o próprio $A$ seja um segmento inicial impróprio de $A$). Seja
+$<_a$ a restrição de $<$ ao segmento inicial, isto é,
+$\funrestrictionto{\mathord{<}}{A_a^2}$. 
+\end{defn}
+\noindent
+Com esta notação, podemos enunciar e provar que nenhuma boa ordenação é
+isomorfa a nenhum dos seus segmentos iniciais próprios.
+
+\begin{lem}\ollabel{wellordnotinitial}
+Se $\tuple{A, <}$ é uma boa ordenação com $a \in A$, então
+$\ordneq{\tuple{A, <}}{\tuple{A_a, <_a}}$ 
+\end{lem}
+
+\begin{proof}
+Por redução ao absurdo, suponha $f \colon A \to A_a$ um isomorfismo. Como
+$f$ é uma bijeção e $A_a \subsetneq A$, usando \olref[wo]{wo:strictorder} seja $b \in A$ o
+!!{element} $<$-mínimo de $A$ tal que $b \neq f(b)$. Mostraremos que
+$(\forall x \in A)(x<b \liff x < f(b))$, donde seguirá, por
+\olref[sfr][rel][ord]{prop:extensionality-strictlinearorders}, que $b =
+f(b)$, completando a redução ao absurdo.
+
+Suponha $x < b$. Logo $x = f(x)$, pela escolha de $b$. E $f(x) <
+f(b)$, por $f$ ser um isomorfismo. Logo $x < f(b)$.
+
+Suponha $x < f(b)$. Logo $f^{-1}(x) < b$, por $f$ ser um isomorfismo,
+e portanto $f^{-1}(x) = x$ pela escolha de $b$. Logo $x < b$. 
+\end{proof}
+
+O nosso resultado seguinte mostra, grosso modo, que um ``segmento inicial'' de um
+isomorfismo é um isomorfismo:
+
+\begin{lem}\ollabel{wellordinitialsegment}
+Sejam $\tuple{A, <}$ e $\tuple{B, \lessdot}$ boas ordenações. Se $f
+\colon A \to B$ é um isomorfismo e $a \in A$, então
+$\funrestrictionto{f}{A_{a}} : A_a \to B_{f(a)}$ é um isomorfismo.
+\end{lem}
+
+\begin{proof}
+Como $f$ é um isomorfismo:
+	%Como $f$ é um isomorfismo, $b < a$ sse $f(b) \lessdot f(a)$, logo 
+\begin{align*}
+	\funimage{f}{A_a} &= \funimage{f}{\Setabs{x \in A}{x < a}}\\
+	&= \funimage{f}{\Setabs{f^{-1}(y) \in A}{f^{-1}(y) < a}} \\
+	&= \Setabs{y \in B}{y \lessdot f(a)} \\
+	&=B_{f(a)} 
+\end{align*}
+E $\funrestrictionto{f}{A_a}$ preserva a ordem porque $f$ preserva. 
+\end{proof}
+
+Os nossos dois resultados seguintes estabelecem que as boas ordenações são sempre
+comparáveis:
+
+\begin{lem}\ollabel{lemordsegments}
+Sejam $\tuple{A, <}$ e $\tuple{B, \lessdot}$ boas ordenações. Se
+$\ordeq{\tuple{A_{a_1}, <_{a_1}}}{\tuple{B_{b_1}, \lessdot_{b_1}}}$
+e $\ordeq{\tuple{A_{{a_2}}, <_{a_2}}}{\tuple{B_{{b_2}},
+\lessdot_{b_2}}}$, então ${a_1}  < {a_2} \text{ sse }{b_1} \lessdot
+{b_2}$
+\end{lem}
+
+\begin{proof}
+Provaremos da \emph{esquerda para a direita}; a outra direção é análoga.
+Suponha ambos $\ordeq{\tuple{A_{a_1}, <_{a_1}}}{\tuple{B_{b_1},
+\lessdot_{b_1}}}$ e $\ordeq{\tuple{A_{{a_2}},
+<_{a_2}}}{\tuple{B_{{b_2}}, \lessdot_{b_2}}}$, com $f \colon
+A_{{a_2}} \to B_{{b_2}}$ o nosso isomorfismo. Seja ${a_1} < {a_2}$; então
+$\ordeq{\tuple{A_{a_1}, <_{a_1}}}{\tuple{B_{f({a_1})},
+\lessdot_{f({a_1})}}}$ por \olref{wellordinitialsegment}. Logo
+$\ordeq{\tuple{B_{b_1}, \lessdot_{b_1}}}{\tuple{B_{f({a_1})},
+\lessdot_{f({a_1})}}}$, e portanto ${b_1} = f({a_1})$ por
+\olref{wellordnotinitial}. Ora, ${b_1} \lessdot {b_2}$ pois o domínio de $f$
+é $B_{{b_2}}$.	
+\end{proof}
+
+\begin{thm}\ollabel{thm:woalwayscomparable}
+Dadas quaisquer duas boas ordenações, uma é isomorfa a um segmento inicial
+(não necessariamente próprio) da outra.
+\end{thm}
+
+\begin{proof}
+Sejam $\tuple{A, <}$ e $\tuple{B, \lessdot}$ boas ordenações. Usando a
+Separação, seja
+\[
+	f = \Setabs{\tuple{a, b} \in A \times B}{
+		\ordeq{\tuple{A_a, <_a}}{\tuple{B_b, \lessdot_b}}}.
+\]
+Por \olref{lemordsegments}, $a_1 < a_2$ sse $b_1 \lessdot b_2$ para todos
+$\tuple{a_1, b_1}, \tuple{a_2, b_2} \in f$. Logo $f \colon \dom{f} \to
+\ran{f}$ é um isomorfismo. 
+
+Se $a_2 \in \dom{f}$ e $a_1 < a_2$, então $a_1 \in \dom{f}$ por
+\olref{wellordinitialsegment}; logo $\dom{f}$ é um segmento inicial de
+$A$. Analogamente, $\ran{f}$ é um segmento inicial de $B$. Por redução ao absurdo,
+suponha que ambos são segmentos iniciais \emph{próprios}. Então seja $a$ o
+!!{element} $<$-mínimo de $A \setminus \dom{f}$, de modo que $\dom{f} =
+A_a$, e seja $b$ o !!{element} $\lessdot$-mínimo de $B \setminus
+\ran{f}$, de modo que $\ran{f} = B_b$. Logo $f \colon A_a \to B_b$ é um
+isomorfismo, e portanto $\tuple{a, b} \in f$, contradição.
+\end{proof}
+
+\end{document}

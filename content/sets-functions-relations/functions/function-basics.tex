@@ -1,0 +1,138 @@
+% Part: sets-functions-relations
+% Chapter: functions
+% Section: basics
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{fun}{bas}
+\olsection{Noções Básicas}
+
+\begin{explain}
+Uma \emph{função} é um mapa que envia cada !!{element} de um dado conjunto
+para um !!{element} específico nalgum (outro) conjunto dado. Por exemplo, a
+operação de somar~$1$ define uma função: cada número~$n$ é mapeado
+para um único número~$n+1$.
+
+Mais em geral, funções podem tomar pares, triplos, etc., como entradas e
+devolver algum tipo de saída. Muitas funções nos são familiares da
+aritmética básica. Por exemplo, a adição e a multiplicação são
+funções. Tomam dois números e devolvem um terceiro.
+
+Neste sentido matemático e abstrato, uma função é uma \emph{caixa
+preta}: só importa que saída fica associada a que entrada, não o
+método de calcular a saída.
+\end{explain}
+
+\begin{defn}[Função]
+Uma \emph{função} $f \colon A \to B$ é um mapeamento de cada !!{element}
+de~$A$ para um !!{element} de~$B$.
+
+Chamamos a $A$ o \emph{domínio} de~$f$ e a $B$ o \emph{contradomínio}
+de~$f$. Os !!{element}s de~$A$ chamam-se entradas ou \emph{argumentos}
+de~$f$, e o !!{element} de~$B$ que fica associado a um argumento~$x$
+por~$f$ chama-se o \emph{valor de~$f$} para o argumento~$x$,
+escrevendo-se~$f(x)$.
+
+A \emph{imagem} $\ran{f}$ de~$f$ é o subconjunto do contradomínio
+constituído pelos valores de~$f$ para algum argumento; $\ran{f} =
+\Setabs{f(x)}{x \in A}$.
+\end{defn}
+
+O diagrama na \olref{fig:function} pode ajudar a pensar em funções. A elipse
+à esquerda representa o \emph{domínio} da função; a elipse à
+direita representa o \emph{contradomínio}; e uma seta
+aponta de um \emph{argumento} no domínio para o \emph{valor}
+correspondente no contradomínio.
+
+\begin{figure}[H]
+  \olasset{assets/diagrams/function.tikz}
+  \caption{Uma função é um mapeamento de cada !!{element} de um conjunto para
+    !!a{element} de outro. Uma seta vai de um argumento no
+    domínio para o valor correspondente no contradomínio.}
+  \ollabel{fig:function}
+\end{figure}
+
+\begin{ex}
+A multiplicação toma pares de números naturais como entradas e mapeia-os
+para números naturais como saídas, logo vai de $\Nat \times \Nat$ (o
+domínio) para $\Nat$ (o contradomínio). Como se vê, a imagem é também
+$\Nat$, pois todo $n \in \Nat$ é $n \times 1$.
+\end{ex}
+
+\begin{ex}
+A multiplicação é uma função porque associa cada entrada---cada par
+de números naturais---a uma única saída: $\times \colon \Nat^2 \to
+\Nat$. Em contraste, mapear um número natural~$n$ para um real~$x$ tal
+que $x^2 = n$ não é funcional, pois cada inteiro positivo~$n$ tem duas
+raízes quadradas: $\sqrt{n}$ e~$-\sqrt{n}$. Podemos torná-la funcional
+devolvendo só a raiz quadrada positiva: $\sqrt{\phantom{X}} \colon
+\Nat \to \Real$.
+\end{ex}
+
+\begin{ex}
+A relação que associa cada aluno de uma turma à sua nota final
+é uma função---nenhum aluno pode ter duas notas finais diferentes na
+mesma turma. A relação que associa cada aluno de uma turma aos seus
+progenitores não é uma função: os alunos podem ter zero, ou dois, ou mais
+progenitores.
+\end{ex}
+
+\begin{explain}
+Podemos definir funções especificando de modo preciso qual é o
+valor da função para cada argumento possível. Formas de o fazer são dar uma fórmula, descrever um método para calcular
+o valor, ou listar os valores para cada argumento. Como quer que as funções sejam definidas, temos de garantir que, para cada argumento, especificamos um,
+e apenas um, valor.
+\end{explain}
+
+
+\begin{ex}
+Seja $f \colon \Nat \to \Nat$ definida por $f(x) = x+1$. Esta
+é uma definição que especifica $f$ como uma função que toma
+números naturais e devolve números naturais. Diz-nos que, dado um
+número natural~$x$, $f$ devolverá o seu sucessor~$x+1$.
+Neste caso, o contradomínio $\Nat$ não é a imagem de~$f$, pois o
+número natural~$0$ não é sucessor de nenhum número natural. A
+imagem de~$f$ é o conjunto de todos os inteiros positivos, $\Int^{+}$.
+\end{ex}
+
+\begin{ex}\ollabel{examplefunext}
+Seja $g \colon \Nat \to \Nat$ definida por $g(x) = x+2-1$. Isto
+nos diz que $g$ é uma função que toma números naturais e
+devolve números naturais. Dado um número natural~$n$, $g$ devolverá
+o predecessor do sucessor do sucessor de~$n$, O.s.\@,
+$n+1$.
+\end{ex}
+
+\begin{explain}
+Acabamos de considerar duas funções, $f$ e $g$, com
+\emph{definições} diferentes. Contudo, são a \emph{mesma função}. Afinal,
+para qualquer número natural~$n$, temos $f(n) = n+1 = n+2-1 =
+g(n)$. Noutras palavras: as nossas definições de $f$ e~$g$ especificam o
+mesmo mapeamento por meio de equações diferentes. Implicitamente, pois,
+estamos a apoiar-nos num princípio de extensionalidade para funções,
+\[
+  \text{se }\forall x\, f(x) = g(x)\text{, então }f = g
+\]
+desde que $f$ e~$g$ partilhem o mesmo domínio e contradomínio.
+\end{explain}
+
+\begin{ex}
+Também podemos definir funções por casos. Por exemplo, poderíamos definir
+$h \colon \Nat \to \Nat$ por
+\[
+h(x) =
+\begin{cases}
+  \frac{x}{2} & \text{se $x$ é par} \\
+  \frac{x+1}{2} & \text{se $x$ é ímpar.}
+\end{cases}
+\]
+Como todo número natural é par ou ímpar, a saída desta
+função será sempre um número natural. Basta lembrar que, se se
+define uma função por casos, cada entrada possível tem de cair em
+exatamente um caso. Em alguns casos, isto exigirá uma prova de que os
+casos são exaustivos e exclusivos.
+\end{ex}
+
+\end{document}

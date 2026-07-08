@@ -1,0 +1,103 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{z}{sep}
+\olsection{Separação}
+
+Começamos com um princípio que substitui a compreensão ingênua:
+
+\begin{axiom}[Esquema de Separação] Para cada fórmula $\phi(x)$, isto é um
+axioma: para qualquer $A$, o conjunto $\Setabs{x \in A}{\phi(x)}$ existe.
+\end{axiom}
+
+Note que isto não é um único axioma. É um \emph{esquema} de axiomas.
+Há \emph{infinitamente muitos} axiomas de Separação; um para cada
+fórmula $\phi(x)$. O esquema pode igualmente ser (e normalmente é)
+escrito do seguinte modo:
+
+\begin{defish}
+Para qualquer fórmula $\phi(x)$ que não contenha ``$S$'', isto é um
+axioma:
+\[
+	\forall A \exists S \forall x(x \in S \liff (\phi(x) \land x \in A)).
+\]
+\end{defish}
+
+Em conformidade com a convenção assinalada no início da
+\olref[sth][][]{part}, as fórmulas~$\phi$ nos axiomas de Separação
+podem ter parâmetros.\footnote{Para uma explicação do que isto significa,
+veja a discussão imediatamente a seguir a
+\olref[sfr][infinite][induction]{natinductionschema}.}
+
+A Separação justifica-se de imediato pela concepção cumulativa iterativa
+de conjuntos que vamos expondo. Para ver por que, seja $A$ um conjunto.
+Então $A$ forma-se por algum estágio~$S$ (por \stageshier). Uma vez que $A$ se formou no estágio~$S$, todos os membros de $A$ formaram-se antes do estágio $S$
+(por \stagesacc). Consideremos em particular todos os conjuntos que são
+membros de $A$ e que também satisfazem $\phi$; claramente todos estes
+conjuntos também se formaram antes do estágio~$S$. Logo formam-se num conjunto
+$\Setabs{x \in A}{\phi(x)}$ também no estágio~$S$ (por \stagesacc).
+
+Ao contrário da compreensão ingênua, isto evita o paradoxo de Russell. Pois não
+podemos simplesmente afirmar a existência do conjunto $\Setabs{x}{x \notin
+x}$. Pelo contrário, \emph{dado} algum conjunto~$A$, podemos afirmar a existência do
+conjunto $R_A = \Setabs{x \in A}{x \notin x}$. Mas isto só prova que
+$R_A \notin R_A$ e $R_A \notin A$, o que não é preocupante.
+
+Contudo, a Separação tem uma consequência imediata e marcante:
+
+\begin{thm}\ollabel{thm:NoUniversalSet}
+Não existe conjunto \emph{universal}, O.s.\@, $\Setabs{x}{x = x}$ não existe.
+\end{thm}
+
+\begin{proof}
+Por redução ao absurdo, suponhamos que $V$ é um conjunto universal. Então, por Separação, $R =
+\Setabs{x \in V}{x \notin x} = \Setabs{x}{x \notin x}$ existe,
+o que contradiz o paradoxo de Russell.
+\end{proof}
+
+A ausência de um conjunto universal---de fato, a abertura da
+hierarquia de conjuntos---é uma das ideias mais fundamentais por detrás da
+concepção cumulativa iterativa. Por isso vale a pena ver que,
+intuitivamente, poderíamos chegar lá por outro caminho. Um conjunto universal
+teria de ser !!a{element} de si próprio. Mas, na nossa concepção cumulativa iterativa, cada conjunto aparece (pela primeira vez) na hierarquia no
+primeiro estágio imediatamente a seguir a todos os seus !!{element}s. Isto implica que \emph{nenhum} conjunto pertence a si próprio. Pois qualquer conjunto que pertencesse a si próprio teria de ocorrer pela primeira vez imediatamente depois do estágio em que ocorreu pela primeira vez, o que é absurdo. (Veremos na
+\olref[sth][spine][rank]{defnsetrank} como tornar esta explicação
+mais rigorosa, usando a noção de ``posto'' de um conjunto. Contudo,
+precisaremos de mais alguns axiomas para o fazer.)
+
+Eis mais algumas consequências da Separação e da Extensionalidade.
+
+\begin{prop}\ollabel{prop:emptyexists}
+Se existe algum conjunto, então $\emptyset$ existe.
+\end{prop}
+
+\begin{proof}
+Se $A$ é um conjunto, $\emptyset = \Setabs{x \in A}{x \neq x}$ existe por Separação.
+\end{proof}
+
+\begin{prop}
+$A \setminus B$ existe quaisquer que sejam os conjuntos $A$ e $B$
+\end{prop}
+
+\begin{proof}
+$A \setminus B = \Setabs{x \in A}{x \notin B}$ existe por Separação.
+\end{proof}
+
+Também se verifica que existem (quase) interseções arbitrárias:
+
+\begin{prop}\ollabel{prop:intersectionsexist}
+Se $A \neq \emptyset$, então $\bigcap A = \Setabs{x}{(\forall y \in A)x \in y}$ existe.
+\end{prop}
+
+\begin{proof}
+Seja $A \neq \emptyset$, logo existe algum $c \in A$. Então $\bigcap A =
+\Setabs{x}{(\forall y \in A)x \in y} = \Setabs{x \in c}{(\forall y \in
+A)x \in y}$, que existe por Separação.
+\end{proof}
+
+Note, porém, a condição de que $A \neq \emptyset$; pois $\bigcap
+\emptyset$ seria o conjunto universal, vacuamente, o que contradiz
+\olref{thm:NoUniversalSet}.
+
+\end{document}

@@ -1,0 +1,141 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{card-arithmetic}{ch}
+
+\olsection{A Hipótese do Contínuo}
+
+O resultado anterior sugere (corretamente) que a exponenciação cardinal
+seria bastante \emph{fácil}, se os cardinais infinitos estivessem garantidos a
+``comportar-se de forma simples'' com potências de $2$, O.s.\@, (por
+\olref[opps]{lem:SizePowerset2Exp}) com a operação de tomar conjuntos potência. Mas
+não podemos supor que os cardinais infinitos \emph{se comportem} de forma simples com
+os conjuntos potência.
+
+Começando a desdobrar isto, introduzimos uma notação conveniente.
+
+\begin{defn}
+Onde $\cardsucc{\cardfont{a}}$ é o menor cardinal estritamente maior
+do que $\cardfont{a}$, definimos duas sequências infinitas:
+\begin{align*}
+	\aleph_{0} &\defis \omega & 		
+	\beth_{0} &\defis \omega\\
+	\aleph_{\alpha \ordplus 1} &\defis \cardsucc{(\aleph_{\alpha})} &
+	\beth_{\alpha+1} &\defis \cardexpo{2}{\beth_{\alpha}}\\
+	\aleph_{\alpha} &\defis \bigcup_{\beta< \alpha} \aleph_{\beta} &
+	\beth_{\alpha} &\defis \bigcup_{\beta < \alpha}\beth_{\beta} & \text{quando $\alpha$ é um ordinal limite}.
+	\end{align*}
+\end{defn}
+
+A definição de $\cardsucc{\cardfont{a}}$ faz sentido, pois
+\olref[cardinals][classing]{lem:NoLargestCardinal} nos diz que, para cada
+cardinal $\cardfont{a}$, existe algum cardinal maior do que
+$\cardfont{a}$, e a Indução Transfinita garante que existe um
+cardinal \emph{mínimo} maior do que $\cardfont{a}$. O resto da
+definição é fornecido pela recursão transfinita.
+
+Cantor introduziu esta notação ``$\aleph$''; trata-se do \emph{alef},
+a primeira letra do alfabeto hebraico e a primeira letra da
+palavra hebraica para ``infinito''. Peirce introduziu a notação ``$\beth$'';
+trata-se do \emph{beth}, a segunda letra do
+alfabeto hebraico.\footnote{Peirce usou esta notação numa carta a
+Cantor de dezembro de 1900. Infelizmente, Peirce também apresentou ali um mau
+argumento de que $\beth_\alpha$ não existe para $\alpha \geq
+\omega$.} Estas notações fornecem-nos cardinais infinitos.
+
+\begin{prop}
+$\aleph_\alpha$ e $\beth_\alpha$ são cardinais, para todo o
+ordinal $\alpha$. 
+\end{prop}
+
+\begin{proof}
+Ambos os resultados valem por uma indução transfinita simples. $\aleph_0 =
+\beth_0 = \omega$ é um cardinal por
+\olref[cardinals][classing]{omegaisacardinal}. Supondo que $\aleph_\alpha$ e
+$\beth_\alpha$ são ambos cardinais, $\aleph_{\alpha+1}$ e
+$\beth_{\alpha+1}$ estão explicitamente definidos como cardinais. E a união
+de um conjunto de cardinais é um cardinal, por
+\olref[cardinals][classing]{unioncardinalscardinal}.
+\end{proof}
+\noindent
+Além disso, todo o cardinal infinito é um $\aleph$:
+
+\begin{prop}
+Se $\cardfont{a}$ é um cardinal infinito, então $\cardfont{a} =
+\aleph_\gamma$ para um certo $\gamma$ único.
+\end{prop}
+
+\begin{proof}
+Por indução transfinita nos cardinais. Para a indução, suponhamos que se
+$\cardfont{b} < \cardfont{a}$ então $\cardfont{b} =
+\aleph_{\gamma_\cardfont{b}}$. Se $\cardfont{a} =
+\cardsucc{\cardfont{b}}$ para algum $\cardfont{b}$, então $\cardfont{a} =
+\cardsucc{(\aleph_{\gamma_\cardfont{b}})}=
+\aleph_{\gamma_\cardfont{b}+1}$. Se $\cardfont{a}$ não é o
+sucessor de nenhum cardinal, então, por serem os cardinais ordinais,
+$\cardfont{a} = \bigcup_{\cardfont{b} < \cardfont{a}} \cardfont{b} =
+\bigcup_{\cardfont{b} < \cardfont{a}}{\aleph_{\gamma_\cardfont{b}}}$,
+logo $\cardfont{a} = \aleph_\gamma$ onde $\gamma =
+\bigcup_{\cardfont{b} < \cardfont{a}}\gamma_\cardfont{b}$. 
+\end{proof}
+
+Como todo o cardinal infinito é um $\aleph$, surge naturalmente a pergunta:
+será que todo o cardinal infinito é um $\beth$? Certamente que, se isso \emph{se verificasse},
+os cardinais infinitos ``comportar-se-iam de forma simples''
+com a operação de tomar conjuntos potência. De fato, teríamos o seguinte:
+
+\begin{defish}
+\emph{Hipótese Generalizada do Contínuo} (HGC). $\aleph_\alpha  = \beth_\alpha$, para todo o $\alpha$. 
+\end{defish}
+
+Além disso, se a HGC valesse, poderíamos simplificar bastante a exponenciação cardinal. Em particular, poderíamos
+mostrar que, quando $\cardfont{b} < \cardfont{a}$, o valor de
+$\cardexpo{\cardfont{a}}{\cardfont{b}}$ fica encerrado entre
+$\cardfont{a}\leq \cardexpo{\cardfont{a}}{\cardfont{b}} \leq
+\cardsucc{\cardfont{a}}$. Poderíamos então dar condições precisas
+que determinam qual das duas possibilidades se verifica
+(O.s.\@, se $\cardfont{a} = \cardexpo{\cardfont{a}}{\cardfont{b}}$
+ou $\cardexpo{\cardfont{a}}{\cardfont{b}} =
+\cardsucc{\cardfont{a}}$).\footnote{A condição é ditada pela
+\emph{cofinalidade}.}
+
+Mas a HGC é uma \emph{hipótese}, não um \emph{teorema}. De fato,
+\citet{Godel1938} provou que, se $\ZFC$ for consistente, então também o é
+$\ZFC + \text{HGC}$. Mas mais tarde verificou-se que podemos acrescentar igualmente
+$\lnot$HGC a $\ZFC$. De fato, considere-se a \emph{instância} não trivial mais simples
+da HGC, nomeadamente: 
+
+\begin{defish}
+\emph{Hipótese do Contínuo} (HC). $\aleph_1 = \beth_1$. 
+\end{defish}
+
+\citet{Cohen1963} provou que, se $\ZFC$ for consistente, então também o é $\ZFC
++ \lnot\text{HC}$. Logo a Hipótese do Contínuo é independente de $\ZFC$.
+
+A Hipótese do Contínuo chama-se assim porque ``o contínuo'' é
+outro nome para a reta real, $\Real$.
+\olref[opps]{continuumis2aleph0} nos diz que $\card{\Real} =
+\beth_1$. Assim, a Hipótese do Contínuo afirma que não há cardinal
+entre a cardinalidade dos números naturais, $\aleph_0 = \beth_0$,
+e a cardinalidade do contínuo, $\beth_1$.
+
+Dada a \emph{independência} da (H)HC relativamente a $\ZFC$, o que devemos dizer
+sobre a sua \emph{verdade}? Há \emph{muito} a dizer. De fato,
+muito trabalho recente e fecundo em teoria dos conjuntos tem sido dedicado a
+estas questões. Mas dois pontos rápidos valem certamente a pena
+enfatizar.
+
+Primeiro: não se segue \emph{imediatamente} destes resultados formais de independência que a HGC ou a HC sejam \emph{indeterminadas} no
+valor de verdade. Afinal, talvez bastem mais axiomas, que nos pareçam naturais, para decidir a questão num sentido ou noutro. O próprio G\"odel sugeriu que essa era a resposta adequada.
+
+Segundo: a independência da HC relativamente a $\ZFC$ é certamente
+\emph{notável}, mas não é \emph{inacreditável} (no sentido literal). O ponto é simplesmente que, para tudo o que $\ZFC$ nos diz,
+passar de um cardinal ao seu sucessor pode envolver uma ferramenta menos direta do que simplesmente tomar conjuntos potência.
+ % Tomar conjuntos potência leva-nos de um estágio da hierarquia ao
+ % estágio sucessor (de $V_{\alpha}$ a $V_{\alpha+1}$). 
+
+Feitas estas duas observações, quem quiser saber mais terá de
+recorrer aos vários filósofos e matemáticos com cavalos na corrida.\footnote{Embora possa querer começar por ler \citet[\S15.6]{Potter2004}.}
+
+\end{document}

@@ -1,0 +1,79 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{ordinals}{ordtype}
+\olsection{Ordinais como Tipos de Ordem}
+
+Armados com a Substituição, e portanto trabalhando agora em $\ZFminus$,
+podemos finalmente provar o resultado a que vimos aspirando:
+
+\begin{thm}\ollabel{thmOrdinalRepresentation}
+Toda a boa ordenação é isomorfa a um único ordinal.
+\end{thm}
+
+\begin{proof}
+Seja $\tuple{A, <}$ uma boa ordenação. Por
+\olref[basic]{ordisoidentity}, é isomorfa no máximo a um
+ordinal. Logo, por redução ao absurdo, suponha que $\tuple{A, <}$ não é
+isomorfa a \emph{nenhum} ordinal. Começaremos por ``tornar $\tuple{A, <}$ o mais pequena possível''. Em detalhe: se algum segmento inicial próprio $\tuple{A_a,
+<_a}$ não for isomorfo a nenhum ordinal, existe um $a \in A$ mínimo com
+essa propriedade; então seja $B = A_a$ e $\mathord{\lessdot} =
+\mathord{<_a}$. Caso contrário, seja $B = A$ e $\mathord{\lessdot} =
+\mathord{<}$.
+
+Por definição, todo o segmento inicial próprio de $B$ é isomorfo a
+algum ordinal, que é único como acima. Logo,
+pela Substituição, o conjunto seguinte existe, e é uma função:
+\[
+	f = \Setabs{\tuple{\beta, b}}{b \in B\text{ e }\ordeq{\beta}{\tuple{B_b, \lessdot_b}}}
+\]
+Para completar a redução ao absurdo, mostraremos que $f$ é um isomorfismo
+$\alpha \to B$, para algum ordinal $\alpha$.
+
+É óbvio que $\ran{f}
+= B$. E por \olref[iso]{lemordsegments}, $f$ preserva a ordenação,
+isto é, $\gamma \in \beta$ sse $f(\gamma) \lessdot f(\beta)$. Para mostrar que $\dom{f}$ é um ordinal, por
+\olref[basic]{corordtransitiveord} basta mostrar que
+$\dom{f}$ é transitivo. Fixe então $\beta \in \dom{f}$, isto é,
+$\ordeq{\beta}{\tuple{B_b, \lessdot_b}}$ para algum $b$. Se $\gamma \in
+\beta$, então $\gamma \in \dom{f}$ por
+\olref[iso]{wellordinitialsegment}; generalizando, $\beta \subseteq
+\dom{f}$.
+\end{proof}
+
+Este resultado autoriza a definição seguinte, que queríamos apresentar
+desde \olref[vn]{sec}:
+
+\begin{defn}
+Se $\tuple{A, <}$ é uma boa ordenação, então o seu tipo de ordem,
+$\ordtype{A, <}$, é o único ordinal $\alpha$ tal que
+$\ordeq{\tuple{A, < }}{\alpha}$.
+\end{defn}
+
+Além disso, esta definição autoriza dois princípios convenientes:
+
+\begin{cor}\ollabel{ordtypesworklikeyouwant}
+Sendo $\tuple{A, <}$ e $\tuple{B, \lessdot}$ boas ordenações: 
+\begin{align*}
+	\ordtype{A, <} = \ordtype{B, \lessdot}&\text{ sse }\ordeq{\tuple{A, <}}{\tuple{B, \lessdot}}\\
+	\ordtype{A, <} \in \ordtype{B, \lessdot}&\text{ sse }\ordeq{\tuple{A, <}}{\tuple{B_b, \lessdot_b}}\text{ para algum }b \in B
+\end{align*}
+\end{cor}
+
+\begin{proof}
+A identidade vale por \olref[basic]{ordisoidentity}. Para provar
+a segunda afirmação, seja $\ordtype{A, <} = \alpha$ e $\ordtype{B,
+\lessdot} = \beta$, e seja $f \colon \beta \to \tuple {B, \lessdot}$
+o nosso isomorfismo. Então:
+\begin{align*}
+	\alpha \in \beta&\text{ sse }\funrestrictionto{f}{\alpha} \colon \alpha \to B_{f(\alpha)}\text{ é um isomorfismo}\\
+	&\text{ sse }\ordeq{\tuple{A, <}}{\tuple{B_{f(\alpha)}, \lessdot_{f(\alpha)}}}\\
+	&\text{ sse }\ordeq{\tuple{A, <}}{\tuple{B_b, \lessdot_b}}\text{ para algum $b \in B$}
+\end{align*}
+por \olref[iso]{ordisounique},
+\olref[iso]{wellordinitialsegment}, e
+\olref[basic]{ordissetofsmallerord}.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,203 @@
+% Part: sets-functions-relations
+% Chapter: arithmetization
+% Section: checking-details
+%
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+
+\begin{document}
+
+\olfileid[pt]{sfr}{arith}{check}
+\olsection{Anéis e Corpos Ordenados}
+
+Ao longo deste capítulo, afirmamos que certas definições se comportam ``como
+devem''. Neste apêndice técnico, explicitaremos o que queremos dizer com isso e
+(esboçaremos como) mostrar que as definições se comportam ``corretamente''.
+
+Na \olref[int]{sec}, definimos adição e multiplicação em $\Int$. Queremos mostrar
+que, assim definidas, conferem a $\Int$ a estrutura que ``quereríamos'' que
+tivesse. Em particular, a estrutura em causa é a de um anel comutativo.
+
+\begin{defn}
+	Um \emph{anel comutativo} é um conjunto $S$, equipado com elementos
+	distintos $0$ e $1$ e operações $+$ e $\times$, que satisfazem estas oito
+	condições:
+	\begin{align*}
+		\emph{Associatividade}&&a + (b+ c) & = (a + b) + c \\
+		&& (a \times b) \times c & = a \times (b\times c)\\
+		\emph{Comutatividade}&&a + b &= b+ a  \\
+		&&  a \times b&= b\times a\\ 
+		\emph{Neutros}&&a + 0 &= a \\
+		&& a \times 1 &= a\\
+		\emph{Simétrico aditivo}&&(\exists b\in S)0&=a + b\\
+		\emph{Distributividade}&&a \times (b+ c ) &= (a \times b) + (a \times c)
+	\end{align*}
+	Implicitamente, todas estas fórmulas estão quantificadas universalmente sobre
+	$S$. Note-se que os elementos $0$ e~$1$ aqui não têm de ser os números naturais
+	com o mesmo nome.
+\end{defn}
+
+Logo, para verificar que os inteiros formam um anel comutativo, basta verificar
+estas oito condições. Nenhuma é \emph{difícil} de estabelecer, mas o trabalho é um
+pouco laborioso. Por exemplo, eis como provar \emph{associatividade}, no caso da
+adição:
+
+\begin{proof} 
+Fixemos $i, j, k \in \Int$. Então existem $a_1, b_1, a_2, b_2, a_3, b_3 \in
+\Nat$ tais que $i = \equivrep{a_1, b_1}{}$ e $j =
+\equivrep{a_2,b_2}{}$ e $k = \equivrep{a_3, b_3}{}$. (Por legibilidade, escrevemos
+``$\equivrep{x, y}{}$'' em vez de ``$\equivrep{x, y}{\Intequiv}$''; faremos o
+mesmo ao longo desta secção.) Então:
+\begin{align*}
+	i + (j + k) &= \equivrep{a_1, b_1}{}+(\equivrep{a_2, b_2}{} + \equivrep{a_3, b_3}{}) \\
+	&= \equivrep{a_1,  b_1}{} + \equivrep{a_2+a_3, b_2+b_3}{}\\
+	&= \equivrep{a_1 + (a_2 + a_3), b_1 + (b_2 + b_3)}{}\\
+	&= \equivrep{(a_1 + a_2) + a_3, (b_1 + b_2) + b_3}{}\\
+	&= \equivrep{a_1 + a_2, b_1 + b_2}{} + \equivrep{a_3, b_3}{}\\
+	&= (\equivrep{a_1, b_1}{} + \equivrep{a_2, b_2}{}) + \equivrep{a_3, b_3}{}\\
+	&= (i+j) + k
+\end{align*}
+apoiando-nos livremente no comportamento da adição em $\Nat$.
+\end{proof}
+
+Do mesmo modo, eis uma prova do \emph{simétrico aditivo}:
+
+\begin{proof}
+Fixemos $i \in \Int$, de modo que $i = \equivrep{a,b}{}$ para alguns $a,b \in
+\Nat$. Seja $j = \equivrep{b,a}{} \in \Int$. Apoiando-nos no comportamento dos
+naturais, $(a+b) + 0 = 0 + (a+b)$, logo $\tuple{a+b, b+a} \sim_\Int \tuple{0,0}$
+por definição, e portanto $\equivrep{a+b, b+a}{} = \equivrep{0, 0}{} = 0_\Int$.
+Assim $i + j =
+\equivrep{a,b}{}+\equivrep{b,a}{}=\equivrep{a+b, b+a}{}= \equivrep{0,
+0}{} = 0_\Int$.
+\end{proof}
+
+E eis uma prova da \emph{distributividade}:
+
+\begin{proof}
+Como acima, fixemos $i = \equivrep{a_1, b_1}{}$ e $j =
+\equivrep{a_2,b_2}{}$ e $k = \equivrep{a_3, b_3}{}$. Então:
+\begin{align*}
+	i \times (j + k) 
+	&= \equivrep{a_1, b_1}{} \times (\equivrep{a_2,b_2}{} + \equivrep{a_3, b_3}{})\\
+	&= \equivrep{a_1, b_1}{} \times \equivrep{a_2 + a_3,b_2+b_3}{}\\
+	&= \equivrep{a_1  (a_2 + a_3) + b_1  (b_2+b_3), a_1  (b_2 + b_3) + b_1 (a_2 + a_3)}{}\\
+	&= \equivrep{a_1 a_2 + a_1a_3 + b_1 b_2+b_1b_3, a_1 b_2 + a_1b_3 + a_2b_1 + a_3b_1}{}\\		
+%		&= \equivrep{a_1 a_2 + b_1b_2 + a_1a_3 + b_1 b_2+b_1b_3, a_1 b_2 + a_1b_3 + a_2b_1 + a_3b_1}{}\\		
+	&= \equivrep{a_1a_2 + b_1b_2, a_1b_2 + a_2b_1}{} + \equivrep{a_1a_3 + b_1b_3, a_1b_3 + a_3b_1}{}\\
+	&= (\equivrep{a_1, b_1}{} \times \equivrep{a_2,b_2}{}) + (\equivrep{a_1, b_1}{} \times  \equivrep{a_3, b_3}{})\\
+	&= (i \times j) + (i \times k)
+\end{align*}
+\end{proof}
+
+Deixamos como exercício provar as cinco condições restantes. Tendo feito isso,
+mostramos que $\Int$ constitui um anel comutativo, O.s.\@, que a adição e a
+multiplicação (assim definidas) se comportam como devem.
+
+\begin{prob}
+Mostre que $\Int$ é um anel comutativo.
+\end{prob}
+
+Mas a tarefa não termina. Para além de definir adição e multiplicação em $\Int$,
+definimos uma relação de ordem, $\leq$, e há que verificar que esta se comporta
+como deve. Com mais pormenor, há que mostrar que $\Int$ constitui um \emph{anel
+ordenado}.\footnote{Como na \olref[sfr][rel][ord]{def:linearorder}, uma
+	ordem total é uma relação reflexiva, transitiva, antissimétrica e conexa.
+	No contexto de relações de ordem, a conexividade é por vezes chamada
+	\emph{tricotomia}, pois, para quaisquer $a$ e $b$, temos $a \leq b \lor a
+	= b \lor a \geq b$.} 
+
+\begin{defn}
+Um \emph{anel ordenado} é um anel comutativo que está também equipado com uma
+relação de ordem total, $\leq$, tal que:
+\begin{align*}
+	a \leq b &\lif a + c \leq b + c\\
+	(a \leq b \land 0 \leq c) &\lif a \times c \leq b \times c
+\end{align*}
+\end{defn}
+
+\begin{prob}
+Mostre que $\Int$ é um anel ordenado. 
+\end{prob}
+
+Como antes, é laborioso mas rotineiro mostrar que~$\Int$, tal como construído, é
+um anel ordenado. Deixamo-lo ao leitor.
+
+Isto trata dos inteiros. Mas agora precisamos de mostrar coisas muito parecidas
+para os racionais. Em particular, há que mostrar que os racionais formam um
+\emph{corpo ordenado}, com as nossas definições de $+$, $\times$ e $\leq$:
+\begin{defn}\ollabel{orderedfield}
+Um \emph{corpo ordenado} é um anel ordenado que também satisfaz:
+\begin{align*}
+	\emph{Inverso multiplicativo}& & (\forall a \in S \setminus \{0\})(\exists b \in S) a\times b& = 1
+\end{align*}
+\end{defn}
+
+Uma vez mostrado que $\Int$ constitui um anel ordenado, é fácil mas laborioso
+mostrar que $\Rat$ constitui um corpo ordenado.
+
+\begin{prob}
+Mostre que $\Rat$ é um corpo ordenado.
+\end{prob}
+
+Tendo tratado dos inteiros e dos racionais, só restam os reais. Em particular,
+há que mostrar que $\Real$ constitui um corpo ordenado \emph{completo}, O.s.\@, um
+corpo ordenado com a propriedade de completude. Agora,
+\olref[cuts]{realcompleteness} estabeleceu que $\Real$ tem a propriedade de
+completude. Contudo, cumpre ainda percorrer a tediosa verificação de que $\Real$ é
+um corpo ordenado.
+
+Antes de nos lançarmos a \emph{esse} exercício laborioso, há que confirmar algumas
+coisas mais ``imediatas''. Por exemplo, precisamos de garantia de que
+$\alpha + \beta$, tal como definida, é de fato um \emph{corte}, para quaisquer
+cortes $\alpha$ e $\beta$. Segue-se uma prova desse fato:
+
+\begin{proof}	
+Como $\alpha$ e $\beta$ são ambos cortes, $\alpha + \beta = \Setabs{p
++ q}{p \in \alpha \land q \in \beta}$ é um subconjunto próprio não vazio de
+$\Rat$. Suponhamos agora $x < p + q$ para alguns $p \in \alpha$ e $q \in \beta$.
+Então $x - p < q$, logo $x - p \in \beta$, e $x = p + (x - p) \in
+\alpha + \beta$. Logo $\alpha + \beta$ é um segmento inicial de $\Rat$.
+Finalmente, para qualquer $p + q \in \alpha + \beta$, como $\alpha$ e
+$\beta$ são cortes, existem $p_1 \in \alpha$ e $q_1 \in \beta$
+tais que $p < p_1$ e $q < q_1$; logo $p + q < p_1 + q_1 \in \alpha +
+\beta$; logo $\alpha + \beta$ não tem máximo. 
+\end{proof}
+
+Esforços semelhantes permitem verificar que $\alpha - \beta$ e
+$\alpha \times \beta$ e $\alpha \div \beta$ são cortes (no último
+caso, ignorando o caso em que $\beta$ é o corte zero). De novo, deixamo-lo ao
+leitor.
+
+\begin{prob}
+Mostre que $\Real$ é um corpo ordenado.
+\end{prob}
+
+Mas eis um pequeno fio solto a atar. Em
+\olref[cuts]{sec}, sugerimos que podemos tomar $\sqrt{2} =
+\Setabs{p \in \Rat}{p < 0 \text{ ou }p^2 < 2}$. Mas há que mostrar
+que este conjunto é de fato um \emph{corte}. Segue-se uma prova desse fato:
+
+\begin{proof}
+Claramente isto é um segmento inicial próprio não vazio dos racionais; basta pois
+mostrar que não tem máximo. Em particular, basta mostrar que, sendo $p$ um
+racional positivo com $p^2 < 2$ e $q =
+\frac{2p+2}{p+2}$, se tem $p < q$ e $q^2 < 2$. Para ver que $p < q$,
+basta notar:
+\begin{align*}
+	p^2 &< 2\\
+	p^2 + 2p &< 2 + 2p\\
+	p(p + 2) &< 2 + 2p\\
+	p &< \tfrac{2+2p}{p+2} = q
+\end{align*}
+Para ver que $q^2 < 2$, basta notar:
+\begin{align*}
+	p^2 &< 2\\
+	2p^2 + 4p + 2 &< p^2 + 4p+ 4\\
+	4p^2 + 8p + 4 &< 2(p^2 + 4p + 4)\\
+	(2p+2)^2 & <2(p+2)^2\\
+	\tfrac{(2p+2)^2}{(p+2)^2} &< 2\\
+	q^2 &< 2
+\end{align*}
+\end{proof}
+\end{document}

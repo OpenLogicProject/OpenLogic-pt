@@ -1,0 +1,74 @@
+% Part: sets-functions-relations
+% Chapter: arithmetization
+% Section: rationals
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{arith}{rat}
+\olsection{De $\Int$ para $\Rat$}
+
+Acabamos de ver como construir os inteiros a partir dos naturais, usando
+alguma teoria ingênua dos conjuntos. Veremos agora como construir os racionais
+a partir dos inteiros, de modo muito semelhante. As constatações iniciais são:
+\begin{enumerate}
+	\item Todo racional pode escrever-se na forma $\nicefrac{i}{j}$,
+	onde $i$ e $j$ são inteiros, mas $j$ é diferente de zero.
+	\item A informação codificada numa expressão $\nicefrac{i}{j}$
+	pode igualmente codificar-se num par ordenado $\tuple{ i, j}$.
+\end{enumerate}
+A abordagem óbvia seria pensar nos racionais \emph{como} pares ordenados de
+$\Int \times (\Int \setminus \{0_\Int\})$. Como antes, porém, isso seria um
+pouco demasiado ingênuo, pois queremos $\nicefrac{3}{2} = \nicefrac{6}{4}$, mas
+$\tuple{ 3, 2}\neq \tuple{ 6,
+4}$. Mais geralmente, quereremos o seguinte:
+\[
+	\nicefrac{a}{b} = \nicefrac{c}{d} \text{ sse } a \times d = b \times c
+\]
+Para obter isto, definimos uma \emph{relação de equivalência} em $\Int \times
+(\Int \setminus \{0_\Int\})$ assim:
+\[
+	\tuple{ a, b }\Ratequiv \tuple{ c, d} \text{ sse }a \times d = b \times c
+\]
+Há que verificar que isto é uma relação de equivalência. É muito parecido com o
+caso de $\Intequiv$, e deixamo-lo como exercício.
+\begin{prob}
+Mostre que $\Ratequiv$ é uma relação de equivalência.
+\end{prob}
+Mas isto permite-nos dizer o seguinte:
+\begin{defn}
+Os racionais são as classes de equivalência, sob $\Ratequiv$, dos pares de
+inteiros (cujo segundo elemento é não nulo). Isto é, $\Rat =
+\equivclass{(\Int \times (\Int\setminus \{0_\Int\}))}{\Ratequiv}$.
+\end{defn}
+
+Tal como para os inteiros, queremos também definir algumas operações básicas.
+Sendo $\equivrep{i,j}{\Ratequiv}$ a classe de equivalência sob $\Ratequiv$ com
+$\tuple{i, j}$ como !!a{element}, definimos:
+\begin{align*}
+	\equivrep{a, b}{\Ratequiv} + \equivrep{c, d}{\Ratequiv} &= \equivrep{ad + bc,  bd}{\Ratequiv}\\
+	\equivrep{a, b}{\Ratequiv} \times \equivrep{c, d}{\Ratequiv} &= \equivrep{a  c, b d}{\Ratequiv}.
+\intertext{Para definir $r \leq s$ nestes racionais, usamos o fato de que
+$r \le s$ sse $s - r$ não é negativo, O.s.\@, $r - s$ pode escrever-se como
+$\nicefrac{i}{j}$ com $i$ não negativo e $j$ positivo:}
+	\equivrep{a, b}{\Ratequiv} \leq \equivrep{c, d}{\Ratequiv} &\text{ sse }
+	\equivrep{c, d}{\Ratequiv} - \equivrep{a, b}{\Ratequiv} =
+	\equivrep{i_\Int, j_\Int}{\Ratequiv}
+\end{align*}
+para algum $i \in \Nat$ e $0 \neq j \in \Nat$.
+
+Depois há que verificar que estas definições se comportam como \emph{devem};
+relegamo-lo a \olref[check]{sec}. Mas de fato comportam-se!{} Por fim,
+queremos alguma forma de tratar inteiros \emph{como} racionais; logo, para cada
+$i \in \Int$, estipulamos $i_\Rat =
+\equivrep{i, 1_\Int}{\Ratequiv}$. De novo, verificamos na \olref[check]{sec} que
+tudo isto se comporta corretamente.
+
+\begin{prob}
+Mostre que $(i + j)_\Rat = i_\Rat + j_\Rat$ e $(i \times j)_\Rat =
+i_\Rat \times j_\Rat$ e $i \leq j \liff i_\Rat \leq j_\Rat$, para quaisquer
+$i, j \in \Int$.
+\end{prob}
+
+\end{document}

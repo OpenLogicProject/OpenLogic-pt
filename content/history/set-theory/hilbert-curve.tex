@@ -1,0 +1,147 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{his}{set}{hilbertcurve}
+
+\olsection{Apêndice: Curvas Preenchedoras de Espaço de Hilbert}
+
+No capítulo~\olref[pathology]{sec}, mencionamos que a prova de Cantor de que
+uma reta e um quadrado têm exatamente o mesmo número de pontos
+(\olref[his][set][cantorplane]{thm:cantorplane}) levou Peano a
+perguntar se poderia existir uma \emph{curva} que preenchesse o espaço. Obteve
+resposta afirmativa em 1890. Nesta secção explicamos (de modo informal) como
+construir a curva preenchedora de espaço de Hilbert (com um pequeno
+ajuste).\footnote{Para uma explicação mais rigorosa, ver
+\cite{Rose2010}. O ajuste consiste em incluir as partes vermelhas
+das curvas abaixo. Isto torna ligeiramente mais fácil verificar que
+a curva é contínua.}
+
+Temos de definir uma função, $h$, como limite de uma sequência de funções $h_1$, $h_2$, $h_3$, \dots\@ Primeiro descrevemos a construção. Depois mostramos que preenche o espaço. Depois mostramos que é uma curva.
+
+Tomaremos a imagem de~$h$ como sendo o quadrado unitário, $\unitsquare$. Eis a nossa primeira aproximação a~$h$, O.s.\@, $h_1$:
+\begin{center}
+	\begin{tikzpicture}
+	\draw[gray] (0pt, 0pt) rectangle (80pt, 80pt);
+	\draw[step = 40pt, gray, very thin] (0pt, 0pt) grid (80pt, 80pt);
+	\draw[oldiagcolorC, thick] (20pt, 0)--(20pt, 20pt);
+	\draw[oldiagcolorC, thick] (60pt, 0)--(60pt, 20pt);		
+	\begin{scope}[xshift=20pt, yshift=20pt]
+	\draw [black, thick, l-system={Hilbert curve, step=40pt, angle=90, axiom=L, order=1}]  lindenmayer system;
+	\end{scope}
+	\end{tikzpicture}
+\end{center}
+Para orientação, impusemos uma grelha $2 \times 2$ ao quadrado. Podemos pensar na curva como começando no quadrante inferior esquerdo, indo para o superior esquerdo, depois para o superior direito e finalmente para o inferior direito. Eis a segunda etapa da construção, O.s.\@, $h_2$:
+\begin{center}
+	\begin{tikzpicture}
+	\draw[gray] (0pt, 0pt) rectangle (80pt, 80pt);
+	\draw[step = 20pt, gray, very thin] (0pt, 0pt) grid (80pt, 80pt);
+	\draw[oldiagcolorC, thick] (0pt, 10pt)--(10pt, 10pt);
+	\draw[oldiagcolorC, thick] (70pt, 10pt)--(80pt, 10pt);
+	\draw[thick, oldiagcolorE] (10pt, 30pt)--(10pt, 50pt); 
+	\draw[thick, oldiagcolorE] (30pt, 50pt)--(50pt, 50pt); 
+	\draw[thick, oldiagcolorE] (70pt, 50pt)--(70pt, 30pt); \begin{scope}[xshift=10pt, yshift=30pt]
+	\draw [thick, rotate=270,black, l-system={Hilbert curve, step=20pt, angle=90, axiom=L, order=1}]  lindenmayer system;
+	\end{scope}
+	\begin{scope}[xshift=10pt, yshift=50pt]
+	\draw [thick, black, l-system={Hilbert curve, step=20pt, angle=90, axiom=L, order=1}]  lindenmayer system;
+	\end{scope}
+	\begin{scope}[xshift=50pt, yshift=50pt]
+	\draw [thick, black, l-system={Hilbert curve, step=20pt, angle=90, axiom=L, order=1}]  lindenmayer system;
+	\end{scope}
+	\begin{scope}[xshift=70pt, yshift=10pt]
+	\draw [thick, rotate=90,black, l-system={Hilbert curve, step=20pt, angle=90, axiom=L, order=1}]  lindenmayer system;
+	\end{scope}
+	\end{tikzpicture}
+\end{center}
+As cores diferentes ajudam a explicar como $h_2$ foi construída. Colocamos primeiro cópias reduzidas do troço não-!!{colorC} de~$h_1$ no inferior esquerdo, superior esquerdo, superior direito e inferior direito do quadrado (traçadas a preto). Depois ligamos estas quatro figuras (com linhas !!{colorE}). Por fim, ligamos a figura ao contorno do quadrado (com linhas !!{colorC}).
+
+Passamos a $h_3$. Tal como $h_2$ foi feita a partir de quatro cópias ligadas e reduzidas do troço não vermelho de~$h_1$, $h_3$ compõe-se de quatro cópias reduzidas do troço não vermelho de~$h_2$ (a preto), que depois se unem (com linhas !!{colorE}) e se ligam ao contorno do quadrado (com linhas !!{colorC}).
+\begin{center}
+	\begin{tikzpicture}
+	\draw[gray] (0pt, 0pt) rectangle (80pt, 80pt);
+	\draw[step = 10pt, gray, very thin] (0pt, 0pt) grid (80pt, 80pt);
+	\draw[thick, oldiagcolorC](5pt, 0pt)--(5pt, 5pt); 
+	\draw[thick, oldiagcolorC] (75pt, 0pt)--(75pt, 5pt); 
+	\draw[thick, oldiagcolorE] (75pt, 45pt)--(75pt, 35pt);
+	\draw[thick, oldiagcolorE] (5pt, 35pt)--(5pt, 45pt); 
+	\draw[thick, oldiagcolorE] (35pt, 45pt)--(45pt, 45pt); 
+	\draw[thick, oldiagcolorE] (75pt, 45pt)--(75pt, 35pt); \begin{scope}[xshift=5pt, yshift=35pt]
+	\draw [rotate=270, thick, black, l-system={Hilbert curve, step=10pt, angle=90, axiom=L, order=2}]  lindenmayer system;
+	\end{scope}
+	\begin{scope}[xshift=5pt, yshift=45pt]
+	\draw [thick, black, l-system={Hilbert curve, step=10pt, angle=90, axiom=L, order=2}]  lindenmayer system;
+	\end{scope}
+	\begin{scope}[xshift=45pt, yshift=45pt]
+	\draw [thick, black, l-system={Hilbert curve, step=10pt, angle=90, axiom=L, order=2}]  lindenmayer system;
+	\end{scope}
+	\begin{scope}[xshift=75pt, yshift=5pt]
+	\draw [thick, rotate=90,black, l-system={Hilbert curve, step=10pt, angle=90, axiom=L, order=2}]  lindenmayer system;
+	\end{scope}
+	\end{tikzpicture}
+\end{center}
+Agora vê-se o padrão geral para definir $h_{n+1}$ a partir de~$h_n$.
+Por fim definimos a curva $h$ \emph{em si} considerando o
+limite ponto a ponto destas funções sucessivas $h_1$, $h_2$,
+\dots\@ Isto é, para cada $x \in \unitsquare$:
+\[
+	h(x) = \lim_{n \rightarrow \infty} h_n(x)
+\]
+Mostramos agora que esta curva preenche o espaço. Ao traçar $h_n$,
+impomos uma grelha $2^n \times 2^n$ sobre~$\unitsquare$. Pelo teorema de Pitágoras, a diagonal de cada célula da grelha tem comprimento:
+\[
+\sqrt{\left(\nicefrac{1}{2^{n}}\right)^2+\left(\nicefrac{1}{2^{n}}\right)^2} = 2^{(\frac{1}{2}-n)}
+\]
+e é evidente que $h_n$ passa por todas as células. Logo cada ponto
+de~$\unitsquare$ está \emph{a uma distância no máximo} $2^{(\frac{1}{2}-n)}$ de algum ponto de~$h_n$. Mas $h$ é definida como o limite das
+funções $h_1$, $h_2$, $h_3$, \dots\@ Assim, a distância máxima de qualquer
+ponto a~$h$ é dada por:
+\[
+\lim_{n \rightarrow \infty} 2^{(\frac{1}{2}-n)} = 0.
+\]
+Ou seja: todo o ponto de~$\unitsquare$ está à distância~$0$ de~$h$. Em
+outras palavras, todo o ponto de~$\unitsquare$ situa-se \emph{sobre} a curva. Logo $h$
+preenche o espaço!{}
+
+Resta mostrar que $h$ é, de fato, uma \emph{curva}. Para isso
+é preciso definir o conceito. A definição moderna baseia-se na de
+Jordan, de 1887 (O.s.\@, poucos anos antes da primeira
+curva preenchedora de espaço):
+
+\begin{defn}
+Uma curva é uma aplicação contínua de $\unitline$ para $\Real^2$.
+\end{defn}
+
+Isto é bastante intuitivo: uma curva é, intuitivamente, uma aplicação ``suave''
+que leva uma reta canônica para o plano~$\Real^2$. A nossa função
+$h$ é de fato uma aplicação de $\unitline$ para $\Real^2$. Logo só precisamos
+de mostrar que $h$ é contínua. Definimos continuidade em
+\olref[limits]{sec} com a notação $\epsilon$/$\delta$. Em linguagem corrente, queremos estabelecer o seguinte: \emph{Se especificar um
+ponto $p$ em $\unitsquare$, juntamente com qualquer nível de
+precisão $\epsilon$, podemos encontrar um intervalo aberto de $\unitline$ tal
+que, dado qualquer $x$ nesse intervalo, $h(x)$ fica a uma distância inferior a~$\epsilon$
+de~$p$.}
+
+Assim: suponhamos que $p$ e~$\epsilon$ estão fixos. Isto corresponde, em
+efeito, a traçar um círculo com centro $p$ e raio~$\epsilon$ sobre
+$\unitsquare$. (O círculo pode sair para fora de~$\unitsquare$,
+mas não importa.) Recordemos que, ao descrever
+$h_n$, traçamos uma grelha $2^n \times 2^n$ sobre~$\unitsquare$. É
+óbvio que, por pequeno que seja~$\epsilon$, existe algum~$n$
+tal que alguma célula individual da grelha $2^n \times 2^n$
+sobre~$\unitsquare$ fica inteiramente dentro do círculo com centro $p$ e
+raio~$\epsilon$.
+
+Tomemos esse~$n$, e seja $I$ a maior parte aberta de~$\unitline$
+que $h_n$ mapeia inteiramente para a célula relevante. (É claro
+que $I$ existe, pois já notamos que $h_n$ passa por
+todas as células da grelha $2^n\times 2^n$.) Basta agora
+mostrar que, sempre que $x \in I$, o ponto $h(x)$ pertence à mesma
+célula. E, para \emph{isso}, basta mostrar que
+$h_m(x)$ pertence à mesma célula, para qualquer $m > n$. Mas isto é
+óbvio. Se considerarmos o que acontece com $h_m$ para $m > n$, vemos
+que exatamente a ``mesma parte'' do intervalo unitário é mapeada
+para a mesma célula; apenas a descrevemos de modo cada vez mais
+esticado e sinuoso.
+
+\end{document}

@@ -1,0 +1,35 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{story}{extensionality}
+\olsection{Extensionalidade}
+
+O primeiro ponto a notar é que os conjuntos são individuados pelos seus
+!!{element}s. Mais precisamente:
+
+\begin{axiom}[Extensionalidade]
+Se os conjuntos $A$ e $B$ têm os mesmos !!{element}s, então $A$ e $B$ são
+o mesmo conjunto.
+\[
+  \lforall[A][\lforall[B][(\lforall[x][(x \in A \liff x \in B)] \lif
+  \eq[A][B])]]
+\]
+\end{axiom}
+
+Assumimos isto ao longo de \olref[sfr][][]{part}. Mas vale a pena
+repetir. O axioma de extensionalidade exprime a ideia fundamental de que um
+conjunto é determinado pelos seus !!{element}s. (Assim, os conjuntos podem contrastar-se com os
+\emph{conceitos}, nos quais precisamente os mesmos objetos podem cair sob
+muitos conceitos diferentes.) 
+
+Por que aceitar este princípio? Ora, é plausível dizer que qualquer
+recusa da extensionalidade é uma decisão de abandonar tudo o que possa
+ser chamado \emph{teoria dos conjuntos}. A teoria dos conjuntos não é mais nem menos do que
+a teoria de coleções extensionais. 
+
+O verdadeiro desafio na \olref[sth][][]{part}, contudo, é estabelecer
+princípios que nos digam \emph{que conjuntos existem}. E acaba por se verificar que a única resposta verdadeiramente ``óbvia'' a esta questão é
+provadamente errada.
+
+\end{document}

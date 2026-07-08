@@ -1,0 +1,64 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{z}{pairs}
+\olsection{Pares}
+
+O próximo axioma a considerar é o seguinte:
+
+\begin{axiom}[Pares]
+Quaisquer que sejam os conjuntos $a, b$, o conjunto $\{a, b\}$ existe.
+\[
+	\forall a \forall b \exists P \forall x (x \in P \liff (x = a \lor x = b))
+\]
+\end{axiom}
+
+Eis como justificar este axioma à luz da concepção iterativa. Suponhamos que $a$ está disponível no estágio $S$, e $b$ no estágio $T$. Seja $M$ o que quer que seja dos estágios $S$ e $T$ que ocorre mais tarde. Então, uma vez que $a$ e $b$ estão ambos disponíveis no estágio $M$, o conjunto $\{a,b\}$ é uma coleção possível disponível em qualquer estágio depois de $M$ (o que quer que seja o posterior).
+
+Mas espera!{} Porquê assumir que \emph{existem} estágios depois de $M$? Se não existir nenhum, a nossa justificação falha. Por isso, para justificar Pares, teremos de acrescentar outro princípio à história que contamos na \olref[sth][z][story]{sec}, nomeadamente:
+\begin{enumerate}
+	\item[] \stagessucc. Não há último estágio.
+\end{enumerate}
+Este princípio está justificado? Nada na história de Shoenfield afirmava
+\emph{explicitamente} que não há último estágio. Ainda assim, mesmo que seja
+(estritamente falando) um acréscimo à nossa história, encaixa bem na
+ideia básica de que os conjuntos se formam em estágios. Aceitá-lo-emos simplesmente no que se segue. E, assim, aceitaremos também o Axioma dos Pares.
+
+Armados com este novo axioma, podemos provar a existência de muitos mais conjuntos. Por exemplo:
+
+\begin{prop}\ollabel{prop:pairsconsequences}
+Quaisquer que sejam os conjuntos $a$ e $b$, existem os seguintes conjuntos:
+	\begin{enumerate}
+		\item\ollabel{singleton} $\{a\}$
+		\item\ollabel{binunion} $a \cup b$
+		\item\ollabel{tuples} $\tuple{a, b}$
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\olref{singleton}. Por Pares, $\{a, a\}$ existe, o que é $\{a\}$ por
+Extensionalidade.
+
+\olref{binunion}. Por Pares, $\{a, b\}$ existe. Ora, $a \cup b = \bigcup
+\{a, b\}$ existe por União.
+
+\olref{tuples}. Por \olref{singleton}, $\{a\}$ existe. Por Pares, $\{a,
+b\}$ existe. Ora, $\{\{a\}, \{a, b\}\} = \tuple{a, b}$ existe, de novo por Pares.
+\end{proof}
+
+\begin{prob}
+Mostre que, quaisquer que sejam os conjuntos $a, b, c$, o conjunto $\{a, b, c\}$ existe.
+\end{prob}
+
+\begin{prob}
+Mostre que, quaisquer que sejam os conjuntos $a_1, \ldots, a_n$, o conjunto $\{a_1, \ldots,
+a_n\}$ existe.
+\end{prob}
+
+%\begin{proof} By two applications of Pairs, $\{\{a_1, a_2\}, \{a_1,
+%   a_3\}\}$ exists. By Union and Extensionality, $\bigcup \{\{a_1,
+%   a_2\}, \{a_1, a_3\}\} = \{a_1, a_2, a_3\}$ exists. Repeat this
+%   trick as often as necessary. \end{proof}
+
+\end{document}

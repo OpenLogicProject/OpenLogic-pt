@@ -1,0 +1,147 @@
+% Part:sets-functions-relations
+% Chapter: size-of-sets
+% Section: non-enumerability-alt
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{siz}{nen-alt}
+
+\olsection{Conjuntos Não Enumeráveis}
+
+\begin{editorial}
+  Esta secção prova a não enumerabilidade de $\Bin^\omega$ e de $\Pow{\Nat}$
+  usando as definições na \olref[enm-alt]{sec}, O.s.\@, exigindo uma bijeção
+  com~$\Nat$ em vez de uma sobrejeção a partir de~$\PosInt$.
+\end{editorial}
+
+\begin{explain}
+O conjunto $\Nat$ dos números naturais é infinito. Também é trivialmente
+!!{enumerable}. O fato notável, porém, é que existem conjuntos
+\emph{!!{nonenumerable}s}, O.s.\@, conjuntos que não são !!{enumerable}s (ver
+\olref[sfr][siz][enm-alt]{defn:enumerable}).
+
+Isto pode surpreender. Afinal, dizer que $A$ é !!{nonenumerable} é dizer que
+\emph{não} existe !!{bijection} $f \colon \Nat \to A$; O.s.\@, nenhuma função que
+mapeie os infinitos !!{element}s de~$\Nat$ para~$A$ esgota todo~$A$. Logo, se $A$
+é !!{nonenumerable}, há ``mais'' !!{element}s em~$A$ do que números naturais.
+
+Para provar que um conjunto é !!{nonenumerable}, há que mostrar que não pode
+existir uma !!{bijection} adequada. A melhor forma é mostrar que qualquer tentativa
+de enumerar !!{element}s de~$A$ tem de deixar pelo menos um !!{element} de fora;
+isto mostra que nenhuma função $f\colon \Nat \to A$ é !!{surjective}. Uma
+estratégia geral para o estabelecer é usar o \emph{método diagonal} de Cantor.
+Dada uma lista de !!{element}s de~$A$, digamos $x_1$, $x_2$, \dots, construímos
+outro !!{element} de~$A$ que, pela sua construção, não pode estar nessa lista.
+
+Tudo isto compreende-se melhor com um exemplo. O nosso primeiro exemplo é o
+conjunto~$\Bin^\omega$ de todas as cadeias infinitas de $0$s e~$1$s. (O
+símbolo~`$\Bin$' significa binário, e podemos pensar nele como o conjunto de
+dois elementos
+$\{0,1\}$.)\oliflabeldef{sfr:card-arithmetic:card-opps:sec}{\footnote{Com mais
+rigor, deveríamos estipular que $\Bin^\omega$ é o conjunto de todas as
+$\omega$-sequências de $0$s e~$1$s, O.s.\@, o conjunto
+$\funfromto{\omega}{\{0,1\}}$. Mas o significado disto só ficará claro em
+\olref[sfr][card-arithmetic][card-opps]{sec}.}{} Esta formulação ligeiramente
+laxa não deve causar confusões por agora, contudo.}
+\end{explain}
+
+\begin{thm}
+\ollabel{thm:nonenum-bin-omega}
+$\Bin^\omega$~é !!{nonenumerable}.
+\end{thm}
+
+\begin{proof}
+Considere-se qualquer enumeração de um subconjunto de $\Bin^\omega$. Temos então
+uma lista $s_{0}$, $s_{1}$, $s_{2}$, \dots{} em que cada $s_n$ é uma cadeia
+infinita de $0$s e~$1$s. Seja $s_n(m)$ o $m$-ésimo dígito da cadeia~$s_n$. Podemos
+pois pensar na lista como uma matriz, colocando $s_n(m)$ na $n$-ésima linha e
+$m$-ésima coluna:
+\[
+\begin{array}{c|c|c|c|c|c}
+& 0 & 1 & 2 & 3 & \dots \\\hline
+0 & \mathbf{s_{0}(0)} & s_{0}(1) & s_{0}(2) & s_0(3) & \dots \\\hline
+1 & s_{1}(0)& \mathbf{s_{1}(1)} & s_1(2) & s_1(3) & \dots \\\hline
+2 & s_{2}(0)& s_{2}(1) & \mathbf{s_2(2)} & s_2(3) & \dots \\\hline
+3 & s_{3}(0)& s_{3}(1) & s_3(2) & \mathbf{s_3(3)} & \dots \\\hline
+\vdots & \vdots & \vdots & \vdots & \vdots & \mathbf{\ddots}
+\end{array}
+\]
+Construiremos agora uma cadeia infinita, $d$, de $0$s e~$1$s que não está nesta
+lista, especificando cada uma das suas entradas, O.s.\@, $d(n)$ para todo $n \in
+\Nat$. Intuitivamente, lemos a diagonal da matriz acima (daí o nome ``método
+diagonal'') e trocamos cada $0$ por~$1$ e cada $1$ por~$0$. De modo mais abstrato,
+definimos $d(n)$ como $0$ ou $1$ consoante o $n$-ésimo !!{element} da diagonal,
+$s_n(n)$, seja $1$ ou $0$, O.s.:
+\[
+d(n) =
+\begin{cases}
+1 & \text{se $s_{n}(n) = 0$}\\
+0 & \text{se $s_{n}(n) = 1$}
+\end{cases}
+\]
+Claramente $d \in \Bin^\omega$, pois é uma cadeia infinita de $0$s e~$1$s. Mas
+construímos $d$ de modo que $d(n) \neq s_n(n)$ para qualquer $n \in \Nat$, O.s.\@,
+$d$ difere de $s_n$ na sua $n$-ésima entrada. Logo $d \neq s_n$ para qualquer $n\in
+\Nat$, pelo que $d$ não pode estar na lista $s_0$, $s_1$, $s_2$, \dots
+
+Mostramos assim que, dada uma enumeração arbitrária de algum subconjunto de
+$\Bin^\omega$, ela omite algum !!{element} de $\Bin^\omega$. Logo não existe
+enumeração do conjunto $\Bin^\omega$, O.s.\@, $\Bin^\omega$ é !!{nonenumerable}.
+\end{proof}
+
+\begin{explain}
+Este método de prova chama-se ``diagonalização'' porque usa a diagonal da matriz
+para definir~$d$. Contudo, a diagonalização não exige necessariamente uma matriz.
+De fato, podemos mostrar que um conjunto é !!{nonenumerable} por uma ideia
+semelhante mesmo quando não há matriz nem diagonal literal. O resultado seguinte
+ilustra como.
+\end{explain}
+
+\begin{thm}
+\ollabel{thm:nonenum-pownat}
+$\Pow{\Nat}$ não é !!{enumerable}.
+\end{thm}
+
+\begin{proof}
+Procedemos da mesma forma, mostrando que qualquer lista de subconjuntos
+de~$\Nat$ omite algum subconjunto de~$\Nat$. Suponhamos, pois, que temos uma
+lista $N_0, N_1, N_2, \ldots$ de subconjuntos de~$\Nat$. Definimos um conjunto $D$
+assim: $n \in D$ sse $n \notin N_{n}$:
+\[
+D = \Setabs{n \in \Nat}{n \notin N_n}
+\]
+Claramente $D\subseteq \Nat$. Mas $D$ não pode estar na lista: por construção,
+$n \in D$ sse $n\notin N_n$, logo $D \neq N_n$ para qualquer $n \in \Nat$.
+\end{proof}
+
+\begin{explain}
+A prova precedente não mencionou uma diagonal. Ainda assim, pode pensar-se nela
+como envolvendo uma diagonal, imaginando os conjuntos $N_0$, $N_1$, \dots{}
+dispostos numa matriz em que escrevemos $N_n$ na $n$-ésima linha colocando $m$ na
+$m$-ésima coluna sse $m \in N_n$. Por exemplo, se os primeiros quatro conjuntos da
+lista são $\{0,1,2,\dots\}$, $\{1, 3, 5, \dots\}$, $\{0,1,4\}$ e
+$\{2,3,4,\dots\}$, a matriz começaria com
+\[
+\begin{array}{r@{}rrrrrrr}
+  N_0 = \{ & \mathbf{0}, & 1, & 2, & & & & \dots\}\\
+  N_1 = \{ &  & \mathbf{1}, &  & 3, &  & 5, & \dots\}\\
+  N_2 = \{ & 0, & 1, &  &  & 4\phantom{,} &  & \}\\
+  N_3 = \{ &  &  & 2, & \mathbf{3}, & 4, & & \dots\}\\
+  &\vdots & & & & & & \ddots\phantom{\}}
+  \end{array}
+\]
+Então $D$ é o conjunto obtido percorrendo a diagonal, pondo $n \in D$ sse $n$
+\emph{não} está na diagonal. No caso acima, excluiríamos $0$ e $1$, incluiríamos
+$2$, excluiríamos $3$, etc.
+\end{explain}
+
+\begin{prob}
+Mostre que o conjunto de todas as funções $f \colon \Nat \to \Nat$ é
+!!{nonenumerable} por um argumento diagonal explícito. Isto é, mostre que, se
+$f_1$, $f_2$, \dots{} é uma lista de funções e cada $f_i\colon \Nat \to \Nat$,
+então existe alguma $g \colon \Nat \to \Nat$ que não está nesta lista.
+\end{prob}
+
+\end{document}

@@ -1,0 +1,155 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{choice}{countablechoice}
+\olsection{Escolha Enumerável}
+
+É fácil provar, sem usar Escolha/Boa Ordenação, que:
+
+\begin{lem}[em $\Zminus$]
+Todo o conjunto finito tem uma função de escolha. 
+\end{lem}
+
+\begin{proof}
+Seja $a = \{b_1, \ldots, b_n\}$. Suponhamos, por simplicidade, que cada $b_i
+\neq \emptyset$. Logo existem objetos $c_1, \ldots, c_n$ tais que
+$c_1 \in b_1, \ldots, c_n \in b_n$. Agora, por
+\olref[z][pairs]{prop:pairsconsequences}, o conjunto $\{\langle b_1,
+c_1\rangle , \ldots, \langle b_n, c_n\rangle\}$ existe; e isto é uma
+função de escolha para~$a$.
+\end{proof}
+
+Mas a situação complica-se logo que consideramos conjuntos infinitos. Por
+exemplo, considere-se esta extensão ``mínima'' do resultado acima:
+
+\begin{defish}
+\emph{Escolha Enumerável.} Todo o conjunto \emph{enumerável} tem uma função de escolha. 
+\end{defish}
+
+Isto é um caso particular da Escolha. E verifica-se que este
+princípio foi invocado com alguma frequência, sem uma consciência óbvia
+do seu uso. Eis dois bons exemplos.\footnote{Devidos a
+\protect\citet[\S9.4]{Potter2004} e Luca Incurvati.}
+
+\begin{ex}
+Eis um pensamento natural: para qualquer conjunto $A$, ou
+$\cardle{\omega}{A}$, ou $\cardeq{A}{n}$ para algum $n \in \omega$. Esta é
+uma maneira de exprimir a ideia intuitiva de que todo o conjunto é
+finito ou infinito. Cantor, e muitos outros matemáticos, fizeram esta
+afirmação sem a provar. Com a cautela que nos caracteriza, a provamos em
+\olref[cardinals][classing]{generalinfinitycharacter}. Mas
+nessa prova estávamos a trabalhar em $\ZFC$, pois assumíamos que
+qualquer conjunto $A$ pode ser bem ordenado, e logo que $\card{A}$ está
+garantidamente definido. Ou seja: assumimos explicitamente a Escolha.
+
+De fato, \citet{Dedekind1888} ofereceu a sua própria prova desta
+afirmação, do seguinte modo:
+
+\begin{thm}[em $\Zminus + \text{Escolha Enumerável}$]
+Para qualquer $A$, ou $\cardle{\omega}{A}$ ou $\cardeq{A}{n}$ para algum
+$n \in \omega$.
+\end{thm}
+
+\begin{proof}
+Suponhamos $\cardneq{A}{n}$ para todo o $n \in \omega$. Então, em particular,
+para cada $n < \omega$ existe um subconjunto $A_n \subseteq A$ com exatamente
+$\cardexpo{2}{n}$ elementos. Usando esta sequência $A_0, A_1, A_2,
+\ldots$, definimos para cada $n$:
+\[
+	B_n = A_n \setminus \bigcup_{i < n} A_i.
+\]
+Note-se o seguinte
+\begin{align*}
+	\card{\bigcup_{i < n}A_n} 
+	&\leq \card{A_0} + \card{A_1} + \ldots + \card{A_{n-1}}\\
+	&=1 + 2 + \ldots + 2^{n-1}\\
+	& = 2^n - 1\\
+	& < 2^n = \card{A_n}
+\end{align*}
+Logo cada $B_n$ tem pelo menos um membro, $c_n$. Além disso, os $B_n$ são
+dois a dois disjuntos; assim, se $c_n = c_m$ então $n = m$. Mas cada $c_n
+\in A$. Logo a função $f(n) = c_n$ é uma injecção $\omega \to A$.
+\end{proof}
+\noindent 
+Dedekind não assinalou que tinha usado a Escolha Enumerável. Mas reparou o leitor
+no seu uso? Olhe de novo. (De fato: \emph{olhe de novo}.)
+
+A prova usou a Escolha Enumerável duas vezes. A usamos uma vez, para obter
+a nossa sequência de conjuntos $A_0$, $A_1$, $A_2$, \dots\@ Voltamos a usá-la
+para seleccionar os elementos $c_n$ de cada~$B_n$. Além disso, este uso
+da Escolha é irredutível. \citet[p.~138]{Cohen1966} provou que o
+resultado falha se não tivermos qualquer versão da Escolha. Ou seja: é
+consistente com $\ZF$ que existam conjuntos \emph{incomparáveis} com~$\omega$.
+\end{ex}
+
+\begin{ex} 
+Em \citeyear{Cantor1878}, Cantor afirmou que uma união enumerável de
+conjuntos enumeráveis é enumerável. Não apresentou prova, talvez
+por considerar a prova óbvia. Agora, com a nossa cautela, provamos uma versão mais geral deste resultado em
+\olref[card-arithmetic][simp]{kappaunionkappasize}. Mas a nossa prova
+assumiu explicitamente a Escolha. E mesmo a prova do resultado menos geral
+requer a Escolha Enumerável.
+
+\begin{thm}[em $\Zminus + \text{Escolha Enumerável}$]
+Se $A_n$ é enumerável para cada $n \in \omega$, então $\bigcup_{n <
+\omega} A_n$ é enumerável.
+\end{thm}
+
+\begin{proof}
+Sem perda de generalidade, suponhamos que cada $A_n \neq \emptyset$. Logo,
+para cada $n \in \omega$ existe !!a{surjection} $f_n \colon \omega
+\to A_n$. Defina-se $f \colon \omega \times \omega \to \bigcup_{n <
+\omega} A_n$ por $f(m, n) = f_n(m)$. O resultado segue porque $\omega
+\times \omega$ é enumerável
+(\olref[sfr][siz][zigzag]{natsquaredenumerable}) e $f$ é
+!!a{surjection}.
+\end{proof}
+\noindent 
+Notou o uso da Escolha Enumerável? Serve para escolher a nossa
+sequência de funções $f_0$, $f_1$, $f_2$, \dots\footnote{Um uso semelhante
+da Escolha ocorreu em
+\olref[card-arithmetic][simp]{kappaunionkappasize}, quando demos a
+instrução ``Para cada $\beta \in \cardfont{a}$, fixe !!a{injection}
+$f_\beta$''.} E, de novo, o resultado falha na ausência de qualquer princípio de Escolha.
+Especificamente, \citet{FefermanLevy1963} provou que é
+consistente com $\ZF$ que uma união enumerável de conjuntos enumeráveis tenha
+cardinalidade~$\beth_1$. Mas eis uma formulação bem mais divertida do
+ponto, de Russell:
+\begin{quote}
+  Isto ilustra-se com o milionário que comprava um par de meias
+  sempre que comprava um par de botas, e nunca noutra ocasião, e que
+  tinha tal paixão por comprar ambos que acabou por ter
+  $\aleph_0$ pares de botas e $\aleph_0$ pares de meias\dots\@ Nas botas
+  podemos distinguir direita e esquerda, e portanto podemos fazer uma
+  seleção de uma em cada par, nomeadamente, podemos escolher todas as
+  botas direitas ou todas as esquerdas; mas com as meias não se impõe
+  qualquer princípio de seleção, e não podemos ter a certeza, a menos que
+  assumamos o axioma multiplicativo [O.s.\@, em efeito, a Escolha], de que
+  existe alguma classe constituída por uma meia de cada par.
+  \citep[p.~126]{Russell1919}
+\end{quote}
+Em suma, alguma forma de Escolha é necessária para provar o seguinte: se
+tem uma quantidade enumerável de pares de meias, então tem (apenas) uma quantidade enumerável de
+meias. E, de fato, sem a Escolha Enumerável (ou algo equivalente), uma união enumerável de conjuntos enumeráveis pode deixar de ser
+enumerável. 
+\end{ex}
+
+A moral é que a Escolha Enumerável foi usada repetidamente, sem grande
+consciência por parte de quem a usava. A questão filosófica é: como poderíamos
+\emph{justificar} a Escolha Enumerável? 
+
+Uma tentativa de justificação intuitiva poderia apelar a uma
+super-tarefa. Suponhamos que fazemos a primeira escolha em $\nicefrac{1}{2}$ minuto, a segunda em $\nicefrac{1}{4}$ minuto, \dots, a
+$n$-ésima em $\nicefrac{1}{2^n}$ minuto, \dots\@ Então, dentro de $1$~minuto, teremos feito uma $\omega$-sequência de escolhas, e definido
+uma função de escolha. 
+
+Mas que poderia realmente dizer-nos um tal experimento mental? Para
+começar, depende de tomar a ideia de ``escolher'' de modo bastante
+literal. Para além disso, parece atar a matemática a possibilidades metafísicas.
+
+Mais importante: não nos dará justificação para a Escolha \emph{sem reservas}, em vez da \emph{mera} Escolha Enumerável.
+Porque, se precisarmos que \emph{todo} o conjunto tenha função de escolha, então precisaremos de poder realizar uma ``super-tarefa de comprimento ordinal
+arbitrário.'' Sem rodeios, essa ideia é risível.
+
+\end{document}

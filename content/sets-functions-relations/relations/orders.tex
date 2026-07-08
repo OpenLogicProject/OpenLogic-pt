@@ -1,0 +1,167 @@
+% Part: sets-functions-relations
+% Chapter: relations
+% Section: orders
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{rel}{ord}
+\olsection{Ordens}
+
+\begin{explain}
+Muitas das nossas comparações envolvem descrever certos objetos como
+sendo ``menores que'', ``iguais a'' ou ``maiores que'' outros objetos,
+sob algum aspecto. Isso envolve relações de \emph{ordem}. Mas há
+vários tipos de relação de ordem. Por exemplo, algumas exigem que
+quaisquer dois objetos sejam comparáveis, outras não. Algumas incluem a
+identidade (como~$\le$) e outras a excluem (como~$<$). Ter aqui uma
+taxonomia ajuda-nos.
+\end{explain}
+
+\begin{defn}[Pré-ordem]
+Uma relação que é ao mesmo tempo reflexiva e transitiva chama-se uma
+\emph{pré-ordem.}
+\end{defn}
+
+\begin{defn}[Ordem parcial]
+Uma pré-ordem que também é antissimétrica chama-se uma
+\emph{ordem parcial}.
+\end{defn}
+
+\begin{defn}[Ordem linear]\ollabel{def:linearorder}
+Uma ordem parcial que também é conexa chama-se uma
+\emph{ordem total} ou \emph{ordem linear.}
+\end{defn}
+
+\begin{ex}
+Toda ordem linear é também uma ordem parcial, e toda ordem parcial é
+também uma pré-ordem, mas as implicações recíprocas não valem. A relação
+universal sobre~$A$ é uma pré-ordem, pois é reflexiva e transitiva. Mas,
+se $A$ tem mais de um !!{element}, a relação universal não é
+antissimétrica e, portanto, não é uma ordem parcial.
+\end{ex}
+
+\begin{ex}
+Considere a relação \emph{não mais longa que} $\preccurlyeq$
+sobre~$\Bin^*$: $x \preccurlyeq y$ sse $\len{x} \le \len{y}$. Trata-se de
+uma pré-ordem (reflexiva e transitiva), e até conexa, mas não é uma
+ordem parcial, pois não é antissimétrica. Por exemplo, $01
+\preccurlyeq 10$ e $10 \preccurlyeq 01$, mas $01 \neq 10$.
+\end{ex}
+
+\begin{ex}
+Uma ordem parcial importante é a relação $\subseteq$ sobre um conjunto de
+conjuntos. Em geral não é uma ordem linear: se $a \neq b$ e
+consideramos $\Pow{\{a, b\}} = \{\emptyset, \{a\}, \{b\}, \{a,b\}\}$,
+vemos que $\{a\} \nsubseteq \{b\}$ e $\{a\} \neq \{b\}$ e $\{b\}
+\nsubseteq \{a\}$.
+\end{ex}
+
+\begin{ex}
+A relação de \emph{divisibilidade sem resto} nos dá uma
+ordem parcial que não é linear. Para inteiros $n$ e~$m$, escrevemos
+$n \mid m$ para significar que $n$ divide $m$ (exatamente), O.s.\@, sse
+existe algum inteiro~$k$ tal que $m = kn$. Sobre~$\Nat$, isso é uma ordem parcial,
+mas não linear: por exemplo, $2 \nmid 3$ e também $3 \nmid
+2$. Vista como relação sobre $\Int$, a divisibilidade é apenas uma
+pré-ordem, pois não é antissimétrica: $1 \mid -1$ e $-1 \mid 1$
+mas $1 \neq -1$.
+\end{ex}
+
+\begin{ex}
+A relação de \emph{extensão} sobre um conjunto de sequências~$A^*$ é a
+seguinte: $s \sqsubseteq s'$ sse $s = \emptyseq$ (a sequência
+vazia), $s = s'$, ou $s = \tuple{s_1, \dots, s_n}$ e $s' =
+\tuple{s_1, \dots, s_n, s_{n+1}, \dots, s_m}$. Se $s \sqsubseteq s'$
+dizemos também que $s$ é um \emph{segmento inicial} de~$s'$. A
+relação de extensão sobre $A^*$ é uma ordem parcial, mas não linear,
+p.ex., se $a \neq b$, então $ab \not\sqsubseteq ba$ e $ba \not\sqsubseteq ab$.
+\end{ex}
+
+\begin{defn}[Ordem estrita]
+Uma \emph{ordem estrita} é uma relação irreflexiva, assimétrica
+e transitiva.
+\end{defn}
+
+\begin{defn}[Ordem linear estrita]\ollabel{def:strictlinearorder}
+Uma ordem estrita que também é conexa chama-se
+\emph{ordem total estrita} ou \emph{ordem linear estrita.}
+\end{defn}
+
+\begin{ex}
+$\le$ é a ordem linear correspondente à ordem linear estrita~$<$.
+$\subseteq$ é a ordem parcial correspondente à ordem estrita~$\subsetneq$.
+\end{ex}
+
+Qualquer ordem estrita $R$ sobre~$A$ pode transformar-se numa ordem parcial
+adicionando a diagonal $\Id{A}$, O.s.\@, adicionando todos os pares~$\tuple{x,
+x}$. (Isto chama-se o \emph{fecho reflexivo} de~$R$.)
+Reciprocamente, a partir de uma ordem parcial obtém-se uma ordem estrita
+removendo~$\Id{A}$. Os dois resultados seguintes tornam isto preciso.
+
+\begin{prop}\ollabel{prop:stricttopartial}
+Se $R$ é uma ordem estrita sobre~$A$, então $R^+ = R \cup \Id{A}$ é uma
+ordem parcial. Além disso, se $R$ é uma ordem linear estrita, então $R^+$ é
+uma ordem linear.
+\end{prop}
+
+\begin{proof}
+Suponhamos que $R$ é uma ordem estrita, O.s.\@, $R \subseteq A^2$ e $R$ é
+irreflexiva, assimétrica e transitiva. Seja $R^+ = R \cup \Id{A}$. Temos
+de mostrar que $R^+$ é reflexiva, antissimétrica e transitiva.
+
+$R^+$ é claramente reflexiva, pois $\tuple{x, x} \in \Id{A} \subseteq
+R^+$ para todo $x \in A$.
+
+Para mostrar que $R^+$ é antissimétrica, suponhamos, para redução ao absurdo, que $R^+xy$ e
+$R^+yx$ mas $x \neq y$. Como $\tuple{x,y} \in R \cup \Id{A}$, mas
+$\tuple{x, y} \notin \Id{A}$, temos de ter $\tuple{x, y} \in R$, O.s.\@,
+$Rxy$. Do mesmo modo,~$Ryx$. Mas isto contradiz a hipótese de que
+$R$ é assimétrica.
+
+Para estabelecer a transitividade, suponhamos que $R^+xy$ e $R^+yz$. Se tanto
+$\tuple{x, y} \in R$ como $\tuple{y,z} \in R$, então $\tuple{x, z} \in
+R$, pois $R$~é transitiva. Caso contrário, ou $\tuple{x, y} \in
+\Id{A}$, O.s.\@, $x = y$, ou $\tuple{y, z} \in \Id{A}$, O.s.\@, $y = z$.
+No primeiro caso, temos $R^+yz$ por hipótese, $x = y$, logo
+$R^+xz$. Analogamente no segundo caso. Em qualquer caso, $R^+xz$; assim,
+$R^+$ é também transitiva.
+
+Quanto à cláusula ``além disso'', suponhamos que $R$ é também conexa.
+Então, para todo $x \neq y$, ou $Rxy$ ou~$Ryx$, O.s.\@, ou
+$\tuple{x, y} \in R$ ou $\tuple{y, x} \in R$. Como $R \subseteq R^+$,
+isto continua a valer para $R^+$, logo $R^+$ é também conexa.
+\end{proof}
+
+\begin{prop}\ollabel{prop:partialtostrict}
+Se $R$ é uma ordem parcial sobre~$A$, então $R^- = R \setminus \Id{A}$ é uma
+ordem estrita. Além disso, se $R$ é uma ordem linear, então $R^-$ é uma ordem
+linear estrita.
+\end{prop}
+
+\begin{proof}
+Deixamos como exercício.
+\end{proof}
+
+\begin{prob}
+Apresente uma prova de \olref[sfr][rel][ord]{prop:partialtostrict}.
+\end{prob}
+
+O resultado simples a seguir estabelece que ordens lineares estritas
+satisfazem uma propriedade no estilo da extensionalidade:
+
+\begin{prop}\ollabel{prop:extensionality-strictlinearorders}
+Se $<$ é uma ordem linear estrita sobre $A$, então:
+\[
+  (\forall a, b \in A)((\forall x \in A)(x < a \liff x < b) \lif a = b).
+\]
+\end{prop}
+
+\begin{proof}
+Suponhamos $(\forall x \in A)(x < a \liff x < b)$. Se $a < b$, então $a <
+a$, o que contradiz o fato de $<$ ser irreflexiva; logo $a \nless b$.
+De forma totalmente análoga, $b \nless a$. Logo $a = b$, pois $<$ é conexa.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,53 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{replacement}{strength}
+\olsection{A Força da Substituição}
+
+Começamos com uma observação simples sobre a força da Substituição: a menos que ultrapassemos $\Z$, não podemos provar a existência de qualquer ordinal de von Neumann
+maior ou igual a $\omega + \omega$. 
+
+Eis um esboço
+do porquê. Trabalhando em~$\ZF$, consideremos o conjunto $V_{\omega+\omega}$. Este conjunto serve
+como domínio de um \emph{modelo} para~$\Z$. Para ver isto, introduzimos alguma notação para a \emph{relativização} de uma fórmula: 
+\begin{defn}\ollabel{formularelativization}
+	Para qualquer conjunto $M$, e qualquer fórmula $\phi$, seja $\phi^M$ a fórmula que resulta de restringir todos os quantificadores de $\phi$ a $M$. Isto é, substituir ``$\lexists[x]$'' por ``$(\lexists[x \in M])$'', e
+	substituir ``$\lforall[x]$'' por ``$(\lforall[x \in M])$''. 
+\end{defn}\noindent
+Pode mostrar-se que, para todo o axioma $\phi$ de~$\Z$, tem-se $\ZF \vdash
+\phi^{V_{\omega+\omega}}$. Mas $\omega+\omega$ não está \emph{em}
+$V_{\omega+\omega}$, por  \olref[spine][rank]{ordsetrankalpha}. Logo $\Z$ é
+consistente com a não existência de $\omega+\omega$.
+
+Foi por isso que dissemos, na \olref[ordinals][replacement]{sec}, que
+\olref[ordinals][ordtype]{thmOrdinalRepresentation} não pode ser provado
+sem Substituição. Pois é fácil, dentro de~$\Z$, definir uma
+boa ordenação explícita que intuitivamente \emph{deveria} ter tipo de ordem
+$\omega+\omega$. De fato, demos um exemplo informal disto em
+\olref[ordinals][idea]{sec}, quando apresentamos a ordenação nos
+números naturais dada por:
+\begin{align*}
+	n \lessdot m \text{ sse }&\text{ou }n < m\text{ e }m-n\text{ é par,}\\
+	& \text{ou $n$ é par e $m$ é ímpar.}
+\end{align*}
+Mas se $\omega+\omega$ não existe, esta boa ordenação não é
+isomorfa a nenhum ordinal. Logo $\Z$ \emph{não} prova
+\olref[ordinals][ordtype]{thmOrdinalRepresentation}. 
+
+Invertendo o prisma: a Substituição permite provar a existência
+de $\omega+\omega$, e portanto tem de permitir provar a existência de
+$V_{\omega+\omega}$. E não só. Para \emph{qualquer} boa ordenação
+que possamos definir, \olref[ordinals][ordtype]{thmOrdinalRepresentation}
+nos diz que existe algum $\alpha$ isomorfo com essa
+boa ordenação, e portanto que $V_\alpha$ existe. De forma direta,
+então, a Substituição garante que a hierarquia de conjuntos tem de ser
+\emph{muito alta}. 
+
+Nas próximas partes do capítulo, e de novo em
+\olref[card-arithmetic][fix]{sec}, teremos uma ideia mais clara de quão
+\emph{alta} a Substituição força a hierarquia a ser. O
+ponto simples, por agora, é que a Substituição \emph{precisa} mesmo de
+justificação!
+
+\end{document}

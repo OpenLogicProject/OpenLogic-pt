@@ -1,0 +1,177 @@
+% Part: sets-functions-relations
+% Chapter: functions
+% Section: inverses
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{fun}{inv}
+\olsection{Inversas de Funções}
+
+\begin{explain}
+Pensamos nas funções como mapas. Uma pergunta natural sobre
+funções é, pois, se o mapeamento pode ser ``invertido''. Por
+exemplo, a função sucessora $f(x) = x + 1$ pode ser invertida, no
+sentido em que a função $g(y) = y - 1$ ``desfaz'' o que $f$ faz.
+
+Mas há que ter cuidado. Embora a definição de~$g$ defina uma
+função $\Int \to \Int$, não define uma \emph{função} $\Nat
+\to \Nat$, pois $g(0) \notin \Nat$. Assim, mesmo em casos simples, não é
+óbvio que uma função possa ser invertida; pode depender do
+domínio e do contradomínio.
+
+Isto torna-se mais preciso com a noção de inversa de uma função.
+\end{explain}
+
+\begin{defn}
+Uma função $g \colon B \to A$ é uma \emph{inversa} de uma função $f
+\colon A \to B$ se $f(g(y)) = y$ e $g(f(x)) = x$ para todo $x \in A$
+e $y \in B$.
+\end{defn}
+
+Se $f$ tem uma inversa~$g$, escrevemos muitas vezes $f^{-1}$ em vez de~$g$.
+
+\begin{explain}
+Agora determinaremos quando as funções têm inversas. Um bom candidato
+a inversa de $f\colon A \to B$ é $g\colon B \to A$ ``definida
+por''
+\[
+g(y) = \text{``o'' $x$ tal que $f(x) = y$.}
+\]
+Mas as aspas em ``definida por'' (e em ``o'') sugerem que isto
+não é uma definição. Pelo menos, nem sempre funcionará com
+total generalidade. Pois, para que esta definição especifique uma
+função, tem de haver um e apenas um~$x$ tal que $f(x) =
+y$---a saída de~$g$ tem de ficar unicamente determinada. Além disso, tem
+de estar especificada para todo $y \in B$. Se existirem $x_1$ e $x_2 \in
+A$ com $x_1 \neq x_2$ mas $f(x_1) = f(x_2)$, então $g(y)$ não ficaria
+unicamente determinada para $y = f(x_1) = f(x_2)$. E se não existir~$x$
+algum tal que $f(x) = y$, então $g(y)$ nem sequer fica especificada. Noutras
+palavras, para $g$ estar definida, $f$~tem de ser tanto !!{injective} quanto
+!!{surjective}.
+
+Vamos com calma. Dividiremos a questão em duas: dada uma
+função~$f\colon A \to B$, quando existe uma função $g\colon B \to A$
+tal que $g(f(x)) = x$? Tal $g$ ``desfaz'' o que $f$ faz, e chama-se
+\emph{inversa à esquerda} de~$f$. Em segundo lugar, quando existe uma
+função $h\colon B \to A$ tal que $f(h(y)) = y$? Tal $h$ chama-se
+\emph{inversa à direita} de~$f$---$f$ ``desfaz'' o que $h$~faz.
+\end{explain}
+
+\begin{prop}
+Se $f\colon A \to B$ é !!{injective}, então existe uma \emph{inversa à
+esquerda}~$g\colon B \to A$ de~$f$ tal que $g(f(x)) = x$ para todo $x
+\in A$.
+\end{prop}
+
+\begin{proof}
+Suponhamos que $f\colon A \to B$ é !!{injective}. Consideremos $y \in B$.
+Se $y \in \ran{f}$, existe $x \in A$ tal que $f(x) = y$. Como
+$f$ é !!{injective}, há apenas um tal~$x \in A$. Então podemos
+definir: $g(y) = x$, O.s.\@, $g(y)$ é ``o'' $x \in A$ tal que $f(x)
+= y$. Se $y \notin \ran{f}$, podemos mapeá-lo para qualquer~$a \in A$. Assim,
+podemos escolher $a \in A$ e definir $g\colon B \to A$ por:
+\[
+g(y) = \begin{cases}
+    x & \text{se $f(x) = y$}\\
+    a & \text{se $y \notin \ran{f}$.}
+\end{cases}
+\]
+Está definida para todo $y \in B$, pois para cada tal $y \in \ran{f}$
+há exatamente um $x \in A$ tal que $f(x) = y$. Por definição, se
+$y = f(x)$, então $g(y) = x$, O.s.\@, $g(f(x)) = x$.
+\end{proof}
+
+\begin{prob}
+Mostre que, se $f\colon A \to B$ tem uma inversa à esquerda~$g$, então $f$~é
+!!{injective}.
+\end{prob}
+
+\begin{prop}
+    Se $f\colon A \to B$ é !!{surjective}, então existe uma
+    \emph{inversa à direita}~$h\colon B \to A$ de~$f$ tal que $f(h(y)) =
+    y$ para todo~$y \in B$.
+\end{prop}
+
+\begin{proof}
+Suponhamos que $f\colon A \to B$ é !!{surjective}. Consideremos $y \in
+B$. Como $f$~é !!{surjective}, existe $x_y \in A$ com $f(x_y)
+= y$. Então podemos definir: $h(y) = x_y$, O.s.\@, para cada $y \in B$
+escolhemos algum $x \in A$ tal que $f(x) = y$; como $f$~é !!{surjective}
+há sempre pelo menos um de onde escolher.\footnote{Como $f$ é
+!!{surjective}, para todo~$y \in B$ o conjunto $\Setabs{x}{f(x) = y}$ é
+não vazio. A nossa definição de~$h$ exige que escolhamos um único $x$
+em cada um destes conjuntos. Que isto seja sempre possível não é de todo
+óbvio---a possibilidade de fazer estas escolhas é simplesmente assumida como axioma.
+Noutras palavras, esta proposição pressupõe o chamado Axioma da
+Escolha, questão a que \oliflabeldef{sth:choice::chap}{voltaremos no \olref[sth][choice][]{chap}}{a que aqui não damos destaque}.
+Contudo, em muitos casos concretos, p.ex., quando $A = \Nat$ ou é finito, ou quando $f$ é !!{bijective},
+o Axioma da Escolha não é necessário. (No caso em que $f$ é !!{bijective}, para cada $y \in B$ o conjunto
+$\Setabs{x}{f(x) = y}$ tem exatamente um !!{element}, logo não há escolha a fazer.)}
+Por definição, se $x = h(y)$,
+então $f(x) = y$, O.s.\@, para todo $y \in B$, $f(h(y)) = y$.
+\end{proof}
+
+\begin{prob}
+Mostre que, se $f\colon A \to B$ tem uma inversa à direita~$h$, então $f$~é
+!!{surjective}.
+\end{prob}
+
+\begin{explain}
+  Combinando as ideias da prova anterior, obtemos agora que toda
+  !!{bijection} tem uma inversa, O.s.\@, existe uma única função
+  que é tanto inversa à esquerda quanto à direita de~$f$.
+\end{explain}
+
+\begin{prop}\ollabel{prop:bijection-inverse}
+Se $f\colon A \to B$ é !!{bijective}, existe uma
+função~$f^{-1}\colon B \to A$ tal que, para todo $x \in A$,
+$f^{-1}(f(x)) = x$ e, para todo $y \in B$, $f(f^{-1}(y)) = y$.
+\end{prop}
+
+\begin{proof}
+Exercício.
+\end{proof}
+
+\begin{prob}
+Prove \olref[sfr][fun][inv]{prop:bijection-inverse}. Tem de
+definir~$f^{-1}$, mostrar que é uma função, e mostrar que é uma
+inversa de~$f$, O.s.\@, $f^{-1}(f(x)) = x$ e $f(f^{-1}(y)) = y$ para
+todo $x \in A$ e $y \in B$.
+\end{prob}
+
+\begin{explain}
+Há uma forma ligeiramente mais geral de extrair inversas. Vimos em
+\olref[kin]{sec} que toda função $f$ induz !!a{surjection} $f'
+\colon A \to \ran{f}$ pondo $f'(x) = f(x)$ para todo $x \in A$.
+Claramente, se $f$~é !!{injective}, então $f'$~é !!{bijective}, logo
+tem uma inversa única por \olref{prop:bijection-inverse}. Por um
+pequeno abuso de notação, chamamos por vezes à inversa de $f'$ simplesmente
+``a inversa de~$f$.''
+\end{explain}
+
+\begin{prop}\ollabel{prop:left-right}%
+  Mostre que, se $f\colon A \to B$ tem uma inversa à esquerda~$g$ e uma
+  inversa à direita~$h$, então $h = g$.
+\end{prop}
+
+\begin{proof}
+  Exercício.
+\end{proof}
+
+\begin{prob}
+  Prove \olref[sfr][fun][inv]{prop:left-right}.
+\end{prob}
+
+\begin{prop}\ollabel{prop:inverse-unique}
+Toda função~$f$ tem no máximo uma inversa.
+\end{prop}
+
+\begin{proof}
+  Suponhamos que $g$ e $h$ são ambas inversas de~$f$. Então, em particular,
+  $g$~é uma inversa à esquerda de~$f$ e $h$~é uma inversa à direita. Por
+  \olref{prop:left-right}, $g = h$.
+\end{proof}
+
+\end{document}

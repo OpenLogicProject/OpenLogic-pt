@@ -1,0 +1,137 @@
+% Part:sets-functions-relations
+% Chapter: size-of-sets
+% Section: comparing-sizes
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{siz}{car}
+
+\olsection{Conjuntos de Tamanhos Diferentes e o Teorema de Cantor}
+
+\begin{explain}
+Apresentamos uma formulação precisa da ideia de que dois conjuntos têm o mesmo
+tamanho. Também podemos precisar a ideia de que um conjunto é menor que outro. A
+nossa definição de ``é menor do que (ou equipotente)'' exigirá, em vez de
+!!a{bijection} entre os conjuntos, !!a{injection} do primeiro para o segundo. Se
+tal função existir, o tamanho do primeiro conjunto é menor ou igual ao do
+segundo. Intuitivamente, !!a{injection} de um conjunto noutro garante que a
+imagem da função tem pelo menos tantos !!{element}s quanto o domínio,
+pois não há dois !!{element}s do domínio que vão parar ao mesmo !!{element} da
+imagem.
+\end{explain}
+
+\begin{defn}
+$A$ \emph{não é maior do que}~$B$, escrevendo-se $\cardle{A}{B}$, sse existir
+!!a{injection} $f \colon A \to B$.
+\end{defn}
+
+É claro que isto é uma relação reflexiva e transitiva, mas não simétrica (fica
+como exercício). Podemos ainda introduzir uma noção que diz que um conjunto é
+(estritamente) menor que outro.
+
+\begin{defn}
+$A$ é \emph{menor do que}~$B$, escrevendo-se $\cardless{A}{B}$, sse existir
+!!a{injection}~$f\colon A \to B$ mas não existir !!{bijection}~$g\colon A \to B$,
+O.s.\@, $\cardle{A}{B}$ e $\cardneq{A}{B}$.
+\end{defn}
+
+É claro que esta relação é irreflexiva e transitiva. (Também fica como
+exercício.) Com esta notação, um conjunto $A$ é !!{enumerable} sse
+$\cardle{A}{\Nat}$, e $A$ é !!{nonenumerable} sse $\cardless{\Nat}{A}$. Isto
+permite reformular
+\oliflabeldef{sfr:siz:nen-alt:thm:nonenum-pownat}{%
+\olref[sfr][siz][nen-alt]{thm:nonenum-pownat}
+como a observação de que
+$\cardless{\Nat}{\Pow{\Nat}}$}{%
+\olref[sfr][siz][nen]{thm:nonenum-pownat}
+como a observação de que $\cardless{\PosInt}{\Pow{\PosInt}}$}. De fato,
+\citet{Cantor1892} provou que este último ponto é \emph{completamente geral}:
+
+\begin{thm}[Cantor]\ollabel{thm:cantor}
+$\cardless{A}{\Pow{A}}$, para qualquer conjunto $A$.
+\end{thm}
+
+\begin{proof}
+A aplicação $f(x) = \{x\}$ é !!a{injection} $f \colon A \to \Pow{A}$, pois se $x
+\neq y$, então também $\{x\} \neq \{y\}$ por extensionalidade, logo $f(x) \neq
+f(y)$. Temos pois $\cardle{A}{\Pow{A}}$.
+
+\begin{editorial}
+Apresentamos a prova longa se \olref[nen]{sec} estiver presente; caso contrário,
+uma prova mais curta alinhada com \olref[nen-alt]{sec}.
+\end{editorial}
+
+\oliflabeldef{sfr:siz:nen:sec}{% 
+  Mostraremos agora que não pode existir função !!{surjective}~$g\colon A \to
+  \Pow{A}$, quanto mais !!{bijective}, e portanto que $\cardneq{A}{\Pow{A}}$.
+  Suponhamos que $g\colon A \to \Pow{A}$. Como $g$ é total, todo $x \in A$ é
+  mapeado para um subconjunto $g(x) \subseteq A$. Podemos mostrar que $g$ não pode
+  ser sobrejectiva. Para isso, definimos um subconjunto~$\overline{A} \subseteq A$
+  que, por definição, não pode estar no contradomínio de~$g$. Seja
+  \[
+  \overline{A} = \Setabs{x \in A}{x \notin g(x)}.
+  \]
+  Como $g(x)$ está definido para todo $x \in A$, $\overline{A}$ é claramente um
+  subconjunto bem definido de~$A$. Mas não pode estar no contradomínio de~$g$.
+  Seja $x \in A$ arbitrário; mostramos que $\overline{A} \neq g(x)$. Se $x \in
+  g(x)$, então não satisfaz $x \notin g(x)$, logo, pela definição de~$\overline{A}$,
+  temos $x \notin \overline{A}$. Se $x \in \overline{A}$, tem de satisfazer a
+  propriedade definidora de~$\overline{A}$, O.s.\@, $x \in A$ e $x \notin g(x)$.
+  Como $x$ era arbitrário, isto mostra que, para cada $x \in A$, $x \in g(x)$ sse
+  $x \notin \overline{A}$, logo $g(x) \neq \overline{A}$. Por outras palavras,
+  $\overline{A}$ não pode estar no contradomínio de~$g$, o que contradiz a
+  suposição de que~$g$ é sobrejectiva.}{Resta mostrar que
+  $\cardneq{A}{\Pow{A}}$. Por \emph{redução ao absurdo}, suponhamos $\cardeq{A}{\Pow{A}}$,
+  O.s.\@, que existe alguma !!{bijection} $g \colon A \to \Pow{A}$. Consideremos:
+  \[
+    D = \Setabs{x \in A}{x \notin g(x)}
+  \]
+  Note-se que $D \subseteq A$, logo $D \in \Pow{A}$. Como $g$ é !!a{bijection},
+  existe algum $y \in A$ tal que $g(y) = D$. Mas então:
+  \[
+    y \in g(y) \text{ sse } y \in D \text{ sse } y \notin g(y).
+  \]
+  Isto é uma contradição; logo $\cardneq{A}{\Pow{A}}$.}{}
+\end{proof}
+
+\begin{explain}
+\oliflabeldef{sfr:siz:nen:thm:nonenum-pownat}{É instrutivo comparar a prova de
+  \olref{thm:cantor} com a de \olref[nen]{thm:nonenum-pownat}. Ali mostramos que,
+  para qualquer lista $Z_1$, $Z_2$, \dots, de subconjuntos de~$\PosInt$, se pode
+  construir um conjunto~$\overline{Z}$ de números garantidamente fora da lista.
+  Estava garantido que não estava na lista porque, para todo $n \in \PosInt$, $n
+  \in Z_n$ sse $n \notin \overline{Z}$. Assim, há sempre algum número que é
+  !!a{element} de um entre $Z_n$ ou $\overline{Z}$ mas não do outro. Seguimos a
+  mesma ideia aqui, exceto que os índices~$n$ são agora !!{element}s de~$A$ em vez
+  de~$\PosInt$. O conjunto $\overline{A}$ está definido de modo a diferir
+  de~$g(x)$ para cada $x \in A$, porque $x \in g(x)$ sse $x \notin \overline{A}$.
+  De novo, há sempre !!a{element} de~$A$ que é !!a{element} de um entre $g(x)$ e
+  $\overline{A}$ mas não do outro. E tal como $\overline{Z}$ portanto não pode
+  estar na lista $Z_1$, $Z_2$, \dots, $\overline{A}$ não pode estar no
+  contradomínio de~$g$.}{}
+
+\oliflabeldef{sfr:siz:nen-alt:thm:nonenum-pownat}{É instrutivo comparar a prova de
+  \olref{thm:cantor} com a de \olref[nen-alt]{thm:nonenum-pownat}. Ali mostramos
+  que, para qualquer lista $N_0$, $N_1$, $N_2$, \dots, de subconjuntos de~$\Nat$,
+  podemos construir um conjunto~$D$ de números garantidamente fora da lista. Estava
+  garantido que não estava na lista porque $n \in N_n$ sse $n \notin D$, para todo
+  $n \in \Nat$. Seguimos a mesma ideia aqui, exceto que os índices~$n$ são agora
+  !!{element}s de~$A$ em vez de~$\Nat$. O conjunto $D$ está definido de modo a
+  diferir de~$g(x)$ para cada $x \in A$, porque $x \in g(x)$ sse $x \notin D$.}{}
+
+A prova vale também a pena comparar com a do Paradoxo de Russell,
+\olref[sfr][set][rus]{thm:russells-paradox}. De fato, o Teorema de Cantor foi a
+inspiração para o paradoxo de Russell.
+\end{explain}
+
+\begin{prob}
+  Mostre que não pode existir !!a{injection} $g\colon \Pow{A} \to A$, para
+  qualquer conjunto~$A$. Sugestão: suponha $g\colon \Pow{A} \to A$
+  !!{injective}. Considere $D = \Setabs{g(B)}{B \subseteq A \text{ e } g(B) \notin
+  B}$. Seja $x = g(D)$. Use o fato de $g$ ser !!{injective} para obter uma
+  contradição.
+\end{prob}
+
+\end{document}

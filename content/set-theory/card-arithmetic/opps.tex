@@ -1,0 +1,150 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{card-arithmetic}{opps}
+\olsection{Definindo as Operações Básicas}
+
+Como não precisamos de controlar a ordem, a aritmética cardinal é
+bastante mais fácil de definir do que a aritmética ordinal. Definiremos
+adição, multiplicação e exponenciação simultaneamente. 
+
+\begin{defn}
+Quando $\cardfont{a}$ e $\cardfont{b}$ são cardinais:
+\begin{align*}
+	\cardfont{a} \cardplus \cardfont{b} &\defis 
+	\card{\cardfont{a} \disjointsum \cardfont{b}}\\
+	\cardfont{a} \cardtimes \cardfont{b} &\defis 
+	\card{\cardfont{a} \times \cardfont{b}}\\
+	\cardexpo{\cardfont{a}}{\cardfont{b}} &\defis 
+	\card{\funfromto{\cardfont{b}}{\cardfont{a}}}
+\end{align*}
+onde $\funfromto{X}{Y} = \Setabs{f}{f \text{ é uma função } X \to Y}$.
+(É fácil mostrar que $\funfromto{X}{Y}$ existe para quaisquer conjuntos $X$
+e $Y$; deixamos isto como exercício.) 
+\end{defn}
+
+\begin{prob}
+Prove em $\Zminus$ que $\funfromto{X}{Y}$ existe para quaisquer conjuntos $X$
+e~$Y$. Trabalhando em $\ZF$, calcule $\setrank{\funfromto{X}{Y}}$ a partir de
+$\setrank{X}$ e $\setrank{Y}$, à maneira de
+\olref[sth][ord-arithmetic][using-addition]{rankcomputation}. 
+\end{prob}
+
+Pode ajudar explicar esta definição. Quanto à adição: usa-se a noção de soma disjunta, $\disjointsum$, tal como definida em
+\olref[ord-arithmetic][add]{defdissum}; e é fácil
+ver que esta definição dá o resultado certo nos casos finitos.
+Quanto à multiplicação: \olref[sfr][set][pai]{cardnmprod} nos diz
+que, se $A$ tem $n$ membros e $B$ tem $m$ membros, então $A \times B$
+tem $n \cdot m$ membros, pelo que a nossa definição generaliza simplesmente a ideia
+à multiplicação transfinita. A exponenciação é semelhante: estamos
+simplesmente a generalizar o pensamento do finito para o transfinito.
+De fato, sob certos aspectos, a aritmética cardinal transfinita parece muito
+mais a aritmética ``ordinária'' do que a aritmética ordinal
+transfinita:
+
+\begin{prop}\ollabel{cardplustimescommute}
+$\cardplus$ e $\cardtimes$ são comutativas e associativas. 
+\end{prop}
+
+\begin{proof}
+Para a comutatividade, por
+\olref[cardinals][cardsasords]{lem:CardinalsBehaveRight} basta
+observar que $\cardeq{(\cardfont{a} \disjointsum
+\cardfont{b})}{(\cardfont{b} \disjointsum \cardfont{a})}$ e
+$\cardeq{(\cardfont{a} \times \cardfont{b})}{(\cardfont{b} \times
+\cardfont{a})}$. Deixamos a associatividade como exercício.
+\end{proof}
+
+\begin{prob}
+Prove que $\cardplus$ e $\cardtimes$ são associativas.
+\end{prob}
+
+\begin{prop}
+$A$ é infinito se e só se $\card{A} \cardplus 1 = 1 \cardplus \card{A} = \card{A}$.
+\end{prop}
+
+\begin{proof}
+Como em
+\olref[cardinals][classing]{generalinfinitycharacter}, a partir de
+\olref[ord-arithmetic][using-addition]{ordinfinitycharacter} e
+\olref[cardinals][cardsasords]{lem:CardinalsBehaveRight}. 
+\end{proof}
+
+Isto explica porque precisamos de símbolos distintos para adição/multiplicação ordinal versus
+cardinal: são operações genuinamente \emph{diferentes}.
+Este par de resultados mostra que a exponenciação ordinal versus
+cardinal também são operações distintas. (Recordar que
+\olref[z][infinity-again]{defnomega} implica que $2 = \{0,
+1\}$):
+
+\begin{lem}\ollabel{lem:SizePowerset2Exp}
+$\card{\Pow{A}} = \cardexpo{2}{\card{A}}$, para qualquer $A$.
+\end{lem}
+
+\begin{proof}
+Para cada subconjunto $B \subseteq A$, seja $\chi_B \in \funfromto{A}{2}$ dado por:
+\begin{align*}
+	\chi_{B}(x) &\defis
+	\begin{cases}
+		1 & \text{se }x\in B\\
+		0 & \text{caso contrário.}
+	\end{cases}
+\end{align*}
+Seja agora $f(B) = \chi_B$; isto define !!a{bijection} $f \colon \Pow{A}
+\to \funfromto{A}{2}$. Logo $\cardeq{\Pow{A}}{\funfromto{A}{2}}$. Daí
+$\cardeq{\Pow{A}}{\funfromto{\card{A}}{2}}$, pelo que
+$\card{\Pow{A}} = \card{\funfromto{\card{A}}{2}} =
+2^{\card{A}}$.
+\end{proof}
+
+Esta prova sucinta subsume essencialmente a discussão em
+\olref[sfr][siz][red-alt]{sec}. Ali, mostramos como ``reduzir'' a
+não enumerabilidade de $\Pow{\omega}$ à não enumerabilidade do conjunto das
+sequências binárias infinitas, $\Bin^\omega$. Na prática, $\Bin^{\omega}$ é
+apenas $\funfromto{\omega}{2}$; e a prova precedente mostrou que o
+raciocínio que seguimos na \olref[sfr][siz][red-alt]{sec} continua a
+valer usando qualquer conjunto~$A$ no lugar de~$\omega$. O resultado também fornece
+um fato rápido sobre exponenciação cardinal:
+
+\begin{cor}\ollabel{cantorcor}
+$\cardfont{a} < \cardexpo{2}{\cardfont{a}}$ para qualquer cardinal~$\cardfont{a}$.
+\end{cor}
+
+\begin{proof}
+Pelo Teorema de Cantor (\olref[sfr][siz][car]{thm:cantor}) e
+\olref{lem:SizePowerset2Exp}.
+\end{proof}
+\noindent
+Logo $\omega < \cardexpo{2}{\omega}$. Mas nota: isto é um resultado sobre
+exponenciação \emph{cardinal}. Deve contrastar-se com a
+exponenciação \emph{ordinal}, pois neste último caso $\omega =
+\ordexpo{2}{\omega}$ (ver \olref[ord-arithmetic][expo]{sec}).
+
+Enquanto estamos no tema da exponenciação cardinal, podemos também ser
+um pouco mais precisos sobre a ``maneira'' pela qual $\Real$ é
+!!{nonenumerable}.
+
+\begin{thm}\ollabel{continuumis2aleph0}
+$\card{\Real} = \cardexpo{2}{\omega}$
+\end{thm}
+
+\begin{proof}[Esboço de prova]
+Há muitas maneiras de provar isto. A mais direta é
+argumentar que $\cardle{\Pow{\omega}}{\Real}$ e
+$\cardle{\Real}{\Pow{\omega}}$, e depois usar Schr\"oder-Bernstein para
+inferir que $\cardeq{\Real}{\Pow{\omega}}$, e
+\olref[card-arithmetic][opps]{lem:SizePowerset2Exp} para inferir
+que $\card{\Real} = \cardexpo{2}{\omega}$. Deixamos como
+exercício (esclarecedor) definir injecções $f \colon
+\Pow{\omega} \to \Real$ e $g \colon \Real \to \Pow{\omega}$.
+\end{proof}
+
+\begin{prob}
+Complete a prova de
+\olref[sth][card-arithmetic][opps]{continuumis2aleph0},
+mostrando que $\cardle{\Pow{\omega}}{\Real}$ e
+$\cardle{\Real}{\Pow{\omega}}$.
+\end{prob}
+
+\end{document}

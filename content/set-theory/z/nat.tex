@@ -1,0 +1,52 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+	
+\olfileid[pt]{sth}{z}{nat}
+\olsection{A escolher os números naturais}
+
+%Let us take it for granted that the informal principle \stagesinf{}
+%can be justified. It is also, though, worth commenting on the
+%particular axiom we extracted from that informal principle. 
+
+Na \olref[infinity-again]{defnomega}, definimos explicitamente
+a expressão ``números naturais''. Como deve entender esta
+estipulação? Não é uma afirmação metafísica, mas apenas uma decisão de
+\emph{tratar} certos conjuntos como os números naturais. Já abordamos razões para pensar assim na
+\olref[sfr][rel][ref]{sec}, na \olref[sfr][arith][ref]{sec} e na
+\olref[sfr][infinite][dedekindsproof]{sec}. Mas podemos tornar essas
+razões ainda mais nítidas.
+
+O nosso Axioma do Infinito segue \citet{VonNeumann1925}. Mas eis outro axioma, que poderíamos ter adotado em alternativa:
+
+\begin{defish}
+\emph{Axioma do Infinito de Zermelo \citeyear{Zermelo1908Untersuchungen}.} Existe um conjunto $A$ tal que $\emptyset \in A$ e
+$(\forall x \in A)\{x\} \in A$. 
+\end{defish}
+
+Se tivéssemos usado o axioma de Zermelo em vez do nosso Axioma do Infinito (inspirado em von Neumann), ter-nos-iam sido dado igualmente um conjunto infinito de Dedekind e, portanto, uma álgebra de Dedekind. Na abordagem de Zermelo, o
+elemento distinguido da nossa álgebra seria de novo $\emptyset$
+(o nosso sucedâneo de $0$), mas a injeção seria dada pela
+aplicação $x \mapsto \{x\}$, em vez de $x \mapsto x \cup \{x\}$. A
+consequência mais simples é que Zermelo trata $2$ como
+$\{\{\emptyset\}\}$, ao passo que nós (com von Neumann) tratamos $2$ como
+$\{\emptyset, \{\emptyset\}\}$. 
+
+Porquê escolher um axioma do Infinito em vez do outro? A razão
+prática principal é que a abordagem de von Neumann ``escala'' bastante
+bem para números transfinitos. Exploraremos isto a partir do
+\olref[ordinals][]{chap} em diante. Porém, na simples perspectiva de
+\emph{fazer aritmética}, ambas as abordagens serviriam
+igualmente bem. Por isso, se alguém lhe disser que os números naturais
+\emph{são} conjuntos, a pergunta óbvia é: \emph{Que conjuntos são eles?} 
+
+Esta pergunta precisa foi tornada célebre por \citet{Benacerraf1965}. Mas
+vale a pena sublinhar que é apenas o exemplo mais famoso de um
+fenómeno que já encontramos muitas vezes. O ponto essencial é este. A teoria dos conjuntos nos dá uma maneira de \emph{simular} vários
+tipos de entidades ``intuitivas'': os reais, os racionais, os inteiros e os
+naturais, sim; mas também pares ordenados, funções e relações.
+Contudo, a teoria dos conjuntos nunca nos fornece uma escolha
+\emph{única} de simulação. Há \emph{sempre} alternativas
+que---de modo direto---nos teriam servido tão bem. 
+
+\end{document}

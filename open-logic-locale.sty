@@ -1,0 +1,126 @@
+% Localization file for Portuguese
+
+% If you're preparing a translation you should have a copy of this
+% file (with the same name) in `translations/<langid>/`.
+% Any file you use to compile texts in your translation should load
+% this file after `open-logic.sty`.
+
+% babel Names for Portuguese
+
+% If this is a copy for a translation, change `brazilian` to the babel
+% name for your language, and put in the translated names. Keep the
+% LaTeX references the same, however. So, e.g.,
+% \setlocalecaption{german}{theorem}{Satz}
+
+\setlocalecaption{brazilian}{photocredits}{Créditos das Imagens}
+
+\setlocalecaption{brazilian}{history}{Observações históricas}
+\setlocalecaption{brazilian}{reading}{Leitura complementar}
+\setlocalecaption{brazilian}{appendix}{Apêndice}
+\setlocalecaption{brazilian}{appendices}{Apêndices}
+\setlocalecaption{brazilian}{proof}{Prova}
+\setlocalecaption{brazilian}{theorem}{Teorema}
+\setlocalecaption{brazilian}{example}{Exemplo}
+\setlocalecaption{brazilian}{definition}{Definição}
+\setlocalecaption{brazilian}{lemma}{Lema}
+\setlocalecaption{brazilian}{proposition}{Proposição}
+\setlocalecaption{brazilian}{corollary}{Corolário}
+\setlocalecaption{brazilian}{problem}{Problema}
+\setlocalecaption{brazilian}{problems}{Problemas}
+\setlocalecaption{brazilian}{remark}{Observação}
+\setlocalecaption{brazilian}{axiom}{Axioma}
+\setlocalecaption{brazilian}{note}{Nota}
+\setlocalecaption{brazilian}{case}{Caso}
+\setlocalecaption{brazilian}{convention}{Convenção}
+
+\setlocalecaption{brazilian}{OLP}{Projeto Open Logic}
+\setlocalecaption{brazilian}{license}{Licença Creative Commons
+  Atribuição 4.0 Internacional}
+\setlocalecaption{brazilian}{instigator}{Idealizador}
+\setlocalecaption{brazilian}{editorialboard}{Conselho Editorial}
+\setlocalecaption{brazilian}{contributors}{Colaboradores}
+
+
+% These are the names of the environments that `\cref` adds
+% automatically. `thmtools` should do that as well, but sometimes it
+% doesn't work, and it can't do it automatically in languages other
+% than brazilian, so we set them explicitly.  Redefine, e.g., if you
+% want references to "Prop. 5.4"
+
+% If you are working on a translation, change the command
+% `\addto\extrasbrazilian` to `\addto\extras<language>` where
+% `<language>` is the babel name for your language. Then change the
+% names of the environments to the appropriate translations, e.g.,
+% `\crefname{thm}{Satz}{Sätze}` for German.
+
+\addto\extrasbrazilian{
+% execute whenever the language switches to brazilian
+\Crefname{thm}{Teorema}{Teoremas}
+\Crefname{ex}{Exemplo}{Exemplos}
+\Crefname{defn}{Definição}{Definições}
+\Crefname{lem}{Lema}{Lemas}
+\Crefname{prop}{Proposição}{Proposições}
+\Crefname{cor}{Corolário}{Corolários}
+\Crefname{prob}{Problema}{Problemas}
+\Crefname{rem}{Observação}{Observações}
+\Crefname{axiom}{Axioma}{Axiomas}
+\Crefname{note}{Nota}{Notas}
+\Crefname{case}{Caso}{Casos}
+\Crefname{conv}{Convenção}{Convençãos}
+\Crefname{figure}{Figura}{Figuras}
+\Crefname{table}{Tabela}{Tabelas}
+}
+
+% Boilerplate texts for licenses, etc. You can customize these for
+% your translation. In that case, change each `\newcommand` to
+% `\renewcommand`. For the text of the license in your language, go to
+% https://creativecommons.org/licenses/by/4.0/ and select your
+% language in the top right corner.
+
+\renewcommand*{\ollicensetext}[3]
+  {\textit{#1}
+  do
+  #2
+  está licenciado sob a
+  #3.}
+\renewcommand*{\olshortlicensetext}[1]
+  {\textit{\href{https://github.com/OpenLogicProject/OpenLogic}{\jobname}}
+  \ifgitinfo\ 
+  por #1 /
+  \href{http://creativecommons.org/licenses/by/4.0/}{CC--BY}.}
+\renewcommand*{\oluselicensetext}
+  {É baseado em
+  \textit{\href{https://github.com/OpenLogicProject/OpenLogic}{The Open
+  Logic Text}}
+  do
+  \href{http://openlogicproject.org/}{\OLPname},
+  usado sob a
+  \href{http://creativecommons.org/licenses/by/4.0/}{\licensename}.}
+\renewcommand*{\olshortuselicensetext}[2]
+  {\textit{#1}
+  de #2, baseado em 
+  \href{http://openlogicproject.org/}{OLP} /
+  \href{http://creativecommons.org/licenses/by/4.0/}{CC--BY}.}
+
+% Text and boilerplates for the open-logic-book cover and front matter
+
+\renewcommand*{\olremixedby}
+  {Adaptado por \OLPauthor}
+\renewcommand*{\olacknowledgements}
+  {O Projeto Open Logic agradece o generoso apoio
+  do \href{https://taylorinstitute.ucalgary.ca/}{Taylor Institute
+  of Teaching and Learning} da University of Calgary, e da
+  Alberta Open Educational Resources (ABOER) Initiative, que se torna
+  possível por meio de investimento do governo de Alberta.}
+\renewcommand*{\olillustrations}
+  {Ilustrações de capa por \href{http://mattleadbeater.com}{Matthew
+  Leadbeater}, usadas sob uma 
+  \href{https://creativecommons.org/licenses/by-nc/4.0/}
+  {Licença Creative Commons Atribuição-NãoComercial 4.0 Internacional}.}
+\renewcommand*{\olcolophon}
+  {Composição tipográfica em Baskervald X e Nimbus Sans com \LaTeX.}
+\renewcommand*{\olbookrevision}
+  {Esta versão de \emph{\OLPbooktitle} é revisão \gitAbbrevHash{}
+  (\gitAuthorDate), com conteúdo gerado a partir da revisão
+  \OLPrevision\ de \emph{Open Logic Text}. Download gratuito em:\\[.5ex]
+  \url{\OLPsourcelink}}

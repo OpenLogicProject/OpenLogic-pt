@@ -1,0 +1,39 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{replacement}{ref}
+\olsection{Substituição e Reflexão}
+
+A nossa última tentativa de justificar a Substituição, via \stagesinex, começa com um resultado profundo e elegante:\footnote{Lembrete: todas as fórmulas podem ter parâmetros (salvo indicação explícita em contrário).}
+%In this, I will use overlining, such as $x_1, \ldots, x_n$, to
+%abbreviate ``$x_1, \ldots, x_n$'': 
+\begin{thm}[Esquema de reflexão]\ollabel{reflectionschema}
+Para qualquer fórmula $\phi$:
+\[
+\forall \alpha \exists \beta > \alpha (\forall x_1 \ldots, x_n \in
+V_\beta)(\phi(x_1, \ldots, x_n) \liff \phi^{V_\beta}(x_1, \ldots, x_n))
+\]
+\end{thm}
+\noindent 
+Como na \olref[sth][replacement][strength]{formularelativization}, $\phi^{V_\beta}$ é o resultado de restringir todos os
+quantificadores de $\phi$ ao conjunto~$V_\beta$. Assim, intuitivamente, a Reflexão
+diz o seguinte: se $\phi$ é verdadeira em toda a hierarquia, então $\phi$ é
+verdadeira em arbitrariamente muitos \emph{segmentos iniciais} da hierarquia. 
+
+\citet{Montague1961} e \citet{Levy1960} mostraram que (formulações
+adequadas da) Substituição e da Reflexão são equivalentes,
+módulo~$\Z$, de modo que acrescentar qualquer uma delas dá~$\ZF$. (Provamos estes resultados na \olref[sth][replacement][refproofs]{sec}.) Dada esta
+equivalência, poder-se-á esperar justificar a Reflexão e a Substituição via
+\stagesinex{} do seguinte modo: dado \stagesinex, a hierarquia deverá ser
+muito, muito alta; tão alta, de fato, que nada do que podemos dizer sobre ela é
+suficiente para limitar a sua altura. E podemos entender isto como a
+ideia de que, se qualquer sentença~$\phi$ é verdadeira em toda a hierarquia,
+então é verdadeira em arbitrariamente muitos segmentos iniciais da hierarquia.
+E isso é precisamente a Reflexão. 
+
+De novo, isto parece uma tentativa genuinamente promissora de fornecer uma
+justificação intrínseca da Substituição. Mas há demasiado a dizer sobre o assunto aqui. Cabe-lhe agora decidir por si se
+tem êxito.\footnote{Poderá, no entanto, querer continuar lendo \citet[95--100]{Incurvati2020}.}
+
+\end{document}

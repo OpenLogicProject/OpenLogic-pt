@@ -1,0 +1,131 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{spine}{recursion}
+\olsection{Teorema(s) de recursão transfinita}
+
+O primeiro passo é, contudo, confirmar que
+\olref[valpha]{defValphas} é uma definição bem sucedida. De modo mais geral,
+precisamos de provar que qualquer tentativa de definir por recursão transfinita
+(transfinita) terá êxito. Esse é o objetivo deste texto.
+
+\emph{Aviso: este material é delicado}. A lição geral,
+no entanto, é bem simples: a indução transfinita mais o Esquema de Substituição
+garantem a legitimidade de (várias versões da) recursão
+transfinita.\footnote{Lembrete: todas as fórmulas e termos podem ter parâmetros (salvo indicação em contrário).}
+
+\begin{defn}
+	Seja $\tau(x)$ um termo; seja $f$ uma função; seja $\alpha$ um ordinal. Dizemos que $f$ é uma \emph{aproximação de ordem $\alpha$} para $\tau$ sse $\dom{f} = \alpha$ e $(\forall \beta \in \alpha)f(\beta) = \tau(\funrestrictionto{f}{\beta})$.
+\end{defn}
+
+\begin{lem}[Recursão limitada]\ollabel{transrecursionfun}
+Para qualquer termo $\tau(x)$ e qualquer ordinal $\alpha$, existe uma única aproximação de ordem $\alpha$ para $\tau$.
+\end{lem}
+\begin{proof}
+Mostraremos que, para qualquer $\gamma \leq \alpha$, existe uma única
+aproximação de ordem $\gamma$. 
+
+Começamos por estabelecer a unicidade. Sejam $g$ e $h$ (respetivamente) aproximações de ordem $\gamma$ e~$\delta$. Uma indução transfinita nos seus argumentos mostra que
+$g(\beta) = h(\beta)$ para qualquer $\beta \in \dom{g} \cap \dom{h} =
+\gamma \cap \delta = \min(\gamma, \delta)$. Logo as aproximações são únicas (se existem) e coincidem em todos os valores.
+
+Para estabelecer a existência, usamos agora uma indução transfinita simples
+(\olref[ordinals][opps]{simpletransrecursion}) nos ordinais
+$\delta \leq \alpha$. 
+
+A função vazia é trivialmente uma aproximação de ordem $\emptyset$. 
+
+Se $g$ é uma aproximação de ordem $\gamma$, então $g \cup
+\{\tuple{\gamma, \tau(g)}\}$ é uma aproximação de ordem $\ordsucc{\gamma}$.
+
+Se $\gamma$ é um ordinal limite e $g_\delta$ é uma aproximação de ordem $\delta$ para todo o $\delta < \gamma$, seja $g = \bigcup_{\delta \in \gamma} g_\delta$. Isto
+é uma função, pois as várias $g_\delta$ coincidem em todos os valores. E
+se $\delta \in \gamma$ então $g(\delta) = g_{\ordsucc{\delta}}(\delta) =
+\tau(\funrestrictionto{g_{\ordsucc{\delta}}}{\delta}) =
+\tau(\funrestrictionto{g}{\delta})$.
+
+Isto completa a prova por indução transfinita.
+\end{proof}
+
+Se nos permitirmos definir um \emph{termo} em vez de uma função,
+podemos retirar a cota $\alpha$ do resultado anterior. No
+enunciado e na prova do resultado seguinte, quando $\sigma$ é um termo,
+definimos $\funrestrictionto{\sigma}{\alpha} = \Setabs{\tuple{\beta,
+\sigma(\beta)}}{\beta \in \alpha}$.
+
+\begin{thm}[Recursão geral]\ollabel{transrecursionschema}
+Para qualquer termo $\tau(x)$, podemos definir explicitamente um termo
+$\sigma(x)$ tal que
+$\sigma(\alpha) = \tau(\funrestrictionto{\sigma}{\alpha})$ para qualquer
+ordinal~$\alpha$.
+\end{thm}
+
+\begin{proof}
+Para cada $\alpha$, por \olref{transrecursionfun} existe uma única aproximação de ordem $\alpha$, $f_\alpha$, para~$\tau$. Definimos $\sigma(\alpha)$ como $f_{\ordsucc{\alpha}}(\alpha)$. Ora:
+	\begin{align*}
+		\sigma(\alpha) &= 
+		f_{\ordsucc{\alpha}}(\alpha) \\&= 
+		\tau(\funrestrictionto{f_{\ordsucc{\alpha}}}{\alpha}) \\&= 
+		\tau(\Setabs{\tuple{\beta, f_{\ordsucc{\alpha}}(\beta)}}{\beta \in \alpha}) \\&= 
+		\tau(\Setabs{\tuple{\beta, f_{\ordsucc{\beta}}(\beta)}}{\beta \in \alpha})\\&=
+		\tau(\funrestrictionto{\sigma}{\alpha})
+	\end{align*}
+notando que $f_{\ordsucc{\beta}}(\beta) = f_{\ordsucc{\alpha}}(\beta)$ para todo o $\beta < \alpha$, como no \olref{transrecursionfun}. 
+\end{proof}
+\noindent 
+Notemos que \olref{transrecursionschema} é um \emph{esquema}. Crucialmente, não podemos
+esperar que $\sigma$ defina uma função, O.s.\@, um certo tipo de
+\emph{conjunto}, pois então $\dom{\sigma}$ seria o conjunto de todos os
+ordinais, contradizendo o paradoxo de Burali-Forti
+(\olref[ordinals][basic]{buraliforti}).
+
+Ainda falta mostrar, contudo, que \olref{transrecursionschema}
+justifica a nossa definição dos $V_\alpha$. Isto pode não ser
+óbvio de imediato; mas tornar-se-á claro com uma última versão simples
+da recursão transfinita.
+
+\begin{thm}[Recursão simples]\ollabel{simplerecursionschema} 
+Para quaisquer termos $\tau(x)$ e $\theta(x)$ e qualquer conjunto $A$, podemos
+definir explicitamente um termo $\sigma(x)$ tal que:
+\begin{align*}
+	\sigma(\emptyset) &= A\\
+	\sigma(\ordsucc{\alpha}) &= \tau(\sigma(\alpha)) &&
+		\text{para qualquer ordinal }\alpha\\
+	\sigma(\alpha) &= \theta(\ran{\funrestrictionto{\sigma}{\alpha}})&&
+	\text{quando }\alpha\text{ é um ordinal limite}
+\end{align*}
+\end{thm}
+
+\begin{proof}
+Começamos por definir um termo, $\xi(x)$, do seguinte modo: 
+%t $\xi(x) = A$ if $x$ is not a function whose domain is an ordinal;
+%otherwise let:
+\[
+	\xi(x) = 
+	\begin{cases}
+			A &\text{se $x$ não é uma função cujo}\\
+			&\hspace{1em}\text{domínio é um ordinal; caso contrário:}\\
+			\tau(x(\alpha)) & \text{se $\dom{x} = \ordsucc{\alpha}$}\\
+			\theta(\ran{x}) & \text{se $\dom{x}$ é um ordinal limite}
+	\end{cases}
+\]
+Por \olref{transrecursionschema}, existe um termo $\sigma(x)$ tal que
+$\sigma(\alpha) = \xi(\funrestrictionto{\sigma}{\alpha})$ para todo o
+ordinal $\alpha$; além disso, $\funrestrictionto{\sigma}{\alpha}$ é uma
+função com domínio $\alpha$. Mostramos que $\sigma$ tem as propriedades
+pretendidas, por indução transfinita simples
+(\olref[ordinals][opps]{simpletransrecursion}). 
+
+Primeiro, $\sigma(\emptyset) = \xi(\emptyset) = A$. 
+
+Segundo, $\sigma(\ordsucc{\alpha}) = \xi(\funrestrictionto{\sigma}{\ordsucc{\alpha}}) = \tau(\funrestrictionto{\sigma}{\ordsucc{\alpha}}(\alpha)) = \tau(\sigma(\alpha))$.
+
+Por fim, $\sigma(\alpha) = \xi(\funrestrictionto{\sigma}{\alpha}) = \theta(\ran{\funrestrictionto{\sigma}{\alpha}})$, quando $\alpha$ é limite.
+\end{proof}
+\noindent
+Ora, para justificar \olref[valpha]{defValphas}, basta tomar $A
+= \emptyset$, $\tau(x) = \Pow{x}$ e $\theta(x) = \bigcup x$. Por fim, isto justifica a definição dos $V_\alpha$!{}
+
+
+\end{document}

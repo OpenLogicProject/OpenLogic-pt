@@ -1,0 +1,84 @@
+% Part: sets-functions-relations
+% Chapter: relations
+% Section: special-properties
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{rel}{prp}
+\olsection{Propriedades Especiais das Relações}
+
+\begin{intro}
+Alguns tipos de relações revelam-se tão comuns que receberam nomes especiais.
+Por exemplo, $\le$ e~$\subseteq$ relacionam
+os seus respectivos domínios (digamos, $\Nat$ no caso de~$\le$ e
+$\Pow{A}$ no caso de~$\subseteq$) de modos semelhantes. Para precisar
+exatamente como estas relações são semelhantes, e como diferem,
+as categorizamos segundo algumas propriedades especiais que as relações
+podem ter. Verifica-se que (combinações de) algumas destas propriedades
+especiais são especialmente importantes: ordens e relações de equivalência.
+\end{intro}
+
+\begin{defn}[Reflexividade]
+Uma relação $R \subseteq A^2$ é \emph{reflexiva} se e só se, para todo $x \in
+A$, $Rxx$.
+\end{defn}
+
+\begin{defn}[Transitividade]
+Uma relação $R \subseteq A^2$ é \emph{transitiva} se e só se, sempre que $Rxy$
+e $Ryz$, então também $Rxz$.
+\end{defn}
+
+\begin{defn}[Simetria]
+Uma relação~$R \subseteq A^2$ é \emph{simétrica} se e só se, sempre que
+$Rxy$, então também~$Ryx$.
+\end{defn}
+
+\begin{defn}[Antissimetria]
+Uma relação~$R \subseteq A^2$ é \emph{antissimétrica} se e só se, sempre que tanto
+$Rxy$ quanto $Ryx$, então $x=y$ (ou, noutras palavras: se $x\neq y$ então
+ou $\lnot Rxy$ ou $\lnot Ryx$).
+\end{defn}
+
+\begin{explain}
+Numa relação simétrica, $Rxy$ e $Ryx$ verificam-se sempre em conjunto, ou
+nenhuma se verifica. Numa relação antissimétrica, a única forma de $Rxy$
+e $Ryx$ se verificarem em conjunto é que $x = y$. Note-se que isto não
+\emph{exige} que $Rxy$ e $Ryx$ se verifiquem quando $x = y$, apenas que isso
+não está excluído. Assim, uma relação antissimétrica pode ser reflexiva, mas
+não é o caso que toda relação antissimétrica seja
+reflexiva. Note-se também que ser antissimétrica e ser meramente não simétrica
+são condições diferentes. De fato, uma relação pode ser ao mesmo tempo
+simétrica e antissimétrica (por exemplo, a relação identidade o é).
+\end{explain}
+
+\begin{defn}[Conexidade]
+Uma relação $R \subseteq A^2$ é \emph{conexa} se para todos $x,y\in
+A$, se $x \neq y$, então ou $Rxy$ ou~$Ryx$.
+\end{defn}
+
+\begin{prob}
+Dê exemplos de relações que sejam (a) reflexivas e simétricas mas
+não transitivas, (b) reflexivas e antissimétricas, (c) antissimétricas,
+transitivas, mas não reflexivas, e (d) reflexivas, simétricas e
+transitivas. Não use relações sobre números ou conjuntos.
+\end{prob} 
+ 
+\begin{defn}[Irreflexividade]
+Uma relação $R \subseteq A^2$ diz-se \emph{irreflexiva} se, para todo $x \in
+A$, não $Rxx$. 
+\end{defn}
+
+\begin{defn}[Assimetria]
+Uma relação $R \subseteq A^2$ diz-se \emph{assimétrica} se para nenhum par $x,y\in
+A$ se tem tanto $Rxy$ quanto~$Ryx$. 
+\end{defn}
+
+Note-se que se $A \neq \emptyset$, então nenhuma relação irreflexiva em~$A$
+é reflexiva e toda relação assimétrica em~$A$ é também
+antissimétrica. Contudo, há $R \subseteq A^2$ que não são
+reflexivas nem irreflexivas, e há relações antissimétricas
+que não são assimétricas. 
+
+\end{document}

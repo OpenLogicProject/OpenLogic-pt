@@ -1,0 +1,79 @@
+% Part: sets-functions-relations
+% Chapter: arithmetization
+% Section: From N to Z
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+
+\begin{document}
+
+\olfileid[pt]{sfr}{arith}{int}
+\olsection{De $\Nat$ para $\Int$}
+
+Eis duas constatações básicas (no sentido de ``ideias que retemos''):
+	\begin{enumerate}
+		\item Todo inteiro pode escrever-se na forma $n - m$, com $n, m \in \Nat$.
+		\item A informação codificada numa expressão $n - m$ pode igualmente codificar-se por um par ordenado $\tuple{n, m}$.
+	\end{enumerate}
+Já sabemos que os pares ordenados de números naturais são os !!{element}s de $\Nat^2$; estamos a assumir, também, que compreendemos $\Nat$. Eis uma sugestão ingênua, fundada nestas duas constatações: \emph{tratar os inteiros como pares ordenados de números naturais}.
+
+De fato, esta sugestão é demasiado ingênua. Obviamente, queremos que seja verdade que $0 - 2 = 4 - 6$. Mas, evidentemente, $\tuple{0, 2} \neq \tuple{4, 6}$. Logo, não podemos simplesmente dizer que $\Nat^2$ é o conjunto dos inteiros.
+
+Generalizando a partir do problema precedente, o que queremos é o seguinte:
+	$$a - b = c - d \text{ sse }a + d = c + b$$
+(Deve ser óbvio que assim é que os inteiros \emph{devem} comportar-se: basta somar $b$ e $d$ a ambos os lados.) A forma fácil de garantir este comportamento é definir uma relação de equivalência entre pares ordenados, $\Intequiv$, do seguinte modo:
+$$\tuple{ a, b } \Intequiv \tuple{c, d}\text{ sse }a + d = c + b$$  
+Resta-nos mostrar que isto é uma relação de equivalência.
+\begin{prop} $\Intequiv$ é uma relação de equivalência.
+\end{prop}
+	\begin{proof}
+	Há que mostrar que $\Intequiv$ é reflexiva, simétrica e transitiva.
+	
+	\emph{Reflexividade:} Evidentemente $\tuple{a, b} \Intequiv \tuple{a, b}$, pois $a + b = b + a$.
+	
+	\emph{Simetria:} Suponhamos $\tuple{a, b} \Intequiv \tuple{c, d}$, logo $a + d = c + b$. Então $c + b = a + d$, pelo que $\tuple{c, d} \Intequiv \tuple{a, b}$.
+	
+	\emph{Transitividade:} Suponhamos $\tuple{a, b} \Intequiv \tuple{c, d}\Intequiv \tuple{m, n}$. Logo, $a + d = c + b$ e $c + n = m + d$. Assim, $a + d + c + n = c + b + m + d$, e portanto $a + n = m + b$. Logo, $\tuple{a, b} \Intequiv \tuple{m, n}$.
+\end{proof}
+
+Podemos agora usar esta relação de equivalência para formar classes de equivalência:
+
+\begin{defn}
+		Os inteiros são as classes de equivalência, sob $\Intequiv$, dos pares ordenados de números naturais; isto é, $\Int = \equivclass{\Nat^2}{\Intequiv}$.
+\end{defn}
+
+Agora, podem surgir várias reações \emph{filosóficas} distintas face a esta definição estipulativa. Antes de as considerarmos, porém, vale a pena continuar com alguns pormenores técnicos.
+
+Tendo dito o que são os inteiros, precisamos de definir funções e relações básicas sobre eles. Escrevamos $\equivrep{m, n}{\Intequiv}$ para a classe de equivalência sob $\Intequiv$ que tem $\tuple{m, n}$ como !!a{element}.\footnote{Nota: com a notação introduzida na \olref[sfr][rel][eqv]{def:equivalenceclass}, escreveríamos $\equivrep{\tuple{m,n}}{\Intequiv}$ para o mesmo objeto; isso, porém, torna a leitura um pouco mais difícil.} Isto é:
+	$$\equivrep{m, n}{\Intequiv} = \Setabs{\tuple{a, b} \in \Nat^2}{\tuple{a, b}\Intequiv \tuple{m, n}}$$
+Apresentamos, pois, algumas definições:
+	\begin{align*}
+		\equivrep{a, b}{\Intequiv} + \equivrep{c, d}{\Intequiv} &= \equivrep{a + c, b + d}{\Intequiv}\\
+		\equivrep{a, b}{\Intequiv} \times \equivrep{c, d}{\Intequiv} &= \equivrep{a c + b  d, a  d + b c}{\Intequiv}\\
+		\equivrep{a, b}{\Intequiv} \leq \equivrep{c, d}{\Intequiv} &\text{ sse }a + d \leq b + c
+	\end{align*}	
+(Como é habitual, uso `$ab$' no sentido de `$(a \times b)$', só para tornar os axiomas mais legíveis.) Há, ainda, que garantir que estas definições se comportam como \emph{devem}. Explicitar o que isto significa, e verificá-lo, é trabalhoso; relegamos os pormenores a \olref[check]{sec}. Em resumo, contudo: tudo funciona!
+
+Resta um último ponto. Construímos os inteiros a partir dos números naturais. Isto significa que os naturais \emph{não são, eles próprios, inteiros}. Voltaremos ao significado filosófico disto na \olref[ref]{sec}. Do ponto de vista puramente técnico, porém, precisamos de alguma forma de tratar números naturais \emph{como} inteiros. A ideia é simples: para cada $n \in \Nat$, estipulamos $n_\Int = \equivrep{n, 0}{\Intequiv}$. Há que confirmar que esta definição é bem comportada, O.s.\@, que para quaisquer $m, n
+\in \Nat$
+\begin{align*}
+	(m + n)_\Int &= m_\Int + n_\Int\\
+	(m \times n)_\Int &= m_\Int \times n_\Int\\
+	m \leq n &\liff m_\Int \leq n_\Int
+\end{align*}
+Mas isto é bastante direto. Por exemplo, para mostrar que a segunda condição se verifica, podemos apoiar-nos no comportamento dos naturais e raciocinar assim:
+%\begin{proof}
+%	Helping myself to the behaviour of the natural numbers, evidently:
+	\begin{align*}
+%		(m + n)_\Int  = \equivrep{m + n, 0}{\Intequiv} = \equivrep{m + n, 0 + 0}{\Intequiv} = \equivrep{m, 0}{\Intequiv} + \equivrep{n, 0}{\Intequiv} = m_\Int + n_\Int\\
+		(m \times n)_\Int  &= \equivrep{m \times n, 0}{\Intequiv} \\
+		&= \equivrep{m \times n + 0 \times 0, m \times 0 + 0 \times n}{\Intequiv} \\
+		&= \equivrep{m, 0}{\Intequiv} \times \equivrep{n, 0}{\Intequiv} \\
+		&= m_\Int \times n_\Int
+	\end{align*}
+%\end{proof}
+Deixamos como exercício confirmar que as outras duas condições se verificam.
+\begin{prob}
+	Mostre que $(m + n)_\Int = m_\Int + n_\Int$ e $m \leq n \liff m_\Int \leq n_\Int$, para quaisquer $m, n \in \Nat$.
+\end{prob}
+\end{document}

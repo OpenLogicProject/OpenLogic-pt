@@ -1,0 +1,98 @@
+% Part: sets-functions-relations
+% Chapter: arithmetization
+% Section: reflections
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{arith}{ref}
+\olsection{Algumas Reflexões Filosóficas}
+
+Quanto aos pormenores técnicos, por ora basta. Mas o que foi que alcançaram?
+
+Bem, de forma pouco contestável, deram-nos uma matemática pura \emph{belíssima}.
+Além disso, houve conquistas conceptuais profundas. Foi um insight
+profundo perceber que a propriedade de completude exprime a diferença crucial
+entre os reais e os racionais. Além disso, a construção explícita dos reais,
+como cortes de Dedekind, põe o objeto de estudo da análise em bases sólidas.
+Sabemos que a noção de \emph{corpo ordenado completo} é coerente, pois os cortes
+formam precisamente um tal corpo.
+
+Todavia, importa também levantar algumas reservas quanto a essas conquistas.
+
+Primeiro, não é claro que pensar os reais em termos de cortes seja
+\emph{mais} rigoroso do que pensá-los nas suas expansões decimais familiares
+(eventualmente infinitas). Esta última ``construção'' dos reais tem alguma
+semelhança com a construção via sequências de Cauchy; mas, de fato, era,
+essencialmente, conhecida dos matemáticos desde princípios do século XVII (ver
+\olref[cauchy]{sec}). O verdadeiro aumento de rigor veio da tomada de consciência
+de que os reais têm a propriedade de completude; a possibilidade de construir
+números reais como conjuntos particulares talvez não seja, por si só, tão
+interessante.
+
+É ainda menos claro que a aritmetização (muito mais fácil) dos inteiros ou dos
+racionais aumente o rigor nessas áreas. Aqui, vale a pena uma observação simples.
+Tendo \emph{construído} os inteiros como classes de equivalência de pares
+ordenados de naturais, e depois construído os racionais como classes de
+equivalência de pares ordenados de inteiros, e depois construído os reais como
+conjuntos de racionais, \emph{nos esquecemos de imediato} das construções. Em
+particular: ninguém quereria \emph{invocar} estas construções no decurso de uma
+prova matemática (exceto, claro, numa prova de que as construções se comportam
+como deviam). É muito mais fácil falar de um real diretamente do que falar de
+algum conjunto de conjuntos de conjuntos de conjuntos de conjuntos de conjuntos
+de conjuntos de naturais. 
+%(For reals were constructed as sets of rationals; and these were constructed as equivalence classes of ordered pairs of integers, O.s.\@, sets of sets of sets of integers; etc.).
+%2/3 = [2,3]
+%	O.s.\@, {<2,3>, ... }
+%	{ {{2},{2,3}}, ... }
+%
+%reals are 
+%	sets of rationals 
+%
+%rationals are 
+%	sets of sets of sets of integers
+%
+%integers are
+%	sets of sets of sets of naturals
+	
+O mais duvidoso, porém, é que estas definições nos digam o que os inteiros, racionais
+ou reais \emph{são}, \emph{do ponto de vista metafísico}. Isto é, é duvidoso que
+os reais (digamos) \emph{sejam} certos conjuntos (de conjuntos de
+conjuntos\ldots). A principal barreira a tal visão é que a construção poderia ter
+sido feita de muitas maneiras diferentes. No caso dos reais, há construções
+genuinamente diferentes e interessantes (ver \olref[cauchy]{sec}). Mas eis uma
+forma trivial de obter construções diferentes: como em
+\olref[sfr][rel][ref]{sec}, poderíamos ter definido pares ordenados de modo
+ligeiramente diferente; se tivéssemos usado essa noção alternativa de par
+ordenado, as nossas construções teriam funcionado exatamente tão bem como
+funcionaram, mas teríamos acabado com objetos diferentes. Assim, há muitas
+construções rivais, em teoria dos conjuntos, dos inteiros, racionais e reais. Seria,
+ademais, arbitrário (e embaraçoso) afirmar que os inteiros (digamos) são
+\emph{estes} conjuntos, e não \emph{aqueles}. (Como na \olref[sfr][rel][ref]{sec},
+isto é um caso de um argumento tornado célebre por \citealt{Benacerraf1965}.)
+
+Um outro ponto merece ser levantado: há algo de bastante \emph{estranho} nas
+nossas construções. Começamos pelos números naturais. Depois, construímos os
+inteiros e construímos ``o $0$ dos inteiros'', O.s.\@, $\equivrep{0,0}{\Intequiv}$.
+Mas $0 \neq \equivrep{0,0}{\Intequiv}$. De fato, dadas as nossas construções,
+\emph{nenhum} natural é um inteiro. Isto parece fortemente contraintuitivo.
+Na \olref[sfr][set][imp]{sec}, afirmamos, sem grande argumento, que
+$\Nat \subseteq \Rat$. Agora, se as construções nos dissessem exatamente \emph{o que}
+são os números, esta afirmação seria trivialmente falsa. 
+
+Recuando um pouco, onde chegamos? Trabalhando numa teoria ingênua dos conjuntos e
+tomando os naturais como dados, podemos \emph{tratar} inteiros, racionais e reais
+como certos conjuntos. Nesse sentido, podemos \emph{embutir} as teorias destas
+entidades numa teoria dos conjuntos. Mas a importância filosófica deste embutimento
+não é assim tão direta.
+
+Claro que isto não é a última palavra!{} O ponto é apenas este: mostrar que a
+aritmetização dos reais \emph{é de} profunda significação filosófica exigiria
+argumento filosófico adicional.
+
+%Additionally: for the entire duration of this chapter, we have treated
+%the natural numbers as simply \emph{given} to us. But what can we do
+%with them? That is the subject matter for the next chapter.
+
+\end{document}

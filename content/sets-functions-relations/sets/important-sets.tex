@@ -1,0 +1,68 @@
+% Part: sets-functions-relations
+% Chapter: sets
+% Section: important-sets
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{set}{imp}
+\olsection{Alguns Conjuntos Importantes}
+
+\begin{ex}
+Trabalharemos sobretudo com conjuntos cujos !!{element}s são
+objetos matemáticos. Quatro desses conjuntos são tão importantes que têm
+nomes específicos:
+\begin{multline*}
+    \Nat = \{0, 1, 2, 3, \ldots\} \\
+    \shoveright{\text{o conjunto dos números naturais}}\\
+    \shoveleft{\Int = \{\ldots, -2, -1, 0, 1, 2, \ldots\}} \\
+    \shoveright{\text{o conjunto dos números inteiros}}\\
+    \shoveleft{\Rat = \Setabs{\nicefrac{m}{n}}{m, n \in \Int\text{ e }n \neq 0}}\\
+    \shoveright{\text{o conjunto dos números racionais}}\\
+    \shoveleft{\Real = (-\infty, \infty)}\\
+    \text{o conjunto dos números reais (o contínuo)}
+\end{multline*}
+São todos conjuntos \emph{infinitos}, isto é, cada um tem
+infinitamente muitos !!{element}s.
+
+À medida que percorremos estes conjuntos, vamos acrescentando \emph{mais} números ao
+nosso repertório. De fato, deve ficar claro que $\Nat \subseteq \Int
+\subseteq \Rat \subseteq \Real$: afinal, todo número natural é um
+inteiro; todo inteiro é racional; e todo racional é real.
+Igualmente, deve ficar claro que $\Nat \subsetneq \Int \subsetneq
+\Rat$, pois $-1$ é inteiro mas não natural, e
+$\nicefrac{1}{2}$ é racional mas não inteiro. É menos óbvio
+que $\Rat \subsetneq \Real$, O.s.\@, que há números reais
+que não são racionais\oliflabeldef{sfr:arith:real:realline}{, mas voltaremos a isso na \olref[arith][real]{realline}}{}. 
+
+Também usaremos por vezes o conjunto dos inteiros positivos $\PosInt = \{1,
+2, 3, \dots\}$ e o conjunto que contém apenas os dois primeiros naturais
+$\Bin = \{0, 1\}$.
+\end{ex}
+
+\begin{tagblock}{compsci}
+\begin{ex}[Cadeias] 
+Outro exemplo interessante é o conjunto $A^{*}$ das \emph{cadeias finitas}
+sobre um alfabeto $A$: qualquer sequência finita de elementos de~$A$
+é uma cadeia sobre $A$. Incluímos a \emph{cadeia vazia $\Lambda$}
+entre as cadeias sobre~$A$, para todo alfabeto~$A$. Por exemplo,
+\begin{multline*}
+\Bin^*
+=\{\Lambda,0,1,00,01,10,11,\\
+000,001,010,011,100,101,110,111,0000,\ldots\}.
+\end{multline*}
+Se $x=x_{1}\ldots x_{n}\in A^{*}$ é uma cadeia constituída por $n$
+``letras'' de $A$, então dizemos que o \emph{comprimento} da cadeia é~$n$
+e escrevemos $\len{x}=n$.
+\end{ex}
+\end{tagblock}
+
+\begin{ex}[Sequências infinitas]
+Para qualquer conjunto $A$ podemos também considerar o conjunto~$A^\omega$ das sequências infinitas
+de !!{element}s de~$A$. Uma sequência infinita
+$a_1a_2a_3a_4\dots$ consiste numa lista infinita numa só direção de objetos,
+cada um dos quais é !!a{element} de~$A$.
+\end{ex}
+
+\end{document}

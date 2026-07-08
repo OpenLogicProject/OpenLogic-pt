@@ -1,0 +1,161 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{card-arithmetic}{fix}
+\olsection{Pontos Fixos de $\aleph$}
+
+No \olref[spine][]{chap}, sugerimos que o Esquema de Substituição carece de
+justificação, pois força a hierarquia a ser bastante alta.
+Tendo feito alguma aritmética cardinal, podemos dar uma pequena
+ilustração da altura da hierarquia. 
+
+Evidentemente $0 < \aleph_0$, e $1 < \aleph_1$, e $2 < \aleph_2$\ldots
+e, de fato, a diferença de tamanho só fica \emph{maior} a cada
+passo. Assim, é tentador conjecturar que $\kappa< \aleph_\kappa$
+para todo o ordinal $\kappa$. 
+
+Mas esta conjectura é \emph{falsa}, em $\ZFC$. De fato, podemos
+provar que existem \emph{pontos fixos de $\aleph$}, O.s.\@,
+cardinais $\kappa$ tais que $\kappa=\aleph_\kappa$. 
+
+\begin{prop}\ollabel{alephfixed}
+Existe um ponto fixo de $\aleph$.
+\end{prop}
+
+\begin{proof}
+Por recursão, defina-se:
+\begin{align*}
+	\kappa_0 &= 0\\
+	\kappa_{n+1} &= \aleph_{\kappa_n}\\
+	\kappa&= \bigcup_{n < \omega}\kappa_n
+\end{align*}
+Ora, $\kappa$ é um cardinal por
+\olref[cardinals][classing]{unioncardinalscardinal}. Mas então:
+\[
+	\kappa= \bigcup_{n < \omega} \kappa_{n+1} = 
+	\bigcup_{n < \omega}\aleph_{\kappa_n} = 
+	\bigcup_{\alpha < \kappa}\aleph_\alpha = \aleph_\kappa
+\]
+%	Por construção, $\kappa$ é o menor cardinal maior do que cada
+%	$\kappa_n$. Logo $\aleph_\kappa$ é o menor cardinal maior do que
+%	cada $\aleph_{\kappa_n}$, e portanto maior do que cada
+%	$\kappa_{n+1}$. Mas igualmente $\kappa$ é o menor cardinal maior
+%	do que cada $\kappa_{n+1} = \aleph_{\kappa_n}$. Logo $\kappa=
+%	\aleph_\kappa$.
+\end{proof}
+
+Boolos escreveu um artigo sobre precisamente o ponto fixo de $\aleph$ que
+acabamos de construir. Depois de notar a existência de $\kappa$, no início
+do artigo, disse:
+\begin{quote}
+	[$\kappa$ é] um número \emph{bastante grande}, aos olhos de quem
+	não teve contato prévio com a teoria dos conjuntos, tão grande, me parece,
+	que põe em causa a verdade de qualquer teoria que, entre as suas
+	afirmações, inclua a de que existem pelo menos $\kappa$ objetos.
+	\citep[p.~257]{Boolos2000}
+\end{quote}
+E concluiu o artigo perguntando:
+\begin{quote}
+	[será que] suspeitamos que, seja qual for o começo da história,
+	quando chegamos tão longe as rodas giram no vazio e já não estamos a ouvir
+	uma descrição de coisa alguma que seja o caso?
+	\citep[p.~268]{Boolos2000}
+\end{quote}
+Se, de fato, ultrapassamos ``qualquer coisa que seja o caso'', então devemos
+apontar o dedo da culpa diretamente ao Esquema de Substituição. Pois é este
+axioma que permite a nossa prova funcionar. Nesse caso, supõe-se,
+Boolos teria de rever a afirmação que fizera, décadas antes,
+de que a Substituição não tem consequências ``indesejáveis'' (ver
+\olref[replacement][extrinsic]{sec}).
+
+Mas será a existência de $\kappa$ assim tão má? Pode ajudar, aqui,
+considerar o \emph{paradoxo de Tristram Shandy} de Russell. Tristram Shandy
+documenta a sua vida no diário, mas demora um ano a registrar um
+único dia. A cada ano que passa, Tristram fica cada vez mais
+atrasado: passado um ano, só registrou um dia, e viveu 364 dias por registrar; passados dois anos, só registrou
+dois dias, e viveu 728 dias por registrar; passados três anos, só
+registrou três dias, e viveu 1092 dias por registrar
+\dots\footnote{Ignorando anos bissextos.} Ainda assim, se Tristram
+é \emph{imortal}, conseguirá registrar todos os dias, pois
+registrará o $n$-ésimo dia no $n$-ésimo ano da sua vida. E assim, ``no
+fim dos tempos'', Tristram terá um diário completo. 
+
+Porque é que isto difere tanto da ideia de que $\alpha$ é
+menor do que $\aleph_\alpha$---e, de fato, cada vez mais, desesperadamente
+menor---até $\kappa$, onde nos ``apanhamos'' e $\kappa
+= \aleph_\kappa$?
+
+Deixando isto de lado, e supondo que aceitamos $\ZFC$, fechemos com um
+pouco mais de diversão sobre construções de pontos fixos. Os três resultados seguintes estabelecem, intuitivamente, que existe um ponto (não trivial) em
+que a hierarquia é tão larga como alta:
+
+\begin{prop}\ollabel{bethfixed}
+Existe um ponto fixo de $\beth$, O.s.\@, um $\kappa$ tal que $\kappa=
+\beth_\kappa$.
+\end{prop}
+
+\begin{proof}
+Como na \olref{alephfixed}, usando ``$\beth$'' no lugar de ``$\aleph$''. 
+\end{proof}
+
+\begin{prop}\ollabel{stagesize}
+$\card{V_{\omega+\alpha}} = \beth_{\alpha}$. Se $\omega \ordtimes
+\omega \leq \alpha$, então $\card{V_\alpha} = \beth_\alpha$.
+\end{prop}
+
+\begin{proof}
+A primeira afirmação vale por uma indução transfinita simples. A segunda
+segue-se, pois se $\omega \ordtimes \omega \leq \alpha$ então
+$\omega + \alpha = \alpha$. Para o estabelecer, usamos fatos sobre
+aritmética ordinal de \olref[ord-arithmetic][]{chap}. Note-se primeiro
+que $\omega \ordtimes \omega = \omega \ordtimes (1 \ordplus \omega) =
+(\omega  \ordtimes 1) \ordplus (\omega\ordtimes\omega) = \omega
+\ordplus (\omega \ordtimes \omega)$. Ora, se $\omega \ordtimes \omega
+\leq \alpha$, O.s.\@, $\alpha = (\omega\ordtimes\omega) \ordplus \beta$
+para algum $\beta$, então $\omega \ordplus \alpha = \omega \ordplus
+((\omega \ordtimes \omega) \ordplus \beta) = (\omega \ordplus (\omega
+\ordtimes \omega)) \ordplus \beta = (\omega \ordtimes \omega) \ordplus
+\beta = \alpha$. 
+\end{proof}
+
+\begin{cor}
+Existe um $\kappa$ tal que $\card{V_\kappa} = \kappa$.
+\end{cor}
+
+\begin{proof}
+Seja $\kappa$ um ponto fixo de $\beth$, dado por \olref{bethfixed}.
+Claramente $\omega \ordtimes \omega < \kappa$. Logo $\card{V_\kappa} =
+\beth_\kappa= \kappa$ por \olref{stagesize}.
+\end{proof}
+
+Há tantos estágios abaixo de $V_\kappa$ quantos !!{element}s
+de $V_\kappa$. Intuitivamente, então, $V_\kappa$ é tão largo como alto.
+Isto é muito à maneira de Tristram Shandy: passamos de um estágio ao seguinte
+tomando \emph{conjuntos potência}, tornando a hierarquia \emph{muito}
+maior a cada passo. Mas ``no fim'', O.s.\@, no estágio $\kappa$,
+a largura da hierarquia alcança a altura. 
+
+Alguém pode perguntar: \emph{Com que frequência a largura da hierarquia coincide com a
+altura?} A resposta é: \emph{Tantas vezes quantos os ordinais.} Mas
+isto precisa de uma pequena explicação. 
+
+Definimos um termo $\tau$ do seguinte modo. Para qualquer $A$, seja:
+\begin{align*}
+	\tau_0(A) & \defis \card{A}\\
+	\tau_{n+1}(A) & \defis \beth_{\tau_n(A)}\\
+	\tau(A) & \defis \bigcup_{n < \omega}\tau_n(A)
+\intertext{Como na \olref{bethfixed}, $\tau(A)$ é um
+ponto fixo de $\beth$ para qualquer $A$, e trivialmente $\card{A} < \tau(A)$.
+Considere-se então esta definição recursiva:}
+	W_0 &\defis 0\\
+	W_{\alpha + 1} & \defis \tau(W_\alpha)\\
+	W_\alpha & \defis \bigcup_{\beta < \alpha} W_\beta
+	\text{, quando $\alpha$ é limite}
+\end{align*}
+A construção está definida para todos os ordinais. Intuitivamente, então,
+$W$ é ``!!a{injection}'' dos ordinais nos pontos fixos de $\beth$.
+E, exatamente como antes, 
+$V_{W_\alpha}$ é tão largo como alto, para qualquer $\alpha$.
+
+\end{document}

@@ -1,0 +1,43 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{cardinals}{cp}
+\olsection{Princípio de Cantor}
+
+Volte o pensamento a \olref[ordinals][vn]{sec}. Estávamos a discutir
+conjuntos bem ordenados e sugerimos que seria desejável ter objetos
+que funcionem como representantes dos bons ordenamentos. Com isto em mente, introduzimos
+os ordinais e depois mostramos em
+\olref[ordinals][ordtype]{ordtypesworklikeyouwant} que estes
+se comportam como desejamos, O.s.:
+\[
+	\ordtype{A, <} = \ordtype{B, \lessdot}
+	\text{ sse } \tuple{A, <} \isomorphic \tuple{B, \lessdot}.
+\]
+Volte ainda mais atrás, a \olref[sfr][siz][equ]{sec}.
+Ali, trabalhando ingenuamente, introduzimos a noção de ``tamanho'' de
+um conjunto. Especificamente, dissemos que dois conjuntos são equipotentes,
+$\cardeq{A}{B}$, precisamente quando existe !!a{bijection} $f \colon A \to
+B$. Esta noção é intrinsecamente {mais simples} do que a de um
+bom ordenamento: interessam-nos apenas as !!{bijection}s, e não (como
+com os isomorfismos de ordem) se as !!{bijection}s ``preservam alguma
+estrutura''.
+
+Tudo isto sugere um pensamento óbvio. Tal como introduzimos
+certos objetos, \emph{ordinais}, para calibrar bons ordenamentos, podemos
+introduzir certos objetos, \emph{cardinais}, para calibrar tamanho. Esse
+é o objetivo deste capítulo.
+
+Antes de dizer o que serão estes cardinais, convém enunciar um
+princípio que devem satisfazer. Escrevendo $\card{X}$ para a cardinalidade do conjunto $X$, desejaríamos que obedecessem a:
+\[
+	\card{A} = \card{B} \text{ sse } \cardeq{A}{B}.
+\]
+Chamaremos a isto o Princípio \emph{de Cantor}, já que Cantor foi
+provavelmente o primeiro a tê-lo claramente presente. (Diremos mais sobre a sua
+relação com o Princípio de \emph{Hume} na \olref[hp]{sec}.) O nosso
+objetivo é definir $\card{X}$, para cada $X$, de modo a que
+satisfaça o Princípio de Cantor.
+
+\end{document}

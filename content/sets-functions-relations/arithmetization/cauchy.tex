@@ -1,0 +1,225 @@
+% Part: sets-functions-relations
+% Chapter: arithmetization
+% Section: cauchy
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{arith}{cauchy}
+
+\olsection{Apêndice: os Reais como Sequências de Cauchy}
+
+Na \olref[cuts]{sec}, construímos os reais como cortes de Dedekind. Nesta
+secção, explicamos uma construção alternativa. Apoia-se na definição, devida a Cauchy,
+do que hoje chamamos \emph{sequência de Cauchy}; mas o uso desta definição para
+\emph{construir} os reais deve-se a outros autores do século XIX, nomeadamente
+Weierstrass, Heine, M\'{e}ray e Cantor. (Para uma boa história, ver
+\citeauthor{OConnorRobertson:RN}
+\citeyear{OConnorRobertson:RN}.)
+
+Antes de chegarmos ao século XIX, vale a pena considerar Simon Stevin
+(1548--1620). Em resumo, Stevin apercebeu-se de que podemos pensar cada real em
+termos da sua expansão decimal. Assim, mesmo um número irracional, como
+$\sqrt{2}$, tem uma expansão decimal agradável, que começa:
+\[
+	1.41421356237\ldots
+\] 
+É muito fácil modelar expansões decimais na teoria dos conjuntos: basta
+considerá-las como funções $d \colon \Nat \to \Nat$, onde $d(n)$ é o $n$-ésimo
+algarismo decimal que nos interessa. Depois precisamos de um pequeno ajuste,
+para tratar a parte do número real que vem antes da vírgula decimal (aqui,
+apenas $1$). Precisaremos também de outro ajuste (uma relação de equivalência)
+para garantir que, por exemplo, $0.999\ldots
+= 1$. Mas não é difícil apresentar uma construção perfeitamente rigorosa dos
+números reais, à maneira de Stevin, dentro da teoria dos conjuntos.
+
+Stevin não é o nosso foco. (Para mais sobre Stevin, ver
+\citealt{KatzKatz2012}.) Mas eis um pensamento estreitamente relacionado. Em
+vez de tratar diretamente a expansão decimal de $\sqrt{2}$, podemos antes
+considerar uma \emph{sequência} de aproximações racionais cada vez mais precisas
+a $\sqrt{2}$, olhando para as expansões cada vez mais precisas:
+\[
+1, 1.4, 1.414, 1.4142, 1.41421,\ldots
+\]
+A ideia de que os reais podem ser considerados via ``aproximações cada vez
+melhores'' nos dá a base para outra sequência de insights, semelhante às
+constatações que retivemos ao construir $\Rat$ a partir de $\Int$, ou $\Int$ a
+partir de $\Nat$. Os insights básicos são estes:
+\begin{enumerate}
+	\item Todo o real pode escrever-se como uma expansão decimal (eventualmente
+	infinita).
+	\item A informação codificada por uma expansão decimal (eventualmente
+	infinita) pode igualmente codificar-se por uma sequência de números
+	racionais.
+	\item Uma sequência de números racionais pode pensar-se como uma função de
+	$\Nat$ para $\Rat$; basta definir $f(n)$ como o $n$-ésimo racional na
+	sequência.
+\end{enumerate}
+Claro que nem \emph{qualquer} função de $\Nat$ para $\Rat$ nos dará um número
+real. Por exemplo, considere-se esta função:
+\[
+	f(n) =\begin{cases}
+			1 & \text{se }n\text{ é ímpar}\\
+			0 &\text{se }n\text{ é par}
+		\end{cases}
+\]
+Essencialmente, a preocupação é que a sequência $0,1,0,1,0,1,0,\ldots$
+não parece ``convergir'' para nenhum real. Logo: para garantir que consideramos
+sequências que de fato convergem para algum real, precisamos de restringir a
+atenção a sequências que tenham algum \emph{limite}.
+
+Já encontramos a ideia de limite em
+\olref[his][set][limits]{sec}. Mas não podemos usar \emph{exatamente} a mesma
+definição que ali. A expressão ``$(\forall \epsilon>0)$''
+envolvia tacitamente quantificação sobre os números reais; e estávamos a
+considerar limites de funções nos reais; logo, invocar essa definição seria
+valer-nos dos números reais --- e eram precisamente eles que estávamos a
+tentar \emph{construir}. Felizmente, podemos trabalhar com uma ideia estreitamente
+relacionada com a de limite.
+\begin{defn}\ollabel{def:CauchySequence}
+  Uma função $f: \Nat \to \Rat$ é uma \emph{sequência de Cauchy} sse, para
+  qualquer $\epsilon \in \Rat$ positivo, se tem $(\exists \ell \in
+  \Nat)(\forall m, n > \ell)|f(m) - f(n)| < \epsilon$.
+\end{defn}
+
+A ideia geral de limite é a mesma de antes: se se quer um certo nível de
+precisão (medido por~$\epsilon$), há uma ``região'' onde olhar (qualquer entrada
+maior que~$\ell$). E é fácil ver que a nossa sequência $1$, $1.4$, $1.414$,
+$1.4142$, $1.41421$\ldots tem limite: se se quer aproximar $\sqrt{2}$ com erro
+inferior a $\nicefrac{1}{10^{n}}$, basta olhar para qualquer entrada depois da
+$n$-ésima.
+
+O pensamento óbvio seria então dizer que um número real \emph{é} simplesmente
+qualquer sequência de Cauchy. Mas, como nas construções de $\Int$ e $\Rat$, isso
+seria demasiado ingênuo: para um dado número real, várias sequências de Cauchy
+diferentes ``indicam'' esse número. Uma forma simples de ver isto é a seguinte.
+Dada uma sequência de Cauchy~$f$, defina-se $g$ como exatamente a mesma
+função que~$f$, exceto que $g(0)\neq f(0)$. Como as duas sequências coincidem
+em todo o lado depois do primeiro número, quereremos, em última análise, dizer
+que têm o mesmo limite, no sentido de \olref{def:CauchySequence},
+e portanto devem ser pensadas como ``definindo'' o mesmo real. Logo, devemos
+pensar nestas sequências de Cauchy como o mesmo número real.
+
+Consequentemente, voltamos a precisar de definir uma relação de equivalência sobre
+as sequências de Cauchy, e identificar os números reais com \emph{classes} de
+equivalência. Precisamos primeiro da ideia de uma função que tende para $0$ no
+limite. Para qualquer função $h : \Nat \to \Rat$, digamos que \emph{$h$ tende
+para $0$} sse, para qualquer $\epsilon \in \Rat$ positivo, se tem que
+$(\exists \ell \in \Nat)(\forall n > \ell)|h(n)| <
+\epsilon$.\footnote{Compare-se com a definição de $\lim_{x
+\mathord{\rightarrow}\infty}f(x) = 0$ em
+\olref[his][set][limits]{sec}.} Além disso, sendo $f$ e $g$ funções $\Nat \to \Rat$, definamos $(f-g)(n) = f(n) - g(n)$. Definimos agora:
+\[
+	f \Realequiv g \text{ sse $(f-g)$ tende para $0$}.
+\]
+Há que verificar que $\Realequiv$ é uma relação de equivalência; e de fato é.
+Podemos então, se quisermos, definir os reais como as classes de equivalência,
+sob $\Realequiv$, de todas as sequências de Cauchy de $\Nat \to \Rat$.
+
+\begin{prob}
+Seja $f(n) = 0$ para todo $n$. Seja $g(n) = \frac{1}{(n+1)^2}$. Mostre
+que ambas são sequências de Cauchy e que o limite de ambas as funções é $0$, de
+modo que também $f \sim_\Real g$. 
+\end{prob}
+
+Feito isto, como de costume escrevemos $\equivrep{f}{\Realequiv}$
+para a classe de equivalência que tem $f$ como !!a{element}. Porém, para manter a
+legibilidade, no que se segue omitimos o subscrito e escrevemos apenas
+$\equivrep{f}{}$. Estipulamos também que, para cada $q \in \Rat$,
+se tem $q_{\Real} = \equivrep{c_{q}}{}$, onde $c_{q}$ é a função constante
+$c_q(n) = q$ para todo $n \in \Nat$. Definimos depois relações e operações
+básicas sobre os reais, por exemplo:
+\begin{align*}
+	\equivrep{f}{} + \equivrep{g}{} &= 	\equivrep{(f + g)}{} \\
+	\equivrep{f}{} \times 	\equivrep{g}{} &= \equivrep{(f \times g)}{} 
+\end{align*}
+onde $(f + g)(n) = f(n) + g(n)$ e $(f \times g)(n) = f(n) \times
+g(n)$. Claro que também há que verificar que cada uma de $(f + g)$,
+$(f-g)$ e $(f\times g)$ é sequência de Cauchy quando $f$ e $g$ o são;
+mas o são, e deixamo-lo ao leitor.
+
+Por fim, definimos uma noção de ordem. Dizemos que $\equivrep{f}{}$ é
+\emph{positivo} sse tanto $\equivrep{f}{}\neq 0_\Rat$ como $(\exists
+\ell \in \Nat)(\forall n > \ell)0 < f(n)$. Depois dizemos $\equivrep{f}{} <
+\equivrep{g}{}$ sse $\equivrep{(g - f)}{}$ é positivo. Há que verificar que isto
+está bem definido (O.s.\@, que não depende da escolha da função ``representante''
+na classe de equivalência). 
+%\begin{align*}
+%	\equivrep{f}{} \leq \equivrep{g}{} \text{ iff }&\equivrep{f}{} = \equivrep{g}{} \text{ or }\\
+%	&(\exists \ell \in \Nat)(\forall n \in \Nat)(\ell < n \lif f(n) \leq g(n))
+%\end{align*}
+Mas tendo feito isto, é bastante fácil mostrar que obtemos as propriedades algébricas certas; isto é:
+\begin{thm}\ollabel{thm:cauchyorderedfield}
+As sequências de Cauchy constituem um corpo ordenado.
+\end{thm}
+
+\begin{proof}
+Exercício. 
+\end{proof}
+
+\begin{prob}
+Mostre que as sequências de Cauchy constituem um corpo ordenado.
+\end{prob}
+
+É mais difícil provar que os reais, assim construídos, têm a propriedade de
+completude, pelo que daremos a prova.
+
+\begin{thm}
+Todo o conjunto não vazio de sequências de Cauchy com majorante tem supremo
+(menor majorante).
+\end{thm}
+
+\begin{proof}[Esboço de prova] Seja $S$ um conjunto não vazio de sequências de
+Cauchy com majorante. Então existe algum $p \in \Rat$ tal que
+$p_{\Real}$ é majorante de $S$. Seja $r \in S$; então existe algum
+$q \in \Rat$ tal que $q_{\Real} < r$. Logo, se existe supremo de $S$, este está
+entre $q_\Real$ e $p_\Real$ (inclusive). 
+
+Nos aproximaremos do supremo, abordando-o simultaneamente por baixo e por cima. Em
+particular, definimos duas funções, $f, g \colon \Nat \to \Rat$, com a ideia de
+que $f$ se irá aproximar do supremo por cima e $g$ por baixo. Começamos por definir:
+\begin{align*}
+	f(0) &= p \\
+	g(0) &= q
+\end{align*}
+Então, sendo $a_n = \frac{f(n) + g(n)}{2}$, definamos:\footnote{Isto é uma
+definição recursiva. Mas ainda \emph{não} demos qualquer razão para crer que
+definições recursivas são legítimas.}
+\begin{align*}
+	f(n+1) &=
+	\begin{cases}
+		a_n &\text{se }(\forall h \in S)\equivrep{h}{} \leq (a_n)_\Real\\
+		f(n)&\text{caso contrário}
+	\end{cases}\\
+	g(n+1) &=
+	\begin{cases}
+		a_n &\text{se }(\exists h \in S)\equivrep{h}{} \geq (a_n)_\Real\\
+	 	g(n) &\text{caso contrário}
+	\end{cases}
+\end{align*}
+Tanto $f$ como $g$ são sequências de Cauchy. (Isto verifica-se com relativa
+facilidade, mas deixamo-lo como exercício.) Note-se que a função $(f-g)$ tende
+para $0$, pois a diferença entre $f$ e $g$ reduz-se à metade a cada passo. Logo
+$\equivrep{f}{} = \equivrep{g}{}$. 
+
+Mostramos primeiro que $\equivrep{f}{}$ é majorante de $S$, O.s.\@, que $(\forall h \in S)\equivrep{h}{} \leq \equivrep{f}{}$.  
+(Invocaremos \olref{thm:cauchyorderedfield} ao longo do argumento.) Seja $h \in S$ e
+suponhamos, por \emph{reductio}, que $\equivrep{f}{} < \equivrep{h}{}$, de modo que
+$0_\Real < \equivrep{(h-f)}{}$. Como $f$ é uma sequência de Cauchy monotonamente
+decrescente, existe algum $n \in \Nat$ tal que
+$\equivrep{(c_{f(n)} - f)}{} < \equivrep{(h-f)}{}$. Logo:
+\[
+	(f(n))_\Real = \equivrep{c_{f(n)}}{} < \equivrep{f}{} + \equivrep{(h-f)}{} = \equivrep{h}{},
+\]
+o que contradiz o fato de que, por construção, $\equivrep{h}{} \leq (f(n))_\Real$.
+
+Mostramos a seguir que $\equivrep{f}{} = \equivrep{g}{}$ é o supremo de $S$. Seja
+$j$ qualquer sequência de Cauchy e suponhamos $\equivrep{j}{} < \equivrep{g}{}$.
+Raciocinando como acima (usando o fato de $g$ ser \emph{crescente}), existe
+$n \in \Nat$ tal que $\equivrep{j}{} < (g(n))_\Real$. Mas, por construção, existe
+$h \in S$ tal que $(g(n))_\Real \leq \equivrep{h}{}$, logo $\equivrep{j}{} <
+\equivrep{h}{}$ e portanto $\equivrep{j}{}$ não é majorante de $S$.  
+\end{proof}
+
+\end{document}

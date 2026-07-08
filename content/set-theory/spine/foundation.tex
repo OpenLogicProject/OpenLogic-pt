@@ -1,0 +1,102 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{spine}{foundation}
+
+\olsection{Fundação}
+
+Estamos apenas \emph{quase} concluídos---e não \emph{totalmente} concluídos---porque nada em
+$\ZFminus$ garante que \emph{todo} o conjunto está em algum $V_\alpha$,
+O.s.\@, que todo o conjunto é formado em algum estágio. 
+
+Há, contudo, um sentido (matemático) bastante direto em que não
+\emph{importa} se existem conjuntos fora da hierarquia. (Se os houver,
+podemos simplesmente ignorá-los.) Mas motivamos o nosso \emph{conceito} de conjunto com a ideia de que todo o conjunto é formado em
+algum estágio (ver \stageshier{} na \olref[z][story]{sec}). Logo
+queremos excluir a possibilidade de conjuntos que caem fora da
+hierarquia. Por conseguinte, devemos acrescentar um novo axioma, que assegura
+que todo o conjunto surge em algum lugar da hierarquia. 
+
+Uma vez que os $V_\alpha$ são os nossos estágios, poderíamos simplesmente considerar acrescentar o seguinte como axioma:
+
+\begin{defish}
+\emph{Regularidade.} $\forall A \exists \alpha\, A \subseteq V_\alpha$
+\end{defish}
+
+Seria uma abordagem perfeitamente razoável. Contudo, por razões
+que se explicarão adiante, adotaremos antes um axioma alternativo:
+
+\begin{axiom}[Fundação]
+$(\forall A \neq \emptyset)(\exists B \in A)A \cap B = \emptyset$.
+\end{axiom}
+
+Com algum trabalho, podemos mostrar (em $\ZFminus$) que a Fundação implica a Regularidade:
+\begin{defn}
+Para cada conjunto $A$, definimos:
+\begin{align*}
+	\text{cl}_0(A) &= A,\\
+	\text{cl}_{n+1}(A) &= \bigcup \text{cl}_n(A),\\
+	\trcl{A} &= \bigcup_{n < \omega} \text{cl}_{n}(A).
+\end{align*}
+Chamamos a $\trcl{A}$ o \emph{fecho transitivo} de $A$.
+\end{defn}
+\noindent
+O nome «fecho transitivo» é adequado:
+\begin{prop}\ollabel{subsetoftrcl}
+$A \subseteq \trcl{A}$ e $\trcl{A}$ é um conjunto transitivo. 
+\end{prop}
+
+\begin{proof}
+Evidentemente $A = \text{cl}_0(A) \subseteq \trcl{A}$. E se $x
+\in b \in \trcl{A}$, então $b \in \text{cl}_n(A)$ para algum $n$, logo $x
+\in \text{cl}_{n+1}(A) \subseteq \trcl{A}$. 
+\end{proof}
+
+\begin{lem}\ollabel{lem:TransitiveWellFounded}
+Se $A$ é um conjunto transitivo, então existe algum $\alpha$ tal que $A
+\subseteq V_\alpha$.
+\end{lem}
+
+\begin{proof}
+Recordando a definição de «$\supstrict(X)$» em
+\olref[ordinals][opps]{defsupstrict}, definimos dois conjuntos:
+\begin{align*}
+	D  &= \Setabs{x \in A}{\forall \delta\ x \nsubseteq V_\delta}\\
+	\alpha &= \supstrict\Setabs{\delta}{(\exists x \in A)
+	(x \subseteq V_\delta \land (\forall \gamma \in \delta)x \nsubseteq V_\gamma)}
+\end{align*}
+Suponhamos $D = \emptyset$. Se $x \in A$, então existe algum $\delta$ tal que $x \subseteq V_\delta$ e, pela boa ordenação dos ordinais, $(\forall \gamma \in \delta)x \nsubseteq V_\gamma$; logo $\delta \in \alpha$ e assim $x \in V_\alpha$ por
+\olref[spine][Valphabasic]{Valphabasicprops}. Logo $A \subseteq
+V_{\alpha}$, como pretendido. 
+
+Basta pois mostrar que $D = \emptyset$. Por redução ao absurdo, suponhamos
+o contrário. Pela Fundação, existe algum $B \in D \subseteq A$ tal que $D \cap B
+= \emptyset$. Se $x \in B$ então $x \in A$, pois $A$ é transitivo,
+e como $x \notin D$, segue que $\exists \delta\ x \subseteq
+V_\delta$. Seja agora
+\[
+	\beta = \supstrict\Setabs{\delta}{(\exists x \in B)(x \subseteq V_\delta \land (\forall \gamma < \delta)x \nsubseteq V_\gamma)}.
+\]
+Como antes, $B \subseteq V_\beta$, contradizendo a afirmação de que $B \in
+D$.	
+\end{proof}
+
+\begin{thm}\ollabel{zfentailsregularity}
+A Regularidade vale.
+\end{thm}
+
+\begin{proof}
+Fixemos $A$; agora $A \subseteq \trcl{A}$ por \olref{subsetoftrcl}, que é transitivo. Logo existe algum $\alpha$ tal que $A \subseteq \trcl{A} \subseteq V_\alpha$ por \olref{lem:TransitiveWellFounded}
+\end{proof}
+
+Estes resultados mostram que $\ZFminus$ prova a implicação
+$\emph{Fundação}\Rightarrow\emph{Regularidade}$. Em
+\olref[spine][rank]{zfminusregularityfoundation}, mostraremos que
+$\ZFminus$ prova $\emph{Regularidade}\Rightarrow\emph{Fundação}$. Como
+tal, a Fundação e a Regularidade são \emph{equivalentes} (módulo
+$\ZFminus$). Mas isto significa que, dado $\ZFminus$, podemos justificar a
+Fundação notando que é equivalente à Regularidade. E podemos
+justificar a Regularidade de imediato com base em \stageshier{}. 
+
+\end{document}

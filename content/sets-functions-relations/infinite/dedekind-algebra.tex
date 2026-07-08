@@ -1,0 +1,118 @@
+% Part: sets-functions-relations
+% Chapter: infinite
+% Section: dedekind
+%
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{infinite}{dedekind}
+\olsection{Álgebras de Dedekind}
+
+Não queremos apenas que os números naturais sejam infinitos; queremos
+que tenham certas propriedades (algébricas): precisam de comportar-se
+bem sob adição, multiplicação, e assim por diante.
+
+A ideia de Dedekind foi tomar como primitiva a noção de \emph{função
+sucessor} e depois caracterizar os números como aqueles que têm as
+seguintes propriedades:
+\begin{enumerate}
+	\item Existe um número, $0$, que não é sucessor de nenhum número
+	\\O.s.\@, $0 \notin \ran{s}$
+	\\O.s.\@, $\forall x\ s(x) \neq 0$
+	\item Números distintos têm sucessores distintos
+	\\O.s.\@, $s$ é !!a{injection}
+	\\O.s.\@, $\forall x \forall y (s(x) = s(y) \lif x = y)$
+	\item\ollabel{repeatedapplication} Todo o número se obtém de
+	$0$ por aplicações repetidas da função sucessor.
+\end{enumerate}
+As duas primeiras condições são fáceis de lidar com, usando lógica de primeira
+ordem (ver acima). Mas não podemos tratar \olref{repeatedapplication}
+apenas com lógica de primeira ordem. O avanço de Dedekind foi reformular
+a condição \olref{repeatedapplication}, em termos de teoria dos conjuntos,
+assim:
+\begin{enumerate}
+	\item[3$'$.] Os números naturais são o menor conjunto que é
+	\emph{fechado para a função sucessor}: isto é, se aplicarmos
+	$s$ a qualquer !!{element} do conjunto, obtemos outro !!{element}
+	do conjunto.
+\end{enumerate}
+Mas precisamos de explicitar isto com calma.
+
+\begin{defn}\ollabel{Closure}
+	Para qualquer função $f$, o conjunto $X$ é $f$-\emph{fechado} {sse}
+	$(\forall x \in X)f(x) \in X$. Definimos agora, para qualquer $o$:
+	$$\closureofunder{f}{o} = \bigcap\Setabs{X}{o \in X\text{ e }X
+\text{ é $f$-fechado}}$$
+\end{defn}
+
+Logo $\closureofunder{f}{o}$ é a interseção de todos os conjuntos
+$f$-fechados que têm $o$ como !!a{element}. Intuitivamente, então,
+$\closureofunder{f}{o}$ é o conjunto $f$-fechado \emph{menor} que tem $o$
+como !!a{element}. O resultado seguinte torna preciso esse pensamento intuitivo;
+\begin{lem}\ollabel{closureproperties}
+	Para qualquer função $f$ e qualquer $o \in A$:
+	\begin{enumerate}
+		\item\ollabel{closurehaselem} $o \in \closureofunder{f}{o}$; e
+		\item\ollabel{closureclosed} $\closureofunder{f}{o}$ é $f$-fechado; e
+		\item\ollabel{closuresmallest} se $X$ é $f$-fechado e $o \in
+		X$, então $\closureofunder{f}{o} \subseteq X$
+	\end{enumerate}
+\end{lem}
+
+\begin{proof}
+Note-se que existe pelo menos um conjunto $f$-fechado com $o$ como !!a{element}, nomeadamente $\ran{f}\cup
+\{o\}$. Logo $\closureofunder{f}{o}$, a interseção de \emph{todos} os
+tais conjuntos, existe. Cumpre agora verificar
+\olref{closurehaselem}--\olref{closuresmallest}.
+
+Quanto a \olref{closurehaselem}: $o \in \closureofunder{f}{o}$ pois é uma
+interseção de conjuntos que todos têm $o$ como !!a{element}.
+
+Quanto a \olref{closureclosed}: suponhamos $x \in \closureofunder{f}{o}$. Se $o \in X$ e $X$ é $f$-fechado, então $x \in X$, e agora $f(x) \in X$ pois $X$ é
+$f$-fechado. Logo $f(x) \in \closureofunder{f}{o}$.
+
+Quanto a \olref{closuresmallest}: de modo geral, se $X
+\in C$ então $\bigcap C \subseteq X$.
+\end{proof}
+
+Com isto, podemos dizer:
+
+\begin{defn}
+Uma \emph{álgebra de Dedekind} é um conjunto $A$ juntamente com uma função $f
+\colon A \to A$ e algum $o \in A$ tal que:
+	\begin{enumerate}
+		\item \ollabel{ded:proper} $o \notin \ran{f}$
+		\item \ollabel{ded:injection} $f$ é !!a{injection}
+		\item \ollabel{ded:closure} $A = \closureofunder{f}{o}$
+	\end{enumerate}
+\end{defn}
+
+Como $A = \closureofunder{f}{o}$, o resultado anterior nos diz que
+$A$ é o menor conjunto $f$-fechado com $o$ como !!a{element}. Claramente uma
+álgebra de Dedekind é infinita de Dedekind; basta olhar para as cláusulas
+\olref{ded:proper} e \olref{ded:injection} da definição. Mas o fato mais
+relevante é que qualquer conjunto infinito de Dedekind pode ser transformado
+numa álgebra de Dedekind.
+
+\begin{thm}\ollabel{thm:DedekindInfiniteAlgebra}
+Se existe um conjunto infinito de Dedekind, então existe uma álgebra de Dedekind.
+\end{thm}
+
+\begin{proof}
+Seja $D$ infinito de Dedekind. Logo existe uma injeção $g \colon D \to
+D$ e um elemento $o  \in D \setminus \ran{g}$. Seja agora $A =
+\closureofunder{g}{o}$; por \olref{closureproperties}, $A$ existe e $o \in A$. Seja $f =
+\funrestrictionto{g}{A}$. Mostraremos que $A, f, o$ formam uma álgebra de
+Dedekind.
+
+Quanto a \olref{ded:proper}: $o \notin \ran{g}$ e $\ran{f}
+\subseteq \ran{g}$, logo $o\notin \ran{f}$.
+
+Quanto a \olref{ded:injection}: $g$ é injetiva em $D$; logo $f
+\subseteq g$ tem de ser injetiva.
+
+Quanto a \olref{ded:closure}: por \olref{closureproperties}, $A$ é $g$-fechado; \emph{a fortiori}, $A$ é $f$-fechado. Logo $\closureofunder{f}{o} \subseteq A$ por \olref{closureproperties}. Como também $\closureofunder{f}{o}$ é $f$-fechado e $f = \funrestrictionto{g}{A}$, segue-se que $\closureofunder{f}{o}$ é $g$-fechado. Logo $A \subseteq \closureofunder{f}{o}$ por \olref{closureproperties}.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,41 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{spine}{valpha}
+
+\olsection{Definindo os estágios como os $V_\alpha$}
+
+No \olref[sth][ordinals][]{chap}, definimos boas ordenações e os
+ordinais (de von Neumann). Neste capítulo, usaremos isto para
+caracterizar a própria hierarquia de conjuntos. Para tal, recordemos
+que na \olref[sth][ordinals][opps]{sec} definimos a noção de
+ordinal sucessor e ordinal limite. Usamos estas ideias na definição seguinte:
+
+\begin{defn}\ollabel{defValphas}
+	\begin{align*}
+	V_\emptyset &\defis \emptyset\\
+	V_{\ordsucc{\alpha}} &\defis \Pow{V_\alpha} & & 
+	\text{para qualquer ordinal }\alpha\\
+	V_{\alpha} &\defis \bigcup_{\gamma < \alpha} V_\gamma & & 
+	\text{quando }\alpha\text{ é um ordinal limite}
+\end{align*}
+\end{defn}
+\noindent
+Será uma definição por \emph{recursão transfinita} nos
+ordinais. A este respeito, convém comparar com definições recursivas
+de funções nos números naturais.\footnote{Cf.\ as
+definições de adição, multiplicação e exponenciação em
+\olref[sfr][infinite][dedekind]{sec}.} Como ao tratar dos números
+naturais, define-se um caso base e casos sucessor; mas ao tratar
+de ordinais, também precisamos de descrever o comportamento nos casos
+\emph{limite}. 
+
+Esta definição dos $V_\alpha$ será um marco importante. Motivamos
+informalmente a nossa hierarquia de conjuntos como formando conjuntos por
+\emph{estágios}. Os $V_\alpha$ são, em efeito, precisamente esses estágios.
+Importa, contudo, que se trata de uma caracterização \emph{interna} dos
+estágios. Em vez de sugerir um possível \emph{modelo} da
+teoria, teremos definido os estágios \emph{dentro} da nossa teoria dos conjuntos.
+
+\end{document}

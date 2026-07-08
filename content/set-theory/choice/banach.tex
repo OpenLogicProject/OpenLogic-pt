@@ -1,0 +1,75 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{choice}{banach}
+\olsection{Paradoxo de Banach--Tarski}
+
+Também podemos tentar justificar a Escolha, como Boolos tentou
+justificar a Substituição, apelando a considerações \emph{extrínsecas}
+(ver \olref[replacement][extrinsic]{sec}). Afinal, adotar a Escolha
+tem muitas consequências desejáveis: poder comparar qualquer
+par de cardinais; poder bem ordenar qualquer conjunto; poder tratar
+os cardinais como um tipo particular de ordinal; etc. 
+
+Por vezes, contudo, afirma-se que a Escolha tem consequências \emph{indesejáveis}.
+Na maior parte dos casos, isso deve-se a um resultado de
+\cite{BanachTarski1924}. 
+
+\begin{thm}[Paradoxo de Banach--Tarski (em $\ZFC$)]
+Qualquer bola pode ser decomposta num número finito de peças, que podem ser
+remontadas (por rotação e transporte) de modo a formar duas cópias dessa
+bola.
+\end{thm}
+\noindent 
+À primeira vista, isto surpreende. Claramente as duas bolas têm
+\emph{o dobro} do volume da bola original. Mas os movimentos rígidos---rotação e transporte---não alteram o volume. Parece assim que Banach--Tarski nos permite fazer aparecer matéria nova por magia.
+
+Pior ainda.\footnote{Ver \citet[Theorem 3.12]{Wagon2016}.} Raciocínio semelhante mostra que uma ervilha pode ser cortada num número finito de peças,
+que depois podem ser remontadas (por rotação e transporte) de modo a formar um
+objeto com a forma e o tamanho do Big Ben.
+
+Nada disto, porém, vale em $\ZF$ isoladamente.\footnote{Embora
+Banach--Tarski possa ser provado com princípios estritamente mais fracos
+do que a Escolha; ver \citet[303]{Wagon2016}.} Logo temos de decidir:
+rejeitar a Escolha, ou aprender a viver com o ``paradoxo''. 
+
+Sugerimos que devemos aprender a viver com o
+``paradoxo''. De fato, não nos parece propriamente um paradoxo. Em
+particular, não vemos por que haveria de ser mais ou menos paradoxal do que
+qualquer um dos resultados seguintes:\footnote{\citet[276--7]{Potter2004},
+\citet[16]{Weston2003}, \citet[31, 308--9]{Wagon2016} fazem
+pontos semelhantes, com outros exemplos.}
+\begin{enumerate}
+	\item Há tantos pontos no intervalo $(0,1)$ como em $\Real$. 
+	\\\emph{Prova}: considere-se $\tan(\pi(r-\nicefrac{1}{2})))$.
+	\item Há tantos pontos numa reta como num quadrado.
+	\\Ver \olref[his][set][pathology]{sec} e \olref[his][set][cantorplane]{sec}.
+	\item Existem curvas que preenchem o espaço. 
+	\\Ver \olref[his][set][pathology]{sec} e \olref[his][set][hilbertcurve]{sec}.
+\end{enumerate}
+Nenhum destes três resultados requer a Escolha. De fato, já os tratamos simplesmente como matemática surpreendente e bela. Talvez devêssemos adotar
+a mesma atitude perante o Paradoxo de Banach--Tarski.
+
+Com certeza, é necessária aqui uma observação técnica; mas basta manter a cabeça fria. Os movimentos rígidos preservam volume.
+Consequentemente, as cinco\footnote{Enunciamos o Paradoxo em termos de
+``número finito de peças''. De fato, \citet{Robinson1947} provou que a
+decomposição pode ser feita com \emph{cinco} peças
+(mas não menos). Para uma prova, ver \citet[pp.~66--7]{Wagon2016}.} peças
+em que a bola é decomposta não podem todas ser \emph{mensuráveis}.
+Grosso modo, não faz sentido atribuir volume a estas
+peças individualmente. Deve pensar nelas como dispersões infinitas de pontos
+impossíveis de visualizar. Agora, pode ser ``estranho''
+conceber tais conjuntos ``infinitamente dispersos''. Mas a sua existência
+parece seguir da injunção, incorporada em \stagesacc{}, de que se formem
+\emph{todas} as coleções possíveis de conjuntos disponíveis mais cedo.
+
+Se nada disto convence, eis um último argumento (extrínseco) a favor de
+abraçar o Paradoxo de Banach--Tarski. Ele implica de imediato
+a melhor piada matemática de sempre:
+\begin{enumerate}
+	\item[] \emph{Pergunta}. O que é um anagrama de ``Banach--Tarski''? 
+	\item[] \emph{Resposta}. ``Banach--Tarski Banach--Tarski''.
+\end{enumerate}
+
+\end{document}

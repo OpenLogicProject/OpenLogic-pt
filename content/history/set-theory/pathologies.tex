@@ -1,0 +1,121 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{his}{set}{pathology}
+\olsection{Patologias}
+% Só nesta secção: evita \flushbottom a esticar parágrafos quando a figura
+% de Hilbert (indivisível) desequilibra a página; repõe-se \flushbottom no fim.
+\raggedbottom
+% Interlinhado compacto: \PatologiaCompactSpread em settheory-config.sty.
+\begin{patologiascompactas}
+
+Contudo, a definição de um \emph{limite} acabou por permitir construções bastante ``patológicas''.
+\vspace{-1pt}%
+
+Por volta da década de 1830, Bolzano descobriu uma função que era
+\emph{contínua em todo o lado}, mas \emph{não diferenciável em parte nenhuma}.
+(Infelizmente, Bolzano nunca publicou isto; a ideia foi pela primeira vez
+encontrada pelos matemáticos em 1872, graças à descoberta independente
+de Weierstrass da mesma ideia.)\footnote{A história está
+documentada em notas de rodapé extremamente minuciosas do artigo da Wikipédia sobre a
+\href{http://en.wikipedia.org/wiki/Weierstrass_function}{função
+de Weierstrass}.} Isto era, no mínimo, bastante surpreendente.
+É fácil encontrar funções, como $|x|$, que são contínuas
+em todo o lado mas não diferenciáveis num dado ponto. Mas uma
+função contínua em todo o lado e \emph{não diferenciável em parte nenhuma} é uma criatura muito diferente. Considere, por um momento, como
+tentaria desenhar tal função. Para garantir que é contínua, deve
+consegui-la desenhar sem nunca levantar a caneta da página;
+mas para garantir que não é diferenciável em nenhum ponto, teria de mudar
+abruptamente a direção da caneta, constantemente.
+\vspace{-1pt}%
+
+Seguiram-se mais ``patologias''. A 5 de janeiro de 1874, Cantor escreveu uma
+carta a Dedekind, colocando o problema:
+\vspace{-2pt}%
+\begin{quote}
+Poderá uma superfície (digamos um quadrado incluindo o seu contorno) estar correlacionada biunivocamente com uma linha (digamos uma reta incluindo as extremidades) de modo que a cada ponto da superfície corresponda um ponto da
+linha e, reciprocamente, a cada ponto da linha corresponda um
+ponto da superfície?
+
+Ainda me parece, de momento, que a resposta a esta questão é
+muito difícil---embora aqui também se esteja tão impelido a dizer \emph{não}
+que se queira considerar quase supérflua a prova.
+[Citado em \citealt{Gouvea2011}]
+\end{quote}
+% Menos compressão que -4pt: alinha o salto quote→corpo ao ar dos outros parágrafos.
+\vspace{-2pt}%
+Mas, em 1877, Cantor provou que estivera errado. De fato, uma linha
+e um quadrado têm exatamente o mesmo número de pontos. Escreveu a 29
+de junho de 1877 a Dedekind ``\emph{je le vois, mais je ne le crois pas}'';
+isto é, ``eu vejo, mas não acredito''. Na ``história recebida''
+da matemática, isto é frequentemente tomado como indicador de quão
+\emph{literalmente incríveis} eram estes novos resultados para os
+matemáticos da época. (A correspondência é apresentada em
+\citet{Gouvea2011}, e voltaremos a ela em
+\olref[his][set][mythology]{sec}. A prova de Cantor está esboçada em
+\olref[his][set][cantorplane]{sec}.)
+% Espaço local refs (Gouvêa / secções)→«Inspirado…»; ~parskip do livro; compensado na grelha.
+\vspace{0.22\baselineskip}%
+
+Inspirado pelo resultado de Cantor, Peano começou a considerar se
+seria possível mapear suavemente uma linha sobre um plano. Isto
+seria uma \emph{curva que preenche o espaço}. Em \citeyear{Peano1890},
+Peano construiu precisamente tal curva. Isto é verdadeiramente contraintuitivo:
+Euclides tinha definido uma linha como ``comprimento sem largura'' (Livro I,
+Definição 2), mas Peano mostrara que, enrolando adequadamente uma linha,
+o seu comprimento pode transformar-se em largura. Em
+\citeyear{Hilbert1891}, Hilbert descreveu uma curva preenchedora de espaço ligeiramente mais intuitiva,
+juntamente com algumas figuras que a ilustram. A
+curva é construída em sequência, e eis as primeiras seis fases da
+construção:
+
+\end{patologiascompactas}
+% Folga na grelha: compensa quote→corpo (-2pt em vez de -4pt) e 0,22\baselineskip antes de «Inspirado».
+\enlargethispage{\dimexpr 3\baselineskip+7pt\relax}%
+\begin{center}
+\begin{tikzpicture}[scale=0.80]
+\begin{scope}[xshift=20pt, yshift=20pt]
+	\draw [oldiagcolorC, l-system={Hilbert curve, step=40pt, angle=90, axiom=L, order=1}] lindenmayer system;
+\end{scope}
+\begin{scope}[xshift=110pt, yshift=10pt]
+	\draw [oldiagcolorC, l-system={Hilbert curve, step=20pt, angle=90, axiom=L, order=2}] lindenmayer system;
+\end{scope}
+\begin{scope}[xshift=205pt, yshift=5pt]
+	\draw [oldiagcolorC, l-system={Hilbert curve, step=10pt, angle=90, axiom=L, order=3}] lindenmayer system;
+\end{scope}
+\begin{scope}[xshift=2.5pt, yshift=-97.5pt]
+	\draw [oldiagcolorC, l-system={Hilbert curve, step=5pt, angle=90, axiom=L, order=4}] lindenmayer system;
+\end{scope}
+\begin{scope}[xshift=101.25pt, yshift=-98.75pt]
+	\draw [oldiagcolorC, l-system={Hilbert curve, step=2.5pt, angle=90, axiom=L, order=5}] lindenmayer system;
+\end{scope}
+\begin{scope}[xshift=200.625pt, yshift=-99.375pt]
+	\draw [oldiagcolorC, l-system={Hilbert curve, step=1.25pt, angle=90, axiom=L, order=6}] lindenmayer system;
+\end{scope}
+\draw[gray] (0pt,0pt) rectangle (80pt, 80pt);
+\draw[gray] (100pt,0pt) rectangle (180pt, 80pt);
+\draw[gray] (200pt,0pt) rectangle (280pt, 80pt);
+\draw[gray] (0pt,-100pt) rectangle (80pt, -20pt);
+\draw[gray] (100pt,-100pt) rectangle (180pt, -20pt);
+\draw[gray] (200pt,-100pt) rectangle (280pt, -20pt);
+\end{tikzpicture}
+\end{center}
+
+\noindent
+No limite---uma noção que, entretanto, recebera definição rigorosa---todo o quadrado fica inteiramente preenchido na cor !!{colorC}. E, de passagem, a curva de Hilbert é contínua em todo o lado mas não diferenciável em
+parte nenhuma; intuitivamente porque, no limite infinito, a função
+muda abruptamente de direção a cada instante. (Esboçaremos a construção de Hilbert
+com mais pormenor na \olref[his][set][hilbertcurve]{sec}.)
+
+Para o bem ou para o mal, estas construções geométricas ``patológicas''
+foram tratadas como motivo para duvidar de apelos à intuição geométrica. Tornaram-se
+algo próximo de \emph{propaganda} por uma nova forma de fazer
+matemática, que culminaria na teoria dos conjuntos. Na construção posterior do mito em torno do assunto, repetia-se, frequentemente, que estes
+resultados eram ao mesmo tempo perfeitamente rigorosos e perfeitamente chocantes. Serviam
+portanto um duplo propósito: como aviso contra confiar na
+intuição geométrica, e como uma demonstração da fertilidade de novas
+formas de pensar.
+
+\flushbottom
+\end{document}

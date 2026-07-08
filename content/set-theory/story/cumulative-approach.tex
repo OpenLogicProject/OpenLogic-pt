@@ -1,0 +1,90 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{story}{approach}
+\olsection{A Abordagem Cumulativa-Iterativa}
+
+Eis um enunciado um pouco mais completo de como estratificaremos os conjuntos em
+estágios:
+\begin{quote}
+	Os conjuntos formam-se em \emph{estágios}. Para cada estágio $S$, há
+	certos estágios que são \emph{anteriores} a $S$. No estágio $S$, cada
+	coleção constituída por conjuntos formados em estágios anteriores a $S$ é
+	formada num conjunto. Não há conjuntos além dos que são
+	formados nos estágios. \citep[p.~323]{Shoenfield:AST}
+\end{quote} 
+Isto é um esboço da \emph{concepção cumulativa-iterativa do
+conjunto}. Servirá de base à teoria formal dos conjuntos que apresentamos em
+\olref[sth][][]{part}. 
+
+Exploremos isto com um pouco mais de detalhe. Como Shoenfield descreve
+o processo, em cada estágio formamos novos conjuntos a partir dos {conjuntos} que
+tínhamos disponíveis nos estágios anteriores. Assim, na imagem de Shoenfield,
+no estágio inicial, estágio $0$, não há estágios \emph{anteriores},
+e portanto \emph{a fortiori} não há conjuntos disponíveis a partir de
+estágios anteriores.\footnote{Por que deveríamos supor que \emph{existe} um
+primeiro estágio? Ver a nota de rodapé a \stagesord{} em
+\olref[z][story]{sec}.} Logo formamos apenas um conjunto: o conjunto
+sem !!{element}s $\emptyset$. No estágio $1$, está exatamente um conjunto
+disponível a partir de estágios anteriores, logo apenas um conjunto novo é
+$\{\emptyset\}$. No estágio $2$, dois conjuntos estão disponíveis a partir de
+estágios anteriores, e formamos dois conjuntos novos $\{\{\emptyset\}\}$ e
+$\{\emptyset, \{\emptyset\}\}$. No estágio $3$, quatro conjuntos estão disponíveis
+a partir de estágios anteriores, logo formamos doze conjuntos novos\ldots. Assim,
+a imagem cumulativa-iterativa dos conjuntos ficará algo assim
+(com números a indicar estágios):
+\begin{center}
+	\begin{tikzpicture}[scale=0.6]
+	\tikzset{cut_here/.style={densely dotted}}
+	\draw (-4,6) -- (-1, 0)-- (2,6); 
+	\draw[cut_here] (-5,8)--(-4,6);
+	\draw[cut_here] (2,6)--(3,8);
+	\draw(-1.5, 1)--(-0.5, 1);
+	\draw(-2, 2)--(0, 2);
+	\draw(-2.5, 3)--(0.5,3);
+	\draw(-3, 4)--(1, 4);
+	\draw(-3.5, 5)--(1.5, 5);
+	\draw(-4, 6)--(2, 6);
+	\node[label] at (0, 0) {\small 0};
+	\node[label] at (0.5, 1) {\small 1};
+	\node[label] at (1, 2) {\small 2};
+	\node[label] at (1.5, 3) {\small 3};
+	\node[label] at (2, 4) {\small 4};
+	\node[label] at (2.5, 5) {\small 5};
+	\node[label] at (3, 6) {\small 6};
+	\end{tikzpicture}
+\end{center}
+Então: por que deveríamos aceitar esta narrativa? 
+
+Uma razão é que é uma narrativa agradável e tratável. Dado o fim da
+narrativa mais óbvia, isto é, a compreensão ingênua, precisamos de
+algo de substância.
+
+Mas a narrativa não é \emph{apenas} agradável. Temos boa razão para
+acreditar que qualquer teoria dos conjuntos baseada nesta narrativa será
+\emph{consistente}. Eis a razão. 
+
+Dada a concepção cumulativa-iterativa do conjunto, formamos conjuntos em
+estágios; e os seus !!{element}s têm de ser objetos que já estavam
+disponíveis. Assim, para qualquer estágio~$S$, podemos formar o conjunto 
+\[
+	R_S = \Setabs{x}{x \notin x \text{ e $x$ já estava disponível antes de $S$}}
+\]
+O raciocínio envolvido na prova do paradoxo de Russell estabelece agora
+que o próprio $R_S$ não está disponível antes do estágio $S$. E isso não é uma
+contradição. Além disso, se aceitarmos a concepção
+cumulativa-iterativa do conjunto, nem sequer deveríamos ter \emph{esperado} poder
+formar o próprio conjunto de Russell. Pois esse seria o conjunto de todos os
+conjuntos que não são membros de si próprios que ``alguma vez estarão disponíveis''. Em resumo: o
+ fato de, provadamente, não podermos formar o conjunto de Russell não é
+\emph{surpreendente}, dada a narrativa cumulativa-iterativa; é antes
+\emph{previsível}.
+
+%In one sense, then, the cumulative-iterative conception of set yields a response to Russell's Paradox which is rather like the \emph{predicativist}'s response. After all, the predicativist said that the collection of all non-self-membered sets$_n$ is a set$_{n+1}$, and this set$_n$ will not be self-membered. (Indeed, most predicativists will treat it as \emph{ungrammatical} to try to ask whether a set is self-membered.)
+%
+%But there is an important difference between the cumulative-iterative approach and the predicativist approach: the cumulative-iterative approach treats all of our entities as being \emph{of the same kind}. The predicativist will presumably have an empty set$_0$ (O.s.\@, a set$_0$ with no !!{element}s), and an empty set$_1$ (O.s.\@, a set$_1$ with no !!{element}s), and these will be \emph{different entities}. But on the cumulative-iterative approach, there is just one empty set, $\emptyset$, and it will be available at every stage of the hierarchy. 
+
+%Indeed, the Axiom of Extensionality, stated at the start of this chapter, will hold true of the elements in this hierarchy (so that there can be \emph{only one} ``empty'' set). But I do not intend to use the cumulative-iterative conception to justify Extensionality (see \cite{Boolos1971}). Again: I suggest that we should accept Extensionality, just because we are interested in extensional collections. 
+
+\end{document}

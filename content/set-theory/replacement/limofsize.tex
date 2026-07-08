@@ -1,0 +1,61 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{replacement}{limofsize}
+\olsection{Limitação de Tamanho}
+
+Talvez a tentativa mais comum de oferecer uma justificação ``intrínseca'' da
+Substituição passe pela seguinte noção:
+\begin{enumerate}
+	\item[] \limofsize. Quaisquer coisas formam um conjunto, desde que não haja
+	demasiadas.
+\end{enumerate}
+Este princípio vindicará de imediato a Substituição. Afinal, qualquer
+conjunto formado por Substituição não pode ser maior do que o conjunto a partir do qual
+foi formado. Enunciado com precisão: suponha que forma um conjunto
+$\funimage{\tau}{A} = \Setabs{\tau(x)}{x \in A}$ usando Substituição;
+então $\cardle{\funimage{\tau}{A}}{A}$; logo, se os !!{element}os de $A$
+não eram demasiado numerosos para formar um conjunto, as suas imagens não são demasiado numerosas
+para formar $\funimage{\tau}{A}$. 
+
+A dificuldade óbvia em invocar \limofsize{} para justificar a
+Substituição é que \emph{ainda} não estabelecemos qualquer princípio
+como \limofsize. Além disso, quando contamos a nossa história sobre a
+concepção cumulativa-iterativa de conjunto em
+\crefrange{sth:story::chap}{sth:z::chap}, nada \emph{sugeriu}
+a direção de \limofsize. Isto é, de fato, precisamente a razão pela qual Boolos
+escreveu num dado momento: ``Talvez se possa concluir que há pelo menos
+dois pensamentos `por detrás' da teoria de conjuntos'' \citeyearpar[p.~19]{Boolos1989}. Por um lado, as ideias em torno da concepção cumulativa-iterativa
+de conjunto destinam-se a vindicar~$\Z$. Por outro,
+\limofsize{} visa vindicar a Substituição. 
+
+Mas a questão não é apenas termos estado até aqui \emph{em silêncio}
+sobre \limofsize. Antes, a questão é que \limofsize{} (tal como acabamos de o
+formular) parece assentar mal com a noção cumulativa-iterativa
+de conjunto. Afinal, não menciona nada sobre a ideia de conjuntos
+formados em \emph{estágios}.
+
+Isto não surpreende muito, dada a história destes
+``dois pensamentos'' (O.s.\@, a concepção cumulativa-iterativa de conjunto,
+e \limofsize). Estes ``dois pensamentos'' acabam por ser dois
+projetos bastante diferentes para bloquear os paradoxos da teoria de conjuntos.
+A noção cumulativa-iterativa de conjunto bloqueia o paradoxo de Russell
+dizendo, em traços largos: \emph{nunca deveríamos ter esperado que existisse um conjunto de Russell,
+porque não seria ``formado'' em nenhum estágio}. Por contraste,
+\limofsize{} visa excluir o conjunto de Russell, dizendo, em traços largos:
+\emph{nunca deveríamos ter esperado que existisse um conjunto de Russell,
+porque seria demasiado grande}. 
+
+Posto assim, sejamos diretos: considerada como resposta aos
+paradoxos, \limofsize{} carece de \emph{muito} mais
+justificação. Considere, por exemplo, esta versão do paradoxo de Russell: \emph{nenhum pug fareja exatamente os pugs que não se cheiram
+a si próprios} (ver \olref[sth][story][rus]{sec}). Se perguntar ``por que não há tal pug?'', não é boa resposta dizer-lhe que tal pug teria de cheirar demasiados
+pugs. Logo por que seria boa explicação intuitiva, da
+não existência de um conjunto de Russell, que teria de ser ``demasiado grande''
+para existir? 
+
+Em suma, é perdoável estar um pouco perplexo quanto à motivação ``intuitiva''
+para \limofsize. 
+
+\end{document}

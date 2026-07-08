@@ -1,0 +1,86 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{choice}{hartogs}
+\olsection{Comparabilidade e Lema de Hartogs}
+
+Isto é o lado positivo. Eis o lado negativo. Sem Escolha, as coisas
+ficam \emph{complicadas}. Para ver por que, eis um belo resultado devido a
+\cite{Hartogs1915}:
+
+\begin{lem}[\emph{em $\ZF$}]\ollabel{HartogsLemma}
+Para qualquer conjunto $A$, existe um ordinal $\alpha$ tal que $\cardnless{\alpha}{A}$
+\end{lem}
+
+\begin{proof}
+Se $B \subseteq A$ e $R \subseteq B^2$, então $\tuple{B, R} \subseteq
+V_{\setrank{A}+4}$ por
+\olref[ord-arithmetic][using-addition]{rankcomputation}. Logo, usando
+Separação, considere-se:
+\[
+	C = \Setabs{\tuple{B, R} \in V_{\setrank{A}+5}}{B\subseteq A 
+	\text{ e $\tuple{B, R}$ é uma boa ordenação}}
+\]
+Usando Substituição e
+\olref[ordinals][ordtype]{thmOrdinalRepresentation}, forme-se o conjunto: 
+\[
+	\alpha = \Setabs{\ordtype{B, R}}{\tuple{B, R} \in C}.
+\]
+Por \olref[ordinals][basic]{corordtransitiveord}, $\alpha$ é um
+ordinal, pois é um conjunto transitivo de ordinais. De fato, se
+$\gamma \in \beta \in \alpha$, então $\beta = \ordtype{B, R}$ para algum
+$B \subseteq R$, donde $\gamma = \ordtype{B_b, R_b}$ para algum $b
+\in B$ por \olref[ordinals][iso]{wellordinitialsegment}, logo
+$\gamma \in \alpha$. 
+
+Por redução ao absurdo, suponhamos que existe !!a{injection} $f \colon \alpha \to A$.
+Então, onde:
+\begin{align*}
+	B &= \ran{f}\\
+	R &= \Setabs{\tuple{f(\alpha), f(\beta)} \in A \times A}{\alpha \in \beta}.
+\end{align*}
+Claramente $\alpha = \ordtype{B, R}$ e $\tuple{B, R} \in C$. Logo $\alpha
+\in \alpha$, o que é contradição.
+\end{proof}
+
+Isto implica um resultado profundo:
+
+\begin{thm}[\emph{em $\ZF$}]
+As afirmações seguintes são equivalentes:
+\begin{enumerate}
+	\item\ollabel{equivwo} O Axioma da Boa Ordenação
+	\item\ollabel{equivcompare} Ou $\cardle{A}{B}$ ou
+	$\cardle{B}{A}$, para quaisquer conjuntos $A$ e $B$
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+\emph{\olref{equivwo} $\Rightarrow$ \olref{equivcompare}.} Fixem-se $A$ e
+$B$. Invocando \olref{equivwo}, existem boas ordenações $\tuple{A, R}$
+e $\tuple{B, S}$. Invocando
+\olref[ordinals][ordtype]{thmOrdinalRepresentation}, sejam $f \colon
+\alpha \to \tuple{A, R}$ e $g \colon \beta \to \tuple{B, S}$
+isomorfismos. Por \olref[sth][ordinals][basic]{ordinalsaresubsets}, ou $\alpha \subseteq \beta$ ou $\beta \subseteq \alpha$. Se $\alpha \subseteq \beta$, então $\comp{f^{-1}}{g} \colon A \to B$ é !!a{injection}, logo
+$\cardle{A}{B}$; analogamente, se $\beta \subseteq \alpha$ então $\cardle{B}{A}$.
+
+\emph{\olref{equivcompare} $\Rightarrow$ \olref{equivwo}.} Fixe-se $A$; por
+\olref{HartogsLemma} existe algum ordinal $\beta$ tal que
+$\cardnless{\beta}{A}$. Invocando \olref{equivcompare}, temos
+$\cardle{A}{\beta}$. Logo existe alguma !!{injection} $f \colon A \to
+\beta$, e podemos usar esta injecção para bem ordenar os elementos de
+$A$, definindo uma ordem $\Setabs{\tuple{a, b} \in A \times A}{f(a)
+\in f(b)}$.
+\end{proof}
+\noindent
+Como consequência imediata: se a Boa Ordenação falha, então alguns conjuntos
+são \emph{literalmente incomparáveis} quanto ao tamanho. Assim, se
+a Boa Ordenação falha, a aritmética cardinal transfinita ficará
+complicada. Por exemplo, teremos de abandonar a ideia de que, se $A$ e
+$B$ são infinitos, então $\cardeq{\cardeq{A \disjointsum B}{A \times
+B}}{M}$, onde $M$ é o maior de $A$ e $B$ (ver
+\olref[card-arithmetic][simp]{cardplustimesmax}). O problema é
+simples: se não podemos \emph{comparar} o tamanho de $A$ e $B$, então não faz
+sentido perguntar qual é o maior.
+
+\end{document}

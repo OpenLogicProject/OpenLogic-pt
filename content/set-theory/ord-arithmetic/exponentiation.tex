@@ -1,0 +1,57 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{ord-arithmetic}{expo}
+\olsection{Exponenciação Ordinal}
+
+Passamos agora à exponenciação ordinal. Infelizmente, não há uma definição
+\emph{simpática} sintética para a exponenciação ordinal.
+
+Certo que \emph{existem} definições sintéticas explícitas. Eis uma.
+Seja $\text{finfun}(\alpha,\beta)$ o conjunto de todas as funções $f
+\colon \alpha \to \beta$ tais que $\Setabs{\gamma \in
+\alpha}{f(\gamma) \neq 0}$ é equipotente a algum número natural.
+Defina-se um bom ordenamento em $\text{finfun}(\alpha,\beta)$ por $f
+\sqsubset g$ sse $f \neq g$ e $f(\gamma_0) < g(\gamma_0)$, onde
+$\gamma_0 = \text{max}\Setabs{\gamma \in \alpha}{f(\gamma) \neq
+g(\gamma)}$. Então pode definir-se $\ordexpo{\alpha}{\beta}$ como
+$\ordtype{\text{finfun}(\alpha, \beta), \sqsubset}$. Potter usa
+esta definição explícita e explica de seguida:
+\begin{quote}
+	A escolha desta ordenação determina-se unicamente pelo desejo de
+	obter uma definição da exponenciação ordinal que obedeça à
+	condição recursiva adequada\ldots, e é muito mais difícil de
+	visualizar do que a soma ou o produto ordenados.
+	\citep[p.~199]{Potter2004}
+\end{quote}
+Exatamente. Explicamos a adição como ``uma cópia de $\alpha$ seguida de uma
+cópia de $\beta$'', e a multiplicação como ``uma $\beta$-sucessão de
+cópias de $\alpha$''. Mas não temos nada de sucinto a dizer sobre
+$\text{finfun}(\alpha, \gamma)$. Por isso, apresentaremos a
+definição da exponenciação ordinal apenas \emph{por} recursão transfinita, O.s.:
+
+\begin{defn}\ollabel{ordexporecursion}
+\begin{align*}
+	\ordexpo{\alpha}{0} &= 1\\
+	\ordexpo{\alpha}{\beta\ordplus 1} &=\ordexpo{\alpha}{\beta} \ordtimes \alpha\\
+	\ordexpo{\alpha}{\beta} &= \bigcup_{\delta < \beta}\ordexpo{\alpha}{\delta}& & \text{quando $\beta$ é um ordinal limite}
+\end{align*}
+\end{defn}
+
+Se trabalhássemos \emph{como} teoristas de conjuntos, poderíamos querer explorar
+algumas propriedades da exponenciação ordinal. Mas pouco mais temos a acrescentar,
+salvo notar o fato pouco surpreendente de que a exponenciação ordinal não comuta.
+Assim $\ordexpo{2}{\omega} =
+\bigcup_{\delta < \omega}\ordexpo{2}{\delta} = \omega$, enquanto
+$\ordexpo{\omega}{2} = \omega \ordtimes \omega$. Mas então não se deve
+\emph{esperar} que comute, pois já não comuta nos naturais: $\ordexpo{2}{3} = 8 < 9 = \ordexpo{3}{2}$.
+
+\begin{prob}
+Usando indução transfinita, prove que, se se define
+$\ordexpo{\alpha}{\beta} = \ordtype{\text{finfun}(\alpha, \beta),
+\sqsubset}$, obtêm-se as equações recursivas de
+\olref[sth][ord-arithmetic][expo]{ordexporecursion}.
+\end{prob}
+
+\end{document}

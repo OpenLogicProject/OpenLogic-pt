@@ -1,0 +1,127 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{spine}{rank}
+\olsection{Posto}
+
+Tendo definido os estágios como os $V_\alpha$ e sabendo
+que todo o conjunto é subconjunto de algum estágio, podemos definir o
+\emph{posto} de um conjunto. Intuitivamente, o posto de $A$ é o primeiro momento
+em que $A$ é formado. Com mais precisão:
+
+\begin{defn}\ollabel{defnsetrank}
+Para cada conjunto $A$, $\setrank{A}$ é o menor ordinal $\alpha$ tal que $A
+\subseteq V_\alpha$.
+\end{defn}
+\begin{prop}\ollabel{ranksexist}
+	$\setrank{A}$ existe, para qualquer $A$.
+\end{prop}
+\begin{proof}
+	Fica como exercício.
+\end{proof}
+\begin{prob}
+	Prove \olref[sth][spine][rank]{ranksexist}.	
+\end{prob}
+\noindent 
+A boa ordenação dos postos permite provar alguns resultados importantes:
+\begin{prop}\ollabel{valphalowerrank}
+Para qualquer ordinal $\alpha$, $V_\alpha = \Setabs{x}{\setrank{x} \in \alpha}$.
+\end{prop}
+
+\begin{proof}
+Se $\setrank{x} \in \alpha$ então $x \subseteq V_{\setrank{x}} \in
+V_\alpha$, logo $x \in V_\alpha$ pois $V_\alpha$ é potente (invocando
+\olref[Valphabasic]{Valphabasicprops} várias vezes). Reciprocamente, se $x \in V_\alpha$ então $x \subseteq V_\alpha$, logo $\setrank{x} \leq \alpha$; agora uma indução transfinita simples mostra que $x \notin V_\alpha$. 
+\end{proof}
+\begin{prob}
+	Complete a indução transfinita simples mencionada na \olref[sth][spine][rank]{valphalowerrank}.
+\end{prob}
+
+\begin{prop}\ollabel{rankmemberslower}
+Se $B \in A$, então $\setrank{B} \in \setrank{A}$.
+\end{prop}
+
+\begin{proof}
+$A \subseteq V_{\setrank{A}} = \Setabs{x}{\setrank{x} \in
+\setrank{A}}$ por \olref{valphalowerrank}.
+\end{proof}
+\noindent
+Com este fato, podemos estabelecer um resultado que nos permite provar
+afirmações sobre \emph{todos os conjuntos} por uma forma de indução:
+
+\begin{thm}[Esquema de indução-$\in$] 
+Para qualquer fórmula $\phi$:
+\[
+	\forall A((\forall x \in A)\phi(x) \lif \phi(A)) \lif \forall A \phi(A).
+\]
+\end{thm}
+
+\begin{proof}
+Provaremos a contrapositiva. Suponhamos, pois, $\lnot \forall A
+\phi(A)$. Pela indução transfinita
+(\olref[ordinals][basic]{ordinductionschema}), existe
+algum não-$\phi$ de posto mínimo possível; O.s.\@, algum $A$
+tal que $\lnot \phi(A)$ e $\forall x(\setrank{x} \in \setrank{A}
+\lif \phi(x))$. Ora, se $x \in A$ então $\setrank{x} \in
+\setrank{A}$, por \olref{rankmemberslower}, logo $\phi(x)$; O.s.\@, $(\forall x \in
+A)\phi(x) \land \lnot \phi(A)$.
+\end{proof}\noindent Eis uma forma informal de interpretar este resultado
+poderoso. Digamos que $\phi$ é \emph{hereditária} sse sempre que todo o
+!!{element} de um conjunto é $\phi$, o próprio conjunto é $\phi$. Então
+a indução-$\in$ diz o seguinte: se $\phi$ é hereditária,
+todo o conjunto é $\phi$.
+
+Para concluir a discussão dos postos (por agora), provaremos algumas
+afirmações que já antecipamos várias vezes. 
+
+\begin{prop}\ollabel{ranksupstrict}
+$\setrank{A} = \supstrict_{x \in A}\setrank{x}$.
+\end{prop}
+
+\begin{proof}
+Seja $\alpha = \supstrict_{x \in A}\setrank{x}$. Por
+\olref{rankmemberslower}, $\alpha \leq \setrank{A}$. Mas se $x \in A$
+então $\setrank{x} \in \alpha$, logo $x \in V_\alpha$ por \olref{valphalowerrank}, e portanto $A
+\subseteq V_\alpha$, O.s.\@, $\setrank{A} \leq \alpha$. Logo
+$\setrank{A} = \alpha$.
+\end{proof}
+
+\begin{cor}\ollabel{ordsetrankalpha}
+Para qualquer ordinal $\alpha$, $\setrank{\alpha} = \alpha$.
+\end{cor}
+
+\begin{proof}
+Suponhamos, por indução transfinita, que $\setrank{\beta} = \beta$ para
+todo o $\beta \in \alpha$. Ora, $\setrank{\alpha} = \supstrict_{\beta \in
+\alpha}\setrank{\beta} = \supstrict_{\beta \in \alpha}\beta = \alpha$
+por \olref{ranksupstrict}.
+%	Primeiro, notemos que $\setrank{\alpha} \neq \beta$ para qualquer $\beta \in
+%	\alpha$. Caso contrário teríamos $\beta = \setrank{\beta} \in
+%	\setrank{\alpha} = \beta$ por \olref{rankmemberslower}, O.s.\@,
+%	$\beta \in \beta$, uma contradição. 
+%
+%	Notemos agora que $\alpha \subseteq V_\alpha$. Pois $\alpha =
+%	\Setabs{\beta}{\beta \in \alpha}$ por
+%	\olref[sfr][ordinals][basic]{ordissetofsmallerord}. E se
+%	$\beta \in \alpha$ então $\beta \subseteq V_{\setrank{\beta}} =
+%	V_\beta \in V_\alpha$, logo $\beta \in V_\alpha$, por
+%	\olref[sfr][spine][Valphabasic]{Valphabasicprops} duas vezes. 
+\end{proof}
+
+Finalmente, eis uma prova rápida do resultado prometido no fim de
+\olref[foundation]{sec}, a saber que $\ZFminus$ prova a implicação
+$\emph{Regularidade} \Rightarrow \emph{Fundação}$. (Notemos que a
+noção de «posto» e \olref{rankmemberslower} estão disponíveis para uso
+nesta prova pois---como indicamos no início deste texto---podem ser apresentadas usando $\ZFminus + \text{Regularidade}$.)
+
+\begin{prop}[trabalhando em $\ZFminus + \text{Regularidade}$]\ollabel{zfminusregularityfoundation} A Fundação vale.
+\end{prop}
+
+\begin{proof}
+Fixemos $A \neq \emptyset$, e algum $B \in A$ de posto mínimo possível. Se
+$c \in B$ então $\setrank{c} \in \setrank{B}$ por
+\olref{rankmemberslower}, logo $c \notin A$ pela escolha de $B$.
+\end{proof}
+
+\end{document}

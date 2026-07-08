@@ -1,0 +1,209 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{ordinals}{basic}
+\olsection{Propriedades Básicas dos Ordinais}
+
+Observamos que os primeiros ordinais são os números naturais. A razão
+principal para desenvolver uma teoria dos ordinais é alargar o
+princípio de indução que vale nos números naturais. Iremos construir
+isso através duma sucessão de resultados elementares.
+
+\begin{lem}\ollabel{ordmemberord}
+Todo o !!{element} de um ordinal é um ordinal.
+\end{lem}
+
+\begin{proof}
+Seja $\alpha$ um ordinal com $b \in \alpha$. Como $\alpha$ é
+transitivo, $b \subseteq \alpha$. Logo $\in$ bem ordena $b$ pois $\in$
+bem ordena $\alpha$.
+
+Para ver que $b$ é transitivo, suponha $x \in c \in b$. Logo $c \in \alpha$ pois $b
+\subseteq \alpha$. Outra vez, como $\alpha$ é transitivo, $c \subseteq
+\alpha$, de modo que $x \in \alpha$. Logo $x, c, b \in \alpha$. Mas $\in$
+bem ordena $\alpha$, logo $\in$ é uma relação transitiva em
+$\alpha$ por \olref[sth][ordinals][wo]{wo:strictorder}. Logo, como $x
+\in c \in b$, temos $x \in b$. Generalizando, $c \subseteq b$
+\end{proof}
+
+\begin{cor}\ollabel{ordissetofsmallerord}
+$\alpha = \Setabs{\beta \in \alpha}{\beta \text{ é um ordinal}}$, para
+qualquer ordinal~$\alpha$
+\end{cor}
+
+\begin{proof}
+Imediato a partir de \olref{ordmemberord}.
+\end{proof}
+
+A ideia grosseira dos dois resultados principais seguintes,
+\olref{ordinductionschema} e \olref{ordtrichotomy}, é que os
+ordinais eles próprios são bem ordenados por pertença:
+
+\begin{thm}[Indução Transfinita]\ollabel{ordinductionschema}
+Para qualquer fórmula $\phi(x)$: 	
+\[
+	\text{se }\exists \alpha \phi(\alpha)\text{, então }\exists \alpha(\phi(\alpha)
+	\land  (\forall \beta \in \alpha) \lnot \phi(\beta))
+\]
+onde os quantificadores exibidos ficam implicitamente restritos a ordinais.
+\end{thm}
+
+\begin{proof}
+%\olref{ordinductionschema1}. 
+Suponha $\phi(\alpha)$, para algum ordinal $\alpha$. Se $ (\forall \beta
+\in \alpha) \lnot \phi(\beta)$, terminamos. Caso contrário, como
+$\alpha$ é um ordinal, tem um !!{element} $\in$-mínimo que verifica
+$\phi$, e este é um ordinal por \olref{ordmemberord}.
+%	\olref{ordinductionschema2}. Suponha que existe algum ordinal
+%	$\gamma$ tal que $\lnot\phi(\gamma)$. Então, por
+%	\olref{ordinductionschema1}, existe um ordinal $\in$-minimal
+%	$\alpha$ para o qual $\lnot\phi(\alpha)$. Logo $(\forall \beta <
+%	\alpha) \phi(\beta)$, tornando falso o antecedente do condicional.
+\end{proof}
+\noindent
+Repare que podemos exprimir igualmente \olref{ordinductionschema} como o
+esquema:
+\[
+\text{se }\forall \alpha((\forall \beta \in \alpha)\phi(\beta) \lif 
+\phi(\alpha))\text{, então }\forall \alpha\phi(\alpha)
+\]
+tomando simplesmente $\lnot\phi(\alpha)$ no \olref{ordinductionschema}, e depois fazendo manipulações lógicas elementares.
+
+\begin{thm}[Tricotomia]\ollabel{ordtrichotomy} 
+$\alpha \in \beta \lor \alpha = \beta \lor \beta \in \alpha$, para quaisquer
+ordinais $\alpha$ e $\beta$. 
+\end{thm}
+
+\begin{proof}
+A prova é por dupla indução, isto é, usando
+\olref{ordinductionschema} duas vezes. Diga-se que $x$ é \emph{comparável}
+com $y$ sse $x \in y \lor x = y \lor y \in x$. 
+
+Para a indução, suponha que todo o ordinal em~$\alpha$ é comparável
+com \emph{todo} o ordinal. Para uma segunda indução, suponha que
+$\alpha$ é comparável com todo o ordinal em~$\beta$. Mostraremos que
+$\alpha$ é comparável com~$\beta$. Por indução em~$\beta$, seguirá que
+$\alpha$ é comparável com todo o ordinal; e por indução em~$\alpha$,
+\emph{todo} o ordinal é comparável com \emph{todo} o ordinal, como
+pretendido. Basta supor que $\alpha \notin \beta$ e $\beta \notin
+\alpha$, e mostrar que $\alpha = \beta$. 
+
+Para mostrar que $\alpha \subseteq \beta$, fixe $\gamma \in \alpha$; este
+é um ordinal por \olref{ordmemberord}. Logo, pela primeira hipótese de
+indução, $\gamma$ é comparável com $\beta$. Mas se $\gamma
+= \beta$ ou $\beta \in \gamma$ então $\beta \in \alpha$ (invocando a
+transitividade de $\alpha$ se necessário), contra a suposição; logo $\gamma \in \beta$. Generalizando, $\alpha \subseteq
+\beta$.
+
+Raciocínio exatamente análogo, usando a segunda hipótese de indução,
+mostra que $\beta \subseteq \alpha$. Logo $\alpha = \beta$.
+\end{proof}\noindent Assim, por vezes escreveremos $\alpha <\beta$
+em vez de $\alpha \in \beta$, já que $\in$ se comporta como relação de
+ordem. Não há razões profundas para além da familiaridade, e
+porque é mais fácil escrever $\alpha \leq \beta$ do que $\alpha \in
+\beta \lor \alpha = \beta$.\footnote{Poderíamos escrever $\alpha
+\mathrel{\underline{\in}} \beta$; mas isso seria totalmente não
+convencional.}
+
+Eis duas consequências rápidas dos últimos resultados, a primeira das
+quais põe a nova notação em prática:
+
+\begin{cor}\ollabel{ordordered}
+Se $\exists \alpha\phi(\alpha)$, então $\exists \alpha(\phi(\alpha)
+\land \forall \beta(\phi(\beta) \lif \alpha \leq \beta))$.
+Além disso, para quaisquer ordinais $\alpha, \beta, \gamma$, tanto $\alpha
+\notin \alpha$ como $\alpha \in \beta \in \gamma \lif \alpha \in
+\gamma$. 
+\end{cor}
+
+\begin{proof}
+Tal como \olref[wo]{wo:strictorder}.
+\end{proof}
+
+\begin{prob}
+Complete o raciocínio ``exatamente análogo'' na prova de
+\olref[sth][ordinals][basic]{ordtrichotomy}.
+\end{prob}
+
+\begin{cor}\ollabel{corordtransitiveord}
+$A$ é um ordinal sse $A$ é um conjunto transitivo de ordinais.
+\end{cor}
+
+\begin{proof}
+\emph{Da esquerda para a direita.} Por \olref{ordmemberord}. \emph{Da direita para a esquerda.}
+Se $A$ é um conjunto transitivo de ordinais, então $\in$ bem ordena $A$ por
+\olref{ordinductionschema} e \olref{ordtrichotomy}.
+\end{proof}
+
+Agora, descrevemos 
+\olref{ordinductionschema} e \olref{ordtrichotomy} como dizendo que $\in$ bem ordena os ordinais. Contudo, temos
+de ser \emph{muito cautelosos} com este tipo de afirmação, graças ao
+resultado seguinte:
+
+\begin{thm}[Paradoxo de Burali-Forti]\ollabel{buraliforti}
+Não existe conjunto de todos os ordinais
+\end{thm}
+
+\begin{proof}
+Por redução ao absurdo, suponha $O$ o conjunto de todos os ordinais. Se $\alpha \in
+\beta \in O$, então $\alpha$ é um ordinal, por \olref{ordmemberord}, logo
+$\alpha \in O$. Logo $O$ é transitivo, e portanto $O$ é um ordinal por
+\olref{corordtransitiveord}. Daí $O \in O$, contradizendo
+\olref{ordordered}. 
+\end{proof}
+\noindent
+Este resultado deve o nome a \citeauthor{Burali-Forti1897}. Mas foi Cantor em 1899---numa carta a Dedekind---quem viu
+pela primeira vez com clareza a \emph{contradição} em supor que existe um conjunto de
+todos os ordinais. Como van
+Heijenoort explica:
+\begin{quote}
+  O próprio Burali-Forti considerou a contradição como estabelecendo,
+  por \emph{reductio ad absurdum}, o resultado de que a ordenação natural
+  dos ordinais é apenas uma ordenação parcial.
+  \citep[p.~105]{Heijenoort1967}
+\end{quote}
+Deixando de lado o erro de Burali-Forti, podemos resumir o precedente como segue. Os ordinais são conjuntos que individualmente são bem ordenados por
+pertença, e coletivamente são bem ordenados por pertença (sem coletivamente constituírem um conjunto). 
+
+Para concluir, eis mais propriedades básicas dos
+ordinais que seguem de \olref{ordinductionschema} e
+\olref{ordtrichotomy}. 
+
+\begin{prop}
+Toda a sucessão estritamente descendente de ordinais é finita.
+\end{prop}
+
+\begin{proof}
+Toda a sucessão infinita estritamente descendente de ordinais $\alpha_0 > \alpha_1 > \alpha_2 > \ldots$ não tem membro
+$<$-mínimo, contradizendo \olref{ordinductionschema}.
+\end{proof}
+
+\begin{prop}\ollabel{ordinalsaresubsets}
+$\alpha \subseteq \beta \lor \beta \subseteq \alpha$, para quaisquer ordinais
+$\alpha, \beta$.
+\end{prop}
+
+\begin{proof}
+Se $\alpha \in \beta$, então $\alpha \subseteq \beta$ pois $\beta$ é
+transitivo. Analogamente, se $\beta \in \alpha$, então $\beta \subseteq
+\alpha$. E se $\alpha = \beta$, então $\alpha \subseteq \beta$ e
+$\beta \subseteq \alpha$. Logo, por \olref{ordtrichotomy} terminamos.
+\end{proof}
+
+\begin{prop}\ollabel{ordisoidentity}
+$\alpha = \beta$ sse $\ordeq{\alpha}{\beta}$, para quaisquer ordinais
+$\alpha, \beta$.
+\end{prop}
+
+\begin{proof}
+Os ordinais são boas ordenações; logo isto é imediato da Tricotomia
+(\olref[basic]{ordtrichotomy}) e de
+\olref[iso]{wellordnotinitial}. 
+\end{proof}
+
+\begin{prob}\ollabel{probunionordinalsordinal}
+Prove que, se cada membro de $X$ é um ordinal, então $\bigcup X$ é um ordinal.
+\end{prob}
+
+\end{document}

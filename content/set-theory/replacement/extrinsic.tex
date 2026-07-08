@@ -1,0 +1,86 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{replacement}{extrinsic}
+\olsection[Considerações Extrínsecas]{Considerações Extrínsecas sobre a Substituição}
+
+Começamos por considerar uma tentativa \emph{extrínseca} de justificar a
+Substituição. Boolos sugere uma, como segue. 
+\begin{quote}
+  [\ldots] a razão para adotar os axiomas da substituição é bastante
+  simples: têm muitas consequências desejáveis e (aparentemente) nenhuma
+  indesejável. Para além de teoremas sobre a concepção iterativa,
+  as consequências incluem uma teoria satisfatória, embora não ideal,
+  dos números infinitos, e um resultado altamente desejável que
+  justifica definições indutivas em relações bem fundadas.
+  \citep[229]{Boolos1971}
+\end{quote}		
+A ideia central de Boolos é que devemos justificar a Substituição pelos seus
+frutos. E os frutos específicos que menciona são os que temos
+discutido nos últimos capítulos. A Substituição permitiu-nos provar
+que os ordinais de von Neumann eram excelentes sucedâneos da ideia
+de um tipo de boa ordenação (isto é a nossa ``teoria satisfatória, embora não ideal,
+dos números infinitos''). A Substituição permitiu-nos também definir
+os $V_\alpha$, estabelecer a noção de posto e provar a
+indução-$\in$ (isto corresponde aos nossos ``teoremas sobre a concepção
+iterativa''). Por fim, a Substituição permite provar o teorema de recursão transfinita (isto são as ``definições indutivas em relações bem
+fundadas''). 
+
+São, de fato, consequências desejáveis. Mas estas consequências desejáveis
+bastam para \emph{justificar} a Substituição? \emph{Não}. Ou pelo
+menos, não de forma direta. 
+
+Eis um problema simples. Embora tenhamos enunciado algumas consequências desejáveis da Substituição, muitas delas poderiam ter sido obtidas por
+outras vias. Isto não é tão conhecido como devia, pelo que convém explicar a situação. 
+
+Existe uma teoria simples de conjuntos, a Teoria dos Níveis, ou $\LT$ abreviadamente.\footnote{As primeiras versões de $\LT$ são apresentadas por \citet{Montague1965} e \citet{Scott1974}; foi simplificada e recebeu tratamento de livro por \citet{Potter2004}; e \citet{ButtonLT1} simplificou recentemente ainda mais $\LT$.} Os axiomas de $\LT$ são apenas Extensionalidade, Separação e a afirmação de que todo o conjunto é subconjunto de algum \emph{nível}, onde ``nível'' é definido de modo astuto para que os níveis se comportem como os nossos amigos, os $V_\alpha$. Logo $\ZF$ prova $\LT$; mas $\LT$ é \emph{muito} mais fraca que $\ZF$. De fato, $\LT$ não dá Pares, Conjuntos potencia, Infinito nem Substituição. Seja $\Zr$ o resultado de acrescentar Infinito e Conjuntos potencia a $\LT$; isto fornece também Pares, logo $\Zr$ é pelo menos tão forte quanto $\Z$. Mas, de fato, $\Zr$ é estritamente mais forte que $\Z$, pois acrescenta a afirmação de que todo o conjunto tem posto (daí a sugestão de o chamar $\Zr$). De fato, $\Zr$ fornece: uma teoria perfeitamente satisfatória dos ordinais;
+resultados que estratificam a hierarquia em estágios bem ordenados; uma prova
+da indução-$\in$; e uma \emph{versão} da recursão transfinita. 
+
+Em
+resumo: embora Boolos não soubesse disto, todas as consequências desejáveis
+que menciona poderiam ter sido obtidas \emph{sem} Substituição; bastaria usar $\Zr$ em vez de $\Z$. 
+
+(Diante disto, por que seguimos a rota convencional, ensinando-lhe $\ZF$ em vez de $\LT$ e $\Zr$? Há duas razões. Primeiro: por razões puramente históricas, começar por $\LT$ é pouco standard; queríamos
+dotá-lo de ferramentas para ler discussões mais standard de teoria de conjuntos. Segundo: quando estiver preparado para
+apreciar $\LT$ e $\Zr$, pode simplesmente ler \citealt{Potter2004} e \citealt{ButtonLT1}.)
+
+Naturalmente, como $\Zr$ é estritamente mais fraca que $\ZF$, há resultados que
+$\ZF$ prova e que $\Zr$ deixa em aberto. Logo alguém poderia tentar justificar a
+Substituição em bases extrínsecas apontando para um desses resultados.
+Mas, uma vez que saiba usar $\Zr$, é bastante difícil encontrar muitos
+exemplos de coisas que (a) ficam decididas pela Substituição mas não
+de outro modo, e (b) são intuitivamente verdadeiras. (Para mais sobre isto, veja
+\citealt[\S13.2]{Potter2004}.)
+
+A conclusão é esta. Para fornecer uma justificação extrínseca convincente da Substituição, seria preciso encontrar um resultado que
+\emph{não} possa ser obtido sem Substituição. E isso não é empresa fácil. 
+
+Consideremos um problema adicional que surge para qualquer tentativa de oferecer
+uma justificação puramente extrínseca da Substituição. (Este problema é
+talvez mais fundamental que o primeiro.) Boolos não se limita a observar
+que a Substituição tem muitas consequências desejáveis. Afirma também
+que a Substituição ``(aparentemente) não tem'' consequências indesejáveis. Mas
+esta ressalva entre parênteses, ``aparentemente'', é seguramente absolutamente
+crucial.
+
+Relembre como chegamos aqui: a Compreensão ingênua encontrou
+inconsistência, e respondemos a essa inconsistência abraçando a
+concepção cumulativa-iterativa de conjunto. Esta concepção vem equipada
+com uma narrativa que, esperamos, nos assegura a sua consistência. Mas se
+não pudermos justificar a Substituição dentro dessa narrativa, então não temos (ainda)
+razão para crer que $\ZF$ é consistente. Ou melhor: não temos
+razão para crer que $\ZF$ é consistente, para além do fato (talvez
+meramente contingente) de que ninguém descobriu ainda uma contradição.
+Exatamente nesse sentido, o comentário de Boolos parece reduzir-se a isto: ``(aparentemente) $\ZF$ é consistente''. Deveríamos exigir
+maior garantia de consistência do que isto. 
+
+Esta questão afecta qualquer tentativa \emph{puremente} extrínseca de justificar a
+Substituição, O.s.\@, qualquer justificação formulada unicamente em termos
+das consequências (conhecidas) de $\ZF$. Como tal, convém procurar uma
+justificação \emph{intrínseca} da Substituição, O.s.\@, uma
+justificação que sugira que a narrativa que contamos sobre conjuntos
+de algum modo ``já'' nos compromete com a Substituição. 
+
+\end{document}

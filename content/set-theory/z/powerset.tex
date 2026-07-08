@@ -1,0 +1,60 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{z}{power}
+\olsection{Conjuntos potência}
+
+Prosseguiremos com outro axioma:
+
+\begin{axiom}[Conjuntos potência]
+Para qualquer conjunto $A$, existe o conjunto $\Pow{A} = \Setabs{x}{x \subseteq A}$.
+\[
+	\forall A \exists P \forall x(x \in P \liff (\forall z \in x)z \in A)
+\]
+\end{axiom}
+
+A nossa justificação é bastante direta. Suponhamos que $A$ se forma no estágio $S$. Então todos os membros de $A$ estavam disponíveis antes de
+$S$ (por \stagesacc). Logo, raciocinando como na justificação da
+Separação, cada subconjunto de $A$ forma-se até ao estágio $S$. Estão
+todos disponíveis, para serem reunidos num único conjunto, em qualquer estágio depois de $S$.
+E sabemos que existe algum tal estágio, pois $S$ não é o último
+estágio (por \stagessucc). Logo $\Pow{A}$ existe.
+
+Eis uma boa consequência dos conjuntos potência:
+
+\begin{prop}\label{thm:Products}
+Dados quaisquer conjuntos $A, B$, o seu produto cartesiano $A \times B$ existe.
+\end{prop}
+
+\begin{proof}
+O conjunto $\Pow{\Pow{A \cup B}}$ existe por Conjuntos potência e
+\olref[sth][z][pairs]{prop:pairsconsequences}. Logo, por Separação, existe este
+conjunto:
+\[
+	C = \Setabs{z \in \Pow{\Pow{A \cup B}}}{(\exists x \in A)(\exists y \in B) z = \tuple{x, y}}.
+\]
+Agora, para quaisquer $x \in A$ e $y \in B$, o conjunto $\tuple{x, y}$ existe por
+\olref[sth][z][pairs]{prop:pairsconsequences}. Além disso, uma vez que $x, y
+\in A \cup B$, temos $\{x\}, \{x, y\} \in \Pow{A \cup B}$, e
+$\tuple{x,y} \in \Pow{\Pow{A \cup B}}$. Logo $A \times B = C$.
+\end{proof}
+
+Nesta prova, o axioma dos conjuntos potência interage com a Separação. E isso não
+surpreende. Sem Separação, o princípio dos conjuntos potência não seria muito
+\emph{poderoso}. Afinal, a Separação nos diz que subconjuntos de um conjunto existem e, por conseguinte, determina quão ``gordo'' é cada
+conjunto potência.
+
+\begin{prob}
+Mostre que, quaisquer que sejam os conjuntos $A, B$: (i) existe o conjunto de todas as relações com
+domínio $A$ e contradomínio $B$; e (ii) existe o conjunto de todas as funções
+de $A$ para $B$.
+\end{prob}
+
+\begin{prob}
+Seja $A$ um conjunto, e seja $\sim$ uma relação de equivalência em $A$.
+Prove que existe o conjunto das classes de equivalência sob $\sim$ em $A$, O.s.\@,
+$\equivclass{A}{\sim}$.
+\end{prob}
+
+\end{document}

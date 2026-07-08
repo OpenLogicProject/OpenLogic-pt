@@ -1,0 +1,104 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{story}{predicative}	
+
+\olsection{Predicativo e Impredicativo}
+
+O conjunto de Russell, $R$, foi definido via $\Setabs{x}{x \notin
+x}$. Dito com mais detalhe, $R$ seria o conjunto que contém todos
+e apenas aqueles conjuntos que não são membros de si próprios. Assim, ao definir
+$R$, quantificamos sobre o domínio que conteria $R$ (se este
+existisse).
+
+Isto é uma definição \emph{impredicativa}. Mais em geral, podemos
+dizer que uma definição é impredicativa sse quantifica sobre um domínio
+que contém o objeto que está a ser definido.  
+	
+Na sequência dos paradoxos, Whitehead, Russell, Poincar\'{e} e
+Weyl rejeitaram tais definições impredicativas como ``viciosamente
+circulares'':
+\begin{quote}
+	Uma análise dos paradoxos a evitar mostra que todos eles
+	resultam de uma espécie de círculo vicioso. Os círculos viciosos em
+	questão surgem ao supor que uma coleção de objetos pode
+	conter membros que só podem ser definidos por meio da
+	coleção como um todo[\ldots. \textparagraph]
+
+	O princípio que nos permite evitar totalidades ilegítimas
+	pode enunciar-se do seguinte modo: ``Tudo o que envolve \emph{todos} os
+	membros de uma coleção não pode ser um dos membros da coleção''; ou, inversamente:
+	``Se, supondo que uma certa coleção tivesse um todo, ela teria
+	membros só definíveis em termos desse todo, então a dita
+	coleção não tem todo.'' Chamaremos a isto o ``princípio do círculo vicioso'',
+	porque nos permite evitar os círculos viciosos
+	envolvidos na suposição de totalidades ilegítimas.
+	\citep[p.~37]{WhiteheadRussell1910}
+\end{quote}
+Se os acompanharmos na rejeição das definições impredicativas motivada pelo \emph{princípio do círculo vicioso},
+então podemos tentar substituir o desastroso esquema de compreensão ingênua (de \olref[sth][story][rus]{sec}) por algo deste gênero: 
+
+\begin{defish}
+\emph{Compreensão predicativa.} Para toda a fórmula $\phi$ que quantifica apenas sobre conjuntos: existe o conjunto$^\prime$ $\Setabs{x}{\phi(x)}$.
+\end{defish}
+
+Enquanto os conjuntos$^{\prime}$ não forem conjuntos, não se seguirá contradição.  
+
+Infelizmente, a compreensão predicativa não é muito
+\emph{abrangente}. Afinal, introduz-nos novas entidades,
+conjuntos$^\prime$. Logo teremos de considerar fórmulas que quantificam
+sobre conjuntos$^\prime$. Se estas derem sempre um conjunto$^\prime$, então
+o paradoxo de Russell surgirá de novo, bastando considerar o
+conjunto$^\prime$ de todos os conjuntos$^\prime$ que não são membros de si próprios. Assim, a seguir o
+mesmo fio de ideias, temos de dizer que uma fórmula que quantifica sobre
+conjuntos$^\prime$ produz um conjunto$^{\prime\prime}$ correspondente. E então
+precisaremos de conjuntos$^{\prime\prime\prime}$,
+conjuntos$^{\prime\prime\prime\prime}$, etc. Para evitar uma enxurrada de primos,
+será mais fácil pensar nestes como conjuntos$_0$, conjuntos$_1$, conjuntos$_2$,
+conjuntos$_3$, conjuntos$_4$,\ldots. E isto dar-nos-ia entrada na
+teoria (simples) dos tipos. 
+
+Há algumas objeções óbvias a tal teoria (embora não seja
+óbvio que sejam objeções \emph{esmagadoras}). Em resumo:
+a teoria resultante é pouco manejável; é prolixa ao
+postular diferentes tipos de objetos; e não está claro, no
+fim, que as definições impredicativas sejam sequer \emph{assim tão más}. 
+	
+Para ilustrar o último ponto, consideremos esta observação de
+\citeauthor{Ramsey1925}:
+\begin{quote}
+	podemos referir-nos a um homem como o mais alto de um grupo, identificando-o
+	por meio de uma totalidade da qual ele próprio é membro sem
+	que haja círculo vicioso. \citep{Ramsey1925}
+\end{quote}
+O ponto de Ramsey é que ``o homem mais alto do grupo'' \emph{é} uma
+definição impredicativa; mas é obviamente perfeitamente legítima. 
+
+Alguém poderá responder que, neste caso, poderíamos identificar a pessoa mais alta por meios \emph{predicativos}. Por exemplo, talvez pudéssemos simplesmente
+apontar para o homem em questão. A objeção às definições impredicativas,
+então, teria claramente de se limitar a entidades que
+\emph{só} possam ser identificadas impredicativamente. Mas mesmo assim, seria preciso ouvir mais, sobre por que tal ``impredicatividade essencial'' seria
+tão grave.\footnote{Para mais, ver \citet{Linnebo2010}.}
+
+Admitidamente, as definições impredicativas são péssimas notícias, se
+quisermos que as definições nos forneçam algo como uma receita para
+\emph{criar} um objeto. Pois, dada uma definição impredicativa, estar-se-ia
+genuinamente preso a um círculo vicioso: para criar o
+objeto especificado impredicativamente, seria preciso \emph{primeiro}
+criar todos os objetos (incluindo o objeto especificado impredicativamente), uma vez que este é especificado em
+termos de todos os objetos; logo seria preciso criar o
+objeto especificado impredicativamente antes de o ter criado. Mas,
+de novo, isto só é uma objeção séria a conjuntos especificados de modo ``essencialmente
+impredicativo'', se pensarmos nos conjuntos como coisas que
+\emph{criamos}. E nós (provavelmente) não os criamos.
+
+Assim---para o bem ou para o mal---a abordagem que se tornou comum não
+envolve tomar uma posição rígida sobre (im)\-pre\-di\-ca\-ti\-vi\-da\-de.
+Envolve antes o que hoje se considera a abordagem
+cumulativa-iterativa. No fim, isto permitir-nos-á estratificar os conjuntos em
+``estágios''---um \emph{pouco} como a abordagem predicativa estratifica
+entidades em conjuntos$_0$, conjuntos$_1$, conjuntos$_2$, \ldots---mas não
+postularemos diferença de natureza entre eles. 
+
+\end{document}

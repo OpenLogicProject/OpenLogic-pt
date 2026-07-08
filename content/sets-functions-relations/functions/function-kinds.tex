@@ -1,0 +1,118 @@
+% Part: sets-functions-relations
+% Chapter: functions
+% Section: kinds
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{fun}{kin}
+\olsection{Tipos de Funções}
+
+\begin{explain}
+Será útil introduzir uma espécie de taxonomia para alguns dos
+tipos de funções que encontramos com mais frequência.
+
+Para começar, podemos querer considerar funções com a propriedade de que
+todo \emph{membro} do contradomínio é um valor da função. Tais
+funções chamam-se !!{surjective}s, e podem ser esquematizadas como na
+\olref{fig:surjective}.
+
+\begin{figure}[H]
+  \olasset{assets/diagrams/surjective.tikz}
+  \caption{Uma função !!{surjective} tem todo !!{element} do
+    contradomínio como valor.}
+  \ollabel{fig:surjective}
+\end{figure}
+\end{explain}
+
+\begin{defn}[Função !!^{surjective}]
+Uma função $f \colon A \rightarrow B$ é \emph{!!{surjective}} se e só se $B$
+é também a imagem de~$f$, O.s.\@, para todo $y \in B$ existe pelo menos
+um $x \in A$ tal que~$f(x) = y$, ou em símbolos:
+\[
+  (\forall y \in B)(\exists x \in A)f(x) = y.
+\]
+Chamamos a tal função !!a{surjection} de $A$ para $B$.
+\end{defn}
+
+\begin{explain}
+Se quiser mostrar que $f$ é !!a{surjection}, tem de mostrar que
+todo objeto no contradomínio de $f$ é o valor de $f(x)$ para alguma
+entrada $x$.
+
+Note-se que qualquer função \emph{induz} !!a{surjection}. Afinal,
+dada uma função $f \colon A \to B$, seja $f' \colon A \to \ran{f}$
+definida por $f'(x) = f(x)$. Como $\ran{f}$ é \emph{definida} como
+$\Setabs{f(x) \in B}{x \in A}$, esta função $f'$ é garantidamente
+!!a{surjection}
+\end{explain}
+
+\begin{explain}
+Agora, qualquer função mapeia cada entrada possível para uma única saída. Mas
+há também funções que nunca mapeiam entradas diferentes para a mesma
+saída. Tais funções chamam-se !!{injective}s, e podem ser esquematizadas
+como na \olref{fig:injective}.
+\begin{figure}[H]
+  \olasset{assets/diagrams/injective.tikz}
+  \caption{Uma função !!{injective} nunca mapeia dois
+    argumentos diferentes para o mesmo valor.}
+  \ollabel{fig:injective}
+\end{figure}
+\end{explain}
+
+\begin{defn}[Função !!^{injective}]
+Uma função $f \colon A \rightarrow B$ é \emph{!!{injective}} se e só se, para
+cada $y \in B$, há no máximo um $x \in A$ tal que~$f(x) = y$. Chamamos a
+tal função !!a{injection} de $A$ para~$B$.
+\end{defn}
+
+\begin{explain}
+Se quiser mostrar que $f$ é !!a{injection}, tem de mostrar que,
+para quaisquer !!{element}s $x$ e $y$ do domínio de $f$, se $f(x)=f(y)$, então
+$x=y$.
+\end{explain}
+
+\begin{ex}
+A função constante $f\colon \Nat \to \Nat$ dada por $f(x) = 1$ não é
+nem !!{injective}, nem !!{surjective}.
+
+A função identidade $f\colon \Nat \to \Nat$ dada por $f(x) = x$ é
+tanto !!{injective} quanto !!{surjective}.
+
+A função sucessora $f \colon \Nat \to \Nat$ dada por $f(x) = x+1$
+é !!{injective} mas não !!{surjective}.
+
+A função $f \colon \Nat \to \Nat$ definida por:
+\[
+  f(x) =
+  \begin{cases}
+    \frac{x}{2} & \text{se $x$ é par} \\
+    \frac{x+1}{2} & \text{se $x$ é ímpar.}
+  \end{cases}
+\]
+é !!{surjective}, mas não !!{injective}.
+\end{ex}
+
+\begin{explain}
+Muitas vezes, queremos considerar funções que são tanto
+!!{injective}s como !!{surjective}s. Chamamos a tais funções
+!!{bijective}s. Parecem-se com a função esquematizada na
+\olref{fig:bijective}. !!^{bijection}s são também por vezes chamadas
+\emph{correspondências biunívocas}, pois associam de modo único elementos
+do contradomínio a elementos do domínio.
+\begin{figure}[H]
+  \olasset{assets/diagrams/bijective.tikz}
+  \caption{Uma função !!{bijective} associa de modo único os elementos do
+    contradomínio aos do domínio.}
+  \ollabel{fig:bijective}
+\end{figure}
+\end{explain}
+
+\begin{defn}[!!^{bijection}]
+Uma função $f \colon A \to B$ é \emph{!!{bijective}} se e só se é tanto
+!!{surjective} como !!{injective}. Chamamos a tal função
+!!a{bijection} de $A$ para~$B$ (ou entre $A$ e~$B$).
+\end{defn}
+
+\end{document}

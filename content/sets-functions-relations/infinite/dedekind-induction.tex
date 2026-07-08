@@ -1,0 +1,81 @@
+% Part: sets-functions-relations
+% Chapter: infinite
+% Section: dedekind-induction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{infinite}{induction}
+\olsection[Indução Aritmética]{Álgebras de Dedekind e Indução Aritmética}
+
+Crucialmente, agora, uma álgebra de Dedekind---de fato, \emph{qualquer}
+álgebra de Dedekind---servirá como substituto dos números naturais. Isto
+deve-se à seguinte consequência trivial:
+
+\begin{thm}[Indução aritmética]\ollabel{thm:dedinfiniteinduction}
+Sejam $N, s, o$ uma álgebra de Dedekind. Então, para qualquer conjunto $X$:
+	\begin{center}
+		se $o \in X$ e $(\forall {n} \in N \cap X){s}({n}) \in X$, {então} $N \subseteq X$.
+	\end{center}
+\end{thm}
+
+\begin{proof}
+Pela definição de álgebra de Dedekind, $N = \closureofunder{s}{o}$.
+Ora, se tanto ${o} \in X$ como $(\forall {n} \in N)(n \in X \lif
+{s}({n}) \in X)$, então $N = \closureofunder{s}{o} \subseteq X$.
+\end{proof}
+
+Como a indução é característica dos números naturais, o ponto é este.
+Dado qualquer conjunto infinito de Dedekind, podemos formar uma álgebra de
+Dedekind e usar essa álgebra como substituto dos números naturais.
+
+Admitidamente, \olref{thm:dedinfiniteinduction} formula a indução em
+termos \emph{de teoria dos conjuntos}. Mas podemos facilmente pôr o
+princípio em termos mais familiares:
+
+\begin{cor}\ollabel{natinductionschema}
+Sejam $N, s, o$ uma álgebra de Dedekind. Então, para qualquer fórmula
+$\phi(x)$, que pode ter parâmetros:
+\begin{center}
+	se $\phi(o)$ e $(\forall {n} \in N)(\phi(n)\lif
+	\phi({s}({n})))$, {então} $(\forall n \in N)\phi(n)$
+\end{center}
+\end{cor}
+
+\begin{proof}
+Seja $X = \Setabs{n \in N}{\phi(n)}$, e use-se agora
+\olref{thm:dedinfiniteinduction}
+\end{proof}
+
+Neste resultado, falamos de uma fórmula ``ter parâmetros''. O que isto
+significa, em traços grosseiros, é que, para quaisquer objetos $c_1, \ldots, c_k$, podemos
+trabalhar com $\phi(x, c_1, \ldots, c_k)$. Com mais precisão, podemos enunciar
+o resultado sem mencionar ``parâmetros'' do seguinte modo. Para qualquer
+fórmula $\phi(x, v_1, \ldots, v_k)$, cujas variáveis livres são todas as
+exibidas, temos:
+	\begin{align*}
+			\forall v_1 \ldots \forall v_k((&\phi(o, v_1,\ldots, v_k) \land {}\\
+			&	(\forall x \in N)(\phi(x,v_1, \ldots, v_k) \lif \phi(s(x), v_1,\ldots, v_k))) \lif {}\\
+			&\hspace{3em} (\forall x \in N)\phi(x, v_1,\ldots, v_k))
+	\end{align*}
+Evidentemente, falar em ``ter parâmetros'' pode tornar a leitura muito
+mais fácil. (Na \olref[sth][][]{part}, usaremos este expediente com
+frequência.)
+
+Voltando às álgebras de Dedekind: dada qualquer álgebra de Dedekind, podemos
+também definir as habituais funções aritméticas de adição,
+multiplicação e exponenciação. Isto não é trivial, porém, e envolve a
+técnica de \emph{definição recursiva}. É uma técnica que introduziremos e
+justificaremos muito mais tarde, e num contexto bem mais geral. (Os entusiastas
+podem querer voltar a isto depois de \olref[sth][ord-arithmetic][]{chap}, ou
+talvez ler um tratamento alternativo, como \citealt[pp.~95--8]{Potter2004}.) Mas,
+onde $N, s, o$ formam uma álgebra de Dedekind, acabaremos por poder estipular o
+seguinte:
+\begin{align*}
+	{a} + {o} &= {a} & & & {a} \times {o} &= {o} & & & {a}^{o} &= s(o)\\
+{a} + {s}({b}) &= {s}({a}+{b}) &&& {a} \times {s}({b}) &= ({a}\times {b}) + {a}  & & & {a}^{{s}({b})} &= {a}^{b} \times {a}
+\end{align*}
+e mostrar que estas definições se comportam como se espera.
+
+\end{document}

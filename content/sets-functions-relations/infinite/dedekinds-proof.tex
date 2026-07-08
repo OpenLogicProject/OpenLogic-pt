@@ -1,0 +1,112 @@
+% Part: sets-functions-relations
+% Chapter: infinite
+% Section: dedekinds-proof
+%
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{infinite}{dedekindsproof}
+
+\olsection[``Prova'' de Dedekind]{``Prova'' de Dedekind da existência de um conjunto infinito}
+
+Neste capítulo, apresentamos um tratamento em teoria dos conjuntos dos
+números naturais, em termos de álgebras de Dedekind. Em
+\olref[arith][ref]{sec}, refletimos sobre o significado filosófico
+da aritmetização da análise (entre outras coisas).
+Cumpre agora refletir sobre o significado do que aqui alcançamos.
+
+Ao longo de \olref[sfr][arith][]{chap}, tomamos os números naturais como
+dados e os usamos para construir os inteiros, os racionais e os reais,
+de modo explícito. Neste capítulo, não demos uma construção explícita
+dos números naturais. Mostramos apenas que,
+\emph{dado qualquer conjunto infinito de Dedekind}, podemos definir um conjunto que se
+comportará como queremos que~$\Nat$ se comporte.
+
+Obviamente, pois, não podemos pretender ter respondido a uma questão
+metafísica, como \emph{quais os objetos que são os números naturais}. Mas
+isso é bom. Afinal, na \olref[sfr][arith][ref]{sec}, sublinhamos que
+estaríamos errados se pensássemos na definição de
+$\Real$ como conjunto de cortes de Dedekind como uma \emph{descoberta}, em vez de
+uma estipulação conveniente. A observação crucial é que os cortes de Dedekind
+exemplificam as propriedades matemáticas centrais dos números reais.
+Assim também aqui: a observação crucial é que \emph{qualquer}
+álgebra de Dedekind exemplifica as propriedades matemáticas centrais dos
+números naturais. (De fato, Dedekind insistiu neste ponto ao provar
+que todas as álgebras de Dedekind são \emph{isomorfas} (\citeyear[Theorems
+132--3]{Dedekind1888}). Não surpreende, então, que muitos
+``estruturalistas'' contemporâneos cite Dedekind como precursor.)
+
+Além disso, mostramos como embutir a teoria dos números naturais
+numa teoria ingênua simples dos conjuntos, que ainda permanece bastante
+informal, mas que (aparentemente) não assume os números naturais como dados.
+Assim, podemos estar no caminho de realizar o próprio projeto ambicioso de Dedekind,
+que ele explicou assim:
+\begin{quote}
+	Na ciência nada que seja provável deve ser acreditado sem
+	prova. Embora esta exigência pareça razoável, não posso considerá-la
+	satisfeita sequer nos métodos mais recentes de lançar os fundamentos
+	da ciência mais simples; a saber, aquela parte da lógica que trata
+	da teoria dos números. Ao falar de aritmética (álgebra, análise) como
+	mera parte da lógica, quero insinuar que considero o conceito de número
+	totalmente independente das noções ou intuições de espaço e tempo---que
+	o considero antes um produto imediato das leis puras do pensamento.
+	\citep[preface]{Dedekind1888}
+\end{quote}
+A ideia audaciosa de Dedekind é esta. Acabamos de mostrar como construir os
+números naturais usando só (ingenuamente) a teoria dos conjuntos. Em
+\olref[sfr][arith][]{chap}, vimos como construir os reais dados
+os números naturais e alguma teoria dos conjuntos. Logo, talvez, ``a aritmética
+(álgebra, análise)'' acabe por ser ``meramente parte da lógica'' (no
+sentido alargado que Dedekind dá à palavra ``lógica'').
+
+Essa é a ideia. Mas esperemos um momento. A nossa construção de uma
+álgebra de Dedekind (o nosso substituto dos números naturais) é
+condicional à existência de um conjunto infinito de Dedekind. (Basta olhar
+para trás, para \olref[sfr][infinite][dedekind]{thm:DedekindInfiniteAlgebra}.)
+A menos que a existência de um conjunto infinito de Dedekind possa ser estabelecida via
+``lógica'' ou ``as leis puras do pensamento'', o projeto estagna.
+
+Então, \emph{pode} a existência de um conjunto infinito de Dedekind ser estabelecida
+pelas ``leis puras do pensamento''? Eis o esforço de Dedekind:
+\begin{quote}
+  O meu próprio reino de pensamentos, O.s.\@, a totalidade $S$ de todas as coisas que
+  podem ser objetos do meu pensamento, é infinita. Pois, se $s$ designa um
+  elemento de~$S$, então o pensamento $s'$ de que~$s$ pode ser objeto do
+  meu pensamento é ele próprio um elemento de~$S$. Se considerarmos isto como uma
+  imagem $\phi(s)$ do elemento~$s$, então \dots~$S$ é infinito de Dedekind,
+  como queríamos ter provado.
+	\citep[\S66]{Dedekind1888}
+\end{quote}
+Isto é algo de espantoso de encontrar no meio de um livro
+que em grande parte consiste em provas matemáticas altamente rigorosas. Duas
+observações valem a pena.
+
+Primeiro: esta ``prova'' mal tem o que hoje reconheceríamos como caráter
+``matemático''. Fala de objetos psicológicos
+(pensamentos), e apenas de objetos \emph{possíveis}.
+
+Segundo: pelo menos tal como apresentamos as álgebras de Dedekind, esta
+``prova'' tem uma lacuna técnica direta. Se o argumento de Dedekind é bem-sucedido,
+estabelece só que há infinitas
+coisas (nomeadamente, infinitos pensamentos). Mas Dedekind
+também precisa de nos dar uma razão para ver~$S$ como um único \emph{conjunto},
+com infinitos !!{element}s, em vez de pensar em~$S$ como
+\emph{algumas coisas} (no plural).
+
+O fato de Dedekind não ver aqui uma lacuna pode sugerir que o seu
+uso da palavra ``totalidade'' não corresponde exatamente ao \emph{nosso} uso
+da palavra ``conjunto''.\footnote{De fato, temos outras razões para pensar
+que não correspondia; ver \citet[p.~23]{Potter2004}.} Mas isto não seria
+demasiado surpreendente. O projeto que perseguimos nos últimos dois
+capítulos---uma ``construção'' dos naturais e, a partir deles, uma
+``construção'' dos inteiros, reais e racionais---foi todo ele
+feito de modo ingênuo. Nos apoiamos neste conjunto, ou naquele
+conjunto, sempre que precisamos, sem enunciar muitos princípios gerais
+sobre exatamente que conjuntos existem, e quando. Mas sabemos
+que precisamos de \emph{alguns} princípios gerais, pois caso contrário caímos
+no Paradoxo de Russell.
+
+Chegou a hora de superarmos a nossa ingenuidade.
+
+\end{document}

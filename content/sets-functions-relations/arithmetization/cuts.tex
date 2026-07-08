@@ -1,0 +1,111 @@
+% Part: sets-functions-relations
+% Chapter: arithmetization
+% Section: cuts
+%
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{arith}{cuts}
+\olsection{De $\Rat$ para $\Real$}
+
+Em essência, a propriedade de completude mostra que qualquer ponto $\alpha$ da
+reta real divide essa reta em duas metades de modo perfeito: numa, $\alpha$ é o
+supremo; noutra, $\alpha$ é o ínfimo. Para \emph{construir} os números reais a
+partir dos racionais, Dedekind sugeriu que pensássemos nos reais simplesmente
+como os \emph{cortes} que particionam os racionais. Isto é, identificamos
+$\sqrt{2}$ com o \emph{corte} que separa os racionais $< \sqrt{2}$ dos racionais
+$> \sqrt{2}$.
+
+Vamos pôr isto em ordem. Se cortarmos os racionais em duas metades, podemos
+identificar de modo único a partição que fizemos considerando apenas a metade
+\emph{inferior}. Sendo precisos, apresentamos a seguinte definição:
+
+\begin{defn}[Corte] 
+Um \emph{corte} $\alpha$ é qualquer segmento inicial próprio não vazio dos
+racionais sem máximo. Isto é, $\alpha$ é um corte sse:
+\begin{enumerate}
+	\item \emph{não vazio, próprio}: $\emptyset \neq \alpha \subsetneq \Rat$
+	\item \emph{inicial}: para todos $p,q \in \Rat$: se $p < q \in \alpha$ então $p \in \alpha$
+	\item \emph{sem máximo}: para todo $p \in \alpha$ existe $q \in \alpha$ tal que $p < q$ 
+\end{enumerate} 
+Então $\Real$ é o conjunto dos cortes. 
+\end{defn}
+
+Podemos pois dizer que $\sqrt{2} = \Setabs{p \in \Rat}{p^2 < 2\text{
+ou }p < 0}$. Claro que há que verificar que isto \emph{é} de fato um corte,
+mas relegamo-lo a \olref[check]{sec}.
+
+Como antes, tendo definido certas entidades, precisamos a seguir de definir
+funções e relações básicas sobre elas. Começamos por uma fácil:
+\begin{align*}
+	\alpha \leq \beta \text{ sse }\alpha \subseteq \beta
+\end{align*}
+Esta definição de ordem permite \emph{enunciar} o resultado central, a saber que
+o conjunto dos cortes tem a propriedade de completude. Por extenso, o enunciado
+tem esta forma. Se $S$ é um conjunto não vazio de cortes com majorante, então
+$S$ tem supremo. Com mais pormenor: existe um corte, $\lambda$, que é majorante
+de $S$, O.s.\@, $(\forall \alpha \in S)\alpha \subseteq
+\lambda$, e $\lambda$ é o menor tal corte, O.s.\@, $(\forall \beta \in \Real)((\forall \alpha \in S)\alpha \subseteq \beta \lif \lambda \subseteq \beta)$. Segue-se a prova do resultado:
+
+\begin{thm}\ollabel{realcompleteness}
+O conjunto dos cortes tem a propriedade de completude. 
+\end{thm}
+
+\begin{proof}
+Seja $S$ um conjunto não vazio de cortes com majorante. Seja $\lambda
+= \bigcup S$. 
+%\Setabs{p \in \Rat}{(\exists \alpha \in S)p \in \alpha}$$
+Começamos por alegar que $\lambda$ é um corte:
+\begin{enumerate}
+\item Como $S$ tem majorante, pelo menos um corte pertence a $S$, logo
+$\emptyset \neq \lambda$. Como $S$ é um conjunto de cortes, $\lambda
+\subseteq \Rat$. Como $S$ tem majorante, algum $p \in \Rat$ está ausente de
+todo o corte $\alpha \in S$. Logo $p\notin \lambda$, e portanto
+$\lambda \subsetneq \Rat$.
+\item Suponhamos $p < q \in \lambda$. Então existe algum $\alpha \in S$
+tal que $q \in \alpha$. Como $\alpha$ é um corte, $p \in \alpha$. Logo
+$p \in \lambda$.
+\item Suponhamos $p \in \lambda$. Então existe algum $\alpha \in S$ tal
+que $p \in \alpha$. Como $\alpha$ é um corte, existe algum $q \in
+\alpha$ tal que $p < q$. Logo $q \in \lambda$. 
+\end{enumerate}
+Isto prova a alegação. Além disso, claramente $(\forall \alpha \in S)\alpha
+\subseteq \bigcup S = \lambda$, O.s.\@, $\lambda$ é majorante de $S$. Suponhamos
+agora que $\beta \in \Real$ também é majorante, O.s.\@, $(\forall \alpha \in S)\alpha \subseteq \beta$. Para qualquer $p \in \Rat$, se $p \in \lambda$, então existe $\alpha \in S$ tal que $p \in \alpha$, logo $p \in \beta$. Generalizando, $\lambda \subseteq \beta$. Logo $\lambda$ é o supremo de $S$.
+\end{proof}
+
+Temos pois um conjunto de entidades que satisfaz a propriedade de completude. Uma
+forma de o dizer é: não há ``lacunas'' nos nossos cortes. (Assim: tomar novos
+``cortes'' de reais, em vez de racionais, não produziria objetos novos
+interessantes.)
+
+Segue-se a definição de algumas operações sobre os reais. Começamos por embutir os
+racionais nos reais estipulando $p_\Real =
+\Setabs{q \in \Rat}{q < p}$ para cada $p \in \Rat$. Definimos então:
+\begin{align*}
+	\alpha + \beta &= \Setabs{p + q}{p \in \alpha \land q \in \beta}\\
+%	\alpha - \beta &\defis \Setabs{p - q}{p \in \alpha \land q \in \Rat \setminus \beta}\\
+	\alpha \times \beta &= 
+	\Setabs{p \times q}{0 \leq p \in \alpha \land 0 \leq q \in \beta} \cup 0^\mathbb{R} & \text{se }\alpha, \beta \geq 0_\Real
+%	\alpha \div \beta &\defis 
+%	\Setabs{\nicefrac{p}{q}}{p \in \alpha \land q \in \Rat \setminus \beta}  & \text{if }\alpha \geq 0_\Real, \beta > 0_\Real
+\end{align*}
+Para tratar os outros casos da multiplicação, definamos primeiro:
+\begin{align*}
+	-\alpha &= \Setabs{p - q}{p < 0 \land q \notin \alpha}
+\end{align*}
+e estipulemos:
+\begin{align*}
+	\alpha \times \beta &\defis 
+	\begin{cases}
+		\mathord{-}\alpha \times \mathord{-}\beta &\text{se }\alpha < 0_\Real\text{ e }\beta < 0_\Real\\
+		\mathord{-}(\mathord{-}\alpha \times \beta) &\text{se }\alpha < 0_\Real \text{ e }\beta > 0_\Real\\
+		\mathord{-}(\alpha \times \mathord{-}\beta) &\text{se }\alpha > 0_\Real \text{ e }\beta < 0_\Real
+	\end{cases}
+\end{align*}
+Depois há que verificar que cada uma destas definições produz sempre um corte. E,
+por fim, há que fazer uma demonstração fácil (mas longa) de que os cortes, assim
+definidos, se comportam exatamente como devem. Mas relegamos tudo isto a
+\olref[check]{sec}.
+\end{document}

@@ -1,0 +1,124 @@
+% Part:sets-functions-relations
+% Chapter: size-of-sets
+% Section: enumerations-alt
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{siz}{enm-alt}
+
+\olsection{Enumerações e Conjuntos Enumeráveis}
+
+\begin{editorial}
+  Esta secção define enumerações como bijeções com (segmentos iniciais)
+  de~$\Nat$, como se faz em teoria dos conjuntos. Por isso difere ligeiramente
+  das definições em~\olref[enm]{sec} e repete os exemplos dessa secção. É também
+  um pouco mais concisa.
+\end{editorial}
+
+Podemos especificar um conjunto finito simplesmente enumerando os seus
+!!{element}s. Fazemo-lo quando definimos um conjunto assim:
+\[
+  A = \{a_1, a_2, \ldots, a_n\}.
+\]
+Supondo que os !!{element}s $a_1$, \dots, $a_n$ são todos distintos,
+obtemos !!a{bijection} entre $A$ e os primeiros $n$ números naturais $0$, \dots,
+$n-1$. Reciprocamente, como todo o conjunto finito tem apenas finitos
+!!{element}s, todo o conjunto finito pode ser posto nessa correspondência. Em
+outras palavras, se $A$ é finito, existe !!a{bijection} entre $A$ e $\{0, \dots,
+n-1\}$, onde $n$ é o número de !!{element}s de~$A$.
+
+Se admitirmos certos tipos de conjuntos infinitos, admitiremos também que alguns
+conjuntos infinitos possam ser enumerados. Podemos precisar isto dizendo que um
+conjunto infinito é enumerado por !!a{bijection} entre ele e todo o~$\Nat$.
+
+\begin{defn}[Enumeração, no sentido conjuntista]
+Uma \emph{enumeração} de um conjunto $A$ é !!a{bijection} cujo contradomínio é
+$A$ e cujo domínio é ou um conjunto inicial de números naturais $\{0,
+1, \ldots, n\}$ \emph{ou} todo o conjunto dos números naturais~$\Nat$.
+\end{defn}
+
+\begin{explain}
+Há uma base intuitiva para este uso da palavra \emph{enumeração}. Dizer que
+enumeramos um conjunto $A$ é dizer que existe !!a{bijection} $f$ que nos permite
+\emph{contar} os elementos do conjunto $A$. O elemento de índice~$0$ é $f(0)$, o
+de índice~$1$ é $f(1)$, \ldots o de índice~$n$ é $f(n)$\ldots.\footnote{Sim,
+contamos a partir de~$0$. Claro que também poderíamos começar em~$1$. Não faria
+grande diferença. Bastaria substituir~$\Nat$ por~$\PosInt$.} O raciocínio fica
+ainda mais claro com o seguinte:
+\end{explain}
+
+\begin{defn}
+  \ollabel{defn:enumerable}
+  Um conjunto~$A$ é !!{enumerable} se e só se $A = \emptyset$ ou existe
+  uma enumeração de~$A$. Dizemos que $A$ é !!{nonenumerable} se e só se $A$
+  \emph{não} é !!{enumerable}.
+\end{defn}
+
+\begin{explain}
+Logo um conjunto é !!{enumerable} se e só se é vazio ou se podemos usar uma
+enumeração para contar os seus !!{element}s.
+\end{explain}
+
+\begin{ex}
+Uma função que enumera os números naturais é simplesmente a função identidade
+$\Id{\Nat} \colon \Nat \to \Nat$ dada por $\Id{\Nat}(n) = n$. Uma função que
+enumera os números naturais \emph{positivos}, $\Nat^+ =
+\Nat \setminus \{0\}$, é a função $g(n) = n + 1$, O.s.\@, a função sucessora.
+\end{ex}
+
+\begin{prob}
+Mostre que um conjunto $A$ é !!{enumerable} se e só se $A = \emptyset$ ou existe
+!!a{surjection} $f\colon \Nat \to A$. Mostre que $A$ é !!{enumerable} se e só se
+existe !!a{injection} $g\colon A \to \Nat$.
+\end{prob}
+
+\begin{ex}
+As funções $f\colon \Nat \to \Nat$ e $g \colon \Nat \to \Nat$ dadas por
+\begin{align*}
+  f(n) & = 2n \text{ e}\\
+  g(n) & = 2n+1
+\end{align*}
+enumeram, respectivamente, os números naturais pares e os ímpares. Mas nenhuma é
+!!{surjective}, logo nenhuma é uma enumeração de~$\Nat$.
+\end{ex}
+
+\begin{prob}
+Defina uma enumeração dos quadrados perfeitos $1$, $4$, $9$, $16$, \dots
+\end{prob}
+
+\begin{ex}
+Seja $\lceil x \rceil$ a função \emph{teto}, que arredonda $x$ por excesso para
+o inteiro mais próximo. Então a função $f \colon \Nat \to \Int$ dada por:
+\[
+  f(n) = (-1)^{n} \left\lceil\tfrac{n}{2}\right\rceil
+\]
+enumera o conjunto dos inteiros~$\Int$ do seguinte modo:
+\[
+\begin{array}{c c c c c c c c}
+f(0) & f(1) & f(2) & f(3) & f(4) & f(5) & f(6) & \dots \\ \\
+\big\lceil \tfrac{0}{2} \big\rceil & -\big\lceil \tfrac{1}{2}\big\rceil &  \big\lceil \tfrac{2}{2} \big\rceil & -\big\lceil \tfrac{3}{2} \big\rceil & \big\lceil \tfrac{4}{2} \big\rceil  & -\big\lceil \tfrac{5}{2}\big\rceil & \big\lceil \tfrac{6}{2} \big\rceil & \dots \\ \\
+0 & -1 & 1 & -2 & 2 & -3 & 3& \dots
+\end{array}
+\]
+Repare como $f$ gera os valores de $\Int$ ``saltitando'' entre inteiros
+positivos e negativos. Também se pode ver $f$ definida por casos assim:
+\[
+f(n) = \begin{cases}
+  \frac{n}{2} & \text{se $n$ é par}\\
+  -\frac{n+1}{2} & \text{se $n$ é ímpar}
+  \end{cases}
+\]
+\end{ex}
+
+\begin{prob}
+Mostre que se $A$ e $B$ são !!{enumerable}s, então $A \cup B$ também é.
+\end{prob}
+
+\begin{prob}
+Mostre por indução em~$n$ que se $A_1$, $A_2$, \dots, $A_n$ são todos
+!!{enumerable}s, então $A_1 \cup \dots \cup A_n$ também é.
+\end{prob}
+
+\end{document}

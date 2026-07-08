@@ -1,0 +1,101 @@
+% Part: sets-functions-relations
+% Chapter: sets
+% Section: basics
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{set}{bas}
+\olsection{Extensionalidade}
+
+Um \emph{conjunto} é uma coleção de objetos, considerada como um único
+objeto. Os objetos que compõem o conjunto chamam-se \emph{elementos} ou
+\emph{membros} do conjunto. Se $x$ é !!a{element} de um conjunto~$A$,
+escrevemos $x \in A$; caso contrário, escrevemos $x \notin A$. O conjunto que
+não tem !!{element}s chama-se o \emph{conjunto vazio} e
+denota-se~``$\emptyset$''.
+
+\begin{explain}
+Não importa como \emph{especificamos} o conjunto, ou como
+\emph{ordenamos} os seus !!{element}s, ou mesmo quantas \emph{vezes}
+contamos os seus !!{element}s. Só importa quais são os seus !!{element}s.
+Codificamos isto no princípio seguinte.
+\end{explain}
+
+\begin{defn}[Extensionalidade]
+  Se $A$ e $B$ são conjuntos, então $A = B$ se e só se
+  todo !!{element} de~$A$ é também !!a{element} de~$B$, e vice-versa.
+\end{defn}
+
+A extensionalidade autoriza certa notação. Em geral, quando temos
+objetos $a_{1}$, \dots, $a_{n}$, então $\{a_{1}, \dots, a_{n}\}$ é
+\emph{o} conjunto cujos !!{element}s são $a_1, \ldots, a_n$. Enfatizamos
+a palavra ``\emph{o}'', pois a extensionalidade nos diz que só pode haver
+\emph{um} tal conjunto. De fato, a extensionalidade também autoriza o
+seguinte:
+  \[
+    \{a, a, b\} = \{a, b\} = \{b,a\}.
+  \] 
+Isto traduz a ideia de que, quando consideramos conjuntos, não nos importa a
+ordem dos seus !!{element}s, nem quantas vezes são especificados.
+
+\begin{tagblock}{novice}
+\begin{ex}
+Sempre que temos vários objetos, podemos reuni-los num
+conjunto. O conjunto dos irmãos de Richard, por exemplo, é um conjunto que
+contém uma pessoa, e podemos escrevê-lo como $S=\{\textrm{Ruth}\}$.
+O conjunto dos inteiros positivos menores que $4$ é $\{1, 2, 3\}$, mas também
+se pode escrever como $\{3, 2, 1\}$ ou mesmo como $\{1, 2, 1, 2, 3\}$.
+São todos o mesmo conjunto, pela extensionalidade. De fato, todo !!{element}
+de $\{1, 2, 3\}$ é também !!a{element} de $\{3, 2, 1\}$ (e de $\{1,
+2, 1, 2, 3\}$), e vice-versa.
+\end{ex} 
+\end{tagblock}
+
+Com frequência especificaremos um conjunto por alguma propriedade que os seus
+!!{element}s partilham. Usaremos a seguinte notação abreviada para isso:
+$\Setabs{x}{\phi(x)}$, onde $\phi(x)$ representa a propriedade
+que~$x$ tem de satisfazer para ser contado entre os !!{element}s do
+conjunto. 
+
+\begin{tagblock}{novice}
+\begin{ex}
+No nosso exemplo, também poderíamos ter especificado $S$ como
+\[
+S = \Setabs{x}{x \text{ é irmão de Richard}}.
+\]
+\end{ex}
+\end{tagblock}
+
+\begin{tagblock}{math}
+\begin{ex}
+Diz-se que um número é \emph{perfeito} se e só se for igual à soma dos seus
+divisores próprios (isto é, números que o dividem sem resto mas não são
+iguais ao próprio número). Por exemplo, $6$ é perfeito porque os seus
+divisores próprios são $1$, $2$, e~$3$, e $6 = 1 + 2 + 3$. De fato,
+$6$ é o único inteiro positivo menor que $10$ que é perfeito. Assim,
+usando a extensionalidade, podemos dizer:
+\[
+	\{6\} = \Setabs{x}{x\text{ é perfeito e }0 \leq x \leq 10}
+\]
+Lemos a notação à direita como ``o conjunto dos $x$ tais que $x$
+é perfeito e $0 \leq x \leq 10$''. A identidade aqui confirma que,
+quando consideramos conjuntos, não nos importa como são especificados.
+E, mais em geral, a extensionalidade garante que há sempre
+apenas um conjunto dos $x$ tais que $\phi(x)$.
+Logo, a extensionalidade justifica chamar a
+$\Setabs{x}{\phi(x)}$ \emph{o} conjunto dos $x$ tais que~$\phi(x)$.
+\end{ex}
+\end{tagblock}
+
+A extensionalidade nos dá um modo de mostrar que conjuntos são idênticos: para
+mostrar que $A = B$, mostre que sempre que $x \in A$ então também $x \in B$,
+e sempre que $y \in B$ então também $y \in A$.
+
+\begin{prob}
+Prove que há no máximo um conjunto vazio, O.s.\@, mostre que se $A$ e $B$
+são conjuntos sem !!{element}s, então $A = B$.
+\end{prob}
+
+\end{document}

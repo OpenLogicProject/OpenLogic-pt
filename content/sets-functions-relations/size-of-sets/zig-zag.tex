@@ -1,0 +1,125 @@
+% Part:sets-functions-relations
+% Chapter: size-of-sets
+% Section: zig-zag
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{siz}{zigzag}
+
+\olsection{Método do Zigue-Zague de Cantor}
+
+\begin{explain}
+Já consideramos algumas enumerações ``fáceis''. Vejamos algo um pouco mais
+difícil. Considere-se o conjunto dos pares de números
+naturais\oliflabeldef{sfr:set:pai:sec}{, que definimos na
+\olref[set][pai]{sec} assim:}{definido por:}
+\[
+\Nat \times \Nat = \Setabs{\tuple{n,m}}{n,m \in \Nat}
+\]
+Podemos organizar estes pares ordenados numa \emph{matriz}, assim:
+\[
+\begin{array}{ c | c | c | c | c | c}
+& \mathbf 0 & \mathbf 1 & \mathbf 2 & \mathbf 3 & \dots \\
+\hline
+\mathbf 0 & \tuple{0,0} & \tuple{0,1} & \tuple{0,2} & \tuple{0,3} & \dots \\
+\hline
+\mathbf 1 & \tuple{1,0} & \tuple{1,1} & \tuple{1,2} & \tuple{1,3} & \dots \\
+\hline
+\mathbf 2 & \tuple{2,0} & \tuple{2,1} & \tuple{2,2} & \tuple{2,3} & \dots \\
+\hline
+\mathbf 3 & \tuple{3,0} & \tuple{3,1} & \tuple{3,2} & \tuple{3,3} & \dots \\
+\hline
+\vdots & \vdots & \vdots & \vdots & \vdots & \ddots\\
+\end{array}
+\]
+Claramente, cada par ordenado em $\Nat \times \Nat$ aparece exatamente
+uma vez na matriz. Em particular, $\tuple{n,m}$ aparece na $n$-ésima linha e na
+$m$-ésima coluna. Mas como organizar os elementos de tal matriz numa lista
+``unidimensional''? O padrão na matriz abaixo demonstra uma forma de o fazer (embora
+haja, claro, muitas outras):
+\[
+\begin{array}{ c | c | c | c | c | c | c}
+& \mathbf 0 & \mathbf 1 & \mathbf 2 & \mathbf 3 & \mathbf 4 &\dots \\
+\hline
+\mathbf 0 & 0  & 1& 3 & 6& 10 &\ldots \\
+\hline
+\mathbf 1 &2 & 4& 7 & 11 & \dots &\ldots \\
+\hline
+\mathbf 2 & 5 & 8 & 12 & \ldots & \dots&\ldots \\
+\hline
+\mathbf 3 & 9 & 13 & \ldots & \ldots & \dots & \ldots \\
+\hline
+\mathbf 4 & 14 & \ldots & \ldots & \ldots & \dots & \ldots \\
+\hline
+\vdots & \vdots & \vdots & \vdots & \vdots&\ldots & \ddots\\
+\end{array}
+\]\noindent
+Este padrão chama-se \emph{método do zigue-zague de Cantor}. Enumera
+$\Nat \times \Nat$ do seguinte modo:
+\[
+\tuple{0,0}, \tuple{0,1}, \tuple{1,0}, \tuple{0,2}, \tuple{1,1},
+\tuple{2,0}, \tuple{0,3}, \tuple{1,2}, \tuple{2,1}, \tuple{3,0}, \dots
+\]
+Isto estabelece o seguinte:
+\end{explain}
+
+\begin{prop}\ollabel{natsquaredenumerable}
+$\Nat \times \Nat$ é !!{enumerable}.
+\end{prop}
+
+\begin{proof}
+Seja $f \colon \Nat \to \Nat\times\Nat$ a função que a cada $k \in \Nat$ associa o
+tuplo $\tuple{n,m} \in \Nat \times \Nat$ tal que $k$ é o valor na $n$-ésima
+linha e $m$-ésima coluna da matriz do zigue-zague de Cantor.
+\end{proof}
+
+\begin{explain}
+Esta técnica generaliza-se bem. Por exemplo, podemos usá-la para enumerar o
+conjunto dos triplos ordenados de números naturais, O.s.:
+\[
+\Nat \times \Nat \times \Nat = \Setabs{\tuple{n,m,k}}{n,m,k \in \Nat}
+\]
+Pensamos em $\Nat \times \Nat \times \Nat$ como o produto cartesiano de $\Nat
+\times \Nat$ com $\Nat$, isto é,
+\[
+\Nat^3 = (\Nat \times \Nat) \times \Nat =
+\Setabs{\tuple{\tuple{n,m},k}}{n, m, k
+  \in \Nat }
+\]
+e assim podemos enumerar $\Nat^3$ com uma matriz rotulando um eixo com a
+enumeração de~$\Nat$ e o outro com a enumeração de~$\Nat^2$:
+\[
+\begin{array}{ c | c | c | c | c | c}
+& \mathbf 0 & \mathbf 1 & \mathbf 2 & \mathbf 3 & \dots \\
+\hline
+\mathbf{\tuple{0,0}} & \tuple{0,0,0} & \tuple{0,0,1} & \tuple{0,0,2} & \tuple{0,0,3} & \dots \\
+\hline
+\mathbf{\tuple{0,1}} & \tuple{0,1,0} & \tuple{0,1,1} & \tuple{0,1,2} & \tuple{0,1,3} & \dots \\
+\hline
+\mathbf{\tuple{1,0}} & \tuple{1,0,0} & \tuple{1,0,1} & \tuple{1,0,2} & \tuple{1,0,3} & \dots \\
+\hline
+\mathbf{\tuple{0,2}} & \tuple{0,2,0} & \tuple{0,2,1} & \tuple{0,2,2} & \tuple{0,2,3} & \dots\\
+\hline
+\vdots & \vdots & \vdots & \vdots & \vdots & \ddots \\
+\end{array}
+\]
+Assim, com um método como o zigue-zague de Cantor, obtemos analogamente uma
+enumeração de~$\Nat^3$. E podemos continuar, obtendo enumerações de $\Nat^n$ para
+qualquer número natural~$n$. Logo:
+\end{explain}
+
+\begin{prop}
+$\Nat^n$ é !!{enumerable}, para todo $n \in \Nat$.
+\end{prop}
+
+\begin{prob}\label{sfr:siz:zigzag:prob:posint-n}
+Mostre que $(\PosInt)^n$ é !!{enumerable}, para todo $n \in \Nat$.
+\end{prob}
+
+\begin{prob}\label{sfr:siz:zigzag:prob:posint-star}
+  Mostre que $(\PosInt)^*$ é !!{enumerable}. Pode assumir \cref{sfr:siz:zigzag:prob:posint-n}.
+\end{prob}
+
+\end{document}

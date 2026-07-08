@@ -1,0 +1,204 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{ord-arithmetic}{add}
+\olsection{Adição Ordinal}
+
+Suponha-se que se pretende somar $\alpha$ e $\beta$. Pode simplesmente colocar-se uma
+{cópia} de $\beta$ imediatamente a seguir a uma cópia de $\alpha$. (É preciso tomar
+\emph{cópias}, pois sabemos por
+\olref[ordinals][basic]{ordinalsaresubsets} que ou $\alpha
+\subseteq \beta$ ou $\beta \subseteq \alpha$.) O efeito intuitivo disto
+é percorrer uma $\alpha$-sucessão de passos, \emph{e depois}
+percorrer uma $\beta$-sucessão. A sucessão resultante fica
+bem ordenada; logo, por
+\olref[ordinals][ordtype]{thmOrdinalRepresentation} é isomorfa
+a um ordinal (único). Esse ordinal pode considerar-se a \emph{soma}
+de $\alpha$ e $\beta$.
+
+Esta é a ideia intuitiva por detrás da adição ordinal. Para a definir
+com rigor, começa-se pela ideia de tomar \emph{cópias} de conjuntos.
+A ideia é usar etiquetas arbitrárias, $0$ e $1$, para saber de onde
+veio cada objeto:
+
+\begin{defn}\ollabel{defdissum}
+A \emph{soma disjunta} de $A$ e $B$ é $A \disjointsum B = (A\times
+\{0\}) \cup (B \times \{1\})$.
+\end{defn}
+
+Define-se em seguida uma ordem em pares de ordinais:
+
+\begin{defn}
+Para quaisquer ordinais $\alpha_1, \alpha_2, \beta_1, \beta_2$, diga-se que:
+\begin{align*}
+	\tuple{\alpha_1, \alpha_2} \rlexless \tuple{\beta_1, \beta_2}\text{ sse }&
+	\text{ou $\alpha_2 \in \beta_2$}\\
+	& \text{ou tanto $\alpha_2 = \beta_2$ como $\alpha_1 \in \beta_1$}
+\end{align*}
+\end{defn}
+
+Trata-se de uma ordem \emph{lexicográfica inversa}, pois ordena-se pelo
+segundo elemento e depois pelo primeiro. Recorde-se que se pretendia
+definir $\alpha \ordplus \beta$ como o tipo de ordem de uma cópia de $\alpha$
+seguida de uma cópia de $\beta$. Para o conseguir, define-se:
+
+\begin{defn}\ollabel{defordplus}
+Para quaisquer ordinais $\alpha$, $\beta$, a sua soma é $\alpha \ordplus
+\beta = \ordtype{\alpha \disjointsum \beta, \rlexless}$.
+\end{defn}
+\noindent
+Note-se que aqui se abusou ligeiramente da notação; estritamente deveria escrever-se ``$\Setabs{\tuple{x,y}\in \alpha\disjointsum\beta}{x \rlexless y}$'' em lugar de ``$\rlexless$''. Por brevidade, contudo, continuaremos a abusar da notação deste modo no que se segue.
+
+O resultado seguinte, juntamente com
+\olref[ordinals][ordtype]{thmOrdinalRepresentation}, confirma que a nossa
+definição está bem formada:
+
+\begin{lem}\ollabel{ordsumlessiswo}
+$\tuple{\alpha \disjointsum \beta, \rlexless}$ é um bom ordenamento, para
+quaisquer ordinais $\alpha$ e $\beta$.
+\end{lem}
+
+\begin{proof}
+Obviamente $\rlexless$ é conexa em $\alpha \disjointsum \beta$. Para
+mostrar que é bem fundada, fixe-se um $X \subseteq \alpha
+\disjointsum \beta$ não vazio. Seja $Y$ o subconjunto de $X$ cuja segunda coordenada é a menor possível, O.s.\@, $Y = \Setabs{\tuple{\gamma, i} \in X}{(\forall \tuple{\delta, j} \in X)i \leq j}$. Escolha-se agora o elemento de $Y$ com menor primeira coordenada.
+\end{proof}
+\noindent
+Temos assim uma definição explícita e clara da adição ordinal. Eis um
+fato não surpreendente (recorde-se que  $1 = \{0\}$, por
+\olref[z][infinity-again]{defnomega}):
+\begin{prop}
+$\alpha \ordplus  1 = \ordsucc{\alpha}$, para qualquer ordinal $\alpha$.
+\end{prop}
+
+\begin{proof}
+Considere-se o isomorfismo $f$ de $\ordsucc{\alpha} = \alpha \cup
+\{\alpha\}$ para $\alpha\disjointsum1 = (\alpha \times \{0\})
+\disjointsum (\{0\} \times \{1\})$ dado por $f(\gamma) =
+\tuple{\gamma, 0}$ para $\gamma \in \alpha$, e $f(\alpha) = \tuple{0,
+1}$.
+\end{proof}
+\noindent
+Além disso, é fácil mostrar que a adição obedece a certas condições
+recursivas:
+
+\begin{lem}\ollabel{ordadditionrecursion}
+Para quaisquer ordinais $\alpha, \beta$, tem-se:
+\begin{align*}
+	\alpha\ordplus 0 &= \alpha\\
+	\alpha \ordplus  (\beta\ordplus 1) &= (\alpha \ordplus  \beta) \ordplus  1\\
+	\alpha  \ordplus  \beta &= \supstrict_{\delta < \beta}(\alpha \ordplus  \delta) && \text{se $\beta $ é um ordinal limite}
+\end{align*}
+\end{lem}
+
+\begin{proof}
+Verifica-se caso a caso; primeiro:
+\begin{align*}
+	\alpha \ordplus  0
+	& = \ordtype{(\alpha \times \{0\}) \cup (0 \times \{1\}), \rlexless} \\
+	&= \ordtype{(\alpha \times \{0\}) \cup \{0\}, \rlexless}\\
+	&= \alpha\\
+	\alpha \ordplus (\beta \ordplus  1)
+	%&= \ordtype{(\alpha\times \{0\}) \cup (\ordtype{\beta \ordplus  1}\times \{1\}), \rlexless} \\
+	&= \ordtype{(\alpha\times \{0\}) \cup (\ordsucc{\beta}\times \{1\}), \rlexless} \\
+	&= \ordtype{(\alpha\times \{0\}) \cup (\beta \times \{1\}), \rlexless} \ordplus 1\\
+	&= (\alpha \ordplus  \beta) \ordplus  1
+\end{align*}
+Seja agora $\beta \neq \emptyset$ um limite. Se $\delta < \beta$ então
+também $\delta\ordplus 1 < \beta$, logo $\alpha \ordplus  \delta$ é um
+segmento inicial próprio de $\alpha \ordplus  \beta$. Logo $\alpha
+\ordplus  \beta$ é um majorante estrito de $X = \Setabs{\alpha
+\ordplus  \delta}{\delta < \beta}$. Além disso, se $\alpha \leq \gamma <
+\alpha \ordplus  \beta$, então claramente $\gamma = \alpha \ordplus
+\delta$ para algum $\delta < \beta$. Logo $\alpha \ordplus  \beta =
+\supstrict_{\delta< \beta}(\alpha\ordplus \delta)$.
+\end{proof}
+
+Mas eis um fato marcante. Para definir a adição ordinal, poder-se-ia
+\emph{em alternativa} ter usado simplesmente o teorema da recursão transfinita, e
+estipulado as equações recursivas, exatamente como em
+\olref{ordadditionrecursion} (embora com ``$\ordsucc{\beta}$''
+em vez de ``$\beta \ordplus 1$'').
+
+Há, pois, duas maneiras diferentes de definir operações nos
+ordinais. Podem definir-se \emph{sinteticamente}, construindo explicitamente um conjunto bem ordenado e considerando o seu tipo de ordem. Ou
+podem definir-se \emph{recursivamente}, apenas estipulando as equações
+recursivas. Feito corretamente, porém, o resultado é idêntico. De fato,
+\olref[ordinals][ordtype]{thmOrdinalRepresentation} garante
+que estas equações recursivas determinam ordinais \emph{únicos}.
+
+Em muitos aspectos, a aritmética ordinal comporta-se como a adição dos
+números naturais. Por exemplo, pode provar-se o seguinte:
+
+\begin{lem}\ollabel{ordinaladditionisnice}
+Se $\alpha, \beta, \gamma$ são ordinais, então:
+\begin{enumerate}
+	\item\ollabel{ordaddition1} se $\beta < \gamma$, então $\alpha
+	\ordplus  \beta < \alpha \ordplus  \gamma$
+	\item\ollabel{ordaddition2} se $\alpha \ordplus  \beta =
+	\alpha\ordplus \gamma$, então $\beta = \gamma$
+	\item\ollabel{ordaddition3}  $\alpha \ordplus  (\beta \ordplus
+	\gamma) = (\alpha \ordplus  \beta) \ordplus  \gamma$, O.s.\@,
+	a adição é associativa
+	\item\ollabel{ordaddition4}  Se $\alpha \leq \beta$, então $\alpha
+	\ordplus  \gamma \leq \beta \ordplus \gamma$
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+Provamos \olref{ordaddition3}, deixando o resto como exercício. A
+prova é por indução transfinita simples em $\gamma$, usando
+\olref{ordadditionrecursion}. Quando $\gamma = 0$:
+\[
+(\alpha \ordplus  \beta) \ordplus  0 = \alpha \ordplus  \beta  = \alpha \ordplus  (\beta \ordplus  0)
+\]
+Quando $\gamma = \delta\ordplus 1$, suponha-se por indução que $(\alpha
+\ordplus  \beta) \ordplus  \delta = \alpha \ordplus  (\beta \ordplus
+\delta)$; usando \olref{ordadditionrecursion} três vezes:
+\begin{align*}
+	(\alpha \ordplus  \beta) \ordplus  (\delta \ordplus  1) & = ((\alpha \ordplus  \beta) \ordplus  \delta)\ordplus 1\\
+	& = (\alpha \ordplus  (\beta \ordplus  \delta)) \ordplus  1\\
+	& = \alpha \ordplus  ((\beta \ordplus  \delta)\ordplus 1)\\
+	& = \alpha \ordplus  (\beta \ordplus  (\delta\ordplus 1))
+\end{align*}
+Quando $\gamma$ é um ordinal limite, suponha-se por indução que se
+$\delta \in \gamma$ então $(\alpha \ordplus  \beta) \ordplus  \delta =
+\alpha \ordplus  (\beta \ordplus  \delta)$; então:
+\begin{align*}
+	(\alpha \ordplus  \beta) \ordplus  \gamma & = \supstrict_{\delta < \gamma}((\alpha \ordplus  \beta) \ordplus  \delta) \\
+	&= \supstrict_{\delta < \gamma}(\alpha \ordplus  (\beta \ordplus  \delta))\\
+	&= \alpha \ordplus  \supstrict_{\delta < \gamma}(\beta \ordplus  \delta)\\
+	& = \alpha \ordplus  (\beta \ordplus  \gamma)
+\end{align*}
+\end{proof}
+
+\begin{prob}
+Prove o resto de
+\olref[sth][ord-arithmetic][add]{ordinaladditionisnice}.
+\end{prob}
+
+Deste modo, a adição ordinal deve parecer muito familiar. Há contudo um ponto crucial em que a adição ordinal \emph{não} se parece com a adição nos naturais.
+
+\begin{prop}\ollabel{ordsumnotcommute}
+A adição ordinal \emph{não} é comutativa; $1 \ordplus  \omega = \omega <
+\omega \ordplus  1$.
+\end{prop}
+
+\begin{proof}
+Note-se que $1 \ordplus  \omega = \supstrict_{n < \omega} (1 \ordplus n)
+= \omega \in \omega \cup \{\omega\} = \ordsucc{\omega} = \omega
+\ordplus  1$.
+\end{proof}
+\noindent
+Embora isto possa surpreender à primeira vista, \emph{não devia}. Por
+um lado, ao considerar $1 \ordplus  \omega$, pensa-se no
+tipo de ordem que se obtém colocando um elemento extra \emph{antes} de
+todos os números naturais. Raciocinando como com o Hotel de Hilbert em
+\olref[sfr][infinite][hilbert]{sec}, intuitivamente esse primeiro elemento
+extra não altera o tipo de ordem global. Por
+outro lado, ao considerar $\omega \ordplus  1$, pensa-se no
+tipo de ordem que se obtém colocando um elemento extra \emph{depois} de
+todos os números naturais. E isso é algo radicalmente diferente!
+
+\end{document}

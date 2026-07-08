@@ -1,0 +1,174 @@
+% Part: sets-functions-relations
+% Chapter: sets
+% Section: unions-and-intersections
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{set}{uni}
+\olsection{Uniões e Interseções}
+
+\begin{explain}
+Na \olref[sfr][set][bas]{sec}, introduzimos definições de conjuntos por
+abstração, O.s.\@, definições da forma $\Setabs{x}{\phi(x)}$.
+Aqui invocamos alguma propriedade~$\phi$, e essa propriedade pode mencionar
+conjuntos que já definimos. Assim, por exemplo, se $A$ e~$B$ são conjuntos,
+o conjunto $\Setabs{x}{x \in A \lor x \in B}$ consiste em todos aqueles
+objetos que são !!{element}s de $A$ ou de~$B$, O.s.\@, é o
+conjunto que reúne os !!{element}s de $A$ e~$B$. Podemos visualizar
+isto como na \olref{fig:union}, onde a área realçada indica os
+!!{element}s dos dois conjuntos $A$ e~$B$ juntos.
+
+\begin{figure}[H]
+  \olasset{assets/diagrams/union.tikz}
+  \caption{A união $A \cup B$ de dois conjuntos é o conjunto dos !!{element}s de
+   $A$ juntamente com os de~$B$.}
+  \ollabel{fig:union} 
+\end{figure}
+
+Esta operação sobre conjuntos---combiná-los---é muito útil e comum,
+e por isso damos-lhe um nome formal e um símbolo. 
+\end{explain}
+
+\begin{defn}[União]
+A \emph{união} de dois conjuntos $A$ e $B$, escrita $A \cup B$, é o
+conjunto de todas as coisas que são !!{element}s de $A$, de $B$, ou de ambos.
+\[
+A \cup B = \Setabs{x}{x \in A \lor x \in B}
+\]
+\end{defn}
+
+\begin{ex}
+Como a multiplicidade de !!{element}s não importa, a união de dois
+conjuntos que têm !!a{element} em comum contém esse !!{element} apenas uma vez,
+por exemplo, $\{ a, b, c\} \cup \{ a, 0, 1\} = \{a, b, c, 0, 1\}$.
+
+A união de um conjunto com um dos seus subconjuntos é simplesmente o conjunto maior: $\{a,
+b, c \} \cup \{a \} = \{a, b, c\}$.
+
+A união de um conjunto com o conjunto vazio é idêntica ao conjunto: $\{a,
+b, c \} \cup \emptyset = \{a, b, c \}$.
+\end{ex}
+
+\begin{prob}
+Prove que se $A \subseteq B$, então $A \cup B = B$.
+\end{prob}
+
+\begin{explain}
+Também podemos considerar uma operação ``dual'' à união. É a
+operação que forma o conjunto de todos os !!{element}s que são !!{element}s
+de~$A$ e são também !!{element}s de~$B$. Esta operação chama-se
+\emph{interseção}, e pode representar-se como na \olref{fig:intersection}.
+\begin{figure}[H]
+  \olasset{assets/diagrams/intersection.tikz}
+  \caption{A interseção $A \cap B$ de dois conjuntos é o conjunto dos
+    !!{element}s que têm em comum.}
+  \ollabel{fig:intersection}
+\end{figure}
+\end{explain}
+
+\begin{defn}[Interseção]
+A \emph{interseção} de dois conjuntos $A$ e $B$, escrita $A \cap B$, é
+o conjunto de todas as coisas que são !!{element}s de ambos $A$ e~$B$.
+\[
+A \cap B = \Setabs{x}{x \in A \land x \in B}
+\]
+Dois conjuntos dizem-se \emph{disjuntos} se a sua interseção é
+vazia. Isso significa que não têm !!{element}s em comum.
+\end{defn}
+
+\begin{ex}
+Se dois conjuntos não têm !!{element}s em comum, a sua interseção é vazia:
+$\{ a, b, c\} \cap \{ 0, 1\} = \emptyset$.
+
+Se dois conjuntos têm !!{element}s em comum, a sua interseção é o conjunto de
+todos esses !!{element}s: $\{a, b, c \} \cap \{a, b, d \} = \{a, b\}$.
+
+A interseção de um conjunto com um dos seus subconjuntos é simplesmente o conjunto menor:
+$\{a, b, c\} \cap \{a, b\} = \{a, b\}$.
+
+A interseção de qualquer conjunto com o conjunto vazio é vazia: $\{a, b, c \}
+\cap \emptyset = \emptyset$.
+\end{ex}
+
+\begin{prob}
+Prove rigorosamente que se $A \subseteq B$, então $A \cap B = A$.
+\end{prob}
+
+\begin{explain}
+Também podemos formar a união ou a interseção de mais de dois
+conjuntos. Uma forma elegante de tratar disso em geral é a
+seguinte: suponhamos que reunimos num único conjunto todos os conjuntos dos quais queremos formar a união
+(ou a interseção). Então podemos definir a união
+de todos os nossos conjuntos originais como o conjunto de todos os objetos que pertencem a pelo
+menos um !!{element} desse conjunto, e a interseção como o conjunto de
+todos os objetos que pertencem a todo !!{element} desse conjunto.
+\end{explain}
+
+\begin{defn}
+Se $A$ é um conjunto de conjuntos, então $\bigcup A$ é o conjunto dos !!{element}s dos
+!!{element}s de~$A$:
+\begin{align*}
+\bigcup A & = \Setabs{x}{x \text{ pertence a !!a{element} de } A},
+\text{ O.s.\@,}\\
+& = \Setabs{x}{\text{existe um } B \in A
+  \text{ tal que } x \in B}
+\end{align*}
+\end{defn}
+
+\begin{defn}
+Se $A$ é um conjunto de conjuntos, então $\bigcap A$ é o conjunto dos objetos que
+todos os elementos de~$A$ têm em comum:
+\begin{align*}
+\bigcap A & = \Setabs{x}{x \text{ pertence a todo !!{element} de } A},
+\text{ O.s.\@,}\\
+ & = \Setabs{x}{\text{para todo } B \in A, x \in B}
+\end{align*}
+\end{defn}
+
+\begin{ex}
+Suponha $A = \{ \{ a, b \}, \{ a, d, e \}, \{ a, d \} \}$.
+Então $\bigcup A = \{ a, b, d, e \}$ e $\bigcap A = \{ a \}$.
+\end{ex}
+\begin{prob}
+	Mostre que se $A$ é um conjunto e $A \in B$, então $A \subseteq \bigcup B$.
+\end{prob}
+
+Também poderíamos fazer o mesmo para uma sequência de conjuntos $A_1$, $A_2$, \dots
+\begin{align*}
+\bigcup_i A_i & = \Setabs{x}{x \text{ pertence a um dos } A_i}\\
+\bigcap_i A_i & = \Setabs{x}{x \text{ pertence a todos os } A_i}.
+\end{align*}
+
+Quando temos um \emph{índice} de conjuntos, O.s.\@, algum conjunto $I$ tal que
+consideramos $A_i$ para cada $i \in I$, podemos também usar estas
+abreviaturas:
+\begin{align*}
+	\bigcup_{i \in I} A_i & = \bigcup \Setabs{A_i }{i \in I}\\
+	\bigcap_{i \in I} A_i & = \bigcap\Setabs{A_i}{i \in I}
+\end{align*}
+
+Finalmente, podemos querer pensar no conjunto de todos os !!{element}s em~$A$
+que não estão em~$B$. Podemos representá-lo como na \olref{difference}.
+
+\begin{figure}[H]
+  \olasset{assets/diagrams/difference.tikz}
+  \caption{A diferença $A \setminus B$ de dois conjuntos é o conjunto dos
+    !!{element}s de~$A$ que não são também !!{element}s de~$B$.}
+  \ollabel{difference}
+\end{figure}
+
+\begin{defn}[Diferença]
+A \emph{diferença} de conjuntos~$A \setminus B$ é o conjunto de todos os !!{element}s de
+$A$ que não são também !!{element}s de~$B$, O.s.\@,
+\[
+A\setminus B = \Setabs{x}{x\in A \text{ e } x \notin B}.
+\]
+\end{defn}
+
+\begin{prob}
+	Prove que se $A \subsetneq B$, então $B \setminus A \neq \emptyset$.
+\end{prob}
+
+\end{document}

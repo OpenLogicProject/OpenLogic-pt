@@ -1,0 +1,82 @@
+% Part: sets-functions-relations
+% Chapter: relations
+% Section: equivalence-relations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{rel}{eqv}
+
+\olsection{Relações de Equivalência}
+
+A relação identidade num conjunto é reflexiva, simétrica e
+transitiva. Relações~$R$ que têm todas as três destas propriedades são muito
+comuns.
+
+\begin{defn}[Relação de equivalência] 
+Uma relação $R \subseteq A^2$ que é reflexiva, simétrica e
+transitiva chama-se uma \emph{relação de equivalência}. !!^{element}s $x$
+e $y$ de~$A$ dizem-se \emph{$R$-equivalentes} se~$Rxy$.
+\end{defn}
+
+As relações de equivalência dão origem à noção de \emph{classe de
+equivalência}. Uma relação de equivalência ``reparte'' o domínio em
+partições distintas. Dentro de cada partição, todos os objetos estão
+relacionados uns com os outros; e objetos de partições diferentes não se
+relacionam entre si. Por vezes, é útil falar destas
+partições \emph{diretamente}. Para esse fim, introduzimos uma
+definição:
+
+\begin{defn}\ollabel{def:equivalenceclass}
+Seja $R \subseteq A^2$ uma relação de equivalência. Para cada $x \in A$, a
+\emph{classe de equivalência} de $x$ em~$A$ é o conjunto $\equivrep{x}{R}
+= \Setabs{y \in A}{Rxy}$. O \emph{quociente} de $A$ por~$R$ é
+$\equivclass{A}{R} = \Setabs{\equivrep{x}{R}}{x \in A}$, O.s.\@, o conjunto
+destas classes de equivalência. 
+\end{defn}
+
+O resultado seguinte justifica a definição de classe de equivalência,
+provando que as classes de equivalência são de fato as partições de~$A$:
+
+\begin{prop}
+Se $R \subseteq A^2$ é uma relação de equivalência, então $Rxy$ se e só se
+$\equivrep{x}{R} = \equivrep{y}{R}$.
+\end{prop}
+
+\begin{proof}
+Para o sentido da esquerda para a direita, suponhamos $Rxy$, e seja $z \in
+\equivrep{x}{R}$. Por definição, então, $Rxz$. Como $R$ é uma
+relação de equivalência, $Ryz$. (Explicando melhor: como $Rxy$ e~$R$ é
+simétrica temos $Ryx$, e como $Rxz$ e~$R$ é transitiva temos~$Ryz$.) Logo $z \in \equivrep{y}{R}$. Generalizando,
+$\equivrep{x}{R} \subseteq \equivrep{y}{R}$. Mas de modo perfeitamente análogo,
+$\equivrep{y}{R} \subseteq \equivrep{x}{R}$. Logo $\equivrep{x}{R} =
+\equivrep{y}{R}$, pela extensionalidade.
+
+Para o sentido da direita para a esquerda, suponhamos $\equivrep{x}{R} =
+\equivrep{y}{R}$. Como $R$ é reflexiva, $Ryy$, logo $y \in
+\equivrep{y}{R}$. Assim também $y \in \equivrep{x}{R}$ pela suposição
+de que $\equivrep{x}{R} = \equivrep{y}{R}$. Logo $Rxy$.
+\end{proof}
+
+\begin{ex}
+Um bom exemplo de relações de equivalência vem da aritmética modular.
+Para quaisquer $a$, $b$, e $n \in \PosInt$, digamos que $a \equiv_n b$ se e só se
+dividir $a$ por~$n$ dá o mesmo resto que dividir $b$ por~$n$.
+(De modo um pouco mais simbólico: $a \equiv_n b$ se e só se, para algum $k \in
+\Int$, $a - b = kn$.) Agora, $\equiv_n$ é uma relação de equivalência, para
+qualquer~$n$. E há exatamente $n$ classes de equivalência distintas
+geradas por~$\equiv_n$; isto é, $\equivclass{\Nat}{\equiv_n}$ tem
+$n$ !!{element}s. São: o conjunto dos números divisíveis por $n$
+sem resto, O.s.\@, $\equivrep{0}{\equiv_n}$; o conjunto dos números
+divisíveis por $n$ com resto~$1$, O.s.\@, $\equivrep{1}{\equiv_n}$;
+\ldots; e o conjunto dos números divisíveis por~$n$ com resto~$n-1$,
+O.s.\@,~$\equivrep{n-1}{\equiv_n}$.
+\end{ex}
+
+\begin{prob}
+Mostre que $\equiv_n$ é uma relação de equivalência, para qualquer $n \in
+\PosInt$, e que $\equivclass{\Nat}{\equiv_n}$ tem exatamente $n$ membros.
+\end{prob}
+
+\end{document}

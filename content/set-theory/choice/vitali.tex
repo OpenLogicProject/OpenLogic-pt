@@ -1,0 +1,266 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{choice}{vitali}
+\olsection{Apêndice: Paradoxo de Vitali}
+
+Para ter uma ideia real de se a construção de Banach--Tarski é
+aceitável ou não, devíamos examinar a sua \emph{prova}. Infelizmente,
+isso exigiria muito mais álgebra do que podemos apresentar aqui.
+Contudo, podemos oferecer algumas observações rápidas que talvez esclareçam
+a prova de Banach--Tarski,\footnote{Para um tratamento bem mais completo,
+ver \cite{Weston2003} ou \cite{Wagon2016}.} concentrando-nos no
+resultado seguinte:
+
+\begin{thm}[Paradoxo de Vitali (em $\ZFC$)]\ollabel{vitaliparadox}
+Qualquer círculo pode ser decomposto numa quantidade enumerável de peças, que podem ser
+remontadas (por rotação e transporte) de modo a formar duas cópias desse
+círculo.
+\end{thm}
+
+O Paradoxo de Vitali é muito mais fácil de provar do que o Paradoxo de Banach--Tarski. Chamamos-lhe ``Paradoxo de Vitali'', pois segue-se da construção, em
+\citeyear{Vitali1905}, de um conjunto não mensurável. Mas os
+aspectos conjuntistas da prova do Paradoxo de Vitali e do
+Paradoxo de Banach--Tarski são muito semelhantes. A diferença essencial
+entre os resultados é que Banach--Tarski considera uma
+decomposição \emph{finita}, enquanto o Paradoxo de Vitali considera uma
+decomposição \emph{enumerável infinita}. Como \citet{Weston2003}
+diz, o Paradoxo de Vitali ``certamente não é tão notável como o
+paradoxo de Banach--Tarski, mas ilustra que paradoxos geométricos podem
+ocorrer mesmo em situações `simples'.'' 
+
+O Paradoxo de Vitali trata de uma figura bidimensional, um círculo. Logo
+trabalhamos no plano, $\Real^2$. Seja $\rotationsgroup$ o conjunto das
+rotações (no sentido dos ponteiros do relógio) de pontos em torno da origem por valores em radianos \emph{racionais}
+no intervalo $[0,2\pi)$. Eis alguns fatos algébricos sobre
+$\rotationsgroup$ (se não compreender o enunciado do
+resultado, a prova esclarecerá o seu significado):
+
+\begin{lem}\ollabel{rotationsgroupabelian}
+$\rotationsgroup$ forma um {grupo} abeliano sob a composição de funções.
+\end{lem}
+
+\begin{proof}
+Escrevendo $0_{\rotationsgroup}$ para a rotação por $0$ radianos, este é
+um elemento neutro para $\rotationsgroup$, pois
+$\comp{0_{\rotationsgroup}}{\rho} = \comp{\rho}{0_{\rotationsgroup}} =
+\rho$ para qualquer $\rho \in \rotationsgroup$.
+
+Todo o elemento tem inverso. Onde $\rho \in \rotationsgroup$ roda
+por $r$ radianos, $\rho^{-1} \in \rotationsgroup$ roda por $2\pi - r$
+radianos, de modo que $\rho \circ \rho^{-1} = 0_\rotationsgroup$.
+
+A composição é associativa: $\comp{\rho}{(\comp{\sigma}{\tau})} =
+\comp{(\comp{\rho}{\sigma})}{\tau}$ para quaisquer $\rho, \sigma, \tau \in
+\rotationsgroup$
+
+A composição é comutativa: $\comp{\rho}{\sigma} =
+\comp{\sigma}{\rho}$ para quaisquer $\rho, \sigma \in \rotationsgroup$.
+\end{proof}
+
+De fato, podemos partir o nosso grupo $\rotationsgroup$
+ao meio e depois usar qualquer metade para recuperar o grupo inteiro:
+
+\begin{lem}\ollabel{disjointgroup}
+Existe uma partição de $\rotationsgroup$ em dois conjuntos disjuntos,
+$\rotationsgroup_{1}$ e $\rotationsgroup_{2}$, ambos dos quais são uma
+base para $\rotationsgroup$. 
+\end{lem}
+
+\begin{proof}
+Seja $\rotationsgroup_{1}$ o conjunto das rotações por valores racionais em radianos
+em $[0, \pi)$; seja $\rotationsgroup_{2} = \rotationsgroup
+\setminus \rotationsgroup_1$. Por álgebra elementar,
+$\Setabs{\comp{\rho}{\rho}}{\rho \in \rotationsgroup_1} =
+\rotationsgroup$. Um resultado semelhante obtém-se para
+$\rotationsgroup_2$.
+\end{proof}
+
+Usaremos este fato sobre grupos para estabelecer \olref{vitaliparadox}.
+Seja $\onesphere$ o círculo unitário, O.s.\@, o conjunto dos pontos
+exatamente a~$1$ unidade da origem do plano, O.s.\@,
+$\Setabs{\tuple{r,s} \in \Real^2}{\sqrt{r^2+s^2}=1}$. Partiremos
+$\onesphere$ em partes considerando a relação seguinte em
+$\onesphere$:
+\[
+	r \sim s \emph{ sse }(\exists \rho \in \rotationsgroup)\rho(r) = s.
+\]
+Ou seja, os pontos de $\onesphere$ estão ligados por esta relação sse se pode passar de um para o outro por uma rotação de valor racional em torno da origem. Sem surpresa:
+
+\begin{lem}
+$\sim$ é uma relação de equivalência.
+\end{lem}
+
+\begin{proof}
+Trivial, usando \olref{rotationsgroupabelian}. 
+\end{proof}
+
+Invocamos agora a Escolha para obter um conjunto, $C$, contendo exatamente um
+membro de cada classe de equivalência de $\onesphere$ sob $\sim$. Ou seja,
+consideramos uma função de escolha $f$ no conjunto das classes de
+equivalência,\footnote{Como $\rotationsgroup$ é !!{enumerable},
+cada !!{element} de $E$ é !!{enumerable}. Como $\onesphere$ é
+!!{nonenumerable}, segue-se de \olref{vitalicover} e
+\olref[card-arithmetic][simp]{kappaunionkappasize} que $E$ é
+!!{nonenumerable}. Logo isto é um uso de Escolha \emph{não} enumerável.}
+\[
+	E = \Setabs{\equivrep{r}{\sim}}{r \in \onesphere},
+\]
+e seja $C = \ran{f}$. Para cada rotação $\rho \in \rotationsgroup$,
+o conjunto $\funimage{\rho}{C}$ consiste nos pontos obtidos ao
+aplicar a rotação $\rho$ a cada ponto de $C$. Os dois resultados seguintes
+mostram que estes conjuntos cobrem o círculo por completo e sem
+sobreposição:
+
+\begin{lem}\ollabel{vitalicover}
+$\onesphere = \bigcup_{\rho \in \rotationsgroup} \funimage{\rho}{C}$.
+\end{lem}
+
+\begin{proof}
+Fixe-se $s \in \onesphere$; existe algum $r \in C$ tal que $r \in
+\equivrep{s}{\sim}$, O.s.\@, $r \sim s$, O.s.\@, $\rho(r) = s$ para algum
+$\rho \in \rotationsgroup$. 
+\end{proof}
+
+\begin{lem}\ollabel{vitalinooverlap}
+Se $\rho_1 \neq \rho_2$ então $\funimage{\rho_1}{C} \cap \funimage{\rho_2}{C} = \emptyset$. 
+\end{lem}
+
+\begin{proof}
+Suponhamos $s \in \funimage{\rho_{1}}{C} \cap \funimage{\rho_{2}}{C}$. Logo
+$s = \rho_{1}(r_{1}) = \rho_{2}(r_{2})$ para alguns $r_{1}, r_{2} \in C$.
+Daí $\rho^{-1}_2(\rho_1(r_1)) = r_{2}$, e
+$\comp{\rho_1}{\rho^{-1}_2} \in \rotationsgroup$, logo $r_{1} \sim
+r_{2}$. Logo $r_1 = r_2$, pois $C$ selecciona exatamente um membro de cada
+classe de equivalência sob $\sim$. Logo $s = \rho_1(r_1) = \rho_2(r_1)$,
+e portanto $\rho_1 = \rho_2$.
+\end{proof}
+
+Aplicamos agora os fatos algébricos anteriores ao nosso círculo:
+
+\begin{lem}\ollabel{pseudobanachtarski}
+Existe uma partição de $\onesphere$ em dois conjuntos disjuntos, $D_{1}$
+e $D_{2}$, tal que $D_{1}$ pode ser particionado numa quantidade enumerável de
+conjuntos que podem ser rodados de modo a formar uma cópia de $\onesphere$ (e
+analogamente para $D_{2}$).
+\end{lem}
+
+\begin{proof}
+Usando $\rotationsgroup_{1}$ e $\rotationsgroup_{2}$ de \olref{disjointgroup}, seja:
+\begin{align*}
+	D_{1} &= \bigcup_{\rho \in \rotationsgroup_1} \funimage{\rho}{C} & 
+	D_{2} &= \bigcup_{\rho \in \rotationsgroup_2} \funimage{\rho}{C}
+\end{align*}
+Isto é uma partição de $\onesphere$, por \olref{vitalicover}, e $D_1$
+e $D_2$ são disjuntos por \olref{vitalinooverlap}. Por construção,
+$D_1$ pode ser particionado numa quantidade enumerável de conjuntos,
+$\funimage{\rho}{C}$ para cada $\rho \in R_1$. E estes podem ser rodados
+de modo a formar uma cópia de $\onesphere$, pois $\onesphere = \bigcup_{\rho \in
+\rotationsgroup}\funimage{\rho}{C} = \bigcup_{\rho \in
+\rotationsgroup_1}\funimage{(\comp{\rho}{\rho})}{C}$ por
+\olref{disjointgroup} e \olref{vitalicover}. O mesmo raciocínio
+vale para $D_2$. \end{proof}\noindent Isto implica de imediato
+o Paradoxo de Vitali. Pois podemos gerar \emph{duas} cópias de
+$\onesphere$ a partir de $\onesphere$, apenas partindo-o numa quantidade enumerável de
+peças (os vários $\funimage{\rho}{C}$) e depois movendo-as rigidamente
+(basta rodar cada peça de $D_1$, e primeiro transportar
+e depois rodar cada peça de $D_2$).
+
+Recapitulemos a estratégia de prova. Começamos com fatos algébricos sobre o grupo de rotações no plano. Usamos este grupo para
+partir $\onesphere$ em classes de equivalência. Chegamos então a um
+``paradoxo'', usando a Escolha para seleccionar elementos de cada classe.
+
+Usamos exatamente a mesma estratégia para provar Banach--Tarski. A principal
+diferença é que os fatos algébricos usados na prova de Banach--Tarski
+são bastante mais complicados do que os usados no Paradoxo de Vitali. Mas esses fatos algébricos nada têm a ver com a
+Escolha. Resumimos-os rapidamente. 
+
+Para provar Banach--Tarski, começamos por estabelecer um análogo de
+\olref{disjointgroup}: qualquer \emph{grupo livre} pode ser partido em quatro
+peças que, intuitivamente, podemos ``mover'' de modo a recuperar duas cópias
+do grupo inteiro.\footnote{O fato de podermos usar \emph{quatro}
+peças deve-se a \cite{Robinson1947}. Para uma prova recente, ver
+\citet[Theorem 5.2]{Wagon2016}. Seguimos \citet[p.~3]{Weston2003}
+ao descrever isto como ``mover'' as peças do grupo.} Mostramos depois
+que podemos usar duas rotações particulares em torno da origem de
+$\Real^3$ para gerar um grupo livre de rotações, $F$.\footnote{Ver
+\citet[Theorem 2.1]{Wagon2016}.} (Ainda sem Escolha.) Consideramos agora pontos
+na superfície da esfera como ``semelhantes'' sse um pode obter-se
+do outro por uma rotação em~$F$. \emph{Usamos então a Escolha} para
+seleccionar exatamente um ponto de cada classe de equivalência de pontos ``semelhantes''.
+Aplicando a nossa divisão de $F$ à superfície da esfera, como
+em \olref{pseudobanachtarski}, partimos essa superfície em quatro peças,
+que podemos ``mover'' de modo a obter duas cópias da superfície da
+esfera. E isto estabelece \citep{Hausdorff1914}:
+
+\begin{thm}[Paradoxo de Hausdorff (em $\ZFC$)] 
+A superfície de qualquer esfera pode ser decomposta num número finito de peças,
+que podem ser remontadas (por rotação e transporte) de modo a formar duas
+cópias disjuntas dessa esfera.
+\end{thm}
+
+Ainda são precisos alguns truques algébricos para obter o Teorema completo de
+Banach--Tarski (que não diz só respeito à superfície da esfera,
+mas também ao seu interior). Francamente, porém, isto é apenas a cereja no topo do
+bolo algébrico. Por isso Weston escreve:
+\begin{quote}	
+  [\ldots] o resultado sobre grupos livres é o passo \emph{chave} na
+  prova do paradoxo de Banach--Tarski. Deste ponto de vista, o
+  paradoxo de Banach--Tarski não é tanto uma afirmação sobre $\Real^3$ quanto
+  uma afirmação sobre a complexidade do grupo [das translações
+  e rotações em $\Real^3$]. \cite[p.~16]{Weston2003}
+\end{quote}
+Ou seja: podermos ou não oferecer uma decomposição \emph{finita} (como em
+Banach--Tarski) ou uma decomposição \emph{enumerável infinita} (como no
+Paradoxo de Vitali) resume-se a certos fatos de teoria dos grupos sobre
+trabalhar em duas ou três dimensões.
+
+Admitidamente, esta última observação estraga ligeiramente a piada no final
+de \olref[banach]{sec}. Por ser bidimensional,
+``Banach--Tarski'' tem de ser dividido numa \emph{infinidade} enumerável de
+peças, se se quiserem rearranjar essas peças de modo a formar ``Banach--Tarski
+Banach--Tarski''. Para consertar a piada, é preciso escrever em três
+dimensões. Deixamos isto como exercício para o leitor.
+
+Um último comentário. Na \olref[banach]{sec}, mencionamos que as
+``peças'' da esfera que se obtêm não podem ser \emph{mensuráveis},
+mas têm de ser dispersões infinitas impossíveis de visualizar. O mesmo vale para o nosso
+uso da Escolha ao obter \olref{pseudobanachtarski}. E tudo isto merece explicação.
+
+De novo, devemos esboçar alguma base (mas isto é \emph{apenas} um
+esboço; talvez queira consultar uma entrada de manual sobre \emph{medida}).
+Definir uma medida para um conjunto $X$ é atribuir um valor $\mu(E) \in
+\Real$ a cada $E$ nalguma ``$\sigma$-álgebra'' sobre $X$. Os detalhes aqui
+não são essenciais, exceto que a função $\mu$ deve obedecer ao
+princípio da aditividade enumerável: a medida de uma união enumerável de
+conjuntos disjuntos é a soma das medidas individuais, O.s.\@,
+$\mu(\bigcup_{n < \omega} X_n) = \sum_{n < \omega}\mu(X_n)$ sempre que
+os $X_n$ são disjuntos. Dizer que um conjunto é ``não mensurável'' é
+dizer que nenhuma medida pode ser atribuída de modo adequado. Agora, usando o nosso
+$\rotationsgroup$ de antes:
+
+\begin{cor}[Vitali]
+Seja $\mu$ uma medida tal que $\mu(\onesphere) = 1$, e tal que
+$\mu(X) = \mu(Y)$ se $X$ e $Y$ são congruentes. Então
+$\funimage{\rho}{C}$ é não mensurável para todo o $\rho \in
+\rotationsgroup$. 
+\end{cor}
+
+\begin{proof}
+Por redução ao absurso, suponhamos o contrário. Seja então $\mu(\funimage{\sigma}{C}) =
+r$ para algum $\sigma \in \rotationsgroup$ e algum $r \in \Real$. Para
+qualquer $\rho \in \rotationsgroup$, $\funimage{\rho}{C}$ e $\funimage{\sigma}{C}$ são
+congruentes, logo  $\mu(\funimage{\rho}{C}) = r$ para qualquer $\rho \in
+\rotationsgroup$. Por \olref{vitalicover} e \olref{vitalinooverlap}, $\onesphere =
+\bigcup_{\rho \in \rotationsgroup}\funimage{\rho}{C}$ é uma união enumerável de conjuntos disjuntos dois a dois. Logo a aditividade enumerável dita que
+$\mu(\onesphere) = 1$ é a soma das medidas de cada
+$\funimage{\rho}{C}$, O.s.\@,
+\[
+	1 = \mu(\onesphere) = \sum_{\rho \in \rotationsgroup}\mu(\funimage{\rho}{C}) = \sum_{\rho \in \rotationsgroup}r
+\]
+Mas se $r = 0$ então $\sum_{\rho \in \rotationsgroup}r = 0$, e se $r
+> 0$ então $\sum_{\rho \in \rotationsgroup}r = \infty$. 
+\end{proof}
+
+\end{document}

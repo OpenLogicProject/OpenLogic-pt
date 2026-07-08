@@ -1,0 +1,62 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{story}{rus}
+\olsection{Paradoxo de Russell (de novo)}
+
+Na \olref[sfr][][]{part}, trabalhamos com uma teoria ingênua dos conjuntos. Mas,
+segundo uma concepção \emph{muito} ingênua, os conjuntos são apenas as
+extensões dos predicados. Este pensamento ingênuo imporia o
+seguinte princípio:
+
+\begin{defish}
+  \emph{Compreensão ingênua.} $\Setabs{x}{\phi(x)}$ existe para qualquer fórmula $\phi$.
+\end{defish}
+
+Por tentador que seja este princípio, é provadamente inconsistente. Vimo-lo na \olref[sfr][set][rus]{sec}, mas o resultado é tão importante, e tão direto, que vale a pena repetir. Ipsis verbis.
+
+\begin{thm}[Paradoxo de Russell]
+Não existe conjunto $R = \Setabs{x}{x \notin x}$
+\end{thm}
+
+\begin{proof}
+Se $R = \Setabs{x}{x \notin x}$ existisse, então
+$R \in R$ sse $R \notin R$, o que é uma contradição.
+\end{proof}
+
+Russell descobriu este resultado em junho de 1901. (Não colocou, porém,
+o paradoxo exatamente na forma em que o acabamos de apresentar, pois estava
+a considerar a teoria dos conjuntos de Frege, tal como delineada em \emph{Grundgesetze}. Voltaremos a isto na \olref[blv]{sec}.) Russell escreveu a
+Frege a 16 de junho de 1902, explicando a inconsistência no sistema de
+Frege. Para a correspondência, e um pouco de contexto, ver
+\citet[pp.~124--8]{Heijenoort1967}. 
+
+Vale a pena enfatizar que esta prova de duas linhas é um resultado de
+\emph{lógica pura}. De fato, usamos implicitamente um axioma (não lógico?) de extensionalidade na nossa notação $\Setabs{x}{x \notin x}$; pois $\Setabs{x}{\phi(x)}$ deve ser \emph{o único} (pela extensionalidade) conjunto dos $\phi$s, se algum existir. Mas podemos evitar até o vestígio da extensionalidade, bastando enunciar o resultado assim:
+\emph{não existe conjunto cujos membros sejam exatamente os conjuntos que não são membros de si próprios}. E isto pouco tem a ver com conjuntos. Como o próprio Russell observou, raciocínio rigorosamente análogo
+leva-nos a concluir: \emph{nenhum homem barbeia exatamente os homens que
+não se barbeiam a si próprios}. Ou: \emph{nenhum pug cheira exatamente os pugs que
+não se cheiram a si próprios}. E assim por diante. Esquematicamente, a forma do
+resultado é apenas: 
+\[
+\lnot \exists x \forall z(Rzx \liff \lnot R zz).
+\]
+E isto não passa de um teorema (esquema) da lógica de primeira ordem. Consequentemente,
+não podemos evitar o paradoxo de Russell apenas mexendo na nossa teoria
+dos conjuntos; ele surge antes sequer de \emph{chegarmos} à teoria dos conjuntos. Se formos
+usar lógica (clássica) de primeira ordem, temos simplesmente de
+\emph{aceitar} que não existe conjunto $R = \Setabs{x}{x\notin x}$. 
+
+A consequência é esta. Se quisermos aceitar a compreensão ingênua
+enquanto \emph{evitamos} a inconsistência, não basta mexer na
+\emph{teoria dos conjuntos}. Teríamos, em vez disso, de reformular a nossa
+\emph{lógica}.
+
+É claro que já foram apresentadas teorias dos conjuntos com lógicas não clássicas.
+Mas são---no mínimo---não standard. A abordagem usual
+ao paradoxo de Russell é tratá-lo como uma prova direta de não existência
+e depois tentar aprender a viver com ela. É essa a
+abordagem que seguiremos.
+
+\end{document}

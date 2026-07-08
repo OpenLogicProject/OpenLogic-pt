@@ -1,0 +1,63 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{choice}{justifications}
+\olsection{Considerações Intrínsecas sobre a Escolha}
+
+A questão mais ampla, então, é se a Boa Ordenação, ou a Escolha, ou
+de fato a comparabilidade de todos os conjuntos quanto ao tamanho---não
+importa qual---podem ser justificadas. 
+
+Eis uma tentativa de justificação \emph{intrínseca}. De volta a
+\olref[z][story]{sec}, introduzimos vários princípios
+sobre a hierarquia. Um deles merece ser repetido:
+\begin{enumerate}
+	\item[] \stagesacc. Para qualquer estágio $S$, e para quaisquer conjuntos que foram
+	formados \emph{antes} do estágio $S$: forma-se no estágio $S$ um conjunto cujos
+	membros são exatamente esses conjuntos. Nada mais se forma no
+	estágio~$S$. 
+\end{enumerate}
+De fato, muitos autores sugeriram que o Axioma da Escolha pode ser
+justificado via (algo como) este princípio. Daremos brevemente um
+resumo dessa abordagem.
+
+Começamos por um resultado simples, que oferece \emph{mais uma}
+formulação equivalente da Escolha:
+
+\begin{thm}[em $\ZF$]\ollabel{choiceset}
+A Escolha é equivalente ao princípio seguinte. Se os !!{element}s
+de $A$ são disjuntos dois a dois e não vazios, então existe algum $C$ tal que $C
+\cap x$ é um singular para todo o $x \in A$. (Chamamos a tal $C$ um
+{conjunto de escolha} para $A$.)
+\end{thm}
+
+A prova deste resultado é direta, e a deixamos como
+exercício para o leitor. 
+
+\begin{prob}
+Prove \olref[sth][choice][justifications]{choiceset}. Se tiver dificuldades,
+encontrará uma prova em \cite[pp.~242--3]{Potter2004}.
+\end{prob}
+
+O ponto essencial é que um conjunto de escolha para $A$ é precisamente o contradomínio de
+uma função de escolha para $A$. Assim, para justificar a Escolha, podemos simplesmente tentar
+justificar a sua formulação equivalente, em termos da existência de
+conjuntos de escolha. E é exatamente isso que faremos agora. 
+
+Sejam os !!{element}s de $A$ disjuntos dois a dois e não vazios. Por \stageshier{}
+(ver \olref[z][story]{sec}), $A$ é formado em algum estágio~$S$. Note-se
+que todos os !!{element}s de $\bigcup A$ estão disponíveis antes do estágio
+$S$. Agora, por \stagesacc{}, para \emph{quaisquer} conjuntos formados
+antes de~$S$, forma-se um conjunto cujos membros são exatamente esses conjuntos.
+Dito de outro modo: toda a \emph{possível} coleção de conjuntos disponíveis mais cedo
+existirá em~$S$. Mas é certamente \emph{possível} seleccionar
+objetos que possam ser reunidos num conjunto de escolha para~$A$; isso é apenas
+um certo subconjunto muito específico de $\bigcup A$. Logo: existe tal conjunto de escolha,
+como requerido.
+
+Bem, esta é uma tentativa \emph{muito} rápida de oferecer uma justificação da
+Escolha por razões intrínsecas. Mas, para aprofundar esta ideia, deve ler
+o desenvolvimento elegante de Potter (\citeyear[\S14.8]{Potter2004}).
+
+\end{document}

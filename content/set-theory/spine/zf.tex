@@ -1,0 +1,42 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{spine}{zf}
+\olsection{$\Z$ e $\ZF$: um marco}
+
+Com a Fundação, atingimos outro marco importante. Consideramos as teorias $\Zminus$ e $\ZFminus$, que dissemos ser certas teorias «menos» alguma coisa. Essa coisa é a Fundação. Logo:
+
+\begin{defn}
+A teoria $\Z$ acrescenta a Fundação a $\Zminus$. Os seus axiomas são
+Extensionalidade, União, Pares, Conjuntos das Partes, Infinito, Fundação, e todas
+as instâncias do esquema de Separação.
+
+A teoria $\ZF$ acrescenta a Fundação a $\ZFminus$. Por outras palavras, $\ZF$
+acrescenta todas as instâncias de Substituição a~$\Z$.
+\end{defn}
+
+Ainda assim, uma pergunta pode ter surgido. Se a Regularidade é
+equivalente sobre $\ZFminus$ à Fundação, e a justificação da Regularidade é clara, por que dar voltas e tomar
+a Fundação como axioma básico, em vez da Regularidade? 
+
+Deixando de lado razões históricas (quem formulou o quê e
+quando), a razão essencial é que a Fundação pode ser apresentada sem
+recorrer à definição dos~$V_\alpha$. Essa definição dependeu
+de todo o trabalho na \olref[recursion]{sec}: foi preciso
+provar a recursão transfinita, para mostrar que era legítima.
+Mas a nossa prova da recursão transfinita usou o \emph{Esquema de Substituição}.
+Logo, embora a Fundação e a Regularidade sejam equivalentes módulo $\ZFminus$,
+não são equivalentes módulo $\Zminus$. 
+
+De fato, a questão é mais grave do que esta observação simples sugere.
+Embora ultrapasse o âmbito deste livro, verifica-se que tanto
+$\Zminus$ como $\Z$ são demasiado fracas para definir os $V_\alpha$. Logo, se
+se trabalha apenas em $\Z$, então a Regularidade (tal como a formulamos)
+nem sequer faz \emph{sentido}. É por isso que o nosso axioma oficial é a
+Fundação, e não a Regularidade. 
+
+Daqui em diante, trabalharemos em $\ZF$ (salvo indicação em contrário), sem
+mais comentários. 
+
+\end{document}

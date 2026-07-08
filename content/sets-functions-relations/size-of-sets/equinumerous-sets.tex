@@ -1,0 +1,99 @@
+% Part:sets-functions-relations
+% Chapter: size-of-sets
+% Section: equinumerous-sets
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{siz}{equ}
+
+\olsection{Equipotência}
+
+Temos uma noção intuitiva do ``tamanho'' dos conjuntos, que funciona bem para
+conjuntos finitos. E quanto aos infinitos? Se quisermos uma forma formal de
+comparar os tamanhos de dois conjuntos de \emph{qualquer} cardinalidade, é boa
+ideia começar por definir quando dois conjuntos têm o mesmo tamanho. Eis Frege:
+\begin{quote}
+  Se um empregado de mesa quer ter a certeza de que pôs exatamente tantas facas
+  quantos pratos sobre a mesa, não precisa de contar nem uns nem outros, se simplesmente
+  puser uma faca à direita de cada prato, de modo que cada faca na mesa fique à
+  direita de algum prato. Os pratos e as facas ficam assim correlacionados de
+  modo único, e de fato por essa mesma relação espacial. \citep[§~70]{Frege1884}
+\end{quote}
+A intuição central desta passagem traduz-se numa definição formal:
+
+\begin{defn}\ollabel{comparisondef}
+  $A$ é \emph{equipotente} a $B$, escrevendo-se $\cardeq{A}{B}$, sse existir
+  !!a{bijection} $f \colon A \to B$.
+\end{defn}
+
+\begin{prop}\ollabel{equinumerosityisequi}
+A relação de equipotência é uma relação de equivalência.
+\end{prop}
+
+\begin{proof} 
+Há que mostrar que a equipotência é reflexiva, simétrica e transitiva. Sejam
+$A, B$ e $C$ conjuntos.
+
+\emph{Reflexividade.} A aplicação identidade $\Id{A} \colon A \to A$, com
+$\Id{A} (x) = x$ para todo $x \in A$, é !!a{bijection}. Logo $\cardeq{A}{A}$.
+
+\emph{Simetria.} Suponhamos $\cardeq{A}{B}$, O.s.\@, que existe !!a{bijection}
+$f\colon A \to B$. Como $f$ é !!{bijective}, a inversa $f^{-1}$ existe e também é
+!!{bijective}. Logo $f^{-1}\colon B \to A$ é !!a{bijection}, pelo que
+$\cardeq{B}{A}$.
+
+\emph{Transitividade.} Suponhamos $\cardeq{A}{B}$ e $\cardeq{B}{C}$, O.s.\@, que
+existem !!{bijection}s $f\colon A \to B$ e $g\colon B \to C$. Então a composição
+$\comp{f}{g}\colon A \to C$ é !!{bijective}, logo $\cardeq{A}{C}$.
+\end{proof}
+
+\begin{prop}
+Se $\cardeq{A}{B}$, então $A$ é !!{enumerable} se e só se $B$ o é.
+\end{prop}
+
+\begin{editorial}
+A prova seguinte usa \olref[enm]{defn:enumerable} se \olref[enm]{sec} estiver
+incluída e \olref[enm-alt]{defn:enumerable} caso contrário.
+\end{editorial}
+
+\begin{proof}
+Suponhamos $\cardeq{A}{B}$, logo existe alguma !!{bijection} $f \colon A \to B$, e
+suponhamos que $A$ é !!{enumerable}.
+\oliflabeldef{sfr:siz:enm:defn:enumerable}{
+  Então ou $A = \emptyset$ ou existe !!a{surjective} função $g\colon \PosInt \to A$.
+  Se $A = \emptyset$, então $B = \emptyset$ também (caso contrário existiria
+  !!a{element}~$y \in B$ sem $x \in A$ com $g(x) = y$). Se, por outro lado,
+  $g\colon \PosInt \to A$ for !!{surjective}, então $\comp{g}{f} \colon \PosInt \to
+  B$ é !!{surjective}. De fato, seja $y \in B$. Como $f$ é !!{surjective}, existe
+  $x \in A$ tal que $f(x) = y$. Como $g$ é !!{surjective}, existe $n \in \PosInt$
+  tal que $g(n) = x$. Logo,
+\[
+(\comp{g}{f})(n) = f(g(n)) = f(x) = y
+\]
+e portanto $\comp{g}{f}$ é !!{surjective}. Temos que $\comp{g}{f}$ é uma enumeração
+de~$B$, logo $B$~é !!{enumerable}.}
+{
+  Então ou $A  = \emptyset$ ou existe !!a{bijection}~$g$ cujo contradomínio é $A$ e
+  cujo domínio é $\Nat$ ou um segmento inicial de números naturais. Se $A =
+  \emptyset$, então $B = \emptyset$ também (caso contrário existiria algum~$y \in B$
+  sem $x \in A$ tal que $g(x) = y$). Suponhamos então que temos a
+  !!{bijection}~$g$. Então $\comp{g}{f}$ é !!a{bijection} com contradomínio~$B$ e
+  domínio o mesmo que o de~$g$ (O.s.\@, $\Nat$ ou um segmento inicial), logo $B$ é
+  !!{enumerable}.}
+
+Se $B$ é !!{enumerable}, obtemos que $A$ é !!{enumerable} repetindo o argumento com
+a !!{bijection} $f^{-1}\colon B \to A$ em lugar de~$f$.
+\end{proof}
+
+\begin{prob}
+Mostre que, se $\cardeq{A}{C}$ e $\cardeq{B}{D}$, e $A \cap B = C \cap D =
+\emptyset$, então $\cardeq{A \cup B}{C \cup D}$.
+\end{prob}
+
+\begin{prob}
+Mostre que, se $A$ é infinito e !!{enumerable}, então $\cardeq{A}{\Nat}$.
+\end{prob}
+
+\end{document}

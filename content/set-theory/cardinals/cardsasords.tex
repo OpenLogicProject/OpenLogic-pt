@@ -1,0 +1,124 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{cardinals}{cardsasords}
+\olsection{Cardinais como Ordinais}
+
+De fato, a nossa teoria dos cardinais fará uso (descarado) da nossa
+teoria dos ordinais. Ou seja: definiremos os cardinais como certos
+ordinais específicos. Em particular, proporemos o seguinte:
+
+\begin{defn}\ollabel{defcardinalasordinal}
+Se $A$ pode ser bem ordenado, então $\card{A}$ é o menor ordinal
+$\gamma$ tal que $\cardeq{A}{\gamma}$. Para qualquer ordinal $\gamma$,
+diz-se que $\gamma$ é um \emph{cardinal} sse $\gamma = \card{\gamma}$.
+\end{defn}
+
+Acabamos de usar a locução ``$A$ pode ser bem ordenado''. Como quase
+sempre em matemática, a locução modal aqui é apenas um atalho para uma asserção existencial: dizer ``$A$ pode ser
+bem ordenado'' é dizer ``existe uma relação que
+bem ordena~$A$''.
+
+Há contudo um problema com \olref{defcardinalasordinal}. Gostaríamos
+que \emph{todo} o conjunto tivesse um tamanho, O.s.\@, que
+$\card{A}$ existisse para todo~$A$. A definição que acabamos de dar,
+porém, começa por uma condicional: ``\emph{Se} $A$ pode ser
+bem ordenado\ldots''. Se existir algum conjunto $A$ que não possa ser
+bem ordenado, a nossa definição simplesmente deixa de definir um objeto~$\card{A}$.
+
+Logo, para usar \olref{defcardinalasordinal}, precisamos de uma garantia de que
+todo o conjunto pode ser bem ordenado. Infelizmente, essa garantia não está
+disponível em~$\ZF$. Assim, se queremos usar
+\olref{defcardinalasordinal}, não há alternativa senão acrescentar um novo
+axioma, tal como:
+\begin{axiom}[Bom ordenamento]
+Todo o conjunto pode ser bem ordenado.
+\end{axiom}
+Discutiremos se o axioma do bom ordenamento é aceitável em
+\olref[choice][]{chap}. Daqui em diante, porém, simplesmente o admitiremos. E, com ele, é bastante direto provar
+que os cardinais (tal como definidos na \olref{defcardinalasordinal}) existem e
+comportam-se bem:
+
+\begin{lem}\ollabel{lem:CardinalsExist}
+Para todo o conjunto $A$:
+\begin{enumerate}
+	\item\ollabel{cardaexists} $\card{A}$ existe e é único;
+	\item\ollabel{cardaapprox}  $\cardeq{\card{A}}{A}$;
+	\item\ollabel{cardaidem}  $\card{A}$ é um cardinal, O.s.\@,
+	$\card{A} = \card{\card{A}}$;
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+Fixe $A$. Pelo Bom ordenamento, existe um bom ordenamento $\tuple{A, R}$. Por
+\olref[ordinals][ordtype]{thmOrdinalRepresentation}, $\tuple{A,
+R}$ é isomorfo a um único ordinal, $\beta$. Logo
+$\cardeq{A}{\beta}$. Por indução transfinita, existe um único
+ordinal mínimo, $\gamma$, tal que $\cardeq{A}{\gamma}$. Logo $\card{A}
+= \gamma$, o que estabelece \olref{cardaexists} e \olref{cardaapprox}.
+Para \olref{cardaidem}, note-se que se $\delta \in \gamma$ então
+$\cardless{\delta}{A}$, pela escolha de $\gamma$, logo também
+$\cardless{\delta}{\gamma}$ pois a equipotência é uma relação de equivalência
+(\olref[sfr][siz][equ]{equinumerosityisequi}). Logo $\gamma =
+\card{\gamma}$.
+%So, for reductio, suppose that there is some ordinal $\delta \in \gamma$ such that $\cardeq{\gamma}{\delta}$. Then, $\cardeq{\cardeq{A}{\gamma}}{\delta}$ so that $\cardeq{A}{\delta}$ by \olref[sfr][set][equ]{equinumerosityisequi}, which contradicts the choice of $\gamma$ as the least ordinal such that $\cardeq{A}{\gamma}$.
+\end{proof}
+
+O resultado seguinte garante o Princípio de Cantor, e mais ainda.
+(Note-se que os cardinais herdam a ordem dos ordinais, O.s.\@,
+$\cardfont{a} < \cardfont{b}$ sse $\cardfont{a} \in \cardfont{b}$. Ao
+formular isto, usaremos letras Fraktur para objetos que sabemos serem
+cardinais. Isto é bastante usual. Uma alternativa comum é usar
+letras gregas, já que os cardinais são ordinais, escolhendo-as do
+meio do alfabeto, por exemplo $\kappa, \lambda$.):
+\begin{lem}\ollabel{lem:CardinalsBehaveRight}
+Para quaisquer conjuntos $A$ e $B$:
+\begin{align*}
+	\cardeq{A}{B} &\text{ sse } \card{A} = \card{B}\\
+	\cardle{A}{B} &\text{ sse } \card{A} \leq \card{B}\\
+	\cardless{A}{B}&\text{ sse } \card{A} < \card{B}
+\end{align*}
+\end{lem}
+
+\begin{proof}
+Provaremos o sentido da esquerda para a direita da segunda afirmação (os
+outros casos são semelhantes e ficam como exercício). Considere-se
+o diagrama seguinte:
+\begin{center}
+	\begin{tikzpicture}
+	\node (nodea) {$A$};
+	\node[right = 6em of nodea] (nodeb) {$B$};
+	\node[below = 2em of nodea] (nodecarda) {$\card{A}$};
+	\node[below = 2em of nodeb] (nodecardb) {$\card{B}$};
+	\draw[->] (nodea)--(nodeb);
+	\draw[<->] (nodea)--(nodecarda);
+	\draw[<->] (nodeb)--(nodecardb);
+	\draw[->, dashed] (nodecarda)--(nodecardb);
+\end{tikzpicture}
+\end{center}
+As setas duplas indicam !!{bijection}s, cuja existência é
+garantida por \olref{lem:CardinalsExist}. Ao supor
+$\cardle{A}{B}$, existe !!a{injection}  $A\to B$. Seguindo
+as setas de $\card{A}$ para $A$, para $B$ e para $\card{B}$,
+obtém-se !!a{injection} $\card{A} \to \card{B}$ (a seta tracejada).
+\end{proof}\noindent Pode ainda usar-se \olref{lem:CardinalsBehaveRight}
+para voltar a provar Cantor--Bernstein. Trata-se da afirmação de que se
+$\cardle{A}{B}$ e $\cardle{B}{A}$ então $\cardeq{A}{B}$. A enunciamos
+como \olref[sfr][siz][sb]{thm:schroder-bernstein}, mas a provamos primeiro---com algum esforço---em \olref[sfr][infinite][card-sb]{sec}.
+Considere-se:
+
+\begin{proof}[Nova prova de Schr\"oder-Bernstein]
+Se $\cardle{A}{B}$ e $\cardle{B}{A}$, então $\card{A} \leq \card{B}$
+e $\card{B} \leq \card{A}$ por \olref{lem:CardinalsBehaveRight}. Logo
+$\card{A} = \card{B}$ e $\cardeq{A}{B}$ por tricotomia e
+\olref{lem:CardinalsBehaveRight}.
+\end{proof}
+\noindent
+Embora seja uma prova muito simples, apoia-se implicitamente na Substituição (para assegurar
+\olref[ordinals][ordtype]{thmOrdinalRepresentation}) e no
+Bom ordenamento (para garantir \olref{lem:CardinalsBehaveRight}). Em
+contraste, a prova na \olref[sfr][infinite][card-sb]{sec} era muito
+mais autônoma (de fato, pode efetuar-se em~$\Zminus$).
+
+\end{document}

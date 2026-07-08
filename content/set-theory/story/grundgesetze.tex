@@ -1,0 +1,61 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{story}{blv}
+
+\olsection{Apêndice: Lei Básica V de Frege}
+
+Na \olref[rus]{sec}, explicamos que Russell formulou o
+paradoxo como um problema para o sistema que Frege delineou nos seus
+\emph{Grundgesetze}. O sistema de Frege não incluía uma formulação direta
+da compreensão ingênua. Logo, neste apêndice, explicaremos muito
+sumariamente o que o sistema de Frege \emph{incluía}, como se relaciona com a compreensão ingênua e como se relaciona com o
+paradoxo de Russell.
+
+O sistema de Frege é de \emph{segunda ordem} e foi concebido para formular
+a noção de \emph{extensão de um conceito}.\footnote{Estritamente
+falando, Frege tenta formalizar uma noção mais geral: o
+``valor de curso'' de uma função. As extensões de conceitos são um caso
+especial da noção mais geral. Ver \citet[pp.\ 8--9]{Heck2012} para
+pormenores.} Usando notação inspirada em Frege, escreveremos
+$\fregeext{x}{F(x)}$ para \emph{a extensão do conceito~$F$}. Este
+é um dispositivo que toma um \emph{predicado}, ``$F$'', e transforma-o num
+\emph{termo} (de primeira ordem), ``$\fregeext{x}{F(x)}$''. Com este
+dispositivo, Frege propôs a seguinte \emph{definição} de pertença:
+\[
+	a \in b =_\text{df} \exists G(b = \fregeext{x}{G(x)} \land Ga)
+\]
+grosso modo: $a \in b$ sse $a$ cai sob um conceito cuja extensão é
+$b$. (Note que o quantificador ``$\exists G$'' é de segunda ordem.) Frege
+também sustentava o seguinte princípio, conhecido como \emph{Lei básica V}: 
+$$\fregeext{x}{F(x)} = \fregeext{x}{G(x)} \liff \forall x (Fx \liff Gx)$$
+grosso modo: conceitos têm extensões idênticas sse são coextensivos. (De novo, tanto ``$F$'' como ``$G$'' estão em posição de predicado.) Um princípio simples liga agora a pertença à satisfação de propriedades:
+
+\begin{lem}[em \emph{Grundgesetze}]\ollabel{lem:Fregeextensions}
+$\forall F \forall a(a \in \fregeext{x}{F(x)} \liff Fa)$
+\end{lem}
+
+\begin{proof} 
+Fixe $F$ e $a$. Ora $a \in \fregeext{x}{F(x)}$ sse $\exists G(\fregeext{x}{F(x)}
+= \fregeext{x}{G(x)} \land Ga)$ (pela definição de pertença) sse
+$\exists G(\forall x(Fx \liff Gx) \land Ga)$ (pela lei básica V) sse $Fa$
+(por lógica elementar de segunda ordem).
+\end{proof}
+
+E disto resulta quase de imediato a compreensão ingênua:
+
+\begin{lem}[em \emph{Grundgesetze}.]
+$\forall F \exists s \forall a (a \in s \liff Fa)$
+\end{lem}
+
+\begin{proof}
+Fixe $F$; agora \olref{lem:Fregeextensions} dá $\forall a (a \in
+\fregeext{x}{F(x)} \liff Fa)$; logo $\exists s\forall a(a \in s \liff Fa)$ por
+generalização existencial. O resultado segue-se, pois $F$ era
+arbitrário.
+\end{proof}
+
+O paradoxo de Russell segue tomando $F$ dado por $\forall x(Fx \liff x \notin x)$. 
+
+\end{document}

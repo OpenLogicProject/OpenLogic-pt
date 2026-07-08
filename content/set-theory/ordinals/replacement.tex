@@ -1,0 +1,73 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{ordinals}{replacement}
+\olsection{Substituição}
+
+Na \olref[sth][ordinals][vn]{sec}, motivamos a introdução dos ordinais ao
+sugerir que os poderíamos tratar como tipos de ordem, isto é, como
+representantes canónicos de boas ordenações. Para que isso funcione,
+seria preciso provar que \emph{toda a boa ordenação é isomorfa a algum
+ordinal}. Isso permitiria definir $\ordtype{A, <}$ como o ordinal
+$\alpha$ tal que $\tuple{A, <} \isomorphic \alpha$.
+
+Infelizmente, \emph{não} podemos provar o resultado desejado apenas
+com os axiomas introduzidos até aqui. (Veremos por que em
+\olref[replacement][strength]{sec}, mas por agora basta: não podemos.)
+Precisamos de uma ideia nova, e eis-a:
+
+\begin{axiom}[Esquema de Substituição]
+Para qualquer fórmula $\phi(x, y)$, o seguinte é um axioma:
+\begin{quote}
+	para qualquer $A$, se $(\forall x \in A)\lexists![y][\phi(x,y)]$, então
+	$\Setabs{y}{(\exists x \in A)\phi(x,y)}$ existe.
+\end{quote}
+\end{axiom}
+\noindent
+Como na Separação, isto é um esquema: produz infinitamente muitos
+axiomas, um para cada uma das infinitas $\phi$ distintas. E pode
+igualmente ser (e normalmente é) escrito assim:
+
+\begin{defish}
+Para qualquer fórmula $\phi(x,y)$ que não contenha ``$B$'', o seguinte é um axioma:
+\[
+\forall A[(\forall x \in A)\lexists![y][\phi(x,y)] \lif \exists B\forall y (y \in B \liff (\exists x \in A)\phi(x,y))]
+\]
+\end{defish}
+
+À primeira vista, contudo, esta é uma fórmula bastante intrincada. A
+consequência imediata seguinte da Substituição dá provavelmente uma
+expressão \emph{mais clara} à ideia intuitiva com que trabalhamos:\footnote{Um termo é uma expressão que designa exatamente um objeto (em qualquer instanciação das suas variáveis livres). Por exemplo, ``$\emptyset$'' é um termo que designa o conjunto vazio; ``$\{x\}$'' é um termo que designa o singular de $x$ (seja qual for $x$); ``$x \cup y$'' é um termo que designa a união de $x$ e de $y$ (sejam quais forem).}
+
+\begin{cor}
+Para qualquer termo $\tau(x)$, e qualquer conjunto $A$, este conjunto existe:
+\[
+	\Setabs{\tau(x)}{x \in A} = \Setabs{y}{(\exists x \in A)y = \tau(x)}.
+\]
+\end{cor}
+
+\begin{proof}
+Como $\tau$ é um \emph{termo}, $\forall x \lexists![y][\tau(x) = y]$.
+\emph{A fortiori}, $(\forall x \in A)\lexists![y][\tau(x) = y]$. Logo
+$\Setabs{y}{(\exists x \in A)\tau(x) = y}$ existe pela Substituição.
+\end{proof}
+\noindent
+Isto sugere que ``Substituição'' é um bom nome para o axioma: dado um
+conjunto $A$, pode formar um novo conjunto, $\Setabs{\tau(x)}{x \in A}$,
+substituindo cada membro de $A$ pela sua imagem sob~$\tau$. De fato,
+seguindo a notação para a imagem de um conjunto sob uma função,
+poderíamos escrever $\funimage{\tau}{A}$ para $\Setabs{\tau(x)}{x \in A}$.
+
+O essencial, porém, é que $\tau$ é um \emph{termo}. Não tem de ser (um
+nome de) uma \emph{função}, no sentido de \olref[sfr][fun][rel]{sec},
+isto é, um certo conjunto de pares ordenados. Afinal, se $f$ é uma
+função (nesse sentido), então o conjunto $\funimage{f}{A} = \Setabs{f(x)}{x \in
+A}$ é apenas um subconjunto particular de $\ran{f}$, e isso já está
+garantido a existir apenas com os axiomas de~$\Zminus$.\footnote{Baste
+considerar $\Setabs{y \in \bigcup \bigcup f}{(\exists x \in A)y =
+f(x)}$.} A Substituição, em contraste, é um acréscimo \emph{poderoso} aos
+nossos axiomas, como veremos no \olref[sth][replacement][]{chap}.
+
+
+\end{document}

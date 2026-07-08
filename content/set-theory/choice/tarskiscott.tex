@@ -1,0 +1,74 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{choice}{tarskiscott}
+\olsection{O Truque de Tarski--Scott}
+
+Na \olref[cardinals][cardsasords]{defcardinalasordinal},
+definimos cardinais como ordinais. Para isso, assumimos o Axioma da
+Boa Ordenação. Fizemo-lo apenas porque é o
+``padrão da indústria''.
+
+Antes de discutir questões filosóficas em torno da
+Boa Ordenação, importa deixar claro que \emph{podemos}
+afastar-nos desse padrão e desenvolver uma teoria de cardinais
+\emph{sem} assumir a Boa Ordenação. Continuamos a poder usar as
+definições de $\cardeq{A}{B}$, $\cardle{A}{B}$ e $\cardless{A}{B}$,
+tal como apareceram no \olref[sfr][siz][]{chap}. Só precisamos de uma nova
+noção de \emph{cardinal}.
+
+Uma ideia ingênua seria tentar definir a cardinalidade de $A$ assim:
+\[
+	\Setabs{x}{\cardeq{A}{x}}.
+\]
+Talvez queira comparar isto com a definição fregeana de $\# x Fx$,
+esboçada no final de \olref[cardinals][hp]{sec}. E, pelas razões
+que ali adumbramos, esta definição falha. Qualquer conjunto singular
+é equipotente com $\{\emptyset\}$. Mas novos singulares são
+formados em cada estágio sucessor da hierarquia (basta considerar o
+singular do estágio anterior). Logo $\Setabs{x}{\cardeq{A}{x}}$ não
+existe, pois não pode ter posto.
+
+Para contornar o problema, usamos um truque devido a Tarski e Scott:\footnote{Lembrete: todas as fórmulas podem ter parâmetros (salvo indicação em contrário).}
+
+\begin{defn}[Tarski--Scott]
+Para qualquer fórmula $\phi(x)$, seja
+$[ x : \phi(x)] $ o conjunto de todos os $x$, de posto mínimo possível, tais que
+$\phi(x)$ (ou $\emptyset$, se não houver $\phi$s).
+\end{defn}
+
+Devemos verificar que esta definição é legítima. Trabalhando em $\ZF$,
+\olref[spine][foundation]{zfentailsregularity} garante que
+$\setrank{x}$ existe para todo o $x$. Agora, se houver entidades
+que satisfazem $\phi$, podemos deixar $\alpha$ ser o posto mínimo tal
+que  $(\exists x\subseteq V_\alpha)\phi(x)$, O.s.\@, $(\forall \beta
+\in \alpha)(\forall x \subseteq V_\beta)\lnot \phi(x)$. Podemos então
+definir $[x : \phi(x)]$ por Separação como $\Setabs{x \in
+V_{\alpha+1}}{\phi(x)}$. 
+
+Tendo justificado o truque de Tarski--Scott, podemos usá-lo para definir
+uma noção de cardinalidade:
+
+\begin{defn}
+A \textsc{ts}-cardinalidade de $A$ é $\text{tsc}(A) = [x :
+\cardeq{A}{x}]$.
+\end{defn}
+
+A definição de \textsc{ts}-cardinal não usa a Boa Ordenação.
+Mas, mesmo sem esse Axioma, podemos mostrar que os
+\emph{\textsc{ts}-cardinais} se comportam de modo semelhante aos \emph{cardinais} tal como
+definidos na \olref[cardinals][cardsasords]{defcardinalasordinal}.
+Por exemplo, se reformularmos
+\olref[cardinals][cardsasords]{lem:CardinalsBehaveRight} e
+\olref[card-arithmetic][opps]{lem:SizePowerset2Exp} em termos de
+\textsc{ts}-cardinais, as provas funcionam em $\ZF$,
+sem assumir a Boa Ordenação. 
+
+Enquanto estamos no assunto, vale a pena notar que também podemos
+desenvolver uma teoria de ordinais usando o truque de Tarski--Scott. Onde
+$\tuple{A, <}$ é uma boa ordenação, seja $\text{tso}(A, <) = [\tuple{X,
+R} : \ordeq{\tuple{A, <}}{\tuple{X, R}}]$. Para mais sobre este tratamento
+de cardinais e ordinais, ver \citet[chs.~9--12]{Potter2004}.
+
+\end{document}

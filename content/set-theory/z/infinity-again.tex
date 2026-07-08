@@ -1,0 +1,133 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{z}{infinity-again}	
+\olsection{Infinito}
+
+Já temos axiomas suficientes para garantir que há infinitamente muitos
+conjuntos (se é que existe algum). De fato, suponhamos que algum conjunto existe; então
+$\emptyset$ existe (por \olref[sth][z][sep]{prop:emptyexists}). Agora, para
+qualquer conjunto~$x$, o conjunto $x \cup \{x\}$ existe por
+\olref[sth][z][pairs]{prop:pairsconsequences}. Logo, aplicando isto algumas
+vezes, obtemos conjuntos como se segue:
+\begin{enumerate}
+	\item[0.] $\emptyset$ %& $0$ & stage $0$\\
+	\item[1.] $ \{\emptyset\}$ %& $1$ & stage $1$\\
+	\item[2.] $\{\emptyset, \{\emptyset\}\}$ %& $2$ & stage $2$\\
+	\item[3.] $\{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}$ %&$3$ & stage $3$\\
+	\item[4.] $\{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}, \{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}\}$% & $4$ & stage $4$ 
+\end{enumerate}
+e podemos verificar que cada um destes conjuntos é distinto. 
+
+Começamos a numeração em $0$, por várias razões. Mas uma delas é esta. Não é
+difícil verificar que o conjunto que rotulamos ``$n$'' tem exatamente $n$ membros e que (intuitivamente) se forma no $n$-ésimo estágio. 
+
+Contudo. Isto nos dá \emph{infinitamente muitos} conjuntos, mas não
+garante que exista um conjunto \emph{infinito}, O.s.\@, um conjunto com
+infinitamente muitos membros. E isto importa deveras: a menos que encontremos um
+conjunto infinito de Dedekind, não podemos construir uma álgebra de Dedekind. Mas
+queremos uma álgebra de Dedekind, para a podermos tratar como o conjunto dos
+números naturais. (Compare-se com
+\olref[sfr][infinite][dedekindsproof]{sec}.)
+
+Importa que os axiomas que estabelecemos até aqui \emph{não}
+garantem a existência de nenhum conjunto infinito. Por isso temos de enunciar um
+novo axioma:
+
+\begin{axiom}[Infinito]
+Existe um conjunto, $I$, tal que $\emptyset \in I$ e $x \cup \{x\} \in I$ sempre que $x \in I$.
+\begin{align*}
+	\exists I( & (\exists o \in I)\forall x\ x \notin o \land {}\\
+	& (\forall x \in I)(\exists s \in I)\forall z(z \in s \liff (z \in x \lor z = x)))
+\end{align*}
+\end{axiom}
+
+É fácil ver que o conjunto $I$ que nos é dado pelo Axioma do
+Infinito é infinito de Dedekind. O seu elemento distinguido é
+$\emptyset$, e a injeção em $I$ é dada por $s(x) = x\cup
+\{x\}$. Agora,
+\olref[sfr][infinite][dedekind]{thm:DedekindInfiniteAlgebra} mostrou
+como extrair uma álgebra de Dedekind de um conjunto infinito de Dedekind; e
+trataremos isso como o nosso conjunto de números naturais. Mais precisamente:
+\begin{defn}\ollabel{defnomega}
+Seja $I$ qualquer conjunto que nos seja dado pelo Axioma do Infinito. Seja $s$
+a função $s(x) = x \cup \{x\}$. Seja $\omega =
+\closureofunder{s}{\emptyset}$. Chamamos \emph{números naturais} aos membros de $\omega$,
+e dizemos que $n$ é o resultado de $n$ aplicações de $s$ a $\emptyset$.
+\end{defn}
+
+Pode agora voltar atrás e verificar que o conjunto rotulado ``$n$'', há uns
+parágrafos, será tratado \emph{como} o número $n$. 
+
+Discutiremos o significado desta estipulação na
+\olref[sth][z][nat]{sec}. Por ora, permite-nos provar um
+resultado intuitivo:
+
+\begin{prop}\ollabel{naturalnumbersarentinfinite}
+Nenhum número natural é infinito de Dedekind.
+\end{prop}
+
+\begin{proof}
+A prova é por indução, O.s.\@,
+\olref[sfr][infinite][induction]{thm:dedinfiniteinduction}. Claramente $0
+= \emptyset$ não é infinito de Dedekind. Para o passo indutivo, estabeleceremos a contrapositiva: se (absurdamente) $s(n)$ for infinito de
+Dedekind, então $n$ é infinito de Dedekind. 
+
+Suponhamos, pois, que $s(n)$ é infinito de Dedekind, O.s.\@, que existe alguma
+!!{injection} $f$ com $\ran{f}\subsetneq \dom{f} = s(n) = n \cup
+\{n\}$. Há dois casos a considerar. 
+
+\emph{Caso 1: $n \notin \ran{f}$.} Então $\ran{f} \subseteq n$, e $f(n) \in n$. Seja $g = \funrestrictionto{f}{n}$; agora $\ran{g} =
+\ran{f} \setminus \{f(n)\} \subsetneq n = \dom{g}$. Logo $n$ é
+infinito de Dedekind. 
+
+\emph{Caso 2: $n \in \ran{f}$.} Fixemos $m \in \dom{f} \setminus \ran{f}$, e definamos uma função $h$ com domínio $s(n) = n \cup \{n\}$:
+\[
+h(x) = 
+	\begin{cases}
+		f(x) & \text{se }f(x) \neq n\\
+		m & \text{se }f(x)=n
+	\end{cases}
+\]
+Assim $h$ e $f$ coincidem em toda a parte, exceto que $h(f^{-1}(n)) = m
+\neq n = f(f^{-1}(n))$. Uma vez que $f$ é !!a{injection}, $n \notin
+\ran{h}$; e $\ran{h} \subsetneq \dom{h} = s(n)$. Logo $n$ é
+infinito de Dedekind, pelo argumento do Caso~1.
+\end{proof}
+
+A questão que permanece é como poderíamos \emph{justificar} o Axioma
+do Infinito. A resposta curta é que precisaremos de acrescentar outro
+princípio à história que vamos contando. Esse princípio é o
+seguinte:
+\begin{enumerate}
+	\item[] \stagesinf. Há um estágio infinito. Isto é, há um estágio que (a) não é o primeiro estágio, e que (b) tem alguns estágios antes de si, mas que (c) não tem predecessor imediato.
+\end{enumerate}
+O Axioma do Infinito segue-se diretamente deste princípio.
+Sabemos que o número natural $n$ se forma no estágio $n$. Logo o conjunto
+$\omega$ forma-se no primeiro estágio infinito. E o próprio $\omega$
+testemunha o Axioma do Infinito. 
+
+Isto, porém, apenas nos leva de volta à questão de como justificar
+\stagesinf. Tal como \stagessucc, não fazia parte explícita
+da história que contamos sobre a hierarquia cumulativa iterativa. Mas
+mais do que isso: nada na própria ideia de uma hierarquia iterativa, em
+que os conjuntos se formam estágio a estágio, nos obriga a pensar que o
+processo envolve um estágio \emph{infinito}. Parece perfeitamente coerente
+pensar que os estágios estão ordenados como os números naturais. 
+
+Isto, contudo, levanta um problema óbvio. Na
+\olref[sfr][infinite][dedekindsproof]{sec}, consideramos a
+``prova'' de Dedekind de que existe um conjunto infinito de Dedekind (de
+pensamentos). Isto poderá não lhe ter parecido muito satisfatório. Mas se
+\stagesinf{} não nos é ``imposto'' pela concepção iterativa de
+conjunto (nem pelas ``leis do pensamento''), continuamos sem uma
+justificação intrínseca para a afirmação de que existe um conjunto infinito de
+Dedekind.
+
+Há muito mais a dizer aqui, naturalmente. Mas esperamos que esteja agora
+num ponto em que possa começar a refletir sobre o que poderá \emph{custar}
+justificar um axioma (ou um princípio). No que se segue tomaremos simplesmente
+\stagesinf{} como concedido.
+
+\end{document}

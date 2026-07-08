@@ -1,0 +1,115 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{ord-arithmetic}{using-addition}
+\olsection{Usando Adição Ordinal}
+
+Com a adição nos ordinais, podemos calcular explicitamente os postos
+de vários conjuntos, no sentido de \olref[spine][rank]{defnsetrank}:
+
+\begin{lem}\ollabel{rankcomputation}
+Se $\setrank{A} = \alpha$ e $\setrank{B} = \beta$, então:
+\begin{enumerate}
+	\item\ollabel{exrankpow} $\setrank{\Pow{A}} = \alpha\ordplus 1$
+	\item\ollabel{exrankpair} $\setrank{\{A, B\}} = \max(\alpha,
+	\beta) \ordplus 1$
+	\item\ollabel{exrankcup} $\setrank{A \cup B} = \max(\alpha,
+	\beta)$
+	\item\ollabel{exranktuple} $\setrank{\tuple{A,B}} = \max(\alpha,
+	\beta) \ordplus  2$
+	\item\ollabel{exranktimes} $\setrank{A \times B} \leq \max(\alpha,
+	\beta) \ordplus  2$
+	\item\ollabel{exrankunion} $\setrank{\bigcup A} = \alpha$ quando
+	$\alpha$ é vazio ou limite; $\setrank{\bigcup A} = \gamma$ quando
+	$\alpha = \gamma\ordplus 1$
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+Ao longo de todo o raciocínio, invocamos repetidamente \olref[spine][rank]{ranksupstrict}.
+
+\emph{\olref{exrankpow}.} Se $x \subseteq A$ então $\setrank{x} \leq
+\setrank{A}$. Logo $\setrank{\Pow{A}} \leq \alpha \ordplus  1$. Como em particular $A
+\in \Pow{A}$, tem-se $\setrank{\Pow{A}} = \alpha \ordplus  1$.
+
+\emph{\olref{exrankpair}.} Por \olref[spine][rank]{ranksupstrict}
+
+\emph{\olref{exrankcup}.} Por \olref[spine][rank]{ranksupstrict}.
+
+\emph{\olref{exranktuple}.} Por \olref{exrankpair}, duas vezes.
+
+\emph{\olref{exranktimes}.} Note-se que $A \times B \subseteq
+\Pow{\Pow{A \cup B}}$, e invoque \olref{exranktuple}.
+
+\emph{\olref{exrankunion}.} Se $\alpha = \gamma\ordplus 1$, existe
+algum $c \in A$ com $\setrank{c} = \gamma$, e nenhum !!{element} de $A$
+tem posto superior; logo $\setrank{\bigcup A} = \gamma$. Se $\alpha$ é um
+ordinal limite, então $A$ tem !!{element}s com posto arbitrariamente próximo
+(mas estritamente inferior) de $\alpha$, pelo que $\bigcup A$ também tem
+!!{element}s com posto arbitrariamente próximo (mas estritamente inferior) de
+$\alpha$, e portanto $\setrank{\bigcup A} = \alpha$.
+\end{proof}
+\noindent
+Deixamos como exercício mostrar por que \olref{exranktimes} envolve uma
+\emph{des}igualdade.
+
+\begin{prob}
+Exiba conjuntos $A$ e $B$ tais que $\setrank{A \times B}=
+\max(\setrank{A}, \setrank{B})$. Exiba conjuntos $A$ e $B$ tais que
+$\setrank{A \times B}=\max(\setrank{A}, \setrank{B}) \ordplus  2$. São
+possíveis outros postos?
+\end{prob}
+
+Estamos também agora em condições de mostrar que várias noções razoáveis
+do que possa significar descrever um ordinal como ``finito'' ou ``infinito'' coincidem:
+
+\begin{lem}\ollabel{ordinfinitycharacter}
+Para qualquer ordinal $\alpha$, as seguintes afirmações são equivalentes:
+\begin{enumerate}
+	\item\ollabel{ord:notinomega} $\alpha\notin \omega$, O.s.\@,
+	$\alpha$ não é um número natural
+	\item\ollabel{ord:omegaplus} $\omega \leq \alpha$
+	\item\ollabel{ord:oneplus} $1 \ordplus  \alpha = \alpha$
+	%\alpha \approx \alpha \ordplus 1$
+	\item\ollabel{ord:plusone} $\alpha \approx \alpha\ordplus 1$,
+	O.s.\@, $\alpha$ e $\alpha\ordplus 1$ são equipotentes
+	\item\ollabel{ord:infinite} $\alpha$ é infinito de Dedekind
+	\end{enumerate}
+\end{lem}
+\noindent
+Temos assim cinco formas provavelmente equivalentes de precisar o que exige que um ordinal seja (in)finito.
+
+\begin{proof}
+\emph{\olref{ord:notinomega} $\Rightarrow$ \olref{ord:omegaplus}.} Por
+tricotomia.
+
+\emph{\olref{ord:omegaplus} $\Rightarrow$ \olref{ord:oneplus}.} Fixe
+$\alpha \geq \omega$. Por indução transfinita, existe um ordinal $\gamma$
+mínimo (possivelmente $0$) tal que existe um ordinal limite $\beta$ com
+$\alpha = \beta \ordplus \gamma$. Ora:
+\[
+	1 \ordplus \alpha =
+	1 \ordplus (\beta \ordplus \gamma) =
+	(1 \ordplus \beta) \ordplus \gamma =
+	\supstrict_{\delta < \beta} (1 \ordplus  \delta) \ordplus  \gamma =
+	\beta \ordplus  \gamma =
+	\alpha.
+\]
+\emph{\olref{ord:oneplus} $\Rightarrow$ \olref{ord:plusone}.} Existe
+claramente !!a{bijection} $f \colon (\alpha \disjointsum 1) \to (1
+\disjointsum \alpha)$. Se $1 \ordplus \alpha = \alpha$, existe um
+isomorfismo $g \colon (1 \disjointsum \alpha) \to \alpha$. Considere-se
+$\comp{f}{g}$.
+
+\emph{\olref{ord:plusone} $\Rightarrow$ \olref{ord:infinite}.} Se
+$\alpha \approx \alpha \ordplus 1$, existe !!a{bijection} $f \colon
+(\alpha \disjointsum 1) \to \alpha$. Defina $g(\gamma) = f(\gamma, 0)$
+para cada $\gamma < \alpha$; esta !!{injection} mostra que $\alpha$
+é infinito de Dedekind, pois $f(0,1) \in \alpha \setminus \ran{g}$.
+
+\emph{\olref{ord:infinite} $\Rightarrow$ \olref{ord:notinomega}.} Isto
+é \olref[z][infinity-again]{naturalnumbersarentinfinite}.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,77 @@
+% Part: sets-functions-relations
+% Chapter: relations
+% Section: reflections
+%
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{rel}{ref}
+\olsection{Reflexões Filosóficas}
+
+Na \olref[set]{sec}, definimos relações como certos conjuntos. Devemos
+fazer uma pausa e colocar uma questão filosófica rápida: o que é que tal
+definição \emph{faz}? É extremamente duvidoso que devamos querer
+dizer que \emph{descobrimos} fatos metafísicos de identidade; que, por
+exemplo, a relação de ordem em $\Nat$ \emph{acabou por ser} o conjunto
+$R=  \Setabs{\tuple{n,m}}{n, m \in \Nat\text{ e }
+n < m}$ que definimos na \olref[set]{sec}. Eis três
+razões para isso. 
+
+Primeiro: na \olref[set][pai]{wienerkuratowski}, definimos $\tuple{a, b} =
+\{\{a\}, \{a, b\}\}$. Consideremos em vez disso a definição $\lVert a,
+b\rVert = \{\{b\}, \{a, b\}\} = \tuple{b,a}$. Quando $a \neq b$, temos
+que $\tuple{a, b} \neq \lVert a,b\rVert$. Mas poderíamos com a mesma
+facilidade ter tomado $\lVert a,b\rVert$ como a nossa definição de par ordenado,
+em vez de $\tuple{a,b}$. Ambas as definições teriam funcionado igualmente
+bem. Assim, temos dois candidatos igualmente bons a ``ser'' a relação de
+ordem nos números naturais, nomeadamente:
+\begin{align*}
+		R &= \Setabs{\tuple{n,m}}{n, m \in \Nat \text{ e }n < m}\\
+		S &= \Setabs{\lVert n,m\rVert}{n, m \in \Nat \text{ e }n < m}.
+\end{align*}
+Como $R \neq S$, pela extensionalidade, é claro que não podem
+\emph{ambos} ser idênticos à relação de ordem em~$\Nat$. Mas seria
+meramente arbitrário, e por isso um pouco embaraçoso, afirmar que $R$
+em vez de $S$ (ou vice-versa) \emph{é} a relação de ordenação, como
+questão de fato. (Isto é um caso muito simples de um argumento contra o
+reducionismo em teoria dos conjuntos que Benacerraf tornou famoso em
+\citeyear{Benacerraf1965}. Voltaremos a ele várias vezes.)
+
+Segundo: se pensamos que \emph{toda} a relação deve ser identificada
+com um conjunto, então a própria relação de pertinência a conjuntos, $\in$, deveria
+ser um conjunto particular. De fato, teria de ser o conjunto
+$\Setabs{\tuple{x,y}}{x \in y}$. Mas será que este conjunto existe? Dado
+o Paradoxo de Russell, é uma afirmação não trivial que tal conjunto exista.
+De fato, \oliflabeldef{cumul:::part}{a teoria dos conjuntos que desenvolvemos na
+\olref[cumul][][]{part} irá \emph{negar} a existência deste
+conjunto.\footnote{Antecipando, eis por que. Por redução ao absurdo, suponhamos que $I =
+\Setabs{\tuple{x,y}}{x \in y}$ existe. Então $\bigcup \bigcup I$ é o
+conjunto universal, o que contradiz
+\olref[sfr][z][sep]{thm:NoUniversalSet}.}}{é possível
+desenvolver a teoria dos conjuntos de modo rigoroso como teoria axiomática, e essa
+teoria de fato nega a existência deste conjunto.}
+Logo, mesmo que algumas relações possam ser tratadas como conjuntos, a relação de
+pertinência a conjuntos terá de ser um caso especial.
+
+Terceiro: quando ``identificamos'' relações com conjuntos, dissemos que nos
+permitiríamos escrever $Rxy$ para $\tuple{x,y} \in R$. Isto está bem,
+desde que a relação de pertinência, ``$\in$'', seja tratada \emph{como}
+um predicado. Mas se pensamos que ``$\in$'' denota um certo tipo de
+conjunto, então a expressão ``$\tuple{x,y} \in R$'' consiste apenas em
+três termos singulares que denotam conjuntos: ``$\tuple{x,y}$'',
+``$\in$'', e ``$R$''. E tal lista de nomes não é mais capaz de
+exprimir uma proposição do que a sequência sem sentido: ``o copo porta-canetas
+a mesa''. De novo, mesmo que algumas relações possam ser tratadas como conjuntos, a
+relação de pertinência a conjuntos tem de ser um caso especial. (Isto reúne
+num só argumento uma versão simples do paradoxo do conceito \emph{cavalo} de Frege, e
+uma objeção célebre que Wittgenstein dirigiu a Russell.)
+
+Então onde nos deixa isto? Bem, não há nada de \emph{errado} em
+dizermos que as relações nos números são conjuntos. Só temos de
+compreender o espírito em que tal observação é feita. Não enunciamos
+um fato metafísico de identidade. Limitamo-nos a notar que, em certos
+contextos, podemos (e iremos) \emph{tratar} (certas) relações como
+certos conjuntos.
+
+\end{document}

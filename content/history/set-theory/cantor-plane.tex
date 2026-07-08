@@ -1,0 +1,79 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{his}{set}{cantorplane}
+\olsection{Cantor na Reta e no Plano}
+
+Algumas circunstâncias em torno da prova de Schröder-Bernstein
+relacionam-se com a história que discutimos em
+\olref[his][set][pathology]{sec}. Recordemos que, em 1877,
+Cantor provou que há tantos pontos num quadrado quanto num dos
+seus lados. Aqui apresentaremos a sua prova (primeira tentativa).
+
+Seja $\unitline$ o intervalo unitário, O.s.\@, o conjunto de pontos $[0,1]$. Seja
+$\unitsquare$ o quadrado unitário, O.s.\@, o conjunto de pontos $\unitline
+\times \unitline$. Nestes termos, Cantor provou que
+$\cardeq{\unitline}{\unitsquare}$. Escreveu uma nota a Dedekind,
+que continha essencialmente o seguinte argumento.
+
+\begin{thm}\ollabel{thm:cantorplane}
+$\cardeq{\unitline}{\unitsquare}$
+\end{thm}
+
+\begin{proof}[Prova: primeira parte.]
+Fixemos $a, b \in \unitline$. Escrevamos $a$ e $b$ em notação binária, de modo que
+temos sequências infinitas de $0$s e $1$s, $a_1$, $a_2$, \dots, e
+$b_1$, $b_2$, \dots, tais que:
+\begin{align*}
+a &= 0.a_1a_2a_3a_4\dots\\
+b &= 0.b_1b_2b_3b_4\dots
+\intertext{Consideremos a função $f \colon \unitsquare \to \unitline$ dada por}
+f(a, b) & = 0.a_1b_1a_2b_2a_3b_3a_4b_4\dots
+\end{align*}
+A função $f$ é !!a{injection}, pois se $f(a, b) = f(c,d)$, então  $a_n =
+c_n$ e $b_n = d_n$ para todo $n \in \Nat$, logo $a = c$ e $b =
+d$.
+\end{proof}
+
+Infelizmente, como Dedekind apontou a Cantor, isto não responde
+à questão original. Considere-se $0.\dot{1}\dot{0} =
+0.1010101010\ldots$. Para que $f(a,b) = 0.\dot{1}\dot{0}$, seria preciso:
+\begin{align*}
+a&= 0.\dot{1}\dot{1} = 0.111111\ldots\\
+b&= 0
+\end{align*}
+Mas $a = 0.\dot{1}\dot{1} = 1$. Assim, quando dizemos ``escrever $a$ e $b$ em
+notação binária'', temos de escolher \emph{qual} notação usar;
+e, como $f$ deve ser uma \emph{função}, só podemos usar \emph{uma}
+das duas notações possíveis. Mas se, por exemplo, usarmos a notação
+simples e escrevermos $a$ como ``$1.000\ldots$'', então não existe par
+$\tuple{a, b}$ tal que $f(a, b) = 0.\dot{1}\dot{0}$.
+
+Em resumo: Dedekind observou que, dada a possibilidade de
+certas expansões binárias periódicas, a função $f$ de Cantor é
+!!a{injection} mas \emph{não} é !!a{surjection}. Cantor tinha mostrado
+apenas que $\cardle{\unitsquare}{\unitline}$ e \emph{não} que
+$\cardeq{\unitsquare}{\unitline}$.
+
+Cantor respondeu a Dedekind quase de imediato, sugerindo
+essencialmente que a prova poderia completar-se assim:
+
+\begin{proof}[Prova: completada.]
+Mostramos que $\cardle{\unitsquare}{\unitline}$. Mas é óbvio que existe
+!!a{injection} de $\unitline$ para $\unitsquare$: basta ``deitar'' a reta sobre um lado do quadrado. Logo
+$\cardle{\unitline}{\unitsquare}$ e
+$\cardle{\unitsquare}{\unitline}$. Pelo teorema de Schr\"{o}der--Bernstein
+(\olref[sfr][siz][sb]{thm:schroder-bernstein}),
+$\cardeq{\unitline}{\unitsquare}$.
+\end{proof}
+
+Claro que Cantor não podia justificar a última linha nestes termos,
+pois o teorema de Schröder-Bernstein ainda não estava provado. De fato,
+embora Cantor viesse a formulá-lo como conjectura geral, só viria a ser
+provado de modo satisfatório em 1897. (E assim,
+mais tarde em 1877, Cantor deu outra prova de
+\olref{thm:cantorplane}, que não passava por
+Schr\"{o}der--Bernstein.)
+
+\end{document}

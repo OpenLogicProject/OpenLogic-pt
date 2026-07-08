@@ -1,0 +1,129 @@
+% Part: sets-functions-relations
+% Chapter: sets
+% Section: pairs-and-products
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sfr}{set}{pai}
+\olsection{Pares, Tuplas, Produtos Cartesianos}
+
+\begin{explain}
+Da extensionalidade segue-se que os conjuntos não têm ordem entre os seus
+elementos. Por isso, se queremos representar ordem, usamos \emph{pares ordenados}
+$\tuple{x, y}$. Num par não ordenado $\{x, y\}$, a ordem não
+importa: $\{x, y\} = \{y, x\}$. Num par ordenado, importa: se $x
+\neq y$, então $\tuple{x, y} \neq \tuple{y, x}$.
+
+Como devemos pensar os pares ordenados na teoria dos conjuntos? O essencial é
+preservar a ideia de que pares ordenados são idênticos se e só se
+partilham o mesmo primeiro elemento e o mesmo segundo elemento, O.s.:
+\[
+  \tuple{a, b}= \tuple{c, d}\text{ se e só se }a = c \text{ e }b=d.
+\]
+Podemos definir pares ordenados na teoria dos conjuntos usando a definição de
+Wiener--Kuratowski.
+\end{explain}
+
+\begin{defn}[Par ordenado]\ollabel{wienerkuratowski}
+	$\tuple{a, b} = \{\{a\}, \{a, b\}\}$.
+\end{defn}
+
+\begin{prob}
+	Usando \olref[sfr][set][pai]{wienerkuratowski}, prove que $\tuple{a,
+	b}= \tuple{c, d}$ se e só se $a = c$ e $b=d$.
+\end{prob}
+
+\begin{explain}
+Tendo fixada uma definição de par ordenado, podemos usá-la para definir
+outros conjuntos. Por exemplo, por vezes queremos sequências ordenadas de
+mais de dois objetos, p.ex., \emph{triplos} $\tuple{x, y, z}$,
+\emph{quádruplos} $\tuple{x, y, z, u}$, e assim por diante.  Podemos pensar nos
+triplos como pares ordenados especiais, em que o primeiro elemento é ele próprio um
+par ordenado: $\tuple{x, y, z}$ é $\tuple{\tuple{x, y},z}$. O mesmo
+vale para quádruplos: $\tuple{x,y,z,u}$ é
+$\tuple{\tuple{\tuple{x,y},z},u}$, e assim por diante. Em geral, falamos de
+\emph{$n$-tuplas ordenadas} $\tuple{x_1, \dots, x_n}$.
+
+Certos conjuntos de pares ordenados, ou outras $n$-tuplas ordenadas, serão úteis.
+\end{explain}
+
+\begin{defn}[Produto cartesiano]
+Dados conjuntos $A$ e $B$, o seu \emph{produto cartesiano} $A \times B$ é
+definido por
+\[
+  A \times B = \Setabs{\tuple{x, y}}{x \in A \text{ e } y \in B}.
+\]
+\end{defn}
+
+\begin{ex}
+Se $A = \{0, 1\}$, e $B = \{1, a, b\}$, então o seu produto é
+\[
+A \times B = \{ \tuple{0, 1}, \tuple{0, a}, \tuple{0, b},
+    \tuple{1, 1}, \tuple{1, a}, \tuple{1, b} \}.
+\]
+\end{ex}
+
+\begin{ex}
+Se $A$ é um conjunto, o produto de $A$ consigo próprio, $A \times A$, também se
+escreve~$A^2$. É o conjunto de \emph{todos} os pares $\tuple{x, y}$ com
+$x, y \in A$. O conjunto de todos os triplos $\tuple{x, y, z}$ é $A^3$, e
+assim por diante. Podemos dar uma definição recursiva:
+\begin{align*}
+  A^1 & = A\\
+  A^{k+1} & = A^k \times A
+\end{align*}
+\end{ex}
+
+\begin{prob}
+Liste todos os !!{element}s de $\{1, 2, 3\}^3$.
+\end{prob}
+
+\begin{prop}\ollabel{cardnmprod}
+Se $A$ tem $n$ !!{element}s e $B$ tem $m$ !!{element}s, então $A
+\times B$ tem $n\cdot m$ elementos.
+\end{prop}
+
+\begin{proof}
+Para todo !!{element}~$x$ em~$A$, há $m$ !!{element}s da
+forma $\tuple{x, y} \in A \times B$. Seja $B_x = \Setabs{\tuple{x, y}}{y
+  \in B}$. Como sempre que $x_1 \neq x_2$, $\tuple{x_1, y} \neq
+\tuple{x_2, y}$, tem-se $B_{x_1} \cap B_{x_2} = \emptyset$. Mas se $A = \{x_1,
+\dots, x_n\}$, então $A \times B = B_{x_1} \cup \dots \cup B_{x_n}$, e portanto tem
+$n\cdot m$ !!{element}s.
+
+Para visualizar isto, dispomos os !!{element}s de~$A \times B$ numa grade:
+\[
+\begin{array}{rcccc}
+  B_{x_1} = & \{\tuple{x_1, y_1} & \tuple{x_1, y_2} & \dots & \tuple{x_1, y_m}\}\\
+  B_{x_2} = & \{\tuple{x_2, y_1} & \tuple{x_2, y_2} & \dots & \tuple{x_2, y_m}\}\\
+  \vdots & & \vdots\\
+  B_{x_n} = & \{\tuple{x_n, y_1} & \tuple{x_n, y_2} & \dots & \tuple{x_n, y_m}\}
+\end{array}
+\]
+Como os $x_i$ são todos distintos, e os $y_j$ são todos distintos, quaisquer
+dois pares nesta grade são distintos, e há $n\cdot m$
+deles.
+\end{proof}
+
+\begin{prob}
+Mostre, por indução em~$k$, que para todo $k \ge 1$, se $A$ tem $n$
+!!{element}s, então $A^k$ tem $n^k$ !!{element}s.
+\end{prob}
+
+\begin{ex}
+Se $A$ é um conjunto, uma \emph{palavra} sobre~$A$ é qualquer sequência de
+!!{element}s de~$A$. Uma sequência pode ser vista como uma $n$-tupla de
+!!{element}s de~$A$. Por exemplo, se $A = \{a, b, c\}$, então a
+sequência ``$bac$'' pode ser vista como o triplo~$\tuple{b, a, c}$.
+Palavras, O.s.\@, sequências de símbolos, são de importância crucial na
+ciência da computação. Por convenção, contamos os !!{element}s de~$A$ como
+sequências de comprimento~$1$, e $\emptyset$ como a sequência de comprimento~$0$.
+O conjunto de \emph{todas} as palavras sobre~$A$ é então
+\[
+A^* = \{\emptyset\} \cup A \cup A^2 \cup A^3 \cup \dots
+\]
+\end{ex}
+
+\end{document}

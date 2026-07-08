@@ -1,0 +1,154 @@
+% Overrides de tokens !!{…} para o livro Teoria dos Conjuntos (PT).
+% Carregado automaticamente via \oljobname-config.sty quando \oljobname=settheory.
+
+% Tokens de texto PT-BR (sobrepõe definições de open-logic-config.sty)
+\settexttoken{enumerable}{enumerável}{enumeráveis}
+\settexttoken{nonenumerable}{não enumerável}{não enumeráveis}
+\settexttoken{denumerable}{infinito enumerável}{infinitos enumeráveis}
+
+% Traduções globais de tokens lógicos para Português (PT-BR)
+\settexttoken{language}{linguagem}{linguagens}
+\settexttoken{formula}{fórmula}{fórmulas}
+\settexttoken{subformula}{subfórmula}{subfórmulas}
+\settexttoken{sentence}{sentença}{sentenças}
+\settexttoken{variable}{variável}{variáveis}
+\settexttoken{propositional variable}{variável proposicional}{variáveis proposicionais}
+\settexttoken{constant}{símbolo de constante}{símbolos de constante}
+\settexttoken{predicate}{símbolo de predicado}{símbolos de predicado}
+\settexttoken{function}{símbolo de função}{símbolos de função}
+\settexttoken{operator}{operador lógico}{operadores lógicos}
+\settexttoken{main operator}{operador principal}{operadores principais}
+\settexttoken{free for}{livre para}{livres para}
+\settexttoken{identity}*{predicado de identidade}{predicados de identidade}
+\settexttoken{conditional}{condicional}{condicionais}
+\settexttoken{biconditional}{bicondicional}{bicondicionais}
+\settexttoken{falsity}{falsidade}{falsidades}
+\settexttoken{truth}{verdade}{verdades}
+\settexttoken{structure}{estrutura}{estruturas}
+\settexttoken{valuation}{valoração}{valorações}
+\settexttoken{domain}{domínio}{domínios}
+\settexttoken{value}{valor}{valores}
+\settexttoken{relational model}{modelo relacional}{modelos relacionais}
+\settexttoken{derivation}{derivação}{derivações}
+\settexttoken{derive}{deriva}{deriva}
+\settexttoken{derivable}{derivável}{deriváveis}
+\settexttoken{derivability}{derivabilidade}{derivabilidades}
+\settexttoken{nonderivability}{não derivabilidade}{não derivabilidades}
+\settexttoken{proof}{derivação}{derivações}
+\settexttoken{prove}{deriva}{deriva}
+\settexttoken{proving}{derivando}{derivando}
+\settexttoken{provable}{derivável}{deriváveis}
+\settexttoken{provability}{derivabilidade}{derivabilidades}
+\settexttoken{nonprovability}{não derivabilidade}{não derivabilidades}
+\settexttoken{tableau}{tableau}{tableaux}
+\settexttoken{signed formula}{fórmula assinada}{fórmulas assinadas}
+\settexttoken{complete}{completo}{completos}
+\settexttoken{axiomatizable}*{axiomatizável}{axiomatizáveis}
+\settexttoken{axiomatized}*{axiomatizado}{axiomatizados}
+\settexttoken{axiomatizability}*{axiomatizabilidade}{axiomatizabilidades}
+\settexttoken{represents}{representa}{representam}
+\settexttoken{representable}{representável}{representáveis}
+\settexttoken{discharge}{descarrega}{descarregam}
+\settexttoken{discharged}{descarregada}{descarregadas}
+\settexttoken{undischarged}{não descarregada}{não descarregadas}
+\settexttoken{decidable}{decidível}{decidíveis}
+\settexttoken{computably enumerable}{computavelmente enumerável}{computavelmente enumeráveis}
+\settexttoken{c.e.}{c.e.}{c.e.}
+\settexttoken{argument}{argumento}{argumentos}
+\settexttoken{parameter}{parâmetro}{parâmetros}
+\settexttoken{lambda define}{\ensuremath{\lambda}-define}{\ensuremath{\lambda}-definem}
+\settexttoken{lambda defined}{\ensuremath{\lambda}-definido}{\ensuremath{\lambda}-definidos}
+\settexttoken{lambda definable}{\ensuremath{\lambda}-definível}{\ensuremath{\lambda}-definíveis}
+
+% Princípios «Stages-*» / Limitation-of-size (OpenLogic-config, Tim Button):
+% Mesmo padrão que o original — rótulos com hífens; «estágio» = Stage (não «nível»).
+\renewcommand\stageshier{\emph{Estágios-são-chave}}
+\renewcommand\stagesord{\emph{Estágios-são-ordenados}}
+\renewcommand\stagesacc{\emph{Estágios-acumulam}}
+\renewcommand\stagessucc{\emph{Estágios-prosseguem}}
+\renewcommand\stagesinf{\emph{Estágios-atingem-o-infinito}}
+\renewcommand\limofsize{\emph{Limitação-de-tamanho}}
+\renewcommand\stagesinex{\emph{Estágios-são-inesgotáveis}}
+\renewcommand\stagescofin{\emph{Estágios-são-supercofinais}}
+% Notação matemática: «posto» (secção 11.6), não \mathrm{rank}
+\renewcommand\setrank[1]{\mathrm{posto}(#1)}
+
+% \settexttoken repõe o artigo inglês «a»/«A» em !!a{…}; em PT há de se
+% definir explicitamente (open-logic-tokenize.sty).
+\settexttoken{injective}{injetiva}{injetivas}
+\definetoken{a}{injective}{uma}
+\definetoken{A}{injective}{Uma}
+\settexttoken{injection}{injeção}{injeções}
+\definetoken{a}{injection}{uma}
+\definetoken{A}{injection}{Uma}
+\settexttoken{surjective}{sobrejetiva}{sobrejetivas}
+\definetoken{a}{surjective}{uma}
+\definetoken{A}{surjective}{Uma}
+\settexttoken{surjection}{sobrejeção}{sobrejeções}
+\definetoken{a}{surjection}{uma}
+\definetoken{A}{surjection}{Uma}
+\settexttoken{bijective}{bijetiva}{bijetivas}
+\definetoken{a}{bijective}{uma}
+\definetoken{A}{bijective}{Uma}
+\settexttoken{bijection}{bijeção}{bijeções}
+\definetoken{a}{bijection}{uma}
+\definetoken{A}{bijection}{Uma}
+% Paridade com OpenLogic EN (courses/set-theory): lá !!{element} renderiza
+% «member(s)», não «element(s)» — ver settheory-config.sty do original.
+\settexttoken{element}{membro}{membros}
+\definetoken{a}{element}{um}
+\definetoken{A}{element}{Um}
+\settexttoken{colorC}{vermelho}{vermelhos}
+\definetoken{a}{colorC}{um}
+\definetoken{A}{colorC}{Um}
+\settexttoken{colorD}{azul}{azuis}
+\definetoken{a}{colorD}{um}
+\definetoken{A}{colorD}{Um}
+\settexttoken{colorE}{verde}{verdes}
+\definetoken{a}{colorE}{um}
+\definetoken{A}{colorE}{Um}
+
+% Imagem de uma função: no OLP original $\ran{f}$ imprime «ran» (de *range*).
+% No PDF deste curso em PT usamos a notação habitual $\operatorname{Im}(f)$.
+\RenewDocumentCommand \ran { m } {\operatorname{Im}(#1)}
+
+
+
+
+% Figuras com \olasset nos capítulos importados pelo settheory: [H] mantém
+% diagramas na ordem do texto (evita saltarem para o topo da página seguinte).
+\RequirePackage{float}
+\RequirePackage{needspace}
+
+% open-logic.sty define \intextsep{0pt} (fotos em wrapfig). Com [H], isso cola
+% o diagrama ao parágrafo anterior; igualamos ao espaço diagrama→legenda.
+\AtBeginDocument{%
+  \setlength{\intextsep}{\abovecaptionskip}%
+  \makeatletter
+  % O memoir copia \everylistparindent para \listparindent antes de cada \list;
+  % em alguns arranjos isso iguala-se ao \parindent do corpo, e aí cada parágrafo
+  % dentro de \texttt{quote} ganha indentação de parágrafo (bloco ``partido'').
+  % Fixamos \texttt{\listparindent} e \texttt{\itemindent} a zero no segundo
+  % argumento de \texttt{\list}, mantendo \texttt{topsep}/\texttt{parsep} de
+  % \texttt{@listi} (não os zeramos).
+  \renewenvironment{quote}{%
+    \list{}{\listparindent\z@\itemindent\z@\rightmargin\leftmargin}%
+    \item[]%
+  }{%
+    \endlist
+  }%
+  \makeatother
+}
+
+% Secção Patologias (grelha Hilbert): interlinhado só um pouco abaixo de 1,0 para
+% ganhar altura sem parecer «esmagado»; o resto reparte-se com \vspace mínimos em
+% pathologies.tex. Se a grelha voltar a saltar, baixar para 0,972 ou subir
+% \enlargethispage antes do center.
+\newcommand{\PatologiaCompactSpread}{0.976}
+\newenvironment{patologiascompactas}{%
+  \begingroup
+  \linespread{\PatologiaCompactSpread}\selectfont
+}{%
+  \endgroup
+}
+

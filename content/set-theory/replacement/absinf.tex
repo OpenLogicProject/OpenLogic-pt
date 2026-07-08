@@ -1,0 +1,108 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{replacement}{absinf}
+\olsection{Substituição e ``Infinito Absoluto''}
+
+Deixamos agora \limofsize{} para trás e exploramos uma outra
+família de tentativas (intrínsecas) de justificar a Substituição, que levam a sério
+a ideia de conjuntos formados em estágios.
+
+Quando delineamos pela primeira vez o processo iterativo, oferecemos alguns
+princípios que explicam o que acontece em cada estágio. Foram
+\stageshier, \stagesord, e \stagesacc. Mais tarde, acrescentamos alguns
+princípios que nos dizem algo sobre o número de estágios:
+\stagessucc{} disse-nos que o processo de formação de conjuntos nunca termina,
+e \stagesinf{} disse-nos que o processo passa por um estágio infinito-ésimo. 
+
+É razoável sugerir que estes dois últimos princípios decorrem de
+algum princípio mais amplo, como:
+\begin{enumerate}
+	\item[] \stagesinex. Há absolutamente infinitamente muitos estágios;
+	a hierarquia é tão alta quanto possível.
+\end{enumerate}
+Obviamente isto é um princípio informal. Mas mesmo que não seja
+imediatamente \emph{implicado} pela concepção cumulativa-iterativa de
+conjunto, certamente parece \emph{consonante} com ela. Pelo menos,
+e ao contrário de \limofsize, retém a ideia de que os conjuntos são formados
+estágio a estágio. 
+
+A esperança, agora, é alavancar \stagesinex{} numa justificação da
+Substituição. Vejamos como isso poderia fazer-se. 
+
+Na \olref[ordinals][idea]{sec}, vimos que é fácil
+construir uma boa ordenação que (moralmente) deveria ser isomorfa a
+$\omega+\omega$. Dito de outro modo, podemos facilmente imaginar um processo iterativo
+estágio a estágio, cujo tipo de ordem (moralmente) é $\omega+\omega$. Como
+tal, se aceitamos \stagesinex, então deveríamos certamente aceitar
+que há pelo menos um estágio $\omega+\omega$-ésimo da hierarquia,
+O.s.\@, $V_{\omega+\omega}$, pois a hierarquia seguramente \emph{poderia}
+continuar até aqui. 
+
+Este pensamento generaliza-se como segue: para qualquer boa ordenação, o
+processo de construir a hierarquia iterativa deveria correr pelo menos tão longe
+quanto essa boa ordenação. E poderíamos garantir isto tratando
+\olref[ordinals][ordtype]{thmOrdinalRepresentation} como um
+\emph{axioma}. Isto diria-nos que toda a boa ordenação é isomorfa
+a um ordinal de von Neumann. Como cada ordinal de von Neumann será igual
+ao seu próprio posto, \olref[ordinals][ordtype]{thmOrdinalRepresentation}
+dir-nos-á então que, sempre que possamos descrever uma boa ordenação na
+nossa teoria de conjuntos, o processo iterativo de formação de conjuntos tem de ultrapassar essa
+boa ordenação. 
+
+Esta ideia parece certamente um corolário de \stagesinex.
+Infelizmente, se o nosso objetivo é extrair a Substituição desta ideia,
+enfrentamos um obstáculo simples e técnico: a Substituição é estritamente mais forte que
+\olref[ordinals][ordtype]{thmOrdinalRepresentation}. (Esta observação é feita por 
+\citet[\S13.2]{Potter2004}; prová-lo-emos na \olref[sth][replacement][finiteaxiomatizability]{sec}.)
+
+A conclusão é que, se vamos entender \stagesinex{} de
+modo a obter a Substituição, então não pode \emph{meramente} dizer
+que a hierarquia ultrapassa qualquer boa ordenação. Tem de fazer uma afirmação
+mais forte. Com este fim, \cite{Shoenfield:AST} propôs um
+reforço muito natural da ideia, como segue: a hierarquia não é
+\emph{cofinal} com nenhum conjunto.\footnote{G\"odel parece ter proposto um
+pensamento semelhante; ver \citet[p.~223]{Potter2004}. Para discussão de G\"odel e \citeauthor{Shoenfield:AST}, ver \citet[90--5]{Incurvati2020}.} Com um pouco mais de pormenor:
+se $\tau$ é um mapeamento que envia conjuntos para estágios da hierarquia,
+a imagem de qualquer conjunto $A$ sob $\tau$ não esgota a hierarquia.
+Dito de outro modo (esquematicamente): 
+\begin{enumerate}
+	\item[] \stagescofin. Se $A$ é um conjunto e $\tau(x)$ é um estágio para
+	todo o $x \in A$, então existe um estágio que vem depois de cada
+	$\tau(x)$ para $x \in A$.
+\end{enumerate}
+É óbvio que $\ZF$ prova uma versão adequadamente formalizada de
+\stagescofin. Reciprocamente, podemos argumentar informalmente que \stagescofin{}
+justifica a Substituição.\footnote{Seria mais difícil provar a
+Substituição usando alguma formalização de \stagescofin, pois $\Z$ por
+si só não é forte o suficiente para definir os estágios, logo não é claro
+como se formalizaria \stagescofin. Uma opção, contudo, é
+trabalhar nalguma extensão de $\LT$, como discutido na \olref[sth][replacement][extrinsic]{sec}.} De fato, suponha $(\forall x \in A)\lexists![y][\phi(x,y)]$. Então, para cada $x \in A$, seja $\sigma(x)$ o $y$ tal
+que $\phi(x,y)$, e seja $\tau(x)$ o estágio em que $\sigma(x)$ é
+formado pela primeira vez. Por \stagescofin, existe um estágio $V$ tal que
+$(\forall x \in A)\tau(x)\in V$. Ora, como cada $\tau(x) \in V$ e
+$\sigma(x) \subseteq \tau(x)$, por Separação podemos obter $\Setabs{y
+\in V}{(\exists x \in A)\sigma(x) = y} = \Setabs{y}{(\exists x \in
+A)\phi(x,y)}$.
+
+\begin{prob}
+	Apresente uma formalização de \stagescofin{} em $\ZF$.
+\end{prob}
+
+Logo \stagescofin{} vindica a Substituição. E é pelo menos plausível
+que \stagesinex{} vindique \stagescofin. De fato, suponha que \stagescofin{}
+falha. Logo a hierarquia é cofinal com algum conjunto~$A$, O.s.\@, temos uma
+aplicação $\tau$ tal que para qualquer estágio~$S$ existe algum $x \in A$ tal
+que $S \in \tau(x)$. Nesse caso, temos de fato uma forma de apreender
+o suposto ``infinito absoluto'' da hierarquia: ele é
+\emph{esgotado} pela imagem de $\tau$ aplicada a $A$. E isso
+compromete a ideia de que a hierarquia é ``absolutamente infinita''.
+Contrapondo: \stagesinex{} implica \stagescofin, que por sua vez
+justifica a Substituição.
+
+Isto representa uma tentativa genuinamente promissora de fornecer uma
+justificação intrínseca da Substituição. Mas se funciona
+ultimamente ou não, teremos de deixar para si decidir.
+
+\end{document}

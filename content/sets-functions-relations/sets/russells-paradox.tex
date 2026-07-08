@@ -1,0 +1,87 @@
+% Part: sets-functions-relations
+% Chapter: sets
+% Section: russells-paradox
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+
+\begin{document}
+
+\olfileid[pt]{sfr}{set}{rus}
+\olsection{Paradoxo de Russell}
+
+A extensionalidade autoriza a notação $\Setabs{x}{\phi(x)}$, para
+\emph{o} conjunto dos $x$ tais que~$\phi(x)$. Contudo, tudo o que a
+extensionalidade \emph{realmente} autoriza é o seguinte pensamento.
+\emph{Se} há um conjunto cujos membros são exatamente os que satisfazem $\phi$,
+\emph{então} há apenas um tal conjunto. Dito de outro modo: fixada
+alguma~$\phi$, o conjunto $\Setabs{x}{\phi(x)}$ é único, \emph{se existir}.
+
+Mas este condicional é importante!{} Crucialmente, nem toda propriedade
+se presta à \emph{compreensão}. Isto é, algumas propriedades \emph{não}
+definem conjuntos. Se todas definissem, cairíamos em
+contradições flagrantes. O exemplo mais famoso disso é o Paradoxo de Russell.
+
+Os conjuntos podem ser !!{element}s de outros conjuntos---por exemplo, o conjunto potência
+de um conjunto~$A$ é constituído por conjuntos. Por isso faz sentido perguntar ou
+investigar se um conjunto é !!a{element} de outro conjunto. Pode um conjunto ser
+membro de si próprio?  Nada na ideia de conjunto parece excluir
+isso. Por exemplo, se \emph{todos} os conjuntos formam uma coleção de
+objetos, alguém poderia pensar que podem reunir-se num único
+conjunto---o conjunto de todos os conjuntos. E ele, sendo conjunto, seria !!a{element}
+do conjunto de todos os conjuntos. 
+
+O Paradoxo de Russell surge quando consideramos a propriedade de não ter
+a si próprio como !!a{element}, de ser \emph{não auto-membro}. E se
+supusermos que há um conjunto de todos os conjuntos que não têm a si próprios como
+!!a{element}? Será que
+\[
+R = \Setabs{x}{x \notin x}
+\]
+existe? Verifica-se que podemos provar que não.
+
+\begin{thm}[Paradoxo de Russell]\ollabel{thm:russells-paradox}
+	Não há conjunto $R = \Setabs{x}{x \notin x}$.
+\end{thm}
+
+\begin{proof}
+Se $R = \Setabs{x}{x \notin x}$ existisse, então
+$R \in R$ se e só se $R \notin R$, o que é uma contradição.
+\end{proof}
+
+\begin{tagblock}{novice}
+\begin{explain}
+Vamos percorrer esta prova mais devagar. Se $R$ existe, faz sentido perguntar se $R \in
+R$ ou não. Suponhamos que de fato $R \in R$. Agora, $R$~foi definido como o conjunto de todos os
+conjuntos que não são !!{element}s de si próprios. Logo, se $R \in R$,
+então $R$ não tem a propriedade definidora de $R$. Mas só os conjuntos
+que têm essa propriedade estão em~$R$, logo $R$ não pode ser !!a{element}
+de~$R$, O.s.\@, $R \notin R$. Mas $R$ não pode ao mesmo tempo ser e não ser
+!!a{element} de~$R$, logo temos uma contradição.
+
+Como a suposição de que $R \in R$ leva a uma contradição, temos
+$R \notin R$. Mas isto também leva a uma contradição!{} Pois se $R
+\notin R$, então $R$ tem a propriedade definidora de $R$, e assim $R$ seria
+!!a{element} de $R$, tal como todos os outros conjuntos não auto-membros.
+E de novo, $R$ não pode ao mesmo tempo não ser e ser !!a{element} de~$R$.
+\end{explain}
+\end{tagblock}
+
+\begin{digress}
+Como montar uma teoria dos conjuntos que evite cair no
+Paradoxo de Russell, O.s.\@, que evite afirmar de modo \emph{inconsistente}
+que $R = \Setabs{x}{x \notin x}$ existe? Teríamos de estabelecer axiomas que nos
+dêem condições muito precisas para dizer quando
+os conjuntos existem (e quando não existem). 
+	
+A teoria dos conjuntos esboçada neste capítulo não faz isso. É
+\emph{genuinamente ingênua}. Diz apenas que os conjuntos obedecem à
+extensionalidade e que, se temos alguns conjuntos, podemos formar a sua
+união, interseção, etc. É possível desenvolver a teoria dos conjuntos com mais
+rigor do que isto. \oliflabeldef{cumul:::part}{Esse rigor ficará
+reservado à Parte~\olref[cumul][][]{part}. Por enquanto, seguiremos de modo
+ingênuo, e tentaremos cuidadosamente evitar contradições.}{}
+\end{digress}
+
+
+\end{document}

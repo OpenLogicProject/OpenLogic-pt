@@ -1,0 +1,100 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{sth}{ordinals}{opps}
+\olsection{Ordinais Sucessores e Limites}
+
+Nos próximos capítulos, usaremos muito os ordinais. Por isso convém
+introduzir algumas noções simples.
+
+\begin{defn}
+Para qualquer ordinal $\alpha$, o seu \emph{sucessor} é $\ordsucc{\alpha}
+=\alpha \cup \{\alpha\}$. Dizemos que $\alpha$ é um ordinal
+\emph{sucessor} se $\ordsucc{\beta} = \alpha$ para algum ordinal~$\beta$.
+Dizemos que $\alpha$ é um ordinal \emph{limite} sse $\alpha$ não é nem
+vazio nem um ordinal sucessor.
+\end{defn}
+\noindent
+O resultado seguinte mostra que esta é a noção certa de
+\emph{sucessor}:
+
+\begin{prop}
+Para qualquer ordinal $\alpha$:
+\begin{enumerate}
+	\item $\alpha \in \ordsucc{\alpha}$;
+	\item $\ordsucc{\alpha}$ é um ordinal;
+	\item não existe ordinal $\beta$ tal que $\alpha \in \beta \in
+	\ordsucc{\alpha}$.
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Trivialmente, $\alpha \in \alpha \cup \{\alpha\} = \ordsucc{\alpha}$.
+Igualmente, $\ordsucc{\alpha}$ é um conjunto transitivo de ordinais, e
+portanto um ordinal por \olref[basic]{corordtransitiveord}.
+E é impossível que $\alpha \in \beta \in \ordsucc{\alpha}$,
+pois então ou $\beta \in \alpha$ ou $\beta = \alpha$,
+contradizendo \olref[basic]{ordordered}.
+\end{proof}
+\noindent
+Isto autoriza também uma variante de prova por indução transfinita:
+
+\begin{thm}[Indução Transfinita Simples]\ollabel{simpletransrecursion}
+Seja $\phi(x)$ uma fórmula tal que:
+\begin{enumerate}
+	\item $\phi(\emptyset)$; e
+	\item para qualquer ordinal $\alpha$, se $\phi(\alpha)$ então
+	$\phi(\ordsucc{\alpha})$; e 
+	\item se $\alpha$ é um ordinal limite e $(\forall \beta \in
+	\alpha)\phi(\beta)$, então $\phi(\alpha)$.
+\end{enumerate}
+Então $\forall \alpha \phi(\alpha)$.
+\end{thm}
+
+\begin{proof}
+Provamos a contrapositiva. Logo, suponha que existe algum ordinal para o qual
+vale $\lnot\phi$; seja $\gamma$ o menor tal ordinal. Então ou
+$\gamma = \emptyset$, ou $\gamma = \ordsucc{\alpha}$ para algum $\alpha$
+tal que $\phi(\alpha)$; ou $\gamma$ é um ordinal limite e $(\forall
+\beta \in \gamma)\phi(\beta)$.
+\end{proof}
+\noindent
+Um último bocado de notação será útil mais adiante:
+
+\begin{defn}\ollabel{defsupstrict}
+Se $X$ é um conjunto de ordinais, então $\supstrict(X) = \bigcup_{\alpha
+\in X} \ordsucc{\alpha}$.
+\end{defn}
+\noindent
+Aqui, ``lsub'' abrevia ``least strict upper bound'' (majorante superior estrito mínimo).\footnote{Alguns livros usam ``$\text{sup}(X)$'' para isto. Mas outros usam
+``$\text{sup}(X)$'' para o majorante superior \emph{não estrito} mínimo, isto é,
+simplesmente $\bigcup X$. Se $X$ tem um maior elemento, $\alpha$, estas
+noções divergem: o majorante superior estrito mínimo é
+$\ordsucc{\alpha}$, enquanto o majorante superior não estrito mínimo é
+apenas $\alpha$.} O resultado seguinte explica isto:
+
+\begin{prop}
+Se $X$ é um conjunto de ordinais, $\supstrict(X)$ é o menor ordinal
+estritamente maior do que todo o ordinal em $X$.
+\end{prop}
+
+\begin{proof}
+Seja $Y = \Setabs{\ordsucc{\alpha}}{\alpha \in X}$, de modo que
+$\supstrict(X) = \bigcup Y$. Como os ordinais são transitivos e todo o
+membro de um ordinal é um ordinal, $\supstrict(X)$ é um conjunto transitivo
+de ordinais, e portanto um ordinal por
+\olref[basic]{corordtransitiveord}. 
+
+Se $\alpha \in X$, então $\ordsucc{\alpha} \in Y$, logo $\ordsucc{\alpha}
+\subseteq \bigcup Y = \supstrict(X)$, e portanto $\alpha \in
+\supstrict(X)$. Logo $\supstrict(X)$ é estritamente maior do que todo o
+ordinal em $X$.
+
+Inversamente, se $\alpha \in \supstrict(X)$, então $\alpha \in
+\ordsucc{\beta} \in Y$ para algum $\beta \in X$, de modo que $\alpha \leq
+\beta \in X$. Logo $\supstrict(X)$ é o majorante superior estrito
+\emph{mínimo} de $X$.
+\end{proof}
+
+\end{document}

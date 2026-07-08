@@ -1,0 +1,93 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{his}{set}{infinitesimals}
+\olsection{Infinitesimais e Diferenciação}
+
+Newton e Leibniz descobriram o cálculo (independentemente) no fim do
+século XVII. Uma aplicação particularmente importante do cálculo era a
+\emph{diferenciação}. Grosso modo, a diferenciação
+pretende dar uma noção da ``taxa de variação'', ou gradiente, de uma
+função num ponto.
+
+Eis uma forma vívida de ilustrar a ideia. Considere a função
+$f(x) = \nicefrac{x^2}{4} + \nicefrac{1}{2}$, representada a preto abaixo:
+\begin{center}
+	\begin{tikzpicture}[scale=1]
+	\draw[->, gray] (-1,0) -- (4.25,0) node[right] {$x$};
+	\draw[->, gray] (0,-0.25) -- (0,5.25) node[above] {$f(x)$};
+	
+	\foreach \x/\xtext in {1/1, 2/2, 3/3, 4/4}
+	\draw[shift={(\x,0)}, gray] (0pt,2pt) -- (0pt,-2pt) node[below] {$\xtext$};
+	
+	\foreach \y/\ytext in {1/1, 2/2, 3/3, 4/4, 5/5}
+	\draw[shift={(0,\y)}, gray] (2pt,0pt) -- (-2pt,0pt) node[left] {$\ytext$};
+	
+	\draw[oldiagcolorC] (0.5, 9/16) -- (3.5, 57/16) -- (3.5, 9/16)--cycle;
+	\draw[oldiagcolorD] (.5, 9/16) -- (2.5, 33/16) -- (2.5, 9/16) -- cycle;
+	\draw[oldiagcolorE] (.5, 9/16) -- (1.5, 17/16) -- (1.5, 9/16) -- cycle;
+	\draw[thick] (-1,.75) parabola bend (0,0.5) (4,4.5);
+	\end{tikzpicture}
+\end{center}
+Suponhamos que queremos encontrar o gradiente da função em $c =
+\nicefrac{1}{2}$. Começamos por desenhar um triângulo cuja hipotenusa
+aproxima o gradiente nesse ponto, talvez o triângulo vermelho acima.
+Quando $\beta$ é o comprimento da base do nosso triângulo, a sua altura é
+$f(\nicefrac{1}{2}+\beta) - f(\nicefrac{1}{2})$, de modo que o gradiente
+da hipotenusa é:
+\[
+\frac{f(\nicefrac{1}{2}+\beta) - f(\nicefrac{1}{2})}{\beta}.
+\]
+Assim, o gradiente do nosso triângulo !!{colorC}, com base de comprimento~$3$, é
+exatamente~$1$. A hipotenusa de um triângulo menor, o triângulo !!{colorD}
+com base de comprimento~$2$, dá uma melhor aproximação; o seu
+gradiente é $\nicefrac{3}{4}$. Um triângulo ainda menor, o !!{colorE}
+com base de comprimento~$1$, dá uma aproximação ainda melhor, com
+gradiente $\nicefrac{1}{2}$. 
+
+Triângulos cada vez menores dão-nos aproximações cada vez melhores. Por isso
+poderíamos dizer algo deste gênero: a hipotenusa de um triângulo com
+comprimento de base \emph{infinitesimal} nos dá o próprio gradiente em $c =
+\nicefrac{1}{2}$. Deste modo, obteríamos uma fórmula para a
+(primeira) derivada da função $f$ no ponto $c$:
+\[
+{f'}(c) = \frac{f(c+\beta) - f(c)}{\beta} \text{ onde $\beta$ é infinitesimal.}
+\]
+E, grosso modo, foi isto que Newton e Leibniz disseram.
+
+Contudo, uma vez que o disseram, devemos perguntar-lhes: o que é um
+\emph{infinitesimal}? Surge um dilema sério. Se $\beta = 0$, então
+$f'$ fica mal definida, pois envolve dividir por $0$. Mas se $\beta >
+0$, obtemos apenas uma \emph{aproximação} ao gradiente, e não o
+próprio gradiente.
+
+Esta não é uma preocupação anacrônica. Eis Berkeley, a criticar os
+seguidores de Newton:
+\begin{quote}
+Admito que os signos possam ser feitos para denotar qualquer coisa ou nada:
+e consequentemente que, na notação original $c + \beta$, $\beta$
+poderia ter significado um incremento ou nada. Mas então, seja qual for
+o significado atribuído a $\beta$, é preciso argumentar de modo consistente com
+essa significação, e não proceder com duplo sentido: o que seria um sofismo manifesto. (\citealt[\S{}XIII]{Berkeley1734},
+variáveis alteradas para coincidir com o texto precedente)
+\end{quote}
+Para defender o cálculo infinitesimal face a Berkeley, poder-se-ia responder
+que a linguagem dos ``infinitesimais'' é meramente figurada. Poder-se-ia
+dizer que, desde que tomemos um triângulo \emph{bem pequeno}, obteremos
+uma aproximação \emph{suficientemente boa} à tangente. Berkeley tinha
+também uma resposta para isto: embora isso pudesse bastar para a engenharia,
+minava o \emph{estatuto} da matemática, pois
+\begin{quote}
+dizem-nos que \emph{in rebus mathematicis errores qu\`{a}m minimi
+non sunt contemnendi}. [No caso da matemática, os menores
+erros não devem ser desprezados.] \citep[\S{}IX]{Berkeley1734}
+\end{quote}
+A passagem em itálico é uma citação quase literal do próprio Newton na
+\emph{Quadrature of Curves} (1704).
+
+As objeções filosóficas de Berkeley são profundamente incisivas. Não obstante,
+o cálculo foi uma empresa enormemente bem-sucedida, e os matemáticos
+continuaram a usá-lo sem incorrer em erro.
+
+\end{document}

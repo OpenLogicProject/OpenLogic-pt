@@ -1,0 +1,25 @@
+\documentclass[openany]{memoir}
+
+\usepackage{subfiles}
+
+% Open Logic main path is 5 directories up for chapters; they live in
+% content/*/*
+\newcommand*{\olpath}{../../../../..}
+
+\newcommand*{\ollangid}{pt}
+\newcommand*{\ollanguage}{brazilian}
+
+\input{\olpath/sty/open-logic.sty}
+\input{\olpath/sty/open-logic-debug.sty}
+
+\def\thechapter{\theolchapter}
+
+\pagestyle{openlogic}
+
+\begin{document}
+
+This file should not be compiled on its own. It is merely a template to
+compile chapters by themselves.
+
+\end{document}
+
