@@ -2,7 +2,7 @@
 # Open Logic Project (Portuguese)
 
 This is the Portuguese (pt-BR) translation of the content files of the
-[Open Logic Project](https://openlogicproject.org/).
+[Open Logic Project](https://openlogicproject.org/) by Pedro Lima.
 
 To compile you first have to install the [main
 repository](https://github.com/OpenLogicProject/OpenLogic). Once that
