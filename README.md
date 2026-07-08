@@ -1,0 +1,46 @@
+# Projeto Open Logic
+# Open Logic Project (Portuguese)
+
+This is the Portuguese (pt-BR) translation of the content files of the
+[Open Logic Project](https://openlogicproject.org/).
+
+To compile you first have to install the [main
+repository](https://github.com/OpenLogicProject/OpenLogic). Once that
+is done, there is a subdirectory `locale`. Change into this
+subdirectory and clone this repository:
+```
+$ cd locale
+$ git clone git@github.com:OpenLogicProject/OpenLogic-pt.git pt
+```
+(Note the `pt` at the end is necessary to clone into the directory
+`locale/pt/`.)
+
+You can then compile the files in the resulting directory
+`locale/pt/`, e.g.,
+```
+$ cd pt
+$ pdflatex open-logic-complete
+```
+
+The requirements for localizing (translating) the Open Logic Project
+are described in
+[`locale/LOCALIZATION.md`](https://github.com/OpenLogicProject/OpenLogic/blob/master/locale/LOCALIZATION.md)
+
+The Open Logic Project is an open source, open access collection of
+materials on advanced logic, aimed mainly at philosophers, but also
+suitable for computer scientists and mathematicians. The text can be
+rearranged and remixed. You can produce custom textbooks from it, so
+they take the aim of the course and the preferences of the instructor
+into account. It is written in LaTeX.
+
+For more information, see the <a
+href="https://openlogicproject.org/">project website</a> and <a
+href="https://github.com/OpenLogicProject/OpenLogic/wiki">Open Logic
+wiki</a>.
+
+This repository contains LaTeX source files only. Head to the <a
+href="https://builds.openlogicproject.org/">builds site to download PDFs</a>.
+
+Author(s): The Open Logic Project
+
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">The Open Logic Text</span> by <a xmlns:cc="https://creativecommons.org/ns#" href="https://openlogicproject.org/people/" property="cc:attributionName" rel="cc:attributionURL">The Open Logic Project</a> is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br />Permissions beyond the scope of this license may be available at <a xmlns:cc="https://creativecommons.org/ns#" href="https://openlogicproject.org/" rel="cc:morePermissions">https://openlogicproject.org/</a>.
