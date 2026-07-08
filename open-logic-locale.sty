@@ -34,6 +34,8 @@
 \setlocalecaption{brazilian}{convention}{Convenção}
 
 \setlocalecaption{brazilian}{OLP}{Projeto Open Logic}
+\setlocalecaption{brazilian}{OLT}{The Open Logic Text}
+\setlocalecaption{brazilian}{OLTlink}{https://github.com/OpenLogicProject/OpenLogic-pt}
 \setlocalecaption{brazilian}{license}{Licença Creative Commons
   Atribuição 4.0 Internacional}
 \setlocalecaption{brazilian}{instigator}{Idealizador}
@@ -84,14 +86,13 @@
   está licenciado sob a
   #3.}
 \renewcommand*{\olshortlicensetext}[1]
-  {\textit{\href{https://github.com/OpenLogicProject/OpenLogic}{\jobname}}
+  {\textit{\href{\OLTlinkname}{\jobname}}
   \ifgitinfo\ 
   por #1 /
   \href{http://creativecommons.org/licenses/by/4.0/}{CC--BY}.}
 \renewcommand*{\oluselicensetext}
   {É baseado em
-  \textit{\href{https://github.com/OpenLogicProject/OpenLogic}{The Open
-  Logic Text}}
+  \textit{\href{\OLTlinkname}{\OLTname}}
   do
   \href{http://openlogicproject.org/}{\OLPname},
   usado sob a
