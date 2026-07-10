@@ -1,0 +1,169 @@
+% Front matter em português (substitui \OLPfrontmatter de open-logic-book.cls)
+
+\newcommand{\oluselicensePT}[2]{%
+\begin{minipage}[b]{.9cm}
+\includegraphics[width=.9cm]{\olpath/assets/logos/by}
+\includegraphics[width=.9cm]{\olpath/assets/logos/cc}
+\includegraphics[width=.9cm]{\olpath/assets/logos/remix}
+\end{minipage}
+\hspace{.3cm}
+\begin{minipage}[b]{5cm}
+\ollicensefont
+\textit{#1}, de #2, está licenciado sob uma
+\href{http://creativecommons.org/licenses/by/4.0/}{Licença Creative Commons
+  Atribuição 4.0 Internacional}. Baseia-se em
+\textit{\href{https://github.com/OpenLogicProject/OpenLogic}{The Open
+    Logic Text}}, do \href{http://openlogicproject.org/}{Open Logic
+  Project}, usado sob uma
+\href{http://creativecommons.org/licenses/by/4.0/}{Licença Creative Commons
+  Atribuição 4.0 Internacional}.
+\end{minipage}
+\hfill
+\href{http://openlogicproject.org/}{\includegraphics[width=2.7cm]{\olpath/assets/logos/openlogic-logo-bw}}}
+
+\renewcommand{\OLPfrontmatter}{
+
+% bastard title
+
+\pagestyle{empty}
+
+\vspace*{100pt}
+
+\begin{raggedleft}
+
+{\fontsize{24pt}{28pt}\selectfont\bfseries\sffamily%
+\OLPbooktitle\par}
+
+\end{raggedleft}
+
+\newpage
+
+% editorial board
+
+\vspace*{100pt}
+
+{\bfseries\itshape The Open Logic Project}
+
+\bigskip
+
+\textbf{\color{OLPcolor}Instigador}
+
+\medskip
+
+Richard Zach, \emph{University of Calgary}
+
+\bigskip
+
+\textbf{\color{OLPcolor}Conselho editorial}
+
+\medskip
+
+Aldo Antonelli,$^\dagger$ \emph{University of California, Davis}
+
+Andrew Arana, \emph{Universit\'e de Lorraine}
+
+Jeremy Avigad, \emph{Carnegie Mellon University}
+
+Tim Button, \emph{University College London}
+
+Walter Dean, \emph{University of Warwick}
+
+Benedict Eastaugh, \emph{University of Warwick}
+
+Gillian Russell, \emph{Australian National University}
+
+Nicole Wyatt, \emph{University of Calgary}
+
+Audrey Yap, \emph{University of Victoria}
+
+\bigskip
+
+\textbf{\color{OLPcolor}Colaboradores}
+
+\medskip
+
+Samara Burns, \emph{Columbia University}
+
+Dana H\"agg, \emph{University of Calgary}
+
+Zesen Qian, \emph{Carnegie Mellon University}
+
+\newpage
+
+% title page
+
+\vspace*{100pt}
+
+\begin{raggedleft}
+
+{\fontsize{24pt}{28pt}\bfseries\sffamily\selectfont%
+\OLPbooktitle\par}
+
+\bigskip
+
+{\fontsize{18pt}{22pt}\selectfont\bfseries\itshape \OLPbooksubtitle\par}
+
+\vspace{100pt}
+
+\fontsize{14pt}{14pt}\selectfont Remixado por \OLPauthor{}
+
+\vfill
+
+\textsc{\OLPbookversion}
+
+\end{raggedleft}
+
+\newpage
+
+% copyright page
+
+\noindent
+O Open Logic Project gostaria de agradecer o generoso apoio do
+\href{https://taylorinstitute.ucalgary.ca/}{Taylor Institute for Teaching
+and Learning} da University of Calgary e da Alberta Open Educational
+Resources (ABOER) Initiative, tornada possível por um investimento do
+governo de Alberta.
+
+\bigskip
+
+\noindent
+\includegraphics[height=1.2cm]{\olpath/assets/logos/ti-\OLPassetversion}
+
+\bigskip
+
+\noindent
+\includegraphics[height=1.5cm]{\olpath/assets/logos/aboer-\OLPassetversion}
+
+\vfill
+
+\noindent Ilustrações da capa por \href{http://mattleadbeater.com}{Matthew
+  Leadbeater}, usadas sob uma
+\href{https://creativecommons.org/licenses/by-nc/4.0/}{Licença Creative Commons
+  Atribuição-NãoComercial 4.0 Internacional}.
+
+\vfill
+
+\noindent Composto em Baskervald X e Nimbus Sans com
+\LaTeX.
+
+\vfill
+
+\noindent Esta versão de \emph{\OLPbooktitle} é a revisão
+\gitAbbrevHash{} (\gitAuthorDate), com conteúdo gerado a partir da
+revisão \OLPrevision{} do \emph{Open Logic Text}. Download gratuito em:\\[.5ex]
+\url{\OLPsourcelink}
+
+\vfill
+
+\renewcommand{\ollicensefont}{\fontsize{8.5pt}{11pt}\selectfont}
+
+\noindent
+\oluselicensePT
+{\href{\OLPsourcelink}{\textit{\OLPbooktitle}}}
+{\href{\OLPauthorlink}{\OLPauthor}}
+
+\newpage
+\pagestyle{OLPpage}
+\currentpdfbookmark{Índice}{name}
+\tableofcontents*
+}

@@ -6,219 +6,218 @@
 
 \begin{document}
 
-\olfileid{fol}{byd}{il}
+\olfileid[pt]{fol}{byd}{il}
 
-\olsection{Intuitionistic Logic}
+\olsection{Lógica Intuicionista}
 
-In contrast to second-order and higher-order logic, intuitionistic
-first-order logic represents a restriction of the classical version,
-intended to model a more ``constructive'' kind of reasoning. The
-following examples may serve to illustrate some of the underlying
-motivations.
+Em contraste com a lógica de segunda ordem e de ordem superior, a lógica
+intuicionista de primeira ordem representa uma restrição da versão
+clássica, destinada a modelar um tipo de raciocínio mais
+``construtivo''. Os exemplos a seguir podem ilustrar algumas das
+motivações subjacentes.
 
-Suppose someone came up to you one day and announced that they had
-determined a natural number~$x$, with the property that if $x$ is
-prime, the Riemann hypothesis is true, and if $x$ is composite, the
-Riemann hypothesis is false. Great news!{} Whether the Riemann
-hypothesis is true or not is one of the big open questions of
-mathematics, and here they seem to have reduced the problem to one of
-calculation, that is, to the determination of whether a specific
-number is prime or not.
+Suponha que alguém se aproximasse de você um dia e anunciasse que havia
+determinado um número natural~$x$, com a propriedade de que se $x$ é
+primo, a hipótese de Riemann é verdadeira, e se $x$ é composto, a
+hipótese de Riemann é falsa. Ótimas notícias!{} Se a hipótese de Riemann
+é verdadeira ou não é uma das grandes questões em aberto da
+matemática, e aqui parecem ter reduzido o problema a um cálculo, isto
+é, à determinação de se um número específico é primo ou não.
 
-What is the magic value of $x$? They describe it as follows: $x$ is
-the natural number that is equal to $7$ if the Riemann hypothesis is
-true, and $9$ otherwise.
+Qual é o valor mágico de $x$? Eles o descrevem assim: $x$ é o número
+natural que é igual a $7$ se a hipótese de Riemann é verdadeira, e $9$
+caso contrário.
 
-Angrily, you demand your money back. From a classical point of view,
-the description above does in fact determine a unique value of $x$;
-but what you really want is a value of $x$ that is given
-\emph{explicitly}.
+Com raiva, você exige seu dinheiro de volta. De um ponto de vista
+clássico, a descrição acima de fato determina um valor único de $x$;
+mas o que você realmente quer é um valor de $x$ que seja dado
+\emph{explicitamente}.
 
-To take another, perhaps less contrived example, consider the
-following question. We know that it is possible to raise an irrational
-number to a rational power, and get a rational result. For example,
-$\sqrt{2}^2 = 2$. What is less clear is whether or not it is possible
-to raise an irrational number to an \emph{irrational} power, and get a
-rational result. The following theorem answers this in the
-affirmative:
+Para tomar outro exemplo, talvez menos artificial, considere a
+seguinte questão. Sabemos que é possível elevar um número irracional a
+uma potência racional e obter um resultado racional. Por exemplo,
+$\sqrt{2}^2 = 2$. O que é menos claro é se é possível elevar um número
+irracional a uma potência \emph{irracional} e obter um resultado
+racional. O seguinte teorema responde afirmativamente:
 
 \begin{thm}
-There are irrational numbers $a$ and $b$ such that $a^b$ is rational.
+Existem números irracionais $a$ e $b$ tais que $a^b$ é racional.
 \end{thm}
 
 \begin{proof}
-Consider $\sqrt{2}^{\sqrt{2}}$. If this is rational, we are done:
-we can let $a = b = \sqrt{2}$. Otherwise, it is irrational. Then we
-have
+Considere $\sqrt{2}^{\sqrt{2}}$. Se isto é racional, terminamos:
+podemos tomar $a = b = \sqrt{2}$. Caso contrário, é irracional. Então
+temos
 \[
 (\sqrt{2}^{\sqrt{2}})^{\sqrt{2}} = \sqrt{2}^{\sqrt{2} \cdot
   \sqrt{2}} = \sqrt{2}^2 = 2,
 \]
-which is certainly rational. So, in this case, let $a$ be
-$\sqrt{2}^{\sqrt{2}}$, and let $b$ be~$\sqrt 2$.
+que é certamente racional. Assim, neste caso, tome $a$ como
+$\sqrt{2}^{\sqrt{2}}$, e $b$ como~$\sqrt 2$.
 \end{proof}
 
-Does this constitute a valid proof? Most mathematicians feel that it
-does. But again, there is something a little bit unsatisfying here: we
-have proved the existence of a pair of real numbers with a certain
-property, without being able to say \emph{which} pair of numbers it
-is.  It is possible to prove the same result, but in such a way that
-the pair $a$, $b$ \emph{is} given in the proof: take $a = \sqrt{3}$
-and $b = \log_3 4$. Then
+Isso constitui uma prova válida? A maioria dos matemáticos sente que
+sim. Mas, novamente, há algo um pouco insatisfatório aqui: provamos a
+existência de um par de números reais com uma certa propriedade, sem
+poder dizer \emph{qual} par de números é.  É possível provar o mesmo
+resultado, mas de tal forma que o par $a$, $b$ \emph{é} dado na prova:
+tome $a = \sqrt{3}$ e $b = \log_3 4$. Então
 \[
 a^b = \sqrt{3}^{\log_3 4} = 3^{1/2 \cdot \log_3 4} = (3^{\log_3
   4})^{1/2} = 4^{1/2}= 2,
 \]
-since $3^{\log_3 x} = x$.
+pois $3^{\log_3 x} = x$.
 
-Intuitionistic logic is designed to model a kind of reasoning where
-moves like the one in the first proof are disallowed. Proving the
-existence of an $x$ satisfying~$!A(x)$ means that you have to give a
-specific~$x$, and a proof that it satisfies $!A$, like in the second
-proof. Proving that $!A$ or $!B$ holds requires that you can prove one
-or the other.
+A lógica intuicionista foi concebida para modelar um tipo de
+raciocínio no qual movimentos como o da primeira prova são
+proibidos. Provar a existência de um $x$ que satisfaz~$!A(x)$ significa
+que se deve fornecer um~$x$ específico e uma prova de que ele satisfaz
+$!A$, como na segunda prova. Provar que $!A$ ou $!B$ vale requer que
+se possa provar um ou outro.
 
-Formally speaking, intuitionistic first-order logic is what you get if
-you restrict !!a{derivation} system for first-order logic in a certain
-way. Similarly, there are intuitionistic versions of second-order or
-higher-order logic. From the mathematical point of view, these are
-just formal deductive systems, but, as already noted, they are
-intended to model a kind of mathematical reasoning. One can take this
-to be the kind of reasoning that is justified on a certain
-philosophical view of mathematics (such as Brouwer's intuitionism);
-one can take it to be a kind of mathematical reasoning which is more
-``concrete'' and satisfying (along the lines of Bishop's
-constructivism); and one can argue about whether or not the formal
-description captures the informal motivation. But whatever
-philosophical positions we may hold, we can study intuitionistic logic
-as a formally presented logic; and for whatever reasons, many
-mathematical logicians find it interesting to do so.
+Formalmente falando, a lógica intuicionista de primeira ordem é o que se
+obtém se se restringe um sistema de !!{derivation} para a lógica de
+primeira ordem de certa maneira. Similarmente, há versões intuicionistas
+da lógica de segunda ou de ordem superior. Do ponto de vista matemático,
+estes são apenas sistemas dedutivos formais, mas, como já observado, são
+destinados a modelar um tipo de raciocínio matemático. Pode-se tomar
+isso como o tipo de raciocínio justificado por uma certa visão
+filosófica da matemática (como o intuicionismo de Brouwer); pode-se
+tomá-lo como um tipo de raciocínio matemático mais ``concreto'' e
+satisfatório (na linha do construtivismo de Bishop); e pode-se discutir
+se a descrição formal captura ou não a motivação informal. Mas quaisquer
+que sejam as posições filosóficas que possamos ter, podemos estudar a
+lógica intuicionista como uma lógica formalmente apresentada; e por
+quaisquer razões, muitos lógicos matemáticos acham interessante fazê-lo.
 
-There is an informal constructive interpretation of the intuitionist
-connectives, usually known as the BHK interpretation (named after
-Brouwer, Heyting, and Kolmogorov). It runs as follows: a proof of $!A
-\land !B$ consists of a proof of $!A$ paired with a proof of $!B$; a
-proof of $!A \lor !B$ consists of either a proof of $!A$, or a proof
-of $!B$, where we have explicit information as to which is the case; a
-proof of $!A \lif !B$ consists of a procedure, which transforms a
-proof of $!A$ to a proof of~$!B$; a proof of $\lforall[x][!A(x)]$
-consists of a procedure which returns a proof of $!A(x)$ for any value
-of~$x$; and a proof of $\lexists[x][!A(x)]$ consists of a value
-of~$x$, together with a proof that this value satisfies~$!A$. One can
-describe the interpretation in computational terms known as the
-``Curry--Howard isomorphism'' or the ``!!{formula}s-as-types
-paradigm'': think of !!a{formula} as specifying a certain kind of
-data type, and proofs as computational objects of these data types
-that enable us to see that the corresponding !!{formula} is true.
+Há uma interpretação construtiva informal dos conectivos intuicionistas,
+usualmente conhecida como interpretação BHK (em homenagem a Brouwer,
+Heyting e Kolmogorov). Ela funciona assim: uma prova de $!A
+\land !B$ consiste em uma prova de $!A$ emparelhada com uma prova de
+$B$; uma prova de $!A \lor !B$ consiste em uma prova de $!A$, ou uma
+prova de $!B$, onde temos informação explícita sobre qual é o caso; uma
+prova de $!A \lif !B$ consiste em um procedimento que transforma uma
+prova de $!A$ em uma prova de~$!B$; uma prova de $\lforall[x][!A(x)]$
+consiste em um procedimento que retorna uma prova de $!A(x)$ para
+qualquer valor de~$x$; e uma prova de $\lexists[x][!A(x)]$ consiste em
+um valor de~$x$, juntamente com uma prova de que esse valor
+satisfaz~$!A$. Pode-se descrever a interpretação em termos
+computacionais conhecidos como o ``isomorfismo de Curry--Howard'' ou o
+``paradigma !!{formula}s-como-tipos'': pense em !!a{formula} como
+especificando um certo tipo de dado, e provas como objetos computacionais
+desses tipos de dados que nos permitem ver que a !!{formula} correspondente
+é verdadeira.
 
-Intuitionistic logic is often thought of as being classical logic
-``minus'' the law of the excluded middle. This following theorem makes
-this more precise.
+A lógica intuicionista é frequentemente pensada como a lógica clássica
+``menos'' a lei do terceiro excluído. O seguinte teorema torna isso mais
+preciso.
 \begin{thm}
-Intuitionistically, the following axiom schemata are equivalent:
+Intuicionisticamente, os seguintes esquemas de axiomas são equivalentes:
 \begin{enumerate}
 \item $(\lnot !A \lif \lfalse) \lif !A$.
 \item $!A \lor \lnot !A$
 \item $\lnot \lnot !A \lif !A$
 \end{enumerate}
 \end{thm}
-Obtaining instances of one schema from either of the others is a good
-exercise in intuitionistic logic.
+Obter instâncias de um esquema a partir de qualquer um dos outros é um bom
+exercício em lógica intuicionista.
 
-The first deductive systems for intuitionistic propositional
-logic, put forth as formalizations of Brouwer's intuitionism, are due,
-independently, to Kolmogorov, Glivenko, and Heyting. The first
-formalization of intuitionistic first-order logic (and parts of
-intuitionist mathematics) is due to Heyting. Though a number of
-classically valid schemata are not intuitionistically valid, many are.
+Os primeiros sistemas dedutivos para a lógica proposicional
+intuicionista, apresentados como formalizações do intuicionismo de
+Brouwer, são devidos, independentemente, a Kolmogorov, Glivenko e
+Heyting. A primeira formalização da lógica intuicionista de primeira
+ordem (e partes da matemática intuicionista) é devida a Heyting. Embora
+vários esquemas válidos clássicamente não sejam válidos
+intuicionisticamente, muitos o são.
 
-The \emph{double-negation translation} describes an important
-relationship between classical and intuitionist logic. It is defined
-inductively follows (think of $!A^N$ as the ``intuitionist''
-translation of the classical !!{formula}~$!A$):
+A \emph{tradução de dupla negação} descreve uma relação importante
+entre a lógica clássica e a intuicionista. Ela é definida
+indutivamente da seguinte forma (pense em $!A^N$ como a tradução
+``intuicionista'' da !!{formula} clássica~$!A$):
 \begin{align*}
-!A^N & \ident \lnot\lnot !A \quad \text{for atomic !!{formula}s $!A$} \\
+!A^N & \ident \lnot\lnot !A \quad \text{para !!{formula}s atômicas $!A$} \\
 (!A \land !B)^N & \ident (!A^N \land !B^N) \\
 (!A \lor !B)^N & \ident  \lnot\lnot (!A^N \lor !B^N) \\
 (!A \lif !B)^N & \ident (!A^N \lif !B^N) \\
 (\lforall[x][!A])^N & \ident \lforall[x][!A^N] \\
 (\lexists[x][!A])^N & \ident \lnot\lnot\lexists[x][!A^N]
 \end{align*}
-Kolmogorov and Glivenko had versions of this translation for
-propositional logic; for predicate logic, it is due to G\"odel and
-Gentzen, independently. We have
+Kolmogorov e Glivenko tiveram versões dessa tradução para a lógica
+proposicional; para a lógica de predicados, é devida a G\"odel e
+Gentzen, independentemente. Temos
 
 \begin{thm}
 \begin{enumerate}
-\item $!A \liff !A^N$ is provable classically
-\item If $!A$ is provable classically, then $!A^N$ is provable
-  intuitionistically.
+\item $!A \liff !A^N$ é demonstrável classicamente
+\item Se $!A$ é demonstrável classicamente, então $!A^N$ é demonstrável
+  intuicionisticamente.
 \end{enumerate}
 \end{thm}
 
-We can now envision the following dialogue. Classical mathematician:
-``I've proved $!A$!'' Intuitionist mathematician: ``Your proof isn't
-valid. What you've really proved is $!A^N$.'' Classical mathematician:
-``Fine by me!'' As far as the classical mathematician is concerned, the
-intuitionist is just splitting hairs, since the two are
-equivalent. But the intuitionist insists there is a difference.
+Podemos agora imaginar o seguinte diálogo. Matemático clássico:
+``Provei $!A$!'' Matemático intuicionista: ``Sua prova não é
+válida. O que você realmente provou é $!A^N$.'' Matemático clássico:
+``Tudo bem para mim!'' Quanto ao matemático clássico, o intuicionista
+está apenas sendo minucioso, pois os dois são equivalentes. Mas o
+intuicionista insiste que há uma diferença.
 
-Note that the above translation concerns pure logic only; it does not
-address the question as to what the appropriate \emph{nonlogical}
-axioms are for classical and intuitionistic mathematics, or what the
-relationship is between them. But the following slight extension of
-the theorem above provides some useful information:
+Note que a tradução acima diz respeito apenas à lógica pura; ela não
+aborda a questão de quais são os axiomas \emph{não lógicos} adequados
+para a matemática clássica e intuicionista, ou qual é a relação entre
+eles. Mas a seguinte extensão ligeira do teorema acima fornece alguma
+informação útil:
 
 \begin{thm}
-If $\Gamma$ proves $!A$ classically, $\Gamma^N$ proves $!A^N$
-intuitionistically.
+Se $\Gamma$ prova $!A$ classicamente, então $\Gamma^N$ prova $!A^N$
+intuicionisticamente.
 \end{thm}
 
-In other words, if $!A$ is provable from some hypotheses classically,
-then $!A^N$ is provable from their double-negation translations.
+Em outras palavras, se $!A$ é demonstrável a partir de algumas hipóteses
+classicamente, então $!A^N$ é demonstrável a partir de suas traduções
+de dupla negação.
 
-To show that a sentence or propositional !!{formula} is intuitionistically
-valid, all you have to do is provide a proof. But how can you show
-that it is not valid? For that purpose, we need a semantics
-that is sound, and preferably complete. A semantics
-due to Kripke nicely fits the bill.
+Para mostrar que uma sentença ou !!{formula} proposicional é
+intuicionisticamente válida, basta fornecer uma prova. Mas como se pode
+mostrar que ela não é válida? Para esse propósito, precisamos de uma
+semântica que seja correta e, de preferência, completa. Uma semântica
+devida a Kripke se encaixa bem.
 
-We can play the same game we did for classical logic: define the
-semantics, and prove soundness and completeness. It is worthwhile,
-however, to note the following distinction. In the case of classical
-logic, the semantics was the ``obvious'' one, in a sense implicit in
-the meaning of the connectives. Though one can provide some intuitive
-motivation for Kripke semantics, the latter does not offer the same
-feeling of inevitability. In addition, the notion of a classical
-!!{structure} is a natural mathematical one, so we can either take the
-notion of !!a{structure} to be a tool for studying classical first-order
-logic, or take classical first-order logic to be a tool for studying
-mathematical !!{structure}s. In contrast, Kripke !!{structure}s can only be
-viewed as a logical construct; they don't seem to have independent
-mathematical interest.
+Podemos jogar o mesmo jogo que fizemos para a lógica clássica: definir a
+semântica e provar correção e completude. Vale a pena, no entanto, notar
+a seguinte distinção. No caso da lógica clássica, a semântica era a
+``óbvia'', num sentido implícito no significado dos conectivos. Embora
+se possa fornecer alguma motivação intuitiva para a semântica de Kripke,
+esta não oferece o mesmo sentimento de inevitabilidade. Além disso, a
+noção de !!{structure} clássica é uma noção matemática natural, de modo
+que podemos ou tomar a noção de !!{structure} como uma ferramenta para
+estudar a lógica clássica de primeira ordem, ou tomar a lógica clássica
+de primeira ordem como uma ferramenta para estudar !!{structure}s
+matemáticas. Em contraste, as !!{structure}s de Kripke só podem ser
+vistas como um construto lógico; elas não parecem ter interesse
+matemático independente.
 
-A Kripke !!{structure}~$\mModel M = \tuple{W, R, V}$ for a propositional
-language consists of a set~$W$, partial order~$R$ on~$W$ with a least
-!!{element}, and an ``monotone'' assignment of propositional variables to
-the !!{element}s of~$W$. The intuition is that the !!{element}s of $W$
-represent ``worlds,'' or ``states of knowledge''; an element $v \geq
-u$ represents a ``possible future state'' of~$u$; and the
-propositional variables assigned to~$u$ are the propositions that are
-known to be true in state~$u$. The forcing relation $\mSat{M}{!A}[w]$
-then extends this relationship to arbitrary !!{formula}s in the
-language; read $\mSat{M}{!A}[w]$ as ``$!A$ is true in state~$w$.'' The
-relationship is defined inductively, as follows:
+Uma !!{structure} de Kripke~$\mModel M = \tuple{W, R, V}$ para uma
+linguagem proposicional consiste em um conjunto~$W$, uma ordem parcial~$R$
+em~$W$ com um menor !!{element}, e uma atribuição ``monótona'' de
+variáveis proposicionais aos !!{element}s de~$W$. A intuição é que os
+!!{element}s de $W$ representam ``mundos'', ou ``estados de conhecimento'';
+um elemento $v \geq u$ representa um ``possível estado futuro'' de~$u$; e
+as variáveis proposicionais atribuídas a~$u$ são as proposições que se
+sabe serem verdadeiras no estado~$u$. A relação de forçamento
+$\mSat{M}{!A}[w]$ estende essa relação a !!{formula}s arbitrárias na
+linguagem; leia $\mSat{M}{!A}[w]$ como ``$!A$ é verdadeira no
+estado~$w$.'' A relação é definida indutivamente, da seguinte forma:
 \begin{enumerate}
-\item $\mSat{M}{\Obj p_i}[w]$ iff $\Obj p_i$ is one of the
-  propositional variables assigned to~$w$.
+\item $\mSat{M}{\Obj p_i}[w]$ se, e somente se, $\Obj p_i$ é uma das
+  variáveis proposicionais atribuídas a~$w$.
 \item $\mSat/{M}{\lfalse}[w]$.
-\item $\mSat{M}{(!A \land !B)}[w]$ iff $\mSat{M}{!A}[w]$ and $\mSat{M}{!B}[w]$.
-\item $\mSat{M}{(!A \lor !B)}[w]$ iff $\mSat{M}{!A}[w]$ or $\mSat{M}{!B}[w]$.
-\item $\mSat{M}{(!A \lif !B)}[w]$ iff, whenever $w' \geq w$ and
-  $\mSat{M}{!A}[w']$, then $\mSat{M}{!B}[w']$.
+\item $\mSat{M}{(!A \land !B)}[w]$ se, e somente se, $\mSat{M}{!A}[w]$ e $\mSat{M}{!B}[w]$.
+\item $\mSat{M}{(!A \lor !B)}[w]$ se, e somente se, $\mSat{M}{!A}[w]$ ou $\mSat{M}{!B}[w]$.
+\item $\mSat{M}{(!A \lif !B)}[w]$ se, e somente se, sempre que $w' \geq w$ e
+  $\mSat{M}{!A}[w']$, então $\mSat{M}{!B}[w']$.
 \end{enumerate}
-It is a good exercise to try to show that $\lnot (p \land q) \lif
-(\lnot p \lor \lnot q)$ is not intuitionistically valid, by cooking up a
-Kripke !!{structure} that provides a counterexample.
+É um bom exercício tentar mostrar que $\lnot (p \land q) \lif
+(\lnot p \lor \lnot q)$ não é intuicionisticamente válida, preparando uma
+!!{structure} de Kripke que forneça um contraexemplo.
 
 \end{document}

@@ -6,115 +6,115 @@
 
 \begin{document}
 
-\olfileid{fol}{mat}{exr}
+\olfileid[pt]{fol}{mat}{exr}
 
-\olsection{Expressing Relations in \article{structure}
+\olsection{Expressando Relações em \article{structure}
   \printtoken{S}{structure}}
 
 \begin{explain}
-One main use !!{formula}s can be put to is to express properties and
-relations in !!a{structure}~$\Struct M$ in terms of the primitives of
-the language~$\Lang L$ of~$\Struct M$.  By this we mean the following:
-the !!{domain} of $\Struct M$ is a set of objects.  The !!{constant}s,
-!!{function}s, and !!{predicate}s are interpreted in~$\Struct M$ by
-some objects in~$\Domain M$, functions on~$\Domain M$, and relations
-on~$\Domain M$.  For instance, if $\Obj A^2_0$ is in $\Lang L$, then
-$\Struct M$ assigns to it a relation~$R = \Assign{{\Obj
-  A^2_0}}{M}$. Then the formula $\Atom{\Obj A^2_0}{\Obj v_1, \Obj v_2}$
-\emph{expresses} that very relation, in the following sense: if a
-variable assignment~$s$ maps $\Obj v_1$ to $a \in \Domain{M}$ and
-$\Obj v_2$ to $b \in \Domain M$, then
+Um uso principal que se pode dar às !!{formula}s é expressar propriedades e
+relações em !!a{structure}~$\Struct M$ em termos dos primitivos da
+linguagem~$\Lang L$ de~$\Struct M$.  Com isso queremos dizer o seguinte:
+o !!{domain} de $\Struct M$ é um conjunto de objetos.  Os !!{constant}s,
+!!{function}s e !!{predicate}s são interpretados em~$\Struct M$ por
+alguns objetos em~$\Domain M$, funções sobre~$\Domain M$, e relações
+sobre~$\Domain M$.  Por exemplo, se $\Obj A^2_0$ está em $\Lang L$, então
+$\Struct M$ atribui a ele uma relação~$R = \Assign{{\Obj
+  A^2_0}}{M}$. Então a fórmula $\Atom{\Obj A^2_0}{\Obj v_1, \Obj v_2}$
+\emph{expressa} exatamente essa relação, no seguinte sentido: se uma
+atribuição de variáveis~$s$ mapeia $\Obj v_1$ para $a \in \Domain{M}$ e
+$\Obj v_2$ para $b \in \Domain M$, então
 \[
-Rab \text{\quad iff\quad} \Sat{M}{\Atom{\Obj A^2_0}{\Obj v_1, \Obj v_2}}[s].
+Rab \text{\quad sse\quad} \Sat{M}{\Atom{\Obj A^2_0}{\Obj v_1, \Obj v_2}}[s].
 \]
-Note that we have to involve variable assignments here: we can't just
-say ``$Rab$ iff $\Sat{M}{\Atom{\Obj A^2_0}{a, b}}$'' because $a$ and
-  $b$ are not symbols of our language: they are !!{element}s
-  of~$\Domain{M}$.
+Note que temos que envolver atribuições de variáveis aqui: não podemos simplesmente
+dizer ``$Rab$ sse $\Sat{M}{\Atom{\Obj A^2_0}{a, b}}$'' porque $a$ e
+  $b$ não são símbolos da nossa linguagem: eles são !!{element}s
+  de~$\Domain{M}$.
 
-Since we don't just have atomic !!{formula}s, but can combine them
-using the logical connectives and the quantifiers, more complex
-!!{formula}s can define other relations which aren't directly built
-into~$\Struct M$.  We're interested in how to do that, and
-specifically, which relations we can define in !!a{structure}.
+Como não temos apenas !!{formula}s atômicas, mas podemos combiná-las
+usando os conectivos lógicos e os quantificadores, !!{formula}s mais complexas
+podem definir outras relações que não estão diretamente embutidas
+em~$\Struct M$.  Estamos interessados em como fazer isso e,
+especificamente, quais relações podemos definir em !!a{structure}.
 \end{explain}
 
 \begin{defn}
-Let $!A(\Obj v_1,\dots, \Obj v_n)$ be !!a{formula} of $\Lang L$ in
-which only $\Obj v_1$,\dots, $\Obj v_n$ occur free, and let $\Struct
-M$ be !!a{structure} for~$\Lang L$. $!A(\Obj v_1,\dots, \Obj v_n)$
-\emph{expresses the relation}~$R \subseteq \Domain M^n$ iff
+Seja $!A(\Obj v_1,\dots, \Obj v_n)$ !!a{formula} de $\Lang L$ na
+qual apenas $\Obj v_1$,\dots, $\Obj v_n$ ocorrem livres, e seja $\Struct
+M$ !!a{structure} para~$\Lang L$. $!A(\Obj v_1,\dots, \Obj v_n)$
+\emph{expressa a relação}~$R \subseteq \Domain M^n$ sse
 \[
-Ra_1\dots a_n \text{\quad iff\quad} \Sat{M}{\Atom{!A}{\Obj
+Ra_1\dots a_n \text{\quad sse\quad} \Sat{M}{\Atom{!A}{\Obj
     v_1,\dots, \Obj v_n}}[s]
 \]
-for any variable assignment~$s$ with $s(\Obj v_i) = a_i$ ($i = 1,
+para qualquer atribuição de variáveis~$s$ com $s(\Obj v_i) = a_i$ ($i = 1,
 \dots, n$).
 \end{defn}
 
 \begin{ex}
-In the standard model of arithmetic~$\Struct N$, the !!{formula} $\Obj
-v_1 < \Obj v_2 \lor \eq[\Obj v_1][\Obj v_2]$ expresses the $\le$
-relation on~$\Nat$. The !!{formula} $\eq[\Obj v_2][\Obj v_1']$
-expresses the successor relation, O.s.\@, the relation $R \subseteq
-\Nat^2$ where $Rnm$ holds if $m$ is the successor of~$n$. The formula
-$\eq[\Obj v_1][\Obj v_2']$ expresses the predecessor relation.  The
+No modelo padrão da aritmética~$\Struct N$, a !!{formula} $\Obj
+v_1 < \Obj v_2 \lor \eq[\Obj v_1][\Obj v_2]$ expressa a relação $\le$
+sobre~$\Nat$. A !!{formula} $\eq[\Obj v_2][\Obj v_1']$
+expressa a relação sucessora, isto é, a relação $R \subseteq
+\Nat^2$ onde $Rnm$ vale se $m$ é o sucessor de~$n$. A fórmula
+$\eq[\Obj v_1][\Obj v_2']$ expressa a relação predecessora.  As
 !!{formula}s $\lexists[\Obj v_3][(\eq/[\Obj v_3][\Obj 0] \land
-  \eq[\Obj v_2][(\Obj v_1 + \Obj v_3)])]$ and $\lexists[\Obj
-  v_3][\eq[(\Obj v_1 + {\Obj v_3}')][v_2]]$ both express the $\Obj <$
-relation.  This means that the predicate symbol~$<$ is actually
-superfluous in the language of arithmetic; it can be defined.
+  \eq[\Obj v_2][(\Obj v_1 + \Obj v_3)])]$ e $\lexists[\Obj
+  v_3][\eq[(\Obj v_1 + {\Obj v_3}')][v_2]]$ ambas expressam a relação $\Obj <$.
+Isso significa que o símbolo de predicado~$<$ é, na verdade,
+supérfluo na linguagem da aritmética; ele pode ser definido.
 \end{ex}
 
 \begin{explain}
-This idea is not just interesting in specific !!{structure}s, but
-generally whenever we use a language to describe an intended model or
-models, O.s.\@, when we consider theories.  These theories often only
-contain a few !!{predicate}s as basic symbols, but in the domain they
-are used to describe often many other relations play an important
-role.  If these other relations can be systematically expressed by the
-relations that interpret the basic !!{predicate}s of the language, we
-say we can \emph{define} them in the language.
+Essa ideia não é interessante apenas em !!{structure}s específicas, mas
+geralmente sempre que usamos uma linguagem para descrever um modelo ou
+modelos pretendidos, isto é, quando consideramos teorias.  Essas teorias frequentemente
+contêm apenas alguns !!{predicate}s como símbolos básicos, mas no domínio que elas
+são usadas para descrever muitas outras relações frequentemente desempenham um
+papel importante.  Se essas outras relações podem ser sistematicamente expressas pelas
+relações que interpretam os !!{predicate}s básicos da linguagem, nós
+dizemos que podemos \emph{defini-las} na linguagem.
 \end{explain}
 
 \begin{prob}
-Find !!{formula}s in $\Lang L_A$ which define the following relations:
+Encontre !!{formula}s em $\Lang L_A$ que definam as seguintes relações:
 \begin{enumerate}
-\item $n$ is between $i$ and $j$;
-\item $n$ evenly divides $m$ (O.s.\@, $m$ is a multiple of $n$);
-\item $n$ is a prime number (O.s.\@, no number other than $1$ and $n$ evenly
-  divides~$n$).
+\item $n$ está entre $i$ e $j$;
+\item $n$ divide $m$ exatamente (isto é, $m$ é um múltiplo de $n$);
+\item $n$ é um número primo (isto é, nenhum número além de $1$ e $n$ divide~$n$
+  exatamente).
 \end{enumerate}
 \end{prob}
 
 \begin{prob}
-Suppose the formula $!A(\Obj v_1, \Obj v_2)$ expresses the relation $R
-\subseteq \Domain M^2$ in !!a{structure}~$\Struct M$.  Find formulas
-that express the following relations:
+Suponha que a fórmula $!A(\Obj v_1, \Obj v_2)$ expressa a relação $R
+\subseteq \Domain M^2$ em !!a{structure}~$\Struct M$.  Encontre fórmulas
+que expressem as seguintes relações:
 \begin{enumerate}
-\item the inverse $R^{-1}$ of $R$;
-\item the relative product $R \mid R$;
+\item a inversa $R^{-1}$ de $R$;
+\item o produto relativo $R \mid R$;
 \end{enumerate}
-Can you find a way to express $R^+$, the transitive closure of~$R$?
+Você consegue encontrar uma maneira de expressar $R^+$, o fecho transitivo de~$R$?
 \end{prob}
 
 \begin{prob}
-Let $\Lang{L}$ be the language containing a 2-place predicate symbol
-$<$ only (no other !!{constant}s, !!{function}s or !!{predicate}s---
-except of course~$\eq$). Let $\Struct{N}$ be the structure such that
-$\Domain{N} = \Nat$, and $\Assign{<}{N} = \Setabs{\tuple{n,m}}{n <
-  m}$. Prove the following:
+Seja $\Lang{L}$ a linguagem contendo apenas um símbolo de predicado de 2 lugares
+$<$ (sem outros !!{constant}s, !!{function}s ou !!{predicate}s---
+exceto, é claro,~$\eq$). Seja $\Struct{N}$ a estrutura tal que
+$\Domain{N} = \Nat$, e $\Assign{<}{N} = \Setabs{\tuple{n,m}}{n <
+  m}$. Prove o seguinte:
 \begin{enumerate}
-\item $\{ 0 \}$ is definable in $\Struct{N}$;
-\item $\{ 1 \}$ is definable in $\Struct{N}$;
-\item $\{ 2 \}$ is definable in $\Struct{N}$;
-\item for each $n \in \Nat$, the set $\{ n \}$ is definable in
+\item $\{ 0 \}$ é definível em $\Struct{N}$;
+\item $\{ 1 \}$ é definível em $\Struct{N}$;
+\item $\{ 2 \}$ é definível em $\Struct{N}$;
+\item para cada $n \in \Nat$, o conjunto $\{ n \}$ é definível em
   $\Struct{N}$;
-\item every finite subset of $\Domain{N}$ is definable in
+\item todo subconjunto finito de $\Domain{N}$ é definível em
   $\Struct{N}$;
-\item every co-finite subset of $\Domain{N}$ is definable in
-  $\Struct{N}$ (where $X \subseteq \Nat$ is co-finite iff
-  $\Nat \setminus X$ is finite).
+\item todo subconjunto cofinito de $\Domain{N}$ é definível em
+  $\Struct{N}$ (onde $X \subseteq \Nat$ é cofinito sse
+  $\Nat \setminus X$ é finito).
 \end{enumerate}
 \end{prob}
 

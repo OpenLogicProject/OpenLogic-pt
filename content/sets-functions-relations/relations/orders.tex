@@ -61,7 +61,7 @@ vemos que $\{a\} \nsubseteq \{b\}$ e $\{a\} \neq \{b\}$ e $\{b\}
 \begin{ex}
 A relação de \emph{divisibilidade sem resto} nos dá uma
 ordem parcial que não é linear. Para inteiros $n$ e~$m$, escrevemos
-$n \mid m$ para significar que $n$ divide $m$ (exatamente), O.s.\@, sse
+$n \mid m$ para significar que $n$ divide $m$ (exatamente), isto é, sse
 existe algum inteiro~$k$ tal que $m = kn$. Sobre~$\Nat$, isso é uma ordem parcial,
 mas não linear: por exemplo, $2 \nmid 3$ e também $3 \nmid
 2$. Vista como relação sobre $\Int$, a divisibilidade é apenas uma
@@ -95,7 +95,7 @@ $\subseteq$ é a ordem parcial correspondente à ordem estrita~$\subsetneq$.
 \end{ex}
 
 Qualquer ordem estrita $R$ sobre~$A$ pode transformar-se numa ordem parcial
-adicionando a diagonal $\Id{A}$, O.s.\@, adicionando todos os pares~$\tuple{x,
+adicionando a diagonal $\Id{A}$, isto é, adicionando todos os pares~$\tuple{x,
 x}$. (Isto chama-se o \emph{fecho reflexivo} de~$R$.)
 Reciprocamente, a partir de uma ordem parcial obtém-se uma ordem estrita
 removendo~$\Id{A}$. Os dois resultados seguintes tornam isto preciso.
@@ -107,7 +107,7 @@ uma ordem linear.
 \end{prop}
 
 \begin{proof}
-Suponhamos que $R$ é uma ordem estrita, O.s.\@, $R \subseteq A^2$ e $R$ é
+Suponhamos que $R$ é uma ordem estrita, isto é, $R \subseteq A^2$ e $R$ é
 irreflexiva, assimétrica e transitiva. Seja $R^+ = R \cup \Id{A}$. Temos
 de mostrar que $R^+$ é reflexiva, antissimétrica e transitiva.
 
@@ -116,20 +116,20 @@ R^+$ para todo $x \in A$.
 
 Para mostrar que $R^+$ é antissimétrica, suponhamos, para redução ao absurdo, que $R^+xy$ e
 $R^+yx$ mas $x \neq y$. Como $\tuple{x,y} \in R \cup \Id{A}$, mas
-$\tuple{x, y} \notin \Id{A}$, temos de ter $\tuple{x, y} \in R$, O.s.\@,
+$\tuple{x, y} \notin \Id{A}$, temos de ter $\tuple{x, y} \in R$, isto é,
 $Rxy$. Do mesmo modo,~$Ryx$. Mas isto contradiz a hipótese de que
 $R$ é assimétrica.
 
 Para estabelecer a transitividade, suponhamos que $R^+xy$ e $R^+yz$. Se tanto
 $\tuple{x, y} \in R$ como $\tuple{y,z} \in R$, então $\tuple{x, z} \in
 R$, pois $R$~é transitiva. Caso contrário, ou $\tuple{x, y} \in
-\Id{A}$, O.s.\@, $x = y$, ou $\tuple{y, z} \in \Id{A}$, O.s.\@, $y = z$.
+\Id{A}$, isto é, $x = y$, ou $\tuple{y, z} \in \Id{A}$, isto é, $y = z$.
 No primeiro caso, temos $R^+yz$ por hipótese, $x = y$, logo
 $R^+xz$. Analogamente no segundo caso. Em qualquer caso, $R^+xz$; assim,
 $R^+$ é também transitiva.
 
 Quanto à cláusula ``além disso'', suponhamos que $R$ é também conexa.
-Então, para todo $x \neq y$, ou $Rxy$ ou~$Ryx$, O.s.\@, ou
+Então, para todo $x \neq y$, ou $Rxy$ ou~$Ryx$, isto é, ou
 $\tuple{x, y} \in R$ ou $\tuple{y, x} \in R$. Como $R \subseteq R^+$,
 isto continua a valer para $R^+$, logo $R^+$ é também conexa.
 \end{proof}
@@ -145,7 +145,7 @@ Deixamos como exercício.
 \end{proof}
 
 \begin{prob}
-Apresente uma prova de \olref[sfr][rel][ord]{prop:partialtostrict}.
+Apresente uma prova da \olref[sfr][rel][ord]{prop:partialtostrict}.
 \end{prob}
 
 O resultado simples a seguir estabelece que ordens lineares estritas

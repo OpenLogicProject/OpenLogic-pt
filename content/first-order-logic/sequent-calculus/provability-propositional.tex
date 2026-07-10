@@ -10,23 +10,23 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{seq}{ppr}}
-      {\olfileid{pl}{seq}{ppr}}
+      {\olfileid[pt]{fol}{seq}{ppr}}
+      {\olfileid[pt]{pl}{seq}{ppr}}
 
-\olsection{\usetoken{S}{derivability} and the Propositional Connectives}
+\olsection{\usetoken{S}{derivability} e os Conectivos Proposicionais}
 
 \begin{explain}
-  We establish that the !!{derivability} relation~$\Proves$ of the
-  sequent calculus is strong enough to establish some basic facts
-  involving the propositional connectives, such as that $!A \land !B
-  \Proves !A$ and $!A, !A \lif !B \Proves !B$ (modus ponens). These
-  facts are needed for the proof of the completeness theorem.
+  Estabelecemos que a relação de !!{derivability}~$\Proves$ do
+  cálculo de sequentes é forte o suficiente para estabelecer alguns fatos
+  básicos envolvendo os conectivos proposicionais, tais como $!A \land !B
+  \Proves !A$ e $!A, !A \lif !B \Proves !B$ (modus ponens). Esses
+  fatos são necessários para a prova do teorema da completude.
 \end{explain}
 
 \begin{prop}\ollabel{prop:provability-land}
   \begin{enumerate}
-  \item \ollabel{prop:provability-land-left} Both $!A \land !B \Proves
-    !A$ and $!A \land !B \Proves !B$.
+  \item \ollabel{prop:provability-land-left} Tanto $!A \land !B \Proves
+    !A$ quanto $!A \land !B \Proves !B$.
   \item \ollabel{prop:provability-land-right} $!A, !B \Proves !A \land
     !B$.
   \end{enumerate}
@@ -34,8 +34,8 @@
 
 \begin{proof}
   \begin{enumerate}
-  \item Both sequents $!A \land !B \Sequent !A$ and $!A \land !B \Sequent
-    !B$ are !!{derivable}:
+  \item Ambos os sequentes $!A \land !B \Sequent !A$ e $!A \land !B \Sequent
+    !B$ são !!{derivable}s:
     \begin{prooftree}
       \Axiom$!A \fCenter !A$
       \RightLabel{\LeftR{\land}}
@@ -45,7 +45,7 @@
       \RightLabel{\LeftR{\land}}
       \UnaryInf$!A \land !B \fCenter !B$
     \end{prooftree}
-    \item Here is !!a{derivation} of the sequent $!A, !B \Sequent !A \land !B$:
+    \item Eis !!a{derivation} do sequente $!A, !B \Sequent !A \land !B$:
     \begin{prooftree}
       \Axiom$!A \fCenter !A$
       \Axiom$!B \fCenter !B$
@@ -57,14 +57,14 @@
 
 \begin{prop}\ollabel{prop:provability-lor}
   \begin{enumerate}
-  \item $!A \lor !B, \lnot !A, \lnot !B$ is inconsistent.
-  \item Both $!A \Proves !A \lor !B$ and $!B \Proves !A \lor !B$.
+  \item $!A \lor !B, \lnot !A, \lnot !B$ é inconsistente.
+  \item Tanto $!A \Proves !A \lor !B$ quanto $!B \Proves !A \lor !B$.
   \end{enumerate}
 \end{prop}
 
 \begin{proof}
   \begin{enumerate}
-  \item We give !!a{derivation} of the sequent $!A \lor !B, \lnot !A,
+  \item Damos !!a{derivation} do sequente $!A \lor !B, \lnot !A,
     \lnot !B \Sequent$:
     \begin{prooftree}
       \Axiom$!A \fCenter !A$
@@ -80,10 +80,10 @@
       \RightLabel{\LeftR{\lor}}
       \BinaryInf$ !A \lor !B, \lnot !A, \lnot !B \fCenter $
     \end{prooftree}
-    (Recall that double inference lines indicate several weakening,
-    contraction, and exchange inferences.)
-  \item   Both sequents $!A \Sequent !A \lor !B$ and $!B \Sequent !A
-    \lor !B$ have !!{derivation}s:
+    (Lembre-se de que linhas de inferência duplas indicam várias
+    inferências de enfraquecimento, contração e troca.)
+  \item   Ambos os sequentes $!A \Sequent !A \lor !B$ e $!B \Sequent !A
+    \lor !B$ têm !!{derivation}s:
     \begin{prooftree}
       \Axiom$!A \fCenter !A$
       \RightLabel{\RightR{\lor}}
@@ -100,21 +100,21 @@
   \begin{enumerate}
   \item \ollabel{prop:provability-lif-left}  $!A, !A \lif !B \Proves !B$.
   \item \ollabel{prop:provability-lif-right}
-    Both $\lnot !A \Proves !A \lif !B$ and $!B \Proves !A \lif !B$.
+    Tanto $\lnot !A \Proves !A \lif !B$ quanto $!B \Proves !A \lif !B$.
   \end{enumerate}
 \end{prop}
 
 \begin{proof}
   \begin{enumerate}
-    \item The sequent $!A \lif !B, !A \Sequent !B$ is !!{derivable}:
+    \item O sequente $!A \lif !B, !A \Sequent !B$ é !!{derivable}:
       \begin{prooftree}
         \Axiom$!A \fCenter !A$
         \Axiom$!B \fCenter !B$
         \RightLabel{\LeftR{\lif}}
         \BinaryInf$!A \lif !B, !A  \fCenter !B$
       \end{prooftree}
-    \item Both sequents $\lnot !A \Sequent !A \lif !B$ and $!B
-      \Sequent !A \lif !B$ are !!{derivable}:
+    \item Ambos os sequentes $\lnot !A \Sequent !A \lif !B$ e $!B
+      \Sequent !A \lif !B$ são !!{derivable}s:
       \begin{prooftree}
         \Axiom$!A \fCenter !A$
         \RightLabel{\LeftR{\lnot}}

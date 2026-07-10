@@ -6,104 +6,104 @@
 
 \begin{document}
 
-\olfileid{mod}{prf}{def}
+\olfileid[pt]{mod}{prf}{def}
 
-\olsection{Using Definitions}
+\olsection{Usando Definições}
 
-We mentioned that you must be familiar with all definitions that may
-be used in the proof, and that you can properly apply them. This is a
-really important point, and it is worth looking at in a bit more
-detail. Definitions are used to abbreviate properties and relations so
-we can talk about them more succinctly. The introduced abbreviation is
-called the \emph{definiendum}, and what it abbreviates is the
-\emph{definiens}.  In proofs, we often have to go back to how the
-definiendum was introduced, because we have to exploit the logical
-structure of the definiens (the long version of which the defined term
-is the abbreviation) to get through our proof.  By unpacking
-definitions, you're ensuring that you're getting to the heart of where
-the logical action is.
+Mencionamos que você deve estar familiarizado com todas as definições que possam
+ser usadas na prova, e que saiba aplicá-las corretamente. Esse é um
+ponto realmente importante, e vale a pena examiná-lo em um pouco mais de
+detalhe. As definições são usadas para abreviar propriedades e relações, de modo que
+possamos falar delas de forma mais sucinta. A abreviação introduzida é
+chamada de \emph{definiendum}, e aquilo que ela abrevia é o
+\emph{definiens}.  Em provas, com frequência temos que voltar a como o
+definiendum foi introduzido, porque temos que explorar a estrutura
+lógica do definiens (a versão longa da qual o termo definido
+é a abreviação) para concluir nossa prova.  Ao desdobrar as
+definições, você garante que está chegando ao cerne de onde
+a ação lógica acontece.
 
-We'll start with an example. Suppose you want to prove the following:
+Começaremos com um exemplo. Suponha que você queira provar o seguinte:
 
 \begin{prop}
-For any sets $A$ and $B$, $A \cup B = B \cup A$.
+Para quaisquer conjuntos $A$ e $B$, $A \cup B = B \cup A$.
 \end{prop}
 
-In order to even start the proof, we need to know what it means for
-two sets to be identical; O.s.\@, we need to know what the ``$=$'' in
-that equation means for sets.  Sets are defined to be identical
-whenever they have the same !!{element}s.  So the definition we have
-to unpack is:
+Para sequer iniciar a prova, precisamos saber o que significa que
+dois conjuntos sejam idênticos; isto é, precisamos saber o que o ``$=$'' naquela
+equação significa para conjuntos.  Os conjuntos são definidos como idênticos
+sempre que têm os mesmos !!{element}s.  Assim, a definição que temos
+que desdobrar é:
 
 \begin{defn}
-Sets $A$ and $B$ are \emph{identical}, $A = B$, iff every !!{element}
-of~$A$ is !!a{element} of~$B$, and vice versa.
+Os conjuntos $A$ e $B$ são \emph{idênticos}, $A = B$, sse todo !!{element}
+de~$A$ é !!a{element} de~$B$, e vice-versa.
 \end{defn}
 
-This definition uses $A$ and~$B$ as placeholders for arbitrary
-sets. What it defines---the \emph{definiendum}---is the expression
-``$A = B$'' by giving the condition under which $A = B$ is true.  This
-condition---``every !!{element} of~$A$ is !!a{element} of~$B$, and
-vice versa''---is the \emph{definiens}.\footnote{In this particular
-  case---and very confusingly!---when $A = B$, the sets $A$ and $B$
-  are just one and the same set, even though we use different letters
-  for it on the left and the right side.  But the ways in which that
-  set is picked out may be different, and that makes the definition
-  non-trivial.} The definition specifies that $A = B$ is true if, and
-only if (we abbreviate this to ``iff'') the condition holds.
+Esta definição usa $A$ e~$B$ como marcadores de posição para conjuntos
+arbitrários. O que ela define---o \emph{definiendum}---é a expressão
+``$A = B$'', dando a condição sob a qual $A = B$ é verdadeira.  Essa
+condição---``todo !!{element} de~$A$ é !!a{element} de~$B$, e
+vice-versa''---é o \emph{definiens}.\footnote{Neste caso
+  particular---e de modo bastante confuso!---quando $A = B$, os conjuntos $A$ e $B$
+  são apenas um único e mesmo conjunto, ainda que usemos letras diferentes
+  para ele do lado esquerdo e do lado direito.  Mas os modos pelos quais esse
+  conjunto é identificado podem ser diferentes, e isso torna a definição
+  não trivial.} A definição especifica que $A = B$ é verdadeira se, e
+somente se (abreviamos isso por ``sse'') a condição vale.
 
-When you apply the definition, you have to match the $A$ and $B$ in
-the definition to the case you're dealing with.  In our case, it means
-that in order for $A \cup B = B \cup A$ to be true, each $z \in A \cup
-B$ must also be in $B \cup A$, and vice versa.  The expression $A \cup
-B$ in the proposition plays the role of~$A$ in the definition, and $B
-\cup A$ that of~$B$. Since $A$ and $B$ are used both in the definition
-and in the statement of the proposition we're proving, but in
-different uses, you have to be careful to make sure you don't mix up
-the two.  For instance, it would be a mistake to think that you could
-prove the proposition by showing that every !!{element} of~$A$ is
-!!a{element} of~$B$, and vice versa---that would show that $A = B$,
-not that $A \cup B = B \cup A$. (Also, since $A$ and $B$ may be any
-two sets, you won't get very far, because if nothing is assumed about
-$A$ and~$B$ they may well be different sets.)
+Quando você aplica a definição, tem que fazer corresponder o $A$ e o $B$ da
+definição ao caso de que está tratando.  No nosso caso, isso significa
+que, para que $A \cup B = B \cup A$ seja verdadeira, cada $z \in A \cup
+B$ também deve estar em $B \cup A$, e vice-versa.  A expressão $A \cup
+B$ na proposição faz o papel de~$A$ na definição, e $B
+\cup A$, o de~$B$. Como $A$ e $B$ são usados tanto na definição
+quanto no enunciado da proposição que estamos provando, mas em
+usos diferentes, você precisa ter cuidado para não confundir
+os dois.  Por exemplo, seria um erro pensar que você poderia
+provar a proposição mostrando que todo !!{element} de~$A$ é
+!!a{element} de~$B$, e vice-versa---isso mostraria que $A = B$,
+não que $A \cup B = B \cup A$. (Além disso, como $A$ e $B$ podem ser quaisquer
+dois conjuntos, você não chegaria muito longe, pois, se nada for suposto sobre
+$A$ e~$B$, eles bem podem ser conjuntos diferentes.)
 
-Within the proof we are dealing with set-theoretic notions such as
-union, and so we must also know the meanings of the symbol $\cup$ in
-order to understand how the proof should proceed. And sometimes,
-unpacking the definition gives rise to further definitions to
-unpack. For instance, $A \cup B$ is defined as $\Setabs{z}{z \in A
-  \text{ or } z \in B}$. So if you want to prove that $x \in A \cup
-B$, unpacking the definition of $\cup$ tells you that you have to
-prove $x \in \Setabs{z}{z \in A \text{ or } z \in B}$.  Now you also
-have to remember that $x \in \Setabs{z}{\dots z\dots}$ iff $\dots
-x\dots$.  So, further unpacking the definition of the
-$\Setabs{z}{\dots z \dots}$ notation, what you have to show is: $x \in
-A$ or $x \in B$. So, ``every !!{element} of $A \cup B$ is also
-!!a{element} of $B \cup A$'' really means: ``for every $x$, if $x \in
-A$ or $x \in B$, then $x \in B$ or $x \in A$.''  If we fully
-unpack the definitions in the proposition, we see that what we have to
-show is this:
+Dentro da prova, estamos lidando com noções da teoria dos conjuntos, como
+união, e portanto também precisamos conhecer os significados do símbolo $\cup$ a fim
+de entender como a prova deve prosseguir. E, às vezes,
+desdobrar a definição dá origem a outras definições a
+desdobrar. Por exemplo, $A \cup B$ é definido como $\Setabs{z}{z \in A
+  \text{ ou } z \in B}$. Então, se você quer provar que $x \in A \cup
+B$, desdobrar a definição de $\cup$ lhe diz que você tem que
+provar $x \in \Setabs{z}{z \in A \text{ ou } z \in B}$.  Agora você também
+tem que lembrar que $x \in \Setabs{z}{\dots z\dots}$ sse $\dots
+x\dots$.  Assim, desdobrando ainda mais a definição da
+notação $\Setabs{z}{\dots z \dots}$, o que você tem que mostrar é: $x \in
+A$ ou $x \in B$. Assim, ``todo !!{element} de $A \cup B$ é também
+!!a{element} de $B \cup A$'' significa, na verdade: ``para todo $x$, se $x \in
+A$ ou $x \in B$, então $x \in B$ ou $x \in A$.''  Se desdobramos
+completamente as definições na proposição, vemos que o que temos que
+mostrar é isto:
 
 \begin{prop}
-For any sets $A$ and $B$: (a) for every $x$, if $x \in A$ or $x \in
-B$, then $x \in B$ or $x \in A$, and (b) for every $x$, if $x \in B$
-or $x \in A$, then $x \in A$ or $x \in B$.
+Para quaisquer conjuntos $A$ e $B$: (a) para todo $x$, se $x \in A$ ou $x \in
+B$, então $x \in B$ ou $x \in A$, e (b) para todo $x$, se $x \in B$
+ou $x \in A$, então $x \in A$ ou $x \in B$.
 \end{prop}
 
-What's important is that unpacking definitions is a necessary part of
-constructing a proof. Properly doing it is sometimes difficult: you
-must be careful to distinguish and match the variables in the
-definition and the terms in the claim you're proving.  In order to be
-successful, you must know what the question is asking and what all the
-terms used in the question mean---you will often need to unpack more
-than one definition.  In simple proofs such as the ones below, the
-solution follows almost immediately from the definitions
-themselves. Of course, it won't always be this simple.
+O que importa é que desdobrar definições é uma parte necessária da
+construção de uma prova. Fazê-lo corretamente é às vezes difícil: você
+deve ter cuidado para distinguir e fazer corresponder as variáveis da
+definição e os termos na afirmação que está provando.  Para ter
+sucesso, você deve saber o que a questão está pedindo e o que todos os
+termos usados na questão significam---muitas vezes você precisará desdobrar mais
+de uma definição.  Em provas simples como as que seguem, a
+solução decorre quase imediatamente das próprias
+definições. É claro que nem sempre será assim tão simples.
 
 \begin{prob}
-Suppose you are asked to prove that $A \cap B \neq \emptyset$. Unpack
-all the definitions occurring here, O.s.\@, restate this in a way that
-does not mention ``$\cap$'', ``='', or ``$\emptyset$''.
+Suponha que lhe peçam para provar que $A \cap B \neq \emptyset$. Desdobre
+todas as definições que ocorrem aqui, isto é, reenuncie isto de um modo que
+não mencione ``$\cap$'', ``='', ou ``$\emptyset$''.
 \end{prob}
 
 \end{document}

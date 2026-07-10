@@ -1,0 +1,30 @@
+Os conjuntos de sentenças, em certo sentido, descrevem as estruturas nas quais são
+conjuntamente verdadeiras; essas estruturas são seus \emph{modelos}. Reciprocamente,
+se começamos com uma estrutura ou um conjunto de estruturas, podemos estar
+interessados no conjunto de sentenças das quais elas são modelos; esta é a
+\emph{teoria} da estrutura ou do conjunto de estruturas. Qualquer conjunto desse tipo de
+sentenças tem a propriedade de que toda sentença que é consequência delas já
+está no conjunto; elas são \emph{fechadas}. De modo mais geral, chamamos um
+conjunto $\Gamma$ de teoria se ele é fechado sob consequência, e dizemos que
+$\Gamma$ é \emph{axiomatizado} por~$\Delta$ se $\Gamma$ consiste em todas as
+sentenças que são consequência de~$\Delta$.
+
+A matemática fornece muitos exemplos de teorias, por exemplo, as teorias das
+ordens lineares, dos grupos, ou teorias da aritmética, por exemplo, a teoria
+axiomatizada pelos axiomas de Peano. Mas há muitos exemplos de
+teorias importantes em outras disciplinas também, por exemplo, os bancos de dados
+relacionais podem ser pensados como teorias, e a metafísica ocupa-se
+de teorias da relação parte-todo, que podem ser axiomatizadas.
+
+Uma questão significativa ao montar uma teoria para estudo é se
+sua linguagem é expressiva o bastante para nos permitir formular tudo o que
+queremos que a teoria trate, e outra é se ela é forte
+o bastante para provar o que queremos que ela prove. Para \emph{expressar} uma
+relação, precisamos de uma fórmula com o número necessário de variáveis
+livres. Na \emph{teoria dos conjuntos}, temos apenas $\in$ como símbolo de
+relação, mas ele nos permite expressar $x \subseteq y$ usando
+$\lforall[u][(u \in x \lif u \in y)]$. A \emph{teoria dos conjuntos de
+  Zermelo-Fraenkel}~$\Log{ZFC}$, de fato, é forte o bastante tanto para expressar
+(quase) toda afirmação matemática quanto para (quase) provar todo
+teorema matemático usando um punhado de axiomas e uma cadeia de
+definições cada vez mais complicadas, como a de~$\subseteq$.

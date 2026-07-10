@@ -6,83 +6,83 @@
 
 \begin{document}
 
-\olfileid{fol}{syn}{str}
+\olfileid[pt]{fol}{syn}{str}
 
-\olsection{\printtoken{P}{structure} for First-order Languages}
+\olsection{\printtoken{P}{structure} para Linguagens de Primeira Ordem}
 
 \begin{explain}
-First-order languages are, by themselves, \emph{uninterpreted:} the
-!!{constant}s, !!{function}s, and !!{predicate}s have no specific
-meaning attached to them.  Meanings are given by specifying
-\article{structure} \emph{!!{structure}}. It specifies the
-\emph{domain}, O.s.\@, the objects which the !!{constant}s pick out, the
-!!{function}s operate on, and the quantifiers range over. In addition,
-it specifies which !!{constant}s pick out which objects, how
-!!a{function} maps objects to objects, and which objects the
-!!{predicate}s apply to.  !!^{structure}s are the basis for
-\emph{semantic} notions in logic, p.ex., the notion of consequence,
-validity, satisfiability. They are variously called ``structures,''
-``interpretations,'' or ``models'' in the literature.
+As linguagens de primeira ordem são, por si mesmas, \emph{não interpretadas:} os
+!!{constant}s, !!{function}s e !!{predicate}s não têm nenhum significado
+específico associado a eles. Os significados são dados especificando-se
+\article{structure} \emph{!!{structure}}. Ela especifica o
+\emph{domínio}, isto é, os objetos que os !!{constant}s denotam, sobre os quais os
+!!{function}s operam e sobre os quais os quantificadores variam. Além disso,
+ela especifica quais !!{constant}s denotam quais objetos, como
+!!a{function} mapeia objetos para objetos, e a quais objetos os
+!!{predicate}s se aplicam. !!^{structure}s são a base para as
+noções \emph{semânticas} em lógica, por exemplo, a noção de consequência,
+validade, satisfatibilidade. Elas são chamadas de várias formas na
+literatura: ``estruturas'', ``interpretações'' ou ``modelos''.
 \end{explain}
 
 \begin{defn}[!!^{structure}s]
-\Article{structure} \emph{!!{structure}}~$\Struct M$, for a language
-$\Lang{L}$ of first-order logic consists of the following elements:
+\Article{structure} \emph{!!{structure}}~$\Struct M$, para uma linguagem
+$\Lang{L}$ de lógica de primeira ordem consiste nos seguintes elementos:
 \begin{enumerate}
-\item \emph{Domain:} a non-empty set, $\Domain M$
-\item \emph{Interpretation of !!{constant}s:} for each !!{constant}~$c$ of
+\item \emph{Domínio:} um conjunto não vazio, $\Domain M$
+\item \emph{Interpretação dos !!{constant}s:} para cada !!{constant}~$c$ de
   $\Lang{L}$, !!a{element} $\Assign{c}{M} \in \Domain M$
-\item \emph{Interpretation of !!{predicate}s:} for each $n$-place
-  !!{predicate}~$R$ of $\Lang{L}$ (other than $\eq$), an $n$-place
-  relation $\Assign{R}{M} \subseteq \Domain{M}^n$
-\item \emph{Interpretation of !!{function}s:} for each $n$-place
-  !!{function}~$f$ of $\Lang{L}$, an $n$-place function $\Assign{f}{M}
+\item \emph{Interpretação dos !!{predicate}s:} para cada
+  !!{predicate}~$R$ de $n$ lugares de $\Lang{L}$ (distinto de $\eq$), uma relação
+  de $n$ lugares $\Assign{R}{M} \subseteq \Domain{M}^n$
+\item \emph{Interpretação dos !!{function}s:} para cada
+  !!{function}~$f$ de $n$ lugares de $\Lang{L}$, uma função de $n$ lugares $\Assign{f}{M}
   \colon \Domain{M}^n \to \Domain{M}$
 \end{enumerate}
 \end{defn}
 
 \begin{ex}
-!!^a{structure}~$\Struct M$ for the language of arithmetic consists of a
-  set, an element of $\Domain M$, $\Assign{\Obj 0}{M}$, as
-  interpretation of the !!{constant}~$\Obj 0$, a one-place function
-  $\Assign{\Obj \prime}{M} \colon \Domain{M} \to \Domain M$, two
-  two-place functions $\Assign{\Obj +}{M}$ and $\Assign{\Obj
-    \times}{M}$, both $\Domain M^2 \to \Domain M$, and a two-place
-  relation $\Assign{\Obj <}{M} \subseteq \Domain{M}^2$.
+!!^a{structure}~$\Struct M$ para a linguagem da aritmética consiste em um
+  conjunto, um elemento de $\Domain M$, $\Assign{\Obj 0}{M}$, como
+  interpretação do !!{constant}~$\Obj 0$, uma função de um lugar
+  $\Assign{\Obj \prime}{M} \colon \Domain{M} \to \Domain M$, duas
+  funções de dois lugares $\Assign{\Obj +}{M}$ e $\Assign{\Obj
+    \times}{M}$, ambas $\Domain M^2 \to \Domain M$, e uma relação de
+  dois lugares $\Assign{\Obj <}{M} \subseteq \Domain{M}^2$.
 
-An obvious example of such a structure is the following:
+Um exemplo óbvio de tal estrutura é o seguinte:
 \begin{enumerate}
 \item $\Domain N = \Nat$
 \item $\Assign{\Obj 0}{N} = 0$
-\item $\Assign{\Obj \prime}{N}(n) = n + 1$ for all $n \in \Nat$
-\item $\Assign{\Obj +}{N}(n, m) = n + m$ for all $n, m \in \Nat$
-\item $\Assign{\Obj \times}{N}(n, m) = n\cdot m$ for all $n, m \in \Nat$
+\item $\Assign{\Obj \prime}{N}(n) = n + 1$ para todos $n \in \Nat$
+\item $\Assign{\Obj +}{N}(n, m) = n + m$ para todos $n, m \in \Nat$
+\item $\Assign{\Obj \times}{N}(n, m) = n\cdot m$ para todos $n, m \in \Nat$
 \item $\Assign{\Obj <}{N} = \Setabs{\tuple{n, m}}{n \in \Nat, m \in
   \Nat, n < m}$
 \end{enumerate}
-The structure~$\Struct N$ for $\Lang L_A$ so defined is called the
-\emph{standard model of arithmetic}, because it interprets the
-non-logical constants of~$\Lang L_A$ exactly how you would expect.
+A estrutura~$\Struct N$ para $\Lang L_A$ assim definida é chamada de
+\emph{modelo padrão da aritmética}, porque interpreta as
+constantes não lógicas de~$\Lang L_A$ exatamente como se esperaria.
 
-However, there are many other possible !!{structure}s for~$\Lang
-L_A$. For instance, we might take as the domain the set~$\Int$ of
-integers instead of~$\Nat$, and define the interpretations of $\Obj
-0$, $\Obj \prime$, $\Obj +$, $\Obj \times$, $\Obj <$ accordingly.  But
-we can also define structures for~$\Lang L_A$ which have nothing even
-remotely to do with numbers.
+No entanto, há muitas outras !!{structure}s possíveis para~$\Lang
+L_A$. Por exemplo, poderíamos tomar como domínio o conjunto~$\Int$ dos
+inteiros em vez de~$\Nat$, e definir as interpretações de $\Obj
+0$, $\Obj \prime$, $\Obj +$, $\Obj \times$, $\Obj <$ adequadamente.  Mas
+também podemos definir estruturas para~$\Lang L_A$ que não têm nada, nem mesmo
+remotamente, a ver com números.
 \end{ex}
 
 \begin{ex}
-A structure~$\Struct M$ for the language~$\Lang L_Z$ of set theory requires
-just a set and a single-two place relation. So technically, p.ex., the
-set of people plus the relation ``$x$ is older than $y$'' could be
-used as !!a{structure} for $\Lang L_Z$, as well as $\Nat$ together
-with $n \ge m$ for $n, m \in \Nat$.
+Uma estrutura~$\Struct M$ para a linguagem~$\Lang L_Z$ da teoria dos conjuntos requer
+apenas um conjunto e uma única relação de dois lugares. Então, tecnicamente, por exemplo, o
+conjunto das pessoas mais a relação ``$x$ é mais velho que $y$'' poderia ser
+usado como !!a{structure} para $\Lang L_Z$, assim como $\Nat$ junto
+com $n \ge m$ para $n, m \in \Nat$.
 
-A particularly interesting !!{structure} for $\Lang L_Z$ in which the
-!!{element}s of the domain are actually sets, and the interpretation
-of $\Obj \in$ actually is the relation ``$x$ is !!a{element} of~$y$''
-is the !!{structure}~$\Struct{{HF}}$ of \emph{hereditarily finite sets}:
+Uma !!{structure} particularmente interessante para $\Lang L_Z$ na qual os
+!!{element}s do domínio são de fato conjuntos, e a interpretação
+de $\Obj \in$ é de fato a relação ``$x$ é !!a{element} de~$y$''
+é a !!{structure}~$\Struct{{HF}}$ dos \emph{conjuntos hereditariamente finitos}:
 \begin{enumerate}
 \item $\Domain{{{HF}}} = \emptyset \cup \Pow{\emptyset} \cup
   \Pow{\Pow{\emptyset}} \cup \Pow{\Pow{\Pow{\emptyset}}} \cup \dots$;
@@ -92,17 +92,17 @@ is the !!{structure}~$\Struct{{HF}}$ of \emph{hereditarily finite sets}:
 \end{ex}
 
 \begin{digress}
-The stipulations we make as to what counts as !!a{structure} impact
-our logic. For example, the choice to prevent empty domains ensures,
-given the usual account of satisfaction (or truth) for quantified
-sentences, that $\lexists[x][(!A(x) \lor \lnot !A(x))]$ is
-valid---that is, a logical truth. And the stipulation that all
-!!{constant}s must refer to an object in the domain ensures that the
-existential generalization is a sound pattern of inference: $!A(a)$,
-therefore $\lexists[x][!A(x)]$. If we allowed names to refer outside
-the domain, or to not refer, then we would be on our way to a
-\emph{free logic}, in which existential generalization requires an
-additional premise: $!A(a)$ and $\lexists[x][\eq[x][a]]$, therefore
+As estipulações que fazemos sobre o que conta como !!a{structure} impactam
+nossa lógica. Por exemplo, a escolha de impedir domínios vazios garante,
+dada a explicação usual de satisfação (ou verdade) para sentenças
+quantificadas, que $\lexists[x][(!A(x) \lor \lnot !A(x))]$ é
+válida---isto é, uma verdade lógica. E a estipulação de que todos os
+!!{constant}s devem referir-se a um objeto no domínio garante que a
+generalização existencial é um padrão de inferência correto: $!A(a)$,
+portanto $\lexists[x][!A(x)]$. Se permitíssemos que nomes se referissem a algo fora
+do domínio, ou que não se referissem, então estaríamos a caminho de uma
+\emph{lógica livre}, na qual a generalização existencial requer uma
+premissa adicional: $!A(a)$ e $\lexists[x][\eq[x][a]]$, portanto
 $\lexists[x][!A(x)]$.
 \end{digress}
 

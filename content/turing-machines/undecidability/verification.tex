@@ -6,123 +6,124 @@
 
 \begin{document}
 
-\olfileid{tur}{und}{ver} 
-\olsection{Verifying the Representation}
+\olfileid[pt]{tur}{und}{ver} 
+\olsection{Verificando a Representação}
 
 \begin{explain}
-In order to verify that our representation works, we have to prove two
-things. First, we have to show that if $M$ halts on input~$w$, then
-$!T(M, w) \lif !E(M, w)$ is valid. Then, we have to show the converse,
-O.s.\@, that if $!T(M, w) \lif !E(M, w)$ is valid, then $M$ does in fact
-eventually halt when run on input~$w$.
+A fim de verificar que nossa representação funciona, temos de provar
+duas coisas. Primeiro, temos de mostrar que se $M$ para na entrada~$w$,
+então $!T(M, w) \lif !E(M, w)$ é válida. Em seguida, temos de mostrar a
+recíproca, isto é, que se $!T(M, w) \lif !E(M, w)$ é válida, então $M$
+de fato eventualmente para quando executada na entrada~$w$.
 
-The strategy for proving these is very different. For the first
-result, we have to show that !!a{sentence} of first-order logic
-(namely, $!T(M, w) \lif !E(M, w)$) is valid. The easiest way to do
-this is to give !!a{derivation}. Our proof is supposed to work for all
-$M$ and $w$, though, so there isn't really a single !!{sentence} for
-which we have to give !!a{derivation}, but infinitely many.  So the best
-we can do is to prove by induction that, whatever $M$ and~$w$ look
-like, and however many steps it takes $M$ to halt on input~$w$, there
-will be !!a{derivation} of $!T(M, w) \lif !E(M, w)$.
+A estratégia para prová-las é bem diferente. Para o primeiro
+resultado, temos de mostrar que !!a{sentence} da lógica de primeira
+ordem (a saber, $!T(M, w) \lif !E(M, w)$) é válida. A maneira mais
+fácil de fazer isso é dar !!a{derivation}. Nossa prova, porém, deve
+funcionar para todos os $M$ e $w$, de modo que não há realmente uma
+única !!{sentence} para a qual tenhamos de dar !!a{derivation}, mas
+infinitas. Assim, o melhor que podemos fazer é provar por indução que,
+sejam quais forem $M$ e~$w$, e por mais passos que $M$ leve para parar
+na entrada~$w$, haverá !!a{derivation} de $!T(M, w) \lif !E(M, w)$.
 
-Naturally, our induction will proceed on the number of steps $M$ takes
-before it reaches a halting configuration. In our inductive proof,
-we'll establish that for each step~$n$ of the run of $M$ on input~$w$,
-$!T(M, w) \Entails !C(M, w, n)$, where $!C(M, w, n)$ correctly
-describes the configuration of $M$ run on~$w$ after~$n$ steps. Now if
-$M$ halts on input~$w$ after, say, $n$ steps, $!C(M, w, n)$ will
-describe a halting configuration. We'll also show that $!C(M, w, n)
-\Entails !E(M, w)$, whenever $!C(M, w, n)$ describes a halting
-configuration.  So, if $M$ halts on input~$w$, then for some~$n$, $M$
-will be in a halting configuration after $n$~steps. Hence, $!T(M, w)
-\Entails !C(M, w, n)$ where $!C(M, w, n)$ describes a halting
-configuration, and since in that case $!C(M, w, n) \Entails !E(M, w)$,
-we get that $T(M, w) \Entails !E(M, w)$, O.s.\@, that $\Entails !T(M, w)
-\lif !E(M, w)$.
+Naturalmente, nossa indução procederá sobre o número de passos que $M$
+leva antes de atingir uma configuração de parada. Em nossa prova
+indutiva, estabeleceremos que para cada passo~$n$ da execução de $M$ na
+entrada~$w$, $!T(M, w) \Entails !C(M, w, n)$, em que $!C(M, w, n)$
+descreve corretamente a configuração de $M$ executada em~$w$ após~$n$
+passos. Ora, se $M$ para na entrada~$w$ após, digamos, $n$ passos,
+$!C(M, w, n)$ descreverá uma configuração de parada. Mostraremos também
+que $!C(M, w, n) \Entails !E(M, w)$ sempre que $!C(M, w, n)$ descreve
+uma configuração de parada. Assim, se $M$ para na entrada~$w$, então
+para algum~$n$, $M$ estará em uma configuração de parada após $n$~
+passos. Logo, $!T(M, w) \Entails !C(M, w, n)$ em que $!C(M, w, n)$
+descreve uma configuração de parada, e como nesse caso $!C(M, w, n)
+\Entails !E(M, w)$, obtemos que $T(M, w) \Entails !E(M, w)$, isto é,
+que $\Entails !T(M, w) \lif !E(M, w)$.
 
-The strategy for the converse is very different. Here we assume that
-$\Entails !T(M, w) \lif !E(M, w)$ and have to prove that $M$ halts on
-input~$w$.  From the hypothesis we get that $!T(M, w) \Entails !E(M,
-w)$, O.s.\@, $!E(M, w)$ is true in every !!{structure} in which $!T(M,
-w)$ is true. So we'll describe !!a{structure}~$\Struct{M}$ in which
-$!T(M, w)$ is true: its domain will be $\Nat$, and the interpretation
-of all the $\Obj Q_q$ and $\Obj S_\sigma$ will be given by the
-configurations of~$M$ during a run on input~$w$.  So, p.ex.,
-$\Sat{M}{\Obj Q_q(\num{m}, \num{n})}$ iff $T$, when run on input~$w$
-for $n$ steps, is in state~$q$ and scanning square~$m$.  Now since
-$!T(M, w) \Entails !E(M, w)$ by hypothesis, and since $\Sat{M}{!T(M,
-  w)}$ by construction, $\Sat{M}{!E(M, w)}$.  But $\Sat{M}{!E(M, w)}$
-iff there is some $n \in \Domain{M} = \Nat$ so that $M$, run on
-input~$w$, is in a halting configuration after~$n$ steps.
+A estratégia para a recíproca é bem diferente. Aqui supomos que
+$\Entails !T(M, w) \lif !E(M, w)$ e temos de provar que $M$ para na
+entrada~$w$. Da hipótese obtemos que $!T(M, w) \Entails !E(M, w)$, isto
+é, $!E(M, w)$ é verdadeira em toda !!{structure} em que $!T(M, w)$ é
+verdadeira. Assim, descreveremos !!a{structure}~$\Struct{M}$ em que
+$!T(M, w)$ é verdadeira: seu domínio será $\Nat$, e a interpretação de
+todos os $\Obj Q_q$ e $\Obj S_\sigma$ será dada pelas configurações
+de~$M$ durante uma execução na entrada~$w$. Assim, por exemplo,
+$\Sat{M}{\Obj Q_q(\num{m}, \num{n})}$ se, e somente se, $T$, quando
+executada na entrada~$w$ por $n$ passos, está no estado~$q$ e
+examinando o quadrado~$m$. Ora, como $!T(M, w) \Entails !E(M, w)$ por
+hipótese, e como $\Sat{M}{!T(M, w)}$ por construção, $\Sat{M}{!E(M,
+w)}$. Mas $\Sat{M}{!E(M, w)}$ se, e somente se, há algum $n \in
+\Domain{M} = \Nat$ tal que $M$, executada na entrada~$w$, está em uma
+configuração de parada após~$n$ passos.
 \end{explain}
 
 \begin{defn} 
-Let $!C(M, w, n)$ be the !!{sentence}
+Seja $!C(M, w, n)$ a !!{sentence}
 \[ 
 \Obj Q_q(\num{m}, \num{n}) \land \Obj S_{\sigma_0}(\num{0}, \num{n})
 \land \dots \land \Obj S_{\sigma_k}(\num{k}, \num{n}) \land
 \lforall[x][(\num{k} < x \lif \Obj S_\TMblank(x, \num{n}))]
 \] 
-where $q$ is the state of $M$ at time~$n$, $M$ is scanning square~$m$
-at time~$n$, square~$i$ contains symbol~$\sigma_i$ at time~$n$ for $0
-\le i \le k$ and $k$ is the right-most non-blank square of the tape at
-time~$0$, or the right-most square the tape head has visited after $n$
-steps, whichever is greater.
+em que $q$ é o estado de $M$ no instante~$n$, $M$ está examinando o
+quadrado~$m$ no instante~$n$, o quadrado~$i$ contém o símbolo~$\sigma_i$
+no instante~$n$ para $0 \le i \le k$, e $k$ é o quadrado não-vazio
+mais à direita da fita no instante~$0$, ou o quadrado mais à direita
+que o cabeçote de fita visitou após $n$ passos, o que for maior.
 \end{defn}
 
 \begin{lem}\ollabel{lem:halt-config-implies-halt}
-If $M$ run on input~$w$ is in a halting configuration after $n$ steps,
-then $!C(M, w, n) \Entails !E(M, w)$.
+Se $M$ executada na entrada~$w$ está em uma configuração de parada após
+$n$ passos, então $!C(M, w, n) \Entails !E(M, w)$.
 \end{lem}
 
 \begin{proof}
-Suppose that $M$ halts for input~$w$ after $n$ steps.
-There is some state~$q$, square~$m$, and symbol~$\sigma$ such that:
+Suponha que $M$ pare para a entrada~$w$ após $n$ passos.
+Há algum estado~$q$, quadrado~$m$ e símbolo~$\sigma$ tais que:
 \begin{enumerate} 
-\item After $n$ steps, $M$ is in state~$q$ scanning square~$m$ on
-  which~$\sigma$ appears.
-\item The transition function $\delta(q, \sigma)$ is undefined.
+\item Após $n$ passos, $M$ está no estado~$q$ examinando o
+  quadrado~$m$ no qual aparece~$\sigma$.
+\item A função de transição $\delta(q, \sigma)$ é indefinida.
 \end{enumerate}
-$!C(M, w, n)$ is the description of this configuration and will
-include the clauses $\Obj Q_{q}(\num{m}, \num{n})$ and $\Obj
-S_{\sigma}(\num{m}, \num{n})$. These clauses together imply $!E(M,
-w)$:
+$!C(M, w, n)$ é a descrição dessa configuração e incluirá as cláusulas
+$\Obj Q_{q}(\num{m}, \num{n})$ e $\Obj S_{\sigma}(\num{m}, \num{n})$.
+Essas cláusulas juntas implicam $!E(M, w)$:
 \[
 \lexists[x][\lexists[y][(\bigvee_{\tuple{q, \sigma} \in
       X}(\Obj Q_q(x, y) \land \Obj S_\sigma(x, y)))]]
 \]
-since $\Obj Q_{q'}(\num{m}, \num{n}) \land S_{\sigma'}(\num{m},
+já que $\Obj Q_{q'}(\num{m}, \num{n}) \land S_{\sigma'}(\num{m},
 \num{n}) \Entails \bigvee_{\tuple{q, \sigma} \in X} (\Obj Q_q(\num{m},
-\num{n}) \land \Obj S_{\sigma}(\num{m}, \num{n}))$, as
+\num{n}) \land \Obj S_{\sigma}(\num{m}, \num{n}))$, pois
 $\tuple{q',\sigma'} \in X$. 
 \end{proof}
 
 \begin{explain}
-So if $M$ halts for input $w$, then there is some~$n$ such that $!C(M,
-w, n) \Entails !E(M,w)$.  We will now show that for any time~$n$,
-$!T(M, w) \Entails !C(M, w, n)$.
+Assim, se $M$ para na entrada $w$, então há algum~$n$ tal que $!C(M,
+w, n) \Entails !E(M,w)$.  Mostraremos agora que para qualquer
+instante~$n$, $!T(M, w) \Entails !C(M, w, n)$.
 \end{explain}
 
 \begin{lem}
 \ollabel{lem:config}
-For each $n$, if $M$ has not halted after $n$ steps, $!T(M, w)
+Para cada $n$, se $M$ não parou após $n$ passos, $!T(M, w)
 \Entails !C(M, w, n)$.
 \end{lem}
 
 \begin{proof}
-Induction basis: If $n = 0$, then the conjuncts of $!C(M, w, 0)$ are
-also conjuncts of $!T(M, w)$, so entailed by it.
+Base da indução: Se $n = 0$, então as fórmulas componentes de $!C(M,
+w, 0)$ são também fórmulas componentes de $!T(M, w)$, logo implicadas
+por ela.
 
-Inductive hypothesis: If $M$ has not halted before the $n$th step,
-then $!T(M,w) \Entails !C(M, w, n)$. We have to show that (unless
-$!C(M, w, n)$ describes a halting configuration), $!T(M, w) \Entails
-!C(M, w, n+1)$.
+Hipótese de indução: Se $M$ não parou antes do $n$-ésimo passo,
+então $!T(M,w) \Entails !C(M, w, n)$. Temos de mostrar que (a menos
+que $!C(M, w, n)$ descreva uma configuração de parada), $!T(M, w)
+\Entails !C(M, w, n+1)$.
 
-Suppose $n > 0$ and after $n$ steps, $M$ started on $w$ is in
-state~$q$ scanning square~$m$. Since $M$ does not halt after~$n$
-steps, there must be an instruction of one of the following three
-forms in the program of~$M$:
+Suponha $n > 0$ e que, após $n$ passos, $M$ iniciada em $w$ esteja no
+estado~$q$ examinando o quadrado~$m$. Como $M$ não para após~$n$
+passos, deve haver no programa de~$M$ uma instrução de uma das três
+formas seguintes:
 
 \begin{enumerate} 
 \item \ollabel{right} $\delta(q, \sigma) = \tuple{q', \sigma', \TMright}$
@@ -132,74 +133,75 @@ forms in the program of~$M$:
 \item \ollabel{stay} $\delta(q, \sigma) = \tuple{q', \sigma', \TMstay}$
 \end{enumerate}
 
-We will consider each of these three cases in turn. 
+Consideraremos cada um desses três casos por sua vez. 
 
 \begin{enumerate} 
-\item Suppose there is an instruction of the form~\olref{right}.
-  By \olref[rep]{defn:tm-descr}\olref[rep]{rep-right}, this means that
+\item Suponha que haja uma instrução da forma~\olref{right}.
+  Por \olref[rep]{defn:tm-descr}\olref[rep]{rep-right}, isso significa que
 \begin{align*} 
 & \lforall[x][\lforall[y][((\Obj Q_{q}(x,
   y) \land \Obj S_\sigma(x, y)) \lif {}]]\\
 & \qquad (\Obj Q_{q'}(x',
   y') \land \Obj S_{\sigma'}(x, y') \land !A(x, y)))  
-\intertext{is a conjunct of $!T(M,w)$. This entails the following
-  !!{sentence} (universal instantiation, $\num{m}$ for~$x$ and
-  $\num{n}$ for~$y$):}
+\intertext{é uma fórmula componente de $!T(M,w)$. Isso implica a
+  seguinte !!{sentence} (instanciação universal, $\num{m}$ por~$x$ e
+  $\num{n}$ por~$y$):}
 & (\Obj Q_{q}(\num{m}, \num{n}) \land \Obj S_{\sigma}(\num{m},
 \num{n})) \lif {}\\
 & \qquad (\Obj Q_{q'}(\num{m}', \num{n}') \land
 \Obj S_{\sigma'}(\num{m}, \num{n}') \land !A(\num{m}, \num{n})).
-\intertext{By induction hypothesis, $!T(M, w) \Entails !C(M, w, n)$,
-  O.s.\@,}
+\intertext{Por hipótese de indução, $!T(M, w) \Entails !C(M, w, n)$,
+  isto é,}
 & \Obj Q_q(\num{m}, \num{n}) \land \Obj S_{\sigma_0}(\num{0}, \num{n})
 \land \dots \land \Obj S_{\sigma_k}(\num{k}, \num{n}) \land \\
 & \qquad\lforall[x][(\num{k} < x \lif \Obj S_\TMblank(x, \num{n}))]\\
-\intertext{Since after $n$ steps, tape square~$m$ contains~$\sigma$,
-  the corresponding conjunct is~$\Obj S_\sigma(\num{m}, \num{n})$,
-  so this entails:}
+\intertext{Como após $n$ passos o quadrado de fita~$m$ contém~$\sigma$,
+  a fórmula componente correspondente é~$\Obj S_\sigma(\num{m},
+  \num{n})$, de modo que isso implica:}
 & \Obj Q_{q}(\num{m}, \num{n}) \land \Obj S_{\sigma}(\num{m},
    \num{n})
-\intertext{We now get}
+\intertext{Obtemos agora}
 & \Obj Q_{q'}(\num{m}', \num{n}') \land \Obj S_{\sigma'}(\num{m},
   \num{n}') \land {}\\
 & \qquad\Obj S_{\sigma_0}(\num{0}, \num{n}') \land \dots \land
   \Obj S_{\sigma_k}(\num{k}, \num{n}') \land {}\\
 & \qquad \lforall[x][(\num{k} < x \lif \Obj S_\TMblank(x, \num{n}'))]
 \end{align*}
-as follows: The first line comes directly from the consequent of the
-preceding conditional, by modus ponens. Each conjunct in the middle
-line---which excludes $S_{\sigma_m}(\num{m},\num{n}')$---follows from
-the corresponding conjunct in~$!C(M, w, n)$ together with $!A(\num{m},
-\num{n})$.
+como segue: A primeira linha vem diretamente do consequente do
+condicional precedente, por modus ponens. Cada fórmula componente na
+linha do meio---que exclui $S_{\sigma_m}(\num{m},\num{n}')$---decorre
+da fórmula componente correspondente em~$!C(M, w, n)$ junto com
+$!A(\num{m}, \num{n})$.
 
-If $m < k$, $!T(M,w) \Proves \num{m} < \num {k}$
-(\olref[rep]{prop:mlessk}) and by transitivity of~$<$, we have
-$\lforall[x][(\num{k} < x \lif \num{m} < x)]$.  If $m = k$, then
-$\lforall[x][(\num{k} < x \lif \num{m} < x)]$ by logic alone.  The
-last line then follows from the corresponding conjunct in $!C(M, w,
-n)$, $\lforall[x][(\num{k} < x \lif \num{m} < x)]$, and $!A(\num{m},
-\num{n})$.  If $m<k$, this already is $!C(M, w, n+1)$.
+Se $m < k$, $!T(M,w) \Proves \num{m} < \num {k}$
+(\olref[rep]{prop:mlessk}) e, por transitividade de~$<$, temos
+$\lforall[x][(\num{k} < x \lif \num{m} < x)]$.  Se $m = k$, então
+$\lforall[x][(\num{k} < x \lif \num{m} < x)]$ apenas por lógica.  A
+última linha decorre então da fórmula componente correspondente em
+$!C(M, w, n)$, de $\lforall[x][(\num{k} < x \lif \num{m} < x)]$ e de
+$!A(\num{m}, \num{n})$.  Se $m<k$, isto já é $!C(M, w, n+1)$.
 
-Now suppose $m=k$. In that case, after $n+1$ steps, the tape head has
-also visited square~$k+1$, which now is the right-most square
-visited.  So $!C(M, w, n+1)$ has a new conjunct, $\Obj
-S_\TMblank(\num{k}',\num{n}')$, and the last conjunct is
-$\lforall[x][(\num{k}' < x \lif \Obj S_\TMblank(x, \num{n}'))]$. We
-have to verify that these two !!{sentence}s are also implied.
+Agora suponha $m=k$. Nesse caso, após $n+1$ passos, o cabeçote de
+fita também visitou o quadrado~$k+1$, que agora é o quadrado mais à
+direita visitado.  Assim, $!C(M, w, n+1)$ tem uma nova fórmula
+componente, $\Obj S_\TMblank(\num{k}',\num{n}')$, e a última fórmula
+componente é $\lforall[x][(\num{k}' < x \lif \Obj S_\TMblank(x,
+\num{n}'))]$. Temos de verificar que essas duas !!{sentence}s também
+são implicadas.
 
-We already have $\lforall[x][(\num{k} < x \lif \Obj S_\TMblank(x,
-  \num{n}'))]$. In particular, this gives us $\num{k} < \num{k}' \lif
-\Obj S_\TMblank(\num{k}', \num{n}')$. From the axiom $\lforall[x][x <
-  x']$ we get $\num{k} < \num{k}'$. By modus ponens, $\Obj
-S_\TMblank(\num{k}',\num{n}')$ follows.
+Já temos $\lforall[x][(\num{k} < x \lif \Obj S_\TMblank(x,
+  \num{n}'))]$. Em particular, isso nos dá $\num{k} < \num{k}' \lif
+\Obj S_\TMblank(\num{k}', \num{n}')$. Do axioma $\lforall[x][x <
+  x']$ obtemos $\num{k} < \num{k}'$. Por modus ponens, segue-se $\Obj
+S_\TMblank(\num{k}',\num{n}')$.
 
-Also, since $!T(M,w) \Proves \num{k} < \num{k}'$, the axiom for
-transitivity of~$<$ gives us $\lforall[x][(\num{k}' < x \lif \Obj
-  S_\TMblank(x, \num{n}'))]$. (We leave the verification of this as an
-exercise.)
+Além disso, como $!T(M,w) \Proves \num{k} < \num{k}'$, o axioma da
+transitividade de~$<$ nos dá $\lforall[x][(\num{k}' < x \lif \Obj
+  S_\TMblank(x, \num{n}'))]$. (Deixamos a verificação disso como
+exercício.)
 
-\item Suppose there is an instruction of the form~\olref{left}.
-  Then, by \olref[rep]{defn:tm-descr}\olref[rep]{rep-left},
+\item Suponha que haja uma instrução da forma~\olref{left}.
+  Então, por \olref[rep]{defn:tm-descr}\olref[rep]{rep-left},
 \begin{align*} 
 & \lforall[x][\lforall[y][((\Obj Q_{q}(x', y) \land \Obj
     S_{\sigma}(x', y)) \lif {}]]\\
@@ -209,19 +211,19 @@ exercise.)
     y)) \lif {}]\\
 & \qquad (\Obj Q_{q_j}(\num{0}, y') \land \Obj S_{\sigma'}(\num{0}, y')
   \land !A(\num{0}, y)))
-\intertext{is a conjunct of $!T(M,w)$. If $m>0$, then let $l = m - 1$
-  (O.s.\@, $m = l+1$). The first conjunct of the above !!{sentence}
-  entails the following:}
+\intertext{é uma fórmula componente de $!T(M,w)$. Se $m>0$, então seja
+  $l = m - 1$ (isto é, $m = l+1$). A primeira fórmula componente da
+  !!{sentence} acima implica o seguinte:}
 & (\Obj Q_{q}(\num{l}', \num{n}) \land \Obj S_{\sigma}(\num{l}', \num{n}))
 \lif {} \\
 & \qquad (\Obj Q_{q'}(\num{l}, \num{n}') \land \Obj S_{\sigma'}(\num{l}',
 \num{n}') \land !A(\num{l}, \num{n}))
-\intertext{Otherwise, let $l = m = 0$ and consider the following !!{sentence}
-  entailed by the second conjunct:}
+\intertext{Caso contrário, seja $l = m = 0$ e considere a seguinte
+  !!{sentence} implicada pela segunda fórmula componente:}
 & ((\Obj Q_{q_i}(\num{0}, \num{n}) \land \Obj S_{\sigma}(\num{0}, \num{n})) \lif {}\\
 & \qquad   (\Obj Q_{q_j}(\num{0}, \num{n}') \land \Obj S_{\sigma'}(\num{0}, \num{n}') \land
 !A(\num{0}, \num{n}))) 
-\intertext{Either sentence implies}
+\intertext{Qualquer das sentenças implica}
 &  \Obj Q_{q'}(\num{l}, \num{n}') \land \Obj S_{\sigma'}(\num{m},
   \num{n}') \land {}\\
 &\qquad  \Obj S_{\sigma_0}(\num{0}, \num{n}')\land \dots \land
@@ -229,30 +231,30 @@ exercise.)
 & \qquad  \lforall[x][(\num{k} < x
   \lif \Obj S_\TMblank(x, \num{n}'))]
 \end{align*}
-as before. (Note that in the first case, $\num{l}' \ident \num{l+1}
-\ident \num{m}$ and in the second case $\num{l} \ident \num{0}$.) But
-this just is $!C(M, w, n+1)$.
+como antes. (Note que no primeiro caso, $\num{l}' \ident \num{l+1}
+\ident \num{m}$ e no segundo caso $\num{l} \ident \num{0}$.) Mas
+isto é justamente $!C(M, w, n+1)$.
 
-\item Case \olref{stay} is left as an exercise.
+\item O caso \olref{stay} é deixado como exercício.
 \end{enumerate}
-We have shown that for any~$n$, $!T(M, w) \Entails !C(M, w, n)$.
+Mostramos que para qualquer~$n$, $!T(M, w) \Entails !C(M, w, n)$.
 \end{proof}
 
 \begin{prob}
-Complete case~\olref[tur][und][ver]{stay} of the proof of
+Complete o caso~\olref[tur][und][ver]{stay} da prova de
 \olref[tur][und][ver]{lem:config}.
 \end{prob}
 
 \begin{prob}
-Give !!a{derivation} of $\Obj S_{\sigma_i}(\num{i}, \num{n}')$ from
-$\Obj S_{\sigma_i}(\num{i}, \num{n})$ and $!A(m, n)$ (assuming $i \neq
-m$, O.s.\@, either $i < m$ or $m < i$).
+Dê !!a{derivation} de $\Obj S_{\sigma_i}(\num{i}, \num{n}')$ a partir de
+$\Obj S_{\sigma_i}(\num{i}, \num{n})$ e $!A(m, n)$ (supondo $i \neq
+m$, isto é, $i < m$ ou $m < i$).
 \end{prob}
 
 \begin{prob}
-Give !!a{derivation} of $\lforall[x][(\num{k}' < x \lif \Obj
-  S_\TMblank(x, \num{n}'))]$ from $\lforall[x][(\num{k} < x \lif \Obj
-  S_\TMblank(x, \num{n}'))]$, $\lforall[x][x < x']$, and
+Dê !!a{derivation} de $\lforall[x][(\num{k}' < x \lif \Obj
+  S_\TMblank(x, \num{n}'))]$ a partir de $\lforall[x][(\num{k} < x \lif \Obj
+  S_\TMblank(x, \num{n}'))]$, $\lforall[x][x < x']$ e
 $\lforall[x][\lforall[y][\lforall[z][ ((x < y \land y < z) \lif x <
       z)]]]$.)
 \end{prob}
@@ -260,63 +262,64 @@ $\lforall[x][\lforall[y][\lforall[z][ ((x < y \land y < z) \lif x <
 
 \begin{lem}
 \ollabel{lem:valid-if-halt}
-If $M$ halts on input~$w$, then $!T(M, w) \lif
-!E(M, w)$ is valid.
+Se $M$ para na entrada~$w$, então $!T(M, w) \lif
+!E(M, w)$ é válida.
 \end{lem}
 
 \begin{proof}
-By \olref{lem:config}, we know that, for any time~$n$, the
-description~$!C(M, w, n)$ of the configuration of $M$ at time~$n$ is
-entailed by~$!T(M, w)$.  Suppose $M$ halts after $k$ steps. At that
-point, it will be scanning square~$m$, for some~$m \in \Nat$. Then
-$!C(M, w, k)$ describes a halting configuration of~$M$, O.s.\@, it
-contains as conjuncts both $\Obj Q_q(\num{m}, \num{k})$ and $\Obj
-S_\sigma(\num{m}, \num{k})$ with $\delta(q,\sigma)$ undefined.  Thus,
-by \olref{lem:halt-config-implies-halt}, $!C(M, w, k) \Entails !E(M,
-w)$. But since $!T(M, w) \Entails !C(M, w, k)$, we have $!T(M, w)
-\Entails !E(M, w)$ and therefore $!T(M, w) \lif !E(M, w)$ is valid.
+Por \olref{lem:config}, sabemos que, para qualquer instante~$n$, a
+descrição~$!C(M, w, n)$ da configuração de $M$ no instante~$n$ é
+implicada por~$!T(M, w)$.  Suponha que $M$ pare após $k$ passos. Nesse
+ponto, ela estará examinando o quadrado~$m$, para algum~$m \in \Nat$.
+Então $!C(M, w, k)$ descreve uma configuração de parada de~$M$, isto
+é, contém como fórmulas componentes tanto $\Obj Q_q(\num{m}, \num{k})$
+quanto $\Obj S_\sigma(\num{m}, \num{k})$ com $\delta(q,\sigma)$
+indefinida.  Assim, por \olref{lem:halt-config-implies-halt}, $!C(M,
+w, k) \Entails !E(M, w)$. Mas como $!T(M, w) \Entails !C(M, w, k)$,
+temos $!T(M, w) \Entails !E(M, w)$ e portanto $!T(M, w) \lif !E(M, w)$
+é válida.
 \end{proof}
 
 
 \begin{explain} 
-To complete the verification of our claim, we also have to
-establish the reverse direction: if $!T(M, w) \lif !E(M, w)$ is valid, then
-$M$ does in fact halt when started on input~$w$. 
+Para completar a verificação de nossa afirmação, temos também de
+estabelecer a direção reversa: se $!T(M, w) \lif !E(M, w)$ é válida,
+então $M$ de fato para quando iniciada na entrada~$w$. 
 \end{explain}
 
 \begin{lem}
 \ollabel{lem:halt-if-valid}
-If $\Entails !T(M, w) \lif !E(M, w)$, then $M$ halts on input~$w$.
+Se $\Entails !T(M, w) \lif !E(M, w)$, então $M$ para na entrada~$w$.
 \end{lem}
 
 \begin{proof}
-Consider the $\Lang L_M$-!!{structure}~$\Struct M$ with
-domain~$\Nat$ which interprets $\Obj 0$ as~$0$, $\prime$~as the successor
-function, and $<$~as the less-than relation, and the predicates $\Obj Q_q$
-and~$\Obj S_\sigma$ as follows:
+Considere a $\Lang L_M$-!!{structure}~$\Struct M$ com
+domínio~$\Nat$ que interpreta $\Obj 0$ como~$0$, $\prime$~como a função
+sucessor e $<$~como a relação menor-que, e os predicados $\Obj Q_q$
+e~$\Obj S_\sigma$ como segue:
 \begin{align*}
   \Assign{\Obj Q_q}{M} & =
-\Setabs{\tuple{m, n}}{\begin{array}{ll}\text{started on~$w$, after~$n$ steps,}\\ \text{$M$ is in state $q$
-  scanning square~$m$}\end{array}} \\
+\Setabs{\tuple{m, n}}{\begin{array}{ll}\text{iniciada em~$w$, após~$n$ passos,}\\ \text{$M$ está no estado $q$
+  examinando o quadrado~$m$}\end{array}} \\
 \Assign{\Obj S_\sigma}{M} & = \Setabs{\tuple{m, n}}{\begin{array}{ll}
-\text{started on~$w$, after $n$ steps,}\\ \text{square~$m$ of $M$ contains
-  symbol~$\sigma$}\end{array}}
+\text{iniciada em~$w$, após $n$ passos,}\\ \text{o quadrado~$m$ de $M$ contém
+  o símbolo~$\sigma$}\end{array}}
 \end{align*}
-In other words, we construct the !!{structure}~$\Struct{M}$ so that it
-describes what $M$ started on input~$w$ actually does, step by step.
-Clearly, $\Sat{M}{!T(M, w)}$. If $\Entails !T(M, w) \lif !E(M, w)$,
-then also $\Sat{M}{!E(M, w)}$, O.s.\@,
+Em outras palavras, construímos a !!{structure}~$\Struct{M}$ de modo
+que ela descreva o que $M$ iniciada na entrada~$w$ de fato faz, passo
+a passo. Claramente, $\Sat{M}{!T(M, w)}$. Se $\Entails !T(M, w) \lif !E(M, w)$,
+então também $\Sat{M}{!E(M, w)}$, isto é,
 \[
 \Sat{M}{\lexists[x][\lexists[y][(\bigvee_{\tuple{q, \sigma} \in
       X}(\Obj Q_q(x, y) \land \Obj S_\sigma(x, y)))]]}.
 \]
-As $\Domain{M} = \Nat$, there must be $m$, $n \in \Nat$ so that
+Como $\Domain{M} = \Nat$, deve haver $m$, $n \in \Nat$ tais que
 $\Sat{M}{\Obj Q_q(\num{m}, \num{n}) \land \Obj S_\sigma(\num{m},
-\num{n})}$ for some~$q$ and~$\sigma$ such that $\delta(q, \sigma)$ is
-undefined. By the definition of~$\Struct M$, this means that $M$
-started on input~$w$ after~$n$ steps is in state~$q$ and reading
-symbol~$\sigma$, and the transition function is undefined, O.s.\@,
-$M$~has halted.
+\num{n})}$ para algum~$q$ e~$\sigma$ tais que $\delta(q, \sigma)$ é
+indefinida. Pela definição de~$\Struct M$, isso significa que $M$
+iniciada na entrada~$w$ após~$n$ passos está no estado~$q$ e lendo o
+símbolo~$\sigma$, e a função de transição é indefinida, isto é,
+$M$~parou.
 \end{proof}
 
 \end{document}

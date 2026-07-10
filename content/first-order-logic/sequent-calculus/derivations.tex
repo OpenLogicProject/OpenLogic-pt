@@ -7,55 +7,55 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{seq}{der}}
-      {\olfileid{pl}{seq}{der}}
+      {\olfileid[pt]{fol}{seq}{der}}
+      {\olfileid[pt]{pl}{seq}{der}}
 
 \olsection{\usetoken{P}{derivation}}
 
 \begin{explain}
-We've said what an initial sequent looks like, and we've given the
-rules of inference.  !!^{derivation}s in the sequent calculus are
-inductively generated from these: each !!{derivation} either is an
-initial sequent on its own, or consists of one or two !!{derivation}s
-followed by an inference.
+Já dissemos como é um sequente inicial e demos as regras de
+inferência.  !!^{derivation}s no cálculo de sequentes são
+geradas indutivamente a partir disso: cada !!{derivation} ou é um
+sequente inicial por si só, ou consiste em uma ou duas !!{derivation}s
+seguidas de uma inferência.
 \end{explain}
 
-\begin{defn}[$\Log{LK}$ !!{derivation}]
-An \emph{$\Log{LK}$-!!{derivation}} of a sequent~$S$ is a finite tree
-of sequents satisfying the following conditions:
+\begin{defn}[$\Log{LK}$-!!{derivation}]
+Uma \emph{$\Log{LK}$-!!{derivation}} de um sequente~$S$ é uma árvore finita
+de sequentes que satisfaz as seguintes condições:
 \begin{enumerate}
-\item The topmost sequents of the tree are initial sequents.
-\item The bottommost sequent of the tree is~$S$.
-\item Every sequent in the tree except $S$ is a premise of a correct
-  application of an inference rule whose conclusion stands directly
-  below that sequent in the tree.
+\item Os sequentes no topo da árvore são sequentes iniciais.
+\item O sequente na base da árvore é~$S$.
+\item Todo sequente na árvore exceto $S$ é uma premissa de uma aplicação
+  correta de uma regra de inferência cuja conclusão está diretamente
+  abaixo daquele sequente na árvore.
 \end{enumerate}
-We then say that $S$ is the \emph{end-sequent} of the !!{derivation} and
-that $S$ is \emph{!!{derivable} in $\Log{LK}$} (or $\Log{LK}$-!!{derivable}).
+Dizemos então que $S$ é o \emph{sequente final} da !!{derivation} e
+que $S$ é \emph{!!{derivable} em $\Log{LK}$} (ou $\Log{LK}$-!!{derivable}).
 \end{defn}
 
 \begin{ex}
-Every initial sequent, p.ex., $!C \Sequent !C$ is !!a{derivation}. We
-can obtain a new !!{derivation} from this by applying, say, the
-$\LeftR{\Weakening}$ rule,
+Todo sequente inicial, por exemplo, $!C \Sequent !C$, é !!a{derivation}. Podemos
+obter uma nova !!{derivation} a partir disso aplicando, digamos, a regra
+$\LeftR{\Weakening}$,
 \begin{prooftree}
 \Axiom$ \Gamma \fCenter \Delta $
 \RightLabel{\LeftR{\Weakening}}
 \UnaryInf$ !A, \Gamma \fCenter \Delta$
 \end{prooftree}
-The rule, however, is meant to be general: we can replace the $!A$ in
-the rule with any !!{sentence}, p.ex., also with~$!D$. If the premise
-matches our initial sequent $!C \Sequent !C$, that means that both
-$\Gamma$ and $\Delta$ are just~$!C$, and the conclusion would then be
-$!D, !C \Sequent !C$. So, the following is !!a{derivation}:
+A regra, contudo, deve ser geral: podemos substituir o $!A$ na
+regra por qualquer !!{sentence}, por exemplo, também por~$!D$. Se a premissa
+corresponde ao nosso sequente inicial $!C \Sequent !C$, isso significa que tanto
+$\Gamma$ quanto $\Delta$ são apenas~$!C$, e a conclusão seria então
+$!D, !C \Sequent !C$. Assim, o seguinte é !!a{derivation}:
 \begin{prooftree}
 \Axiom$ !C \fCenter !C $
 \RightLabel{\LeftR{\Weakening}}
 \UnaryInf$ !D, !C \fCenter !C$
 \end{prooftree}
-We can now apply another rule, say $\LeftR{\Exchange}$, which allows
-us to switch two !!{sentence}s on the left. So, the following is also
-a correct !!{derivation}:
+Podemos agora aplicar outra regra, digamos $\LeftR{\Exchange}$, que nos permite
+trocar duas !!{sentence}s à esquerda. Assim, o seguinte também é
+uma !!{derivation} correta:
 \begin{prooftree}
 \Axiom$ !C \fCenter !C $
 \RightLabel{\LeftR{\Weakening}}
@@ -63,32 +63,32 @@ a correct !!{derivation}:
 \RightLabel{\LeftR{\Exchange}}
 \UnaryInf$ !C, !D \fCenter !C$
 \end{prooftree}
-In this application of the rule, which was given as
+Nesta aplicação da regra, que foi dada como
 \begin{prooftree}
 \Axiom$ \Gamma, !A, !B, \Pi \fCenter \Delta $
 \RightLabel{\LeftR{\Exchange}}
 \UnaryInf$ \Gamma, !B, !A, \Pi \fCenter \Delta,$
 \end{prooftree}
-both $\Gamma$ and $\Pi$ were empty, $\Delta$ is $!C$, and the roles of
-$!A$ and $!B$ are played by $!D$ and~$!C$, respectively. In much the
-same way, we also see that
+tanto $\Gamma$ quanto $\Pi$ eram vazios, $\Delta$ é $!C$, e os papéis de
+$!A$ e $!B$ são desempenhados por $!D$ e~$!C$, respectivamente. De modo muito
+semelhante, vemos também que
 \begin{prooftree}
 \Axiom$ !D \fCenter !D $
 \RightLabel{\LeftR{\Weakening}}
 \UnaryInf$ !C, !D \fCenter !D$
 \end{prooftree}
-is !!a{derivation}. Now we can take these two !!{derivation}s, and combine
-them using $\RightR{\land}$. That rule was
+é !!a{derivation}. Agora podemos pegar essas duas !!{derivation}s e combiná-las
+usando $\RightR{\land}$. Aquela regra era
 \begin{prooftree}
 \Axiom$\Gamma \fCenter \Delta, !A$
 \Axiom$ \Gamma \fCenter \Delta, !B$
 \RightLabel{\RightR{\land}}
 \BinaryInf$ \Gamma \fCenter \Delta, !A \land !B $
 \end{prooftree}
-In our case, the premises must match the last sequents of the
-!!{derivation}s ending in the premises. That means that $\Gamma$ is
-$!C, !D$, $\Delta$ is empty, $!A$ is $!C$ and $!B$ is $!D$. So the
-conclusion, if the inference should be correct, is $!C, !D \Sequent !C
+No nosso caso, as premissas devem corresponder aos últimos sequentes das
+!!{derivation}s que terminam nas premissas. Isso significa que $\Gamma$ é
+$!C, !D$, $\Delta$ é vazio, $!A$ é $!C$ e $!B$ é $!D$. Assim, a
+conclusão, se a inferência for correta, é $!C, !D \Sequent !C
 \land !D$.
 \begin{prooftree}
 \Axiom$ !C \fCenter !C $
@@ -102,8 +102,8 @@ conclusion, if the inference should be correct, is $!C, !D \Sequent !C
 \RightLabel{\RightR{\land}}
 \BinaryInf$ !C, !D \fCenter !C \land !D $
 \end{prooftree}
-Of course, we can also reverse the premises, then $!A$
-would be $!D$ and $!B$ would be~$!C$. 
+É claro que também podemos inverter as premissas; então $!A$
+seria $!D$ e $!B$ seria~$!C$. 
 \begin{prooftree}
 \Axiom$ !D \fCenter !D $
 \RightLabel{\LeftR{\Weakening}}

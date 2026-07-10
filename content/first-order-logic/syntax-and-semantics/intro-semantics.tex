@@ -6,42 +6,42 @@
 
 \begin{document}
 
-\olfileid{fol}{syn}{its}
+\olfileid[pt]{fol}{syn}{its}
 
-\olsection{Introduction}
+\olsection{Introdução}
 
-Giving the meaning of expressions is the domain of semantics.  The
-central concept in semantics is that of satisfaction in
-!!a{structure}. !!^a{structure} gives meaning to the building blocks
-of the language: !!a{domain} is a non-empty set of objects. The
-quantifiers are interpreted as ranging over this domain, !!{constant}s
-are assigned elements in the domain, !!{function}s are assigned
-functions from the !!{domain} to itself, and !!{predicate}s are
-assigned relations on the !!{domain}.  The !!{domain} together with
-assignments to the basic vocabulary constitutes !!a{structure}.
-!!^{variable}s may appear in !!{formula}s, and in order to give a
-semantics, we also have to assign !!{element}s of the !!{domain} to
-them---this is a variable assignment. The satisfaction relation,
-finally, brings these together. !!^a{formula} may be satisfied in
-!!a{structure}~$\Struct{M}$ relative to !!a{variable} assignment~$s$,
-written as $\Sat{M}{!A}[s]$. This relation is also defined by
-induction on the structure of~$!A$, using the truth tables for the
-logical connectives to define, say, satisfaction of $(!A \land !B)$ in
-terms of satisfaction (or not) of $!A$ and ~$!B$.  It then turns out
-that the !!{variable} assignment is irrelevant if the !!{formula}~$!A$
-is !!a{sentence}, O.s.\@, has no free variables, and so we can talk of
-!!{sentence}s being simply satisfied (or not) in !!{structure}s.
+Dar o significado das expressões é o domínio da semântica. O
+conceito central em semântica é o de satisfação em
+!!a{structure}. !!^a{structure} dá significado aos blocos de construção
+da linguagem: !!a{domain} é um conjunto não vazio de objetos. Os
+quantificadores são interpretados como variando sobre esse domínio, aos !!{constant}s
+são atribuídos elementos no domínio, aos !!{function}s são atribuídas
+funções do !!{domain} para si mesmo, e aos !!{predicate}s são
+atribuídas relações sobre o !!{domain}. O !!{domain} junto com as
+atribuições ao vocabulário básico constitui !!a{structure}.
+!!^{variable}s podem aparecer em !!{formula}s, e para dar uma
+semântica, também temos que atribuir !!{element}s do !!{domain} a
+elas---isto é uma atribuição de variáveis. A relação de satisfação,
+finalmente, reúne tudo isso. !!^a{formula} pode ser satisfeita em
+!!a{structure}~$\Struct{M}$ relativamente a uma atribuição de variáveis~$s$,
+escrita como $\Sat{M}{!A}[s]$. Essa relação também é definida por
+indução sobre a estrutura de~$!A$, usando as tabelas de verdade para os
+conectivos lógicos para definir, por exemplo, a satisfação de $(!A \land !B)$ em
+termos da satisfação (ou não) de $!A$ e~$!B$. Acontece então
+que a atribuição de variáveis é irrelevante se !!a{formula}~$!A$
+é !!a{sentence}, isto é, não tem variáveis livres, e assim podemos falar de
+!!{sentence}s sendo simplesmente satisfeitas (ou não) em !!{structure}s.
 
-On the basis of the satisfaction relation $\Sat{M}{!A}$ for !!{sentence}s
-we can then define the basic semantic notions of validity, entailment,
-and satisfiability. !!^a{sentence} is valid, $\Entails !A$, if every
-!!{structure} satisfies it. It is entailed by a set of !!{sentence}s,
-$\Gamma \Entails !A$, if every !!{structure} that satisfies all the
-!!{sentence}s in~$\Gamma$ also satisfies~$!A$. And a set of !!{sentence}s
-is satisfiable if some !!{structure} satisfies all !!{sentence}s in it
-at the same time.  Because !!{formula}s are inductively defined, and
-satisfaction is in turn defined by induction on the structure of
-!!{formula}s, we can use induction to prove properties of our
-semantics and to relate the semantic notions defined.
+Com base na relação de satisfação $\Sat{M}{!A}$ para !!{sentence}s
+podemos então definir as noções semânticas básicas de validade, consequência
+e satisfatibilidade. !!^a{sentence} é válida, $\Entails !A$, se toda
+!!{structure} a satisfaz. Ela é consequência de um conjunto de !!{sentence}s,
+$\Gamma \Entails !A$, se toda !!{structure} que satisfaz todas as
+!!{sentence}s em~$\Gamma$ também satisfaz~$!A$. E um conjunto de !!{sentence}s
+é satisfatível se alguma !!{structure} satisfaz todas as !!{sentence}s nele
+ao mesmo tempo. Como !!{formula}s são definidas indutivamente, e
+a satisfação é por sua vez definida por indução sobre a estrutura das
+!!{formula}s, podemos usar indução para provar propriedades de nossa
+semântica e para relacionar as noções semânticas definidas.
 
 \end{document}

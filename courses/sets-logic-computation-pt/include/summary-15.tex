@@ -1,0 +1,28 @@
+Máquinas de Turing são determinadas por seus conjuntos de instruções, que são
+conjuntos finitos de quíntuplas (para cada estado e símbolo lido, especificam
+novo estado, símbolo escrito e movimento da cabeça). Os conjuntos finitos
+de quíntuplas são enumeráveis, de modo que há uma maneira de associar um
+número a cada conjunto de instruções de máquina de Turing. O \emph{índice} de
+uma máquina de Turing é o número associado a seu conjunto de instruções
+sob um esquema fixo desse tipo. Dessa forma, podemos ``falar sobre'' máquinas
+de Turing indiretamente---falando sobre seus índices.
+
+Um problema importante sobre o comportamento das máquinas de Turing é se
+elas eventualmente param. Seja $h(e, n)$ a função que $= 1$ se a
+máquina de Turing com índice~$e$ para quando iniciada com a entrada~$n$, e
+$=0$ caso contrário. Ela é chamada de \emph{função de parada}. A questão
+de saber se a própria função de parada é Turing-computável é chamada de
+\emph{problema da parada}. A resposta é não: o problema da parada é
+insolúvel. Isso é estabelecido usando um argumento diagonal.
+
+O problema da parada é apenas um exemplo de uma classe maior de problemas
+da forma ``$X$ pode ser realizado usando máquinas de Turing''. Outro
+problema central da lógica é o \emph{problema da decisão para a lógica de
+  primeira ordem}: existe uma máquina de Turing capaz de decidir se uma dada
+sentença é válida ou não? Esse famoso problema também foi resolvido
+negativamente: o problema da decisão é insolúvel. Isso é estabelecido por
+um argumento de redução: podemos associar a cada máquina de Turing~$M$
+e entrada~$w$ uma sentença de primeira ordem~$T(M, w) \lif E(M, w)$ que é
+válida se e somente se $M$ para quando iniciada com a entrada~$w$. Se o
+problema da decisão fosse solúvel, poderíamos então usá-lo para resolver o
+problema da parada.

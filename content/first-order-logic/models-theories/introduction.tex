@@ -6,94 +6,94 @@
 
 \begin{document}
 
-\olfileid{fol}{mat}{int}
-\olsection{Introduction}
+\olfileid[pt]{fol}{mat}{int}
+\olsection{Introdução}
 
 \begin{explain}
-The development of the axiomatic method is a significant achievement
-in the history of science, and is of special importance in the history
-of mathematics.  An axiomatic development of a field involves the
-clarification of many questions: What is the field about?  What are the
-most fundamental concepts?  How are they related?  Can all the
-concepts of the field be defined in terms of these fundamental
-concepts?  What laws do, and must, these concepts obey?
+O desenvolvimento do método axiomático é uma conquista significativa
+na história da ciência, e é de especial importância na história
+da matemática.  Um desenvolvimento axiomático de um campo envolve o
+esclarecimento de muitas questões: Do que trata o campo?  Quais são os
+conceitos mais fundamentais?  Como eles se relacionam?  Todos os
+conceitos do campo podem ser definidos em termos desses conceitos
+fundamentais?  Que leis esses conceitos obedecem, e devem obedecer?
 
-The axiomatic method and logic were made for each other.  Formal logic
-provides the tools for formulating axiomatic theories, for proving
-theorems from the axioms of the theory in a precisely specified way,
-for studying the properties of all systems satisfying the axioms in a
-systematic way.
+O método axiomático e a lógica foram feitos um para o outro.  A lógica formal
+fornece as ferramentas para formular teorias axiomáticas, para provar
+teoremas a partir dos axiomas da teoria de uma maneira precisamente especificada,
+para estudar as propriedades de todos os sistemas que satisfazem os axiomas de uma
+maneira sistemática.
 \end{explain}
 
 \begin{defn}
-A set of !!{sentence}s~$\Gamma$ is \emph{closed} iff, whenever
-$\Gamma \Entails !A$ then $!A \in \Gamma$.  The \emph{closure} of a set
-of !!{sentence}s~$\Gamma$ is $\Setabs{!A}{\Gamma \Entails !A}$.
+Um conjunto de !!{sentence}s~$\Gamma$ é \emph{fechado} sse, sempre que
+$\Gamma \Entails !A$ então $!A \in \Gamma$.  O \emph{fecho} de um conjunto
+de !!{sentence}s~$\Gamma$ é $\Setabs{!A}{\Gamma \Entails !A}$.
 
-We say that~$\Gamma$ is \emph{axiomatized by} a set of
-sentences~$\Delta$ if $\Gamma$ is the closure of~$\Delta$.
+Dizemos que~$\Gamma$ é \emph{axiomatizado por} um conjunto de
+sentenças~$\Delta$ se $\Gamma$ é o fecho de~$\Delta$.
 \end{defn}
 
 \begin{explain}
-We can think of an axiomatic theory as the set of sentences that is
-axiomatized by its set of axioms~$\Delta$.  In other words, when we
-have a first-order language which contains non-logical symbols for the
-primitives of the axiomatically developed science we wish to study,
-together with a set of !!{sentence}s that express the fundamental laws
-of the science, we can think of the theory as represented by all the
-!!{sentence}s in this language that are entailed by the axioms.  This
-ranges from simple examples with only a single primitive and
-simple axioms, such as the theory of partial orders, to complex
-theories such as Newtonian mechanics.
+Podemos pensar em uma teoria axiomática como o conjunto de sentenças que é
+axiomatizado por seu conjunto de axiomas~$\Delta$.  Em outras palavras, quando
+temos uma linguagem de primeira ordem que contém símbolos não lógicos para os
+primitivos da ciência desenvolvida axiomaticamente que desejamos estudar,
+juntamente com um conjunto de !!{sentence}s que expressam as leis fundamentais
+da ciência, podemos pensar na teoria como representada por todas as
+!!{sentence}s nessa linguagem que são consequência dos axiomas.  Isso
+varia de exemplos simples com apenas um único primitivo e
+axiomas simples, como a teoria das ordens parciais, até teorias complexas
+como a mecânica newtoniana.
 
-The important logical facts that make this formal approach to the
-axiomatic method so important are the following.  Suppose $\Gamma$ is
-an axiom system for a theory, O.s.\@, a set of sentences.
+Os fatos lógicos importantes que tornam essa abordagem formal do
+método axiomático tão importante são os seguintes.  Suponha que $\Gamma$ é
+um sistema de axiomas para uma teoria, isto é, um conjunto de sentenças.
 \begin{enumerate}
-\item We can state precisely when an axiom system captures an intended
-  class of !!{structure}s.  That is, if we are interested in a certain
-  class of !!{structure}s, we will successfully capture that class by
-  an axiom system~$\Gamma$ iff the !!{structure}s are exactly
-  those~$\Struct M$ such that $\Sat{M}{\Gamma}$.
-\item We may fail in this respect because there are $\Struct M$ such
-  that $\Sat{M}{\Gamma}$, but $\Struct M$ is not one of the
-  !!{structure}s we intend.  This may lead us to add axioms which are
-  not true in~$\Struct M$.
-\item If we are successful at least in the respect that $\Gamma$ is
-  true in all the intended !!{structure}s, then a sentence~$!A$ is true in
-  all intended !!{structure}s whenever $\Gamma \Entails !A$.  Thus we can
-  use logical tools (such as !!{derivation} methods) to show that sentences are
-  true in all intended !!{structure}s simply by showing that they are
-  entailed by the axioms.
-\item Sometimes we don't have intended !!{structure}s in mind, but instead
-  start from the axioms themselves: we begin with some primitives that
-  we want to satisfy certain laws which we codify in an axiom system.
-  One thing that we would like to verify right away is that the axioms
-  do not contradict each other: if they do, there can be no concepts
-  that obey these laws, and we have tried to set up an incoherent
-  theory.  We can verify that this doesn't happen by finding a model
-  of~$\Gamma$.  And if there are models of our theory, we can use
-  logical methods to investigate them, and we can also use logical
-  methods to construct models.
-\item The independence of the axioms is likewise an important
-  question.  It may happen that one of the axioms is actually a
-  consequence of the others, and so is redundant.  We can prove that
-  an axiom $!A$ in $\Gamma$ is redundant by proving $\Gamma \setminus
-  \{!A\} \Entails !A$.  We can also prove that an axiom is not
-  redundant by showing that $(\Gamma \setminus \{!A\}) \cup \{\lnot
-  !A\}$ is satisfiable.  For instance, this is how it was shown that the
-  parallel postulate is independent of the other axioms of geometry.
-\item Another important question is that of definability of concepts
-  in a theory: The choice of the language determines what the models
-  of a theory consist of.  But not every aspect of a theory must be
-  represented separately in its models.  For instance, every ordering
-  $\le$ determines a corresponding strict ordering~$<$---given one, we
-  can define the other.  So it is not necessary that a model of a
-  theory involving such an order must \emph{also} contain the
-  corresponding strict ordering.  When is it the case, in general,
-  that one relation can be defined in terms of others?  When is it
-  impossible to define a relation in terms of others (and hence must
-  add it to the primitives of the language)?
+\item Podemos afirmar precisamente quando um sistema de axiomas captura uma classe
+  pretendida de !!{structure}s.  Isto é, se estamos interessados em uma certa
+  classe de !!{structure}s, capturaremos com sucesso essa classe por
+  um sistema de axiomas~$\Gamma$ sse as !!{structure}s são exatamente
+  aquelas~$\Struct M$ tais que $\Sat{M}{\Gamma}$.
+\item Podemos falhar nesse aspecto porque há $\Struct M$ tais
+  que $\Sat{M}{\Gamma}$, mas $\Struct M$ não é uma das
+  !!{structure}s que pretendemos.  Isso pode nos levar a adicionar axiomas que
+  não são verdadeiros em~$\Struct M$.
+\item Se somos bem-sucedidos pelo menos no aspecto de que $\Gamma$ é
+  verdadeiro em todas as !!{structure}s pretendidas, então uma sentença~$!A$ é verdadeira em
+  todas as !!{structure}s pretendidas sempre que $\Gamma \Entails !A$.  Assim, podemos
+  usar ferramentas lógicas (como métodos de !!{derivation}) para mostrar que sentenças são
+  verdadeiras em todas as !!{structure}s pretendidas simplesmente mostrando que elas são
+  consequência dos axiomas.
+\item Às vezes não temos !!{structure}s pretendidas em mente, mas em vez disso
+  partimos dos próprios axiomas: começamos com alguns primitivos que
+  queremos que satisfaçam certas leis que codificamos em um sistema de axiomas.
+  Uma coisa que gostaríamos de verificar imediatamente é que os axiomas
+  não se contradizem: se o fizerem, não pode haver conceitos
+  que obedeçam a essas leis, e teremos tentado estabelecer uma teoria
+  incoerente.  Podemos verificar que isso não acontece encontrando um modelo
+  de~$\Gamma$.  E se há modelos da nossa teoria, podemos usar
+  métodos lógicos para investigá-los, e também podemos usar
+  métodos lógicos para construir modelos.
+\item A independência dos axiomas é, igualmente, uma questão
+  importante.  Pode acontecer que um dos axiomas seja, na verdade, uma
+  consequência dos outros, e seja, portanto, redundante.  Podemos provar que
+  um axioma $!A$ em $\Gamma$ é redundante provando $\Gamma \setminus
+  \{!A\} \Entails !A$.  Também podemos provar que um axioma não é
+  redundante mostrando que $(\Gamma \setminus \{!A\}) \cup \{\lnot
+  !A\}$ é satisfatível.  Por exemplo, foi assim que se mostrou que o
+  postulado das paralelas é independente dos outros axiomas da geometria.
+\item Outra questão importante é a da definibilidade de conceitos
+  em uma teoria: A escolha da linguagem determina em que consistem os modelos
+  de uma teoria.  Mas nem todo aspecto de uma teoria deve ser
+  representado separadamente em seus modelos.  Por exemplo, toda ordenação
+  $\le$ determina uma ordenação estrita correspondente~$<$---dada uma, nós
+  podemos definir a outra.  Então não é necessário que um modelo de uma
+  teoria que envolve tal ordem deva conter \emph{também} a
+  ordenação estrita correspondente.  Quando é o caso, em geral,
+  de que uma relação pode ser definida em termos de outras?  Quando é
+  impossível definir uma relação em termos de outras (e, portanto, deve-se
+  adicioná-la aos primitivos da linguagem)?
 \end{enumerate}
 \end{explain}
 

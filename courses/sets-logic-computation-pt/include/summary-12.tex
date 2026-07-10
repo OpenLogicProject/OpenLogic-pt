@@ -1,0 +1,35 @@
+O \emph{teorema da completude} é a recíproca do \emph{teorema da
+  correção}. Em uma forma, ele afirma que se $\Gamma \Entails !A$, então
+$\Gamma \Proves !A$; em outra, que se $\Gamma$ é consistente, então
+é satisfatível. Provamos a segunda forma (e derivamos a primeira a partir
+da segunda). A prova é trabalhosa e requer vários passos.
+Começamos com um conjunto consistente~$\Gamma$. Primeiro, acrescentamos
+infinitos novos símbolos de constante~$c_i$, bem como fórmulas da forma
+$\lexists[x][!A(x)] \lif !A(c)$, em que cada fórmula~$!A(x)$ com uma
+variável livre na linguagem expandida é emparelhada com uma das novas
+constantes. Isso resulta em um conjunto consistente \emph{saturado} de
+sentenças contendo~$\Gamma$. Ele ainda é consistente. Agora tomamos
+esse conjunto e o estendemos a um \emph{conjunto consistente completo}. Um
+conjunto consistente completo tem a agradável propriedade de que, para qualquer
+sentença~$!A$, ou $!A$ ou $\lnot !A$ está no conjunto (mas nunca
+ambos). Como partimos de um conjunto saturado, temos agora um conjunto de
+sentenças~$\Gamma^*$ saturado, completo e consistente que
+inclui~$\Gamma$. A partir desse conjunto, é agora possível definir uma
+estrutura~$\Struct{M}$ tal que $\Sat{M(\Gamma^*)}{!A}$ se e somente se
+$!A \in \Gamma^*$. Em particular, $\Sat{M(\Gamma^*)}{\Gamma}$, isto é,
+$\Gamma$ é satisfatível. Se $=$ está presente, a construção é
+ligeiramente mais complexa.
+
+Dois corolários importantes seguem do teorema da completude. O
+\emph{teorema da compacidade} afirma que $\Gamma \Entails !A$ se e somente se
+$\Gamma_0 \Entails !A$ para algum $\Gamma_0 \subseteq \Gamma$ finito. Uma
+formulação equivalente é que $\Gamma$ é satisfatível se e somente se todo
+$\Gamma_0 \subseteq \Gamma$ finito é satisfatível. O teorema da compacidade
+é útil para provar a existência de estruturas com certas
+propriedades. Por exemplo, podemos usá-lo para mostrar que há
+modelos infinitos para toda teoria que tem modelos finitos
+arbitrariamente grandes. Isso significa, em particular, que a finitude não
+pode ser expressa na lógica de primeira ordem. O segundo corolário, o
+\emph{Teorema de L\"owenheim-Skolem}, afirma que todo $\Gamma$ satisfatível
+tem um modelo contável. Ele, por sua vez, mostra que a incontabilidade não
+pode ser expressa na lógica de primeira ordem.

@@ -7,26 +7,26 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{seq}{prv}}
-      {\olfileid{pl}{seq}{prv}}
+      {\olfileid[pt]{fol}{seq}{prv}}
+      {\olfileid[pt]{pl}{seq}{prv}}
 
-\olsection{\usetoken{S}{derivability} and Consistency}
+\olsection{\usetoken{S}{derivability} e Consistência}
 
-We will now establish a number of properties of the !!{derivability}
-relation.  They are independently interesting, but each will play a
-role in the proof of the completeness theorem.
+Estabeleceremos agora uma série de propriedades da relação de
+!!{derivability}.  Elas são interessantes por si mesmas, mas cada uma terá um
+papel na prova do teorema da completude.
 
 \begin{prop}\ollabel{prop:provability-contr}
-  If $\Gamma \Proves !A$ and $\Gamma \cup \{!A\}$ is
-  inconsistent, then $\Gamma$ is inconsistent.
+  Se $\Gamma \Proves !A$ e $\Gamma \cup \{!A\}$ é
+  inconsistente, então $\Gamma$ é inconsistente.
 \end{prop}
 
 \begin{proof}
-There are finite $\Gamma_0$ and $\Gamma_1 \subseteq \Gamma$ such that
-$\Log{LK}$ !!{derive}s $\Gamma_0 \Sequent !A$ and $!A, \Gamma_1
-\Sequent \quad$.  Let the $\Log{LK}$-!!{derivation} of $\Gamma_0 \Sequent
-!A$ be~$\pi_0$ and the $\Log{LK}$-!!{derivation} of $\Gamma_1, !A
-\Sequent \quad$ be~$\pi_1$. We can then !!{derive}
+Há $\Gamma_0$ e $\Gamma_1 \subseteq \Gamma$ finitos tais que
+$\Log{LK}$ !!{derive} $\Gamma_0 \Sequent !A$ e $!A, \Gamma_1
+\Sequent \quad$.  Seja $\pi_0$ a $\Log{LK}$-!!{derivation} de $\Gamma_0 \Sequent
+!A$ e $\pi_1$ a $\Log{LK}$-!!{derivation} de $\Gamma_1, !A
+\Sequent \quad$. Podemos então derivar
 \begin{prooftree}
 \AxiomC{}
 \RightLabel{$\pi_0$}
@@ -38,24 +38,24 @@ $\Log{LK}$ !!{derive}s $\Gamma_0 \Sequent !A$ and $!A, \Gamma_1
 \BinaryInf$ \Gamma_0,\Gamma_1 \fCenter $
 \end{prooftree}
 
-Since $\Gamma_0 \subseteq \Gamma$ and $\Gamma_1 \subseteq \Gamma$,
-$\Gamma_0 \cup \Gamma_1 \subseteq \Gamma$, hence $\Gamma$~is inconsistent.
+Como $\Gamma_0 \subseteq \Gamma$ e $\Gamma_1 \subseteq \Gamma$,
+$\Gamma_0 \cup \Gamma_1 \subseteq \Gamma$; portanto, $\Gamma$~é inconsistente.
 \end{proof}
 
 \begin{prop}
 \ollabel{prop:prov-incons}
-$\Gamma \Proves !A$ iff $\Gamma \cup \{\lnot !A\}$ is inconsistent.
+$\Gamma \Proves !A$ se, e somente se, $\Gamma \cup \{\lnot !A\}$ é inconsistente.
 \end{prop}
 
 \begin{proof}
-First suppose $\Gamma \Proves !A$, O.s.\@, there is
-!!a{derivation}~$\pi_0$ of $\Gamma \Sequent !A$. By adding a
-$\LeftR{\lnot}$ rule, we obtain !!a{derivation} of~$\lnot !A, \Gamma
-\Sequent \quad$, O.s.\@, $\Gamma \cup \{\lnot !A\}$ is inconsistent.
+Primeiro, suponha $\Gamma \Proves !A$, isto é, há
+!!a{derivation}~$\pi_0$ de $\Gamma \Sequent !A$. Acrescentando uma
+regra $\LeftR{\lnot}$, obtemos !!a{derivation} de~$\lnot !A, \Gamma
+\Sequent \quad$, isto é, $\Gamma \cup \{\lnot !A\}$ é inconsistente.
 
-If $\Gamma \cup \{\lnot !A\}$ is inconsistent, there is
-!!a{derivation}~$\pi_1$ of $\lnot !A, \Gamma \Sequent \quad$. The
-following is !!a{derivation} of $\Gamma \Sequent !A$:
+Se $\Gamma \cup \{\lnot !A\}$ é inconsistente, há
+!!a{derivation}~$\pi_1$ de $\lnot !A, \Gamma \Sequent \quad$. O
+seguinte é !!a{derivation} de $\Gamma \Sequent !A$:
 \begin{prooftree}
   \Axiom$!A \fCenter !A$
   \RightLabel{\RightR{\lnot}}
@@ -69,18 +69,18 @@ following is !!a{derivation} of $\Gamma \Sequent !A$:
 \end{proof}
 
 \begin{prob}
-Prove that $\Gamma \Proves \lnot !A$ iff $\Gamma \cup \{!A\}$ is inconsistent.
+Prove que $\Gamma \Proves \lnot !A$ se, e somente se, $\Gamma \cup \{!A\}$ é inconsistente.
 \end{prob}
 
 \begin{prop}\ollabel{prop:explicit-inc}
-  If $\Gamma \Proves !A$ and $\lnot !A \in \Gamma$, then $\Gamma$ is
-  inconsistent.
+  Se $\Gamma \Proves !A$ e $\lnot !A \in \Gamma$, então $\Gamma$ é
+  inconsistente.
 \end{prop}
 
 \begin{proof}
-  Suppose $\Gamma \Proves !A$ and $\lnot !A \in \Gamma$.  Then there
-  is !!a{derivation}~$\pi$ of a sequent $\Gamma_0 \Sequent !A$. The
-  sequent $\lnot !A, \Gamma_0 \Sequent \quad$ is also !!{derivable}:
+  Suponha $\Gamma \Proves !A$ e $\lnot !A \in \Gamma$.  Então há
+  !!a{derivation}~$\pi$ de um sequente $\Gamma_0 \Sequent !A$. O
+  sequente $\lnot !A, \Gamma_0 \Sequent \quad$ também é !!{derivable}:
   \begin{prooftree}
     \AxiomC{}
     \RightLabel{$\pi$}
@@ -93,20 +93,20 @@ Prove that $\Gamma \Proves \lnot !A$ iff $\Gamma \cup \{!A\}$ is inconsistent.
     \RightLabel{\Cut}
     \BinaryInf$\Gamma_0, \lnot !A \fCenter$
   \end{prooftree}
-  Since $\lnot !A \in \Gamma$ and $\Gamma_0 \subseteq \Gamma$, this
-  shows that $\Gamma$ is inconsistent.
+  Como $\lnot !A \in \Gamma$ e $\Gamma_0 \subseteq \Gamma$, isso
+  mostra que $\Gamma$ é inconsistente.
 \end{proof}
 
 \begin{prop}\ollabel{prop:provability-exhaustive}
-  If $\Gamma \cup \{!A\}$ and $\Gamma \cup \{\lnot !A\}$ are both
-  inconsistent, then $\Gamma$ is inconsistent.
+  Se $\Gamma \cup \{!A\}$ e $\Gamma \cup \{\lnot !A\}$ são ambos
+  inconsistentes, então $\Gamma$ é inconsistente.
 \end{prop}
 
 \begin{proof}
-There are finite sets $\Gamma_0 \subseteq \Gamma$ and $\Gamma_1
-\subseteq \Gamma$ and $\Log{LK}$-!!{derivation}s $\pi_0$ and $\pi_1$
-of $!A, \Gamma_0 \Sequent \quad$ and $\lnot !A, \Gamma_1 \Sequent
-\quad$, respectively. We can then !!{derive}
+Há conjuntos finitos $\Gamma_0 \subseteq \Gamma$ e $\Gamma_1
+\subseteq \Gamma$ e $\Log{LK}$-!!{derivation}s $\pi_0$ e $\pi_1$
+de $!A, \Gamma_0 \Sequent \quad$ e $\lnot !A, \Gamma_1 \Sequent
+\quad$, respectivamente. Podemos então derivar
 \begin{prooftree}
 \AxiomC{}
 \RightLabel{$\pi_0$}
@@ -119,9 +119,9 @@ of $!A, \Gamma_0 \Sequent \quad$ and $\lnot !A, \Gamma_1 \Sequent
 \RightLabel{\Cut}
 \BinaryInf$ \Gamma_0, \Gamma_1 \fCenter $
 \end{prooftree}
-Since $\Gamma_0 \subseteq \Gamma$ and $\Gamma_1 \subseteq \Gamma$,
-$\Gamma_0 \cup \Gamma_1 \subseteq \Gamma$. Hence $\Gamma$ is
-inconsistent.
+Como $\Gamma_0 \subseteq \Gamma$ e $\Gamma_1 \subseteq \Gamma$,
+$\Gamma_0 \cup \Gamma_1 \subseteq \Gamma$. Portanto, $\Gamma$ é
+inconsistente.
 \end{proof}
 
 \end{document}

@@ -9,26 +9,26 @@
 
 \begin{document}
 
-\olfileid{fol}{ntd}{qpr}
+\olfileid[pt]{fol}{ntd}{qpr}
 
-\olsection{\usetoken{S}{derivability} and the Quantifiers}
+\olsection{\usetoken{S}{derivability} e os Quantificadores}
 
 \begin{explain}
-  The completeness theorem also requires that the natural deduction
-  rules yield the facts about~$\Proves$ established in this section.
+  O teorema da completude também requer que as regras de dedução
+  natural produzam os fatos sobre~$\Proves$ estabelecidos nesta seção.
 \end{explain}
 
 \begin{thm}
-\ollabel{thm:strong-generalization} If $c$ is a constant not occurring
-in $\Gamma$ or $!A(x)$ and $\Gamma \Proves !A(c)$, then $\Gamma
+\ollabel{thm:strong-generalization} Se $c$ é uma constante que não
+ocorre em $\Gamma$ ou $!A(x)$ e $\Gamma \Proves !A(c)$, então $\Gamma
 \Proves \lforall[x][!A(x)]$.
 \end{thm}
 
 \begin{proof}
-Let $\delta$ be !!a{derivation} of $!A(c)$ from $\Gamma$.  By adding a
-\Intro{\lforall} inference, we obtain !!a{derivation} of
-$\lforall[x][!A(x)]$. Since $c$ does not occur in $\Gamma$ or $!A(x)$,
-the eigenvariable condition is satisfied.
+Seja $\delta$ uma !!{derivation} de $!A(c)$ a partir de $\Gamma$.
+Adicionando uma inferência \Intro{\lforall}, obtemos uma !!{derivation}
+de $\lforall[x][!A(x)]$. Como $c$ não ocorre em $\Gamma$ ou $!A(x)$,
+a condição de variável própria é satisfeita.
 \end{proof}
 
 \begin{prop}
@@ -42,16 +42,16 @@ the eigenvariable condition is satisfied.
 
 \begin{proof}
 \begin{tagenumerate}{prvEx,prvAll}
-\tagitem{prvEx}{The following is !!a{derivation}
-  of~$\lexists[x][!A(x)]$ from~$!A(t)$:
+\tagitem{prvEx}{A seguinte é uma !!{derivation} de
+  $\lexists[x][!A(x)]$ a partir de~$!A(t)$:
 \begin{prooftree}
 \AxiomC{$!A(t)$}
 \RightLabel{\Intro{\lexists}}
 \UnaryInfC{$\lexists[x][!A(x)]$}
 \end{prooftree}}{}
 
-\tagitem{prvAll}{The following is !!a{derivation} of~$!A(t)$
-  from~$\lforall[x][!A(x)]$:
+\tagitem{prvAll}{A seguinte é uma !!{derivation} de~$!A(t)$
+  a partir de~$\lforall[x][!A(x)]$:
 \begin{prooftree}
 \AxiomC{$\lforall[x][!A(x)]$}
 \RightLabel{\Elim{\lforall}}

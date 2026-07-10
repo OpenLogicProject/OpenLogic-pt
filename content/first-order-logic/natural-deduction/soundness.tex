@@ -7,63 +7,63 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{ntd}{sou}}
-      {\olfileid{pl}{ntd}{sou}}
+      {\olfileid[pt]{fol}{ntd}{sou}}
+      {\olfileid[pt]{pl}{ntd}{sou}}
       
-\olsection{Soundness}
+\olsection{Correção}
 
 \begin{explain}
-!!^a{derivation} system, such as natural deduction, is \emph{sound}
-if it cannot !!{derive} things that do not actually follow.  Soundness is
-thus a kind of guaranteed safety property for !!{derivation} systems.
-Depending on which proof theoretic property is in question, we would
-like to know for instance, that
+Um sistema de !!{derivation}, como a dedução natural, é \emph{correto}
+se não pode derivar coisas que de fato não seguem.  A correção é
+assim uma espécie de propriedade de segurança garantida para sistemas de
+!!{derivation}. Dependendo de qual propriedade da Teoria da Prova está em
+questão, gostaríamos de saber, por exemplo, que
 \begin{enumerate}
-\item every !!{derivable} !!{sentence} is \iftag{FOL}{valid}{a tautology};
-\item if !!a{sentence} is !!{derivable} from some others, it is also a
-  consequence of them;
-\item if a set of !!{sentence}s is inconsistent, it is unsatisfiable.
+\item toda !!{sentence} !!{derivable} é \iftag{FOL}{válida}{uma tautologia};
+\item se uma !!{sentence} é !!{derivable} a partir de outras, ela também é uma
+  consequência delas;
+\item se um conjunto de !!{sentence}s é inconsistente, ele é insatisfatível.
 \end{enumerate}
-These are important properties of !!a{derivation} system. If any of
-them do not hold, the !!{derivation} system is deficient---it would
-!!{derive} too much.  Consequently, establishing the soundness of a
-!!{derivation} system is of the utmost importance.
+Estas são propriedades importantes de um sistema de !!{derivation}. Se
+alguma delas não vale, o sistema de !!{derivation} é deficiente---ele
+!!{derive} demais.  Consequentemente, estabelecer a correção de um
+sistema de !!{derivation} é da maior importância.
 \end{explain}
 
-\begin{thm}[Soundness]
+\begin{thm}[Correção]
 \ollabel{thm:soundness}
-If $!A$ is !!{derivable} from the !!{undischarged} assumptions
-$\Gamma$, then $\Gamma \Entails !A$.
+Se $!A$ é !!{derivable} a partir das hipóteses !!{undischarged}s
+$\Gamma$, então $\Gamma \Entails !A$.
 \end{thm}
 
 \begin{proof}
-Let $\delta$ be !!a{derivation} of $!A$. We proceed by
-induction on the number of inferences in~$\delta$.
+Seja $\delta$ uma !!{derivation} de $!A$. Procedemos por
+indução no número de inferências em~$\delta$.
 
-For the induction basis we show the claim if the number of inferences
-is~$0$. In this case, $\delta$ consists only of a single
-!!{sentence}~$!A$, O.s.\@, an assumption. That assumption is
-!!{undischarged}, since assumptions can only be !!{discharged} by
-inferences, and there are no inferences.  So, any
+Para a base da indução, mostramos a afirmação quando o número de
+inferências é~$0$. Neste caso, $\delta$ consiste apenas de uma única
+!!{sentence}~$!A$, isto é, uma hipótese. Essa hipótese é
+!!{undischarged}, pois hipóteses só podem ser !!{discharged}s por
+inferências, e não há inferências.  Assim, qualquer
 \iftag{FOL}{!!{structure}~$\Struct{M}$}{!!{valuation}~$\pAssign{v}$}
-that satisfies all of the !!{undischarged} assumptions of the proof
-also satisfies~$!A$.
+que satisfaz todas as hipóteses !!{undischarged}s da prova
+também satisfaz~$!A$.
 
-Now for the inductive step. Suppose that $\delta$ contains~$n$
-inferences. The premise(s) of the lowermost inference are !!{derive}d
-using sub-!!{derivation}s, each of which contains fewer than~$n$
-inferences.  We assume the induction hypothesis: The premises of the
-lowermost inference follow from the !!{undischarged} assumptions of
-the sub-!!{derivation}s ending in those premises.  We have to show
-that the conclusion~$!A$ follows from the !!{undischarged} assumptions
-of the entire proof.
+Agora o passo indutivo. Suponha que $\delta$ contém~$n$
+inferências. A(s) premissa(s) da inferência mais baixa são !!{derive}das
+usando sub-!!{derivation}s, cada uma das quais contém menos de~$n$
+inferências.  Assumimos a hipótese de indução: as premissas da
+inferência mais baixa seguem das hipóteses !!{undischarged}s das
+sub-!!{derivation}s que terminam nessas premissas.  Temos que mostrar
+que a conclusão~$!A$ segue das hipóteses !!{undischarged}s
+de toda a prova.
 
-We distinguish cases according to the type of the lowermost inference.
-First, we consider the possible inferences with only one premise.
+Distinguimos casos de acordo com o tipo da inferência mais baixa.
+Primeiro, consideramos as possíveis inferências com apenas uma premissa.
 
 \begin{enumerate}
-\item Suppose that the last inference is \Intro{\lnot}: The
-  !!{derivation} has the form
+\item Suponha que a última inferência é \Intro{\lnot}: a
+  !!{derivation} tem a forma
   \begin{prooftree}
     \AxiomC{$\Gamma, \Discharge{!A}{n}$}
     \RightLabel{$\delta_1$}
@@ -71,21 +71,21 @@ First, we consider the possible inferences with only one premise.
     \DischargeRule{\Intro{\lnot}}{n}
     \UnaryInfC{$\lnot !A$}
   \end{prooftree}
-  By inductive hypothesis, $\lfalse$ follows from the !!{undischarged}
-  assumptions $\Gamma \cup \{!A\}$ of~$\delta_1$. Consider
-  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}. We
-  need to show that, if $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, then
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\lnot !A}$. Suppose for reductio
-  that $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, but
-  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{\lnot !A}$, O.s.\@,
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$. This would mean that
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma \cup \{!A\}}$. This is
-  contrary to our inductive hypothesis. So,
+  Pela hipótese de indução, $\lfalse$ segue das hipóteses
+  !!{undischarged}s $\Gamma \cup \{!A\}$ de~$\delta_1$. Considere
+  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}. Precisamos
+  mostrar que, se $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, então
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\lnot !A}$. Suponha por redução ao
+  absurdo que $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, mas
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{\lnot !A}$, isto é,
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$. Isto significaria que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma \cup \{!A\}}$. Isto é
+  contrário à nossa hipótese de indução. Logo,
   $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\lnot !A}$.
 
-\item The last inference is \Elim{\land}: There are two variants: $!A$
-  or $!B$ may be inferred from the premise $!A \land !B$. Consider the
-  first case. The !!{derivation}~$\delta$ looks like this:
+\item A última inferência é \Elim{\land}: há duas variantes: $!A$
+  ou $!B$ pode ser inferido da premissa $!A \land !B$. Considere o
+  primeiro caso. A !!{derivation}~$\delta$ tem este aspecto:
   \begin{prooftree}
     \AxiomC{$\Gamma$}
     \RightLabel{$\delta_1$}
@@ -93,22 +93,22 @@ First, we consider the possible inferences with only one premise.
     \RightLabel{\Elim{\land}}
     \UnaryInfC{$!A$}
   \end{prooftree}
-  By inductive hypothesis, $!A \land !B$ follows from the
-  !!{undischarged} assumptions~$\Gamma$ of~$\delta_1$. Consider
-  !!a{structure}~\iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$}. We need to
-  show that, if $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, then
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$. Suppose
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$. By our inductive
-  hypothesis ($\Gamma \Entails !A \land !B$), we know that
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \land !B}$. By definition,
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \land !B}$ iff
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ and
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$.  (The case where $!B$ is
-  inferred from $!A \land !B$ is handled similarly.)
+  Pela hipótese de indução, $!A \land !B$ segue das
+  hipóteses !!{undischarged}s~$\Gamma$ de~$\delta_1$. Considere
+  !!a{structure}~\iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$}. Precisamos
+  mostrar que, se $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, então
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$. Suponha
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$. Pela nossa hipótese
+  de indução ($\Gamma \Entails !A \land !B$), sabemos que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \land !B}$. Por definição,
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \land !B}$ se, e somente se,
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ e
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$.  (O caso em que $!B$ é
+  inferido de $!A \land !B$ é tratado de forma similar.)
   
-\item The last inference is \Intro{\lor}: There are two variants: $!A
-  \lor !B$ may be inferred from the premise~$!A$ or the
-  premise~$!B$. Consider the first case. The !!{derivation} has the form
+\item A última inferência é \Intro{\lor}: há duas variantes: $!A
+  \lor !B$ pode ser inferido da premissa~$!A$ ou da
+  premissa~$!B$. Considere o primeiro caso. A !!{derivation} tem a forma
   \begin{prooftree}
     \AxiomC{$\Gamma$}
     \RightLabel{$\delta_1$}
@@ -116,19 +116,19 @@ First, we consider the possible inferences with only one premise.
     \RightLabel{\Intro{\lor}}
     \UnaryInfC{$!A \lor !B$}
   \end{prooftree}
-  By inductive hypothesis, $!A$ follows from the !!{undischarged}
-  assumptions~$\Gamma$ of~$\delta_1$.  Consider
-  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}. We
-  need to show that, if $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, then
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \lor !B}$. Suppose
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$; then
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ since $\Gamma \Entails !A$ (the
-  inductive hypothesis). So it must also be the case that
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \lor !B}$.  (The case where $!A
-  \lor !B$ is inferred from~$!B$ is handled similarly.)
+  Pela hipótese de indução, $!A$ segue das hipóteses
+  !!{undischarged}s~$\Gamma$ de~$\delta_1$.  Considere
+  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}. Precisamos
+  mostrar que, se $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, então
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \lor !B}$. Suponha
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$; então
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$, pois $\Gamma \Entails !A$ (a
+  hipótese de indução). Logo também deve ser o caso que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \lor !B}$.  (O caso em que $!A
+  \lor !B$ é inferido de~$!B$ é tratado de forma similar.)
   
-\item The last inference is \Intro{\lif}: $!A \lif !B$ is inferred
-  from a subproof with assumption~$!A$ and conclusion~$!B$, O.s.\@,
+\item A última inferência é \Intro{\lif}: $!A \lif !B$ é inferido
+  de uma subprova com hipótese~$!A$ e conclusão~$!B$, isto é,
   \begin{prooftree}
     \AxiomC{$\Gamma, \Discharge{!A}{n}$}
     \RightLabel{$\delta_1$}
@@ -136,23 +136,23 @@ First, we consider the possible inferences with only one premise.
     \DischargeRule{\Intro{\lif}}{n}
     \UnaryInfC{$!A \lif !B$}
   \end{prooftree}
-  By inductive hypothesis, $!B$ follows from the !!{undischarged}
-  assumptions of~$\delta_1$, O.s.\@, $\Gamma \cup \{!A\} \Entails
-  !B$. Consider
-  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}. The
-  !!{undischarged} assumptions of~$\delta$ are just $\Gamma$, since
-  $!A$ is discharged at the last inference. So we need to show that
-  $\Gamma \Entails !A \lif !B$.  For reductio, suppose that for some
+  Pela hipótese de indução, $!B$ segue das hipóteses
+  !!{undischarged}s de~$\delta_1$, isto é, $\Gamma \cup \{!A\} \Entails
+  !B$. Considere
+  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}. As
+  hipóteses !!{undischarged}s de~$\delta$ são apenas $\Gamma$, pois
+  $!A$ é descartada na última inferência. Precisamos mostrar que
+  $\Gamma \Entails !A \lif !B$.  Por redução ao absurdo, suponha que para alguma
   \iftag{FOL}{!!{structure}~$\Struct{M}$}{!!{valuation}~$\pAssign{v}$},
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$ but
-  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A \lif !B}$. So,
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ and
-  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$. But by hypothesis, $!B$ is a
-  consequence of $\Gamma \cup \{!A\}$, O.s.\@,
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$, which is a contradiction. So,
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$ mas
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A \lif !B}$. Assim,
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ e
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$. Mas por hipótese, $!B$ é uma
+  consequência de $\Gamma \cup \{!A\}$, isto é,
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$, o que é uma contradição. Logo,
   $\Gamma \Entails !A \lif !B$.
 
-\item The last inference is \FalseInt: Here, $\delta$ ends in
+\item A última inferência é \FalseInt: aqui, $\delta$ termina em
   \begin{prooftree}
     \AxiomC{$\Gamma$}
     \RightLabel{$\delta_1$}
@@ -160,19 +160,19 @@ First, we consider the possible inferences with only one premise.
     \RightLabel{\FalseInt}
     \UnaryInfC{$!A$}
   \end{prooftree}
-  By induction hypothesis, $\Gamma \Entails \lfalse$. We have to show
-  that $\Gamma \Entails !A$. Suppose not; then for
-  some~$\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ we have
-    $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$ and
-    $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A}$. But we always have
-    $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{\lfalse}$, so this would mean
-    that $\Gamma \Entails/ \lfalse$, contrary to the induction
-    hypothesis.
+  Pela hipótese de indução, $\Gamma \Entails \lfalse$. Temos que mostrar
+  que $\Gamma \Entails !A$. Suponha o contrário; então para
+  algum~$\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ temos
+    $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$ e
+    $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A}$. Mas sempre temos
+    $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{\lfalse}$, de modo que isto
+    significaria que $\Gamma \Entails/ \lfalse$, contrariando a hipótese
+    de indução.
 
-\item The last inference is \FalseCl: Exercise.
+\item A última inferência é \FalseCl: Exercício.
 
 \iftag{FOL}{
-\item The last inference is \Intro{\lforall}: Then $\delta$ has the form
+\item A última inferência é \Intro{\lforall}: então $\delta$ tem a forma
   \begin{prooftree}
     \AxiomC{$\Gamma$}
     \RightLabel{$\delta_1$}
@@ -180,41 +180,41 @@ First, we consider the possible inferences with only one premise.
     \RightLabel{\Intro{\lforall}}
     \UnaryInfC{$\lforall[x][!A(x)]$}
   \end{prooftree}
-  The premise $!A(a)$ is a consequence of the !!{undischarged}
-  assumptions $\Gamma$ by induction hypothesis.  Consider some
-  structure, $\Struct{M}$, such that $\Sat{M}{\Gamma}$.  We need to
-  show that $\Sat{M}{\lforall[x][!A(x)]}$. Since $\lforall[x][!A(x)]$
-  is !!a{sentence}, this means we have to show that for every variable
-  assignment~$s$, $\Sat{M}{!A(x)}[s]$
-  (\olref[syn][ass]{prop:sat-quant}). Since $\Gamma$ consists entirely
-  of sentences, $\Sat{M}{!B}[s]$ for all $!B \in \Gamma$ by
-  \olref[syn][sat]{defn:satisfaction}.  Let $\Struct{M'}$ be like
-  $\Struct{M}$ except that $\Assign{a}{M'} = s(x)$.  Since $a$ does
-  not occur in~$\Gamma$, $\Sat{M'}{\Gamma}$ by
-  \olref[syn][ext]{cor:extensionality-sent}. Since $\Gamma \Entails
-  !A(a)$, $\Sat{M'}{!A(a)}$.  Since $!A(a)$ is !!a{sentence},
-  $\Sat{M'}{!A(a)}[s]$ by
-  \olref[syn][ass]{prop:sentence-sat-true}. $\Sat{M'}{!A(x)}[s]$ iff
-  $\Sat{M'}{!A(a)}$ by \olref[syn][ext]{prop:ext-formulas} (recall
-  that $!A(a)$ is just $\Subst{!A(x)}{a}{x}$). So,
-  $\Sat{M'}{!A(x)}[s]$. Since $a$ does not occur in~$!A(x)$, by
-  \olref[syn][ext]{prop:extensionality}, $\Sat{M}{!A(x)}[s]$. But $s$
-  was an arbitrary variable assignment, so
+  A premissa $!A(a)$ é consequência das hipóteses
+  !!{undischarged}s $\Gamma$ pela hipótese de indução.  Considere alguma
+  estrutura $\Struct{M}$ tal que $\Sat{M}{\Gamma}$.  Precisamos
+  mostrar que $\Sat{M}{\lforall[x][!A(x)]}$. Como $\lforall[x][!A(x)]$
+  é !!a{sentence}, isto significa que temos que mostrar que para toda
+  atribuição de variáveis~$s$, $\Sat{M}{!A(x)}[s]$
+  (\olref[syn][ass]{prop:sat-quant}). Como $\Gamma$ consiste inteiramente
+  em sentenças, $\Sat{M}{!B}[s]$ para todo $!B \in \Gamma$ por
+  \olref[syn][sat]{defn:satisfaction}.  Seja $\Struct{M'}$ como
+  $\Struct{M}$, exceto que $\Assign{a}{M'} = s(x)$.  Como $a$ não
+  ocorre em~$\Gamma$, $\Sat{M'}{\Gamma}$ por
+  \olref[syn][ext]{cor:extensionality-sent}. Como $\Gamma \Entails
+  !A(a)$, $\Sat{M'}{!A(a)}$.  Como $!A(a)$ é !!a{sentence},
+  $\Sat{M'}{!A(a)}[s]$ por
+  \olref[syn][ass]{prop:sentence-sat-true}. $\Sat{M'}{!A(x)}[s]$ se, e somente se,
+  $\Sat{M'}{!A(a)}$ por \olref[syn][ext]{prop:ext-formulas} (lembre que
+  $!A(a)$ é apenas $\Subst{!A(x)}{a}{x}$). Assim,
+  $\Sat{M'}{!A(x)}[s]$. Como $a$ não ocorre em~$!A(x)$, por
+  \olref[syn][ext]{prop:extensionality}, $\Sat{M}{!A(x)}[s]$. Mas $s$
+  foi uma atribuição de variáveis arbitrária, de modo que
   $\Sat{M}{\lforall[x][!A(x)]}$.
   
-\item The last inference is \Intro{\lexists}: Exercise.
+\item A última inferência é \Intro{\lexists}: Exercício.
 
-\item The last inference is \Elim{\forall}: Exercise.
+\item A última inferência é \Elim{\forall}: Exercício.
 }{}
 \end{enumerate}
 
-Now let's consider the possible inferences with several premises:
-\Elim{\lor}, \Intro{\land}, \iftag{FOL}{\Elim{\lif}, and
-  \Elim{\lexists}}{and \Elim{\lif}}.
+Agora consideremos as possíveis inferências com várias premissas:
+\Elim{\lor}, \Intro{\land}, \iftag{FOL}{\Elim{\lif}, e
+  \Elim{\lexists}}{e \Elim{\lif}}.
 \begin{enumerate}
 
-\item The last inference is \Intro{\land}. $!A \land !B$ is inferred
-  from the premises $!A$ and $!B$ and $\delta$ has the form
+\item A última inferência é \Intro{\land}. $!A \land !B$ é inferido
+  das premissas $!A$ e $!B$ e $\delta$ tem a forma
   \begin{prooftree}
     \AxiomC{$\Gamma_1$}
     \RightLabel{$\delta_1$}
@@ -225,24 +225,24 @@ Now let's consider the possible inferences with several premises:
     \RightLabel{\Intro{\land}}
     \BinaryInfC{$!A \land !B$}
   \end{prooftree}
-  By induction hypothesis, $!A$ follows from the !!{undischarged}
-  assumptions~$\Gamma_1$ of~$\delta_1$ and $!B$ follows from the
-  !!{undischarged} assumptions~$\Gamma_2$ of~$\delta_2$. The
-  !!{undischarged} assumptions of~$\delta$ are $\Gamma_1 \cup
-  \Gamma_2$, so we have to show that $\Gamma_1 \cup \Gamma_2 \Entails
-  !A \land !B$. Consider
+  Pela hipótese de indução, $!A$ segue das hipóteses
+  !!{undischarged}s~$\Gamma_1$ de~$\delta_1$ e $!B$ segue das
+  hipóteses !!{undischarged}s~$\Gamma_2$ de~$\delta_2$. As
+  hipóteses !!{undischarged}s de~$\delta$ são $\Gamma_1 \cup
+  \Gamma_2$, de modo que temos que mostrar que $\Gamma_1 \cup \Gamma_2 \Entails
+  !A \land !B$. Considere
   \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}
-  with $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_1 \cup \Gamma_2}$. Since
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_1}$, it must be the case that
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ as $\Gamma_1 \Entails !A$, and
-  since $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_2}$,
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$ since $\Gamma_2 \Entails
-  !B$. Together, $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \land !B}$.
+  com $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_1 \cup \Gamma_2}$. Como
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_1}$, deve ser o caso que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$, pois $\Gamma_1 \Entails !A$, e
+  como $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_2}$,
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$, pois $\Gamma_2 \Entails
+  !B$. Juntas, $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \land !B}$.
   
-\item The last inference is \Elim{\lor}: Exercise.
+\item A última inferência é \Elim{\lor}: Exercício.
 
-\item The last inference is \Elim{\lif}. $!B$ is inferred from the
-  premises $!A \lif !B$ and~$!A$. The !!{derivation}~$\delta$ looks like this:
+\item A última inferência é \Elim{\lif}. $!B$ é inferido das
+  premissas $!A \lif !B$ e~$!A$. A !!{derivation}~$\delta$ tem este aspecto:
   \begin{prooftree}
     \AxiomC{$\Gamma_1$}
     \RightLabel{$\delta_1$}
@@ -253,62 +253,62 @@ Now let's consider the possible inferences with several premises:
     \RightLabel{\Elim{\lif}}
     \BinaryInfC{$!B$}
   \end{prooftree}
-  By induction hypothesis, $!A \lif !B$ follows from the
-  !!{undischarged} assumptions~$\Gamma_1$ of~$\delta_1$ and $!A$
-  follows from the !!{undischarged} assumptions~$\Gamma_2$
-  of~$\delta_2$. Consider
-  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}. We
-  need to show that, if $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_1 \cup
-    \Gamma_2}$, then $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$. Suppose
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_1 \cup \Gamma_2}$. Since
+  Pela hipótese de indução, $!A \lif !B$ segue das
+  hipóteses !!{undischarged}s~$\Gamma_1$ de~$\delta_1$ e $!A$
+  segue das hipóteses !!{undischarged}s~$\Gamma_2$
+  de~$\delta_2$. Considere
+  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}. Precisamos
+  mostrar que, se $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_1 \cup
+    \Gamma_2}$, então $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$. Suponha
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_1 \cup \Gamma_2}$. Como
   $\Gamma_1 \Entails !A \lif !B$, $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A
-    \lif !B}$. Since $\Gamma_2 \Entails !A$, we have
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$. This means that
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$ (For if
-  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$, since
-  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$, we'd have
+    \lif !B}$. Como $\Gamma_2 \Entails !A$, temos
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$. Isto significa que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$ (pois se
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$, como
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$, teríamos
   $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A \lif !B}$,
-  contradicting~$\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \lif !B}$).
+  contradizendo~$\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \lif !B}$).
 
-\item The last inference is \Elim{\lnot}: Exercise.
+\item A última inferência é \Elim{\lnot}: Exercício.
   
-\tagitem{FOL}{The last inference is \Elim{\lexists}: Exercise.}{}
+\tagitem{FOL}{A última inferência é \Elim{\lexists}: Exercício.}{}
 \end{enumerate}
 \end{proof}
 
 \tagprob{FOL}
 \begin{prob}
-Complete the proof of \olref[fol][ntd][sou]{thm:soundness}.
+Complete a prova de \olref[fol][ntd][sou]{thm:soundness}.
 \end{prob}
 \tagendprob
 
 \tagprob{notFOL}
 \begin{prob}
-Complete the proof of \olref[pl][ntd][sou]{thm:soundness}.
+Complete a prova de \olref[pl][ntd][sou]{thm:soundness}.
 \end{prob}
 \tagendprob
 
 \begin{cor}
 \ollabel{cor:weak-soundness}
-If $\Proves !A$, then $!A$ is \iftag{FOL}{valid}{a tautology}.
+Se $\Proves !A$, então $!A$ é \iftag{FOL}{válida}{uma tautologia}.
 \end{cor}
 
 \begin{cor}
 \ollabel{cor:consistency-soundness}
-If $\Gamma$ is satisfiable, then it is consistent.
+Se $\Gamma$ é satisfatível, então é consistente.
 \end{cor}
 
 \begin{proof}
-We prove the contrapositive.  Suppose that $\Gamma$ is not consistent.
-Then $\Gamma \Proves \lfalse$, O.s.\@, there is !!a{derivation} of
-$\lfalse$ from !!{undischarged} assumptions in~$\Gamma$. By
-\olref{thm:soundness}, any
+Provamos a contrapositiva.  Suponha que $\Gamma$ não é consistente.
+Então $\Gamma \Proves \lfalse$, isto é, há uma !!{derivation} de
+$\lfalse$ a partir de hipóteses !!{undischarged}s em~$\Gamma$. Por
+\olref{thm:soundness}, qualquer
 \iftag{FOL}{!!{structure}~$\Struct{M}$}{!!{valuation}~$\pAssign{v}$}
-that satisfies $\Gamma$ must satisfy $\lfalse$.  Since
-$\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{\lfalse}$ for every
+que satisfaz $\Gamma$ deve satisfazer $\lfalse$.  Como
+$\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{\lfalse}$ para toda
 \iftag{FOL}{!!{structure}~$\Struct{M}$}{!!{valuation}~$\pAssign{v}$},
-no \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} can satisfy $\Gamma$,
-O.s.\@, $\Gamma$ is not satisfiable.
+nenhuma \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} pode satisfazer $\Gamma$,
+isto é, $\Gamma$ não é satisfatível.
 \end{proof}
 
 \end{document}

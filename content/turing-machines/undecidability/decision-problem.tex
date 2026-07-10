@@ -6,45 +6,47 @@
 
 \begin{document}
 
-\olfileid{tur}{und}{dec}
-\olsection{The Decision Problem}
+\olfileid[pt]{tur}{und}{dec}
+\olsection{O Problema da Decisão}
 
-We say that first-order logic is \emph{decidable} iff there is an
-effective method for determining whether or not a given !!{sentence}
-is valid. As it turns out, there is no such method: the problem of
-deciding validity of first-order sentences is unsolvable.
+Dizemos que a lógica de primeira ordem é \emph{decidível} se, e
+somente se, há um método efetivo para determinar se uma dada
+!!{sentence} é válida ou não. Acontece que não existe tal método: o
+problema de decidir a validade de sentenças de primeira ordem é
+insolúvel.
 
-In order to establish this important negative result, we prove that
-the decision problem cannot be solved by a Turing machine.  That is,
-we show that there is no Turing machine which, whenever it is started
-on a tape that contains a first-order !!{sentence}, eventually halts
-and outputs either $1$ or~$0$ depending on whether the
-!!{sentence} is valid or not. By the Church--Turing thesis, every
-function which is computable is Turing computable. So if this
-``validity function'' were effectively computable at all, it would be
-Turing computable. If it isn't Turing computable, then, it also cannot
-be effectively computable.
+A fim de estabelecer esse importante resultado negativo, provamos que
+o problema da decisão não pode ser resolvido por uma máquina de
+Turing. Isto é, mostramos que não existe máquina de Turing que, sempre
+que iniciada em uma fita que contém uma !!{sentence} de primeira
+ordem, eventualmente para e produz $1$ ou~$0$ conforme a
+!!{sentence} seja válida ou não. Pela tese de Church-Turing, toda
+função que é computável é Turing-computável. Logo, se essa ``função de
+validade'' fosse de algum modo efetivamente computável, ela seria
+Turing-computável. Se ela não é Turing-computável, então também não
+pode ser efetivamente computável.
 
-Our strategy for proving that the decision problem is unsolvable is to
-reduce the halting problem to it.  This means the following: We have
-proved that the function~$h(e,w)$ that halts with output~$1$ if the
-Turing machine described by~$e$ halts on input~$w$ and outputs~$0$
-otherwise, is not Turing computable.  We will show that if there were
-a Turing machine that decides validity of first-order sentences, then
-there is also Turing machine that computes~$h$.  Since $h$ cannot be
-computed by a Turing machine, there cannot be a Turing machine that
-decides validity either.
+Nossa estratégia para provar que o problema da decisão é insolúvel é
+reduzir o problema da parada a ele. Isso significa o seguinte:
+provamos que a função~$h(e,w)$ que para com saída~$1$ se a máquina de
+Turing descrita por~$e$ para na entrada~$w$ e produz~$0$ caso
+contrário não é Turing-computável. Mostraremos que se houvesse uma
+máquina de Turing que decide a validade de sentenças de primeira
+ordem, então haveria também uma máquina de Turing que computa~$h$.
+Como $h$ não pode ser computada por uma máquina de Turing, também não
+pode haver uma máquina de Turing que decide a validade.
 
-The first step in this strategy is to show that for every input~$w$
-and a Turing machine~$M$, we can effectively describe !!a{sentence}
-$!T(M, w)$ representing the instruction set of~$M$ and the input~$w$
-and !!a{sentence}~$!E(M, w)$ expressing ``$M$ eventually halts'' such
-that:
+O primeiro passo nessa estratégia é mostrar que, para toda entrada~$w$
+e máquina de Turing~$M$, podemos descrever efetivamente !!a{sentence}
+$!T(M, w)$ representando o conjunto de instruções de~$M$ e a
+entrada~$w$, e !!a{sentence}~$!E(M, w)$ exprimindo ``$M$ eventualmente
+para'', tal que:
 \begin{quote}
-  $\Entails !T(M, w) \lif !E(M,w)$ iff $M$ halts for input~$w$.
+  $\Entails !T(M, w) \lif !E(M,w)$ se, e somente se, $M$ para na
+  entrada~$w$.
 \end{quote}
-The bulk of our proof will consist in describing these sentences
-$!T(M, w)$ and~$!E(M, w)$ and in verifying that $!T(M, w) \lif !E(M, w)$
-is valid iff $M$~halts on input~$w$.
+A maior parte de nossa prova consistirá em descrever essas sentenças
+$!T(M, w)$ e~$!E(M, w)$ e em verificar que $!T(M, w) \lif !E(M, w)$
+é válida se, e somente se, $M$~para na entrada~$w$.
 
 \end{document}

@@ -1,0 +1,34 @@
+Os \emph{sistemas de prova} fornecem métodos puramente sintáticos para
+caracterizar consequência e compatibilidade entre sentenças.
+O \emph{cálculo de sequentes} é um desses sistemas de
+prova. Uma \emph{derivação} nele consiste em uma árvore de sequentes (um
+sequente $\Gamma \Sequent \Delta$ consiste em duas sequências de fórmulas
+separadas por~$\Sequent$). Os sequentes mais ao topo em uma derivação
+são \emph{sequentes iniciais} da forma $!A \Sequent !A$.  Todos os demais
+sequentes, para que a derivação seja correta, devem ser corretamente
+justificados por uma de várias \emph{regras de inferência}. Elas vêm em
+pares; uma regra para operar no lado esquerdo e no lado direito de um
+sequente para cada conectivo e quantificador. Por exemplo, se um sequente
+$\Gamma \Sequent \Delta, !A \lif !B$ é justificado pela regra
+$\RightR{\lif}$, o sequente precedente (a \emph{premissa}) deve
+ser $!A, \Gamma \Sequent \Delta, !B$. Algumas regras também permitem que a ordem
+ou o número de sentenças em um sequente seja manipulado, por exemplo,
+a regra \RightR{\Exchange} permite que duas fórmulas do lado direito de um
+sequente sejam trocadas.
+
+Se há uma derivação do sequente $\quad \Sequent !A$, dizemos que
+$!A$ é um \emph{teorema} e escrevemos~$\Proves !A$. Se há uma
+derivação de $\Gamma_0 \Sequent !A$ em que todo $!B$ em $\Gamma_0$ está
+em~$\Gamma$, dizemos que $!A$ é \emph{derivável de}~$\Gamma$ e escrevemos
+$\Gamma \Proves !A$. Se há uma derivação de
+$\Gamma_0 \Sequent \quad$ em que todo $!B$ em $\Gamma_0$ está
+em~$\Gamma$, dizemos que $\Gamma$ é \emph{inconsistente}; caso contrário,
+\emph{consistente}. Essas noções estão inter-relacionadas; por exemplo, $\Gamma
+\Proves !A$ sse $\Gamma \cup \{\lnot !A\}$ é inconsistente. Elas estão
+também relacionadas às noções semânticas correspondentes; por exemplo, se $\Gamma
+\Proves !A$, então $\Gamma \Entails !A$. Essa propriedade dos sistemas de
+prova---o que pode ser derivado de $\Gamma$ tem garantia de ser
+consequência de~$\Gamma$---é chamada de \emph{correção}. O \emph{teorema da
+correção} é provado por indução sobre o comprimento das derivações, mostrando
+que cada inferência individual preserva a validade do sequente
+conclusão, desde que os sequentes premissa sejam válidos.

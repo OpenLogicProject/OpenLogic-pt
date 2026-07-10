@@ -1,0 +1,578 @@
+% Configuration file for Sets, Logic, Computation textbook
+
+% Let's be unpretentious and use A, B, C, etc. for formulas ...
+
+\ollatinformulas
+
+% ... and use bold italic instead of Fraktur for structures
+
+\DeclareMathAlphabet{\mathbi}{OT1}{pplx}{b}{it}
+
+\DeclareDocumentCommand \Struct { m }{\applytofirst{\mathbi}{#1}}
+
+% - `\TMblank` - symbol for a blank
+\DeclareDocumentMacro \TMblank {\sqcup}
+
+% - `\TMstroke` - single stroke symbol on tape
+\DeclareDocumentMacro \TMstroke {I}
+
+% - `\TAss`: rótulo de justificação de hipótese em tableaux (localização PT;
+%   o default em open-logic-config.sty é "Assumption")
+\DeclareDocumentMacro \TAss {Hipótese}
+
+% Tokens EN do curso (sobrescritos pelos PT abaixo)
+\settexttoken{enumerable}{countable}{countable}
+\settexttoken{nonenumerable}*{uncountable}{uncountable}
+\settexttoken{denumerable}{countably infinite}{countably infinite}
+
+% Biconditional, verum are defined symbols
+
+\tagtrue{defIff,defTrue}
+\tagfalse{prvIff,prvTrue}
+
+% I'll leave cases for conditional, universal quantifier as exercises
+
+\tagtrue{probAnd,probIf,probAll}
+
+\tagtrue{prfND,prfSC}
+\tagfalse{prfAX,prfTab}
+
+% --- Tokens PT-BR (curso SLC) ---
+\settexttoken{enumerable}{contável}{contáveis}
+\settexttoken{nonenumerable}*{incontável}{incontáveis}
+\settexttoken{denumerable}{infinito contável}{infinitos contáveis}
+\settexttoken{element}{elemento}{elementos}
+\definetoken{a}{element}{um}
+\definetoken{A}{element}{Um}
+\settexttoken{language}{linguagem}{linguagens}
+\settexttoken{formula}{fórmula}{fórmulas}
+\settexttoken{subformula}{subfórmula}{subfórmulas}
+\settexttoken{sentence}{sentença}{sentenças}
+\settexttoken{variable}{variável}{variáveis}
+\settexttoken{constant}{símbolo de constante}{símbolos de constante}
+\settexttoken{predicate}{símbolo de predicado}{símbolos de predicado}
+\settexttoken{function}{símbolo de função}{símbolos de função}
+\settexttoken{structure}{estrutura}{estruturas}
+\settexttoken{domain}{domínio}{domínios}
+\settexttoken{derivation}{derivação}{derivações}
+\settexttoken{derivable}{derivável}{deriváveis}
+\settexttoken{derivability}{derivabilidade}{derivabilidades}
+\settexttoken{proof}{derivação}{derivações}
+\settexttoken{prove}{deriva}{deriva}
+\settexttoken{provable}{derivável}{deriváveis}
+\settexttoken{provability}{derivabilidade}{derivabilidades}
+\settexttoken{decidable}{decidível}{decidíveis}
+\settexttoken{computably enumerable}{computavelmente enumerável}{computavelmente enumeráveis}
+\settexttoken{argument}{argumento}{argumentos}
+\settexttoken{model}{modelo}{modelos}
+\settexttoken{theory}{teoria}{teorias}
+\settexttoken{interpretation}{interpretação}{interpretações}
+\settexttoken{satisfaction}{satisfação}{satisfações}
+\settexttoken{consequence}{consequência}{consequências}
+\settexttoken{consistent}{consistente}{consistentes}
+\settexttoken{inconsistent}{inconsistente}{inconsistentes}
+\settexttoken{complete}{completo}{completos}
+\settexttoken{sound}{correto}{corretos}
+\settexttoken{valid}{válido}{válidos}
+\settexttoken{invalid}{inválido}{inválidos}
+\settexttoken{satisfiable}{satisfatível}{satisfatíveis}
+\settexttoken{unsatisfiable}{insatisfatível}{insatisfatíveis}
+\settexttoken{tautology}{tautologia}{tautologias}
+\settexttoken{contradiction}{contradição}{contradições}
+\settexttoken{contingent}{contingente}{contingentes}
+\settexttoken{logical truth}{verdade lógica}{verdades lógicas}
+\settexttoken{logical falsehood}{falsidade lógica}{falsidades lógicas}
+\settexttoken{logical consequence}{consequência lógica}{consequências lógicas}
+\settexttoken{logical equivalence}{equivalência lógica}{equivalências lógicas}
+\settexttoken{logical validity}{validade lógica}{validades lógicas}
+\settexttoken{logical possibility}{possibilidade lógica}{possibilidades lógicas}
+\settexttoken{logical necessity}{necessidade lógica}{necessidades lógicas}
+\settexttoken{logical impossibility}{impossibilidade lógica}{impossibilidades lógicas}
+\settexttoken{free variable}{variável livre}{variáveis livres}
+\settexttoken{bound variable}{variável ligada}{variáveis ligadas}
+\settexttoken{assignment}{atribuição}{atribuições}
+\settexttoken{valuation}{valoração}{valorações}
+\settexttoken{value}{valor}{valores}
+\definetoken{a}{value}{um}
+\definetoken{A}{value}{Um}
+\settexttoken{truth value}{valor de verdade}{valores de verdade}
+\settexttoken{truth assignment}{atribuição de verdade}{atribuições de verdade}
+\settexttoken{truth function}{função de verdade}{funções de verdade}
+\settexttoken{truth table}{tabela-verdade}{tabelas-verdade}
+\settexttoken{Turing machine}{máquina de Turing}{máquinas de Turing}
+\settexttoken{computable}{computável}{computáveis}
+\settexttoken{computability}{computabilidade}{computabilidades}
+\settexttoken{undecidable}{indecidível}{indecidíveis}
+\settexttoken{unsolvable}{insolúvel}{insolúveis}
+\settexttoken{halting problem}{problema da parada}{problemas da parada}
+\settexttoken{decision problem}{problema da decisão}{problemas da decisão}
+\settexttoken{member}{membro}{membros}
+\settexttoken{subset}{subconjunto}{subconjuntos}
+\settexttoken{superset}{superconjunto}{superconjuntos}
+\settexttoken{union}{união}{uniões}
+\settexttoken{intersection}{interseção}{interseções}
+\settexttoken{power set}{conjunto potência}{conjuntos potência}
+\settexttoken{Cartesian product}{produto cartesiano}{produtos cartesianos}
+\settexttoken{relation}{relação}{relações}
+\settexttoken{function symbol}{símbolo de função}{símbolos de função}
+\settexttoken{injective}{injetora}{injetoras}
+\settexttoken{surjective}{sobrejetora}{sobrejetoras}
+\settexttoken{bijective}{bijetora}{bijetoras}
+\settexttoken{injection}{injeção}{injeções}
+\settexttoken{surjection}{sobrejeção}{sobrejeções}
+\settexttoken{bijection}{bijeção}{bijeções}
+\settexttoken{derive}{deriva}{derivam}
+\settexttoken{signed formula}{fórmula assinada}{fórmulas assinadas}
+\settexttoken{inverse}{inversa}{inversas}
+\settexttoken{composition}{composição}{composições}
+\settexttoken{partial function}{função parcial}{funções parciais}
+\settexttoken{total function}{função total}{funções totais}
+\settexttoken{equinumerous}{equinumeroso}{equinumerosos}
+\settexttoken{isomorphic}{isomorfo}{isomorfos}
+\settexttoken{isomorphism}{isomorfismo}{isomorfismos}
+\settexttoken{homomorphic}{homomorfo}{homomorfos}
+\settexttoken{homomorphism}{homomorfismo}{homomorfismos}
+\settexttoken{embedding}{imersão}{imersões}
+\settexttoken{automorphism}{automorfismo}{automorfismos}
+\settexttoken{isomorphism type}{tipo de isomorfismo}{tipos de isomorfismo}
+\settexttoken{isomorphism class}{classe de isomorfismo}{classes de isomorfismo}
+\settexttoken{order type}{tipo de ordem}{tipos de ordem}
+\settexttoken{order isomorphism}{isomorfismo de ordem}{isomorfismos de ordem}
+\settexttoken{order embedding}{imersão de ordem}{imersões de ordem}
+\settexttoken{order preserving}{preservador de ordem}{preservadores de ordem}
+\settexttoken{order reflecting}{refletidor de ordem}{refletidores de ordem}
+\settexttoken{well-order}{ordem bem ordenada}{ordens bem ordenadas}
+\settexttoken{well-ordering}{bem ordenação}{bem ordenações}
+\settexttoken{well-founded}{bem fundada}{bem fundadas}
+\settexttoken{well-foundedness}{bem fundação}{bem fundações}
+\settexttoken{transitive}{transitiva}{transitivas}
+\settexttoken{reflexive}{reflexiva}{reflexivas}
+\settexttoken{symmetric}{simétrica}{simétricas}
+\settexttoken{antisymmetric}{anti-simétrica}{anti-simétricas}
+\settexttoken{asymmetric}{assimétrica}{assimétricas}
+\settexttoken{equivalence relation}{relação de equivalência}{relações de equivalência}
+\settexttoken{equivalence class}{classe de equivalência}{classes de equivalência}
+\settexttoken{partition}{partição}{partições}
+\settexttoken{quotient set}{conjunto quociente}{conjuntos quociente}
+\settexttoken{quotient map}{mapa quociente}{mapas quociente}
+\settexttoken{equivalence}{equivalência}{equivalências}
+\settexttoken{order}{ordem}{ordens}
+\settexttoken{partial order}{ordem parcial}{ordens parciais}
+\settexttoken{linear order}{ordem linear}{ordens lineares}
+\settexttoken{strict order}{ordem estrita}{ordens estritas}
+\settexttoken{preorder}{pré-ordem}{pré-ordens}
+\settexttoken{tree}{árvore}{árvores}
+\settexttoken{graph}{grafo}{grafos}
+\settexttoken{path}{caminho}{caminhos}
+\settexttoken{cycle}{ciclo}{ciclos}
+\settexttoken{connected}{conexo}{conexos}
+\settexttoken{disconnected}{desconexo}{desconexos}
+\settexttoken{component}{componente}{componentes}
+\settexttoken{connected component}{componente conexo}{componentes conexos}
+\settexttoken{leaf}{folha}{folhas}
+\settexttoken{root}{raiz}{raízes}
+\settexttoken{child}{filho}{filhos}
+\settexttoken{parent}{pai}{pais}
+\settexttoken{ancestor}{ancestral}{ancestrais}
+\settexttoken{descendant}{descendente}{descendentes}
+\settexttoken{successor}{sucessor}{sucessores}
+\settexttoken{predecessor}{predecessor}{predecessores}
+\settexttoken{immediate successor}{sucessor imediato}{sucessores imediatos}
+\settexttoken{immediate predecessor}{predecessor imediato}{predecessores imediatos}
+\settexttoken{minimal element}{elemento mínimo}{elementos mínimos}
+\settexttoken{maximal element}{elemento máximo}{elementos máximos}
+\settexttoken{least element}{menor elemento}{menores elementos}
+\settexttoken{greatest element}{maior elemento}{maiores elementos}
+\settexttoken{lower bound}{cota inferior}{cotas inferiores}
+\settexttoken{upper bound}{cota superior}{cotas superiores}
+\settexttoken{infimum}{infimo}{infimos}
+\settexttoken{supremum}{supremo}{supremos}
+\settexttoken{minimum}{mínimo}{mínimos}
+\settexttoken{maximum}{máximo}{máximos}
+\settexttoken{least upper bound}{menor cota superior}{menores cotas superiores}
+\settexttoken{greatest lower bound}{maior cota inferior}{maiores cotas inferiores}
+\settexttoken{meet}{infimo}{infimos}
+\settexttoken{join}{supremo}{supremos}
+\settexttoken{lattice}{reticulado}{reticulados}
+\settexttoken{complete lattice}{reticulado completo}{reticulados completos}
+\settexttoken{Boolean algebra}{álgebra de Boole}{álgebras de Boole}
+\settexttoken{Boolean}{booleano}{booleanos}
+\settexttoken{truth}{verdade}{verdades}
+\settexttoken{falsity}{falsidade}{falsidades}
+\settexttoken{sequent}{sequente}{sequentes}
+\settexttoken{sequent calculus}{cálculo de sequentes}{cálculos de sequentes}
+\settexttoken{natural deduction}{dedução natural}{deduções naturais}
+\settexttoken{tableau}{tableau}{tableaux}
+\settexttoken{axiomatic derivation}{derivação axiomática}{derivações axiomáticas}
+\settexttoken{axiom}{axioma}{axiomas}
+\settexttoken{rule}{regra}{regras}
+\settexttoken{inference rule}{regra de inferência}{regras de inferência}
+\settexttoken{structural rule}{regra estrutural}{regras estruturais}
+\settexttoken{logical rule}{regra lógica}{regras lógicas}
+\settexttoken{quantifier rule}{regra de quantificador}{regras de quantificador}
+\settexttoken{propositional rule}{regra proposicional}{regras proposicionais}
+\settexttoken{identity}{identidade}{identidades}
+\settexttoken{identity predicate}{predicado de identidade}{predicados de identidade}
+\settexttoken{discharge}{descarrega}{descarregam}
+\settexttoken{discharged}{descarregada}{descarregadas}
+\settexttoken{undischarged}{não descarregada}{não descarregadas}
+\settexttoken{main operator}{operador principal}{operadores principais}
+\settexttoken{logical symbol}{símbolo lógico}{símbolos lógicos}
+\settexttoken{non-logical symbol}{símbolo não lógico}{símbolos não lógicos}
+\settexttoken{signature}{assinatura}{assinaturas}
+\settexttoken{alphabet}{alfabeto}{alfabetos}
+\settexttoken{term}{termo}{termos}
+\settexttoken{atomic formula}{fórmula atômica}{fórmulas atômicas}
+\settexttoken{molecular formula}{fórmula molecular}{fórmulas moleculares}
+\settexttoken{open formula}{fórmula aberta}{fórmulas abertas}
+\settexttoken{closed formula}{fórmula fechada}{fórmulas fechadas}
+\settexttoken{universal quantifier}{quantificador universal}{quantificadores universais}
+\settexttoken{existential quantifier}{quantificador existencial}{quantificadores existenciais}
+\settexttoken{negation}{negação}{negações}
+\settexttoken{conjunction}{conjunção}{conjunções}
+\settexttoken{disjunction}{disjunção}{disjunções}
+\settexttoken{conditional}{condicional}{condicionais}
+\settexttoken{biconditional}{bicondicional}{bicondicionais}
+\settexttoken{universal generalization}{generalização universal}{generalizações universais}
+\settexttoken{existential introduction}{introdução existencial}{introduções existenciais}
+\settexttoken{universal instantiation}{instanciação universal}{instanciações universais}
+\settexttoken{existential elimination}{eliminação existencial}{eliminações existenciais}
+\settexttoken{modus ponens}{modus ponens}{modus ponens}
+\settexttoken{modus tollens}{modus tollens}{modus tollens}
+\settexttoken{hypothetical syllogism}{silogismo hipotético}{silogismos hipotéticos}
+\settexttoken{disjunctive syllogism}{silogismo disjuntivo}{silogismos disjuntivos}
+\settexttoken{constructive dilemma}{dilema construtivo}{dilemas construtivos}
+\settexttoken{destructive dilemma}{dilema destrutivo}{dilemas destrutivos}
+\settexttoken{reductio}{redução ao absurdo}{reduções ao absurdo}
+\settexttoken{proof by contradiction}{prova por contradição}{provas por contradição}
+\settexttoken{proof by cases}{prova por casos}{provas por casos}
+\settexttoken{induction}{indução}{induções}
+\settexttoken{mathematical induction}{indução matemática}{induções matemáticas}
+\settexttoken{strong induction}{indução forte}{induções fortes}
+\settexttoken{structural induction}{indução estrutural}{induções estruturais}
+\settexttoken{recursive definition}{definição recursiva}{definições recursivas}
+\settexttoken{inductive definition}{definição indutiva}{definições indutivas}
+\settexttoken{base case}{caso base}{casos base}
+\settexttoken{induction step}{passo de indução}{passos de indução}
+\settexttoken{induction hypothesis}{hipótese de indução}{hipóteses de indução}
+\settexttoken{compactness}{compacidade}{compacidades}
+\settexttoken{completeness}{completude}{completudes}
+\settexttoken{soundness}{correção}{correções}
+\settexttoken{Löwenheim-Skolem theorem}{teorema de Löwenheim-Skolem}{teoremas de Löwenheim-Skolem}
+\settexttoken{Gödel's completeness theorem}{teorema da completude de Gödel}{teoremas da completude de Gödel}
+\settexttoken{Gödel's incompleteness theorem}{teorema da incompletude de Gödel}{teoremas da incompletude de Gödel}
+\settexttoken{Church-Turing thesis}{tese de Church-Turing}{teses de Church-Turing}
+\settexttoken{universal Turing machine}{máquina de Turing universal}{máquinas de Turing universais}
+\settexttoken{configuration}{configuração}{configurações}
+\settexttoken{computation}{computação}{computações}
+\settexttoken{halting state}{estado de parada}{estados de parada}
+\settexttoken{tape}{fita}{fitas}
+\settexttoken{head}{cabeça}{cabeças}
+\settexttoken{state}{estado}{estados}
+\settexttoken{transition function}{função de transição}{funções de transição}
+\settexttoken{instruction}{instrução}{instruções}
+\settexttoken{program}{programa}{programas}
+\settexttoken{code}{código}{códigos}
+\settexttoken{encoding}{codificação}{codificações}
+\settexttoken{decoding}{decodificação}{decodificações}
+\settexttoken{representation}{representação}{representações}
+\settexttoken{representable}{representável}{representáveis}
+\settexttoken{recursive}{recursiva}{recursivas}
+\settexttoken{primitive recursive}{recursiva primitiva}{recursivas primitivas}
+\settexttoken{mu-recursive}{mu-recursiva}{mu-recursivas}
+\settexttoken{partial recursive}{recursiva parcial}{recursivas parciais}
+\settexttoken{total recursive}{recursiva total}{recursivas totais}
+\settexttoken{recursive function}{função recursiva}{funções recursivas}
+\settexttoken{recursive set}{conjunto recursivo}{conjuntos recursivos}
+\settexttoken{recursively enumerable}{recursivamente enumerável}{recursivamente enumeráveis}
+\settexttoken{r.e.}{r.e.}{r.e.}
+\settexttoken{diagonalization}{diagonalização}{diagonalizações}
+\settexttoken{diagonal argument}{argumento diagonal}{argumentos diagonais}
+\settexttoken{cantor's theorem}{teorema de Cantor}{teoremas de Cantor}
+\settexttoken{schroder-bernstein theorem}{teorema de Schröder-Bernstein}{teoremas de Schröder-Bernstein}
+\settexttoken{pairing function}{função de emparelhamento}{funções de emparelhamento}
+\settexttoken{enumeration}{enumeração}{enumerações}
+\settexttoken{enumerable set}{conjunto enumerável}{conjuntos enumeráveis}
+\settexttoken{countable set}{conjunto contável}{conjuntos contáveis}
+\settexttoken{uncountable set}{conjunto incontável}{conjuntos incontáveis}
+\settexttoken{finite}{finito}{finitos}
+\settexttoken{infinite}{infinito}{infinitos}
+\settexttoken{denumerable}{infinito contável}{infinitos contáveis}
+\settexttoken{cardinality}{cardinalidade}{cardinalidades}
+\settexttoken{cardinal number}{número cardinal}{números cardinais}
+\settexttoken{ordinal number}{número ordinal}{números ordinais}
+\settexttoken{natural number}{número natural}{números naturais}
+\settexttoken{integer}{inteiro}{inteiros}
+\settexttoken{rational number}{número racional}{números racionais}
+\settexttoken{real number}{número real}{números reais}
+\settexttoken{complex number}{número complexo}{números complexos}
+\settexttoken{string}{cadeia}{cadeias}
+\settexttoken{sequence}{sequência}{sequências}
+\settexttoken{tuple}{tupla}{tuplas}
+\settexttoken{ordered pair}{par ordenado}{pares ordenados}
+\settexttoken{ordered tuple}{tupla ordenada}{tuplas ordenadas}
+\settexttoken{extensionality}{extensionalidade}{extensionalidades}
+\settexttoken{intensionality}{intensionalidade}{intensionalidades}
+\settexttoken{extension}{extensão}{extensões}
+\settexttoken{intension}{intensão}{intensões}
+\settexttoken{property}{propriedade}{propriedades}
+\settexttoken{predicate}{predicado}{predicados}
+\settexttoken{object}{objeto}{objetos}
+\settexttoken{individual}{indivíduo}{indivíduos}
+\settexttoken{entity}{entidade}{entidades}
+\settexttoken{existence}{existência}{existências}
+\settexttoken{uniqueness}{unicidade}{unicidades}
+\settexttoken{definite description}{descrição definida}{descrições definidas}
+\settexttoken{indefinite description}{descrição indefinida}{descrições indefinidas}
+\settexttoken{name}{nome}{nomes}
+\settexttoken{reference}{referência}{referências}
+\settexttoken{meaning}{significado}{significados}
+\settexttoken{sense}{sentido}{sentidos}
+\settexttoken{denotation}{denotação}{denotações}
+\settexttoken{connotation}{conotação}{conotações}
+\settexttoken{extensional}{extensional}{extensionais}
+\settexttoken{intensional}{intensional}{intensionais}
+\settexttoken{context}{contexto}{contextos}
+\settexttoken{use}{uso}{usos}
+\settexttoken{mention}{menção}{menções}
+\settexttoken{use-mention distinction}{distinção uso-menção}{distinções uso-menção}
+\settexttoken{metalanguage}{metalíngua}{metalínguas}
+\settexttoken{object language}{linguagem-objeto}{linguagens-objeto}
+\settexttoken{syntax}{sintaxe}{sintaxes}
+\settexttoken{semantics}{semântica}{semânticas}
+\settexttoken{pragmatics}{pragmática}{pragmáticas}
+\settexttoken{proof theory}{teoria da prova}{teorias da prova}
+\settexttoken{model theory}{teoria dos modelos}{teorias dos modelos}
+\settexttoken{metalogic}{metalógica}{metalógicas}
+\settexttoken{logic}{lógica}{lógicas}
+\settexttoken{formal logic}{lógica formal}{lógicas formais}
+\settexttoken{informal logic}{lógica informal}{lógicas informais}
+\settexttoken{symbolic logic}{lógica simbólica}{lógicas simbólicas}
+\settexttoken{mathematical logic}{lógica matemática}{lógicas matemáticas}
+\settexttoken{philosophical logic}{lógica filosófica}{lógicas filosóficas}
+\settexttoken{classical logic}{lógica clássica}{lógicas clássicas}
+\settexttoken{non-classical logic}{lógica não clássica}{lógicas não clássicas}
+\settexttoken{intuitionistic logic}{lógica intuicionista}{lógicas intuicionistas}
+\settexttoken{modal logic}{lógica modal}{lógicas modais}
+\settexttoken{second-order logic}{lógica de segunda ordem}{lógicas de segunda ordem}
+\settexttoken{higher-order logic}{lógica de ordem superior}{lógicas de ordem superior}
+\settexttoken{many-sorted logic}{lógica de muitas sortes}{lógicas de muitas sortes}
+\settexttoken{first-order logic}{lógica de primeira ordem}{lógicas de primeira ordem}
+\settexttoken{propositional logic}{lógica proposicional}{lógicas proposicionais}
+\settexttoken{predicate logic}{lógica de predicados}{lógicas de predicados}
+\settexttoken{quantificational logic}{lógica quantificacional}{lógicas quantificacionais}
+\settexttoken{monadic logic}{lógica monádica}{lógicas monádicas}
+\settexttoken{polyadic logic}{lógica poliádica}{lógicas poliádicas}
+\settexttoken{free logic}{lógica livre}{lógicas livres}
+\settexttoken{empty domain}{domínio vazio}{domínios vazios}
+\settexttoken{non-empty domain}{domínio não vazio}{domínios não vazios}
+\settexttoken{covered structure}{estrutura coberta}{estruturas cobertas}
+\settexttoken{uncovered structure}{estrutura não coberta}{estruturas não cobertas}
+\settexttoken{standard model}{modelo padrão}{modelos padrão}
+\settexttoken{non-standard model}{modelo não padrão}{modelos não padrão}
+\settexttoken{intended model}{modelo pretendido}{modelos pretendidos}
+\settexttoken{unintended model}{modelo não pretendido}{modelos não pretendidos}
+\settexttoken{canonical model}{modelo canônico}{modelos canônicos}
+\settexttoken{Henkin model}{modelo de Henkin}{modelos de Henkin}
+\settexttoken{Henkin expansion}{expansão de Henkin}{expansões de Henkin}
+\settexttoken{Henkin constant}{constante de Henkin}{constantes de Henkin}
+\settexttoken{witness}{testemunha}{testemunhas}
+\settexttoken{witnessing constant}{constante testemunha}{constantes testemunha}
+\settexttoken{Skolem function}{função de Skolem}{funções de Skolem}
+\settexttoken{Skolemization}{esquemização de Skolem}{esquemizações de Skolem}
+\settexttoken{Skolem normal form}{forma normal de Skolem}{formas normais de Skolem}
+\settexttoken{prenex normal form}{forma normal pré-existencial}{formas normais pré-existenciais}
+\settexttoken{clausal form}{forma clausal}{formas clausais}
+\settexttoken{clause}{cláusula}{cláusulas}
+\settexttoken{literal}{literal}{literais}
+\settexttoken{positive literal}{literal positivo}{literais positivos}
+\settexttoken{negative literal}{literal negativo}{literais negativos}
+\settexttoken{unification}{unificação}{unificações}
+\settexttoken{resolution}{resolução}{resoluções}
+\settexttoken{refutation}{refutação}{refutações}
+\settexttoken{resolution refutation}{refutação por resolução}{refutações por resolução}
+\settexttoken{ground}{terrestre}{terrestres}
+\settexttoken{ground term}{termo terrestre}{termos terrestres}
+\settexttoken{ground formula}{fórmula terrestre}{fórmulas terrestres}
+\settexttoken{ground instance}{instância terrestre}{instâncias terrestres}
+\settexttoken{instance}{instância}{instâncias}
+\settexttoken{substitution instance}{instância de substituição}{instâncias de substituição}
+\settexttoken{uniform substitution}{substituição uniforme}{substituições uniformes}
+\settexttoken{simultaneous substitution}{substituição simultânea}{substituições simultâneas}
+\settexttoken{composition of substitutions}{composição de substituições}{composições de substituições}
+\settexttoken{free for}{livre para}{livres para}
+\settexttoken{capture}{captura}{capturas}
+\settexttoken{variable capture}{captura de variável}{capturas de variável}
+\settexttoken{alphabetic variant}{variante alfabética}{variantes alfabéticas}
+\settexttoken{alpha-equivalence}{alfa-equivalência}{alfa-equivalências}
+\settexttoken{beta-reduction}{beta-redução}{beta-reduções}
+\settexttoken{eta-reduction}{eta-redução}{eta-reduções}
+\settexttoken{lambda abstraction}{abstração lambda}{abstrações lambda}
+\settexttoken{lambda term}{termo lambda}{termos lambda}
+\settexttoken{lambda calculus}{cálculo lambda}{cálculos lambda}
+\settexttoken{combinator}{combinador}{combinadores}
+\settexttoken{fixed point}{ponto fixo}{pontos fixos}
+\settexttoken{fixed point combinator}{combinador de ponto fixo}{combinadores de ponto fixo}
+\settexttoken{recursion}{recursão}{recursões}
+\settexttoken{recursive call}{chamada recursiva}{chamadas recursivas}
+\settexttoken{base case}{caso base}{casos base}
+\settexttoken{recursive case}{caso recursivo}{casos recursivos}
+\settexttoken{well-founded relation}{relação bem fundada}{relações bem fundadas}
+\settexttoken{well-founded induction}{indução bem fundada}{induções bem fundadas}
+\settexttoken{structural recursion}{recursão estrutural}{recursões estruturais}
+\settexttoken{primitive recursion}{recursão primitiva}{recursões primitivas}
+\settexttoken{course-of-values induction}{indução por curso de valores}{induções por curso de valores}
+\settexttoken{transfinite induction}{indução transfinita}{induções transfinitas}
+\settexttoken{transfinite recursion}{recursão transfinita}{recursões transfinitas}
+\settexttoken{ordinal}{ordinal}{ordinais}
+\settexttoken{successor ordinal}{ordinal sucessor}{ordinais sucessores}
+\settexttoken{limit ordinal}{ordinal limite}{ordinais limite}
+\settexttoken{successor function}{função sucessora}{funções sucessoras}
+\settexttoken{zero}{zero}{zeros}
+\settexttoken{successor}{sucessor}{sucessores}
+\settexttoken{predecessor}{predecessor}{predecessores}
+\settexttoken{addition}{adição}{adições}
+\settexttoken{multiplication}{multiplicação}{multiplicações}
+\settexttoken{exponentiation}{exponenciação}{exponenciações}
+\settexttoken{arithmetic}{aritmética}{aritméticas}
+\settexttoken{Peano arithmetic}{aritmética de Peano}{aritméticas de Peano}
+\settexttoken{Robinson arithmetic}{aritmética de Robinson}{aritméticas de Robinson}
+\settexttoken{Presburger arithmetic}{aritmética de Presburger}{aritméticas de Presburger}
+\settexttoken{true arithmetic}{aritmética verdadeira}{aritméticas verdadeiras}
+\settexttoken{standard arithmetic}{aritmética padrão}{aritméticas padrão}
+\settexttoken{non-standard arithmetic}{aritmética não padrão}{aritméticas não padrão}
+\settexttoken{omega}{ômega}{ômegas}
+\settexttoken{omega-1}{ômega menos um}{ômegas menos um}
+\settexttoken{omega+1}{ômega mais um}{ômegas mais um}
+\settexttoken{omega-squared}{ômega ao quadrado}{ômegas ao quadrado}
+\settexttoken{omega-cubed}{ômega ao cubo}{ômegas ao cubo}
+\settexttoken{omega-to-the-omega}{ômega à ômega}{ômegas à ômega}
+\settexttoken{epsilon-zero}{épsilon zero}{épsilon zero}
+\settexttoken{epsilon-one}{épsilon um}{épsilon um}
+\settexttoken{zeta-zero}{zeta zero}{zeta zero}
+\settexttoken{eta-zero}{eta zero}{eta zero}
+\settexttoken{phi-zero}{phi zero}{phi zero}
+\settexttoken{phi-one}{phi um}{phi um}
+\settexttoken{phi-two}{phi dois}{phi dois}
+\settexttoken{phi-omega}{phi ômega}{phi ômegas}
+\settexttoken{phi-epsilon-zero}{phi épsilon zero}{phi épsilon zero}
+\settexttoken{phi-epsilon-one}{phi épsilon um}{phi épsilon um}
+\settexttoken{phi-zeta-zero}{phi zeta zero}{phi zeta zero}
+\settexttoken{phi-eta-zero}{phi eta zero}{phi eta zero}
+\settexttoken{aleph-zero}{aleph zero}{aleph zero}
+\settexttoken{aleph-one}{aleph um}{aleph um}
+\settexttoken{aleph-two}{aleph dois}{aleph dois}
+\settexttoken{aleph-omega}{aleph ômega}{aleph ômegas}
+\settexttoken{beth-zero}{beth zero}{beth zero}
+\settexttoken{beth-one}{beth um}{beth um}
+\settexttoken{beth-two}{beth dois}{beth dois}
+\settexttoken{beth-omega}{beth ômega}{beth ômegas}
+\settexttoken{continuum hypothesis}{hipótese do contínuo}{hipóteses do contínuo}
+\settexttoken{generalized continuum hypothesis}{hipótese generalizada do contínuo}{hipóteses generalizadas do contínuo}
+\settexttoken{axiom of choice}{axioma da escolha}{axiomas da escolha}
+\settexttoken{axiom of extensionality}{axioma da extensionalidade}{axiomas da extensionalidade}
+\settexttoken{axiom of pairing}{axioma do par}{axiomas do par}
+\settexttoken{axiom of union}{axioma da união}{axiomas da união}
+\settexttoken{axiom of power set}{axioma do conjunto potência}{axiomas do conjunto potência}
+\settexttoken{axiom of infinity}{axioma do infinito}{axiomas do infinito}
+\settexttoken{axiom schema of replacement}{esquema axiomático de substituição}{esquemas axiomáticos de substituição}
+\settexttoken{axiom schema of separation}{esquema axiomático de separação}{esquemas axiomáticos de separação}
+\settexttoken{axiom of foundation}{axioma da fundação}{axiomas da fundação}
+\settexttoken{axiom of regularity}{axioma da regularidade}{axiomas da regularidade}
+\settexttoken{axiom of determinacy}{axioma da determinidade}{axiomas da determinidade}
+\settexttoken{axiom of constructibility}{axioma da construtibilidade}{axiomas da construtibilidade}
+\settexttoken{ZFC}{ZFC}{ZFC}
+\settexttoken{ZF}{ZF}{ZF}
+\settexttoken{Z}{Z}{Z}
+\settexttoken{PA}{PA}{PA}
+\settexttoken{Q}{Q}{Q}
+\settexttoken{PRA}{PRA}{PRA}
+\settexttoken{HA}{HA}{HA}
+\settexttoken{ACA}{ACA}{ACA}
+\settexttoken{ATR}{ATR}{ATR}
+\settexttoken{Pi-1-1-CA}{Pi-1-1-CA}{Pi-1-1-CA}
+\settexttoken{Sigma-1-1-CA}{Sigma-1-1-CA}{Sigma-1-1-CA}
+\settexttoken{Delta-1-1-CA}{Delta-1-1-CA}{Delta-1-1-CA}
+\settexttoken{Pi-2-1-CA}{Pi-2-1-CA}{Pi-2-1-CA}
+\settexttoken{Sigma-2-1-CA}{Sigma-2-1-CA}{Sigma-2-1-CA}
+\settexttoken{Delta-2-1-CA}{Delta-2-1-CA}{Delta-2-1-CA}
+\settexttoken{Pi-n-1-CA}{Pi-n-1-CA}{Pi-n-1-CA}
+\settexttoken{Sigma-n-1-CA}{Sigma-n-1-CA}{Sigma-n-1-CA}
+\settexttoken{Delta-n-1-CA}{Delta-n-1-CA}{Delta-n-1-CA}
+\settexttoken{Pi-omega-1-CA}{Pi-omega-1-CA}{Pi-omega-1-CA}
+\settexttoken{Sigma-omega-1-CA}{Sigma-omega-1-CA}{Sigma-omega-1-CA}
+\settexttoken{Delta-omega-1-CA}{Delta-omega-1-CA}{Delta-omega-1-CA}
+
+% Tokens adicionais usados na tradução PT-BR
+\settexttoken{operator}{operador}{operadores}
+\settexttoken{connective}{conectivo}{conectivos}
+\settexttoken{quantifier}{quantificador}{quantificadores}
+
+% --- Artigos indefinidos PT-BR para tokens ---
+% \settexttoken sempre define o artigo padrão "a"/"A" (inglês); aqui
+% sobrescrevemos com o artigo indefinido correto em português, conforme
+% o gênero do termo traduzido. (element e value já foram definidos acima.)
+% Feminino: uma/Uma
+\definetoken{a}{formula}{uma}\definetoken{A}{formula}{Uma}
+\definetoken{a}{subformula}{uma}\definetoken{A}{subformula}{Uma}
+\definetoken{a}{sentence}{uma}\definetoken{A}{sentence}{Uma}
+\definetoken{a}{variable}{uma}\definetoken{A}{variable}{Uma}
+\definetoken{a}{structure}{uma}\definetoken{A}{structure}{Uma}
+\definetoken{a}{language}{uma}\definetoken{A}{language}{Uma}
+\definetoken{a}{derivation}{uma}\definetoken{A}{derivation}{Uma}
+\definetoken{a}{proof}{uma}\definetoken{A}{proof}{Uma}
+\definetoken{a}{theory}{uma}\definetoken{A}{theory}{Uma}
+\definetoken{a}{interpretation}{uma}\definetoken{A}{interpretation}{Uma}
+\definetoken{a}{relation}{uma}\definetoken{A}{relation}{Uma}
+\definetoken{a}{signature}{uma}\definetoken{A}{signature}{Uma}
+\definetoken{a}{rule}{uma}\definetoken{A}{rule}{Uma}
+\definetoken{a}{free variable}{uma}\definetoken{A}{free variable}{Uma}
+\definetoken{a}{bound variable}{uma}\definetoken{A}{bound variable}{Uma}
+\definetoken{a}{valuation}{uma}\definetoken{A}{valuation}{Uma}
+% Masculino: um/Um
+\definetoken{a}{constant}{um}\definetoken{A}{constant}{Um}
+\definetoken{a}{function}{um}\definetoken{A}{function}{Um}
+\definetoken{a}{predicate}{um}\definetoken{A}{predicate}{Um}
+\definetoken{a}{domain}{um}\definetoken{A}{domain}{Um}
+\definetoken{a}{term}{um}\definetoken{A}{term}{Um}
+\definetoken{a}{model}{um}\definetoken{A}{model}{Um}
+\definetoken{a}{sequent}{um}\definetoken{A}{sequent}{Um}
+\definetoken{a}{tableau}{um}\definetoken{A}{tableau}{Um}
+\definetoken{a}{axiom}{um}\definetoken{A}{axiom}{Um}
+\definetoken{a}{argument}{um}\definetoken{A}{argument}{Um}
+\definetoken{a}{member}{um}\definetoken{A}{member}{Um}
+\definetoken{a}{set}{um}\definetoken{A}{set}{Um}
+\definetoken{a}{operator}{um}\definetoken{A}{operator}{Um}
+\definetoken{a}{connective}{um}\definetoken{A}{connective}{Um}
+\definetoken{a}{quantifier}{um}\definetoken{A}{quantifier}{Um}
+\definetoken{a}{injection}{uma}\definetoken{A}{injection}{Uma}
+\definetoken{a}{surjection}{uma}\definetoken{A}{surjection}{Uma}
+\definetoken{a}{bijection}{uma}\definetoken{A}{bijection}{Uma}
+\definetoken{a}{signed formula}{uma}\definetoken{A}{signed formula}{Uma}
+
+% --- Localização PT da macro \indcase (caso atômico / exercício) ---
+\RenewDocumentCommand \indcase { s t{!} m m +m }{%
+  \DeclareDocumentMacro \indfrm {#3}%
+  \DeclareDocumentMacro \indfrmp {#3}%
+  \DeclareDocumentMacro \indcomplex {#4}%
+  \IfBooleanTF{#1}
+     {$#3$ é atômica: }{$#3 \ident #4$: }
+  \IfBooleanTF{#2}
+     {Exercício.}
+     {#5}}
+
+% --- Referências cruzadas em português (cleveref) ---
+\AtBeginDocument{%
+  \crefname{section}{seção}{seções}%
+  \Crefname{section}{Seção}{Seções}%
+  \crefname{chapter}{capítulo}{capítulos}%
+  \Crefname{chapter}{Capítulo}{Capítulos}%
+  \crefname{part}{parte}{partes}%
+  \Crefname{part}{Parte}{Partes}%
+  \crefname{appendix}{apêndice}{apêndices}%
+  \Crefname{appendix}{Apêndice}{Apêndices}%
+  % problem: faltava a forma minúscula (\cref) — o EN usa "problem N" em
+  % minúsculas nas referências a meio de frase
+  \crefname{prob}{problema}{problemas}%
+  \Crefname{prob}{Problema}{Problemas}%
+}

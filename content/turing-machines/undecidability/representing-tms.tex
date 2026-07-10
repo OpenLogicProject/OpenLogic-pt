@@ -6,96 +6,97 @@
 
 \begin{document}
 
-\olfileid{tur}{und}{rep}
-\olsection{Representing Turing Machines}
+\olfileid[pt]{tur}{und}{rep}
+\olsection{Representando Máquinas de Turing}
 
 \begin{explain}
-In order to represent Turing machines and their behavior by !!a{sentence}
-of first-order logic, we have to define a suitable language. The
-language consists of two parts: !!{predicate}s for describing
-configurations of the machine, and expressions for numbering execution
-steps (``moments'') and positions on the tape.
+A fim de representar máquinas de Turing e seu comportamento por meio de
+!!a{sentence} da lógica de primeira ordem, temos de definir uma
+linguagem adequada. A linguagem consiste em duas partes: !!{predicate}s
+para descrever configurações da máquina, e expressões para numerar os
+passos de execução (``momentos'') e as posições na fita.
 
-We introduce two kinds of !!{predicate}s, both of them 2-place: For
-each state~$q$, !!a{predicate}~$\Obj Q_q$, and for each tape
-symbol~$\sigma$, !!a{predicate}~$\Obj S_\sigma$. The former allow us
-to describe the state of~$M$ and the position of its tape head, the
-latter allow us to describe the contents of the tape.  
+Introduzimos dois tipos de !!{predicate}s, ambos de 2 lugares: para
+cada estado~$q$, !!a{predicate}~$\Obj Q_q$, e para cada símbolo de
+fita~$\sigma$, !!a{predicate}~$\Obj S_\sigma$. Os primeiros
+permitem-nos descrever o estado de~$M$ e a posição de seu cabeçote de
+fita; os segundos permitem-nos descrever o conteúdo da fita.
 
-In order to express the positions of the tape head and the number of
-steps executed, we need a way to express numbers. This is done using
-!!a{constant}~$\Obj 0$, and a $1$-place function~$\prime$, the
-successor function. By convention it is written \emph{after} its
-argument (and we leave out the parentheses).
+A fim de exprimir as posições do cabeçote de fita e o número de passos
+executados, precisamos de uma maneira de exprimir números. Isso é
+feito usando !!a{constant}~$\Obj 0$ e uma função de $1$ lugar~$\prime$,
+a função sucessor. Por convenção, ela é escrita \emph{depois} de seu
+argumento (e omitimos os parênteses).
 
-For each number $n$ there is a canonical term~$\num{n}$, the
-\emph{numeral} for~$n$, which represents it in~$\Lang L_M$. $\num{0}$
-is $\Obj 0$, $\num{1}$ is $\Obj 0'$, $\num{2}$ is $\Obj 0''$, and so
-on. More formally:
+Para cada número $n$ há um termo canônico~$\num{n}$, o \emph{numeral}
+de~$n$, que o representa em~$\Lang L_M$. $\num{0}$ é $\Obj 0$, $\num{1}$
+é $\Obj 0'$, $\num{2}$ é $\Obj 0''$, e assim por diante. Mais
+formalmente:
 \begin{align*}
 \num{0} & = \Obj 0 \\
 \num{n+1} &= \num{n}'
 \end{align*}
-The term $\num{0}$, O.s.\@, $\Obj 0$ names the leftmost position on the
-tape as well as the time before the first execution step (the initial
-configuration). The term $\num{1}$, O.s.\@, $\Obj 0'$ names the square
-to the right of the leftmost square, and the time after the first
-execution step, and so on.
+O termo $\num{0}$, isto é, $\Obj 0$, nomeia a posição mais à esquerda
+na fita, bem como o instante anterior ao primeiro passo de execução (a
+configuração inicial). O termo $\num{1}$, isto é, $\Obj 0'$, nomeia o
+quadrado à direita do quadrado mais à esquerda, e o instante posterior
+ao primeiro passo de execução, e assim por diante.
 
-We also introduce !!a{predicate}~$<$ to express both the ordering of
-tape positions (when it means ``to the left of'') and execution steps
-(then it means ``before'').
+Também introduzimos !!a{predicate}~$<$ para exprimir tanto a ordenação
+das posições na fita (quando significa ``à esquerda de'') quanto a dos
+passos de execução (caso em que significa ``antes'').
 
-Once we have the language in place, we list the ``axioms'' of $!T(M,
-w)$, O.s.\@, the !!{sentence}s which, taken together, describe the
-behavior of~$M$ when run on input~$w$.  There will be !!{sentence}s
-which lay down conditions on $\Obj 0$, $\prime$, and $<$,
-!!{sentence}s that describes the input configuration, and
-!!{sentence}s that describe what the configuration of $M$ is after it
-executes a particular instruction.
+Uma vez que tenhamos a linguagem montada, listamos os ``axiomas'' de
+$!T(M, w)$, isto é, as !!{sentence}s que, tomadas em conjunto,
+descrevem o comportamento de~$M$ quando executada na entrada~$w$.
+Haverá !!{sentence}s que estabelecem condições sobre $\Obj 0$,
+$\prime$ e $<$, !!{sentence}s que descrevem a configuração de entrada,
+e !!{sentence}s que descrevem qual é a configuração de $M$ após
+executar uma instrução particular.
 \end{explain}
 
 \begin{defn}
   \ollabel{defn:tm-descr}
-Given a Turing machine $M = \tuple{Q, \Sigma, q_0, \delta}$, the
-language~$\Lang L_M$ consists of:
+Dada uma máquina de Turing $M = \tuple{Q, \Sigma, q_0, \delta}$, a
+linguagem~$\Lang L_M$ consiste em:
 \begin{enumerate}
-\item A two-place !!{predicate} $\Obj Q_q(x, y)$ for every state~$q \in
-  Q$.  Intuitively, $\Obj Q_q(\num{m}, \num{n})$ expresses ``after $n$
-  steps, $M$ is in state~$q$ scanning the $m$th square.''
-\item A two-place !!{predicate} $\Obj S_\sigma(x, y)$ for every
-  symbol~$\sigma\in \Sigma$.  Intuitively, $\Obj S_\sigma(\num{m},
-  \num{n})$ expresses ``after $n$ steps, the $m$th square contains
-  symbol~$\sigma$.''
-\item A !!{constant} $\Obj 0$
-\item A one-place !!{function} $\prime$
-\item A two-place !!{predicate} $<$
+\item Um !!{predicate} de dois lugares $\Obj Q_q(x, y)$ para todo
+  estado~$q \in Q$.  Intuitivamente, $\Obj Q_q(\num{m}, \num{n})$
+  exprime ``após $n$ passos, $M$ está no estado~$q$ examinando o
+  $m$-ésimo quadrado.''
+\item Um !!{predicate} de dois lugares $\Obj S_\sigma(x, y)$ para todo
+  símbolo~$\sigma\in \Sigma$.  Intuitivamente, $\Obj S_\sigma(\num{m},
+  \num{n})$ exprime ``após $n$ passos, o $m$-ésimo quadrado contém o
+  símbolo~$\sigma$.''
+\item Um !!{constant} $\Obj 0$
+\item Um !!{function} de um lugar $\prime$
+\item Um !!{predicate} de dois lugares $<$
 \end{enumerate}
 \end{defn}
 
-The !!{sentence}s describing the operation of the Turing machine~$M$ on
-input $w = \sigma_{i_1}\dots\sigma_{i_k}$ are the following:
+As !!{sentence}s que descrevem a operação da máquina de Turing~$M$ na
+entrada $w = \sigma_{i_1}\dots\sigma_{i_k}$ são as seguintes:
 \begin{enumerate}
-\item Axioms describing numbers and~$<$:
+\item Axiomas que descrevem números e~$<$:
 \begin{enumerate}
-\item !!^a{sentence} that says that every number is less than its successor:
+\item !!^a{sentence} que diz que todo número é menor que seu sucessor:
 \[
 \lforall[x][x < x']
 \]
-\item !!^a{sentence} that ensures that $<$ is transitive:
+\item !!^a{sentence} que garante que $<$ é transitivo:
 \[
 \lforall[x][\lforall[y][\lforall[z][
       ((x < y \land y < z) \lif x < z)]]]
 \]
 \end{enumerate}
-\item Axioms describing the input configuration:
+\item Axiomas que descrevem a configuração de entrada:
 \begin{enumerate}
-\item After $0$~steps---before the machine starts---$M$ is in
-  the initial state~$q_0$, scanning square~$1$:
+\item Após $0$~passos---antes de a máquina começar---$M$ está no
+  estado inicial~$q_0$, examinando o quadrado~$1$:
 \[
 \Obj Q_{q_0}(\num{1}, \num{0})
 \]
-\item The first $k+1$ squares contain the symbols $\TMendtape$,
+\item Os primeiros $k+1$ quadrados contêm os símbolos $\TMendtape$,
   $\sigma_{i_1}$, \dots, $\sigma_{i_k}$:
 \[
 \Obj S_\TMendtape(\num{0}, \num{0}) \land
@@ -103,41 +104,41 @@ input $w = \sigma_{i_1}\dots\sigma_{i_k}$ are the following:
 \dots \land
 \Obj S_{\sigma_{i_k}}(\num{k}, \num{0})
 \]
-\item Otherwise, the tape is empty:
+\item Caso contrário, a fita está vazia:
 \[
 \lforall[x][(\num{k} < x \lif \Obj S_\TMblank(x, \num{0}))]
 \]
 \end{enumerate}
-\item Axioms describing the transition from one configuration to
-  the next:
+\item Axiomas que descrevem a transição de uma configuração para a
+  seguinte:
 
-For the following, let $!A(x, y)$ be the conjunction of all !!{sentence}s
-of the form
+Para o que segue, seja $!A(x, y)$ a conjunção de todas as
+!!{sentence}s da forma
 \[
 \lforall[z][
   (((z < x \lor x < z) \land \Obj S_\sigma(z, y))
   \lif \Obj S_\sigma(z, y'))]
 \]
-where $\sigma \in \Sigma$.  We use $!A(\num{m},\num{n})$ to express
-``other than at square~$m$, the tape after $n+1$ steps is the same as
-after $n$ steps.''
+em que $\sigma \in \Sigma$.  Usamos $!A(\num{m},\num{n})$ para exprimir
+``exceto no quadrado~$m$, a fita após $n+1$ passos é a mesma que após
+$n$ passos.''
 \begin{enumerate}
-\item \ollabel{rep-right} For every instruction $\delta(q_i, \sigma) =
-  \tuple{q_j, \sigma', \TMright}$, the !!{sentence}:
+\item \ollabel{rep-right} Para toda instrução $\delta(q_i, \sigma) =
+  \tuple{q_j, \sigma', \TMright}$, a !!{sentence}:
 \begin{align*}
 & \lforall[x][\lforall[y][(
    (\Obj Q_{q_i}(x, y) \land \Obj S_{\sigma}(x, y)) \lif {}]] \\
 &\qquad   (\Obj Q_{q_j}(x', y') \land \Obj S_{\sigma'}(x, y') \land
 !A(x, y)))
 \end{align*}
-This says that if, after~$y$ steps, the machine is in state~$q_i$
-scanning square~$x$ which contains symbol~$\sigma$, then after $y+1$
-steps it is scanning square~$x+1$, is in state~$q_j$, square~$x$ now
-contains~$\sigma'$, and every square other than~$x$ contains the
-same symbol as it did after~$y$ steps.
+Isto diz que se, após~$y$ passos, a máquina está no estado~$q_i$
+examinando o quadrado~$x$ que contém o símbolo~$\sigma$, então após
+$y+1$ passos ela está examinando o quadrado~$x+1$, está no
+estado~$q_j$, o quadrado~$x$ agora contém~$\sigma'$, e todo quadrado
+distinto de~$x$ contém o mesmo símbolo que continha após~$y$ passos.
 
-\item \ollabel{rep-left} For every instruction $\delta(q_i, \sigma) =
-  \tuple{q_j, \sigma', \TMleft}$, the !!{sentence}:
+\item \ollabel{rep-left} Para toda instrução $\delta(q_i, \sigma) =
+  \tuple{q_j, \sigma', \TMleft}$, a !!{sentence}:
 \begin{align*}
 & \lforall[x][\lforall[y][
     ((\Obj Q_{q_i}(x', y) \land \Obj S_{\sigma}(x', y)) \lif {}]]\\
@@ -148,24 +149,25 @@ same symbol as it did after~$y$ steps.
 & \qquad (\Obj Q_{q_j}(\num{0}, y') \land \Obj S_{\sigma'}(\num{0},
   y') \land !A(\num{0}, y)))
 \end{align*}
-Take a moment to think about how this works: now we don't start with
-``if scanning square~$x$ \dots'' but: ``if scanning square $x+1$
-\dots'' A move to the left means that in the next step the machine is
-scanning square~$x$.  But the square that is written on is~$x+1$.  We
-do it this way since we don't have subtraction or a predecessor
-function.
+Reserve um momento para pensar em como isso funciona: agora não
+começamos com ``se examinando o quadrado~$x$ \dots'', mas: ``se
+examinando o quadrado $x+1$ \dots''. Um movimento para a esquerda
+significa que no próximo passo a máquina está examinando o
+quadrado~$x$.  Mas o quadrado em que se escreve é~$x+1$.  Fazemos
+assim porque não temos subtração nem uma função predecessor.
 
-Note that numbers of the form $x+1$ are $1$, $2$, \dots, O.s.\@, this
-doesn't cover the case where the machine is scanning square~$0$ and is
-supposed to move left (which of course it can't---it just stays
-put). That special case is covered by the second conjunction: it says
-that if, after $y$ steps, the machine is scanning square~$0$ in state
-$q_i$ and square~$0$ contains symbol~$\sigma$, then after $y+1$ steps
-it's still scanning square~$0$, is now in state~$q_j$, the symbol on
-square~$0$ is $\sigma'$, and the squares other than square~$0$ contain
-the same symbols they contained ofter $y$~steps.
-\item \ollabel{rep-stay} For every instruction $\delta(q_i, \sigma) =
-  \tuple{q_j, \sigma', \TMstay}$, the !!{sentence}:
+Note que os números da forma $x+1$ são $1$, $2$, \dots, isto é, isso
+não cobre o caso em que a máquina está examinando o quadrado~$0$ e
+deveria mover-se para a esquerda (o que, é claro, não pode fazer---ela
+simplesmente permanece onde está). Esse caso especial é coberto pela
+segunda conjunção: ela diz que se, após $y$ passos, a máquina está
+examinando o quadrado~$0$ no estado $q_i$ e o quadrado~$0$ contém o
+símbolo~$\sigma$, então após $y+1$ passos ela ainda está examinando o
+quadrado~$0$, está agora no estado~$q_j$, o símbolo no quadrado~$0$ é
+$\sigma'$, e os quadrados distintos do quadrado~$0$ contêm os mesmos
+símbolos que continham após $y$~passos.
+\item \ollabel{rep-stay} Para toda instrução $\delta(q_i, \sigma) =
+  \tuple{q_j, \sigma', \TMstay}$, a !!{sentence}:
 \begin{align*}
 & \lforall[x][\lforall[y][(
    (\Obj Q_{q_i}(x, y) \land \Obj S_{\sigma}(x, y)) \lif {}]] \\
@@ -174,38 +176,38 @@ the same symbols they contained ofter $y$~steps.
 \end{align*}
 \end{enumerate}
 \end{enumerate}
-Let $!T(M, w)$ be the conjunction of all the above !!{sentence}s for Turing
-machine~$M$ and input~$w$.
+Seja $!T(M, w)$ a conjunção de todas as !!{sentence}s acima para a
+máquina de Turing~$M$ e a entrada~$w$.
 
-In order to express that~$M$ eventually halts, we have to find a
-!!{sentence} that says ``after some number of steps, the transition
-function will be undefined.''  Let $X$~be the set of all pairs
-$\tuple{q, \sigma}$ such that~$\delta(q, \sigma)$ is undefined.  Let
-$!E(M, w)$ then be the !!{sentence}
+A fim de exprimir que~$M$ eventualmente para, temos de encontrar uma
+!!{sentence} que diga ``após algum número de passos, a função de
+transição será indefinida.''  Seja $X$~o conjunto de todos os pares
+$\tuple{q, \sigma}$ tais que~$\delta(q, \sigma)$ é indefinida.  Seja
+então $!E(M, w)$ a !!{sentence}
 \[
 \lexists[x][\lexists[y][(\bigvee_{\tuple{q, \sigma} \in
       X}(\Obj Q_q(x, y) \land \Obj S_\sigma(x, y)))]]
 \]
 
-If we use a Turing machine with a designated halting state~$h$, it
-is even easier: then the !!{sentence}~$!E(M, w)$
+Se usarmos uma máquina de Turing com um estado de parada
+designado~$h$, é ainda mais fácil: então a !!{sentence}~$!E(M, w)$
 \[
 \lexists[x][\lexists[y][\Obj Q_h(x, y)]]
 \]
-expresses that the machine eventually halts.
+exprime que a máquina eventualmente para.
 
 \begin{prop}
 \ollabel{prop:mlessk}
-If $m < k$, then $!T(M, w) \Entails \num{m} < \num{k}$
+Se $m < k$, então $!T(M, w) \Entails \num{m} < \num{k}$
 \end{prop}
 
 \begin{proof}
-Exercise.
+Exercício.
 \end{proof}
 
 \begin{prob}
 Prove \olref[tur][und][rep]{prop:mlessk}.
-(Hint: use induction on $k-m$).
+(Dica: use indução em $k-m$).
 \end{prob}
 
 \end{document}

@@ -6,50 +6,50 @@
 
 \begin{document}
 
-\olfileid{tur}{mac}{tur}
-\olsection{Turing Machines}
+\olfileid[pt]{tur}{mac}{tur}
+\olsection{Máquinas de Turing}
 
 \begin{explain}
-The formal definition of what constitutes a Turing machine looks
-abstract, but is actually simple: it merely packs into one
-mathematical structure all the information needed to specify the
-workings of a Turing machine. This includes (1) which states the
-machine can be in, (2) which symbols are allowed to be on the tape, (3)
-which state the machine should start in, and (4) what the instruction
-set of the machine is.
+A definição formal do que constitui uma máquina de Turing parece
+abstrata, mas é na verdade simples: apenas reúne em uma
+estrutura matemática toda a informação necessária para especificar o
+funcionamento de uma máquina de Turing. Isso inclui (1) em quais estados a
+máquina pode estar, (2) quais símbolos são permitidos na fita, (3)
+em qual estado a máquina deve começar e (4) qual é o conjunto de instruções
+da máquina.
 \end{explain}
 
-\begin{defn}[Turing machine]
-A \emph{Turing machine} $M$ is a tuple $\langle Q, \Sigma, q_0,
-\delta\rangle$ consisting of
+\begin{defn}[Máquina de Turing]
+Uma \emph{máquina de Turing} $M$ é uma tupla $\langle Q, \Sigma, q_0,
+\delta\rangle$ consistindo de
 \begin{enumerate}
-\item a finite set of \emph{states}~$Q$,
-\item a finite \emph{alphabet} $\Sigma$ which includes $\TMendtape$ and
+\item um conjunto finito de \emph{estados}~$Q$,
+\item um \emph{alfabeto} finito $\Sigma$ que inclui $\TMendtape$ e
   $\TMblank$,
-\item an \emph{initial state}~$q_0 \in Q$,
-\item a finite \emph{instruction set}~$\delta\colon Q \times \Sigma
+\item um \emph{estado inicial}~$q_0 \in Q$,
+\item um \emph{conjunto de instruções} finito~$\delta\colon Q \times \Sigma
   \pto Q \times \Sigma \times \{\TMleft, \TMright, \TMstay\}$.
 \end{enumerate}
-The partial function~$\delta$ is also called the \emph{transition function}
-of~$M$.
+A função parcial~$\delta$ também é chamada de \emph{função de transição}
+de~$M$.
 \end{defn}
 
 \begin{explain}
-We assume that the tape is infinite in one direction only. For this
-reason it is useful to designate a special symbol~$\TMendtape$ as a
-marker for the left end of the tape. This makes it easier for Turing
-machine programs to tell when they're ``in danger'' of running off the
-tape. We could assume that this symbol is never overwritten, O.s.\@,
-that $\delta(q,\TMendtape) = \tuple{q', \TMendtape, x}$ if
-$\delta(q,\TMendtape)$ is defined. Some textbooks do this, we do not.
-You can simply be careful when constructing your Turing machine that
-it never overwrites~$\TMendtape$.  Moreover, there are cases where
-allowing such overwriting provides some convenient flexibility.
+Supomos que a fita é infinita em apenas uma direção. Por essa
+razão é útil designar um símbolo especial~$\TMendtape$ como
+marcador da extremidade esquerda da fita. Isso facilita que programas de
+máquinas de Turing saibam quando estão ``em perigo'' de sair da
+fita. Poderíamos supor que esse símbolo nunca é sobrescrito, ou seja,
+que $\delta(q,\TMendtape) = \tuple{q', \TMendtape, x}$ se
+$\delta(q,\TMendtape)$ estiver definido. Alguns livros-texto fazem isso; nós não.
+Basta ter cuidado ao construir sua máquina de Turing para que
+ela nunca sobrescreva~$\TMendtape$. Além disso, há casos em que
+permitir tal sobrescrita oferece alguma flexibilidade conveniente.
 \end{explain}
 
 \begin{ex}
-\emph{Even Machine:} The even machine is formally
-the quadruple $\tuple{Q, \Sigma, q_0, \delta}$ where
+\emph{Máquina dos pares:} A máquina dos pares é formalmente
+a quádrupla $\tuple{Q, \Sigma, q_0, \delta}$ onde
 \begin{align*}
 Q & = \{ q_0, q_1 \} \\
 \Sigma & = \{ \TMendtape, \TMblank, \TMstroke \}, \\

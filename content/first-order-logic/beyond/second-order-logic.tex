@@ -6,137 +6,136 @@
 
 \begin{document}
 
-\olfileid{fol}{byd}{sol}
+\olfileid[pt]{fol}{byd}{sol}
 
-\olsection{Second-Order logic}
+\olsection{Lógica de Segunda Ordem}
 
-The language of second-order logic allows one to quantify not just
-over !!a{domain} of individuals, but over relations on that
-!!{domain} as well. Given a first-order language $\Lang{L}$, for each
-$k$ one adds !!{variable}s $R$ which range over $k$-ary relations, and
-allows quantification over those variables. If $R$ is !!a{variable} for a
-$k$-ary relation, and $t_1$, \dots,~$t_k$ are ordinary (first-order) terms,
-$\Atom{R}{t_1,\dots,t_k}$ is an atomic !!{formula}. Otherwise, the set of
-!!{formula}s is defined just as in the case of first-order logic, with
-additional clauses for second-order quantification. Note that we only
-have the !!{identity} for first-order terms: if $R$ and $S$ are relation
-!!{variable}s of the same arity~$k$, we can define $\eq[R][S]$ to be an
-abbreviation for
+A linguagem da lógica de segunda ordem permite quantificar não apenas
+sobre !!a{domain} de indivíduos, mas também sobre relações nesse
+!!{domain}. Dada uma linguagem de primeira ordem $\Lang{L}$, para cada
+$k$ adiciona-se !!{variable}s $R$ que variam sobre relações $k$-árias, e
+permite-se quantificação sobre essas variáveis. Se $R$ é !!a{variable} para uma
+relação $k$-ária, e $t_1$, \dots,~$t_k$ são termos ordinários (de primeira ordem),
+$\Atom{R}{t_1,\dots,t_k}$ é uma !!{formula} atômica. Caso contrário, o conjunto de
+!!{formula}s é definido exatamente como no caso da lógica de primeira ordem, com
+cláusulas adicionais para quantificação de segunda ordem. Note que temos apenas
+a !!{identity} para termos de primeira ordem: se $R$ e $S$ são !!{variable}s de relação
+de mesma aridade~$k$, podemos definir $\eq[R][S]$ como uma
+abreviação de
 \[
 \lforall[x_1 \dots][\lforall[x_k][(\Atom{R}{x_1, \dots, x_k} \liff
   \Atom{S}{x_1, \dots, x_k})]].
 \]
 
-The rules for second-order logic simply extend the quantifier rules to
-the new second order variables. Here, however, one has to be a little
-bit careful to explain how these variables interact with the !!{predicate}s
-of~$\Lang{L}$, and with !!{formula}s of~$\Lang{L}$ more generally. At the bare
-minimum, relation variables count as terms, so one has inferences of
-the form
+As regras para a lógica de segunda ordem simplesmente estendem as regras de quantificadores
+às novas variáveis de segunda ordem. Aqui, porém, é preciso ter um pouco
+de cuidado para explicar como essas variáveis interagem com os !!{predicate}s
+de~$\Lang{L}$, e com !!{formula}s de~$\Lang{L}$ de modo mais geral. No mínimo,
+variáveis de relação contam como termos, de modo que temos inferências da
+forma
 \[
 !A(R) \Proves \lexists[R][!A(R)]
 \]
-But if $\Lang{L}$ is the language of arithmetic with a constant
-relation symbol~$<$, one would also expect the following inference to
-be valid:
+Mas se $\Lang{L}$ é a linguagem da aritmética com um símbolo de relação
+constante~$<$, também esperaríamos que a seguinte inferência fosse
+válida:
 \[
 x < y \Proves \lexists[R][\Atom{R}{x,y}]
 \]
-or for a given !!{formula}~$!A$,
+ou, para uma dada !!{formula}~$!A$,
 \[
 !A(x_1, \dots, x_k) \Proves \lexists[R][\Atom{R}{x_1,\dots,x_k}]
 \]
-More generally, we might want to allow inferences of the form
+Mais geralmente, podemos querer permitir inferências da forma
 \[
 \Subst{!A}{\lambd[\vec x][!B(\vec x)]}{R} \Proves
 \lexists[R][!A]
 \]
-where $\Subst{!A}{\lambd[\vec x][!B(\vec x)]}{R}$ denotes the result
-of replacing every atomic !!{formula} of the form
-$\Obj{R}{t_1,\dots,t_k}$ in~$!A$ by $!B(t_1, \dots, t_k)$. This last
-rule is equivalent to having a {\em comprehension schema}, O.s.\@, an
-axiom of the form
+onde $\Subst{!A}{\lambd[\vec x][!B(\vec x)]}{R}$ denota o resultado
+de substituir cada !!{formula} atômica da forma
+$\Obj{R}{t_1,\dots,t_k}$ em~$!A$ por $!B(t_1, \dots, t_k)$. Esta última
+regra é equivalente a ter um {\em esquema de compreensão}, isto é, um
+axioma da forma
 \[
 \lexists[R][\lforall[x_1, \dots, x_k][(!A(x_1, \dots, x_k) \liff
 \Atom{R}{x_1, \dots, x_k})]],
 \]
-one for each !!{formula}~$!A$ in the second-order language, in which
-$R$ is not a free variable. (Exercise: show that if $R$ is allowed to
-occur in~$!A$, this schema is inconsistent!)
+um para cada !!{formula}~$!A$ na linguagem de segunda ordem, em que
+$R$ não é uma variável livre. (Exercício: mostre que se $R$ for permitida
+em~$!A$, esse esquema é inconsistente!)
 
-When logicians refer to the ``axioms of second-order logic'' they
-usually mean the minimal extension of first-order logic by
-second-order quantifier rules together with the comprehension
-schema. But it is often interesting to study weaker subsystems of
-these axioms and rules. For example, note that in its full generality
-the axiom schema of comprehension is \emph{impredicative}: it allows
-one to assert the existence of a relation $\Atom{R}{x_1, \dots, x_k}$
-that is ``defined'' by !!a{formula} with second-order quantifiers; and
-these quantifiers range over the set of all such relations---a set
-which includes $R$ itself!{} Around the turn of the twentieth century, a
-common reaction to Russell's paradox was to lay the blame on such
-definitions, and to avoid them in developing the foundations of
-mathematics. If one prohibits the use of second-order quantifiers in
-the !!{formula}~$!A$, one has a {\em predicative} form of
-comprehension, which is somewhat weaker.
+Quando lógicos se referem aos ``axiomas da lógica de segunda ordem'', geralmente
+querem dizer a extensão mínima da lógica de primeira ordem pelas
+regras de quantificadores de segunda ordem juntamente com o esquema de
+compreensão. Mas é frequentemente interessante estudar subsistemas mais fracos desses
+axiomas e regras. Por exemplo, note que em toda a sua generalidade
+o esquema de axiomas de compreensão é \emph{impredicativo}: ele permite
+afirmar a existência de uma relação $\Atom{R}{x_1, \dots, x_k}$
+que é ``definida'' por !!a{formula} com quantificadores de segunda ordem; e
+esses quantificadores variam sobre o conjunto de todas essas relações---um conjunto
+que inclui $R$ em si!{} Por volta da virada do século XX, uma
+reação comum ao paradoxo de Russell foi atribuir a culpa a tais
+definições e evitá-las ao desenvolver os fundamentos da
+matemática. Se se proíbe o uso de quantificadores de segunda ordem na
+!!{formula}~$!A$, tem-se uma forma {\em predicativa} de
+compreensão, que é um pouco mais fraca.
 
-From the semantic point of view, one can think of a second-order
-!!{structure} as consisting of a first-order !!{structure} for the
-language, coupled with a set of relations on the !!{domain} over which
-the second-order quantifiers range (more precisely, for each $k$ there
-is a set of relations of arity~$k$). Of course, if comprehension is
-included in the !!{derivation} system, then we have the added requirement that
-there are enough relations in the ``second-order part'' to satisfy the
-comprehension axioms---otherwise the !!{derivation} system is not sound!{} One
-easy way to ensure that there are enough relations around is to take
-the second-order part to consist of \emph{all} the relations on the
-first-order part. Such !!a{structure} is called \emph{full}, and, in a
-sense, is really the ``intended !!{structure}'' for the language. If
-we restrict our attention to full !!{structure}s we have what is known
-as the \emph{full} second-order semantics. In that case, specifying a
-!!{structure} boils down to specifying the first-order part, since the
-contents of the second-order part follow from that implicitly.
+Do ponto de vista semântico, pode-se pensar em uma !!{structure} de segunda ordem
+como consistindo em uma !!{structure} de primeira ordem para a
+linguagem, juntamente com um conjunto de relações no !!{domain} sobre o qual
+variem os quantificadores de segunda ordem (mais precisamente, para cada $k$ há
+um conjunto de relações de aridade~$k$). É claro que, se a compreensão estiver
+incluída no sistema de !!{derivation}, então temos o requisito adicional de que
+há relações suficientes na ``parte de segunda ordem'' para satisfazer os
+axiomas de compreensão---caso contrário, o sistema de !!{derivation} não é correto!{} Uma
+maneira fácil de garantir que há relações suficientes é tomar
+a parte de segunda ordem como consistindo de \emph{todas} as relações sobre a
+parte de primeira ordem. Uma tal !!{structure} é chamada \emph{plena}, e, de certo
+modo, é realmente a ``!!{structure} pretendida'' para a linguagem. Se
+restringirmos a atenção a !!{structure}s plenas, temos o que se conhece
+como a semântica de segunda ordem \emph{plena}. Nesse caso, especificar uma
+!!{structure} reduz-se a especificar a parte de primeira ordem, pois o
+conteúdo da parte de segunda ordem segue disso implicitamente.
 
-To summarize, there is some ambiguity when talking about second-order
-logic. In terms of the !!{derivation} system, one might have in mind either
+Para resumir, há certa ambiguidade ao falar de lógica de segunda ordem.
+Em termos do sistema de !!{derivation}, pode-se ter em mente
 \begin{enumerate}
-\item A ``minimal'' second-order !!{derivation} system, together with some
-  comprehension axioms.
-\item The ``standard'' second-order !!{derivation} system, with full
-  comprehension.
+\item Um sistema de !!{derivation} de segunda ordem ``mínimo'', juntamente com alguns
+  axiomas de compreensão.
+\item O sistema de !!{derivation} de segunda ordem ``padrão'', com compreensão
+  plena.
 \end{enumerate}
-In terms of the semantics, one might be interested in either
+Em termos da semântica, pode interessar
 \begin{enumerate}
-\item The ``weak'' semantics, where !!a{structure} consists of a first-order
-  part, together with a second-order part big enough to satisfy the
-  comprehension axioms.
-\item The ``standard'' second-order semantics, in which one considers
-  full !!{structure}s only.
+\item A semântica ``fraca'', em que !!a{structure} consiste em uma parte de primeira ordem,
+  juntamente com uma parte de segunda ordem grande o suficiente para satisfazer os
+  axiomas de compreensão.
+\item A semântica de segunda ordem ``padrão'', em que se consideram
+  apenas !!{structure}s plenas.
 \end{enumerate}
-When logicians do not specify the !!{derivation} system or the semantics they
-have in mind, they are usually referring to the second item on each
-list. The advantage to using this semantics is that, as we will see,
-it gives us categorical descriptions of many natural mathematical
-structures; at the same time, the !!{derivation} system is quite strong, and
-sound for this semantics. The drawback is that the !!{derivation} system is
-\emph{not} complete for the semantics; in fact, \emph{no} effectively
-given !!{derivation} system is complete for the full second-order semantics. On
-the other hand, we will see that the !!{derivation} system \emph{is} complete
-for the weakened semantics; this implies that if a sentence is not
-provable, then there is \emph{some} !!{structure}, not necessarily the
-full one, in which it is false.
+Quando lógicos não especificam o sistema de !!{derivation} ou a semântica que
+têm em mente, geralmente se referem ao segundo item de cada
+lista. A vantagem de usar essa semântica é que, como veremos,
+ela nos dá descrições categóricas de muitas !!{structure}s matemáticas naturais; ao mesmo tempo, o sistema de !!{derivation} é bastante forte, e
+correto para essa semântica. A desvantagem é que o sistema de !!{derivation} \emph{não} é
+completo para a semântica; de fato, \emph{nenhum} sistema de !!{derivation} efetivamente
+dado é completo para a semântica plena de segunda ordem. Por
+outro lado, veremos que o sistema de !!{derivation} \emph{é} completo
+para a semântica enfraquecida; isso implica que, se uma sentença não for
+demonstrável, então há \emph{alguma} !!{structure}, não necessariamente a
+plena, na qual ela é falsa.
 
-The language of second-order logic is quite rich. One can identify
-unary relations with subsets of the !!{domain}, and so in particular you
-can quantify over these sets; for example, one can express induction
-for the natural numbers with a single axiom
+A linguagem da lógica de segunda ordem é bastante rica. Pode-se identificar
+relações unárias com subconjuntos do !!{domain}, e assim, em particular, pode-se
+quantificar sobre esses conjuntos; por exemplo, pode-se expressar indução
+para os números naturais com um único axioma
 \[
 \lforall[R][((\Atom{R}{\Obj{0}} \land \lforall[x][(\Atom{R}{x} \lif
     \Atom{R}{x'})]) \lif \lforall[x][\Atom{R}{x}])].
 \]
-If one takes the language of arithmetic to have symbols $\Obj 0, \Obj \prime, +,
-\times$ and $<$, one can add the following axioms to describe their
-behavior:
+Se se toma a linguagem da aritmética com os símbolos $\Obj 0, \Obj \prime, +,
+\times$ e $<$, pode-se adicionar os seguintes axiomas para descrever seu
+comportamento:
 \begin{enumerate}
 \item $\lforall[x][\lnot x' = \Obj 0]$
 \item $\lforall[x][\lforall[y][(s(x) = s(y) \lif x = y)]]$
@@ -146,100 +145,98 @@ behavior:
 \item $\lforall[x][\lforall[y][(x \times y') = ((x \times y) + x)]]$
 \item $\lforall[x][\lforall[y][(x < y \liff \lexists[z][y = (x + z')])]]$
 \end{enumerate}
-It is not difficult to show that these axioms, together with the axiom
-of induction above, provide a categorical description of the
-!!{structure}~$\Struct{N}$, the standard model of arithmetic, provided
-we are using the full second-order semantics. Given any
-!!{structure}~$\Struct{M}$ in which these axioms are true, define a
-function~$f$ from $\Nat$ to the !!{domain} of $\Struct{M}$ using
-ordinary recursion on $\Nat$, so that $f(0) = \Assign{\Obj 0}{M}$ and
-$f(x+1) = \Assign{\prime}{M}(f(x))$. Using ordinary induction
-on~$\Nat$ and the fact that axioms (1) and~(2) hold in~$\Struct M$, we
-see that $f$ is !!{injective}. To see that $f$ is !!{surjective},
-let~$P$ be the set of elements of~$\Domain{M}$ that are in the range
-of~$f$. Since $\Struct M$ is full, $P$ is in the second-order
-!!{domain}. By the construction of~$f$, we know that $\Assign{\Obj
-  0}{M}$ is in~$P$, and that $P$~is closed under
-$\Assign{\prime}{M}$. The fact that the induction axiom holds in
-$\Struct M$ (in particular, for~$P$) guarantees that $P$~is equal to
-the entire first-order !!{domain} of~$\Struct M$. This shows that $f$
-is !!a{bijection}. Showing that $f$ is a homomorphism is no more
-difficult, using ordinary induction on $\Nat$ repeatedly.
+Não é difícil mostrar que esses axiomas, juntamente com o axioma
+de indução acima, fornecem uma descrição categórica da
+!!{structure}~$\Struct{N}$, o modelo padrão da aritmética, desde que
+estejamos usando a semântica plena de segunda ordem. Dada qualquer
+!!{structure}~$\Struct{M}$ na qual esses axiomas são verdadeiros, defina uma
+função~$f$ de $\Nat$ para o !!{domain} de $\Struct{M}$ usando
+recursão ordinária em $\Nat$, de modo que $f(0) = \Assign{\Obj 0}{M}$ e
+$f(x+1) = \Assign{\prime}{M}(f(x))$. Usando indução ordinária
+em~$\Nat$ e o fato de que os axiomas (1) e~(2) valem em~$\Struct M$, vemos
+que $f$ é !!{injective}. Para ver que $f$ é !!{surjective},
+seja~$P$ o conjunto de elementos de~$\Domain{M}$ que estão no alcance
+de~$f$. Como $\Struct M$ é plena, $P$ está no !!{domain} de segunda ordem.
+Pela construção de~$f$, sabemos que $\Assign{\Obj
+  0}{M}$ está em~$P$, e que $P$~é fechado sob
+$\Assign{\prime}{M}$. O fato de que o axioma de indução vale em
+$\Struct M$ (em particular, para~$P$) garante que $P$~é igual a
+todo o !!{domain} de primeira ordem de~$\Struct M$. Isso mostra que $f$
+é !!a{bijection}. Mostrar que $f$ é um homomorfismo não é mais
+difícil, usando indução ordinária em $\Nat$ repetidamente.
 
-In set-theoretic terms, a function is just a special kind of relation;
-for example, a unary function~$f$ can be identified with a binary
-relation~$R$ satisfying $\lforall[x][\lexists![y][R(x,y)]]$. As a result, one
-can quantify over functions too. Using the full semantics, one can
-then define the class of infinite !!{structure}s to be the class of
-!!{structure}s $\Struct M$ for which there is an injective function from the
-!!{domain} of $\Struct M$ to a proper subset of itself:
+Em termos teórico-conjuntistas, uma função é apenas um tipo especial de relação;
+por exemplo, uma função unária~$f$ pode ser identificada com uma relação
+binária~$R$ que satisfaz $\lforall[x][\lexists![y][R(x,y)]]$. Como resultado, pode-se
+também quantificar sobre funções. Usando a semântica plena, pode-se
+então definir a classe de !!{structure}s infinitas como a classe de
+!!{structure}s $\Struct M$ para as quais há uma função injetiva do
+!!{domain} de $\Struct M$ para um subconjunto próprio de si mesma:
 \[
 \lexists[f][(\lforall[x][\lforall[y][(\eq[f(x)][f(y)] \lif \eq[x][y])]]
   \land \lexists[y][\lforall[x][\eq/[f(x)][y]]])].
 \]
-The negation of this sentence then defines the class of finite
-!!{structure}s.
+A negação dessa sentença define então a classe de !!{structure}s
+finitas.
 
-In addition, one can define the class of well-orderings, by adding the
-following to the definition of a linear ordering:
+Além disso, pode-se definir a classe de ordens bem-fundadas, adicionando o
+seguinte à definição de uma ordenação linear:
 \[
 \lforall[P][(\lexists[x][\Atom{P}{x}] \lif \lexists[x][(\Atom{P}{x}
     \land \lforall[y][(y < x \lif \lnot \Atom{P}{y})])])].
 \]
-This asserts that every non-empty set has a least element, modulo the
-identification of ``set'' with ``one-place relation''. For another
-example, one can express the notion of connectedness for graphs, by
-saying that there is no nontrivial separation of the vertices into
-disconnected parts:
+Isso afirma que todo conjunto não vazio tem um elemento mínimo, módulo a
+identificação de ``conjunto'' com ``relação unária''. Como outro
+exemplo, pode-se expressar a noção de conexidade para grafos, dizendo
+que não há separação não trivial dos vértices em partes desconectadas:
 \[
 \lnot \lexists[A][(\lexists[x][A(x)] \land \lexists[y][\lnot A(y)]
   \land \lforall[w][\lforall[z][((\Atom{A}{w} \land \lnot \Atom{A}{z})
       \lif \lnot \Atom{R}{w,z})]])].
 \]
-For yet another example, you might try as an exercise to define the
-class of finite !!{structure}s whose !!{domain} has even size. More
-strikingly, one can provide a categorical description of the real
-numbers as a complete ordered field containing the rationals.
+Como mais um exemplo, pode-se tentar, como exercício, definir a
+classe de !!{structure}s finitas cujo !!{domain} tem tamanho par. De
+modo ainda mais impressionante, pode-se fornecer uma descrição categórica dos números
+reais como um corpo ordenado completo que contém os racionais.
 
-In short, second-order logic is much more expressive than first-order
-logic. That's the good news; now for the bad. We have already
-mentioned that there is no effective !!{derivation} system that is complete for
-the full second-order semantics. For better or for worse, many of the
-properties of first-order logic are absent, including compactness and
-the L\"owenheim--Skolem theorems.
+Em suma, a lógica de segunda ordem é muito mais expressiva do que a lógica de primeira ordem.
+Essa é a boa notícia; agora a má. Já
+mencionamos que não há sistema de !!{derivation} efetivo que seja completo para
+a semântica plena de segunda ordem. Para o bem ou para o mal, muitas das
+propriedades da lógica de primeira ordem estão ausentes, incluindo compacidade e
+os teoremas de L\"owenheim--Skolem.
 
-On the other hand, if one is willing to give up the full second-order
-semantics in terms of the weaker one, then the minimal second-order
-!!{derivation} system is complete for this semantics. In other words, if we
-read $\Proves$ as ``proves in the minimal system'' and $\Entails$ as
-``logically implies in the weaker semantics'', we can show that
-whenever $\Gamma \Entails !A$ then $\Gamma \Proves !A$. If one wants
-to include specific comprehension axioms in the !!{derivation} system, one has
-to restrict the semantics to second-order structures that satisfy
-these axioms: for example, if $\Delta$ consists of a set of
-comprehension axioms (possibly all of them), we have that if $\Gamma
-\cup \Delta \Entails !A$, then $\Gamma \cup \Delta \Proves !A$. In
-particular, if $!A$ is not provable using the comprehension axioms we
-are considering, then there is a model of $\lnot !A$ in which these
-comprehension axioms nonetheless hold.
+Por outro lado, se se está disposto a abrir mão da semântica plena de segunda ordem
+em favor da mais fraca, então o sistema de !!{derivation} mínimo de segunda ordem
+é completo para essa semântica. Em outras palavras, se
+lemos $\Proves$ como ``demonstra no sistema mínimo'' e $\Entails$ como
+``implica logicamente na semântica fraca'', podemos mostrar que
+sempre que $\Gamma \Entails !A$, então $\Gamma \Proves !A$. Se se quer
+incluir axiomas específicos de compreensão no sistema de !!{derivation}, é preciso
+restringir a semântica a !!{structure}s de segunda ordem que satisfaçam
+esses axiomas: por exemplo, se $\Delta$ consiste em um conjunto de
+axiomas de compreensão (possivelmente todos eles), temos que, se $\Gamma
+\cup \Delta \Entails !A$, então $\Gamma \cup \Delta \Proves !A$. Em
+particular, se $!A$ não for demonstrável usando os axiomas de compreensão que
+estamos considerando, então há um modelo de $\lnot !A$ no qual esses
+axiomas de compreensão ainda assim valem.
 
-The easiest way to see that the completeness theorem holds for the
-weaker semantics is to think of second-order logic as a many-sorted
-logic, as follows. One sort is interpreted as the ordinary
-``first-order'' !!{domain}, and then for each $k$ we have !!a{domain}
-of ``relations of arity $k$.'' We take the language to have built-in
-relation symbols ``$\Atom{\Obj{true}_k}{R,x_1,\dots,x_k}$'' which is
-meant to assert that $R$ holds of $x_1$, \dots,~$x_k$, where $R$ is a
-variable of the sort ``$k$-ary relation'' and $x_1$, \dots,~$x_k$ are
-objects of the first-order sort.
+A maneira mais fácil de ver que o teorema de completude vale para a
+semântica fraca é pensar na lógica de segunda ordem como uma lógica de múltiplas ordenações,
+da seguinte forma. Uma ordenação é interpretada como o !!{domain} ordinário
+de ``primeira ordem'', e então, para cada $k$, temos !!a{domain}
+de ``relações de aridade $k$.'' Tomamos a linguagem com símbolos de relação
+incorporados ``$\Atom{\Obj{true}_k}{R,x_1,\dots,x_k}$'', destinados a
+afirmar que $R$ vale de $x_1$, \dots,~$x_k$, onde $R$ é uma
+variável da ordenação ``relação $k$-ária'' e $x_1$, \dots,~$x_k$ são
+objetos da ordenação de primeira ordem.
 
-With this identification, the weak second-order semantics is essentially
-the usual semantics for many-sorted logic; and we have already
-observed that many-sorted logic can be embedded in first-order logic.
-Modulo the translations back and forth, then, the weaker conception of
-second-order logic is really a form of first-order logic in disguise,
-where the !!{domain} contains both ``objects'' and ``relations''
-governed by the appropriate axioms.
+Com essa identificação, a semântica fraca de segunda ordem é essencialmente
+a semântica usual da lógica de múltiplas ordenações; e já
+observamos que a lógica de múltiplas ordenações pode ser embutida na lógica de primeira ordem.
+Módulo as traduções de ida e volta, então, a concepção mais fraca de
+lógica de segunda ordem é realmente uma forma disfarçada de lógica de primeira ordem,
+em que o !!{domain} contém tanto ``objetos'' quanto ``relações''
+governados pelos axiomas apropriados.
 
 \end{document}
-

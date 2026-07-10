@@ -8,15 +8,15 @@
 
 \olfileid[pt]{sfr}{siz}{equ}
 
-\olsection{Equipotência}
+\olsection{Equinumerosidade}
 
 Temos uma noção intuitiva do ``tamanho'' dos conjuntos, que funciona bem para
 conjuntos finitos. E quanto aos infinitos? Se quisermos uma forma formal de
 comparar os tamanhos de dois conjuntos de \emph{qualquer} cardinalidade, é boa
 ideia começar por definir quando dois conjuntos têm o mesmo tamanho. Eis Frege:
 \begin{quote}
-  Se um empregado de mesa quer ter a certeza de que pôs exatamente tantas facas
-  quantos pratos sobre a mesa, não precisa de contar nem uns nem outros, se simplesmente
+  Se um garçom quer ter certeza de que pôs exatamente tantas facas
+  quantos pratos sobre a mesa, não precisa contar nem uns nem outros, se simplesmente
   puser uma faca à direita de cada prato, de modo que cada faca na mesa fique à
   direita de algum prato. Os pratos e as facas ficam assim correlacionados de
   modo único, e de fato por essa mesma relação espacial. \citep[§~70]{Frege1884}
@@ -24,27 +24,27 @@ ideia começar por definir quando dois conjuntos têm o mesmo tamanho. Eis Frege
 A intuição central desta passagem traduz-se numa definição formal:
 
 \begin{defn}\ollabel{comparisondef}
-  $A$ é \emph{equipotente} a $B$, escrevendo-se $\cardeq{A}{B}$, sse existir
+  $A$ é \emph{equinumeroso} a $B$, escrevendo-se $\cardeq{A}{B}$, sse existir
   !!a{bijection} $f \colon A \to B$.
 \end{defn}
 
 \begin{prop}\ollabel{equinumerosityisequi}
-A relação de equipotência é uma relação de equivalência.
+A relação de equinumerosidade é uma relação de equivalência.
 \end{prop}
 
 \begin{proof} 
-Há que mostrar que a equipotência é reflexiva, simétrica e transitiva. Sejam
+É preciso mostrar que a equinumerosidade é reflexiva, simétrica e transitiva. Sejam
 $A, B$ e $C$ conjuntos.
 
 \emph{Reflexividade.} A aplicação identidade $\Id{A} \colon A \to A$, com
 $\Id{A} (x) = x$ para todo $x \in A$, é !!a{bijection}. Logo $\cardeq{A}{A}$.
 
-\emph{Simetria.} Suponhamos $\cardeq{A}{B}$, O.s.\@, que existe !!a{bijection}
+\emph{Simetria.} Suponhamos $\cardeq{A}{B}$, isto é, que existe !!a{bijection}
 $f\colon A \to B$. Como $f$ é !!{bijective}, a inversa $f^{-1}$ existe e também é
 !!{bijective}. Logo $f^{-1}\colon B \to A$ é !!a{bijection}, pelo que
 $\cardeq{B}{A}$.
 
-\emph{Transitividade.} Suponhamos $\cardeq{A}{B}$ e $\cardeq{B}{C}$, O.s.\@, que
+\emph{Transitividade.} Suponhamos $\cardeq{A}{B}$ e $\cardeq{B}{C}$, isto é, que
 existem !!{bijection}s $f\colon A \to B$ e $g\colon B \to C$. Então a composição
 $\comp{f}{g}\colon A \to C$ é !!{bijective}, logo $\cardeq{A}{C}$.
 \end{proof}
@@ -62,7 +62,7 @@ incluída e \olref[enm-alt]{defn:enumerable} caso contrário.
 Suponhamos $\cardeq{A}{B}$, logo existe alguma !!{bijection} $f \colon A \to B$, e
 suponhamos que $A$ é !!{enumerable}.
 \oliflabeldef{sfr:siz:enm:defn:enumerable}{
-  Então ou $A = \emptyset$ ou existe !!a{surjective} função $g\colon \PosInt \to A$.
+  Então ou $A = \emptyset$ ou existe uma função !!{surjective} $g\colon \PosInt \to A$.
   Se $A = \emptyset$, então $B = \emptyset$ também (caso contrário existiria
   !!a{element}~$y \in B$ sem $x \in A$ com $g(x) = y$). Se, por outro lado,
   $g\colon \PosInt \to A$ for !!{surjective}, então $\comp{g}{f} \colon \PosInt \to
@@ -80,7 +80,7 @@ de~$B$, logo $B$~é !!{enumerable}.}
   \emptyset$, então $B = \emptyset$ também (caso contrário existiria algum~$y \in B$
   sem $x \in A$ tal que $g(x) = y$). Suponhamos então que temos a
   !!{bijection}~$g$. Então $\comp{g}{f}$ é !!a{bijection} com contradomínio~$B$ e
-  domínio o mesmo que o de~$g$ (O.s.\@, $\Nat$ ou um segmento inicial), logo $B$ é
+  domínio o mesmo que o de~$g$ (isto é, $\Nat$ ou um segmento inicial), logo $B$ é
   !!{enumerable}.}
 
 Se $B$ é !!{enumerable}, obtemos que $A$ é !!{enumerable} repetindo o argumento com

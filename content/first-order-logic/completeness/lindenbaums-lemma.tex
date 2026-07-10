@@ -7,50 +7,50 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{com}{lin}}
-      {\olfileid{pl}{com}{lin}}
+      {\olfileid[pt]{fol}{com}{lin}}
+      {\olfileid[pt]{pl}{com}{lin}}
 
-\olsection{Lindenbaum's Lemma}
+\olsection{Lema de Lindenbaum}
 
 \begin{explain}
-We now prove a lemma that shows that any consistent set of
-!!{sentence}s is contained in some set of sentences which is not just
-consistent, but also !!{complete}. The proof works by adding one
-!!{sentence} at a time, guaranteeing at each step that the set remains
-consistent. We do this so that for every $!A$, either $!A$ or $\lnot
-!A$ gets added at some stage. The union of all stages in that
-construction then contains either $!A$ or its negation~$\lnot !A$ and
-is thus complete. It is also consistent, since we make sure at each
-stage not to introduce an inconsistency.
+Provamos agora um lema que mostra que qualquer conjunto consistente de
+!!{sentence}s está contido em algum conjunto de sentenças que não é apenas
+consistente, mas também !!{complete}. A prova funciona adicionando uma
+!!{sentence} de cada vez, garantindo a cada passo que o conjunto permanece
+consistente. Fazemos isso de modo que, para todo $!A$, ou $!A$ ou $\lnot
+!A$ seja adicionada em algum estágio. A união de todos os estágios dessa
+construção então contém ou $!A$ ou sua negação~$\lnot !A$ e
+é, portanto, completa. Ela também é consistente, já que nos asseguramos, a cada
+estágio, de não introduzir uma inconsistência.
 \end{explain}
 
-\begin{lem}[Lindenbaum's Lemma]
-\ollabel{lem:lindenbaum} Every consistent
-set~$\Gamma$ in a language~$\Lang{L}$ can be
-extended to !!a{complete} and consistent set~$\Gamma^*$.
+\begin{lem}[Lema de Lindenbaum]
+\ollabel{lem:lindenbaum} Todo conjunto consistente
+~$\Gamma$ em uma linguagem~$\Lang{L}$ pode ser
+estendido a um conjunto consistente !!{complete}~$\Gamma^*$.
 \end{lem}
 
 \begin{proof}
-Let $\Gamma$ be consistent.  Let $!A_0$, $!A_1$,
-\dots{} be an enumeration of all the !!{sentence}s of~$\Lang L$.
-Define $\Gamma_0 = \Gamma$, and
+Seja $\Gamma$ consistente.  Sejam $!A_0$, $!A_1$,
+\dots{} uma enumeração de todas as !!{sentence}s de~$\Lang L$.
+Defina $\Gamma_0 = \Gamma$, e
 \[
 \Gamma_{n+1} =
 \begin{cases}
-\Gamma_n \cup \{ !A_n \} & \textrm{if $\Gamma_n \cup \{!A_n\}$ is
-  consistent;} \\
-\Gamma_n \cup \{ \lnot !A_n \} & \textrm{otherwise.}
+\Gamma_n \cup \{ !A_n \} & \textrm{se $\Gamma_n \cup \{!A_n\}$ é
+  consistente;} \\
+\Gamma_n \cup \{ \lnot !A_n \} & \textrm{caso contrário.}
 \end{cases}
 \]
-Let $\Gamma^* = \bigcup_{n \geq 0} \Gamma_n$.
+Seja $\Gamma^* = \bigcup_{n \geq 0} \Gamma_n$.
 
-Each $\Gamma_n$ is consistent: $\Gamma_0$ is consistent by definition.
-If $\Gamma_{n+1} = \Gamma_n \cup \{!A_n\}$, this is because the latter
-is consistent.  If it isn't, $\Gamma_{n+1} = \Gamma_n \cup \{\lnot
-!A_n\}$. We have to verify that $\Gamma_n \cup \{\lnot !A_n\}$ is
-consistent. Suppose it's not. Then \emph{both} $\Gamma_n \cup
-\{!A_n\}$ and $\Gamma_n \cup \{\lnot !A_n\}$ are inconsistent.  This
-means that $\Gamma_n$ would be inconsistent by
+Cada $\Gamma_n$ é consistente: $\Gamma_0$ é consistente por definição.
+Se $\Gamma_{n+1} = \Gamma_n \cup \{!A_n\}$, isso é porque este último
+é consistente.  Se não é, $\Gamma_{n+1} = \Gamma_n \cup \{\lnot
+!A_n\}$. Temos que verificar que $\Gamma_n \cup \{\lnot !A_n\}$ é
+consistente. Suponha que não seja. Então \emph{ambos} $\Gamma_n \cup
+\{!A_n\}$ e $\Gamma_n \cup \{\lnot !A_n\}$ são inconsistentes.  Isso
+significa que $\Gamma_n$ seria inconsistente por
 \iftag{FOL}{%
   \tagrefs{prfAX/{fol:axd:prv:prop:provability-exhaustive},
     prfSC/{fol:seq:prv:prop:provability-exhaustive},
@@ -60,26 +60,26 @@ means that $\Gamma_n$ would be inconsistent by
     prfSC/{pl:seq:prv:prop:provability-exhaustive},
     prfND/{pl:ntd:prv:prop:provability-exhaustive},
     prfTab/{pl:tab:prv:prop:provability-exhaustive}}},
-contrary to the induction hypothesis.
+contrariando a hipótese de indução.
 
-For every~$n$ and every $i < n$, $\Gamma_i \subseteq \Gamma_n$. This
-follows by a simple induction on~$n$. For $n=0$, there are no $i < 0$,
-so the claim holds automatically.  For the inductive step, suppose it
-is true for~$n$. We show that if $i < n+1$ then $\Gamma_i \subseteq
-\Gamma_{n+1}$. We have $\Gamma_{n+1} = \Gamma_n \cup \{!A_n\}$ or $=
-\Gamma_n \cup \{\lnot !A_n\}$ by construction. So $\Gamma_n \subseteq
-\Gamma_{n+1}$. If $i < n+1$, then $\Gamma_i \subseteq \Gamma_n$ by
-inductive hypothesis (if $i < n$) or the trivial fact that $\Gamma_n
-\subseteq \Gamma_n$ (if $i = n$). We get that $\Gamma_i \subseteq
-\Gamma_{n+1}$ by transitivity of~$\subseteq$.
+Para todo~$n$ e todo $i < n$, $\Gamma_i \subseteq \Gamma_n$. Isso
+segue por uma simples indução sobre~$n$. Para $n=0$, não há $i < 0$,
+de modo que a afirmação vale automaticamente.  Para o passo indutivo, suponha que ela
+seja verdadeira para~$n$. Mostramos que, se $i < n+1$, então $\Gamma_i \subseteq
+\Gamma_{n+1}$. Temos $\Gamma_{n+1} = \Gamma_n \cup \{!A_n\}$ ou $=
+\Gamma_n \cup \{\lnot !A_n\}$ por construção. Logo $\Gamma_n \subseteq
+\Gamma_{n+1}$. Se $i < n+1$, então $\Gamma_i \subseteq \Gamma_n$ por
+hipótese indutiva (se $i < n$) ou pelo fato trivial de que $\Gamma_n
+\subseteq \Gamma_n$ (se $i = n$). Obtemos que $\Gamma_i \subseteq
+\Gamma_{n+1}$ por transitividade de~$\subseteq$.
 
-From this it follows that $\Gamma^*$ is consistent. Here's why: Let
-$\Gamma' \subseteq \Gamma^*$ be finite. Each $!B \in \Gamma'$ is also
-in~$\Gamma_i$ for some~$i$. Let $n$ be the largest of these. Since
-$\Gamma_i \subseteq \Gamma_n$ if $i \le n$, every $!B \in \Gamma'$ is
-also $\in \Gamma_n$, O.s.\@, $\Gamma' \subseteq \Gamma_n$, and
-$\Gamma_n$~is consistent. So, every finite subset $\Gamma' \subseteq
-\Gamma^*$ is consistent. By \iftag{FOL}{%
+Disso segue que $\Gamma^*$ é consistente. Eis o porquê: Seja
+$\Gamma' \subseteq \Gamma^*$ finito. Cada $!B \in \Gamma'$ também está
+em~$\Gamma_i$ para algum~$i$. Seja $n$ o maior destes. Como
+$\Gamma_i \subseteq \Gamma_n$ se $i \le n$, todo $!B \in \Gamma'$ também está
+$\in \Gamma_n$, isto é, $\Gamma' \subseteq \Gamma_n$, e
+$\Gamma_n$~é consistente. Assim, todo subconjunto finito $\Gamma' \subseteq
+\Gamma^*$ é consistente. Por \iftag{FOL}{%
   \tagrefs{prfAX/{fol:axd:ptn:prop:proves-compact},
     prfSC/{fol:seq:ptn:prop:proves-compact},
     prfND/{fol:ntd:ptn:prop:proves-compact},
@@ -87,13 +87,13 @@ $\Gamma_n$~is consistent. So, every finite subset $\Gamma' \subseteq
   \tagrefs{prfAX/{pl:axd:ptn:prop:proves-compact},
     prfSC/{pl:seq:ptn:prop:proves-compact},
     prfND/{pl:ntd:ptn:prop:proves-compact},
-    prfTab/{pl:tab:ptn:prop:proves-compact}}}, $\Gamma^*$ is
-  consistent.
+    prfTab/{pl:tab:ptn:prop:proves-compact}}}, $\Gamma^*$ é
+  consistente.
 
-Every !!{sentence} of $\Frm[L]$ appears on the list used to
-define~$\Gamma^*$. If $!A_n \notin \Gamma^*$, then that is because
-$\Gamma_n \cup \{!A_n\}$ was inconsistent.  But then $\lnot !A_n
-\in \Gamma^*$, so $\Gamma^*$ is !!{complete}.
+Toda !!{sentence} de $\Frm[L]$ aparece na lista usada para
+definir~$\Gamma^*$. Se $!A_n \notin \Gamma^*$, então isso é porque
+$\Gamma_n \cup \{!A_n\}$ era inconsistente.  Mas então $\lnot !A_n
+\in \Gamma^*$, de modo que $\Gamma^*$ é !!{complete}.
 \end{proof}
 
 \end{document}

@@ -11,79 +11,80 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{com}{ccs}}
-      {\olfileid{pl}{com}{ccs}}
+      {\olfileid[pt]{fol}{com}{ccs}}
+      {\olfileid[pt]{pl}{com}{ccs}}
       
-\olsection{Complete Consistent Sets of \usetoken{P}{sentence}}
+\olsection{Conjuntos Consistentes Completos de \usetoken{P}{sentence}}
 
-\begin{defn}[Complete set]
-\ollabel{def:complete-set} A set~$\Gamma$ of !!{sentence}s is
-\emph{!!{complete}} iff for any !!{sentence}~$!A$, either $!A \in
-\Gamma$ or $\lnot !A \in \Gamma$.
+\begin{defn}[Conjunto completo]
+\ollabel{def:complete-set} Um conjunto~$\Gamma$ de !!{sentence}s é
+\emph{!!{complete}} se e somente se, para qualquer !!{sentence}~$!A$, ou $!A \in
+\Gamma$ ou $\lnot !A \in \Gamma$.
 \end{defn}
 
 \begin{explain}
-!!^{complete} sets of sentences leave no questions unanswered. For
-any !!{sentence}~$!A$, $\Gamma$ ``says'' if $!A$ is true or false.  The
-importance of !!{complete} sets extends beyond the proof of the
-completeness theorem. A theory which is !!{complete} and
-axiomatizable, for instance, is always decidable.
+Conjuntos !!{complete}s de sentenças não deixam questões sem resposta. Para
+qualquer !!{sentence}~$!A$, $\Gamma$ ``diz'' se $!A$ é verdadeira ou falsa.  A
+importância dos conjuntos !!{complete}s estende-se para além da prova do
+teorema da completude. Uma teoria que é completa e
+axiomatizável, por exemplo, é sempre decidível.
 \end{explain}
 
 \begin{explain}
-!!^{complete} consistent sets are important in the completeness proof
-since we can guarantee that every consistent set of
-!!{sentence}s~$\Gamma$ is contained in !!a{complete} consistent
-set~$\Gamma^*$.  !!^a{complete} consistent set contains, for each
-!!{sentence}~$!A$, either $!A$ or its negation $\lnot !A$, but not
-both. This is true in particular for \iftag{FOL}{atomic
-!!{sentence}s}{propositional variables}, so from !!a{complete}
-consistent set\iftag{FOL}{ in a language suitably expanded by
-!!{constant}s}{}, we can construct
-\iftag{FOL}{!!a{structure}}{!!a{valuation}} where the
-\iftag{FOL}{interpretation of !!{predicate}s}{truth value assigned to
-propositional variables} is defined according to which
-\iftag{FOL}{atomic !!{sentence}s}{!!{propositional variable}s} are
-in~$\Gamma^*$. This \iftag{FOL}{!!{structure}}{!!{valuation}} can then
-be shown to make all !!{sentence}s in~$\Gamma^*$ (and hence also all
-those in~$\Gamma$) true. The proof of this latter fact requires that
-$\lnot !A \in \Gamma^*$ iff $!A \notin \Gamma^*$, $(!A \lor !B) \in
-\Gamma^*$ iff $!A \in \Gamma^*$ or $!B \in \Gamma^*$, etc.
+Conjuntos consistentes !!{complete}s são importantes na prova de completude
+já que podemos garantir que todo conjunto consistente de
+!!{sentence}s~$\Gamma$ está contido em um conjunto consistente !!{complete}
+~$\Gamma^*$.  Um conjunto consistente !!{complete} contém, para cada
+!!{sentence}~$!A$, ou $!A$ ou sua negação $\lnot !A$, mas não
+ambas. Isso é verdade em particular para \iftag{FOL}{!!{sentence}s
+atômicas}{variáveis proposicionais}, de modo que, a partir de um conjunto consistente
+!!{complete}\iftag{FOL}{ em uma linguagem adequadamente expandida por
+!!{constant}s}{}, podemos construir
+\iftag{FOL}{!!a{structure}}{!!a{valuation}} onde a
+\iftag{FOL}{interpretação dos !!{predicate}s}{valor de verdade atribuído às
+variáveis proposicionais} é definida de acordo com quais
+\iftag{FOL}{!!{sentence}s atômicas}{!!{propositional variable}s} estão
+em~$\Gamma^*$. Pode-se então mostrar que esta
+\iftag{FOL}{!!{structure}}{!!{valuation}} torna verdadeiras todas as
+!!{sentence}s em~$\Gamma^*$ (e, portanto, também todas
+aquelas em~$\Gamma$). A prova deste último fato requer que
+$\lnot !A \in \Gamma^*$ se e somente se $!A \notin \Gamma^*$, $(!A \lor !B) \in
+\Gamma^*$ se e somente se $!A \in \Gamma^*$ ou $!B \in \Gamma^*$, etc.
 \end{explain}
 
-In what follows, we will often tacitly use the properties of
-reflexivity, monotonicity, and transitivity of $\Proves$ (see
+No que se segue, usaremos com frequência, de modo tácito, as propriedades de
+reflexividade, monotonicidade e transitividade de $\Proves$ (ver
 \iftag{FOL}{%
   \tagrefs{prfSC/{fol:seq:ptn:sec},prfND/{fol:ntd:ptn:sec},prfAX/{fol:axd:ptn:sec},prfTab/{fol:tab:ptn:sec}}}{%
   \tagrefs{prfSC/{pl:seq:ptn:sec},prfND/{pl:ntd:ptn:sec},prfAX/{pl:axd:ptn:sec},prfTab/{pl:tab:ptn:sec}}}).
 
 \begin{prop}
 \ollabel{prop:ccs}
-Suppose $\Gamma$ is !!{complete} and consistent. Then:
+Suponha que $\Gamma$ seja !!{complete} e consistente. Então:
 \begin{enumerate}
-\item \ollabel{prop:ccs-prov-in} If $\Gamma \Proves !A$, then $!A \in
+\item \ollabel{prop:ccs-prov-in} Se $\Gamma \Proves !A$, então $!A \in
   \Gamma$.
 
 \tagitem{prvAnd}{\ollabel{prop:ccs-and} $!A \land !B \in \Gamma$
-  iff both $!A \in \Gamma$ and $!B \in \Gamma$.}{}
+  se e somente se $!A \in \Gamma$ e $!B \in \Gamma$.}{}
 
-\tagitem{prvOr}{\ollabel{prop:ccs-or} $!A \lor !B \in \Gamma$ iff
-  either $!A \in \Gamma$ or $!B \in \Gamma$.}{}
+\tagitem{prvOr}{\ollabel{prop:ccs-or} $!A \lor !B \in \Gamma$ se e somente se
+  $!A \in \Gamma$ ou $!B \in \Gamma$.}{}
 
-\tagitem{prvIf}{\ollabel{prop:ccs-if} $!A \lif !B \in \Gamma$ iff
-  either $!A \notin \Gamma$ or $!B \in \Gamma$.}{}
+\tagitem{prvIf}{\ollabel{prop:ccs-if} $!A \lif !B \in \Gamma$ se e somente se
+  $!A \notin \Gamma$ ou $!B \in \Gamma$.}{}
 \end{enumerate}
 \end{prop}
 
 \begin{proof}
-Let us suppose for all of the following that $\Gamma$ is !!{complete} and
-consistent.
+Suponhamos, para tudo o que se segue, que $\Gamma$ seja !!{complete} e
+consistente.
 \begin{enumerate}
-\item If $\Gamma \Proves !A$, then $!A \in \Gamma$.
+\item Se $\Gamma \Proves !A$, então $!A \in \Gamma$.
 
-Suppose that $\Gamma \Proves !A$. Suppose to the contrary that $!A
-\notin \Gamma$. Since $\Gamma$ is !!{complete}, $\lnot !A \in \Gamma$.
-By
+Suponha que $\Gamma \Proves !A$. Suponha, ao contrário, que $!A
+\notin \Gamma$. Como $\Gamma$ é !!{complete}, $\lnot !A \in \Gamma$.
+Por
 \iftag{FOL}{%
   \tagrefs{prfSC/{fol:seq:prv:prop:explicit-inc},
     prfND/{fol:ntd:prv:prop:explicit-inc},
@@ -93,16 +94,16 @@ By
     prfND/{pl:ntd:prv:prop:explicit-inc},
     prfAX/{pl:axd:prv:prop:explicit-inc},
     prfTab/{pl:tab:prv:prop:explicit-inc}}},
-$\Gamma$ is inconsistent. This contradicts the assumption that
-$\Gamma$ is consistent. Hence, it cannot be the case that $!A \notin
-\Gamma$, so $!A \in \Gamma$.
+$\Gamma$ é inconsistente. Isso contradiz a suposição de que
+$\Gamma$ é consistente. Logo, não pode ser o caso que $!A \notin
+\Gamma$, de modo que $!A \in \Gamma$.
 
 \tagitem{defAnd}{}{%
-\iftag{probAnd}{Exercise.}{%
-$!A \land !B \in \Gamma$ iff both $!A \in \Gamma$ and $!B \in \Gamma$:
+\iftag{probAnd}{Exercício.}{%
+$!A \land !B \in \Gamma$ se e somente se $!A \in \Gamma$ e $!B \in \Gamma$:
 
-For the forward direction, suppose $!A \land !B \in \Gamma$. Then
-by
+Para a direção direta, suponha $!A \land !B \in \Gamma$. Então
+por
 \iftag{FOL}{%
   \tagrefs{prfSC/{fol:seq:ppr:prop:provability-land},
     prfND/{fol:ntd:ppr:prop:provability-land},
@@ -112,12 +113,12 @@ by
     prfND/{pl:ntd:ppr:prop:provability-land},
     prfAX/{pl:axd:ppr:prop:provability-land},
     prfTab/{pl:tab:ppr:prop:provability-land}}}, item~(1),
-$\Gamma \Proves !A$ and $\Gamma \Proves !B$. By
-\olref{prop:ccs-prov-in}, $!A \in \Gamma$ and $!B \in \Gamma$, as
-required.
+$\Gamma \Proves !A$ e $\Gamma \Proves !B$. Por
+\olref{prop:ccs-prov-in}, $!A \in \Gamma$ e $!B \in \Gamma$, como
+requerido.
 
-For the reverse direction, let $!A \in \Gamma$ and $!B \in
-\Gamma$. By
+Para a direção reversa, sejam $!A \in \Gamma$ e $!B \in
+\Gamma$. Por
 \iftag{FOL}{%
   \tagrefs{prfSC/{fol:seq:ppr:prop:provability-land},
     prfND/{fol:ntd:ppr:prop:provability-land},
@@ -127,15 +128,15 @@ For the reverse direction, let $!A \in \Gamma$ and $!B \in
     prfND/{pl:ntd:ppr:prop:provability-land},
     prfAX/{pl:axd:ppr:prop:provability-land},
     prfTab/{pl:tab:ppr:prop:provability-land}}}, item~(2),
-$\Gamma \Proves !A \land !B$. By \olref{prop:ccs-prov-in}, $!A \land
+$\Gamma \Proves !A \land !B$. Por \olref{prop:ccs-prov-in}, $!A \land
 !B \in \Gamma$.}}
 
 \tagitem{defOr}{}{%
-\iftag{probOr}{Exercise.}{%
-First we show that if $!A \lor !B \in \Gamma$, then either $!A \in
-\Gamma$ or $!B \in \Gamma$. Suppose $!A \lor !B \in \Gamma$ but $!A
-\notin \Gamma$ and $!B \notin \Gamma$.  Since $\Gamma$ is
-!!{complete}, $\lnot !A \in \Gamma$ and $\lnot !B \in \Gamma$. By
+\iftag{probOr}{Exercício.}{%
+Primeiro mostramos que, se $!A \lor !B \in \Gamma$, então $!A \in
+\Gamma$ ou $!B \in \Gamma$. Suponha $!A \lor !B \in \Gamma$ mas $!A
+\notin \Gamma$ e $!B \notin \Gamma$.  Como $\Gamma$ é
+!!{complete}, $\lnot !A \in \Gamma$ e $\lnot !B \in \Gamma$. Por
 \iftag{FOL}{%
   \tagrefs{prfSC/{fol:seq:ppr:prop:provability-lor},
     prfND/{fol:ntd:ppr:prop:provability-lor},
@@ -145,11 +146,11 @@ First we show that if $!A \lor !B \in \Gamma$, then either $!A \in
     prfND/{pl:ntd:ppr:prop:provability-lor},
     prfAX/{pl:axd:ppr:prop:provability-lor},
     prfTab/{pl:tab:ppr:prop:provability-lor}}},
-item (1), $\Gamma$ is inconsistent, a contradiction. Hence, either $!A
-\in \Gamma$ or $!B \in \Gamma$.
+item (1), $\Gamma$ é inconsistente, uma contradição. Logo, $!A
+\in \Gamma$ ou $!B \in \Gamma$.
 
-For the reverse direction, suppose that $!A \in \Gamma$ or $!B \in
-\Gamma$. By
+Para a direção reversa, suponha que $!A \in \Gamma$ ou $!B \in
+\Gamma$. Por
 \iftag{FOL}{%
   \tagrefs{prfSC/{fol:seq:ppr:prop:provability-lor},
     prfND/{fol:ntd:ppr:prop:provability-lor},
@@ -159,14 +160,14 @@ For the reverse direction, suppose that $!A \in \Gamma$ or $!B \in
     prfND/{pl:ntd:ppr:prop:provability-lor},
     prfAX/{pl:axd:ppr:prop:provability-lor},
     prfTab/{pl:tab:ppr:prop:provability-lor}}}, item (2),
-$\Gamma \Proves !A \lor !B$. By \olref{prop:ccs-prov-in}, $!A \lor
-!B \in \Gamma$, as required.}}
+$\Gamma \Proves !A \lor !B$. Por \olref{prop:ccs-prov-in}, $!A \lor
+!B \in \Gamma$, como requerido.}}
 
 \tagitem{defIf}{}{%
-\iftag{probIf}{Exercise.}{%
-For the forward direction, suppose $!A \lif !B \in \Gamma$, and suppose
-to the contrary that $!A \in \Gamma$ and $!B \notin \Gamma$. On these
-assumptions, $!A \lif !B \in \Gamma$ and $!A \in \Gamma$. By
+\iftag{probIf}{Exercício.}{%
+Para a direção direta, suponha $!A \lif !B \in \Gamma$ e suponha,
+ao contrário, que $!A \in \Gamma$ e $!B \notin \Gamma$. Sob essas
+suposições, $!A \lif !B \in \Gamma$ e $!A \in \Gamma$. Por
 \iftag{FOL}{%
   \tagrefs{prfSC/{fol:seq:ppr:prop:provability-lif},
     prfND/{fol:ntd:ppr:prop:provability-lif},
@@ -176,11 +177,11 @@ assumptions, $!A \lif !B \in \Gamma$ and $!A \in \Gamma$. By
     prfND/{pl:ntd:ppr:prop:provability-lif},
     prfAX/{pl:axd:ppr:prop:provability-lif},
     prfTab/{pl:tab:ppr:prop:provability-lif}}}, item (1),
-$\Gamma \Proves !B$. But then by \olref{prop:ccs-prov-in}, $!B \in
-\Gamma$, contradicting the assumption that $!B \notin \Gamma$.
+$\Gamma \Proves !B$. Mas então, por \olref{prop:ccs-prov-in}, $!B \in
+\Gamma$, contradizendo a suposição de que $!B \notin \Gamma$.
 
-For the reverse direction, first consider the case where $!A \notin
-\Gamma$. Since $\Gamma$ is !!{complete}, $\lnot !A \in \Gamma$.  By
+Para a direção reversa, considere primeiro o caso em que $!A \notin
+\Gamma$. Como $\Gamma$ é !!{complete}, $\lnot !A \in \Gamma$.  Por
 \iftag{FOL}{%
   \tagrefs{prfSC/{fol:seq:ppr:prop:provability-lif},
     prfND/{fol:ntd:ppr:prop:provability-lif},
@@ -190,10 +191,10 @@ For the reverse direction, first consider the case where $!A \notin
     prfND/{pl:ntd:ppr:prop:provability-lif},
     prfAX/{pl:axd:ppr:prop:provability-lif},
     prfTab/{pl:tab:ppr:prop:provability-lif}}}, item (2),
-$\Gamma \Proves !A \lif !B$. Again by \olref{prop:ccs-prov-in}, we get
-that $!A \lif !B \in \Gamma$, as required.
+$\Gamma \Proves !A \lif !B$. Novamente por \olref{prop:ccs-prov-in}, obtemos
+que $!A \lif !B \in \Gamma$, como requerido.
 
-Now consider the case where $!B \in \Gamma$.  By
+Agora considere o caso em que $!B \in \Gamma$.  Por
 \iftag{FOL}{%
   \tagrefs{prfSC/{fol:seq:ppr:prop:provability-lif},
     prfND/{fol:ntd:ppr:prop:provability-lif},
@@ -203,20 +204,20 @@ Now consider the case where $!B \in \Gamma$.  By
     prfND/{pl:ntd:ppr:prop:provability-lif},
     prfTab/{pl:tab:ppr:prop:provability-lif},
     prfAX/{pl:axd:ppr:prop:provability-lif}}},
-item (2) again, $\Gamma \Proves !A \lif !B$. By
+item (2) novamente, $\Gamma \Proves !A \lif !B$. Por
 \olref{prop:ccs-prov-in}, $!A \lif !B \in \Gamma$.}}
 \end{enumerate}
 \end{proof}
 
 \tagprob{FOL}
 \begin{prob}
-Complete the proof of \olref[fol][com][ccs]{prop:ccs}.
+Complete a prova de \olref[fol][com][ccs]{prop:ccs}.
 \end{prob}
 \tagendprob
 
 \tagprob{notFOL}
 \begin{prob}
-Complete the proof of \olref[pl][com][ccs]{prop:ccs}.
+Complete a prova de \olref[pl][com][ccs]{prop:ccs}.
 \end{prob}
 \tagendprob
 

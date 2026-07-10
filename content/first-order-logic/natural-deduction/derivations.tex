@@ -7,76 +7,75 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{ntd}{der}}
-      {\olfileid{pl}{ntd}{der}}
+      {\olfileid[pt]{fol}{ntd}{der}}
+      {\olfileid[pt]{pl}{ntd}{der}}
 
 \olsection{\usetoken{P}{derivation}}
 
 \begin{explain}
-We've said what an assumption is, and we've given the rules of
-inference.  !!^{derivation}s in natural deduction are inductively
-generated from these: each !!{derivation} either is an assumption
-on its own, or consists of one, two, or three !!{derivation}s followed
-by a correct inference.
+Já dissemos o que é uma hipótese e demos as regras de
+inferência.  !!^{derivation}s em dedução natural são geradas
+indutivamente a partir disso: cada !!{derivation} ou é uma hipótese
+por si só, ou consiste em uma, duas ou três !!{derivation}s seguidas
+de uma inferência correta.
 \end{explain}
 
 \begin{defn}[!!^{derivation}]
-\Article{derivation} \emph{!!{derivation}} of !!a{sentence}~$!A$ from
-assumptions~$\Gamma$ is a finite tree of !!{sentence}s satisfying the
-following conditions:
+\Article{derivation} \emph{!!{derivation}} de !!a{sentence}~$!A$ a partir de
+hipóteses~$\Gamma$ é uma árvore finita de !!{sentence}s que satisfaz as
+seguintes condições:
 \begin{enumerate}
-\item The topmost !!{sentence}s of the tree are either in $\Gamma$ or
-  are !!{discharged} by an inference in the tree.
-\item The bottommost !!{sentence} of the tree is~$!A$.
-\item Every !!{sentence} in the tree except the sentence~$!A$ at
-  the bottom is a premise of a correct application of an inference
-  rule whose conclusion stands directly below that !!{sentence} in the
-  tree.
+\item As !!{sentence}s no topo da árvore ou estão em $\Gamma$ ou
+  são !!{discharged}s por uma inferência na árvore.
+\item A !!{sentence} na base da árvore é~$!A$.
+\item Toda !!{sentence} na árvore exceto a sentença~$!A$ na
+  base é uma premissa de uma aplicação correta de uma regra de inferência
+  cuja conclusão está diretamente abaixo daquela !!{sentence} na
+  árvore.
 \end{enumerate}
-We then say that $!A$ is the \emph{conclusion} of the !!{derivation}
-and $\Gamma$ its !!{undischarged} assumptions.
+Dizemos então que $!A$ é a \emph{conclusão} da !!{derivation}
+e $\Gamma$, suas hipóteses !!{undischarged}s.
 
-If !!a{derivation} of $!A$ from~$\Gamma$ exists, we say that $!A$ is
-\emph{!!{derivable}} from~$\Gamma$, or in symbols: $\Gamma \Proves
-!A$. If there is !!a{derivation} of~$!A$ in which every assumption is
-!!{discharged}, we write~$\Proves !A$.
+Se existe !!a{derivation} de $!A$ a partir de~$\Gamma$, dizemos que $!A$ é
+\emph{!!{derivable}} a partir de~$\Gamma$, ou, em símbolos: $\Gamma \Proves
+!A$. Se há !!a{derivation} de~$!A$ em que toda hipótese é
+!!{discharged}, escrevemos~$\Proves !A$.
 \end{defn}
 
 \begin{ex}
-Every assumption on its own is !!a{derivation}. So, p.ex., $!A$ by
-itself is !!a{derivation}, and so is $!B$ by itself.  We can obtain a
-new !!{derivation} from these by applying, say, the $\Intro{\land}$
-rule,
+Toda hipótese por si só é !!a{derivation}. Assim, por exemplo, $!A$ por
+si só é !!a{derivation}, e $!B$ por si só também. Podemos obter uma
+nova !!{derivation} a partir delas aplicando, digamos, a regra $\Intro{\land}$,
 \begin{prooftree}
 \AxiomC{$!A$}
 \AxiomC{$!B$}
 \RightLabel{\Intro{\land}}
 \BinaryInfC{$!A \land !B$}
 \end{prooftree}
-These rules are meant to be general: we can replace the $!A$ and~$!B$
-in it with any !!{sentence}s, p.ex., by $!C$ and~$!D$. Then the
-conclusion would be $!C \land !D$, and so
+Essas regras devem ser gerais: podemos substituir o $!A$ e~$!B$
+nela por quaisquer !!{sentence}s, por exemplo, por $!C$ e~$!D$. Então a
+conclusão seria $!C \land !D$, e assim
 \begin{prooftree}
 \AxiomC{$!C$}
 \AxiomC{$!D$}
 \RightLabel{\Intro{\land}}
 \BinaryInfC{$!C \land !D$}
 \end{prooftree}
-is a correct !!{derivation}. Of course, we can also switch the
-assumptions, so that $!D$ plays the role of~$!A$ and $!C$ that
-of~$!B$. Thus,
+é uma !!{derivation} correta. É claro que também podemos trocar as
+hipóteses, de modo que $!D$ desempenhe o papel de~$!A$ e $!C$ o
+de~$!B$. Assim,
 \begin{prooftree}
 \AxiomC{$!D$}
 \AxiomC{$!C$}
 \RightLabel{\Intro{\land}}
 \BinaryInfC{$!D \land !C$}
 \end{prooftree}
-is also a correct !!{derivation}.
+também é uma !!{derivation} correta.
 
-We can now apply another rule, say, $\Intro{\lif}$, which allows us to
-conclude a conditional and allows us to !!{discharge} any assumption
-that is identical to the antecedent of that conditional. So both of
-the following would be correct !!{derivation}s:
+Podemos agora aplicar outra regra, digamos, $\Intro{\lif}$, que nos permite
+concluir um condicional e nos permite descarregar qualquer hipótese
+que seja idêntica ao antecedente desse condicional. Assim, ambas as
+seguintes seriam !!{derivation}s corretas:
 \begin{prooftree}
 \AxiomC{$\Discharge{!C}{1}$}
 \AxiomC{$!D$}
@@ -92,14 +91,14 @@ the following would be correct !!{derivation}s:
 \DischargeRule{\Intro{\lif}}{1}
 \UnaryInfC{$!D \lif (!C \land !D)$}
 \end{prooftree}
-They show, respectively, that $!D \Proves !C \lif (!C \land !D)$ and
+Elas mostram, respectivamente, que $!D \Proves !C \lif (!C \land !D)$ e
 $!C \Proves !D \lif (!C \land !D)$.
 
-Remember that discharging of assumptions is a permission, not a
-requirement: we don't have to discharge the assumptions. In
-particular, we can apply a rule even if the assumptions are not
-present in the !!{derivation}. For instance, the following is legal, even
-though there is no assumption~$!A$ to be !!{discharged}:
+Lembre-se de que descarregar hipóteses é uma permissão, não uma
+exigência: não temos de descarregar as hipóteses. Em
+particular, podemos aplicar uma regra mesmo que as hipóteses não
+estejam presentes na !!{derivation}. Por exemplo, o seguinte é válido, embora
+não haja hipótese~$!A$ a ser !!{discharged}:
 \begin{prooftree}
   \AxiomC{$!B$}
   \DischargeRule{\Intro{\lif}}{1}

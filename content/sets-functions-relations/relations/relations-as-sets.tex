@@ -20,11 +20,11 @@ muitas outras relações interessantes que encontraremos, e ainda mais
 relações possíveis. Antes de as revermos, contudo, começaremos por
 observar que podemos ver relações como um tipo especial de conjunto. 
   
-Para isso, recordemos duas coisas de \olref[sfr][set][pai]{sec}. Primeiro,
+Para isso, recordemos duas coisas da \olref[sfr][set][pai]{sec}. Primeiro,
 recordemos a noção de \emph{par ordenado}: dados $a$ e $b$, podemos
-formar~$\tuple{a, b}$. É importante que a ordem dos elementos seja relevante
+formar~$\tuple{a, b}$. É importante notar que a ordem dos elementos \emph{importa}
 aqui. Assim, se $a \neq b$ então $\tuple{a, b} \neq \tuple{b, a}$.
-(Contrastemos isto com pares não ordenados, O.s.\@, conjuntos de $2$ elementos, onde
+(Contrastemos isto com pares não ordenados, isto é, conjuntos de $2$ elementos, onde
 $\{a, b\}=\{b, a\}$.) Segundo, recordemos a noção de \emph{produto
 cartesiano}: se $A$ e $B$ são conjuntos, então podemos formar~$A \times B$, o
 conjunto de todos os pares $\tuple{x, y}$ com $x \in A$ e $y \in B$. Em
@@ -33,7 +33,7 @@ de~$A$.
   
 Consideremos agora uma relação particular num conjunto: a relação~$<$
 no conjunto~$\Nat$ dos números naturais. Seja o conjunto de todos os
-pares de números $\tuple{n, m}$ onde $n<m$, O.s.\@,
+pares de números $\tuple{n, m}$ onde $n<m$, isto é,
 \[
   R=\Setabs{\tuple{n, m}}{n, m \in \Nat \text{ e } n<m}.
 \]
@@ -76,30 +76,30 @@ matriz bidimensional assim:
   \end{array}
 \]
 Colocamos a diagonal, aqui, em negrito, pois o subconjunto de $\Nat^2$
-constituído pelos pares que estão na diagonal, O.s.\@,
+constituído pelos pares que estão na diagonal, isto é,
 \[
   \{\tuple{0,0 }, \tuple{ 1,1 }, \tuple{ 2,2 }, \dots\},
   \]
 é a \emph{relação identidade em}~$\Nat$. (Como a relação identidade é
 popular, definamos $\Id{A}=\Setabs{\tuple{ x,x }}{x \in
 A}$ para qualquer conjunto $A$.) O subconjunto de todos os pares acima da
-diagonal, O.s.\@,
+diagonal, isto é,
 \[
   L = \{\tuple{ 0,1 },\tuple{ 0,2 },\ldots,\tuple{ 1,2 },
   \tuple{ 1,3 }, \dots, \tuple{ 2,3 }, \tuple{ 2,4 },\ldots\},
 \]
-é a relação \emph{menor que}, O.s.\@, $Lnm$ se e só se $n<m$. O subconjunto dos
-pares abaixo da diagonal, O.s.\@,
+é a relação \emph{menor que}, isto é, $Lnm$ se e só se $n<m$. O subconjunto dos
+pares abaixo da diagonal, isto é,
 \[
   G=\{ \tuple{ 1,0 },\tuple{ 2,0 },\tuple{
     2,1 }, \tuple{ 3,0 },\tuple{ 3,1 },\tuple{ 3,2 }, \dots\},
 \]
-é a relação \emph{maior que}, O.s.\@, $Gnm$ se e só se $n>m$. A união
+é a relação \emph{maior que}, isto é, $Gnm$ se e só se $n>m$. A união
 de $L$ com $I$, que podemos chamar $K=L\cup I$, é a relação \emph{menor ou
 igual a}: $Knm$ se e só se $n \le m$. Do mesmo modo, $H=G \cup
 I$ é a \emph{relação maior ou igual a}. Estas relações
 $L$, $G$, $K$, e $H$ são tipos especiais de relações chamadas
-\emph{ordens}. $L$ e $G$ gozam da propriedade de que nenhum número está em relação $L$ ou $G$ consigo próprio (O.s.\@, para todo~$n$, não se verifica nem $Lnn$ nem $Gnn$).
+\emph{ordens}. $L$ e $G$ gozam da propriedade de que nenhum número está em relação $L$ ou $G$ consigo próprio (isto é, para todo~$n$, não se verifica nem $Lnn$ nem $Gnn$).
 Relações com esta propriedade chamam-se \emph{irreflexivas}, e, se
 também forem ordens, chamam-se \emph{ordens estritas.}
 \end{ex}

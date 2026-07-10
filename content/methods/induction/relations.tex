@@ -6,176 +6,176 @@
 
 \begin{document}
 
-\olfileid{mth}{ind}{rel}
+\olfileid[pt]{mth}{ind}{rel}
 
-\olsection{Relations and Functions}
+\olsection{Relações e Funções}
 
-When we have defined a set of objects (such as the natural numbers or
-the nice terms) inductively, we can also define \emph{relations on}
-these objects by induction.  For instance, consider the following
-idea: a nice term~$t_1$ is a subterm of a nice term~$t_2$ if it occurs as
-a part of it.  Let's use a symbol for it: $t_1 \sqsubseteq t_2$. Every
-nice term is a subterm of itself, of course: $t \sqsubseteq t$. We can
-give an inductive definition of this relation as follows:
+Quando definimos um conjunto de objetos (como os números naturais ou
+os termos bonitos) indutivamente, também podemos definir \emph{relações sobre}
+esses objetos por indução.  Por exemplo, considere a seguinte
+ideia: um termo bonito~$t_1$ é um subtermo de um termo bonito~$t_2$ se ocorre como
+parte dele.  Vamos usar um símbolo para isso: $t_1 \sqsubseteq t_2$. Todo
+termo bonito é, é claro, um subtermo de si mesmo: $t \sqsubseteq t$. Podemos
+dar uma definição indutiva dessa relação como segue:
 
 \begin{defn}
-  The relation of a nice term~$t_1$ being a subterm of~$t_2$, $t_1
-  \sqsubseteq t_2$, is defined by induction on~$t_2$ as follows:
+  A relação de um termo bonito~$t_1$ ser um subtermo de~$t_2$, $t_1
+  \sqsubseteq t_2$, é definida por indução em~$t_2$ como segue:
   \begin{enumerate}
-  \item If $t_2$ is a letter, then $t_1 \sqsubseteq t_2$ iff $t_1 = t_2$.
-  \item If $t_2$ is $[s_1 \circ s_2]$, then $t_1 \sqsubseteq t_2$ iff $t_1 =
-    t_2$, $t_1 \sqsubseteq s_1$, or $t_1 \sqsubseteq s_2$.
+  \item Se $t_2$ é uma letra, então $t_1 \sqsubseteq t_2$ sse $t_1 = t_2$.
+  \item Se $t_2$ é $[s_1 \circ s_2]$, então $t_1 \sqsubseteq t_2$ sse $t_1 =
+    t_2$, $t_1 \sqsubseteq s_1$, ou $t_1 \sqsubseteq s_2$.
   \end{enumerate}
 \end{defn}
 
-This definition, for instance, will tell us that $\mathrm{a}
-\sqsubseteq [\mathrm{b} \circ \mathrm{a}]$. For (2) says that
-$\mathrm{a} \sqsubseteq [\mathrm{b} \circ \mathrm{a}]$ iff $\mathrm{a}
-= [\mathrm{b} \circ \mathrm{a}]$, or $\mathrm{a} \sqsubseteq b$, or
-$\mathrm{a} \sqsubseteq \mathrm{a}$. The first two are false:
-$\mathrm{a}$ clearly isn't identical to $[\mathrm{b} \circ
-  \mathrm{a}]$, and by~(1), $\mathrm{a} \sqsubseteq \mathrm{b}$ iff
-$\mathrm{a} = \mathrm{b}$, which is also false. However, also by~(1),
-$\mathrm{a} \sqsubseteq \mathrm{a}$ iff $\mathrm{a} = \mathrm{a}$,
-which is true.
+Esta definição, por exemplo, nos dirá que $\mathrm{a}
+\sqsubseteq [\mathrm{b} \circ \mathrm{a}]$. Pois (2) diz que
+$\mathrm{a} \sqsubseteq [\mathrm{b} \circ \mathrm{a}]$ sse $\mathrm{a}
+= [\mathrm{b} \circ \mathrm{a}]$, ou $\mathrm{a} \sqsubseteq b$, ou
+$\mathrm{a} \sqsubseteq \mathrm{a}$. As duas primeiras são falsas:
+$\mathrm{a}$ claramente não é idêntico a $[\mathrm{b} \circ
+  \mathrm{a}]$, e por~(1), $\mathrm{a} \sqsubseteq \mathrm{b}$ sse
+$\mathrm{a} = \mathrm{b}$, o que também é falso. No entanto, também por~(1),
+$\mathrm{a} \sqsubseteq \mathrm{a}$ sse $\mathrm{a} = \mathrm{a}$,
+o que é verdadeiro.
 
-It's important to note that the success of this definition depends on
-a fact that we haven't proved yet: every nice term~$t$ is either a
-letter by itself, or there are \emph{uniquely determined} nice terms
-$s_1$ and $s_2$ such that $t = [s_1 \circ s_2]$.  ``Uniquely
-determined'' here means that if $t = [s_1 \circ s_2]$ it isn't
-\emph{also} $= [r_1 \circ r_2]$ with $s_1 \neq r_1$ or $s_2 \neq r_2$.
-If this were the case, then clause~(2) may come in conflict with
-itself: reading $t_2$ as $[s_1 \circ s_2]$ we might get $t_1
-\sqsubseteq t_2$, but if we read $t_2$ as $[r_1 \circ r_2]$ we might
-get not $t_1 \sqsubseteq t_2$.  Before we prove that this can't
-happen, let's look at an example where it \emph{can} happen.
+É importante observar que o sucesso desta definição depende de
+um fato que ainda não provamos: todo termo bonito~$t$ ou é uma
+letra isolada, ou existem termos bonitos \emph{univocamente determinados}
+$s_1$ e $s_2$ tais que $t = [s_1 \circ s_2]$.  ``Univocamente
+determinados'' aqui significa que, se $t = [s_1 \circ s_2]$, ele não é
+\emph{também} $= [r_1 \circ r_2]$ com $s_1 \neq r_1$ ou $s_2 \neq r_2$.
+Se este fosse o caso, então a cláusula~(2) poderia entrar em conflito
+consigo mesma: lendo $t_2$ como $[s_1 \circ s_2]$ poderíamos obter $t_1
+\sqsubseteq t_2$, mas se lermos $t_2$ como $[r_1 \circ r_2]$ poderíamos
+obter não $t_1 \sqsubseteq t_2$.  Antes de provarmos que isso não pode
+acontecer, vejamos um exemplo em que ele \emph{pode} acontecer.
 
 \begin{defn}
-  Define \emph{bracketless terms} inductively by
+  Defina \emph{termos sem colchetes} indutivamente por
   \begin{enumerate}
-  \item Every letter is a bracketless term.
-    \item If $s_1$ and $s_2$ are bracketless terms, then $s_1 \circ s_2$ is
-      a bracketless term.
-    \item Nothing else is a bracketless term.
+  \item Toda letra é um termo sem colchetes.
+    \item Se $s_1$ e $s_2$ são termos sem colchetes, então $s_1 \circ s_2$ é
+      um termo sem colchetes.
+    \item Nada mais é um termo sem colchetes.
   \end{enumerate}
 \end{defn}
 
-Bracketless terms are, p.ex., $\mathrm{a}$, $\mathrm{b} \circ
-\mathrm{d}$, $\mathrm{b} \circ \mathrm{a} \circ \mathrm{b}$. Now if we
-defined ``subterm'' for bracketless terms the way we did above, the
-second clause would read
+Termos sem colchetes são, por exemplo, $\mathrm{a}$, $\mathrm{b} \circ
+\mathrm{d}$, $\mathrm{b} \circ \mathrm{a} \circ \mathrm{b}$. Agora, se
+definíssemos ``subtermo'' para termos sem colchetes do modo como fizemos acima, a
+segunda cláusula diria
 \begin{center}
-  If $t_2 = s_1 \circ s_2$, then $t_1 \sqsubseteq t_2$ iff $t_1 = t_2$, $t_1
-  \sqsubseteq s_1$, or $t_1 \sqsubseteq s_2$.
+  Se $t_2 = s_1 \circ s_2$, então $t_1 \sqsubseteq t_2$ sse $t_1 = t_2$, $t_1
+  \sqsubseteq s_1$, ou $t_1 \sqsubseteq s_2$.
 \end{center}
 
-Now $\mathrm{b} \circ \mathrm{a} \circ \mathrm{b}$ is of the form $s_1
-\circ s_2$ with 
+Agora, $\mathrm{b} \circ \mathrm{a} \circ \mathrm{b}$ é da forma $s_1
+\circ s_2$ com 
 \begin{align*}
-  s_1 & = \mathrm{b} \text{ and} & s_2 & = \mathrm{a} \circ \mathrm{b}.
-\intertext{It is also of the form $r_1 \circ r_2$ with}
-  r_1 & = \mathrm{b} \circ \mathrm{a} \text{ and} & r_2 &= \mathrm{b}.
+  s_1 & = \mathrm{b} \text{ e} & s_2 & = \mathrm{a} \circ \mathrm{b}.
+\intertext{Ele também é da forma $r_1 \circ r_2$ com}
+  r_1 & = \mathrm{b} \circ \mathrm{a} \text{ e} & r_2 &= \mathrm{b}.
 \end{align*}
-Now is $\mathrm{a} \circ \mathrm{b}$ a subterm of $\mathrm{b} \circ
-\mathrm{a} \circ \mathrm{b}$?  The answer is yes if we go by the first
-reading, and no if we go by the second.
+Agora, $\mathrm{a} \circ \mathrm{b}$ é um subtermo de $\mathrm{b} \circ
+\mathrm{a} \circ \mathrm{b}$?  A resposta é sim, se seguirmos a primeira
+leitura, e não, se seguirmos a segunda.
 
-The property that the way a nice term is built up from other nice
-terms is unique is called \emph{unique readability}. Since inductive
-definitions of relations for such inductively defined objects are
-important, we have to prove that it holds.
+A propriedade de que o modo como um termo bonito é construído a partir de outros
+termos bonitos é único é chamada de \emph{leitura única}. Como definições
+indutivas de relações para tais objetos definidos indutivamente são
+importantes, temos que provar que ela vale.
 
 \begin{prop}
-  Suppose $t$ is a nice term. Then either $t$ is a letter by itself,
-  or there are uniquely determined nice terms $s_1$, $s_2$ such that~$t =
+  Suponha que $t$ é um termo bonito. Então ou $t$ é uma letra isolada,
+  ou existem termos bonitos univocamente determinados $s_1$, $s_2$ tais que~$t =
   [s_1 \circ s_2]$.
 \end{prop}
 
 \begin{proof}
-  If $t$ is a letter by itself, the condition is satisfied. So assume
-  $t$ isn't a letter by itself. We can tell from the inductive
-  definition that then $t$ must be of the form $[s_1 \circ s_2]$ for some
-  nice terms $s_1$ and~$s_2$. It remains to show that these are uniquely
-  determined, O.s.\@, if $t = [r_1 \circ r_2]$, then $s_1 = r_1$ and $s_2 = r_2$.
+  Se $t$ é uma letra isolada, a condição é satisfeita. Então suponha
+  que $t$ não é uma letra isolada. Podemos perceber, pela definição
+  indutiva, que então $t$ deve ser da forma $[s_1 \circ s_2]$ para alguns
+  termos bonitos $s_1$ e~$s_2$. Resta mostrar que estes são univocamente
+  determinados, isto é, se $t = [r_1 \circ r_2]$, então $s_1 = r_1$ e $s_2 = r_2$.
 
-  So suppose $t = [s_1 \circ s_2]$ and also $t = [r_1 \circ r_2]$ for nice terms
-  $s_1$, $s_2$, $r_1$, $r_2$. We have to show that $s_1 = r_1$ and $s_2 = r_2$.
-  First, $s_1$ and $r_1$ must be identical, for otherwise one is a proper
-  initial segment of the other. But by \olref[sti]{prop:initial}, that
-  is impossible if $s_1$ and~$r_1$ are both nice terms.  But if $s_1 = r_1$,
-  then clearly also $s_2 = r_2$.
+  Então suponha $t = [s_1 \circ s_2]$ e também $t = [r_1 \circ r_2]$ para termos bonitos
+  $s_1$, $s_2$, $r_1$, $r_2$. Temos que mostrar que $s_1 = r_1$ e $s_2 = r_2$.
+  Primeiro, $s_1$ e $r_1$ devem ser idênticos, pois, caso contrário, um é um
+  segmento inicial próprio do outro. Mas, por \olref[sti]{prop:initial}, isso
+  é impossível se $s_1$ e~$r_1$ são ambos termos bonitos.  Mas se $s_1 = r_1$,
+  então claramente também $s_2 = r_2$.
 \end{proof}
 
-We can also define functions inductively: p.ex., we can define the
-function~$f$ that maps any nice term to the maximum depth of nested
-$[\dots]$ in it as follows:
+Também podemos definir funções indutivamente: por exemplo, podemos definir a
+função~$f$ que mapeia qualquer termo bonito na profundidade máxima de aninhamento de
+$[\dots]$ nele como segue:
 
 \begin{defn}
-  \ollabel{defn:depth} The \emph{depth} of a nice term, $f(t)$, is
-  defined inductively as follows:
+  \ollabel{defn:depth} A \emph{profundidade} de um termo bonito, $f(t)$, é
+  definida indutivamente como segue:
   \[
   f(t) = \begin{cases}
-    0 & \text{ if $t$ is a letter}\\
-    \max(f(s_1), f(s_2)) + 1 & \text{ if $t = [s_1 \circ s_2]$.}
+    0 & \text{ se $t$ é uma letra}\\
+    \max(f(s_1), f(s_2)) + 1 & \text{ se $t = [s_1 \circ s_2]$.}
   \end{cases}
   \]
 \end{defn}
 
-For instance
+Por exemplo,
 \begin{align*}
   f([\mathrm{a} \circ \mathrm{b}]) & = 
     \max(f(\mathrm{a}),f(\mathrm{b})) + 1 = \\ 
-  &= \max(0, 0) + 1 = 1, \text{ and}\\
+  &= \max(0, 0) + 1 = 1, \text{ e}\\
   f([[\mathrm{a} \circ \mathrm{b}] \circ \mathrm{c}]) & = 
     \max(f([\mathrm{a} \circ \mathrm{b}]), f(\mathrm{c})) + 1 = \\ 
   & = \max(1,0) + 1 = 2.
 \end{align*}
 
-Here, of course, we assume that $s_1$ an $s_2$ are nice terms, and make
-use of the fact that every nice term is either a letter or of the form
-$[s_1 \circ s_2]$. It is again important that it can be of this form in
-only one way. To see why, consider again the bracketless terms we
-defined earlier. The corresponding ``definition'' would be:
+Aqui, é claro, supomos que $s_1$ e $s_2$ são termos bonitos, e fazemos
+uso do fato de que todo termo bonito ou é uma letra ou é da forma
+$[s_1 \circ s_2]$. É novamente importante que ele possa ser dessa forma de
+apenas um modo. Para ver por quê, considere novamente os termos sem colchetes que
+definimos antes. A ``definição'' correspondente seria:
 \[
   g(t) = 
   \begin{cases}
-    0 & \text{ if $t$ is a letter}\\
-   \max(g(s_1), g(s_2)) + 1 & \text{ if $t = s_1 \circ s_2$.}
+    0 & \text{ se $t$ é uma letra}\\
+   \max(g(s_1), g(s_2)) + 1 & \text{ se $t = s_1 \circ s_2$.}
   \end{cases}
 \]
-Now consider the bracketless term $\mathrm{a} \circ \mathrm{b} \circ
-\mathrm{c} \circ \mathrm{d}$. It can be read in more than one way,
-p.ex., as $s_1 \circ s_2$ with 
+Agora considere o termo sem colchetes $\mathrm{a} \circ \mathrm{b} \circ
+\mathrm{c} \circ \mathrm{d}$. Ele pode ser lido de mais de um modo,
+por exemplo, como $s_1 \circ s_2$ com 
 \begin{align*}
-  s_1 & = \mathrm{a} \text{ and} & 
+  s_1 & = \mathrm{a} \text{ e} & 
   s_2 & = \mathrm{b} \circ \mathrm{c} \circ \mathrm{d},
-\intertext{or as $r_1 \circ r_2$ with}
-  r_1 & = \mathrm{a} \circ b \text{ and} & 
+\intertext{ou como $r_1 \circ r_2$ com}
+  r_1 & = \mathrm{a} \circ b \text{ e} & 
   r_2 &= \mathrm{c} \circ \mathrm{d}.
 \end{align*}
-Calculating $g$ according to the first way of reading it would give
+Calcular $g$ de acordo com o primeiro modo de lê-lo daria
 \begin{align*}
   g(s_1 \circ s_2) & =
   \max(g(\mathrm{a}), g(\mathrm{b} \circ \mathrm{c} \circ \mathrm{d})) + 1 =\\ & =
   \max(0,2) + 1 = 3
-  \intertext{while according to the other reading we get}
+  \intertext{enquanto, de acordo com a outra leitura, obtemos}
   g(r_1 \circ r_2) & =
   \max(g(\mathrm{a} \circ \mathrm{b}), g(\mathrm{c} \circ \mathrm{d})) + 1=\\ &
   = \max(1,1) + 1 = 2
 \end{align*}
-But a function must always yield a unique value; so our ``definition''
-of~$g$ doesn't define a function at all.
+Mas uma função deve sempre produzir um valor único; então nossa ``definição''
+de~$g$ não define função alguma.
 
 \begin{prob}
-  Give an inductive definition of the function $l$, where $l(t)$ is
-  the number of symbols in the nice term~$t$.
+  Dê uma definição indutiva da função $l$, em que $l(t)$ é
+  o número de símbolos no termo bonito~$t$.
 \end{prob}
 
 \begin{prob}
-  Prove by structural induction on nice terms $t$ that $f(t) < l(t)$ (where
-  $l(t)$ is the number of symbols in~$t$ and $f(t)$ is the depth of
-  $t$ as defined in \olref[mth][ind][rel]{defn:depth}).
+  Prove, por indução estrutural sobre termos bonitos $t$, que $f(t) < l(t)$ (em que
+  $l(t)$ é o número de símbolos em~$t$ e $f(t)$ é a profundidade de
+  $t$ tal como definida em \olref[mth][ind][rel]{defn:depth}).
 \end{prob}
 
 \end{document}

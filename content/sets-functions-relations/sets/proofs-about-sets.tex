@@ -6,97 +6,95 @@
 
 \begin{document}
 
-\olfileid{sfr}{set}{prf}
-\olsection{Proofs about Sets}
+\olfileid[pt]{sfr}{set}{prf}
+\olsection{Provas sobre Conjuntos}
 
 \begin{editorial}
-This section is superseded by \verb|content/method/proofs| and has
-been removed from this chapter by default.
+Esta seção foi substituída por \verb|content/method/proofs| e foi
+removida deste capítulo por padrão.
 \end{editorial}
 
 \begin{explain}
-Sets and the notations we've introduced so far provide us with
-convenient shorthands for specifying sets and expressing relationships
-between them. Often it will also be necessary to prove claims about
-such relationships. If you're not familiar with mathematical proofs,
-this may be new to you. So we'll walk through a simple example. We'll
-prove that for any sets $X$ and $Y$, it's always the case that $X \cap
-(X \cup Y) = X$. How do you prove an identity between sets like this?
-Recall that sets are determined solely by their !!{element}s, O.s.\@,
-sets are identical iff they have the same !!{element}s. So in this
-case we have to prove that (a) every !!{element} of $X \cap (X \cup
-Y)$ is also an !!{element} of $X$ and, conversely, that (b) every
-!!{element} of $X$ is also an !!{element} of $X \cap (X \cup Y)$. In
-other words, we show that both (a) $X \cap (X \cup Y) \subseteq X$ and
+Conjuntos e as notações que introduzimos até aqui nos fornecem
+abreviações convenientes para especificar conjuntos e expressar relações
+entre eles. Com frequência também será necessário provar afirmações sobre
+essas relações. Se você não está familiarizado com provas matemáticas,
+isso pode ser novo para você. Então percorreremos um exemplo simples. Vamos
+provar que para quaisquer conjuntos $X$ e $Y$, é sempre o caso que $X \cap
+(X \cup Y) = X$. Como se prova uma identidade entre conjuntos assim?
+Lembre que conjuntos são determinados unicamente por seus !!{element}s, isto é,
+conjuntos são idênticos sse têm os mesmos !!{element}s. Então neste
+caso temos que provar que (a) todo !!{element} de $X \cap (X \cup
+Y)$ é também !!a{element} de $X$ e, reciprocamente, que (b) todo
+!!{element} de $X$ é também !!a{element} de $X \cap (X \cup Y)$. Em
+outras palavras, mostramos que tanto (a) $X \cap (X \cup Y) \subseteq X$ quanto
 (b) $X \subseteq X \cap (X \cup Y)$.
 
-A proof of a general claim like ``every !!{element}~$z$ of $X \cap (X
-\cup Y)$ is also an !!{element} of $X$'' is proved by first assuming
-that an arbitrary $z \in X \cap (X \cup Y)$ is given, and proving from
-this assumption that $z \in X$. You may know this pattern as ``general
-conditional proof.''  In this proof we'll also have to make use of the
-definitions involved in the assumption and conclusion, p.ex., in this
-case of ``$\cap$'' and ``$\cup$.''  So case (a) would be argued as
-follows:
+Uma prova de uma afirmação geral como ``todo !!{element}~$z$ de $X \cap (X
+\cup Y)$ é também !!a{element} de $X$'' é provada primeiro assumindo
+que um $z \in X \cap (X \cup Y)$ arbitrário é dado, e provando a partir
+dessa suposição que $z \in X$. Você pode conhecer esse padrão como ``prova
+condicional geral.'' Nesta prova também teremos que usar as
+definições envolvidas na suposição e conclusão, p.ex., neste
+caso de ``$\cap$'' e ``$\cup$.'' Assim o caso (a) seria argumentado da
+seguinte forma:
 
 \begin{quote}
-(a) We first want to show that $X \cap (X \cup Y) \subseteq X$, O.s.\@,
-by definition of $\subseteq$, that if $z \in X \cap (X \cup Y)$ then
-$z \in X$, for any~$z$. So assume that $z \in X \cap (X \cup
-Y)$. Since $z$ is an !!{element} of the intersection of two sets iff
-it is an !!{element} of both sets, we can conclude that $z \in X$ and
-also $z \in X \cup Y$. In particular, $z \in X$, which is what
-we wanted to show.
+(a) Primeiro queremos mostrar que $X \cap (X \cup Y) \subseteq X$, isto é,
+pela definição de $\subseteq$, que se $z \in X \cap (X \cup Y)$ então
+$z \in X$, para qualquer~$z$. Assuma então que $z \in X \cap (X \cup
+Y)$. Como $z$ é !!a{element} da interseção de dois conjuntos sse
+é !!a{element} de ambos os conjuntos, podemos concluir que $z \in X$ e
+também $z \in X \cup Y$. Em particular, $z \in X$, que é o que
+queríamos mostrar.
 \end{quote}
 
-This completes the first half of the proof. Note that in the last
-step we used the fact that if a conjunction ($z \in X$ and $z \in X
-\cup Y$) follows from an assumption, each conjunct follows from that
-same assumption. You may know this rule as ``conjunction
-elimination,'' or $\land$Elim. Now let's prove (b):
+Isso completa a primeira metade da prova. Note que no último
+passo usamos o fato de que se uma conjunção ($z \in X$ e $z \in X
+\cup Y$) segue de uma suposição, cada conjunto segue dessa mesma suposição. Você pode conhecer essa regra como ``eliminação da conjunção,'' ou $\land$Elim. Agora vamos provar (b):
 
 \begin{quote}
-(b) We now prove that $X \subseteq X \cap (X \cup Y)$, O.s.\@, by
-definition of $\subseteq$, that if $z \in X$ then also $z \in X \cap
-(X \cup Y)$, for any~$z$. Assume $z \in X$. To show that $z \in X
-\cap (X \cup Y)$, we have to show (by definition of ``$\cap$'') that
-(i) $z \in X$ and also (ii) $z \in X \cup Y$. Here (i) is just our
-assumption, so there is nothing further to prove. For (ii), recall that $z$
-is an !!{element} of a union of sets iff it is an !!{element} of at least
-one of those sets. Since $z \in X$, and $X \cup Y$ is the union of
-$X$ and $Y$, this is the case here. So $z \in X \cup Y$. We've shown
-both (i) $z \in X$ and (ii) $z \in X \cup Y$, hence, by definition of
+(b) Agora provamos que $X \subseteq X \cap (X \cup Y)$, isto é, pela
+definição de $\subseteq$, que se $z \in X$ então também $z \in X \cap
+(X \cup Y)$, para qualquer~$z$. Assuma $z \in X$. Para mostrar que $z \in X
+\cap (X \cup Y)$, temos que mostrar (pela definição de ``$\cap$'') que
+(i) $z \in X$ e também (ii) $z \in X \cup Y$. Aqui (i) é apenas nossa
+suposição, então não há nada mais a provar. Para (ii), lembre que $z$
+é !!a{element} de uma união de conjuntos sse é !!a{element} de pelo menos
+um desses conjuntos. Como $z \in X$, e $X \cup Y$ é a união de
+$X$ e $Y$, este é o caso aqui. Então $z \in X \cup Y$. Mostramos
+tanto (i) $z \in X$ quanto (ii) $z \in X \cup Y$, logo, pela definição de
 ``$\cap$,'' $z \in X \cap (X \cup Y)$.
 \end{quote}
 
-This was somewhat long-winded, but it illustrates how we reason about
-sets and their relationships. We usually aren't this explicit; in
-particular, we might not repeat all the definitions. A proof of our
-result in a more advanced text would be much more compressed. It might
-look something like this.
+Isso foi um pouco prolixo, mas ilustra como raciocinamos sobre
+conjuntos e suas relações. Geralmente não somos tão explícitos; em
+particular, podemos não repetir todas as definições. Uma prova do nosso
+resultado em um texto mais avançado seria muito mais comprimida. Poderia
+parecer algo assim.
 \end{explain}
 
 
-\begin{prop}[Absorption]
-For all sets $X$, $Y$,
+\begin{prop}[Absorção]
+Para todos os conjuntos $X$, $Y$,
 \[
 X \cap (X \cup Y) = X
 \]
 \end{prop}
 
 \begin{proof}
-(a) Suppose $z \in X \cap (X \cup Y)$. Then $z \in X$, so $X \cap (X
+(a) Suponha $z \in X \cap (X \cup Y)$. Então $z \in X$, logo $X \cap (X
   \cup Y) \subseteq X$.
 
-(b) Now suppose $z \in X$. Then also $z \in X \cup Y$, and therefore
-  also $z \in X \cap (X \cup Y)$. Thus, $X \subseteq X \cap (X \cup
+(b) Agora suponha $z \in X$. Então também $z \in X \cup Y$, e portanto
+  também $z \in X \cap (X \cup Y)$. Assim, $X \subseteq X \cap (X \cup
   Y)$.
 \end{proof}
 
 \begin{prob}
-Prove in detail that $X \cup (X \cap Y) = X$. Then give a shortened,
-compressed proof. (Hint: for the $X \cup (X \cap Y) \subseteq X$
-direction you will need proof by cases, aka $\lor$Elim.)
+Prove em detalhe que $X \cup (X \cap Y) = X$. Depois dê uma prova
+comprimida e mais curta. (Dica: para a direção $X \cup (X \cap Y) \subseteq X$
+você precisará de prova por casos, aka $\lor$Elim.)
 \end{prob}
 
 \end{document}

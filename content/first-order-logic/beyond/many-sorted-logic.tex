@@ -6,62 +6,60 @@
 
 \begin{document}
 
-\olfileid{fol}{byd}{msl}
+\olfileid[pt]{fol}{byd}{msl}
 
-\olsection{Many-Sorted Logic}
+\olsection{Lógica de Múltiplas Ordenações}
 
-In first-order logic, variables and quantifiers range over a single
-!!{domain}. But it is often useful to have multiple (disjoint)
-!!{domain}s: for example, you might want to have !!a{domain} of numbers,
-!!a{domain} of geometric objects, !!a{domain} of functions from
-numbers to numbers, !!a{domain} of abelian groups, and so on.
+Na lógica de primeira ordem, variáveis e quantificadores variam sobre um único
+!!{domain}. Mas é frequentemente útil ter vários !!{domain}s (disjuntos):
+por exemplo, pode-se querer ter !!a{domain} de números,
+!!a{domain} de objetos geométricos, !!a{domain} de funções de
+números para números, !!a{domain} de grupos abelianos, e assim por diante.
 
-Many-sorted logic provides this kind of framework. One starts with a
-list of ``sorts''---the ``sort'' of an object indicates the
-``!!{domain}'' it is supposed to inhabit. One then has !!{variable}s
-and quantifiers for each sort, and (usually) an !!{identity} for each
-sort. Functions and relations are also ``typed'' by the sorts of
-objects they can take as arguments. Otherwise, one keeps the usual
-rules of first-order logic, with versions of the quantifier-rules
-repeated for each sort.
+A lógica de múltiplas ordenações fornece esse tipo de arcabouço. Começa-se com uma
+lista de ``ordenações''---a ``ordenação'' de um objeto indica o
+``!!{domain}'' que ele deveria habitar. Tem-se então !!{variable}s
+e quantificadores para cada ordenação e (geralmente) uma !!{identity} para cada
+ordenação. Funções e relações também são ``tipadas'' pelas ordenações dos
+objetos que podem receber como argumentos. Caso contrário, mantêm-se as regras
+usuais da lógica de primeira ordem, com versões das regras de quantificadores
+repetidas para cada ordenação.
 
-For example, to study international relations we might choose a
-language with two sorts of objects, French citizens and German
-citizens. We might have a unary relation, ``drinks wine,'' for objects
-of the first sort; another unary relation, ``eats wurst,'' for objects
-of the second sort; and a binary relation, ``forms a multinational
-married couple,'' which takes two arguments, where the first argument
-is of the first sort and the second argument is of the second sort. If
-we use variables $a$, $b$, $c$ to range over French citizens and $x$, $y$, $z$
-to range over German citizens, then
+Por exemplo, para estudar relações internacionais, poderíamos escolher uma
+linguagem com dois tipos de objetos, cidadãos franceses e cidadãos alemães.
+Poderíamos ter uma relação unária, ``bebe vinho'', para objetos
+da primeira ordenação; outra relação unária, ``come wurst'', para objetos
+da segunda ordenação; e uma relação binária, ``forma um casal
+multinacional'', que recebe dois argumentos, onde o primeiro argumento
+é da primeira ordenação e o segundo argumento é da segunda ordenação. Se
+usarmos variáveis $a$, $b$, $c$ para variar sobre cidadãos franceses e $x$, $y$, $z$
+para variar sobre cidadãos alemães, então
 \[
 \lforall[a][\lforall x][(\Atom{\Obj{MarriedTo}}{a,x} \lif
 (\Atom{\Obj{DrinksWine}}{a} \lor \lnot \Atom{\Obj{EatsWurst}}{x})]]
 \]
-asserts that if any French person is married to a German, either the
-French person drinks wine or the German doesn't eat wurst.
+afirma que, se algum francês for casado com um alemão, ou o
+francês bebe vinho ou o alemão não come wurst.
 
-Many-sorted logic can be embedded in first-order logic in a natural
-way, by lumping all the objects of the many-sorted !!{domain}s together
-into one first-order !!{domain}, using unary !!{predicate}s to keep track of
-the sorts, and relativizing quantifiers. For example, the first-order
-language corresponding to the example above would have unary !!{predicate}s
-``$\Obj{German}$'' and ``$\Obj{French}$,'' in addition to the other relations
-described, with the sort requirements erased. A sorted quantifier $\lforall[x][!A]$, where $x$ is !!a{variable} of the German sort, translates to
+A lógica de múltiplas ordenações pode ser embutida na lógica de primeira ordem de
+maneira natural, reunindo todos os objetos dos !!{domain}s de múltiplas ordenações
+em um único !!{domain} de primeira ordem, usando !!{predicate}s unários para acompanhar
+as ordenações e relativizando quantificadores. Por exemplo, a linguagem de primeira ordem
+correspondente ao exemplo acima teria !!{predicate}s unários
+``$\Obj{German}$'' e ``$\Obj{French}$'', além das outras relações
+descritas, com os requisitos de ordenação eliminados. Um quantificador ordenado $\lforall[x][!A]$, onde $x$ é !!a{variable} da ordenação alemã, traduz-se para
 \[
 \lforall[x][(\Atom{\Obj{German}}{x} \lif !A)].
 \]
-We need to add axioms that insure that the sorts are separate---p.ex.,
+Precisamos adicionar axiomas que garantam que as ordenações sejam separadas---por exemplo,
 $\lforall[x][\lnot (\Atom{\Obj{German}}{x} \land
-  \Atom{\Obj{French}}{x})]$---as well as axioms that guarantee that
-``drinks wine'' only holds of objects satisfying the predicate
-$\Atom{\Obj{French}}{x}$, etc. With these conventions and axioms, it
-is not difficult to show that many-sorted !!{sentence}s translate to
-first-order !!{sentence}s, and many-sorted !!{derivation}s translate
-to first-order !!{derivation}s. Also, many-sorted !!{structure}s
-``translate'' to corresponding first-order !!{structure}s and
-vice-versa, so we also have a completeness theorem for many-sorted
-logic.
+  \Atom{\Obj{French}}{x})]$---, bem como axiomas que garantam que
+``bebe vinho'' só vale de objetos que satisfazem o !!{predicate}
+$\Atom{\Obj{French}}{x}$, etc. Com essas convenções e axiomas, não
+é difícil mostrar que !!{sentence}s de múltiplas ordenações traduzem-se em
+!!{sentence}s de primeira ordem, e !!{derivation}s de múltiplas ordenações traduzem-se
+em !!{derivation}s de primeira ordem. Além disso, !!{structure}s de múltiplas ordenações
+``traduzem-se'' em !!{structure}s de primeira ordem correspondentes e
+vice-versa, de modo que também temos um teorema de completude para a lógica de múltiplas ordenações.
 
 \end{document}
-

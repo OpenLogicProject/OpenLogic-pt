@@ -1,0 +1,33 @@
+Uma \emph{máquina de Turing} é um tipo de mecanismo idealizado de computação.
+Ela consiste em uma \emph{fita} infinita em um só sentido, dividida em
+quadrados, cada um dos quais pode conter um \emph{símbolo} de um
+alfabeto predeterminado. A máquina opera movendo uma
+\emph{cabeça de leitura e escrita} ao longo da fita. Ela também pode estar em
+um de um número predeterminado de \emph{estados}. As ações da cabeça de
+leitura e escrita são determinadas por um conjunto de instruções; cada
+instrução está condicionada a que a máquina esteja em um certo estado e leia
+um certo símbolo, e especifica qual símbolo a máquina escreverá no
+quadrado atual, se ela moverá a cabeça de leitura e escrita um
+quadrado para a esquerda, para a direita, ou se permanecerá parada, e
+para qual estado ela mudará. Se a fita contém uma certa \emph{entrada},
+representada como uma sequência de símbolos na fita, e a máquina é
+colocada no estado inicial designado com a cabeça de leitura e escrita lendo
+o quadrado mais à esquerda da entrada, o conjunto de instruções determinará,
+passo a passo, uma sequência de \emph{configurações} da máquina: conteúdo da
+fita, posição da cabeça de leitura e escrita e estado da máquina. Caso a
+máquina encontre uma configuração na qual o conjunto de instruções não
+contém uma instrução para a combinação atual de símbolo lido/estado,
+a máquina \emph{para}, e o conteúdo da fita é a \emph{saída}.
+
+Números podem ser representados muito facilmente como sequências de traços na
+fita de uma máquina de Turing. Dizemos que uma função $\Nat \to \Nat$ é
+\emph{Turing-computável} se há uma máquina de Turing que, sempre que
+iniciada com a representação unária de~$n$ como entrada, eventualmente
+para com sua fita contendo a representação unária de~$f(n)$ como
+saída. Muitas funções aritméticas conhecidas podem ser mostradas, com
+facilidade (ou nem tanto), como Turing-computáveis. Muitos outros modelos de
+computação além das máquinas de Turing foram propostos; e sempre se
+verificou que as funções aritméticas computáveis neles também são
+Turing-computáveis. Isso é visto como um suporte para a
+\emph{Tese de Church-Turing}: a de que toda função aritmética que pode
+efetivamente ser computada é Turing-computável.

@@ -6,86 +6,85 @@
 
 \begin{document}
 
-\olfileid{fol}{byd}{mod}
+\olfileid[pt]{fol}{byd}{mod}
 
-\olsection{Modal Logics}
+\olsection{Lógicas Modais}
 
-Consider the following example of a conditional sentence:
+Considere o seguinte exemplo de uma sentença condicional:
 \begin{quote}
-  If Jeremy is alone in that room, then he is drunk and naked and
-  dancing on the chairs.
+  Se Jeremy está sozinho naquela sala, então ele está bêbado, nu e
+  dançando nas cadeiras.
 \end{quote}
-This is an example of a conditional assertion that may be materially
-true but nonetheless misleading, since it seems to suggest that there
-is a stronger link between the antecedent and conclusion other than
-simply that either the antecedent is false or the consequent
-true. That is, the wording suggests that the claim is not only true in
-this particular world (where it may be trivially true, because Jeremy
-is not alone in the room), but that, moreover, the conclusion
-\emph{would have} been true \emph{had} the antecedent been true. In
-other words, one can take the assertion to mean that the claim is true
-not just in this world, but in any ``possible'' world; or that it is
-\emph{necessarily} true, as opposed to just true in this particular
-world.
+Este é um exemplo de uma asserção condicional que pode ser
+materialmente verdadeira, mas ainda assim enganosa, pois parece sugerir
+que há um vínculo mais forte entre o antecedente e a conclusão do que
+simplesmente o fato de que ou o antecedente é falso ou a conclusão é
+verdadeira. Ou seja, a formulação sugere que a afirmação não é apenas
+verdadeira neste mundo particular (onde pode ser trivialmente verdadeira,
+porque Jeremy não está sozinho na sala), mas que, além disso, a conclusão
+\emph{teria sido} verdadeira \emph{se} o antecedente tivesse sido
+verdadeiro. Em outras palavras, pode-se tomar a asserção como significando
+que a afirmação é verdadeira não apenas neste mundo, mas em qualquer mundo
+``possível''; ou que ela é \emph{necessariamente} verdadeira, em oposição
+a ser apenas verdadeira neste mundo particular.
 
-Modal logic was designed to make sense of this kind of necessity. One
-obtains modal propositional logic from ordinary
-propositional logic by adding a box operator; which is to say, if
-$!A$ is !!a{formula}, so is $\Box !A$.  Intuitively, $\Box !A$
-asserts that $!A$ is \emph{necessarily} true, or true in any possible
-world. $\Diamond !A$ is usually taken to be an abbreviation for
-$\lnot \Box \lnot !A$, and can be read as asserting that $!A$ is
-\emph{possibly} true. Of course, modality can be added to predicate
-logic as well.
+A lógica modal foi concebida para dar sentido a esse tipo de
+necessidade. Obtém-se a lógica proposicional modal a partir da
+lógica proposicional ordinária adicionando um operador caixa; isto é,
+se $!A$ é !!a{formula}, então $\Box !A$ também o é.  Intuitivamente,
+$\Box !A$ afirma que $!A$ é \emph{necessariamente} verdadeira, ou
+verdadeira em qualquer mundo possível. $\Diamond !A$ é usualmente
+tomada como abreviação de $\lnot \Box \lnot !A$, e pode ser lida como
+afirmando que $!A$ é \emph{possivelmente} verdadeira. É claro que a
+modalidade também pode ser adicionada à lógica de predicados.
 
-Kripke !!{structure}s can be used to provide a semantics for modal
-logic; in fact, Kripke first designed this semantics with modal logic
-in mind. Rather than restricting to partial orders, more generally one
-has a set of ``possible worlds,'' $P$, and a binary ``accessibility''
-relation $\Atom{R}{x,y}$ between worlds. Intuitively, $\Atom{R}{p,q}$
-asserts that the world~$q$ is compatible with~$p$; O.s.\@, if we are
-``in'' world~$p$, we have to entertain the possibility that the
-world could have been like~$q$.
+!!^{structure}s de Kripke podem ser usadas para fornecer uma semântica
+para a lógica modal; de fato, Kripke projetou essa semântica tendo a
+lógica modal em mente. Em vez de restringir a ordens parciais, de modo
+mais geral tem-se um conjunto de ``mundos possíveis'', $P$, e uma
+relação binária de ``acessibilidade'' $\Atom{R}{x,y}$ entre mundos.
+Intuitivamente, $\Atom{R}{p,q}$ afirma que o mundo~$q$ é compatível
+com~$p$; isto é, se estamos ``em'' o mundo~$p$, temos que considerar a
+possibilidade de que o mundo pudesse ter sido como~$q$.
 
-Modal logic is sometimes called an ``intensional'' logic, as opposed
-to an ``extensional'' one. The intended semantics for an extensional
-logic, like classical logic, will only refer to a single world, the
-``actual'' one; while the semantics for an ``intensional'' logic
-relies on a more elaborate ontology. In addition to !!{structure}ing
-necessity, one can use modality to !!{structure} other linguistic
-constructions, reinterpreting $\Box$ and $\Diamond$ according to the
-application. For example:
+A lógica modal é às vezes chamada de lógica ``intensional'', em oposição
+a uma ``extensional''. A semântica pretendida para uma lógica
+extensional, como a lógica clássica, refere-se apenas a um único mundo,
+o ``atual''; enquanto a semântica para uma lógica ``intensional'' depende
+de uma ontologia mais elaborada. Além de estruturar a necessidade, pode-se
+usar a modalidade para estruturar outras construções linguísticas,
+reinterpretando $\Box$ e $\Diamond$ de acordo com a aplicação. Por exemplo:
 \begin{enumerate}
-\item In provability logic, $\Box !A$ is read ``$!A$ is provable''
-  and $\Diamond !A$ is read ``$!A$ is consistent.''
-\item In epistemic logic, one might read $\Box !A$ as ``I know
-  $!A$'' or ``I believe $!A$.''
-\item In temporal logic, one can read $\Box !A$ as ``$!A$ is always
-  true'' and $\Diamond !A$ as ``$!A$ is sometimes true.''
+\item Na lógica de demonstrabilidade, $\Box !A$ é lida como ``$!A$ é
+  demonstrável'' e $\Diamond !A$ é lida como ``$!A$ é consistente''.
+\item Na lógica epistêmica, pode-se ler $\Box !A$ como ``eu sei
+  $!A$'' ou ``eu acredito em $!A$''.
+\item Na lógica temporal, pode-se ler $\Box !A$ como ``$!A$ é sempre
+  verdadeira'' e $\Diamond !A$ como ``$!A$ é às vezes verdadeira''.
 \end{enumerate}
 
-One would like to augment logic with rules and axioms dealing with
-modality. For example, the system $\Log{S4}$ consists of the ordinary
-axioms and rules of propositional logic, together with the following
-axioms:
+Gostaríamos de aumentar a lógica com regras e axiomas que lidem com
+modalidade. Por exemplo, o sistema $\Log{S4}$ consiste nos axiomas e
+regras ordinários da lógica proposicional, juntamente com os seguintes
+axiomas:
 \begin{align*}
 & \Box (!A \lif !B) \lif (\Box !A \lif \Box !B)\\
 & \Box !A \lif !A \\
 & \Box !A \lif \Box \Box !A
-\intertext{as well as a rule, ``from $!A$ conclude $\Box !A$.''
-  $\Log{S5}$ adds the following axiom:}
+\intertext{assim como uma regra, ``de $!A$ conclua $\Box !A$.''
+  $\Log{S5}$ adiciona o seguinte axioma:}
 & \Diamond !A \lif \Box \Diamond !A
 \end{align*}
-Variations of these axioms may be suitable for different applications;
-for example, S5 is usually taken to characterize the notion of logical
-necessity. And the nice thing is that one can usually find a semantics
-for which the !!{derivation} system is sound and complete by restricting the
-accessibility relation in the Kripke !!{structure}s in natural
-ways. For example, $\Log{S4}$ corresponds to the class of Kripke
-!!{structure}s in which the accessibility relation is reflexive and
-transitive. $\Log{S5}$ corresponds to the class of Kripke
-!!{structure}s in which the accessibility relation is {\em universal},
-which is to say that every world is accessible from every other; so
-$\Box !A$ holds if and only if $!A$ holds in every world.
+Variações desses axiomas podem ser adequadas para diferentes aplicações;
+por exemplo, S5 é usualmente tomado para caracterizar a noção de
+necessidade lógica. E o aspecto agradável é que se pode usualmente
+encontrar uma semântica para a qual o sistema de !!{derivation} é correto
+e completo, restringindo a relação de acessibilidade nas !!{structure}s
+de Kripke de maneiras naturais. Por exemplo, $\Log{S4}$ corresponde à
+classe de !!{structure}s de Kripke em que a relação de acessibilidade é
+reflexiva e transitiva. $\Log{S5}$ corresponde à classe de !!{structure}s
+de Kripke em que a relação de acessibilidade é {\em universal}, isto é,
+todo mundo é acessível a partir de qualquer outro; assim $\Box !A$ vale
+se, e somente se, $!A$ vale em todo mundo.
 
 \end{document}

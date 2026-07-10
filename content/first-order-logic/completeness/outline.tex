@@ -7,164 +7,164 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{com}{out}}
-      {\olfileid{pl}{com}{out}}
+      {\olfileid[pt]{fol}{com}{out}}
+      {\olfileid[pt]{pl}{com}{out}}
 
-\olsection{Outline of the Proof}
+\olsection{Esboço da Prova}
 
-The proof of the completeness theorem is a bit complex, and upon first
-reading it, it is easy to get lost.  So let us outline the proof.  The
-first step is a shift of perspective, that allows us to see a route to
-a proof.  When completeness is thought of as ``whenever $\Gamma
-\Entails !A$ then $\Gamma \Proves !A$,'' it may be hard to even come
-up with an idea: for to show that $\Gamma \Proves !A$ we have to find
-!!a{derivation}, and it does not look like the hypothesis that
-$\Gamma \Entails !A$ helps us for this in any way.  For some proof
-systems it is possible to directly construct !!a{derivation}, but we
-will take a slightly different approach.  The shift in perspective
-required is this: completeness can also be formulated as: ``if
-$\Gamma$ is consistent, it is satisfiable.''  Perhaps we can use the
-information in~$\Gamma$ together with the hypothesis that it is
-consistent to construct \iftag{FOL}{!!a{structure}}{!!a{valuation}}
-that satisfies every \iftag{FOL}{!!{sentence}}{!!{formula}}
-in~$\Gamma$.  After all, we know
-what kind of \iftag{FOL}{!!{structure}}{!!{valuation}} we are looking
-for: one that is as $\Gamma$ describes it!{}
+A prova do teorema da completude é um pouco complexa e, em uma primeira
+leitura, é fácil se perder.  Então, vamos esboçar a prova.  O
+primeiro passo é uma mudança de perspectiva, que nos permite enxergar
+um caminho para uma prova.  Quando a completude é pensada como
+``sempre que $\Gamma \Entails !A$ então $\Gamma \Proves !A$'', pode
+ser difícil até mesmo ter uma ideia: pois, para mostrar que $\Gamma
+\Proves !A$, temos que encontrar !!a{derivation}, e não parece que a
+hipótese de que $\Gamma \Entails !A$ nos ajude nisso de alguma forma.
+Para alguns sistemas de prova, é possível construir diretamente
+!!a{derivation}, mas adotaremos uma abordagem um pouco diferente.  A
+mudança de perspectiva necessária é esta: a completude também pode ser
+formulada como: ``se $\Gamma$ é consistente, então é satisfatível''.
+Talvez possamos usar a informação em~$\Gamma$ juntamente com a hipótese
+de que ela é consistente para construir
+\iftag{FOL}{!!a{structure}}{!!a{valuation}} que satisfaça toda
+\iftag{FOL}{!!{sentence}}{!!{formula}} em~$\Gamma$.  Afinal, sabemos
+que tipo de \iftag{FOL}{!!{structure}}{!!{valuation}} estamos
+procurando: uma que seja como $\Gamma$ a descreve!{}
 
-If $\Gamma$ contains only \iftag{FOL}{atomic
-  !!{sentence}s}{!!{propositional variable}s}, it is easy to construct
-a model for it.\iftag{FOL}{ Suppose the atomic !!{sentence}s are all
-  of the form $\Atom{P}{a_1,\dots,a_n}$ where the $a_i$ are
-  !!{constant}s.}{} All we have to do is come up with
+Se $\Gamma$ contém apenas \iftag{FOL}{!!{sentence}s
+  atômicas}{!!{propositional variable}s}, é fácil construir
+um modelo para ele.\iftag{FOL}{ Suponha que as !!{sentence}s atômicas
+  sejam todas da forma $\Atom{P}{a_1,\dots,a_n}$ onde os $a_i$ são
+  !!{constant}s.}{} Tudo o que temos a fazer é apresentar
 \iftag{FOL}{%
-  !!a{domain}~$\Domain{M}$ and an assignment for~$P$ so that
-  $\Sat{M}{\Atom{P}{a_1,\ldots,a_n}}$. But that's not very hard:
-  put $\Domain{M} = \Nat$, $\Assign{\Obj c_i}{M} = i$, and for every
-  $\Atom{P}{a_1,\ldots,a_n} \in \Gamma$, put the tuple $\tuple{k_1,
-    \dots, k_n}$ into $\Assign{P}{M}$, where $k_i$ is the index of the
-  constant symbol~$a_i$ (O.s.\@, $a_i \ident \Obj c_{k_i}$).}{%
-  !!a{valuation}~$\pAssign{v}$ such that $\pSat{v}{p}$ for all $p \in
-  \Gamma$. Well, let $\pAssign{v}(p) = \True$ iff $p \in \Gamma$.}
+  !!a{domain}~$\Domain{M}$ e uma atribuição para~$P$ de modo que
+  $\Sat{M}{\Atom{P}{a_1,\ldots,a_n}}$. Mas isso não é muito difícil:
+  faça $\Domain{M} = \Nat$, $\Assign{\Obj c_i}{M} = i$ e, para cada
+  $\Atom{P}{a_1,\ldots,a_n} \in \Gamma$, coloque a tupla $\tuple{k_1,
+    \dots, k_n}$ em $\Assign{P}{M}$, onde $k_i$ é o índice do
+  símbolo de constante~$a_i$ (isto é, $a_i \ident \Obj c_{k_i}$).}{%
+  !!a{valuation}~$\pAssign{v}$ tal que $\pSat{v}{p}$ para todo $p \in
+  \Gamma$. Bem, faça $\pAssign{v}(p) = \True$ se e somente se $p \in \Gamma$.}
 
-Now suppose $\Gamma$ contains some !!{formula}~$\lnot !B$, with $!B$
-atomic.  We might worry that the construction of
-$\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ interferes with the possibility
-of making $\lnot !B$ true.  But here's where the consistency
-of~$\Gamma$ comes in: if $\lnot !B \in \Gamma$, then $!B \notin
-\Gamma$, or else $\Gamma$ would be inconsistent.  And if $!B \notin
-\Gamma$, then according to our construction
-of~$\iftag{FOL}{\Struct{M}}{\pAssign{v}}$,
-$\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$, so
-$\iftag{FOL}{\Sat{M}}{\pSat{v}}{\lnot !B}$.  So far so good.
+Agora suponha que $\Gamma$ contenha alguma !!{formula}~$\lnot !B$, com $!B$
+atômica.  Poderíamos temer que a construção de
+$\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ interfira na possibilidade
+de tornar $\lnot !B$ verdadeira.  Mas é aqui que entra a consistência
+de~$\Gamma$: se $\lnot !B \in \Gamma$, então $!B \notin
+\Gamma$, caso contrário $\Gamma$ seria inconsistente.  E se $!B \notin
+\Gamma$, então, de acordo com nossa construção
+de~$\iftag{FOL}{\Struct{M}}{\pAssign{v}}$,
+$\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$, logo
+$\iftag{FOL}{\Sat{M}}{\pSat{v}}{\lnot !B}$.  Até aqui, tudo bem.
 
-What if $\Gamma$ contains complex, non-atomic formulas? Say it
-contains $!A \land !B$. To make that true, we should proceed as if
-both $!A$ and $!B$ were in~$\Gamma$.  And if $!A \lor !B \in \Gamma$,
-then we will have to make at least one of them true, O.s.\@, proceed as
-if one of them was in~$\Gamma$.
+E se $\Gamma$ contiver fórmulas complexas, não atômicas? Digamos que ele
+contenha $!A \land !B$. Para tornar isso verdadeiro, devemos proceder como se
+tanto $!A$ quanto $!B$ estivessem em~$\Gamma$.  E se $!A \lor !B \in \Gamma$,
+então teremos que tornar pelo menos um deles verdadeiro, isto é, proceder como
+se um deles estivesse em~$\Gamma$.
 
-This suggests the following idea: we add additional !!{formula}s
-to~$\Gamma$ so as to (a)~keep the resulting set consistent and
-(b)~make sure that for every possible atomic !!{sentence}~$!A$, either
-$!A$ is in the resulting set, or $\lnot !A$ is, and (c)~such that,
-whenever $!A \land !B$ is in the set, so are both $!A$ and $!B$, if
-$!A \lor !B$ is in the set, at least one of $!A$ or $!B$ is also, etc.
-We keep doing this (potentially forever).  Call the set of all
-!!{formula}s so added~$\Gamma^*$.  Then our construction above would
-provide us with \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}
-for which we could prove, by induction, that it satisfies all sentences
-in~$\Gamma^*$, and hence also all sentence in~$\Gamma$
-since $\Gamma \subseteq \Gamma^*$.  It turns out that guaranteeing (a)
-and~(b) is enough. A set of sentences for which (b) holds is called
-\emph{complete}. So our task will be to extend the consistent
-set~$\Gamma$ to a consistent and complete set~$\Gamma^*$.
+Isso sugere a seguinte ideia: adicionamos !!{formula}s adicionais
+a~$\Gamma$ de modo a (a)~manter o conjunto resultante consistente e
+(b)~garantir que, para toda !!{sentence}~$!A$ atômica possível,
+ou $!A$ está no conjunto resultante, ou $\lnot !A$ está, e (c)~tais que,
+sempre que $!A \land !B$ está no conjunto, então tanto $!A$ quanto $!B$
+também estão; se $!A \lor !B$ está no conjunto, pelo menos um dentre $!A$
+ou $!B$ também está, etc.  Continuamos fazendo isso (potencialmente para
+sempre).  Chame o conjunto de todas as
+!!{formula}s assim adicionadas de~$\Gamma^*$.  Então a nossa construção acima
+nos forneceria \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}
+para a qual poderíamos provar, por indução, que ela satisfaz todas as sentenças
+em~$\Gamma^*$ e, portanto, também todas as sentenças em~$\Gamma$,
+já que $\Gamma \subseteq \Gamma^*$.  Acontece que garantir (a)
+e~(b) é suficiente. Um conjunto de sentenças para o qual (b) vale é chamado de
+\emph{completo}. Assim, nossa tarefa será estender o conjunto consistente
+~$\Gamma$ a um conjunto consistente e completo~$\Gamma^*$.
 
 \iftag{FOL}{%
-There is one wrinkle in this plan: if $\lexists[x][!A(x)] \in \Gamma$
-we would hope to be able to pick some !!{constant}~$c$ and add $!A(c)$
-in this process.  But how do we know we can always do that?  Perhaps we
-only have a few !!{constant}s in our language, and for each one of
-them we have $\lnot !A(c) \in \Gamma$.  We can't also add $!A(c)$,
-since this would make the set inconsistent, and we wouldn't know
-whether $\Struct{M}$ has to make $!A(c)$ or $\lnot !A(c)$ true.
-Moreover, it might happen that $\Gamma$ contains only sentences in a
-language that has no constant symbols at all (p.ex., the language of
-set theory).
+Há um problema neste plano: se $\lexists[x][!A(x)] \in \Gamma$,
+esperaríamos poder escolher algum !!{constant}~$c$ e adicionar $!A(c)$
+neste processo.  Mas como sabemos que sempre podemos fazer isso?  Talvez
+tenhamos apenas alguns !!{constant}s em nossa linguagem, e, para cada um
+deles, tenhamos $\lnot !A(c) \in \Gamma$.  Também não podemos adicionar $!A(c)$,
+já que isso tornaria o conjunto inconsistente, e não saberíamos
+se $\Struct{M}$ tem que tornar $!A(c)$ ou $\lnot !A(c)$ verdadeira.
+Além disso, pode acontecer de $\Gamma$ conter apenas sentenças em uma
+linguagem que não tem símbolo de constante algum (por exemplo, a linguagem da
+teoria dos conjuntos).
 
-The solution to this problem is to simply add infinitely many
-constants at the beginning, plus sentences that connect them with the
-quantifiers in the right way.  (Of course, we have to verify that this
-cannot introduce an inconsistency.)
+A solução para este problema é simplesmente adicionar infinitas
+constantes no começo, além de sentenças que as conectam com os
+quantificadores da maneira correta.  (Claro, temos que verificar que isso
+não pode introduzir uma inconsistência.)
 
-Our original construction works well if we only have !!{constant}s in
-the atomic sentences.  But the language might also contain
-!!{function}s.  In that case, it might be tricky to find the right
-functions on~$\Nat$ to assign to these !!{function}s to make
-everything work.  So here's another trick: instead of using $i$ to
-interpret $\Obj c_i$, just take the set of !!{constant}s itself as the
-domain.  Then $\Struct M$ can assign every !!{constant} to itself:
-$\Assign{\Obj c_i}{M} = \Obj c_i$.  But why not go all the way: let
-$\Domain{M}$ be all \emph{terms} of the language!{} If we do this,
-there is an obvious assignment of functions (that take terms as
-arguments and have terms as values) to !!{function}s: we assign to the
-!!{function}~$\Obj f^n_i$ the function which, given $n$ terms $t_1$,
-\dots,~$t_n$ as input, produces the term $\Obj f^n_i(t_1, \dots, t_n)$
-as value.
+Nossa construção original funciona bem se tivermos apenas !!{constant}s nas
+sentenças atômicas.  Mas a linguagem também pode conter
+!!{function}s.  Nesse caso, pode ser complicado encontrar as funções certas
+em~$\Nat$ para atribuir a esses !!{function}s de modo a fazer
+tudo funcionar.  Então, aqui vai outro truque: em vez de usar $i$ para
+interpretar $\Obj c_i$, basta tomar o próprio conjunto de !!{constant}s como o
+domínio.  Então $\Struct M$ pode atribuir cada !!{constant} a si mesmo:
+$\Assign{\Obj c_i}{M} = \Obj c_i$.  Mas por que não ir até o fim: seja
+$\Domain{M}$ o conjunto de todos os \emph{termos} da linguagem!{} Se fizermos isso,
+há uma atribuição óbvia de funções (que tomam termos como
+argumentos e têm termos como valores) aos !!{function}s: atribuímos ao
+!!{function}~$\Obj f^n_i$ a função que, dados $n$ termos $t_1$,
+\dots,~$t_n$ como entrada, produz o termo $\Obj f^n_i(t_1, \dots, t_n)$
+como valor.
 
-The last piece of the puzzle is what to do with~$\eq$.  The
-!!{predicate}~$\eq$ has a fixed interpretation: $\Sat{M}{\eq[t][t']}$
-iff $\Value{t}{M} = \Value{t'}{M}$.  Now if we set things up so that the
-!!{value} of a term~$t$ is $t$ itself, then this !!{structure}
-will make \emph{no} sentence of the form $\eq[t][t']$ true
-unless $t$ and $t'$ are one and the same term.  And of
-course this is a problem, since basically every interesting theory in
-a language with !!{function}s will have as theorems sentences
-$\eq[t][t']$ where $t$ and $t'$ are not the same term (p.ex., in
-theories of arithmetic: $\eq[(\Obj 0+ \Obj 0)][\Obj 0]$).  To solve
-this problem, we change the domain of~$\Struct M$: instead of using terms as
-the objects in~$\Domain{M}$, we use sets of terms, and each set is so
-that it contains all those terms which the sentences in~$\Gamma$
-require to be equal.  So, p.ex., if $\Gamma$ is a theory of arithmetic,
-one of these sets will contain: $\Obj 0$, $(\Obj 0 + \Obj 0)$, $(\Obj
-0 \times \Obj 0)$, etc.  This will be the set we assign to $\Obj 0$,
-and it will turn out that this set is also the value of all the terms
-in it, p.ex., also of $(\Obj 0 + \Obj 0)$.  Therefore, the sentence
-$\eq[(\Obj 0+ \Obj 0)][\Obj 0]$ will be true in this revised
-!!{structure}.}{}
+A última peça do quebra-cabeça é o que fazer com~$\eq$.  O
+!!{predicate}~$\eq$ tem uma interpretação fixa: $\Sat{M}{\eq[t][t']}$
+se e somente se $\Value{t}{M} = \Value{t'}{M}$.  Agora, se ajustarmos as coisas de modo que o
+!!{value} de um termo~$t$ seja o próprio $t$, então esta !!{structure}
+não tornará verdadeira \emph{nenhuma} sentença da forma $\eq[t][t']$
+a menos que $t$ e $t'$ sejam um único e mesmo termo.  E, claro,
+isso é um problema, já que basicamente toda teoria interessante em
+uma linguagem com !!{function}s terá como teoremas sentenças
+$\eq[t][t']$ onde $t$ e $t'$ não são o mesmo termo (por exemplo, em
+teorias da aritmética: $\eq[(\Obj 0+ \Obj 0)][\Obj 0]$).  Para resolver
+este problema, mudamos o domínio de~$\Struct M$: em vez de usar termos como
+os objetos em~$\Domain{M}$, usamos conjuntos de termos, e cada conjunto é tal
+que contém todos aqueles termos que as sentenças em~$\Gamma$
+exigem que sejam iguais.  Assim, por exemplo, se $\Gamma$ é uma teoria da aritmética,
+um desses conjuntos conterá: $\Obj 0$, $(\Obj 0 + \Obj 0)$, $(\Obj
+0 \times \Obj 0)$, etc.  Este será o conjunto que atribuímos a $\Obj 0$,
+e acontecerá que este conjunto também é o valor de todos os termos
+nele, por exemplo, também de $(\Obj 0 + \Obj 0)$.  Portanto, a sentença
+$\eq[(\Obj 0+ \Obj 0)][\Obj 0]$ será verdadeira nesta
+!!{structure} revisada.}{}
 
-So here's what we'll do. First we investigate the properties of
-!!{complete} consistent sets, in particular we prove that
-!!a{complete} consistent set contains $!A \land !B$ iff it contains
-both $!A$ and~$!B$, $!A \lor !B$ iff it contains at least one of them,
-etc. (\olref[ccs]{prop:ccs}).\iftag{FOL}{ Then we define and
-  investigate ``saturated'' sets of sentences. A saturated set is one
-  which contains conditionals that link each quantified !!{sentence}
-  to instances of it (\olref[hen]{defn:henkin-exp}). We show that any
-  consistent set~$\Gamma$ can always be extended to a saturated
-  set~$\Gamma'$ (\olref[hen]{lem:henkin}). If a set is consistent,
-  saturated, and !!{complete} it also has the property that it
-  contains \iftag{prvEx}{$\lexists[x][!A(x)]$ iff it contains $!A(t)$
-    for some closed term~$t$}{}\iftag{defEx,defAll}{}{ and
-  }\iftag{prvAll}{$\lforall[x][!A(x)]$ iff it contains $!A(t)$ for all
-    closed terms~$t$}{} (\olref[hen]{prop:saturated-instances}).}{}
-We'll then take the\iftag{FOL}{ saturated}{} consistent
-set~$\iftag{FOL}{\Gamma'}{\Gamma}$ and show that it can be extended
-to a \iftag{FOL}{saturated, consistent, and}{consistent and}
-!!{complete} set~$\Gamma^*$ (\olref[lin]{lem:lindenbaum}). This set
-$\Gamma^*$ is what we'll use to define our \iftag{FOL}{term
-  model~$\Struct M(\Gamma^*)$}{!!{valuation}~$\pAssign v(\Gamma^*)$}.
-\iftag{FOL}{The term model has the set of closed terms as its domain,
-  and the interpretation of its !!{predicate}s is given by the atomic
-  !!{sentence}s}{The valuation is determined by the !!{propositional
-    variable}s} in~$\Gamma^*$ (\olref[mod]{defn:termmodel}).  We'll
-use the properties of\iftag{FOL}{ saturated,}{} complete consistent
-sets to show that indeed
-$\iftag{FOL}{\Sat{M(\Gamma^*)}}{\pSat{v(\Gamma^*)}}{!A}$ iff $!A \in
-\Gamma^*$ (\olref[mod]{lem:truth}), and thus in particular,
+Então, aqui está o que faremos. Primeiro investigamos as propriedades dos
+conjuntos consistentes !!{complete}s; em particular, provamos que
+um conjunto consistente !!{complete} contém $!A \land !B$ se e somente se contém
+tanto $!A$ quanto~$!B$, contém $!A \lor !B$ se e somente se contém pelo menos um deles,
+etc. (\olref[ccs]{prop:ccs}).\iftag{FOL}{ Em seguida, definimos e
+  investigamos conjuntos ``saturados'' de sentenças. Um conjunto saturado é aquele
+  que contém condicionais que ligam cada !!{sentence} quantificada
+  às suas instâncias (\olref[hen]{defn:henkin-exp}). Mostramos que qualquer
+  conjunto consistente~$\Gamma$ sempre pode ser estendido a um conjunto saturado
+  ~$\Gamma'$ (\olref[hen]{lem:henkin}). Se um conjunto é consistente,
+  saturado e !!{complete}, ele também tem a propriedade de
+  conter \iftag{prvEx}{$\lexists[x][!A(x)]$ se e somente se contém $!A(t)$
+    para algum termo fechado~$t$}{}\iftag{defEx,defAll}{}{ e
+  }\iftag{prvAll}{$\lforall[x][!A(x)]$ se e somente se contém $!A(t)$ para todo
+    termo fechado~$t$}{} (\olref[hen]{prop:saturated-instances}).}{}
+Em seguida, tomaremos o conjunto consistente\iftag{FOL}{ saturado}{}
+~$\iftag{FOL}{\Gamma'}{\Gamma}$ e mostraremos que ele pode ser estendido
+a um conjunto \iftag{FOL}{saturado, consistente e}{consistente e}
+!!{complete}~$\Gamma^*$ (\olref[lin]{lem:lindenbaum}). Este conjunto
+$\Gamma^*$ é o que usaremos para definir \iftag{FOL}{nosso modelo de termos~$\Struct M(\Gamma^*)$}{nossa !!{valuation}~$\pAssign v(\Gamma^*)$}.
+\iftag{FOL}{O modelo de termos tem o conjunto de termos fechados como seu domínio,
+  e a interpretação de seus !!{predicate}s é dada pelas !!{sentence}s
+  atômicas}{A valoração é determinada pelas !!{propositional
+    variable}s} em~$\Gamma^*$ (\olref[mod]{defn:termmodel}).  Usaremos
+as propriedades dos conjuntos consistentes completos\iftag{FOL}{ e saturados}{}
+para mostrar que, de fato,
+$\iftag{FOL}{\Sat{M(\Gamma^*)}}{\pSat{v(\Gamma^*)}}{!A}$ se e somente se $!A \in
+\Gamma^*$ (\olref[mod]{lem:truth}) e, portanto, em particular,
 $\iftag{FOL}{\Sat{M(\Gamma^*)}}{\pSat{v(\Gamma^*)}}{\Gamma}$.
-\iftag{FOL}{Finally, we'll consider how to define a term model if
-  $\Gamma$ contains~$\eq$ as well
-  (\olref[ide]{defn:term-model-factor}) and show that it
-  satisfies~$\Gamma^*$ (\olref[ide]{lem:truth}).}{}
+\iftag{FOL}{Por fim, consideraremos como definir um modelo de termos se
+  $\Gamma$ contém~$\eq$ também
+  (\olref[ide]{defn:term-model-factor}) e mostraremos que ele
+  satisfaz~$\Gamma^*$ (\olref[ide]{lem:truth}).}{}
 
 \end{document}

@@ -7,20 +7,21 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{seq}{srl}}
-      {\olfileid{pl}{seq}{srl}}
+      {\olfileid[pt]{fol}{seq}{srl}}
+      {\olfileid[pt]{pl}{seq}{srl}}
 
-\olsection{Structural Rules}
+\olsection{Regras Estruturais}
 
-We also need a few rules that allow us to rearrange !!{sentence}s in
-the left and right side of a sequent.  Since the logical rules require
-that the !!{sentence}s in the premise which the rule acts upon stand
-either to the far left or to the far right, we need an ``exchange''
-rule that allows us to move !!{sentence}s to the right position.  It's
-also important sometimes to be able to combine two identical
-!!{sentence}s into one, and to add !!a{sentence} on either side.
+Precisamos também de algumas regras que nos permitam reorganizar
+!!{sentence}s nos lados esquerdo e direito de um sequente.  Como as
+regras lógicas exigem que as !!{sentence}s na premissa sobre as quais a
+regra atua estejam ou na extremidade esquerda ou na extremidade direita,
+precisamos de uma regra de ``troca'' que nos permita mover
+!!{sentence}s para a posição correta.  Às vezes também é importante
+poder combinar duas !!{sentence}s idênticas em uma só, e acrescentar
+!!a{sentence} em qualquer um dos lados.
 
-\subsection{Weakening}
+\subsection{Enfraquecimento}
 
 \begin{defish}
 \Axiom$ \Gamma \fCenter \Delta $
@@ -34,7 +35,7 @@ also important sometimes to be able to combine two identical
 \DisplayProof
 \end{defish}
 
-\subsection{Contraction}
+\subsection{Contração}
 
 \begin{defish}
 \Axiom$ !A, !A, \Gamma \fCenter \Delta $
@@ -48,7 +49,7 @@ also important sometimes to be able to combine two identical
 \DisplayProof
 \end{defish}
 
-\subsection{Exchange}
+\subsection{Troca}
 
 \begin{defish}
 \Axiom$ \Gamma, !A, !B, \Pi \fCenter \Delta $
@@ -62,11 +63,11 @@ also important sometimes to be able to combine two identical
 \DisplayProof
 \end{defish}
 
-A series of weakening, contraction, and exchange inferences will often
-be indicated by double inference lines.
+Uma série de inferências de enfraquecimento, contração e troca será
+frequentemente indicada por linhas de inferência duplas.
 
-The following rule, called ``cut,'' is not strictly speaking
-necessary, but makes it a lot easier to reuse and combine !!{derivation}s.
+A regra a seguir, chamada de ``corte'', não é estritamente
+necessária, mas torna muito mais fácil reutilizar e combinar !!{derivation}s.
 \begin{defish}
 \[
 \Axiom$ \Gamma \fCenter \Delta, !A$

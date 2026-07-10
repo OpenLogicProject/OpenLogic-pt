@@ -6,122 +6,122 @@
 
 \begin{document}
 
-\olfileid{fol}{syn}{unq}
+\olfileid[pt]{fol}{syn}{unq}
 
-\olsection{Unique Readability}
+\olsection{Leitura Única}
 
 \begin{explain}
-The way we defined !!{formula}s guarantees that every !!{formula} has
-a \emph{unique reading}, O.s.\@, there is essentially only one way of
-constructing it according to our formation rules for !!{formula}s and
-only one way of ``interpreting'' it.  If this were not so, we would
-have ambiguous !!{formula}s, O.s.\@, !!{formula}s that have more than
-one reading or intepretation---and that is clearly something we want
-to avoid.  But more importantly, without this property, most of the
-definitions and proofs we are going to give will not go through.
+A maneira como definimos !!{formula}s garante que toda !!{formula} tem
+uma \emph{leitura única}, isto é, há essencialmente apenas uma maneira de
+construí-la de acordo com nossas regras de formação para !!{formula}s e
+apenas uma maneira de ``interpretá-la''.  Se não fosse assim, teríamos
+!!{formula}s ambíguas, isto é, !!{formula}s que têm mais de
+uma leitura ou interpretação---e isso é claramente algo que queremos
+evitar.  Mas, mais importante, sem essa propriedade, a maioria das
+definições e provas que vamos dar não funcionaria.
 
-Perhaps the best way to make this clear is to see what would happen if
-we had given bad rules for forming !!{formula}s that would not
-guarantee unique readability.  For instance, we could have forgotten
-the parentheses in the formation rules for connectives, p.ex., we might
-have allowed this:
+Talvez a melhor maneira de deixar isso claro seja ver o que aconteceria se
+tivéssemos dado regras ruins para formar !!{formula}s que não
+garantissem a leitura única.  Por exemplo, poderíamos ter esquecido
+os parênteses nas regras de formação para conectivos, por exemplo, poderíamos
+ter permitido isto:
 \begin{quote}
-If $!A$ and $!B$ are !!{formula}s, then so is $!A \lif !B$.
+Se $!A$ e $!B$ são !!{formula}s, então $!A \lif !B$ também é.
 \end{quote}
-Starting from an atomic formula $!D$, this would allow us to form $!D
-\lif !D$. From this, together with $!D$, we would get $!D \lif !D
-\lif !D$.  But there are two ways to do this:
+Partindo de uma fórmula atômica $!D$, isso nos permitiria formar $!D
+\lif !D$. A partir disso, juntamente com $!D$, obteríamos $!D \lif !D
+\lif !D$.  Mas há duas maneiras de fazer isso:
 \begin{enumerate}
-\item We take $!D$ to be $!A$ and $!D \lif !D$ to be $!B$.
-\item We take $!A$ to be $!D \lif !D$ and $!B$ is~$!D$.  
+\item Tomamos $!D$ como $!A$ e $!D \lif !D$ como $!B$.
+\item Tomamos $!A$ como $!D \lif !D$ e $!B$ é~$!D$.  
 \end{enumerate}
-Correspondingly, there are two ways to
-``read'' the !!{formula}~$!D \lif !D \lif !D$. It is of the form $!B
-\lif !C$ where $!B$ is $!D$ and $!C$ is $!D \lif !D$, but \emph{it is
-  also} of the form $!B \lif !C$ with $!B$ being $!D \lif !D$ and $!C$
-being~$!D$.
+Correspondentemente, há duas maneiras de
+``ler'' a !!{formula}~$!D \lif !D \lif !D$. Ela é da forma $!B
+\lif !C$ onde $!B$ é $!D$ e $!C$ é $!D \lif !D$, mas \emph{ela é
+  também} da forma $!B \lif !C$ com $!B$ sendo $!D \lif !D$ e $!C$
+sendo~$!D$.
 
-If this happens, our definitions will not always work. For instance,
-when we define the !!{main operator} of a formula, we say: in a
-formula of the form $!B \lif !C$, the !!{main operator} is the
-indicated occurrence of~$\lif$. But if we can match the formula $!D
-\lif !D \lif !D$ with $!B \lif !C$ in the two different ways mentioned
-above, then in one case we get the first occurrence of $\lif$ as the
-!!{main operator}, and in the second case the second occurrence.  But
-we intend the !!{main operator} to be a \emph{function} of the
-!!{formula}, O.s.\@, every !!{formula} must have exactly one !!{main
-  operator} occurrence.
+Se isso acontece, nossas definições nem sempre funcionarão. Por exemplo,
+quando definimos o !!{main operator} de uma fórmula, dizemos: em uma
+fórmula da forma $!B \lif !C$, o !!{main operator} é a
+ocorrência indicada de~$\lif$. Mas se podemos casar a fórmula $!D
+\lif !D \lif !D$ com $!B \lif !C$ das duas maneiras diferentes mencionadas
+acima, então em um caso obtemos a primeira ocorrência de $\lif$ como o
+!!{main operator}, e no segundo caso a segunda ocorrência.  Mas
+pretendemos que o !!{main operator} seja uma \emph{função} da
+!!{formula}, isto é, toda !!{formula} deve ter exatamente uma ocorrência de
+!!{main operator}.
 \end{explain}
 
 \begin{lem}
-The number of left and right parentheses in !!a{formula}~$!A$ are
-equal.
+O número de parênteses esquerdos e direitos em !!a{formula}~$!A$ é
+igual.
 \end{lem}
 
 \begin{proof}
-We prove this by induction on the way $!A$ is constructed. This
-requires two things: (a) We have to prove first that all atomic
-formulas have the property in question (the induction basis). (b) Then
-we have to prove that when we construct new formulas out of given
-formulas, the new formulas have the property provided the old ones do.
+Provamos isso por indução sobre a maneira como $!A$ é construída. Isso
+requer duas coisas: (a) Temos primeiro que provar que todas as
+fórmulas atômicas têm a propriedade em questão (a base da indução). (b) Então
+temos que provar que, quando construímos novas fórmulas a partir de fórmulas dadas,
+as novas fórmulas têm a propriedade, desde que as antigas a tenham.
 
-Let $l(!A)$ be the number of left parentheses, and $r(!A)$ the number
-of right parentheses in~$!A$, and $l(t)$ and $r(t)$ similarly the
-number of left and right parentheses in a term~$t$.
+Seja $l(!A)$ o número de parênteses esquerdos, e $r(!A)$ o número
+de parênteses direitos em~$!A$, e $l(t)$ e $r(t)$ similarmente o
+número de parênteses esquerdos e direitos em um termo~$t$.
 
 \begin{prob}
-    Prove that for any term~$t$, $l(t) = r(t)$.
+    Prove que, para qualquer termo~$t$, $l(t) = r(t)$.
 \end{prob}
 
 \begin{enumerate}
-\tagitem{prvFalse}{\indcase{!A}{\lfalse}{$\indfrm$ has $0$ left and $0$
-    right parentheses.}}{}
+\tagitem{prvFalse}{\indcase{!A}{\lfalse}{$\indfrm$ tem $0$ parênteses esquerdos e $0$
+    parênteses direitos.}}{}
 
-\tagitem{prvTrue}{\indcase{!A}{\ltrue}{$\indfrm$ has $0$ left and $0$
-    right parentheses.}}{}
+\tagitem{prvTrue}{\indcase{!A}{\ltrue}{$\indfrm$ tem $0$ parênteses esquerdos e $0$
+    parênteses direitos.}}{}
 
 \item \indcase{!A}{\Atom{R}{t_1,\dots,t_n}}{$l(\indfrm) = 1 + l(t_1) +
-  \dots + l(t_n) = 1 + r(t_1) + \dots + r(t_n) = r(\indfrm)$. Here we
-  make use of the fact, left as an exercise, that $l(t) = r(t)$ for
-  any term~$t$.}
+  \dots + l(t_n) = 1 + r(t_1) + \dots + r(t_n) = r(\indfrm)$. Aqui
+  usamos o fato, deixado como exercício, de que $l(t) = r(t)$ para
+  qualquer termo~$t$.}
 
 \item \indcase{!A}{\eq[t_1][t_2]}{$l(\indfrm) = l(t_1) + l(t_2) =
   r(t_1) + r(t_2) = r(\indfrm)$.}
 
-\tagitem{prvNot}{\indcase{!A}{\lnot !B}{By induction hypothesis,
-    $l(!B) = r(!B)$. Thus $l(\indfrm) = l(!B) = r(!B) =
+\tagitem{prvNot}{\indcase{!A}{\lnot !B}{Por hipótese de indução,
+    $l(!B) = r(!B)$. Assim $l(\indfrm) = l(!B) = r(!B) =
     r(\indfrm)$.}}{}
 
-\item \indcase{!A}{(!B \ast !C)}{By induction hypothesis, $l(!B) =
-  r(!B)$ and $l(!C) = r(!C)$.  Thus $l(\indfrm) = 1 + l(!B) + l(!C) =
+\item \indcase{!A}{(!B \ast !C)}{Por hipótese de indução, $l(!B) =
+  r(!B)$ e $l(!C) = r(!C)$.  Assim $l(\indfrm) = 1 + l(!B) + l(!C) =
   1 + r(!B) + r(!C) = r(\indfrm)$.}
 
-\tagitem{prvAll}{\indcase{!A}{\lforall[x][!B]}{By induction
-    hypothesis, $l(!B) = r(!B)$. Thus, $l(\indfrm) = l(!B) = r(!B) =
+\tagitem{prvAll}{\indcase{!A}{\lforall[x][!B]}{Por hipótese de
+    indução, $l(!B) = r(!B)$. Assim, $l(\indfrm) = l(!B) = r(!B) =
     r(\indfrm)$.}}{}
 
 % Print case for \lexists if prvEx and not prvAll
-\tagitem{prvAll,notprvEx}{}{\indcase{!A}{\lexists[x][!B]}{By induction
-    hypothesis, $l(!B) = r(!B)$. Thus, $l(\indfrm) = l(!B) = r(!B) =
+\tagitem{prvAll,notprvEx}{}{\indcase{!A}{\lexists[x][!B]}{Por hipótese de
+    indução, $l(!B) = r(!B)$. Assim, $l(\indfrm) = l(!B) = r(!B) =
     r(\indfrm)$.}}
 
 % Just say similarly if prvEx and prvAll
-\tagitem{notprvAll,notprvEx}{}{\indcase{!A}{\lexists[x][!B]}{Similarly.}}
+\tagitem{notprvAll,notprvEx}{}{\indcase{!A}{\lexists[x][!B]}{Analogamente.}}
 \end{enumerate}
 \end{proof}
 
-\begin{defn}[Proper prefix]
-A string of symbols $!B$ is a \emph{proper prefix} of a string of symbols~$!A$ if
-concatenating $!B$ and a non-empty string of symbols yields~$!A$.
+\begin{defn}[Prefixo próprio]
+Uma cadeia de símbolos $!B$ é um \emph{prefixo próprio} de uma cadeia de símbolos~$!A$ se
+a concatenação de $!B$ e uma cadeia de símbolos não vazia resulta em~$!A$.
 \end{defn}
 
 \begin{lem}\ollabel{lem:no-prefix}
-If $!A$ is !!a{formula}, and $!B$ is a proper prefix of $!A$, then
-$!B$ is not !!a{formula}.
+Se $!A$ é !!a{formula}, e $!B$ é um prefixo próprio de $!A$, então
+$!B$ não é !!a{formula}.
 \end{lem}
 
 \begin{proof}
-Exercise.
+Exercício.
 \end{proof}
 
 \begin{prob}
@@ -130,72 +130,72 @@ Prove \olref[fol][syn][unq]{lem:no-prefix}.
 
 \begin{prop}
 \ollabel{prop:unique-atomic}
-If $!A$ is an atomic !!{formula}, then it satisfies one, and only one
-of the following conditions.
+Se $!A$ é uma !!{formula} atômica, então ela satisfaz uma, e apenas uma,
+das seguintes condições.
 \begin{enumerate}
 \tagitem{prvFalse}{$!A \ident \lfalse$.}{}
 \tagitem{prvTrue}{$!A \ident \ltrue$.}{}
-\item $!A \ident \Atom{R}{t_1,\dots,t_n}$ where $R$ is an $n$-place
-  !!{predicate}, $t_1$, \dots, $t_n$ are terms, and each of $R$,
-  $t_1$, \dots, $t_n$ is uniquely determined.
-\item $!A \ident \eq[t_1][t_2]$ where $t_1$ and $t_2$ are uniquely
-  determined terms.
+\item $!A \ident \Atom{R}{t_1,\dots,t_n}$ onde $R$ é um !!{predicate}
+  de $n$ lugares, $t_1$, \dots, $t_n$ são termos, e cada um de $R$,
+  $t_1$, \dots, $t_n$ é determinado de forma única.
+\item $!A \ident \eq[t_1][t_2]$ onde $t_1$ e $t_2$ são termos
+  determinados de forma única.
 \end{enumerate}
 \end{prop}
 
 \begin{proof}
-Exercise.
+Exercício.
 \end{proof}
 
 \begin{prob}
-Prove \olref[fol][syn][unq]{prop:unique-atomic} (Hint: Formulate and
-prove a version of \olref[fol][syn][unq]{lem:no-prefix} for terms.)
+Prove \olref[fol][syn][unq]{prop:unique-atomic} (Dica: Formule e
+prove uma versão de \olref[fol][syn][unq]{lem:no-prefix} para termos.)
 \end{prob}
 
-\begin{prop}[Unique Readability]
-Every !!{formula} satisfies one, and only one of the following conditions.
+\begin{prop}[Leitura Única]
+Toda !!{formula} satisfaz uma, e apenas uma, das seguintes condições.
 \begin{enumerate}
-\item $!A$ is atomic.
+\item $!A$ é atômica.
 
-\tagitem{prvNot}{$!A$ is of the form $\lnot !B$.}{}
+\tagitem{prvNot}{$!A$ é da forma $\lnot !B$.}{}
 
-\tagitem{prvAnd}{$!A$ is of the form $(!B \land !C)$.}{}
+\tagitem{prvAnd}{$!A$ é da forma $(!B \land !C)$.}{}
 
-\tagitem{prvOr}{$!A$ is of the form $(!B \lor !C)$.}{}
+\tagitem{prvOr}{$!A$ é da forma $(!B \lor !C)$.}{}
 
-\tagitem{prvIf}{$!A$ is of the form $(!B \lif !C)$.}{}
+\tagitem{prvIf}{$!A$ é da forma $(!B \lif !C)$.}{}
 
-\tagitem{prvIff}{$!A$ is of the form $(!B \liff !C)$.}{}
+\tagitem{prvIff}{$!A$ é da forma $(!B \liff !C)$.}{}
 
-\tagitem{prvAll}{$!A$ is of the form $\lforall[x][!B]$.}{}
+\tagitem{prvAll}{$!A$ é da forma $\lforall[x][!B]$.}{}
 
-\tagitem{prvEx}{$!A$ is of the form $\lexists[x][!B]$.}{}
+\tagitem{prvEx}{$!A$ é da forma $\lexists[x][!B]$.}{}
 \end{enumerate}
-Moreover, in each case $!B$, or $!B$ and $!C$, are uniquely
-determined.  This means that, p.ex., there are no different pairs $!B$,
-$!C$ and $!B'$, $!C'$ so that $!A$ is both of the form 
-\iftag{prvIf}{$(!B \lif !C)$ and $(!B' \lif !C')$.}{
-    \iftag{prvOr}{$(!B \lor !C)$ and $(!B' \lor !C')$.}{
-      \iftag{prvAnd}{$(!B \land !C)$ and $(!B' \land !C')$.}{}}}
+Além disso, em cada caso $!B$, ou $!B$ e $!C$, são determinados de forma
+única.  Isso significa que, por exemplo, não há pares diferentes $!B$,
+$!C$ e $!B'$, $!C'$ tais que $!A$ seja ao mesmo tempo da forma 
+\iftag{prvIf}{$(!B \lif !C)$ e $(!B' \lif !C')$.}{
+    \iftag{prvOr}{$(!B \lor !C)$ e $(!B' \lor !C')$.}{
+      \iftag{prvAnd}{$(!B \land !C)$ e $(!B' \land !C')$.}{}}}
 \end{prop}
 
 \begin{proof}
-The formation rules require that if !!a{formula} is not atomic, it
-must start with an opening parenthesis~(, \iftag{prvNot}{$\lnot$,}{}
-or a quantifier. On the other hand, every !!{formula} that starts with
-one of the following symbols must be atomic: !!a{predicate}, !!a{function}, !!a{constant}\iftag{prvFalse}{, $\lfalse$}{}\iftag{prvTrue}{, $\ltrue$}{}.
+As regras de formação exigem que, se !!a{formula} não é atômica, ela
+deve começar com um parêntese de abertura~(, \iftag{prvNot}{$\lnot$,}{}
+ou um quantificador. Por outro lado, toda !!{formula} que começa com
+um dos seguintes símbolos deve ser atômica: !!a{predicate}, !!a{function}, !!a{constant}\iftag{prvFalse}{, $\lfalse$}{}\iftag{prvTrue}{, $\ltrue$}{}.
 
-So we really only have to show that if $!A$ is of the form $(!B \ast
-!C)$ and also of the form $(!B' \mathbin{\ast'} !C')$, then $!B \ident
-!B'$, $!C \ident !C'$, and $\ast = {\ast'}$.
+Então, na verdade só temos que mostrar que se $!A$ é da forma $(!B \ast
+!C)$ e também da forma $(!B' \mathbin{\ast'} !C')$, então $!B \ident
+!B'$, $!C \ident !C'$, e $\ast = {\ast'}$.
 
-So suppose both $!A \ident (!B \ast !C)$ and $!A \ident (!B'
-\mathbin{\ast'} !C')$.  Then either $!B \ident !B'$ or not.  If it is,
-clearly $\ast = {\ast'}$ and $!C \ident !C'$, since they then are
-substrings of $!A$ that begin in the same place and are of the same
-length.  The other case is $!B \not\ident !B'$.  Since $!B$ and
-$!B'$ are both substrings of $!A$ that begin at the same place, one
-must be a proper prefix of the other.  But this is impossible by
+Então suponha que tanto $!A \ident (!B \ast !C)$ quanto $!A \ident (!B'
+\mathbin{\ast'} !C')$.  Então ou $!B \ident !B'$ ou não.  Se for,
+claramente $\ast = {\ast'}$ e $!C \ident !C'$, pois elas então são
+subcadeias de $!A$ que começam no mesmo lugar e têm o mesmo
+comprimento.  O outro caso é $!B \not\ident !B'$.  Como $!B$ e
+$!B'$ são ambas subcadeias de $!A$ que começam no mesmo lugar, uma
+deve ser um prefixo próprio da outra.  Mas isso é impossível por
 \olref{lem:no-prefix}.
 \end{proof}
 

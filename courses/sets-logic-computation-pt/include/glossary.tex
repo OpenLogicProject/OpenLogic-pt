@@ -1,0 +1,497 @@
+\newglossaryentry{dtheorem}{
+  name = {teorema da dedução},
+  description = {Relaciona a consequência e a derivabilidade de uma
+    sentença a partir de uma hipótese com os de um condicional
+    correspondente. Na forma semântica (\olref[fol][syn][sem]{thm:sem-deduction}),
+    afirma que $\Gamma \cup \{!A\} \Entails !B$ se e somente se $\Gamma \Entails !A \lif
+    !B$. Na forma teórico-demonstrativa, afirma que $\Gamma \cup
+   \{!A\} \Proves !B$ se e somente se $\Gamma \Proves !A \lif !B$}}
+
+\newglossaryentry{set-extensionality} {
+  name={extensionalidade (de conjuntos)},  
+  description={Os conjuntos $A$ e~$B$ são idênticos, $A = B$, se e somente se
+    todo elemento de~$A$ também é um elemento de~$B$, e vice-versa
+    (veja \olref[sfr][set][bas]{sec})}}
+
+\newglossaryentry{sat-extensionality}{
+        name = {extensionalidade (da satisfação)},
+        description = {Se uma fórmula~$!A$ é ou não satisfeita
+        depende apenas das atribuições aos símbolos não lógicos e às
+        variáveis livres que de fato ocorrem em~$!A$}}
+
+\newglossaryentry{set} {
+  name=conjunto,  
+  description={Uma coleção de objetos, considerada independentemente da
+    maneira como é especificada, da ordem dos objetos no conjunto,
+    e de sua multiplicidade (veja \olref[sfr][set][bas]{sec})} }
+
+\newglossaryentry{symmetric} {
+  name=simétrica,  
+  description={$R$ é simétrica se e somente se, sempre que $Rxy$, então também $Ryx$
+    (veja \olref[sfr][rel][prp]{sec})} }
+
+\newglossaryentry{cp} {
+  name={produto cartesiano},
+  symbol = {\ensuremath{A \times B}},  
+  description={Conjunto de todos os pares de {elementos} de $A$ e $B$; $A
+    \times B = \Setabs{\tuple{x, y}}{x \in A \text{ e } y \in B}$
+    (veja \olref[sfr][set][pai]{sec})} }
+
+\newglossaryentry{subset} {
+  name=subconjunto,
+  symbol = {\ensuremath{A \subseteq B}},
+  description = {Um conjunto do qual todo {elemento} é um {elemento} de
+    um dado conjunto~$B$ (veja \olref[sfr][set][sub]{sec})}  }
+
+\newglossaryentry{finsequence} {
+  name = {sequência (finita)},
+  symbol = {\ensuremath{A^*}},
+  description = {Uma cadeia finita de {elementos} de~$A$; um
+    {elemento} de $A^n$ para algum $n$ (veja
+    \olref[sfr][set][imp]{sec})}}
+
+\newglossaryentry{infsequence} {
+  name = {sequência (infinita) },
+  symbol = {\ensuremath{A^\omega}},
+  description = {Uma sequência sem lacunas e interminável de {elementos} de~$A$;
+    formalmente, uma função $s\colon \PosInt \to A$ (veja
+    \olref[sfr][set][imp]{sec})}}
+
+\newglossaryentry{ps} {
+  name={conjunto potência},
+  symbol = {\ensuremath{\Pow{A}}},  
+  description={O conjunto que consiste em todos os \glspl{subset} de um conjunto~$A$,
+    $\Pow{A} = \Setabs{x}{x \subseteq A}$ (veja
+    \olref[sfr][set][sub]{sec})} }
+
+\newglossaryentry{union} {
+  name=união,
+  symbol = {\ensuremath{A \cup B}},
+  description={O conjunto de todos os {elementos} de $A$ e $B$ juntos: $A
+    \cup B = \Setabs{x}{x \in A \lor x\in B}$ (veja
+    \olref[sfr][set][uni]{sec})} }
+
+\newglossaryentry{intersection} {
+  name=interseção,
+  symbol = {\ensuremath{A \cap B}},
+  description={O conjunto de todas as coisas que são {elementos} tanto de
+    $A$ quanto de~$B$: $A \cap B = \Setabs{x}{x \in A \land x\in B}$ (veja
+    \olref[sfr][set][uni]{sec})} }
+
+\newglossaryentry{difference} {
+  name=diferença,
+  symbol = {\ensuremath{A \setminus B}},
+  description={o conjunto de todos os {elementos} de $A$ que não são também
+  {elementos} de~$B$: $A \setminus B = \Setabs{x}{x \in A \text{ e }
+    x \notin B}$ (veja \olref[sfr][set][uni]{sec})} }
+
+\newglossaryentry{disjoint}{
+  name=disjuntos, 
+  description={dois conjuntos sem {elementos} em comum (veja
+    \olref[sfr][set][uni]{sec})}}
+
+\newglossaryentry{composition} {
+  name=composição,
+  symbol = {\ensuremath{g \circ f}},  
+  description={A função resultante de ``encadear'' $f$
+    e $g$; $(g \circ f)(x) = g(f(x))$ (veja
+    \olref[sfr][fun][cmp]{sec})} }
+
+\newglossaryentry{function} {
+  name=função,
+  symbol = {\ensuremath{f \colon A \to B}},
+  description={Um mapeamento de cada elemento de um \gls{fdomain}~$A$ a um
+    elemento do contradomínio~$B$ (veja \olref[sfr][fun][bas]{sec})} }
+
+\newglossaryentry{fdomain} {
+  name = {domínio (de uma função)},
+  symbol = {\ensuremath{\dom{f}}},
+  description = {O conjunto de objetos para os quais uma função (parcial) está
+    definida (veja \olref[sfr][fun][bas]{sec})}}
+
+\newglossaryentry{range}{
+  name = imagem,
+  symbol = {\ensuremath{\ran{f}}},
+  description = {o subconjunto do contradomínio que é de fato gerado como saída por
+    $f$; $\ran{f} = \Setabs{y \in B}{f(x) = y \text{ para algum $x \in
+        A$}}$ (veja \olref[sfr][fun][bas]{sec})}}
+
+\newglossaryentry{graph} {
+  name=grafo (de uma função),
+  description={a relação $R_f \subseteq A \times B$ definida por $R_f
+    = \Setabs{\tuple{x,y}}{f(x) = y}$, se $f\colon A \pto B$ (veja
+    \olref[sfr][fun][rel]{sec})} }
+
+\newglossaryentry{inverse} {
+  name=função inversa,
+  description={Se $f\colon A \to B$ é uma \gls{bijection}, $f^{-1} \colon
+    B \to A$ é a função com $f^-1(y) =$ qualquer que seja o único $x \in
+    A$ tal que $f(x) = y$ (veja \olref[sfr][fun][inv]{sec})} }
+
+\newglossaryentry{pf} {
+  name=função parcial,
+    symbol = {\ensuremath{f \colon A \pto B}},
+  description={Uma função parcial é um mapeamento que atribui a todo
+    {elemento} de~$A$ no máximo um {elemento} de~$B$. Se $f$ atribui
+    um elemento de~$B$ a $x \in A$, $f(x)$ está definida; caso contrário,
+    indefinida (veja \olref[sfr][fun][par]{sec})} }
+
+\newglossaryentry{tc} {
+  name=fecho transitivo,
+  symbol = {\ensuremath{R^+}},
+  description={a menor relação \gls{transitive} que contém~$R$
+    (veja \olref[sfr][rel][ops]{sec})} }
+
+\newglossaryentry{ir} {
+  name=relação inversa,
+  symbol = {\ensuremath{R^{-1}}},  
+  description={A relação $R$ ``invertida''; $R^{-1} =
+    \Setabs{\tuple{y, x}}{\tuple{x, y} \in R}$ (veja
+    \olref[sfr][rel][ops]{sec})} }
+
+\newglossaryentry{preorder} {
+  name=pré-ordem,
+  description={Uma relação \gls{reflexive} e \gls{transitive} (veja
+    \olref[sfr][rel][ord]{sec})} }
+
+\newglossaryentry{po} {
+  name=ordem parcial,
+  description={Uma relação \gls{reflexive}, \gls{anti-symmetric} e
+    \gls{transitive} (veja \olref[sfr][rel][ord]{sec})} }
+
+\newglossaryentry{to} {
+  name=ordem total,
+  description={veja \gls{lo}}}
+
+\newglossaryentry{irreflexive} {
+  name=irreflexiva,
+  description={$R$ é irreflexiva se, para nenhum $x \in A$, $Rxx$ (veja
+    \olref[sfr][rel][ord]{sec})} }
+
+\newglossaryentry{asymmetric} {
+  name=assimétrica,
+  description={$R$ é assimétrica se, para nenhum par $x,y\in A$, temos
+    $Rxy$ e $Ryx$ (veja \olref[sfr][rel][ord]{sec})} }
+
+\newglossaryentry{so} {
+  name=ordem estrita,
+  description={Uma relação \gls{irreflexive}, \gls{asymmetric} e
+    \gls{transitive} (veja \olref[sfr][rel][ord]{sec})} }
+
+\newglossaryentry{slo} {
+  name=ordem linear estrita,
+  description={Uma \gls{so} conexa (veja
+    \olref[sfr][rel][ord]{sec})} }
+
+\newglossaryentry{lo} {
+  name=ordem linear,
+  description={Uma \gls{po} conexa (veja
+    \olref[sfr][rel][ord]{sec})} }
+
+\newglossaryentry{br} {
+  name=relação binária,
+  description={Um subconjunto de~$A^{2}$; escrevemos $Rxy$ (ou $xRy$) para
+    $\tuple{x, y} \in R$ (veja \olref[sfr][rel][set]{sec})} }
+
+\newglossaryentry{reflexive} {
+  name=reflexiva,
+  description={$R$ é reflexiva se e somente se, para todo $x \in A$, $Rxx$ (veja
+    \olref[sfr][rel][prp]{sec})} }
+
+\newglossaryentry{transitive} {
+  name=transitiva,
+  description={$R$ é transitiva se e somente se, sempre que $Rxy$ e $Ryz$, então
+    também $Rxz$ (veja \olref[sfr][rel][prp]{sec})} }
+
+\newglossaryentry{anti-symmetric} {
+  name=anti-simétrica,
+  description={$R$ é anti-simétrica se e somente se, sempre que valem ambos $Rxy$ e
+    $Ryx$, então $x=y$; em outras palavras: se $x\neq y$, então não $Rxy$ ou
+    não $Ryx$ (veja \olref[sfr][rel][prp]{sec})} }
+
+\newglossaryentry{connected} {
+  name=conexa,
+  description={$R$ é conexa se, para todos $x, y\in A$
+    com $x \neq y$, então $Rxy$ ou~$Ryx$ (veja
+    \olref[sfr][rel][prp]{sec})} }
+
+\newglossaryentry{er} {
+  name={relação de equivalência}, 
+  description={uma relação reflexiva, simétrica e transitiva (veja
+    \olref[sfr][rel][prp]{sec})} }
+
+\newglossaryentry{sf} {
+  name={sobrejetora},
+  description={$f \colon A \to B$ é {sobrejetora} se e somente se a
+    imagem de~$f$ é todo o~$B$, isto é, para todo $y \in B$ há pelo
+    menos um $x \in A$ tal que~$f(x) = y$ (veja
+    \olref[sfr][fun][kin]{sec})} }
+
+\newglossaryentry{if} {
+  name={injetora}, 
+  description={$f \colon A \to B$ é {injetora} se e somente se, para
+    cada $y \in B$, há no máximo um $x \in A$ tal que~$f(x) =
+    y$; equivalentemente, se, sempre que $x \neq x'$, então $f(x) \neq f(x')$
+    (veja \olref[sfr][fun][kin]{sec})} }
+
+\newglossaryentry{bijection} {
+  name={bijeção},  
+  description={Uma função que é tanto {sobrejetora} quanto
+    {injetora} (veja \olref[sfr][fun][kin]{sec})} }
+
+\newglossaryentry{enumeration} {
+  name=enumeração,  
+  description={Uma lista possivelmente infinita de todos os
+    {elementos} de um conjunto~$A$; formalmente, uma função sobrejetora
+    $f\colon \Nat \to A$ (veja \olref[sfr][siz][enm]{sec})} }
+
+\newglossaryentry{equinumerous} {
+  name=equinumeroso,
+  description={$A$ e $B$ são equinumerosos se e somente se há uma bijeção
+    total de $A$ para $B$ (veja \olref[sfr][siz][equ]{sec})} }
+
+\newglossaryentry{finitely satisfiable} {
+  name={finitamente satisfatível},  
+  description={$\Gamma$ é finitamente satisfatível se e somente se todo
+    $\Gamma_0 \subseteq \Gamma$ finito é satisfatível (veja
+    \olref[fol][com][com]{sec})} }
+
+\newglossaryentry{mcs} {
+  name=conjunto consistente completo,
+  description={Um conjunto de {sentenças} é completo e consistente se e somente se
+    é consistente e, para toda {sentença}~$!A$, ou $!A$ ou
+    $\lnot !A$ está no conjunto (veja \olref[fol][com][ccs]{sec})} }
+
+\newglossaryentry{mos} {
+  name=modelo,  
+  description={Uma {estrutura} na qual toda {sentença}
+    em~$\Gamma$ é verdadeira é um modelo de~$\Gamma$ (veja
+    \olref[fol][mat][exs]{sec})} }
+
+\newglossaryentry{closed} {
+  name=fechado, 
+  description={Um conjunto de {sentenças}~$\Gamma$ é fechado se e somente se, sempre que
+    $\Gamma \Entails !A$, então $!A \in \Gamma$. O conjunto
+    $\Setabs{!A}{\Gamma \Entails !A}$ é o fecho de~$\Gamma$ (veja
+    \olref[fol][mat][int]{sec})} }
+
+\newglossaryentry{derivability} {
+  name=derivabilidade,
+  symbol = {\ensuremath{\Gamma \Proves !A}},  
+  description={No cálculo de sequentes, $!A$ é {derivável} de~$\Gamma$ se há uma
+    \gls{derivation} de um \gls{sequent} $\Gamma_0 \Sequent !A$ 
+    em que $\Gamma_0 \subseteq \Gamma$ é uma sequência finita de sentenças em~$\Gamma$ (veja
+    \olref[fol][seq][ptn]{sec}). Na dedução natural, $!A$ é {derivável} de~$\Gamma$ se há uma
+    {derivação} com {fórmula} final~$!A$ e na qual toda
+    hipótese é {descarregada} ou está em~$\Gamma$ (veja
+    \olref[fol][ntd][ptn]{sec})} }
+
+\newglossaryentry{theorem} {
+  name={teorema},
+  symbol = {\ensuremath{\Proves !A}},
+  description={No cálculo de sequentes, uma {fórmula}~$!A$ é um teorema
+    (da lógica) se há uma {derivação} do sequente $\Sequent !A$
+    (veja \olref[fol][seq][ptn]{sec}).  Na dedução natural, uma
+    {fórmula}~$!A$ é um teorema se há uma {derivação} de $!A$
+    com toda hipótese \gls{discharged}
+    (veja \olref[fol][ntd][ptn]{sec}). Também dizemos que $!A$ é um
+    teorema de uma teoria~$\Gamma$ se $\Gamma \Proves !A$} }
+
+\newglossaryentry{consistent} {
+  name=consistente,
+  description={No cálculo de sequentes, um conjunto de sentenças~$\Gamma$ é
+    consistente se e somente se não há \gls{derivation} de um \gls{sequent}
+    $\Gamma_0 \Sequent \quad$ com $\Gamma_0 \subseteq \Gamma$
+    (veja \olref[fol][seq][ptn]{sec}). Na dedução natural, $\Gamma$
+    é consistente se e somente se $\Gamma \Proves/ \lfalse$
+    (veja \olref[fol][ntd][ptn]{sec}). Se $\Gamma$ não é consistente,
+    é inconsistente.} }
+
+\newglossaryentry{inconsistent} {
+  name=inconsistente,
+  description = {veja \gls{consistent}}}
+
+\newglossaryentry{derivation} {
+  name=derivação,  
+  description={No cálculo de sequentes, uma árvore de sequentes na qual todo sequente é um sequente inicial ou segue dos sequentes imediatamente acima dele por uma regra de
+    inferência (veja \olref[fol][seq][rul]{sec}). Na dedução natural, uma árvore de fórmulas na qual toda fórmula é uma
+    hipótese ou segue das fórmulas imediatamente acima dela por uma regra de
+    inferência (veja \olref[fol][ntd][rul]{sec})} }
+
+\newglossaryentry{eigenvariable}{
+  name = variável própria,  
+  description = {No cálculo de sequentes, um símbolo de constante especial em uma premissa de uma
+    inferência $\LeftR{\lexists}$ ou $\RightR{\lforall}$ que não pode
+    aparecer na conclusão (veja
+    \olref[fol][seq][rul]{sec}). Na dedução natural, um símbolo de constante especial em uma premissa de uma
+    inferência $\Elim{\lexists}$ ou $\Intro{\lforall}$ que não pode
+    aparecer na conclusão nem em qualquer hipótese \gls{undischarged} (veja
+    \olref[fol][ntd][rul]{sec})}}
+
+\newglossaryentry{discharged}{
+  name = {descarregada},
+  description = {Uma \gls{assumption} em uma derivação pode ser descarregada
+    por uma regra de inferência abaixo dela (a regra e a hipótese recebem
+    então um rótulo correspondente, por exemplo, $[!A]^2$). Se não é
+    descarregada, é chamada de não descarregada (veja \olref[fol][ntd][rul]{sec})}}
+
+\newglossaryentry{undischarged}{
+  name = {não descarregada},
+  description = {veja \gls{discharged}}}
+
+\newglossaryentry{assumption}{
+  name = {hipótese},
+  description = {Uma fórmula que está no topo de uma derivação, também
+    chamada de fórmula inicial. Pode ser \gls{discharged} ou
+    não descarregada (veja \olref[fol][ntd][rul]{sec})}}
+
+\newglossaryentry{soundness} {
+  name=correção, 
+  description={Propriedade de um sistema de !!{derivation}: é correto se, sempre que
+    $\Gamma \Proves !A$, então $\Gamma \Entails !A$ (veja
+    \olref[fol][seq][sou]{sec} e \olref[fol][ntd][sou]{sec})} }
+
+\newglossaryentry{sequent}{
+  name=sequente,
+  description = {Uma expressão da forma $\Gamma \Sequent \Delta$ em que $\Gamma$ e $\Delta$ são sequências finitas de sentenças (veja \olref[fol][seq][rul]{sec})} }
+
+
+\newglossaryentry{sentence} {
+  name=sentença,  
+  description={Uma {fórmula} sem nenhuma variável \gls{free}. (veja
+    \olref[fol][syn][fvs]{sec})} }
+
+\newglossaryentry{variable assignment} {
+  name=atribuição de variáveis,
+  plural={atribuições de variáveis},
+  description={Uma \gls{function} que mapeia cada {variável} a um elemento
+    de~$\Domain M$ (veja \olref[fol][syn][sat]{sec})} }
+
+\newglossaryentry{$x$-variant} {
+  name=$x$-variante,
+  sort={x-variant},
+  description={Duas \glspl{variable assignment} são $x$-variantes, $s \sim_x
+    s'$, se diferem no máximo no que atribuem a~$x$ (veja
+    \olref[fol][syn][sat]{sec})} }
+
+\newglossaryentry{valid} {
+  name=válida,
+  symbol = {\ensuremath{\Entails !A}},
+  description={Uma sentença $!A$ é \emph{válida} se e somente se
+    $\Sat{M}{!A}$ para toda \gls{structure}~$\Struct M$ (veja
+    \olref[fol][syn][sem]{sec})} }
+
+\newglossaryentry{entailment} {
+  name=consequência,
+  symbol = {\ensuremath{\Gamma \Entails !A}},
+  description={Uma sentença~$!A$ é consequência de um conjunto de
+    sentenças~$\Gamma$ se e somente se, para toda
+    \gls{structure}~$\Struct M$ com $\Sat{M}{\Gamma}$, $\Sat{M}{!A}$
+    (veja \olref[fol][syn][sem]{sec})} }
+
+\newglossaryentry{satisfiable} {
+  name=satisfatível,
+  description={Um conjunto de sentenças~$\Gamma$ é satisfatível se
+    $\Sat{M}{\Gamma}$ para alguma \gls{structure}~$\Struct M$; caso contrário, é
+    insatisfatível (veja \olref[fol][syn][sem]{sec})} }
+
+\newglossaryentry{cs} {
+    name=coberta,    
+    description={Uma \gls{structure} na qual todo elemento do
+      domínio é o {valor} de algum termo fechado (veja
+      \olref[fol][syn][str]{sec})} }
+
+\newglossaryentry{subformula} {
+  name={subfórmula},  
+  description={Parte de uma fórmula que é, ela mesma, uma fórmula (veja
+    \olref[fol][syn][sbf]{sec})} }
+
+\newglossaryentry{free for} {
+  name=livre para,
+  description={Um termo~$t$ é {livre para} $x$ em $!A$ se nenhuma
+    das ocorrências \gls{free} de~$x$ em $!A$ ocorre no escopo de um
+    quantificador que liga uma variável em~$t$ (veja
+    \olref[fol][syn][sub]{sec})} }
+
+\newglossaryentry{church-turing thesis} {
+  name=Tese de Church-Turing,
+  description={afirma que tudo o que é computável por meio de um procedimento
+    efetivo é Turing-computável (veja \olref[tur][mac][ctt]{sec})} }
+
+\newglossaryentry{completeness} {
+  name=completude, 
+  description={Propriedade de um sistema de !!{derivation}; é completo se, sempre que
+    $!A$ é consequência de $\Gamma$, então há também uma {derivação} que
+    estabelece $\Gamma \Proves !A$; equivalentemente, se e somente se
+    todo conjunto \gls{consistent} de sentenças é \gls{satisfiable}
+    (veja \olref[fol][com][int]{sec})} }
+
+\newglossaryentry{formula} {
+  name={fórmula},  
+  description={Expressões de uma linguagem de primeira ordem~$\Lang L$ que
+    expressam relações ou propriedades, ou são verdadeiras ou falsas (veja
+    \olref[fol][syn][frm]{sec})} }
+
+\newglossaryentry{structure} {
+  name={estrutura},
+  symbol = {\ensuremath{\Struct{M}}},
+  description={Uma interpretação de uma linguagem de primeira ordem, consistindo
+    em um \gls{sdomain} e atribuições dos símbolos de constante,
+    de predicado e de função da linguagem (veja
+    \olref[fol][syn][str]{sec})} }
+
+\newglossaryentry{sdomain} {
+  name = {domínio (de uma estrutura)},
+  symbol = {\ensuremath{\Domain{M}}},
+  description = {Conjunto não vazio do qual uma \gls{structure} toma
+    atribuições e valores de {variáveis} (veja
+    \olref[fol][syn][str]{sec})} }
+ 
+\newglossaryentry{halting problem} {
+  name=problema da parada,
+  description={O problema de determinar (para quaisquer $e$, $n$) se
+    a máquina de Turing~$M_e$ para ao receber uma entrada de~$n$ traços (veja
+    \olref[tur][und][hal]{sec})} }
+
+\newglossaryentry{bound} {
+  name=ligada,
+  description={Ocorrência de uma variável
+    dentro do escopo de um quantificador que usa a mesma
+    variável (veja \olref[fol][syn][fvs]{sec})}
+}
+
+\newglossaryentry{free} {
+  name=livre,
+    description={Uma ocorrência de uma variável que não é \gls{bound}
+    (veja \olref[fol][syn][fvs]{sec})}
+}
+
+\newglossaryentry{compactness theorem} {
+  name = {teorema da compacidade},  
+  description = {Afirma que todo conjunto \gls{finitely satisfiable} de
+    sentenças é satisfatível (veja
+    \olref[fol][com][com]{sec})}}
+
+\newglossaryentry{ls}{
+  name = {Teorema de L\"owenheim-Skolem},  
+  description = {Afirma que todo conjunto satisfatível de sentenças tem um
+    modelo contável (veja \olref[fol][com][dls]{sec})}}
+
+\newglossaryentry{Church-Turing Theorem}{
+  name = {Teorema de Church-Turing},
+  description = {Afirma que não há máquina de Turing que decida se uma
+    dada sentença da lógica de primeira ordem é \gls{valid} ou não (veja
+    \olref[tur][und][uns]{sec})}}
+
+\newglossaryentry{decision problem}{
+  name = {problema da decisão}, 
+  description = {Problema de decidir se uma dada sentença da
+    lógica de primeira ordem é \gls{valid} ou não (veja \gls{Church-Turing
+    Theorem})}}
+
+\newglossaryentry{completeness-theorem}{
+  name = {teorema da completude},  
+  description = {Afirma que a lógica de primeira ordem é completa: todo
+    conjunto \gls{consistent} de sentenças é \gls{satisfiable}}}
+
+

@@ -7,28 +7,28 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{ntd}{pro}}
-      {\olfileid{pl}{ntd}{pro}}
+      {\olfileid[pt]{fol}{ntd}{pro}}
+      {\olfileid[pt]{pl}{ntd}{pro}}
 
-\olsection{Examples of \usetoken{P}{derivation}}
+\olsection{Exemplos de \usetoken{P}{derivation}}
 
 \begin{ex}
-Let's give !!a{derivation} of the !!{sentence} $(!A \land !B) \lif !A$.
+Vamos dar !!a{derivation} da !!{sentence} $(!A \land !B) \lif !A$.
 
-We begin by writing the desired conclusion at the bottom of the 
+Começamos escrevendo a conclusão desejada na parte inferior da
 !!{derivation}.
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{$(!A\land !B) \lif !A$}
 \end{prooftree}
 
-Next, we need to figure out what kind of inference could result in
-!!a{sentence} of this form. The !!{main operator} of the
-conclusion is $\lif$, so we'll try to arrive at the
-conclusion using the \Intro{\lif} rule. It is best to write down
-the assumptions involved and label the inference rules as you
-progress, so it is easy to see whether all assumptions have been
-!!{discharged} at the end of the proof.
+Em seguida, precisamos descobrir que tipo de inferência poderia resultar em
+!!a{sentence} desta forma. O !!{main operator} da
+conclusão é $\lif$, então tentaremos chegar à
+conclusão usando a regra \Intro{\lif}. O melhor é anotar
+as suposições envolvidas e rotular as regras de inferência conforme
+avançamos, para que seja fácil ver se todas as suposições foram
+!!{discharged}s ao final da prova.
 \begin{prooftree}
 \AxiomC{$\Discharge{!A \land !B}{1}$}
 \DeduceC{$!A$}
@@ -36,9 +36,9 @@ progress, so it is easy to see whether all assumptions have been
 \UnaryInfC{$(!A\land !B) \lif !A$}
 \end{prooftree}
 
-We now need to fill in the steps from the assumption $!A \land !B$ to $!A$.
-Since we only have one connective to deal with, $\land$, we must
-use the $\land$ elim rule. This gives us the following proof:
+Agora precisamos preencher os passos da suposição $!A \land !B$ até $!A$.
+Como só temos um conectivo com o qual lidar, $\land$, devemos
+usar a regra $\land$ elim. Isso nos dá a seguinte prova:
 \begin{prooftree}
 \AxiomC{$\Discharge{!A \land !B}{1}$}
 \RightLabel{\Elim{\land}}
@@ -46,43 +46,43 @@ use the $\land$ elim rule. This gives us the following proof:
 \DischargeRule{\Intro{\lif}}{1} 
 \UnaryInfC{$(!A\land !B) \lif !A$}
 \end{prooftree}
-We now have a correct !!{derivation} of $(!A \land
+Agora temos uma !!{derivation} correta de $(!A \land
 !B) \lif !A$.
 \end{ex}
 
 \begin{ex}
-Now let's give !!a{derivation} of $(\lnot !A \lor !B)
+Agora vamos dar !!a{derivation} de $(\lnot !A \lor !B)
 \lif (!A \lif !B)$.
 
-We begin by writing the desired conclusion at the bottom of the 
+Começamos escrevendo a conclusão desejada na parte inferior da
 !!{derivation}.
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{$(\lnot !A \lor !B) \lif (!A \lif !B)$}
 \end{prooftree}
-To find a logical rule that could give us this conclusion, we
-look at the logical connectives in the conclusion: $\lnot$,
-$\lor$, and $\lif$. We only care at the moment about the first
-occurrence of $\lif$ because it is the !!{main operator} of the
-!!{sentence} in the end-sequent, while $\lnot$, $\lor$ and the second
-occurrence of $\lif$ are inside the scope of another connective, so we
-will take care of those later. We therefore start with the
-\Intro{\lif} rule.  A correct application must look like this:
+Para encontrar uma regra lógica que possa nos dar esta conclusão,
+observamos os conectivos lógicos na conclusão: $\lnot$,
+$\lor$ e $\lif$. Por enquanto, só nos interessa a primeira
+ocorrência de $\lif$, porque é o !!{main operator} da
+!!{sentence} na conclusão, enquanto $\lnot$, $\lor$ e a segunda
+ocorrência de $\lif$ estão dentro do escopo de outro conectivo, então
+cuidaremos deles depois. Começamos, portanto, com a
+regra \Intro{\lif}.  Uma aplicação correta deve ser assim:
 \begin{prooftree}
 \AxiomC{$\Discharge{\lnot !A \lor !B}{1}$}
 \DeduceC{$!A \lif !B$}
 \DischargeRule{\Intro{\lif}}{1}
 \UnaryInfC{$(\lnot !A \lor !B) \lif (!A \lif !B)$}
 \end{prooftree}
-This leaves us with two possibilities to continue. Either we can
-keep working from the bottom up and look for another application
-of the \Intro{\lif} rule, or we can work from the top down and apply a
-\Elim{\lor} rule. Let us apply the latter. We will use the assumption
-$\lnot !A \lor !B$ as the leftmost premise of \Elim{\lor}.  For a valid
-application of \Elim{\lor}, the other two premises must be identical
-to the conclusion $!A \lif !B$, but each may be derived in turn from
-another assumption, namely one of the two disjuncts of $\lnot !A \lor !B$.
-So our !!{derivation} will look like this:
+Isso nos deixa com duas possibilidades para continuar. Podemos
+continuar trabalhando de baixo para cima e procurar outra aplicação
+da regra \Intro{\lif}, ou podemos trabalhar de cima para baixo e aplicar a
+regra \Elim{\lor}. Vamos adotar a segunda opção. Usaremos a suposição
+$\lnot !A \lor !B$ como a premissa mais à esquerda de \Elim{\lor}.  Para uma
+aplicação válida de \Elim{\lor}, as outras duas premissas devem ser idênticas
+à conclusão $!A \lif !B$, mas cada uma pode ser derivada, por sua vez, de
+outra suposição, a saber, um dos dois disjuntos de $\lnot !A \lor !B$.
+Nossa !!{derivation} ficará, então, assim:
 \begin{prooftree}
 \AxiomC{$\Discharge{\lnot !A \lor !B}{1}$}
 \AxiomC{$\Discharge{\lnot !A}{2}$}
@@ -95,8 +95,8 @@ So our !!{derivation} will look like this:
 \UnaryInfC{$(\lnot !A \lor !B) \lif (!A \lif !B)$}
 \end{prooftree}
 
-In each of the two branches on the right, we want to !!{derive} $!A
-\lif !B$, which is best done using \Intro{\lif}.
+Em cada um dos dois ramos à direita, queremos derivar $!A
+\lif !B$, o que é melhor feito usando \Intro{\lif}.
 \begin{prooftree}
 \AxiomC{$\Discharge{\lnot !A \lor !B}{1}$}
 \AxiomC{$\Discharge{\lnot !A}{2}, \Discharge{!A}{3}$}
@@ -113,10 +113,10 @@ In each of the two branches on the right, we want to !!{derive} $!A
 \UnaryInfC{$(\lnot !A \lor !B) \lif (!A \lif !B)$}
 \end{prooftree}
 
-For the two missing parts of the !!{derivation}, we need
-!!{derivation}s of $!B$ from $\lnot !A$ and $!A$ in the middle, and
-from $!A$ and $!B$ on the left.  Let's take the former first. $\lnot
-!A$ and $!A$ are the two premises of \Elim{\lnot}:
+Nas duas partes que faltam na !!{derivation}, precisamos de
+!!{derivation}s de $!B$ a partir de $\lnot !A$ e $!A$ no meio, e
+a partir de $!A$ e $!B$ à esquerda.  Comecemos pelo primeiro caso. $\lnot
+!A$ e $!A$ são as duas premissas de \Elim{\lnot}:
 \begin{prooftree}
 \AxiomC{$\Discharge{\lnot !A}{2}$}
 \AxiomC{$\Discharge{!A}{3}$}
@@ -124,8 +124,8 @@ from $!A$ and $!B$ on the left.  Let's take the former first. $\lnot
 \BinaryInfC{$\lfalse$}
 \DeduceC{$!B$}
 \end{prooftree}
-By using \FalseInt, we can obtain $!B$ as a conclusion and
-complete the branch.
+Usando \FalseInt, podemos obter $!B$ como conclusão e
+completar o ramo.
 \begin{prooftree}
 \AxiomC{$\Discharge{\lnot !A \lor !B}{1}$}
 \AxiomC{$\Discharge{\lnot !A}{2}$}
@@ -146,13 +146,13 @@ complete the branch.
 \UnaryInfC{$(\lnot !A \lor !B) \lif (!A \lif !B)$}
 \end{prooftree}
 
-Let's now look at the rightmost branch.  Here it's important to
-realize that the definition of !!{derivation} \emph{allows assumptions
-  to be discharged} but \emph{does not require} them to be.  In other
-words, if we can derive $!B$ from one of the assumptions $!A$ and $!B$
-without using the other, that's ok.  And to !!{derive} $!B$ from~$!B$
-is trivial: $!B$ by itself is such !!a{derivation}, and no inferences
-are needed.  So we can simply delete the assumption~$!A$.
+Vejamos agora o ramo mais à direita.  Aqui é importante
+perceber que a definição de !!{derivation} \emph{permite que hipóteses
+  sejam descarregadas} mas \emph{não exige} que o sejam.  Em outras
+palavras, se pudermos derivar $!B$ a partir de uma das suposições $!A$ e $!B$
+sem usar a outra, tudo bem.  E para derivar $!B$ a partir de~$!B$
+é trivial: $!B$ por si só é tal !!a{derivation}, e nenhuma inferência
+é necessária.  Portanto, podemos simplesmente eliminar a suposição~$!A$.
 \begin{prooftree}
 \AxiomC{$\Discharge{\lnot !A \lor !B}{1}$}
 \AxiomC{$\Discharge{\lnot !A}{2}$}
@@ -171,31 +171,31 @@ are needed.  So we can simply delete the assumption~$!A$.
 \DischargeRule{\Intro{\lif}}{1} 
 \UnaryInfC{$(\lnot !A \lor !B) \lif (!A \lif !B)$}
 \end{prooftree}
-Note that in the finished !!{derivation}, the rightmost \Intro{\lif}
-inference does not actually discharge any assumptions.
+Observe que, na !!{derivation} concluída, a inferência \Intro{\lif}
+mais à direita na verdade não descarrega nenhuma hipótese.
 \end{ex}
 
 \begin{ex}
-So far we have not needed the \FalseCl{} rule. It is special in that
-it allows us to discharge an assumption that isn't a sub-!!{formula} of
-the conclusion of the rule.  It is closely related to the \FalseInt{}
-rule. In fact, the \FalseInt{} rule is a special case of the
-\FalseCl{} rule---there is a logic called ``intuitionistic logic'' in
-which only \FalseInt{} is allowed.  The \FalseCl{} rule is a last
-resort when nothing else works.  For instance, suppose we want to
-!!{derive} $!A \lor \lnot !A$. Our usual strategy would be to attempt
-to !!{derive} $!A \lor \lnot !A$ using $\Intro{\lor}$. But this would
-require us to !!{derive} either $!A$ or $\lnot !A$ from no
-assumptions, and this can't be done. \FalseCl{} to the rescue!
+Até agora não precisamos da regra \FalseCl{}. Ela é especial porque
+nos permite descarregar uma hipótese que não é uma sub-!!{formula} da
+conclusão da regra.  Está intimamente relacionada à regra \FalseInt{}.
+Na verdade, a regra \FalseInt{} é um caso especial da
+regra \FalseCl{}---existe uma lógica chamada ``lógica intuicionista'' na
+qual apenas \FalseInt{} é permitida.  A regra \FalseCl{} é um último
+recurso quando nada mais funciona.  Por exemplo, suponha que queiramos
+derivar $!A \lor \lnot !A$. Nossa estratégia usual seria tentar
+derivar $!A \lor \lnot !A$ usando $\Intro{\lor}$. Mas isso
+exigiria derivar $!A$ ou $\lnot !A$ a partir de nenhuma
+suposição, e isso não pode ser feito. \FalseCl{} ao resgate!
 \begin{prooftree}
   \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
   \DeduceC{$\lfalse$}
   \DischargeRule{\FalseCl}{1}
   \UnaryInfC{$!A \lor \lnot !A$}
 \end{prooftree}
-Now we're looking for !!a{derivation} of $\lfalse$ from $\lnot(!A \lor
-\lnot !A)$. Since $\lfalse$ is the conclusion of $\Elim{\lnot}$ we
-might try that:
+Agora procuramos !!a{derivation} de $\lfalse$ a partir de $\lnot(!A \lor
+\lnot !A)$. Como $\lfalse$ é a conclusão de $\Elim{\lnot}$, podemos
+tentar isso:
 \begin{prooftree}
   \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
   \DeduceC{$\lnot !A$}
@@ -206,8 +206,8 @@ might try that:
   \DischargeRule{\FalseCl}{1}
   \UnaryInfC{$!A \lor \lnot !A$}
 \end{prooftree}
-Our strategy for finding !!a{derivation} of~$\lnot !A$ calls for an
-application of~$\Intro{\lnot}$:
+Nossa estratégia para encontrar !!a{derivation} de~$\lnot !A$ exige uma
+aplicação de~$\Intro{\lnot}$:
 \begin{prooftree}
   \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}, \Discharge{!A}{2}$}
   \DeduceC{$\lfalse$}
@@ -220,9 +220,9 @@ application of~$\Intro{\lnot}$:
   \DischargeRule{\FalseCl}{1}
   \UnaryInfC{$!A \lor \lnot !A$}
 \end{prooftree}
-Here, we can get $\lfalse$ easily by applying $\Elim{\lnot}$ to the
-assumption $\lnot(!A \lor \lnot !A)$ and $!A \lor \lnot !A$ which
-follows from our new assumption $!A$ by~$\Intro{\lor}$:
+Aqui, podemos obter $\lfalse$ facilmente aplicando $\Elim{\lnot}$ à
+suposição $\lnot(!A \lor \lnot !A)$ e a $!A \lor \lnot !A$, que
+segue da nossa nova suposição $!A$ por~$\Intro{\lor}$:
 \begin{prooftree}
   \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
   \AxiomC{$\Discharge{!A}{2}$}
@@ -239,7 +239,7 @@ follows from our new assumption $!A$ by~$\Intro{\lor}$:
   \DischargeRule{\FalseCl}{1}
   \UnaryInfC{$!A \lor \lnot !A$}
 \end{prooftree}
-On the right side we use the same strategy, except we get $!A$ by~\FalseCl:
+No lado direito usamos a mesma estratégia, exceto que obtemos $!A$ por~\FalseCl:
 \begin{prooftree}
   \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
   \AxiomC{$\Discharge{!A}{2}$}
@@ -265,7 +265,7 @@ On the right side we use the same strategy, except we get $!A$ by~\FalseCl:
 \end{ex}
 
 \begin{prob}
-Give !!{derivation}s that show the following:
+Dê !!{derivation}s que mostrem o seguinte:
 \begin{enumerate}
 \item $!A \land (!B \land !C) \Proves (!A \land !B) \land !C$.
 \item $!A \lor (!B \lor !C) \Proves (!A \lor !B) \lor !C$.
@@ -275,7 +275,7 @@ Give !!{derivation}s that show the following:
 \end{prob}
 
 \begin{prob}
-Give !!{derivation}s that show the following:
+Dê !!{derivation}s que mostrem o seguinte:
 \begin{enumerate}
 \item $(!A \lor !B) \lif !C \Proves !A \lif !C$.
 \item $(!A \lif !C) \land (!B \lif !C) \Proves (!A \lor !B) \lif !C$.
@@ -293,7 +293,7 @@ Give !!{derivation}s that show the following:
 \end{prob}
 
 \begin{prob}
-Give !!{derivation}s that show the following:
+Dê !!{derivation}s que mostrem o seguinte:
 \begin{enumerate}
 \item $\lnot(!A \lif !B) \Proves !A$.
 \item $\lnot(!A \land !B) \Proves \lnot !A \lor \lnot !B$.
@@ -304,7 +304,7 @@ Give !!{derivation}s that show the following:
 \item $(!A \lif !B) \lif !A \Proves !A$.
 \item $\Proves (!A \lif !B) \lor (!B \lif !C)$.
 \end{enumerate}
-(These all require the $\FalseCl$~rule.)
+(Todos exigem a regra $\FalseCl$~.)
 \end{prob}
 
 \end{document}

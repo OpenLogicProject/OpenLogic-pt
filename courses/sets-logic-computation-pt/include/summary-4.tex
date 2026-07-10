@@ -1,0 +1,35 @@
+O tamanho de um conjunto~$A$ pode ser medido por um número natural se o conjunto
+é finito, e tamanhos podem ser comparados comparando esses números. Se os conjuntos
+são infinitos, as coisas são mais complicadas. O primeiro nível de
+infinitude é o dos conjuntos \emph{infinitos contáveis}. Um conjunto~$A$ é
+contável se seus elementos podem ser dispostos em uma \emph{enumeração}, uma
+lista infinita unidirecional, isto é, quando há uma
+função sobrejetora~$f\colon \PosInt \to A$. Ele é infinito contável
+se é contável mas não finito. O \emph{método zigue-zague} de Cantor
+mostra que o conjunto de pares de elementos de conjuntos infinitos contáveis é
+também contável; e isso pode ser usado para mostrar que mesmo o conjunto dos
+números racionais~$\Rat$ é contável.
+
+Há, no entanto, conjuntos infinitos que não são contáveis: esses conjuntos
+são chamados de \emph{incontáveis}. Há duas maneiras de mostrar que um
+conjunto é incontável: diretamente, usando um \emph{argumento diagonal}, ou por
+\emph{redução}. Para dar um argumento diagonal, supomos que o
+conjunto~$A$ em questão é contável, e usamos uma enumeração hipotética
+para definir um elemento de~$A$ que, pelo próprio modo como o definimos, está
+garantidamente diferente de todo elemento na enumeração. Assim,
+a enumeração não pode, afinal, ser uma enumeração de todo o~$A$, e
+mostramos que não pode existir enumeração alguma de~$A$. Uma redução mostra
+que $A$ é incontável associando todo elemento de~$A$ a um
+elemento de algum conjunto incontável conhecido~$B$ de modo sobrejetor. Se
+isso é possível, então uma enumeração hipotética de $A$ produziria
+uma enumeração de~$B$. Como $B$ é incontável, não pode existir enumeração alguma de~$A$.
+
+Em geral, conjuntos infinitos podem ser comparados quanto ao tamanho: $A$ e $B$ têm
+o mesmo tamanho, ou são \emph{equinumerosos}, se há uma bijeção entre
+eles. Também podemos definir que $A$ não é maior que~$B$
+($\cardle{A}{B}$) se há uma função injetora de $A$ para~$B$.
+Pelo Teorema de Schr\"oder-Bernstein, isso de fato fornece uma ordem de
+tamanho dos conjuntos infinitos. Por fim, o \emph{teorema de Cantor} diz que, para
+qualquer $A$, $\cardless{A}{\Pow{A}}$. Isso é uma generalização do nosso
+resultado de que $\Pow{\PosInt}$ é incontável, e mostra que há
+não apenas dois, mas infinitos níveis de infinitude.

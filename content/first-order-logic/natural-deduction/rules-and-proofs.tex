@@ -7,45 +7,45 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{ntd}{rul}}
-      {\olfileid{pl}{ntd}{rul}}
+      {\olfileid[pt]{fol}{ntd}{rul}}
+      {\olfileid[pt]{pl}{ntd}{rul}}
 
-\olsection{Rules and \usetoken{P}{derivation}}
+\olsection{Regras e \usetoken{P}{derivation}}
 
 \begin{explain}
-Natural deduction systems are meant to closely parallel the informal
-reasoning used in mathematical proof (hence it is somewhat
-``natural''). Natural deduction proofs begin with assumptions.
-Inference rules are then applied. Assumptions are ``!!{discharged}''
-by the \Intro{\lnot}, \Intro{\lif}, \iftag{FOL}{\Elim{\lor} and
-  \Elim{\lexists}}{ and \Elim{\lor}} inference rules, and the label of
-the !!{discharged} assumption is placed beside the inference for
-clarity.
+Sistemas de dedução natural pretendem ser um paralelo próximo do raciocínio
+informal usado em provas matemáticas (daí serem, de certo modo,
+``naturais''). Provas em dedução natural começam com hipóteses.
+Em seguida, aplicam-se regras de inferência. As hipóteses são ``!!{discharged}s''
+pelas regras de inferência \Intro{\lnot}, \Intro{\lif}, \iftag{FOL}{\Elim{\lor} e
+  \Elim{\lexists}}{ e \Elim{\lor}}, e o rótulo da
+hipótese !!{discharged} é colocado ao lado da inferência para maior
+clareza.
 \end{explain}
 
-\begin{defn}[Assumption]
-An \emph{assumption} is any !!{sentence}
-in the topmost position of any branch.
+\begin{defn}[Hipótese]
+Uma \emph{hipótese} é qualquer !!{sentence}
+na posição mais alta de qualquer ramo.
 \end{defn}
 
-!!^{derivation}s in natural deduction are certain trees of
-!!{sentence}s, where the topmost !!{sentence}s are assumptions, and if
-!!a{sentence} stands below one, two, or three other sequents, it must
-follow correctly by a rule of inference. The !!{sentence}s at the top
-of the inference are called the \emph{premises} and the !!{sentence}
-below the \emph{conclusion} of the inference.  The rules come in
-pairs, an introduction and an elimination rule for each
-!!{operator}. They introduce !!a{operator} in the conclusion or
-remove !!a{operator} from a premise of the rule.  Some of the rules
-allow an assumption of a certain type to be \emph{!!{discharged}}. To
-indicate which assumption is !!{discharged} by which inference, we
-also assign labels to both the assumption and the inference.  This is
-indicated by writing the assumption as ``$\Discharge{!A}{n}$.''
+!!^{derivation}s em dedução natural são certas árvores de
+!!{sentence}s, em que as !!{sentence}s no topo são hipóteses e, se
+!!a{sentence} está abaixo de um, dois ou três outros sequentes, ela deve
+seguir corretamente por uma regra de inferência. As !!{sentence}s no topo
+da inferência são chamadas de \emph{premissas} e a !!{sentence}
+abaixo, de \emph{conclusão} da inferência.  As regras vêm em
+pares, uma regra de introdução e uma de eliminação para cada
+!!{operator}. Elas introduzem !!a{operator} na conclusão ou
+removem !!a{operator} de uma premissa da regra.  Algumas das regras
+permitem que uma hipótese de certo tipo seja \emph{!!{discharged}}. Para
+indicar qual hipótese é !!{discharged} por qual inferência, também
+atribuímos rótulos tanto à hipótese quanto à inferência.  Isso é
+indicado escrevendo-se a hipótese como ``$\Discharge{!A}{n}$.''
 
 % Only include this sentence is on of \land, lor, lif or lnot is defined.
 
 \iftag{notprvNot,notprvAnd,notprvOr,notprvIf}{}%
-	{It is customary to consider rules for all the !!{operator}s $\land$, $\lor$, $\lif$, $\lnot$, and $\lfalse$, even if some of those are defined.}
+	{É costume considerar regras para todos os !!{operator}s $\land$, $\lor$, $\lif$, $\lnot$ e $\lfalse$, mesmo que alguns deles sejam definidos.}
 
 
 

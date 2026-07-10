@@ -6,27 +6,27 @@
 
 \begin{document}
 
-\olfileid{tur}{mac}{hal}
-\olsection{Halting States}
+\olfileid[pt]{tur}{mac}{hal}
+\olsection{Estados de Parada}
 
 \begin{explain}
-Although we have defined our machines to halt only when there
-is no instruction to carry out, common representations of Turing
-machines have a dedicated \emph{halting state}~$h$, such that
+Embora tenhamos definido nossas máquinas para parar apenas quando
+não há instrução a executar, representações comuns de máquinas de
+Turing têm um \emph{estado de parada} dedicado~$h$, de modo que
 $h \in Q$.
 
-The idea behind a halting state is simple: when the machine has
-finished operation (it is ready to accept input, or has finished
-writing the output), it goes into a state~$h$ where it halts. Some
-machines have two halting states, one that accepts input and one that
-rejects input.
+A ideia por trás de um estado de parada é simples: quando a máquina
+terminou a operação (está pronta para aceitar a entrada, ou terminou
+de escrever a saída), ela entra em um estado~$h$ onde para. Algumas
+máquinas têm dois estados de parada, um que aceita a entrada e outro que
+rejeita a entrada.
 \end{explain}
 
-\begin{ex}\emph{Halting States}.
-To elucidate this concept, let us begin with an alteration of the
-even machine. Instead of having the machine halt in state~$q_0$
-if the input is even, we can add an instruction to send the machine
-into a halting state.
+\begin{ex}\emph{Estados de parada}.
+Para elucidar esse conceito, comecemos com uma alteração da
+máquina dos pares. Em vez de fazer a máquina parar no estado~$q_0$
+se a entrada for par, podemos adicionar uma instrução para enviar a máquina
+a um estado de parada.
 \[
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
                     semithick]
@@ -43,10 +43,10 @@ into a halting state.
 \end{tikzpicture}
 \]
 
-Let us further expand the example. When the machine determines that the input
-is odd, it never halts. We can alter the machine to
-include a \emph{reject} state by replacing the looping instruction with an
-instruction to go to a reject state~$r$.
+Vamos expandir ainda mais o exemplo. Quando a máquina determina que a entrada
+é ímpar, ela nunca para. Podemos alterar a máquina para
+incluir um estado de \emph{rejeição} substituindo a instrução em laço por uma
+instrução para ir a um estado de rejeição~$r$.
 \[
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
                     semithick]
@@ -66,14 +66,14 @@ instruction to go to a reject state~$r$.
 \end{ex}
 
 \begin{explain}
-Adding a dedicated halting state can be advantageous in cases like
-this, where it makes explicit when the machine accepts/rejects certain
-inputs.  However, it is important to note that no computing power is
-gained by adding a dedicated halting state. Similarly, a less
-formal notion of halting has its own advantages. The definition of
-halting used so far in this chapter makes the proof of the
-\emph{Halting Problem} intuitive and easy to demonstrate. For this
-reason, we continue with our original definition.
+Adicionar um estado de parada dedicado pode ser vantajoso em casos como
+este, em que deixa explícito quando a máquina aceita/rejeita certas
+entradas. No entanto, é importante notar que nenhum poder computacional é
+ganho ao adicionar um estado de parada dedicado. Da mesma forma, uma noção
+menos formal de parada tem suas próprias vantagens. A definição de
+parada usada até agora neste capítulo torna a prova do
+\emph{Problema da Parada} intuitiva e fácil de demonstrar. Por essa
+razão, continuamos com nossa definição original.
 \end{explain}
 
 \end{document}

@@ -6,232 +6,232 @@
 
 \begin{document}
 
-\olfileid{fol}{syn}{frm}
+\olfileid[pt]{fol}{syn}{frm}
 
-\olsection{Terms and \printtoken{P}{formula}}
+\olsection{Termos e \printtoken{P}{formula}}
 
-Once a first-order language~$\Lang L$ is given, we can define
-expressions built up from the basic vocabulary of~$\Lang L$.  These
-include in particular \emph{terms} and \emph{!!{formula}s}.
+Uma vez dada uma linguagem de primeira ordem~$\Lang L$, podemos definir
+expressões construídas a partir do vocabulário básico de~$\Lang L$.  Estas
+incluem, em particular, \emph{termos} e \emph{!!{formula}s}.
 
-\begin{defn}[Terms]
+\begin{defn}[Termos]
 \ollabel{defn:terms}
-The set of \emph{terms}~$\Trm[L]$ of~$\Lang L$ is
-defined inductively by:
+O conjunto de \emph{termos}~$\Trm[L]$ de~$\Lang L$ é
+definido indutivamente por:
 \begin{enumerate}
-\item Every !!{variable} is a term.
-\item Every !!{constant} of~$\Lang L$ is a term.
-\item If $f$ is an $n$-place !!{function} and $t_1$, \dots, $t_n$
-  are terms, then $\Atom{f}{t_1, \ldots, t_n}$ is a term.
+\item Toda !!{variable} é um termo.
+\item Todo !!{constant} de~$\Lang L$ é um termo.
+\item Se $f$ é um !!{function} de $n$ lugares e $t_1$, \dots, $t_n$
+  são termos, então $\Atom{f}{t_1, \ldots, t_n}$ é um termo.
 \tagitem{limitClause}{
-  Nothing else is a term.}{}
+  Nada mais é um termo.}{}
 \end{enumerate}
-A term containing no !!{variable}s is a \emph{closed term}.
+Um termo que não contém !!{variable}s é um \emph{termo fechado}.
 \end{defn}
 
 \begin{explain}
-The !!{constant}s appear in our specification of the language and the
-terms as a separate category of symbols, but they could instead have
-been included as zero-place !!{function}s.  We could then do without
-the second clause in the definition of terms. We just have to
-understand $\Atom{f}{t_1, \ldots, t_n}$ as just $f$ by itself if $n =
+Os !!{constant}s aparecem em nossa especificação da linguagem e dos
+termos como uma categoria separada de símbolos, mas eles poderiam, em vez disso, ter
+sido incluídos como !!{function}s de zero lugares.  Poderíamos então dispensar
+a segunda cláusula da definição de termos. Bastaria
+entender $\Atom{f}{t_1, \ldots, t_n}$ como apenas $f$ sozinho se $n =
 0$.
 \end{explain}
 
-\begin{defn}[Formulas]
+\begin{defn}[Fórmulas]
 \ollabel{defn:formulas}
-The set of \emph{!!{formula}s}~$\Frm[L]$ of the language~$\Lang L$
-is defined inductively as follows:
+O conjunto de \emph{!!{formula}s}~$\Frm[L]$ da linguagem~$\Lang L$
+é definido indutivamente como segue:
 \begin{enumerate}
-\tagitem{prvFalse}{$\lfalse$ is an atomic !!{formula}.}{}
+\tagitem{prvFalse}{$\lfalse$ é uma !!{formula} atômica.}{}
 
-\tagitem{prvTrue}{$\ltrue$ is an atomic !!{formula}.}{}
+\tagitem{prvTrue}{$\ltrue$ é uma !!{formula} atômica.}{}
 
-\item If $R$ is an $n$-place !!{predicate} of~$\Lang L$ and $t_1$, \dots,
-  $t_n$ are terms of~$\Lang L$, then $\Atom{R}{t_1,\ldots, t_n}$ is an
-  atomic !!{formula}.
+\item Se $R$ é um !!{predicate} de $n$ lugares de~$\Lang L$ e $t_1$, \dots,
+  $t_n$ são termos de~$\Lang L$, então $\Atom{R}{t_1,\ldots, t_n}$ é uma
+  !!{formula} atômica.
 
-\item If $t_1$ and $t_2$ are terms of~$\Lang L$, then $\Atom{\eq}{t_1, t_2}$
-  is an atomic !!{formula}.
+\item Se $t_1$ e $t_2$ são termos de~$\Lang L$, então $\Atom{\eq}{t_1, t_2}$
+  é uma !!{formula} atômica.
 
-\tagitem{prvNot}{If $!A$ is !!a{formula}, then $\lnot !A$ is
+\tagitem{prvNot}{Se $!A$ é !!a{formula}, então $\lnot !A$ é
   !!a{formula}.}{}
 
-\tagitem{prvAnd}{If $!A$ and $!B$ are !!{formula}s, then $(!A \land
-  !B)$ is !!a{formula}.}{}
+\tagitem{prvAnd}{Se $!A$ e $!B$ são !!{formula}s, então $(!A \land
+  !B)$ é !!a{formula}.}{}
 
-\tagitem{prvOr}{If $!A$ and $!B$ are !!{formula}s, then $(!A \lor !B)$
-  is !!a{formula}.}{}
+\tagitem{prvOr}{Se $!A$ e $!B$ são !!{formula}s, então $(!A \lor !B)$
+  é !!a{formula}.}{}
 
-\tagitem{prvIf}{If $!A$ and $!B$ are !!{formula}s, then $(!A \lif !B)$
-  is !!a{formula}.}{}
+\tagitem{prvIf}{Se $!A$ e $!B$ são !!{formula}s, então $(!A \lif !B)$
+  é !!a{formula}.}{}
 
-\tagitem{prvIff}{If $!A$ and $!B$ are !!{formula}s, then $(!A \liff !B)$
-  is !!a{formula}.}{}
+\tagitem{prvIff}{Se $!A$ e $!B$ são !!{formula}s, então $(!A \liff !B)$
+  é !!a{formula}.}{}
 
-\tagitem{prvAll}{If $!A$ is !!a{formula} and $x$ is !!a{variable},
-  then $\lforall[x][!A]$ is !!a{formula}.}{}
+\tagitem{prvAll}{Se $!A$ é !!a{formula} e $x$ é !!a{variable},
+  então $\lforall[x][!A]$ é !!a{formula}.}{}
 
-\tagitem{prvEx}{If $!A$ is !!a{formula} and $x$ is !!a{variable},
-  then $\lexists[x][!A]$ is !!a{formula}.}{}
+\tagitem{prvEx}{Se $!A$ é !!a{formula} e $x$ é !!a{variable},
+  então $\lexists[x][!A]$ é !!a{formula}.}{}
 
-\tagitem{limitClause}{Nothing else is !!a{formula}.}{}
+\tagitem{limitClause}{Nada mais é !!a{formula}.}{}
 \end{enumerate}
 \end{defn}
 
 \begin{explain}
-The definitions of the set of terms and that of !!{formula}s are
-\emph{inductive definitions}.  Essentially, we construct the set of
-!!{formula}s in infinitely many stages.  In the initial stage, we
-pronounce all atomic formulas to be formulas; this corresponds to the
-first few cases of the definition, O.s.\@, the cases for
+As definições do conjunto de termos e do conjunto de !!{formula}s são
+\emph{definições indutivas}.  Essencialmente, construímos o conjunto de
+!!{formula}s em infinitos estágios.  No estágio inicial,
+declaramos que todas as fórmulas atômicas são fórmulas; isso corresponde aos
+primeiros casos da definição, isto é, os casos para
 \iftag{prvTrue}{$\ltrue$, }{}%
 \iftag{prvFalse}{$\lfalse$, }{}%
-$\Atom{R}{t_1,\dots,t_n}$ and $\Atom{\eq}{t_1,t_2}$. ``Atomic
-!!{formula}'' thus means any !!{formula} of this form.
+$\Atom{R}{t_1,\dots,t_n}$ e $\Atom{\eq}{t_1,t_2}$. ``!!^{formula}
+atômica'' significa, portanto, qualquer !!{formula} desta forma.
 
-The other cases of the definition give rules for constructing new
-!!{formula}s out of !!{formula}s already constructed.  At the second
-stage, we can use them to construct !!{formula}s out of atomic
-!!{formula}s.  At the third stage, we construct new formulas from the
-atomic formulas and those obtained in the second stage, and so on.  A
-!!{formula} is anything that is eventually constructed at such a
-stage, and nothing else.
+Os outros casos da definição dão regras para construir novas
+!!{formula}s a partir de !!{formula}s já construídas.  No segundo
+estágio, podemos usá-los para construir !!{formula}s a partir de
+!!{formula}s atômicas.  No terceiro estágio, construímos novas fórmulas a partir das
+fórmulas atômicas e daquelas obtidas no segundo estágio, e assim por diante.  Uma
+!!{formula} é qualquer coisa que seja eventualmente construída em tal
+estágio, e nada mais.
 \end{explain}
 
-By convention, we write $\eq$ between its arguments and leave out the
-parentheses: $\eq[t_1][t_2]$ is an abbreviation for
-$\Atom{\eq}{t_1,t_2}$.  Moreover, $\lnot \Atom{\eq}{t_1,t_2}$ is
-abbreviated as $\eq/[t_1][t_2]$. When writing a formula $(!B \ast !C)$
-constructed from $!B$, $!C$ using a two-place connective~$\ast$, we
-will often leave out the outermost pair of parentheses and write
-simply~$!B \ast !C$.
+Por convenção, escrevemos $\eq$ entre seus argumentos e omitimos os
+parênteses: $\eq[t_1][t_2]$ é uma abreviação para
+$\Atom{\eq}{t_1,t_2}$.  Além disso, $\lnot \Atom{\eq}{t_1,t_2}$ é
+abreviado como $\eq/[t_1][t_2]$. Ao escrever uma fórmula $(!B \ast !C)$
+construída a partir de $!B$, $!C$ usando um conectivo de dois lugares~$\ast$,
+frequentemente omitiremos o par de parênteses mais externo e escreveremos
+simplesmente~$!B \ast !C$.
 
 \begin{intro}
-Some logic texts require that the !!{variable}~$x$ must occur in~$!A$
-in order for
+Alguns textos de lógica exigem que a !!{variable}~$x$ deva ocorrer em~$!A$
+para que
 \iftag{prvEx}{$\lexists[x][!A]$ }{}%
-\iftag{notprvEx,notprvAll}{}{and }%
+\iftag{notprvEx,notprvAll}{}{e }%
 \iftag{prvAll}{$\lforall[x][!A]$ }{}%
-to count as
+contem como
 \iftag{notprvEx,notprvAll}{!!a{formula}}{!!{formula}s}.
-Nothing bad happens if you don't require this, and it makes things
-easier.
+Nada de ruim acontece se você não exigir isso, e isso torna as coisas
+mais fáceis.
 \end{intro}
 
 \begin{tagblock}{defNot,defOr,defAnd,defIf,defIff,defTrue,defFalse,defEx,defAll}
 \begin{defn}
-Formulas constructed using the defined operators are to be understood
-as follows:
+As fórmulas construídas usando os operadores definidos devem ser entendidas
+como segue:
 
 \begin{tagenumerate}{defTrue,defFalse,defNot,defOr,defAnd,defIf,defIff,defEx,defAll}
 
-\tagitem{defTrue}{$\ltrue$ abbreviates
-  \iftag{prvFalse}{$\lnot\lfalse$}{$(!A \lor \lnot !A)$ for some
-    fixed atomic !!{formula}~$!A$}.}{}
+\tagitem{defTrue}{$\ltrue$ abrevia
+  \iftag{prvFalse}{$\lnot\lfalse$}{$(!A \lor \lnot !A)$ para alguma
+    !!{formula} atômica fixa~$!A$}.}{}
 
-\tagitem{defFalse}{$\lfalse$ abbreviates
-  \iftag{prvTrue}{$\lnot\ltrue$}{$(!A \land \lnot !A)$ for some
-    fixed atomic !!{formula}~$!A$}.}{}
+\tagitem{defFalse}{$\lfalse$ abrevia
+  \iftag{prvTrue}{$\lnot\ltrue$}{$(!A \land \lnot !A)$ para alguma
+    !!{formula} atômica fixa~$!A$}.}{}
 
-\tagitem{defNot}{$\lnot !A$ abbreviates $!A \lif \lfalse$.}{}
+\tagitem{defNot}{$\lnot !A$ abrevia $!A \lif \lfalse$.}{}
 
-\tagitem{defOr}{$!A \lor !B$ abbreviates
+\tagitem{defOr}{$!A \lor !B$ abrevia
   \iftag{prvAnd}{$\lnot(\lnot !A \land \lnot !B)$}{$\lnot !A \lif
     !B$}.}{}
 
-\tagitem{defAnd}{$!A \land !B$ abbreviates
+\tagitem{defAnd}{$!A \land !B$ abrevia
   \iftag{prvOr}{$\lnot(\lnot !A \lor \lnot !B)$}{$\lnot (!A \lif
     \lnot !B)$}.}{}
 
-\tagitem{defIf}{$!A \lif !B$ abbreviates
+\tagitem{defIf}{$!A \lif !B$ abrevia
   \iftag{prvOr}{$\lnot !A \lor !B)$}{$\lnot (!A \land \lnot !B)$}.}{}
 
-\tagitem{defIff}{$!A \liff !B$ abbreviates $(!A \lif !B) \land (!B
+\tagitem{defIff}{$!A \liff !B$ abrevia $(!A \lif !B) \land (!B
   \lif !A)$.}{}
 
-\tagitem{defAll}{$\lforall[x][!A]$ abbreviates $\lnot\lexists[x][\lnot !A]$.}{}
+\tagitem{defAll}{$\lforall[x][!A]$ abrevia $\lnot\lexists[x][\lnot !A]$.}{}
 
-\tagitem{defEx}{$\lexists[x][!A]$ abbreviates $\lnot\lforall[x][\lnot !A]$.}{}
+\tagitem{defEx}{$\lexists[x][!A]$ abrevia $\lnot\lforall[x][\lnot !A]$.}{}
 \end{tagenumerate}
 \end{defn}
 \end{tagblock}
 
-If we work in a language for a specific application, we will often
-write two-place !!{predicate}s and !!{function}s between the
-respective terms, p.ex., $t_1 < t_2$ and $(t_1 + t_2)$ in the language
-of arithmetic and $t_1 \in t_2$ in the language of set theory.  The
-successor function in the language of arithmetic is even written
-conventionally \emph{after} its argument:~$t'$.  Officially, however,
-these are just conventional abbreviations for $\Atom{\Obj A^2_0}{t_1, t_2}$,
-$\Obj f^2_0(t_1, t_2)$, $\Atom{\Obj A^2_0}{t_1, t_2}$ and $f^1_0(t)$,
-respectively.
+Se trabalhamos em uma linguagem para uma aplicação específica, frequentemente
+escreveremos !!{predicate}s e !!{function}s de dois lugares entre os
+respectivos termos, por exemplo, $t_1 < t_2$ e $(t_1 + t_2)$ na linguagem
+da aritmética e $t_1 \in t_2$ na linguagem da teoria dos conjuntos.  A
+função sucessora na linguagem da aritmética é até escrita
+convencionalmente \emph{depois} de seu argumento:~$t'$.  Oficialmente, no entanto,
+estas são apenas abreviações convencionais para $\Atom{\Obj A^2_0}{t_1, t_2}$,
+$\Obj f^2_0(t_1, t_2)$, $\Atom{\Obj A^2_0}{t_1, t_2}$ e $f^1_0(t)$,
+respectivamente.
 
-\begin{defn}[Syntactic identity]
-The symbol $\ident$ expresses syntactic identity between strings of
-symbols, O.s.\@, $!A \ident !B$ iff $!A$ and $!B$ are strings of symbols
-of the same length and which contain the same symbol in each place.
+\begin{defn}[Identidade sintática]
+O símbolo $\ident$ expressa a identidade sintática entre cadeias de
+símbolos, isto é, $!A \ident !B$ sse $!A$ e $!B$ são cadeias de símbolos
+do mesmo comprimento e que contêm o mesmo símbolo em cada posição.
 \end{defn}
 
-The $\ident$ symbol may be flanked by strings obtained by
-concatenation, p.ex., $!A \ident (!B \lor !C)$ means: the string of
-symbols~$!A$ is the same string as the one obtained by concatenating
-an opening parenthesis, the string $!B$, the $\lor$ symbol, the
-string~$!C$, and a closing parenthesis, in this order. If this is the
-case, then we know that the first symbol of~$!A$ is an opening
-parenthesis, $!A$ contains $!B$ as a substring (starting at the second
-symbol), that substring is followed by~$\lor$, etc.
+O símbolo $\ident$ pode ser ladeado por cadeias obtidas por
+concatenação, por exemplo, $!A \ident (!B \lor !C)$ significa: a cadeia de
+símbolos~$!A$ é a mesma cadeia que aquela obtida concatenando
+um parêntese de abertura, a cadeia $!B$, o símbolo $\lor$, a
+cadeia~$!C$, e um parêntese de fechamento, nesta ordem. Se este é o
+caso, então sabemos que o primeiro símbolo de~$!A$ é um parêntese de
+abertura, $!A$ contém $!B$ como uma subcadeia (começando no segundo
+símbolo), essa subcadeia é seguida por~$\lor$, etc.
 
-As terms and !!{formula}s are built up from basic elements via inductive
-definitions, we can use the following induction principles to prove
-things about them.
+Como termos e !!{formula}s são construídos a partir de elementos básicos via definições
+indutivas, podemos usar os seguintes princípios de indução para provar
+coisas sobre eles.
 
-\begin{lem}[\emph{Principle of induction on terms}]
+\begin{lem}[\emph{Princípio de indução sobre termos}]
     \ollabel{lem:trmind}
-    Let $\Lang L$ be a first-order language.
-    If some property~$P$ is such that
+    Seja $\Lang L$ uma linguagem de primeira ordem.
+    Se uma propriedade~$P$ é tal que
     %
     \begin{enumerate}
-        \item it holds for every !!{variable}~$v$,
+        \item ela vale para toda !!{variable}~$v$,
         %
-        \item it holds for every !!{constant}~$a$ of~$\Lang L$, and
+        \item ela vale para todo !!{constant}~$a$ de~$\Lang L$, e
         %
-        \item it holds for $f(t_1,\dotsc,t_n)$ whenever it holds for
-        $t_1$,~\dots, $t_n$ and $f$~is an $n$-place
-            !!{function} of~$\Lang L$
+        \item ela vale para $f(t_1,\dotsc,t_n)$ sempre que vale para
+        $t_1$,~\dots, $t_n$ e $f$~é um !!{function} de $n$ lugares
+            de~$\Lang L$
     \end{enumerate}
-    (assuming $t_1$,~\dots, $t_n$ are terms of~$\Lang{L}$),
-    then $P$ holds for every term in~$\Trm[L]$.
+    (supondo que $t_1$,~\dots, $t_n$ são termos de~$\Lang{L}$),
+    então $P$ vale para todo termo em~$\Trm[L]$.
 \end{lem}
 
 \begin{prob}
     Prove \olref[fol][syn][frm]{lem:trmind}.
 \end{prob}
 
-\begin{lem}[\emph{Principle of induction on !!{formula}s}]
+\begin{lem}[\emph{Princípio de indução sobre !!{formula}s}]
     \ollabel{thm:frmind}
-    Let $\Lang L$ be a first-order language.
-    If some property~$P$ holds for all the atomic !!{formula}s
-    and is such that
+    Seja $\Lang L$ uma linguagem de primeira ordem.
+    Se uma propriedade~$P$ vale para todas as !!{formula}s atômicas
+    e é tal que
     %
     \begin{enumerate}
-        \tagitem{prvNot}{it holds for $\lnot !A$ whenever it
-            holds for~$!A$;}{}
-        \tagitem{prvAnd}{it holds for $(!A \land !B)$
-            whenever it holds for $!A$ and~$!B$;}{}
-        \tagitem{prvOr}{it holds for $(!A \lor !B)$
-            whenever it holds for $!A$ and~$!B$;}{}
-        \tagitem{prvIf}{it holds for $(!A \lif !B)$
-            whenever it holds for $!A$ and~$!B$;}{}
-        \tagitem{prvIff}{it holds for $(!A \liff !B)$
-            whenever it holds for $!A$ and~$!B$;}{}
-        \tagitem{prvEx}{it holds for $\lexists[x][!A]$
-            whenever it holds for~$!A$;}{}
-        \tagitem{prvAll}{it holds for $\lforall[x][!A]$
-            whenever it holds for~$!A$;}{}
+        \tagitem{prvNot}{ela vale para $\lnot !A$ sempre que
+            vale para~$!A$;}{}
+        \tagitem{prvAnd}{ela vale para $(!A \land !B)$
+            sempre que vale para $!A$ e~$!B$;}{}
+        \tagitem{prvOr}{ela vale para $(!A \lor !B)$
+            sempre que vale para $!A$ e~$!B$;}{}
+        \tagitem{prvIf}{ela vale para $(!A \lif !B)$
+            sempre que vale para $!A$ e~$!B$;}{}
+        \tagitem{prvIff}{ela vale para $(!A \liff !B)$
+            sempre que vale para $!A$ e~$!B$;}{}
+        \tagitem{prvEx}{ela vale para $\lexists[x][!A]$
+            sempre que vale para~$!A$;}{}
+        \tagitem{prvAll}{ela vale para $\lforall[x][!A]$
+            sempre que vale para~$!A$;}{}
   \end{enumerate}
-  (assuming $!A$ and $!B$ are !!{formula}s of~$\Lang{L}$),
-  then $P$ holds for all formulas in~$\Frm[L]$.
+  (supondo que $!A$ e $!B$ são !!{formula}s de~$\Lang{L}$),
+  então $P$ vale para todas as fórmulas em~$\Frm[L]$.
 \end{lem}
 
 \end{document}

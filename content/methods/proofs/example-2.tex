@@ -6,98 +6,98 @@
 
 \begin{document}
 
-\olfileid{mth}{prf}{ex2}
+\olfileid[pt]{mth}{prf}{ex2}
 
-\olsection{Another Example} 
+\olsection{Outro Exemplo} 
 
 \begin{prop}
-If $A \subseteq C$, then $A \cup (C \setminus A) = C$.
+Se $A \subseteq C$, então $A \cup (C \setminus A) = C$.
 \end{prop}  
 
 \begin{proof}
-  Suppose that $A \subseteq C$.  We want to show that $A \cup (C
+  Suponha que $A \subseteq C$.  Queremos mostrar que $A \cup (C
   \setminus A) = C$.
   \begin{quote}
-    We begin by observing that this is a conditional statement. It is
-    tacitly universally quantified: the proposition holds for all sets
-    $A$ and $C$. So $A$ and $C$ are variables for arbitrary sets. To
-    prove such a statement, we assume the antecedent and prove the
-    consequent.
+    Começamos observando que esta é uma afirmação condicional. Ela está
+    tacitamente quantificada universalmente: a proposição vale para todos os conjuntos
+    $A$ e $C$. Assim, $A$ e $C$ são variáveis para conjuntos arbitrários. Para
+    provar tal afirmação, supomos o antecedente e provamos o
+    consequente.
 
-    We continue by using the assumption that $A \subseteq C$. Let's
-    unpack the definition of~$\subseteq$: the assumption means that
-    all !!{element}s of~$A$ are also !!{element}s of~$C$. Let's write
-    this down---it's an important fact that we'll use throughout the
-    proof.
+    Continuamos usando a suposição de que $A \subseteq C$. Vamos
+    desdobrar a definição de~$\subseteq$: a suposição significa que
+    todos os !!{element}s de~$A$ são também !!{element}s de~$C$. Vamos anotar
+    isto---é um fato importante que usaremos ao longo da
+    prova.
   \end{quote}
-  By the definition of~$\subseteq$, since $A \subseteq C$, for all
-  $z$, if $z \in A$, then $z \in C$.
+  Pela definição de~$\subseteq$, como $A \subseteq C$, para todo
+  $z$, se $z \in A$, então $z \in C$.
   \begin{quote}
-    We've unpacked all the definitions that are given to us in the
-    assumption. Now we can move onto the conclusion. We want to show
-    that $A \cup (C \setminus A) = C$, and so we set up a proof
-    similarly to the last example: we show that every !!{element} of
-    $A \cup (C \setminus A)$ is also !!a{element} of~$C$ and,
-    conversely, every !!{element} of $C$ is !!a{element} of $A \cup (C
-    \setminus A)$. We can shorten this to: $A \cup (C \setminus A)
-    \subseteq C$ and $C \subseteq A \cup (C \setminus A)$. (Here we're
-    doing the opposite of unpacking a definition, but it makes the
-    proof a bit easier to read.)  Since this is a conjunction, we have
-    to prove both parts. To show the first part, O.s.\@, that every
-    !!{element} of $A \cup (C \setminus A)$ is also !!a{element}
-    of~$C$, we assume that $z \in A \cup (C \setminus A)$ for an
-    arbitrary~$z$ and show that $z \in C$. By the definition of
-    $\cup$, we can conclude that $z \in A$ or $z \in C \setminus A$
-    from $z \in A \cup (C \setminus A)$. You should now be getting the
-    hang of this.
+    Desdobramos todas as definições que nos são dadas na
+    suposição. Agora podemos passar à conclusão. Queremos mostrar
+    que $A \cup (C \setminus A) = C$, e por isso montamos uma prova
+    de modo semelhante ao último exemplo: mostramos que todo !!{element} de
+    $A \cup (C \setminus A)$ é também !!a{element} de~$C$ e,
+    reciprocamente, todo !!{element} de $C$ é !!a{element} de $A \cup (C
+    \setminus A)$. Podemos abreviar isso para: $A \cup (C \setminus A)
+    \subseteq C$ e $C \subseteq A \cup (C \setminus A)$. (Aqui estamos
+    fazendo o oposto de desdobrar uma definição, mas isso torna a
+    prova um pouco mais fácil de ler.)  Como isso é uma conjunção, temos
+    que provar ambas as partes. Para mostrar a primeira parte, isto é, que todo
+    !!{element} de $A \cup (C \setminus A)$ é também !!a{element}
+    de~$C$, supomos que $z \in A \cup (C \setminus A)$ para um
+    $z$~arbitrário e mostramos que $z \in C$. Pela definição de
+    $\cup$, podemos concluir que $z \in A$ ou $z \in C \setminus A$
+    a partir de $z \in A \cup (C \setminus A)$. Você já deve estar pegando o
+    jeito disso.
     \end{quote}
-  $A \cup (C \setminus A) = C$ iff $A \cup (C \setminus A) \subseteq
-  C$ and $C \subseteq (A \cup (C \setminus A)$.  First we prove that
-  $A \cup (C \setminus A) \subseteq C$.  Let $z \in A \cup (C
-  \setminus A)$. So, either $z \in A$ or $z \in (C \setminus A)$.
+  $A \cup (C \setminus A) = C$ sse $A \cup (C \setminus A) \subseteq
+  C$ e $C \subseteq (A \cup (C \setminus A)$.  Primeiro provamos que
+  $A \cup (C \setminus A) \subseteq C$.  Seja $z \in A \cup (C
+  \setminus A)$. Então, ou $z \in A$ ou $z \in (C \setminus A)$.
   \begin{quote}
-    We've arrived at a disjunction, and from it we want to prove that
-    $z \in C$. We do this using proof by cases.
+    Chegamos a uma disjunção, e a partir dela queremos provar que
+    $z \in C$. Fazemos isso usando a prova por casos.
   \end{quote}
-  Case 1: $z \in A$. Since for all $z$, if $z \in A$, $z \in C$, we
-  have that $z \in C$.
+  Caso 1: $z \in A$. Como, para todo $z$, se $z \in A$, $z \in C$,
+  temos que $z \in C$.
   \begin{quote}
-    Here we've used the fact recorded earlier which followed from the
-    hypothesis of the proposition that $A \subseteq C$.  The first
-    case is complete, and we turn to the second case, $z \in (C
-    \setminus A)$.  Recall that $C \setminus A$ denotes the
-    \emph{difference} of the two sets, O.s.\@, the set of all
-    !!{element}s of~$C$ which are not !!{element}s of~$A$.  But any
-    !!{element} of $C$ not in~$A$ is in particular !!a{element} of~$C$.
+    Aqui usamos o fato registrado anteriormente, que decorreu da
+    hipótese da proposição de que $A \subseteq C$.  O primeiro
+    caso está completo, e passamos ao segundo caso, $z \in (C
+    \setminus A)$.  Lembre-se de que $C \setminus A$ denota a
+    \emph{diferença} dos dois conjuntos, isto é, o conjunto de todos os
+    !!{element}s de~$C$ que não são !!{element}s de~$A$.  Mas qualquer
+    !!{element} de $C$ que não esteja em~$A$ é, em particular, !!a{element} de~$C$.
   \end{quote}
-  Case 2: $z \in (C \setminus A)$.  This means that $z \in C$ and $z
-  \notin A$. So, in particular, $z \in C$.
+  Caso 2: $z \in (C \setminus A)$.  Isso significa que $z \in C$ e $z
+  \notin A$. Então, em particular, $z \in C$.
   \begin{quote}
-    Great, we've proved the first direction. Now for the second
-    direction. Here we prove that $C \subseteq A \cup (C \setminus
-    A)$.  So we assume that $z \in C$ and prove that $z \in A \cup (C
+    Ótimo, provamos a primeira direção. Agora a segunda
+    direção. Aqui provamos que $C \subseteq A \cup (C \setminus
+    A)$.  Então supomos que $z \in C$ e provamos que $z \in A \cup (C
     \setminus A)$.
   \end{quote}
-  Now let $z \in C$. We want to show that $z \in A$ or $z \in C
+  Agora seja $z \in C$. Queremos mostrar que $z \in A$ ou $z \in C
   \setminus A$.
   \begin{quote}
-    Since all !!{element}s of $A$ are also !!{element}s of $C$, and $C
-    \setminus A$ is the set of all things that are !!{element}s of $C$
-    but not $A$, it follows that $z$ is either in $A$ or in $C
-    \setminus A$.  This may be a bit unclear if you don't already know
-    why the result is true.  It would be better to prove it
-    step-by-step.  It will help to use a simple fact which we can
-    state without proof: $z \in A$ or $z \notin A$. This is called the
-    ``principle of excluded middle:'' for any statement~$p$, either
-    $p$ is true or its negation is true. (Here, $p$ is the statement
-    that $z \in A$.)  Since this is a disjunction, we can again use
-    proof-by-cases.
+    Como todos os !!{element}s de $A$ são também !!{element}s de $C$, e $C
+    \setminus A$ é o conjunto de todas as coisas que são !!{element}s de $C$
+    mas não de $A$, segue-se que $z$ está ou em $A$ ou em $C
+    \setminus A$.  Isso pode ser um pouco obscuro se você ainda não souber
+    por que o resultado é verdadeiro.  Seria melhor prová-lo
+    passo a passo.  Ajudará usar um fato simples que podemos
+    enunciar sem prova: $z \in A$ ou $z \notin A$. Isso é chamado de
+    ``princípio do terceiro excluído:'' para qualquer afirmação~$p$, ou
+    $p$ é verdadeira ou sua negação é verdadeira. (Aqui, $p$ é a afirmação
+    de que $z \in A$.)  Como isso é uma disjunção, podemos novamente usar
+    a prova por casos.
   \end{quote}
-  Either $z \in A$ or $z \notin A$. In the former case, $z \in A \cup
-  (C \setminus A)$. In the latter case, $z \in C$ and $z \notin A$, so
-  $z \in C \setminus A$.  But then $z \in A \cup (C \setminus A)$.
+  Ou $z \in A$ ou $z \notin A$. No primeiro caso, $z \in A \cup
+  (C \setminus A)$. No segundo caso, $z \in C$ e $z \notin A$, de modo que
+  $z \in C \setminus A$.  Mas então $z \in A \cup (C \setminus A)$.
   \begin{quote}
-    Our proof is complete: we have shown that $A \cup (C \setminus A) = C$.
+    Nossa prova está completa: mostramos que $A \cup (C \setminus A) = C$.
   \end{quote}
 \end{proof}
 

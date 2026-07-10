@@ -1,0 +1,22 @@
+A \emph{semântica} de uma linguagem de primeira ordem é dada por uma
+\emph{estrutura} para essa linguagem. Ela consiste em um \emph{domínio} e,
+a cada símbolo de constante, são atribuídos elementos desse domínio. Os símbolos
+de função são interpretados por funções e os símbolos de relação por relações
+sobre o domínio. Uma função do conjunto das variáveis para o domínio é
+uma \emph{atribuição de variáveis}. A relação de \emph{satisfação}
+relaciona estruturas, atribuições de variáveis e fórmulas;
+$\Sat{M}{!A}[s]$ é definida por indução sobre a estrutura de~$!A$.
+$\Sat{M}{!A}[s]$ depende apenas da interpretação dos símbolos
+que de fato ocorrem em~$!A$, e, em particular, não depende de $s$
+se $!A$ não contém variáveis livres. Assim, se $!A$ é uma sentença,
+$\Sat{M}{!A}$ se $\Sat{M}{!A}[s]$ para algum (ou todo)~$s$.
+
+A relação de satisfação é a base de todas as noções semânticas. Uma
+sentença é \emph{válida}, $\Sat{{}}{!A}$, se é satisfeita em toda
+estrutura. Uma sentença $!A$ é \emph{consequência} de um conjunto de
+sentenças~$\Gamma$, $\Gamma \Entails !A$, sse $\Sat{M}{!A}$ para todas as
+$\Struct{M}$ que satisfazem toda sentença em~$\Gamma$. Um conjunto~$\Gamma$
+é \emph{satisfatível} sse há alguma estrutura que satisfaz toda
+sentença em~$\Gamma$; caso contrário, \emph{insatisfatível}. Essas noções estão
+inter-relacionadas; por exemplo, $\Gamma \Entails !A$ sse $\Gamma \cup \{\lnot
+!A\}$ é insatisfatível.

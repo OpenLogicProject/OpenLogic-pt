@@ -7,48 +7,48 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{prf}{tab}}
-      {\olfileid{pl}{prf}{tab}}
+      {\olfileid[pt]{fol}{prf}{tab}}
+      {\olfileid[pt]{pl}{prf}{tab}}
 
 \olsection{\usetoken{P}{tableau}}
 
-While many !!{derivation} systems operate with arrangements of
-!!{sentence}s, !!{tableau}s operate with !!{signed formula}s.
-!!^a{signed formula} is a pair consisting of a truth value sign
-($\True$ or $\False$) and !!a{sentence}
+Enquanto muitos sistemas de !!{derivation} operam com disposições de
+!!{sentence}s, os !!{tableau}s operam com !!{signed formula}s.
+!!^a{signed formula} é um par consistindo em um sinal de valor de
+verdade ($\True$ ou $\False$) e !!a{sentence}
 \[
-\sFmla{\True}{!A} \text{ or } \sFmla{\False}{!A}.
+\sFmla{\True}{!A} \text{ ou } \sFmla{\False}{!A}.
 \]
-!!^a{tableau} consists of !!{signed formula}s arranged in a
-downward-branching tree. It begins with a number of \emph{assumptions}
-and continues with !!{signed formula}s which result from one of the
-!!{signed formula}s above it by applying one of the rules of
-inference. Each rule allows us to add one or more !!{signed formula}s
-to the end of a branch, or two !!{signed formula}s side by side---in
-this case a branch splits into two, with the two added !!{signed
-  formula}s forming the ends of the two branches.
+!!^a{tableau} consiste em !!{signed formula}s dispostas em uma
+árvore ramificada para baixo. Começa com várias \emph{hipóteses}
+e continua com !!{signed formula}s que resultam de uma das
+!!{signed formula}s acima dela pela aplicação de uma das regras de
+inferência. Cada regra nos permite adicionar uma ou mais !!{signed
+  formula}s ao final de um ramo, ou duas !!{signed formula}s lado a
+lado---neste caso um ramo se divide em dois, com as duas !!{signed
+  formula}s adicionadas formando os finais dos dois ramos.
 
-A rule applied to a complex !!{signed formula} results in the addition
-of !!{signed formula}s which are immediate sub-!!{formula}s. They come
-in pairs, one rule for each of the two signs.  For instance, the
-$\TRule{\True}{\land}$ rule applies to $\sFmla{\True}{!A \land !B}$,
-and allows the addition of both the two !!{signed formula}s
-$\sFmla{\True}{!A}$ and~$\sFmla{\True}{!B}$ to the end of any branch
-containing $\sFmla{\True}{!A \land !B}$, and the rule
-$\TRule{\False}{!A \land !B}$ allows a branch to be split by adding
-$\sFmla{\False}{!A}$ and $\sFmla{\False}{!B}$ side-by-side.
-!!^a{tableau} is closed if every one of its branches contains a
-matching pair of !!{signed formula}s $\sFmla{\True}{!A}$ and
+Uma regra aplicada a uma !!{signed formula} complexa resulta na adição
+de !!{signed formula}s que são sub-!!{formula}s imediatas. Elas vêm
+em pares, uma regra para cada um dos dois sinais.  Por exemplo, a
+regra $\TRule{\True}{\land}$ se aplica a $\sFmla{\True}{!A \land !B}$,
+e permite a adição tanto das duas !!{signed formula}s
+$\sFmla{\True}{!A}$ quanto de~$\sFmla{\True}{!B}$ ao final de qualquer ramo
+que contém $\sFmla{\True}{!A \land !B}$, e a regra
+$\TRule{\False}{!A \land !B}$ permite que um ramo seja dividido
+adicionando $\sFmla{\False}{!A}$ e $\sFmla{\False}{!B}$ lado a lado.
+!!^a{tableau} é fechado se cada um de seus ramos contém um
+par correspondente de !!{signed formula}s $\sFmla{\True}{!A}$ e
 $\sFmla{\False}{!A}$.
 
-The $\Proves$ relation based on !!{tableau}s is defined as follows:
-$\Gamma \Proves !A$ iff there is some finite set~$\Gamma_0 = \{!B_1,
-\dots, !B_n\} \subseteq \Gamma$ such that there is a closed !!{tableau}
-for the assumptions
+A relação $\Proves$ baseada em !!{tableau}s é definida da seguinte
+forma: $\Gamma \Proves !A$ se, e somente se, há algum conjunto
+finito~$\Gamma_0 = \{!B_1, \dots, !B_n\} \subseteq \Gamma$ tal que há
+um !!{tableau} fechado para as hipóteses
 \[
 \{\sFmla{\False}{!A}, \sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\} 
 \]
-For instance, here is a closed !!{tableau} that shows that $\Proves
+Por exemplo, aqui está um !!{tableau} fechado que mostra que $\Proves
 (!A \land !B) \lif !A$:
 \begin{oltableau}
   [\sFmla{\False}{(\formula{A} \land \formula{B}) \lif \formula{A}}, just = \TAss
@@ -62,28 +62,30 @@ For instance, here is a closed !!{tableau} that shows that $\Proves
   ]
 \end{oltableau}
 
-A set $\Gamma$ is inconsistent in the !!{tableau} calculus if there is
-a closed !!{tableau} for assumptions
+Um conjunto $\Gamma$ é inconsistente no cálculo de !!{tableau} se há
+um !!{tableau} fechado para hipóteses
 \[
 \{\sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\} 
 \]
-for some $!B_i \in \Gamma$.
+para algum $!B_i \in \Gamma$.
 
-!!^{tableau}s were invented in the 1950s independently by Evert
-Beth and Jaakko Hintikka, and simplified and popularized by Raymond
-Smullyan. They are very easy to use, since constructing !!a{tableau} is a
-very systematic procedure. Because of the systematic nature of
-!!{tableau}s, they also lend themselves to implementation by
-computer. However, !!a{tableau} is often hard to read and their
-connection to proofs are sometimes not easy to see. The approach is
-also quite general, and many different logics have !!{tableau}
-systems. !!^{tableau}s also help us to find !!{structure}s that
-satisfy given (sets of) !!{sentence}s: if the set is satisfiable, it
-won't have a closed !!{tableau}, O.s.\@, any !!{tableau} will have an
-open branch. The satisfying !!{structure} can be ``read off'' an open
-branch, provided every rule it is possible to apply has been applied
-on that branch.  There is also a very close connection to the sequent
-calculus: essentially, a closed !!{tableau} is a condensed
-!!{derivation} in the sequent calculus, written upside-down.
+Os !!^{tableau}s foram inventados na década de 1950 independentemente
+por Evert Beth e Jaakko Hintikka, e simplificados e popularizados por
+Raymond Smullyan. São muito fáceis de usar, pois construir um
+!!{tableau} é um procedimento muito sistemático. Por causa da natureza
+sistemática dos !!{tableau}s, eles também se prestam à implementação
+por computador. No entanto, um !!{tableau} é frequentemente difícil de
+ler e sua conexão com provas às vezes não é fácil de ver. A abordagem
+também é bastante geral, e muitas lógicas diferentes têm sistemas de
+!!{tableau}. Os !!^{tableau}s também nos ajudam a encontrar
+!!{structure}s que satisfazem !!{sentence}s (ou conjuntos de
+!!{sentence}s) dadas: se o conjunto é satisfatível, ele não terá um
+!!{tableau} fechado, isto é, qualquer !!{tableau} terá um ramo aberto.
+A !!{structure} satisfatória pode ser ``lida'' de um ramo aberto,
+desde que toda regra que seja possível aplicar tenha sido aplicada
+naquele ramo.  Há também uma conexão muito estreita com o cálculo de
+sequentes: essencialmente, um !!{tableau} fechado é uma
+!!{derivation} condensada no cálculo de sequentes, escrita de cabeça
+para baixo.
 
 \end{document}

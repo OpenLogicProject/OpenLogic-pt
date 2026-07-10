@@ -10,30 +10,30 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{ntd}{ppr}}
-      {\olfileid{pl}{ntd}{ppr}}
+{\olfileid[pt]{fol}{ntd}{ppr}}
+{\olfileid[pt]{pl}{ntd}{ppr}}
 
-\olsection{\usetoken{S}{derivability} and the Propositional Connectives}
+\olsection{\usetoken{S}{derivability} e os Conectivos Proposicionais}
 
 \begin{explain}
-  We establish that the !!{derivability} relation~$\Proves$ of natural
- deduction is strong enough to establish some basic facts
-  involving the propositional connectives, such as that $!A \land !B
-  \Proves !A$ and $!A, !A \lif !B \Proves !B$ (modus ponens). These
-  facts are needed for the proof of the completeness theorem.
+  Estabelecemos que a relação de !!{derivability}~$\Proves$ da
+  dedução natural é forte o suficiente para estabelecer alguns fatos
+  básicos envolvendo os conectivos proposicionais, tais como $!A \land !B
+  \Proves !A$ e $!A, !A \lif !B \Proves !B$ (modus ponens). Esses
+  fatos são necessários para a prova do teorema da completude.
 \end{explain}
 
 \begin{prop}\ollabel{prop:provability-land}
   \begin{enumerate}
-  \item \ollabel{prop:provability-land-left} Both $!A \land !B \Proves
-    !A$ and $!A \land !B \Proves !B$
+  \item \ollabel{prop:provability-land-left} Tanto $!A \land !B \Proves
+    !A$ quanto $!A \land !B \Proves !B$.
   \item \ollabel{prop:provability-land-right} $!A, !B \Proves !A \land !B$.
   \end{enumerate}
 \end{prop}
 
 \begin{proof}
   \begin{enumerate}
-  \item We can !!{derive} both
+  \item Podemos derivar ambos:
     \begin{prooftree}
       \AxiomC{$!A \land !B$}
       \RightLabel{\Elim{\land}}
@@ -43,7 +43,7 @@
       \RightLabel{\Elim{\land}}
       \UnaryInfC{$!B$}
     \end{prooftree}
-  \item We can !!{derive}:
+  \item Podemos derivar:
     \begin{prooftree}
       \AxiomC{$!A$}
       \AxiomC{$!B$}
@@ -56,14 +56,14 @@
 
 \begin{prop}\ollabel{prop:provability-lor}
   \begin{enumerate}
-  \item $!A \lor !B, \lnot !A, \lnot !B$ is inconsistent.
-  \item Both $!A \Proves !A \lor !B$ and $!B \Proves !A \lor !B$.
+  \item $!A \lor !B, \lnot !A, \lnot !B$ é inconsistente.
+  \item Tanto $!A \Proves !A \lor !B$ quanto $!B \Proves !A \lor !B$.
   \end{enumerate}
 \end{prop}
 
 \begin{proof}
   \begin{enumerate}
-  \item Consider the following !!{derivation}:
+  \item Considere a seguinte !!{derivation}:
     \begin{prooftree}
       \AxiomC{$!A \lor !B$}
       \AxiomC{$\lnot !A$}
@@ -77,9 +77,9 @@
       \DischargeRule{\Elim{\lor}}{1}
       \TrinaryInfC{$\lfalse$}
     \end{prooftree}
-    This is !!a{derivation} of~$\lfalse$ from !!{undischarged}
-    assumptions $!A \lor !B$, $\lnot !A$, and $\lnot !B$.
-  \item We can !!{derive} both
+    Esta é !!a{derivation} de~$\lfalse$ a partir das hipóteses não
+    descarregadas $!A \lor !B$, $\lnot !A$ e $\lnot !B$.
+  \item Podemos derivar ambos:
     \begin{prooftree}
       \AxiomC{$!A$}
       \RightLabel{\Intro{\lor}}
@@ -96,21 +96,21 @@
   \begin{enumerate}
   \item \ollabel{prop:provability-lif-left}  $!A, !A \lif !B \Proves !B$.
   \item \ollabel{prop:provability-lif-right}
-    Both $\lnot !A \Proves !A \lif !B$ and $!B \Proves !A \lif !B$.
+    Tanto $\lnot !A \Proves !A \lif !B$ quanto $!B \Proves !A \lif !B$.
   \end{enumerate}
 \end{prop}
 
 \begin{proof}
   \begin{enumerate}
-  \item We can !!{derive}:
+  \item Podemos derivar:
     \begin{prooftree}
       \AxiomC{$!A \lif !B$}
       \AxiomC{$!A$}
       \RightLabel{\Elim{\lif}}
       \BinaryInfC{$!B$}
     \end{prooftree}
-    
-  \item This is shown by the following two !!{derivation}s:
+
+  \item Isso é mostrado pelas duas !!{derivation}s seguintes:
     \begin{prooftree}
       \AxiomC{$\lnot !A$}
       \AxiomC{$\Discharge{!A}{1}$}
@@ -125,8 +125,8 @@
       \RightLabel{\Intro{\lif}}
       \UnaryInfC{$!A \lif !B$}
     \end{prooftree}
-    Note that $\Intro{\lif}$ may, but does not have to, !!{discharge} the
-    assumption~$!A$.
+    Note que $\Intro{\lif}$ pode, mas não precisa, descarregar a
+    hipótese~$!A$.
   \end{enumerate}
 \end{proof}
 

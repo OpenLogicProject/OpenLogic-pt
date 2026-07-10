@@ -6,86 +6,90 @@
 
 \begin{document}
 
-\olfileid{tur}{und}{uns} 
-\olsection{The Decision Problem is Unsolvable}
+\olfileid[pt]{tur}{und}{uns} 
+\olsection{O Problema da Decisão é Insolúvel}
 
 \begin{thm}
 \ollabel{thm:decision-prob}
-The decision problem is unsolvable: There is no Turing machine~$D$,
-which when started on a tape that contains !!a{sentence}~$!B$ of
-first-order logic as input, $D$~eventually halts, and outputs~$1$ iff
-$!B$ is valid and $0$ otherwise.
+O problema da decisão é insolúvel: Não há máquina de Turing~$D$ tal
+que, quando iniciada em uma fita que contém como entrada
+!!a{sentence}~$!B$ da lógica de primeira ordem, $D$~eventualmente para
+e produz~$1$ se, e somente se, $!B$ é válida, e $0$ caso contrário.
 \end{thm}
 
 \begin{proof}
-Suppose the decision problem were solvable, O.s.\@, suppose there were a
-Turing machine~$D$. Then we could solve the halting problem as
-follows. We construct a Turing machine~$E$ that, given as input the
-number~$e$ of Turing machine~$M_e$ and input~$w$, computes the
-corresponding !!{sentence}~$!T(M_e, w) \lif !E(M_e, w)$ and halts,
-scanning the leftmost square on the tape.  The machine $E \concat D$
-would then, given input $e$ and $w$, first compute~$!T(M_e, w) \lif
-!E(M_e, w)$ and then run the decision problem machine~$D$ on that
-input.  $D$ halts with output~$1$ iff $!T(M_e, w) \lif !E(M_e, w)$ is
-valid and outputs~$0$ otherwise. By \olref[ver]{lem:halt-if-valid} and
-\olref[ver]{lem:valid-if-halt}, $!T(M_e, w) \lif !E(M_e, w)$ is valid
-iff $M_e$ halts on input~$w$. Thus, $E\concat D$, given input $e$ and
-$w$ halts with output~$1$ iff $M_e$ halts on input~$w$ and halts with
-output~$0$ otherwise. In other words, $E \concat D$ would solve the
-halting problem.  But we know, by \olref[hal]{thm:halting-problem},
-that no such Turing machine can exist.
+Suponha que o problema da decisão fosse solúvel, isto é, suponha que
+houvesse uma máquina de Turing~$D$. Então poderíamos resolver o
+problema da parada como segue. Construímos uma máquina de Turing~$E$
+que, dado como entrada o número~$e$ da máquina de Turing~$M_e$ e a
+entrada~$w$, computa a !!{sentence} correspondente~$!T(M_e, w) \lif
+!E(M_e, w)$ e para, examinando o quadrado mais à esquerda na fita.  A
+máquina $E \concat D$ então, dada a entrada $e$ e $w$, primeiro
+computaria~$!T(M_e, w) \lif !E(M_e, w)$ e depois executaria a máquina
+do problema da decisão~$D$ nessa entrada.  $D$ para com saída~$1$ se,
+e somente se, $!T(M_e, w) \lif !E(M_e, w)$ é válida, e produz~$0$ caso
+contrário. Por \olref[ver]{lem:halt-if-valid} e
+\olref[ver]{lem:valid-if-halt}, $!T(M_e, w) \lif !E(M_e, w)$ é válida
+se, e somente se, $M_e$ para na entrada~$w$. Assim, $E\concat D$, dada
+a entrada $e$ e $w$, para com saída~$1$ se, e somente se, $M_e$ para na
+entrada~$w$, e para com saída~$0$ caso contrário. Em outras palavras,
+$E \concat D$ resolveria o problema da parada.  Mas sabemos, por
+\olref[hal]{thm:halting-problem}, que não pode existir tal máquina de
+Turing.
 \end{proof}
 
 \begin{cor}\ollabel{cor:undecidable-sat}%
-It is undecidable if an arbitrary !!{sentence} of first-order logic is satisfiable.
+É indecidível se uma !!{sentence} arbitrária da lógica de primeira ordem é satisfatível.
 \end{cor}
 
 \begin{proof}
-  Suppose satisfiability were decidable by a Turing machine~$S$. Then
-  we could solve the decision problem as follows: Given
-  !!a{sentence}~$B$ as input, move $!B$ to the right one square.
-  Return to square~$1$ and write the symbol~$\lnot$.
+  Suponha que a satisfatibilidade fosse decidível por uma máquina de
+  Turing~$S$. Então poderíamos resolver o problema da decisão como
+  segue: Dada como entrada !!a{sentence}~$B$, mova $!B$ um quadrado
+  para a direita. Volte ao quadrado~$1$ e escreva o símbolo~$\lnot$.
 
-  Now run the Turing machine~$S$. It eventually halts with output
-  either $1$ (if $\lnot !B$ is satisfiable) or~$0$ (if $\lnot !B$ is
-  unsatisfiable) on the tape. If there is a~$\TMstroke$ on square~$1$,
-  erase it; if square~$1$ is empty, write a~$\TMstroke$, then halt.
+  Agora execute a máquina de Turing~$S$. Ela eventualmente para com
+  saída $1$ (se $\lnot !B$ é satisfatível) ou~$0$ (se $\lnot !B$ é
+  insatisfatível) na fita. Se há um~$\TMstroke$ no quadrado~$1$,
+  apague-o; se o quadrado~$1$ está vazio, escreva um~$\TMstroke$ e
+  então pare.
 
-  This Turing machine always halts, and its output is~$1$ iff $\lnot
-  !B$ is unsatisfiable and $0$~otherwise. Since $!B$ is valid iff
-  $\lnot !B$~is unsatisfiable, the machine outputs~$1$ iff $!B$ is
-  valid, and $0$~otherwise, O.s.\@, it would solve the decision problem.
+  Essa máquina de Turing sempre para, e sua saída é~$1$ se, e somente
+  se, $\lnot !B$ é insatisfatível, e $0$~caso contrário. Como $!B$ é
+  válida se, e somente se, $\lnot !B$~é insatisfatível, a máquina
+  produz~$1$ se, e somente se, $!B$ é válida, e $0$~caso contrário,
+  isto é, ela resolveria o problema da decisão.
 \end{proof}
 
 \begin{explain}
-So there is no Turing machine which always gives a
-correct ``yes'' or ``no'' answer to the question ``Is $!B$ a valid
-!!{sentence} of first-order logic?'' However, there \emph{is} a Turing
-machine that always gives a correct ``yes'' answer---but simply does
-not halt if the answer is ``no.'' This follows from the soundness and
-completeness theorem of first-order logic, and the fact that
-!!{derivation}s can be effectively enumerated.
+Portanto, não há máquina de Turing que sempre dê uma resposta ``sim''
+ou ``não'' correta à pergunta ``$!B$ é uma !!{sentence} válida da
+lógica de primeira ordem?'' No entanto, \emph{há} uma máquina de
+Turing que sempre dá uma resposta ``sim'' correta---mas que
+simplesmente não para se a resposta é ``não''. Isso decorre do teorema
+da correção e completude da lógica de primeira ordem, e do fato de que
+!!{derivation}s podem ser efetivamente enumeradas.
 \end{explain}
 
 \begin{thm}
   \ollabel{thm:valid-ce}%
-  Validity of first-order !!{sentence}s is semi-decidable: There is a
-  Turing machine~$E$, which when started on a tape that contains
-  !!a{sentence}~$!B$ of first-order logic as input, $E$~eventually
-  halts and outputs~$1$ iff $!B$ is valid, but does not halt
-  otherwise.
+  A validade de !!{sentence}s de primeira ordem é semidecidível: Há
+  uma máquina de Turing~$E$ que, quando iniciada em uma fita que
+  contém como entrada !!a{sentence}~$!B$ da lógica de primeira ordem,
+  $E$~eventualmente para e produz~$1$ se, e somente se, $!B$ é válida,
+  mas não para caso contrário.
 \end{thm}
 
 \begin{proof}
-  All possible !!{derivation}s of first-order logic can be generated,
-  one after another, by an effective algorithm.  The machine~$E$ does
-  this, and when it finds !!a{derivation} that shows that $\Proves
-  !B$, it halts with output~$1$. By the soundness theorem, if $E$
-  halts with output~$1$, it's because~$\Entails !B$. By the
-  completeness theorem, if $\Entails !B$ there is !!a{derivation} that
-  shows that~$\Proves !B$. Since $E$ systematically generates all
-  possible !!{derivation}s, it will eventually find one that
-  shows~$\Proves !B$, so will eventually halt with output~$1$.
+  Todas as !!{derivation}s possíveis da lógica de primeira ordem podem
+  ser geradas, uma após a outra, por um algoritmo efetivo.  A
+  máquina~$E$ faz isso e, quando encontra !!a{derivation} que mostra
+  que $\Proves !B$, ela para com saída~$1$. Pelo teorema da correção,
+  se $E$ para com saída~$1$, é porque~$\Entails !B$. Pelo teorema da
+  completude, se $\Entails !B$, há !!a{derivation} que mostra
+  que~$\Proves !B$. Como $E$ gera sistematicamente todas as
+  !!{derivation}s possíveis, ela eventualmente encontrará uma que
+  mostra~$\Proves !B$, de modo que eventualmente parará com saída~$1$.
 \end{proof}
 
 \end{document}

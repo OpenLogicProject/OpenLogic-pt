@@ -6,111 +6,113 @@
 
 \begin{document}
 
-\olfileid{tur}{und}{tra}
-\olsection{Trakhtenbrot's Theorem}
+\olfileid[pt]{tur}{und}{tra}
+\olsection{Teorema de Trakhtenbrot}
 
 \begin{explain}
-  In \olref[rep]{sec} we defined !!{sentence}s $!T(M,w)$ and~$!E(M,w)$
-  for a Turing machine~$M$ and input string~$w$. Then we showed in
-  \olref[ver]{lem:valid-if-halt} and \olref[ver]{lem:halt-if-valid}
-  that $!T(M,w) \lif !E(M,w)$ is valid iff $M$, started on input~$w$,
-  eventually halts. Since the Halting Problem is undecidable, this
-  implies that validity and satisfiability of !!{sentence}s of
-  first-order logic is undecidable
+  Na \olref[rep]{sec} definimos as !!{sentence}s $!T(M,w)$ e~$!E(M,w)$
+  para uma máquina de Turing~$M$ e uma cadeia de entrada~$w$. Em
+  seguida, mostramos em \olref[ver]{lem:valid-if-halt} e
+  \olref[ver]{lem:halt-if-valid} que $!T(M,w) \lif !E(M,w)$ é válida
+  se, e somente se, $M$, iniciada na entrada~$w$, eventualmente para.
+  Como o Problema da Parada é indecidível, isso implica que a validade
+  e a satisfatibilidade de !!{sentence}s da lógica de primeira ordem
+  são indecidíveis
   (\cref{tur:und:uns:thm:decision-prob,tur:und:uns:cor:undecidable-sat}).
 
-  But validity and satisfiability of sentences is defined for
-  arbitrary !!{structure}s, finite or infinite. You might suspect that
-  it is easier to decide if !!a{sentence} is satisfiable in a finite
-  !!{structure} (or valid in all finite !!{structure}s). We can adapt
-  the proof of the unsolvability of the decision problem so that it
-  shows this is not the case.
+  Mas a validade e a satisfatibilidade de sentenças são definidas para
+  !!{structure}s arbitrárias, finitas ou infinitas. Você poderia
+  suspeitar que é mais fácil decidir se !!a{sentence} é satisfatível em
+  uma !!{structure} finita (ou válida em todas as !!{structure}s
+  finitas). Podemos adaptar a prova da insolubilidade do problema da
+  decisão de modo que ela mostre que não é esse o caso.
 
-  First, if you go back to the proof of
-  \olref[ver]{lem:halt-if-valid}, you'll see that what we did there is
-  produce a model~$\Struct M$ of~$!T(M,w)$ which describes exactly
-  what machine~$M$ does when started on input~$w$.  The domain of that
-  model was~$\Nat$, O.s.\@, infinite. But if $M$ actually halts on
-  input~$w$, we can build a finite model~$\Struct M'$ in the same way.
-  Suppose $M$ started on input~$w$ halts after~$k$ steps. Take as
-  domain~$\Domain{M'}$ the set $\{0, \dots, n\}$, where $n$ is the
-  larger of~$k$ and the length of~$w$, and let
+  Primeiro, se você voltar à prova de
+  \olref[ver]{lem:halt-if-valid}, verá que o que fizemos ali foi
+  produzir um modelo~$\Struct M$ de~$!T(M,w)$ que descreve exatamente
+  o que a máquina~$M$ faz quando iniciada na entrada~$w$.  O domínio
+  daquele modelo era~$\Nat$, isto é, infinito. Mas se $M$ de fato para
+  na entrada~$w$, podemos construir um modelo finito~$\Struct M'$ da
+  mesma maneira. Suponha que $M$ iniciada na entrada~$w$ pare após~$k$
+  passos. Tome como domínio~$\Domain{M'}$ o conjunto $\{0, \dots, n\}$,
+  em que $n$ é o maior entre~$k$ e o comprimento de~$w$, e seja
   \[
     \Assign{\prime}{M'}(x) = 
     \begin{cases}
-      x + 1 &\text{if $x < n$}\\
-      n &\text{otherwise,}
+      x + 1 &\text{se $x < n$}\\
+      n &\text{caso contrário,}
     \end{cases}
   \]
-  and $\tuple{x,y} \in \Assign{<}{M'}$ iff $x < y$ or $x = y = n$.
-  Otherwise $\Struct{M'}$ is defined just like~$\Struct{M}$. By the
-  definition of~$\Struct{M'}$, just like in the proof of
-  \olref[ver]{lem:halt-if-valid}, $\Sat{M'}{!T(M,w)}$.  And since we
-  assumed that $M$ halts on input~$w$, $\Sat{M'}{!E(M,w)}$. So,
-  $\Struct{M'}$ is a finite model of~$!T(M,w) \land !E(M,w)$ (note
-  that we've replaced $\lif$ with~$\land$).
+  e $\tuple{x,y} \in \Assign{<}{M'}$ se, e somente se, $x < y$ ou $x =
+  y = n$. Quanto ao resto, $\Struct{M'}$ é definida tal como~$\Struct{M}$.
+  Pela definição de~$\Struct{M'}$, tal como na prova de
+  \olref[ver]{lem:halt-if-valid}, $\Sat{M'}{!T(M,w)}$.  E como
+  supusemos que $M$ para na entrada~$w$, $\Sat{M'}{!E(M,w)}$. Assim,
+  $\Struct{M'}$ é um modelo finito de~$!T(M,w) \land !E(M,w)$ (note
+  que substituímos $\lif$ por~$\land$).
   
-  We are halfway to a proof: we've shown that if $M$ halts on
-  input~$w$, then $!T(M,w) \land !E(M,w)$ has a finite model.
-  Unfortunately, the converse of this does not hold, O.s.\@, there are
-  Turing machines that don't halt on some input~$w$, but $!T(M,w)
-  \land !E(M,w)$ still has a finite model. For instance, consider the
-  machine~$M$ with the single state $q_0$ and instruction
-  $\delta(q_0,\TMblank) = \tuple{q_0,\TMblank,\TMstay}$. Started on
-  empty input~$w = \emptyseq$, this machine never halts: it is in an
-  infinite loop, but does not change the tape or move the head. All
-  configurations are the same (same state, same head position, same
-  tape contents). We can define a finite !!{structure}~$\Struct{M''}$
-  that satisfies $!T(M,\emptyseq) \land !E(M,\emptyseq)$ (exercise).
-  We can, however, change~$!T(M,w)$ in a suitable way so that such
-  !!{structure}s are ruled out.
+  Estamos a meio caminho de uma prova: mostramos que se $M$ para na
+  entrada~$w$, então $!T(M,w) \land !E(M,w)$ tem um modelo finito.
+  Infelizmente, a recíproca disso não vale, isto é, há máquinas de
+  Turing que não param em alguma entrada~$w$, mas $!T(M,w) \land
+  !E(M,w)$ ainda assim tem um modelo finito. Por exemplo, considere a
+  máquina~$M$ com o único estado $q_0$ e a instrução
+  $\delta(q_0,\TMblank) = \tuple{q_0,\TMblank,\TMstay}$. Iniciada na
+  entrada vazia~$w = \emptyseq$, essa máquina nunca para: está em um
+  laço infinito, mas não altera a fita nem move o cabeçote. Todas as
+  configurações são as mesmas (mesmo estado, mesma posição do
+  cabeçote, mesmo conteúdo da fita). Podemos definir uma !!{structure}
+  finita~$\Struct{M''}$ que satisfaz $!T(M,\emptyseq) \land
+  !E(M,\emptyseq)$ (exercício).  Podemos, no entanto,
+  modificar~$!T(M,w)$ de modo adequado para que tais !!{structure}s
+  sejam descartadas.
 
   \begin{prob}
-    Let $M$ be a Turing machine with the single state $q_0$ and single
-    instruction $\delta(q_0,\TMblank) = \tuple{q,\TMblank,\TMstay}$.
-    Let $\Domain{M''} = \{0, 1, 2\}$, $\Assign{\prime}{M''}(0) =
-    \Assign{\prime}{M'}(1) = 1$ and $\Assign{\prime}{M''}(2) = 2$, and
+    Seja $M$ uma máquina de Turing com o único estado $q_0$ e a única
+    instrução $\delta(q_0,\TMblank) = \tuple{q,\TMblank,\TMstay}$.
+    Seja $\Domain{M''} = \{0, 1, 2\}$, $\Assign{\prime}{M''}(0) =
+    \Assign{\prime}{M'}(1) = 1$ e $\Assign{\prime}{M''}(2) = 2$, e
     $\Assign{<}{M''} = \{\tuple{0,1}, \tuple{1,1}, \tuple{2,2}\}$.
-    Define $\Assign{\Obj Q_{q_0}}{M''}$, $\Assign{\Obj
-    S_{\TMblank}}{M''}$, and $\Assign{\Obj S_{\TMendtape}}{M''}$ so
-    that $!T(M,\emptyseq)$ and $!E(M,\emptyseq)$ become true and
-    explain why they are. Hint: Observe that $\delta(q_0, \TMendtape)$
-    is undefined. Ensure that
+    Defina $\Assign{\Obj Q_{q_0}}{M''}$, $\Assign{\Obj
+    S_{\TMblank}}{M''}$ e $\Assign{\Obj S_{\TMendtape}}{M''}$ de modo
+    que $!T(M,\emptyseq)$ e $!E(M,\emptyseq)$ se tornem verdadeiras e
+    explique por que o são. Dica: Observe que $\delta(q_0, \TMendtape)$
+    é indefinida. Garanta que
     \begin{align*}
     & \Obj Q_{q_0}(\num{1}, \num{n}) \land \Obj S_{\TMendtape}(\num{0}, \num{n})
       \land 
-      \lforall[x][(\num{0} < x \lif \Obj S_\TMblank(x, \num{n}))] \text{\quad for all $n \in \Nat$}\\
+      \lforall[x][(\num{0} < x \lif \Obj S_\TMblank(x, \num{n}))] \text{\quad para todo $n \in \Nat$}\\
     & \lexists[y][(\Obj Q_{q_0}(\num{0}, y) \land \Obj S_{\TMendtape}(\num{0}, y))]
     \end{align*}
-    are both true in~$\Struct{M''}$.
+    são ambas verdadeiras em~$\Struct{M''}$.
   \end{prob}
 \end{explain}
 
-Consider the !!{sentence}s describing the operation of the Turing
-machine~$M$ on input $w = \sigma_{i_1}\dots\sigma_{i_k}$:
+Considere as !!{sentence}s que descrevem a operação da máquina de
+Turing~$M$ na entrada $w = \sigma_{i_1}\dots\sigma_{i_k}$:
 \begin{enumerate}
-\item Axioms describing numbers and~$<$ (just like in the definition
-of~$!T(M,w)$ in \olref[rep]{sec}).
-\item Axioms describing the input configuration: just like in the definition
-of~$!T(M,w)$.
-\item Axioms describing the transition from one configuration to
-  the next:
+\item Axiomas que descrevem números e~$<$ (tal como na definição
+de~$!T(M,w)$ na \olref[rep]{sec}).
+\item Axiomas que descrevem a configuração de entrada: tal como na
+definição de~$!T(M,w)$.
+\item Axiomas que descrevem a transição de uma configuração para a
+  seguinte:
 
-For the following, let $!A(x, y)$ be as before, and let
+Para o que segue, seja $!A(x, y)$ como antes, e seja
 \[
   !B(y) \ident \lforall[x][(x < y \lif \eq/[x][y])].
 \]
 \begin{enumerate}
-\item \ollabel{rep-right} For every instruction $\delta(q_i, \sigma) =
-  \tuple{q_j, \sigma', \TMright}$, the !!{sentence}:
+\item \ollabel{rep-right} Para toda instrução $\delta(q_i, \sigma) =
+  \tuple{q_j, \sigma', \TMright}$, a !!{sentence}:
 \begin{align*}
 & \lforall[x][\lforall[y][(
    (\Obj Q_{q_i}(x, y) \land \Obj S_{\sigma}(x, y)) \lif {}]] \\
 &\qquad   (\Obj Q_{q_j}(x', y') \land \Obj S_{\sigma'}(x, y') \land
 !A(x, y) \land !B(y')))
 \end{align*}
-\item \ollabel{rep-left} For every instruction $\delta(q_i, \sigma) =
-  \tuple{q_j, \sigma', \TMleft}$, the !!{sentence}
+\item \ollabel{rep-left} Para toda instrução $\delta(q_i, \sigma) =
+  \tuple{q_j, \sigma', \TMleft}$, a !!{sentence}
 \begin{align*}
 & \lforall[x][\lforall[y][
     ((\Obj Q_{q_i}(x', y) \land \Obj S_{\sigma}(x', y)) \lif {}]]\\
@@ -121,8 +123,8 @@ For the following, let $!A(x, y)$ be as before, and let
 & \qquad (\Obj Q_{q_j}(\num{0}, y') \land \Obj S_{\sigma'}(\num{0},
   y') \land !A(\num{0}, y) \land !B(y')))
 \end{align*}
-\item \ollabel{rep-stay} For every instruction $\delta(q_i, \sigma) =
-  \tuple{q_j, \sigma', \TMstay}$, the !!{sentence}:
+\item \ollabel{rep-stay} Para toda instrução $\delta(q_i, \sigma) =
+  \tuple{q_j, \sigma', \TMstay}$, a !!{sentence}:
 \begin{align*}
 & \lforall[x][\lforall[y][(
    (\Obj Q_{q_i}(x, y) \land \Obj S_{\sigma}(x, y)) \lif {}]] \\
@@ -130,11 +132,11 @@ For the following, let $!A(x, y)$ be as before, and let
 !A(x, y) \land !B(y')))
 \end{align*}
 \end{enumerate}
-As you can see, the !!{sentence}s describing the transitions of~$M$ 
-are the same as the corresponding !!{sentence}
-in~$!T(M,w)$, except we add $!B(y')$ at the end. $!B(y')$~ensures
-that the number $y'$ of the ``next'' configuration is different from
-all previous numbers $\Obj 0$, $\Obj 0'$, \dots.
+Como você pode ver, as !!{sentence}s que descrevem as transições de~$M$ 
+são as mesmas que a !!{sentence} correspondente
+em~$!T(M,w)$, exceto que adicionamos $!B(y')$ ao final. $!B(y')$~garante
+que o número $y'$ da ``próxima'' configuração é diferente de
+todos os números anteriores $\Obj 0$, $\Obj 0'$, \dots.
 % \item Sentences that express consistency conditions:
 % \begin{enumerate}
 %   \item\ollabel{rep-con-symb}%
@@ -159,101 +161,103 @@ all previous numbers $\Obj 0$, $\Obj 0'$, \dots.
 %   for every pair $q$, $q'$ of states of~$T$.
 % \end{enumerate}
 \end{enumerate}
-Let $!T'(M, w)$ be the conjunction of all the above !!{sentence}s for Turing
-machine~$M$ and input~$w$.
+Seja $!T'(M, w)$ a conjunção de todas as !!{sentence}s acima para a
+máquina de Turing~$M$ e a entrada~$w$.
 
 \begin{lem}\ollabel{lem:halts-sat}
-  If $M$ started on input~$w$ halts, then $!T'(M,w) \land !E(M,w)$ has
-  a finite model.
+  Se $M$ iniciada na entrada~$w$ para, então $!T'(M,w) \land !E(M,w)$
+  tem um modelo finito.
 \end{lem}
 
 \begin{proof}
-  Let $\Struct{M'}$ be as in the proof of
-  \olref[ver]{lem:halt-if-valid}, except
+  Seja $\Struct{M'}$ como na prova de
+  \olref[ver]{lem:halt-if-valid}, exceto que
   \begin{align*}
     \Domain{M'} & = \{0, \dots, n\},\\
     \Assign{\prime}{M'}(x) & = 
     \begin{cases}
-      x + 1 &\text{if $x < n$}\\
-      n &\text{otherwise,}
+      x + 1 &\text{se $x < n$}\\
+      n &\text{caso contrário,}
     \end{cases} \\
-    \tuple{x,y} \in \Assign{<}{M'} &\text{iff $x < y$ or $x = y = n$,}
+    \tuple{x,y} \in \Assign{<}{M'} &\text{sse $x < y$ ou $x = y = n$,}
   \end{align*}
-  where $n = \max(k,\len{w})$ and $k$~is the least number such that
-  $M$ started on input~$w$ has halted after~$k$ steps. We leave the
-  verification that $\Sat{M'}{!T'(M,w) \land E(M,w)}$ as an exercise.
+  em que $n = \max(k,\len{w})$ e $k$~é o menor número tal que
+  $M$ iniciada na entrada~$w$ parou após~$k$ passos. Deixamos como
+  exercício a verificação de que $\Sat{M'}{!T'(M,w) \land E(M,w)}$.
 \end{proof}
 
 \begin{prob}
-  Complete the proof of \olref[tur][und][tra]{lem:halts-sat} by
-  proving that $\Sat{M'}{!T(M,w) \land E(M,w)}$.
+  Complete a prova de \olref[tur][und][tra]{lem:halts-sat}
+  provando que $\Sat{M'}{!T(M,w) \land E(M,w)}$.
 \end{prob}
 
 \begin{lem}\ollabel{lem:sat-halts}
-  If $!T'(M,w) \land !E(M,w)$ has a finite model, then $M$ started on
-  input~$w$ halts.
+  Se $!T'(M,w) \land !E(M,w)$ tem um modelo finito, então $M$ iniciada
+  na entrada~$w$ para.
 \end{lem}
 
 \begin{proof}
-  We show the contrapositive. Suppose that $M$ started on~$w$ does not
-  halt. If $!T'(M,w) \land !E(M,w)$ has no model at all, we are done.
-  So assume $\Struct{M}$ is a model of~$!T(M,w) \land !E(M, w)$. We
-  have to show that it cannot be finite.
+  Mostramos a contrapositiva. Suponha que $M$ iniciada em~$w$ não
+  pare. Se $!T'(M,w) \land !E(M,w)$ não tem modelo algum, terminamos.
+  Então suponha que $\Struct{M}$ seja um modelo de~$!T(M,w) \land !E(M, w)$.
+  Temos de mostrar que ele não pode ser finito.
   
-  We can prove, just like in \olref[ver]{lem:config}, that if~$M$,
-  started on input~$w$, has not halted after~$n$ steps, then $!T'(M,w)
-  \Entails !C(M, w, n) \land !B(\num{n})$. Since $M$ started on
-  input~$w$ does not halt, $!T'(M,w) \Entails !C(M, w, n) \land
-  !B(\num{n})$ for all~$n \in \Nat$. Note that by
-  \olref[rep]{prop:mlessk}, $!T'(M,w) \Entails \num{k} < \num{n}$ for
-  all~$k < n$. Also $!B(\num{n}) \Entails \num{k} < \num{n} \lif
-  \eq/[\num{k}][\num{n}]$. So, $\Sat{M}{\eq/[\num{k}][\num{n}]}$ for
-  all~$k < n$, O.s.\@, the infinitely many terms~$\num{k}$ must all have
-  different values in~$\Struct{M}$. But this requires that
-  $\Domain{M}$ be infinite, so $\Struct{M}$ cannot be a finite model
-  of~$!T'(M,w) \land !E(M, w)$.
+  Podemos provar, tal como em \olref[ver]{lem:config}, que se~$M$,
+  iniciada na entrada~$w$, não parou após~$n$ passos, então $!T'(M,w)
+  \Entails !C(M, w, n) \land !B(\num{n})$. Como $M$ iniciada na
+  entrada~$w$ não para, $!T'(M,w) \Entails !C(M, w, n) \land
+  !B(\num{n})$ para todo~$n \in \Nat$. Note que, por
+  \olref[rep]{prop:mlessk}, $!T'(M,w) \Entails \num{k} < \num{n}$ para
+  todo~$k < n$. Além disso, $!B(\num{n}) \Entails \num{k} < \num{n} \lif
+  \eq/[\num{k}][\num{n}]$. Assim, $\Sat{M}{\eq/[\num{k}][\num{n}]}$ para
+  todo~$k < n$, isto é, os infinitos termos~$\num{k}$ devem ter todos
+  valores diferentes em~$\Struct{M}$. Mas isso requer que
+  $\Domain{M}$ seja infinito, de modo que $\Struct{M}$ não pode ser um
+  modelo finito de~$!T'(M,w) \land !E(M, w)$.
 \end{proof}
 
 \begin{prob}
-  Complete the proof of \olref[tur][und][tra]{lem:sat-halts} by
-  proving that if~$M$, started on input~$w$, has not halted after~$n$
-  steps, then $!T'(M,w) \Entails !B(\num{n})$.
+  Complete a prova de \olref[tur][und][tra]{lem:sat-halts} provando
+  que se~$M$, iniciada na entrada~$w$, não parou após~$n$ passos,
+  então $!T'(M,w) \Entails !B(\num{n})$.
 \end{prob}
 
-\begin{thm}[Trakhtenbrot's Theorem]
+\begin{thm}[Teorema de Trakhtenbrot]
   \ollabel{thm:trakhtenbrodt}
-  It is undecidable if an arbitrary !!{sentence} of first-order logic has
-  a finite model (O.s.\@, is finitely satisfiable).
+  É indecidível se uma !!{sentence} arbitrária da lógica de primeira
+  ordem tem um modelo finito (isto é, é finitamente satisfatível).
 \end{thm}
 
 \begin{proof}
-  Suppose there were a Turing machine~$F$ that decides the finite
-  satisfiability problem. Then given any Turing machine~$M$ and
-  input~$w$, we could compute the sentence~$!T'(M,w) \land !E(M,w)$,
-  and use~$F$ to decide if it has a finite model. By
-  \cref{tur:und:tra:lem:halts-sat,tur:und:tra:lem:sat-halts}, it does iff $M$
-  started on input~$w$ halts. So we could use $F$ to solve the halting
-  problem, which we know is unsolvable.
+  Suponha que houvesse uma máquina de Turing~$F$ que decide o problema
+  da satisfatibilidade finita. Então, dada qualquer máquina de
+  Turing~$M$ e entrada~$w$, poderíamos computar a sentença~$!T'(M,w)
+  \land !E(M,w)$ e usar~$F$ para decidir se ela tem um modelo finito.
+  Por \cref{tur:und:tra:lem:halts-sat,tur:und:tra:lem:sat-halts}, ela
+  tem se, e somente se, $M$ iniciada na entrada~$w$ para. Assim,
+  poderíamos usar $F$ para resolver o problema da parada, que sabemos
+  ser insolúvel.
 \end{proof}
 
 \begin{cor}\ollabel{cor:fproof-incomp}%
-  There can be no !!{derivation} system that is sound and complete for
-  \emph{finite} validity, O.s.\@, !!a{derivation} system which has $\Proves !B$
-  iff $\Sat{M}{!B}$ for every finite !!{structure}~$\Struct{M}$.
+  Não pode haver um sistema de !!{derivation} que seja correto e
+  completo para a validade \emph{finita}, isto é, um sistema de
+  !!{derivation} que tenha $\Proves !B$ se, e somente se,
+  $\Sat{M}{!B}$ para toda !!{structure} finita~$\Struct{M}$.
 \end{cor}
 
 \begin{proof}
-  Exercise.
+  Exercício.
 \end{proof}
 
 \begin{prob}
-  Prove \olref[tur][und][tra]{cor:fproof-incomp}. Observe that $!B$ is
-  satisfied in every finite !!{structure} iff $\lnot !B$ is not
-  finitely satisfiable.  Explain why finite satisfiability is
-  semi-decidable in the sense of
-  \olref[tur][und][uns]{thm:valid-ce}. Use this to argue that if
-  there were !!a{derivation} system for finite validity, then finite
-  satisfiability would be decidable.
+  Prove \olref[tur][und][tra]{cor:fproof-incomp}. Observe que $!B$ é
+  satisfeita em toda !!{structure} finita se, e somente se, $\lnot !B$
+  não é finitamente satisfatível.  Explique por que a satisfatibilidade
+  finita é semidecidível no sentido de
+  \olref[tur][und][uns]{thm:valid-ce}. Use isso para argumentar que se
+  houvesse um sistema de !!{derivation} para a validade finita, então
+  a satisfatibilidade finita seria decidível.
 \end{prob}
 
 

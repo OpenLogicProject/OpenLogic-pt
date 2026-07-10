@@ -6,154 +6,153 @@
 
 \begin{document}
 
-\olfileid{fol}{syn}{fol}
+\olfileid[pt]{fol}{syn}{fol}
 
-\olsection{First-Order Languages}
+\olsection{Linguagens de Primeira Ordem}
 
 
-Expressions of first-order logic are built up from a basic vocabulary
-containing \emph{!!{variable}s}, \emph{!!{constant}s},
-\emph{!!{predicate}s} and sometimes \emph{!!{function}s}.  From them,
-together with logical connectives, quantifiers, and punctuation
-symbols such as parentheses and commas, \emph{terms} and
-\emph{!!{formula}s} are formed.
+As expressões da lógica de primeira ordem são construídas a partir de um vocabulário básico
+contendo \emph{!!{variable}s}, \emph{!!{constant}s},
+\emph{!!{predicate}s} e às vezes \emph{!!{function}s}.  A partir deles,
+juntamente com conectivos lógicos, quantificadores e símbolos de pontuação
+como parênteses e vírgulas, formam-se \emph{termos} e
+\emph{!!{formula}s}.
 
 \begin{explain}
-Informally, !!{predicate}s are names for properties and relations,
-!!{constant}s are names for individual objects, and !!{function}s are
-names for mappings.  These, except for the !!{identity}~$\eq$, are the
-\emph{non-logical symbols} and together make up a language.  Any
-first-order language~$\Lang L$ is determined by its non-logical
-symbols.  In the most general case, $\Lang L$ contains infinitely many
-symbols of each kind.
+Informalmente, !!{predicate}s são nomes para propriedades e relações,
+!!{constant}s são nomes para objetos individuais, e !!{function}s são
+nomes para mapeamentos.  Estes, exceto a !!{identity}~$\eq$, são os
+\emph{símbolos não lógicos} e juntos constituem uma linguagem.  Qualquer
+linguagem de primeira ordem~$\Lang L$ é determinada por seus símbolos não
+lógicos.  No caso mais geral, $\Lang L$ contém infinitos
+símbolos de cada tipo.
 \end{explain}
 
-In the general case, we make use of the following symbols in
-first-order logic:
+No caso geral, fazemos uso dos seguintes símbolos na
+lógica de primeira ordem:
 
 \begin{enumerate}
-\item Logical symbols
+\item Símbolos lógicos
 \begin{enumerate}
-\item Logical connectives:
+\item Conectivos lógicos:
   \startycommalist
-  \iftag{prvNot}{\ycomma $\lnot$ (negation)}{}%
-  \iftag{prvAnd}{\ycomma $\land$ (conjunction)}{}%
-  \iftag{prvOr}{\ycomma $\lor$ (disjunction)}{}%
+  \iftag{prvNot}{\ycomma $\lnot$ (negação)}{}%
+  \iftag{prvAnd}{\ycomma $\land$ (conjunção)}{}%
+  \iftag{prvOr}{\ycomma $\lor$ (disjunção)}{}%
   \iftag{prvIf}{\ycomma $\lif$ (!!{conditional})}{}%
   \iftag{prvIff}{\ycomma $\liff$ (!!{biconditional})}{}%
-  \iftag{prvAll}{\ycomma $\lforall$ (universal quantifier)}{}%
-  \iftag{prvEx}{\ycomma $\lexists$ (existential quantifier)}{}.
-\tagitem{prvFalse}{The propositional constant for !!{falsity}~$\lfalse$.}{}
-\tagitem{prvTrue}{The propositional constant for !!{truth}~$\ltrue$.}{}
-\item The two-place !!{identity}~$\eq$.
-\item A !!{denumerable}s set of !!{variable}s: $\Obj v_0$, $\Obj v_1$, $\Obj
+  \iftag{prvAll}{\ycomma $\lforall$ (quantificador universal)}{}%
+  \iftag{prvEx}{\ycomma $\lexists$ (quantificador existencial)}{}.
+\tagitem{prvFalse}{A constante proposicional para !!{falsity}~$\lfalse$.}{}
+\tagitem{prvTrue}{A constante proposicional para !!{truth}~$\ltrue$.}{}
+\item A !!{identity} de dois lugares~$\eq$.
+\item Um conjunto !!{denumerable} de !!{variable}s: $\Obj v_0$, $\Obj v_1$, $\Obj
   v_2$, \dots
 \end{enumerate}
-\item Non-logical symbols, making up the \emph{standard
-  language} of first-order logic
+\item Símbolos não lógicos, que constituem a \emph{linguagem
+  padrão} da lógica de primeira ordem
 \begin{enumerate}
-\item A !!{denumerable}s set of $n$-place !!{predicate}s for each $n>0$: $\Obj
+\item Um conjunto !!{denumerable} de !!{predicate}s de $n$ lugares para cada $n>0$: $\Obj
   A^n_0$, $\Obj A^n_1$, $\Obj A^n_2$, \dots
-\item A !!{denumerable}s set of !!{constant}s: $\Obj c_0$, $\Obj c_1$, $\Obj
+\item Um conjunto !!{denumerable} de !!{constant}s: $\Obj c_0$, $\Obj c_1$, $\Obj
   c_2$, \dots.
-\item A !!{denumerable}s set of $n$-place !!{function}s for each $n>0$:
+\item Um conjunto !!{denumerable} de !!{function}s de $n$ lugares para cada $n>0$:
   $\Obj f^n_0$, $\Obj f^n_1$, $\Obj f^n_2$, \dots
 \end{enumerate}
-\item Punctuation marks: (, ), and the comma.
+\item Sinais de pontuação: (, ) e a vírgula.
 \end{enumerate}
 
-Most of our definitions and results will be formulated for the full
-standard language of first-order logic.  However, depending on the
-application, we may also restrict the language to only a few
-!!{predicate}s, !!{constant}s, and !!{function}s.
+A maioria de nossas definições e resultados será formulada para a linguagem padrão
+completa da lógica de primeira ordem.  No entanto, dependendo da
+aplicação, também podemos restringir a linguagem a apenas alguns
+!!{predicate}s, !!{constant}s e !!{function}s.
 
 \begin{ex}
-The language~$\Lang L_A$ of arithmetic contains a single two-place
-!!{predicate}~$<$, a single !!{constant}~$\Obj 0$, one one-place
-!!{function}~$\prime$, and two two-place !!{function}s~$+$ and~$\times$.
+A linguagem~$\Lang L_A$ da aritmética contém um único !!{predicate} de dois lugares~$<$,
+um único !!{constant}~$\Obj 0$, um !!{function} de um lugar~$\prime$,
+e dois !!{function}s de dois lugares~$+$ e~$\times$.
 \end{ex}
 
 \begin{ex}
-The language of set theory~$\Lang L_Z$ contains only the single
-two-place !!{predicate}~$\in$.
+A linguagem da teoria dos conjuntos~$\Lang L_Z$ contém apenas o único
+!!{predicate} de dois lugares~$\in$.
 \end{ex}
 
 \begin{ex}
-The language of orders~$\Lang L_\le$ contains only the two-place
-!!{predicate}~$\le$.
+A linguagem das ordens~$\Lang L_\le$ contém apenas o !!{predicate}
+de dois lugares~$\le$.
 \end{ex}
 
-Again, these are conventions: officially, these are just aliases,
-p.ex., $<$, $\in$, and $\le$ are aliases for $\Obj A^2_0$, $\Obj 0$ for
-$\Obj c_0$, $\prime$ for $\Obj f^1_0$, $+$ for $\Obj f^2_0$, $\times$ for
+Novamente, estas são convenções: oficialmente, estes são apenas apelidos,
+por exemplo, $<$, $\in$ e $\le$ são apelidos para $\Obj A^2_0$, $\Obj 0$ para
+$\Obj c_0$, $\prime$ para $\Obj f^1_0$, $+$ para $\Obj f^2_0$, $\times$ para
 $\Obj f^2_1$.
 
 \iftag{defNot,defOr,defAnd,defIf,defIff,defTrue,defFalse,defEx,defAll}{%
-In addition to the primitive connectives and
-\iftag{notprvEx,notprvAll}{quantifier}{quantifiers} introduced
-above, we also use the following \emph{defined} symbols:
+Além dos conectivos primitivos e
+\iftag{notprvEx,notprvAll}{quantificador}{quantificadores} introduzidos
+acima, também usamos os seguintes símbolos \emph{definidos}:
 \startycommalist
-  \iftag{defNot}{\ycomma $\lnot$ (negation)}{}%
-  \iftag{defAnd}{\ycomma $\land$ (conjunction)}{}%
-  \iftag{defOr}{\ycomma $\lor$ (disjunction)}{}%
+  \iftag{defNot}{\ycomma $\lnot$ (negação)}{}%
+  \iftag{defAnd}{\ycomma $\land$ (conjunção)}{}%
+  \iftag{defOr}{\ycomma $\lor$ (disjunção)}{}%
   \iftag{defIf}{\ycomma $\lif$ (!!{conditional})}{}%
   \iftag{defIff}{\ycomma $\liff$ (!!{biconditional})}{}%
-  \iftag{defAll}{\ycomma $\lforall$ (universal quantifier)}{}%
-  \iftag{defEx}{\ycomma $\lexists$ (existential quantifier)}{}%
+  \iftag{defAll}{\ycomma $\lforall$ (quantificador universal)}{}%
+  \iftag{defEx}{\ycomma $\lexists$ (quantificador existencial)}{}%
   \iftag{defFalse}{\ycomma !!{falsity}~$\lfalse$}{}%
   \iftag{defTrue}{\ycomma !!{truth}~$\ltrue$}}{}.
 
 \begin{tagblock}{defNot,defOr,defAnd,defIf,defIff,defTrue,defFalse,defEx,defAll}
 \begin{explain}
-A defined symbol is not officially part of the language, but is
-introduced as an informal abbreviation: it allows us to abbreviate
-formulas which would, if we only used primitive symbols, get quite
-long.  This is obviously an advantage.  The bigger advantage, however,
-is that proofs become shorter.  If a symbol is primitive, it has to be
-treated separately in proofs. The more primitive symbols, therefore,
-the longer our proofs.
+Um símbolo definido não faz parte oficialmente da linguagem, mas é
+introduzido como uma abreviação informal: ele nos permite abreviar
+fórmulas que, se usássemos apenas símbolos primitivos, ficariam bastante
+longas.  Isso é obviamente uma vantagem.  A maior vantagem, no entanto,
+é que as provas ficam mais curtas.  Se um símbolo é primitivo, ele tem que ser
+tratado separadamente nas provas. Quanto mais símbolos primitivos, portanto,
+mais longas nossas provas.
 \end{explain}
 \end{tagblock}
 
 % Alternate symbols
 
 \begin{intro}
-You may be familiar with different terminology and symbols than the
-ones we use above. Logic texts (and teachers) commonly use 
-$\sim$, $\neg$, or~!\ for ``negation'', $\wedge$, $\cdot$, or $\&$
-for ``conjunction''.  Commonly used symbols for the ``conditional'' or
-``implication'' are $\rightarrow$, $\Rightarrow$, and $\supset$.
-\iftag{prvIff,defIff}{Symbols for ``biconditional,'' ``bi-implication,''
-  or ``(material) equivalence'' are $\leftrightarrow$,
-  $\Leftrightarrow$, and $\equiv$.}{}
-\iftag{prvFalse,defFalse}{The $\lfalse$ symbol is variously called
-  ``falsity,'' ``falsum,'', ``absurdity,'' or ``bottom.''}{}
-\iftag{prvTrue,defTrue}{The $\ltrue$ symbol is variously called
-  ``truth,'' ``verum,'' or ``top.''}{}
+Você pode estar familiarizado com terminologia e símbolos diferentes dos
+que usamos acima. Textos de lógica (e professores) comumente usam 
+$\sim$, $\neg$, ou~!\ para ``negação'', $\wedge$, $\cdot$, ou $\&$
+para ``conjunção''.  Símbolos comumente usados para o ``condicional'' ou
+``implicação'' são $\rightarrow$, $\Rightarrow$, e $\supset$.
+\iftag{prvIff,defIff}{Símbolos para ``bicondicional'', ``bi-implicação'',
+  ou ``equivalência (material)'' são $\leftrightarrow$,
+  $\Leftrightarrow$, e $\equiv$.}{}
+\iftag{prvFalse,defFalse}{O símbolo $\lfalse$ é chamado de várias formas:
+  ``falsidade'', ``falsum'', ``absurdo'', ou ``bottom''.}{}
+\iftag{prvTrue,defTrue}{O símbolo $\ltrue$ é chamado de várias formas:
+  ``verdade'', ``verum'', ou ``top''.}{}
 
-It is conventional to use lower case letters (p.ex., $a$, $b$, $c$) from
-the beginning of the Latin alphabet for !!{constant}s (sometimes called
-names), and lower case letters from the end (p.ex., $x$, $y$, $z$) for
-!!{variable}s. Quantifiers combine with !!{variable}s, p.ex., $x$;
-notational variations include $\forall x$, $(\forall x)$, $(x)$, $\Pi x$,
-$\bigwedge_x$ for the universal quantifier and $\exists x$, $(\exists
-x)$, $(Ex)$, $\Sigma x$, $\bigvee_x$ for the existential quantifier.
+É convencional usar letras minúsculas (por exemplo, $a$, $b$, $c$) do
+início do alfabeto latino para !!{constant}s (às vezes chamados
+de nomes), e letras minúsculas do final (por exemplo, $x$, $y$, $z$) para
+!!{variable}s. Quantificadores combinam-se com !!{variable}s, por exemplo, $x$;
+variações notacionais incluem $\forall x$, $(\forall x)$, $(x)$, $\Pi x$,
+$\bigwedge_x$ para o quantificador universal e $\exists x$, $(\exists
+x)$, $(Ex)$, $\Sigma x$, $\bigvee_x$ para o quantificador existencial.
 \end{intro}
 
 \begin{explain}
-We might treat all the propositional operators and both quantifiers as
-primitive symbols of the language.  We might instead choose a smaller
-stock of primitive symbols and treat the other !!{operator}s as
-defined. ``Truth functionally complete'' sets of Boolean operators
-include $\{ \lnot, \lor \}$, $\{ \lnot, \land \}$, and $\{ \lnot,
-\lif\}$---these can be combined with either quantifier for an
-expressively complete first-order language.
+Poderíamos tratar todos os operadores proposicionais e ambos os quantificadores como
+símbolos primitivos da linguagem.  Poderíamos, em vez disso, escolher um estoque
+menor de símbolos primitivos e tratar os outros !!{operator}s como
+definidos. Conjuntos ``funcionalmente completos para a verdade'' de operadores booleanos
+incluem $\{ \lnot, \lor \}$, $\{ \lnot, \land \}$, e $\{ \lnot,
+\lif\}$---estes podem ser combinados com qualquer um dos quantificadores para uma
+linguagem de primeira ordem expressivamente completa.
 
-You may be familiar with two other !!{operator}s: the Sheffer
-stroke~$|$ (named after Henry Sheffer), and Peirce's
-arrow~$\downarrow$, also known as Quine's dagger.  When given their
-usual readings of ``nand'' and ``nor'' (respectively), these operators
-are truth functionally complete by themselves.
+Você pode estar familiarizado com dois outros !!{operator}s: a barra de Sheffer~$|$ (em homenagem a Henry Sheffer), e a
+seta de Peirce~$\downarrow$, também conhecida como adaga de Quine.  Quando recebem suas
+leituras usuais de ``nand'' e ``nor'' (respectivamente), esses operadores
+são funcionalmente completos para a verdade por si sós.
 \end{explain}
 
 \end{document}

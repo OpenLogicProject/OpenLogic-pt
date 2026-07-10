@@ -6,29 +6,29 @@
 
 \begin{document}
 
-\olfileid{sfr}{siz}{pai-alt}
+\olfileid[pt]{sfr}{siz}{pai-alt}
 
-\olsection{Uma Função de Pareamento Alternativa}
+\olsection{Uma Função de Emparelhamento Alternativa}
 
 \begin{explain}
-There are other enumerations of $\Nat^2$ that make it easier to
-figure out what their inverses are. Here is one. Instead of
-visualizing the enumeration in an array, start with the list of
-positive integers associated with (initially) empty spaces. Imagine
-filling these spaces successively with pairs $\tuple{n,m}$ as follows.
-Starting with the pairs that have~$0$ in  the first place (O.s.\@, pairs
-$\tuple{0,m}$), put the first (O.s.\@, $\tuple{0,0}$) in the first empty
-place, then skip an empty space, put the second (O.s.\@, $\tuple{0,2}$)
-in the next empty place, skip one again, and so forth. The
-(incomplete) beginning of our enumeration now looks like this
+Há outras enumerações de $\Nat^2$ que facilitam descobrir
+quais são suas inversas. Eis uma. Em vez de
+visualizar a enumeração em uma matriz, comece com a lista de
+inteiros positivos associados a espaços (inicialmente) vazios. Imagine
+preencher esses espaços sucessivamente com pares $\tuple{n,m}$ da seguinte forma.
+Começando com os pares que têm~$0$ na primeira posição (isto é, pares
+$\tuple{0,m}$), coloque o primeiro (isto é, $\tuple{0,0}$) no primeiro espaço vazio,
+depois pule um espaço vazio, coloque o segundo (isto é, $\tuple{0,2}$)
+no próximo espaço vazio, pule outro, e assim por diante. O
+começo (incompleto) de nossa enumeração agora se parece com isto
 \[\small
 \begin{array}{@{}c c c c c c c c c c c@{}}
 \mathbf 1 & \mathbf 2 & \mathbf 3 & \mathbf 4 & \mathbf 5 & \mathbf 6 & \mathbf 7 & \mathbf 8 & \mathbf 9 & \mathbf{10} & \dots \\ \\
 \tuple{0,0} &  & \tuple{0,1} &  & \tuple{0,2} &  & \tuple{0,3} & & \tuple{0,4} &  & \dots \\
 \end{array}
 \]
-Repeat this with pairs $\tuple{1,m}$ for the place that still remain
-empty, again skipping every other empty place:
+Repita isso com pares $\tuple{1,m}$ nos lugares que ainda permanecem
+vazios, novamente pulando cada outro espaço vazio:
 \[\small
 \begin{array}{@{}c c c c c c c c c c c@{}}
 \mathbf 1 & \mathbf 2 & \mathbf 3 & \mathbf 4 & \mathbf 5 & \mathbf 6 & \mathbf 7 & \mathbf 8 & \mathbf 9 & \mathbf{10} & \dots \\ \\
@@ -36,8 +36,8 @@ empty, again skipping every other empty place:
 \tuple{0,3} & & \tuple{0,4} &  \tuple{1,2} & \dots \\
 \end{array}
 \]
-Enter pairs $\tuple{2,m}$, $\tuple{2,m}$, etc., in the same way. Our
-completed enumeration thus starts like this:
+Insira pares $\tuple{2,m}$, $\tuple{2,m}$, etc., da mesma forma. Nossa
+enumeração completa assim começa assim:
 \[\small
 \begin{array}{@{}cc c c c c c c c c c@{}}
 \mathbf 1 & \mathbf 2 & \mathbf 3 & \mathbf 4 & \mathbf 5 & \mathbf 6 & \mathbf 7 & \mathbf 8 & \mathbf 9 & \mathbf{10} & \dots \\ \\
@@ -45,9 +45,9 @@ completed enumeration thus starts like this:
 \tuple{1,1} & \tuple{0,3} & \tuple{3,0}  & \tuple{0,4} &  \tuple{1,2} & \dots \\
 \end{array}
 \]
-If we number the cells in the array above according to this
-enumeration, we will not find a neat zig-zag line, but this
-arrangement:
+Se numerarmos as células na matriz acima de acordo com essa
+enumeração, não encontraremos uma linha zigue-zague arrumada, mas este
+arranjo:
 \[
 \begin{array}{ c | c | c | c | c | c | c | c }
 & \mathbf 0 & \mathbf 1 & \mathbf 2 & \mathbf 3 & \mathbf 4 & \mathbf 5 & \dots \\
@@ -67,48 +67,48 @@ arrangement:
 \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots\\
 \end{array}
 \]
-We can see that the pairs in row~$0$ are in the odd numbered places of
-our enumeration, O.s.\@, pair $\tuple{0,m}$ is in place $2m+1$; pairs in
-the second row, $\tuple{1,m}$, are in places whose number is the
-double of an odd number, specifically,  $2 \cdot (2m+1)$; pairs in the
-third row, $\tuple{2,m}$, are in places whose number is four times an
-odd number, $4 \cdot (2m+1)$; and so on. The factors of $(2m+1)$ for
-each row, $1$, $2$, $4$, $8$, \dots, are exactly the powers of~$2$:
-$1= 2^0$, $2 = 2^1$, $4 = 2^2$, $8 = 2^3$, \dots\@ In fact, the
-relevant exponent is always the first member of the pair in
-question. Thus, for pair $\tuple{n,m}$ the factor is $2^n$.  This
-gives us the general formula: $2^n \cdot (2m+1)$. However, this is a
-mapping of pairs to \emph{positive} integers, O.s.\@, $\tuple{0,0}$ has
-position~$1$. If we want to begin at position~$0$ we must subtract~$1$
-from the result. This gives us:
+Podemos ver que os pares na linha~$0$ estão nas posições ímpares de
+nossa enumeração, isto é, o par $\tuple{0,m}$ está na posição $2m+1$; os pares na
+segunda linha, $\tuple{1,m}$, estão em posições cujo número é o
+dobro de um número ímpar, especificamente, $2 \cdot (2m+1)$; os pares na
+terceira linha, $\tuple{2,m}$, estão em posições cujo número é quatro vezes um
+número ímpar, $4 \cdot (2m+1)$; e assim por diante. Os fatores de $(2m+1)$ para
+cada linha, $1$, $2$, $4$, $8$, \dots, são exatamente as potências de~$2$:
+$1= 2^0$, $2 = 2^1$, $4 = 2^2$, $8 = 2^3$, \dots\@ De fato, o
+expoente relevante é sempre o primeiro membro do par em
+questão. Assim, para o par $\tuple{n,m}$ o fator é $2^n$. Isso
+nos dá a fórmula geral: $2^n \cdot (2m+1)$. Contudo, isso é um
+mapeamento de pares para inteiros \emph{positivos}, isto é, $\tuple{0,0}$ tem
+posição~$1$. Se quisermos começar na posição~$0$ devemos subtrair~$1$
+do resultado. Isso nos dá:
 \end{explain}
 
 \begin{ex}
-The function $h\colon \Nat^2 \to \Nat$ given by
+A função $h\colon \Nat^2 \to \Nat$ dada por
 \[
 h(n,m) = 2^n (2m+1) - 1
 \]
-is a pairing function for the set of pairs of natural numbers~$\Nat^2$.
+é uma função de emparelhamento para o conjunto de pares de números naturais~$\Nat^2$.
 \end{ex}
 
 \begin{explain}
-Accordingly, in our second enumeration of $\Nat^2$, the pair
-$\tuple{0,0}$ has code $h(0,0) = 2^0(2\cdot 0+1) - 1 = 0$;
-$\tuple{1,2}$ has code $2^{1} \cdot (2 \cdot 2 + 1) - 1 = 2
-\cdot 5 - 1 = 9$; $\tuple{2,6}$ has code $2^{2} \cdot (2
+De acordo com nossa segunda enumeração de $\Nat^2$, o par
+$\tuple{0,0}$ tem código $h(0,0) = 2^0(2\cdot 0+1) - 1 = 0$;
+$\tuple{1,2}$ tem código $2^{1} \cdot (2 \cdot 2 + 1) - 1 = 2
+\cdot 5 - 1 = 9$; $\tuple{2,6}$ tem código $2^{2} \cdot (2
 \cdot 6 + 1) - 1 = 51$.
 \end{explain}
 
-Sometimes it is enough to encode pairs of natural numbers~$\Nat^2$
-without requiring that the encoding is surjective. Such encodings have
-inverses that are only partial functions. 
+Às vezes basta codificar pares de números naturais~$\Nat^2$
+sem exigir que a codificação seja sobrejetora. Tais codificações têm
+inversas que são apenas funções parciais.
 
 \begin{ex}
-The function $j\colon \Nat^2 \to \Nat^+$ given by
+A função $j\colon \Nat^2 \to \Nat^+$ dada por
 \[
 j(n,m) = 2^n3^m
 \]
-is !!a{injective} function $\Nat^2 \to \Nat$.
+é uma função !!{injective} $\Nat^2 \to \Nat$.
 \end{ex}
 
 \end{document}

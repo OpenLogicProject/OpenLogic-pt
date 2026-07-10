@@ -7,69 +7,68 @@
 
 \begin{document}
 
-\olfileid{sfr}{fun}{par}
+\olfileid[pt]{sfr}{fun}{par}
 
-\olsection{Partial Functions}
+\olsection{Funções Parciais}
 
 \begin{explain}
-It is sometimes useful to relax the definition of function so that it
-is not required that the output of the function is defined for all
-possible inputs. Such mappings are called \emph{partial functions}.
+Às vezes é útil relaxar a definição de função de modo que não seja
+exigido que a saída da função esteja definida para todas as
+entradas possíveis. Tais mapeamentos são chamados de \emph{funções parciais}.
 \end{explain}
 
 \begin{defn}
-A \emph{partial function} $f \colon A \pto B$ is a mapping which
-assigns to every !!{element} of~$A$ at most one !!{element} of~$B$.
-If $f$ assigns an element of~$B$ to $x \in A$, we say $f(x)$ is
-\emph{defined}, and otherwise \emph{undefined}. If $f(x)$ is defined,
-we write $f(x) \fdefined$, otherwise $f(x) \fundefined$. The
-\emph{domain} of a partial function~$f$ is the subset of~$A$ where it
-is defined, O.s.\@, $\dom{f} = \Setabs{x \in A}{f(x) \fdefined}$.
+Uma \emph{função parcial} $f \colon A \pto B$ é um mapeamento que
+associa a cada !!{element} de~$A$ no máximo um !!{element} de~$B$.
+Se $f$ associa um !!{element} de~$B$ a $x \in A$, dizemos que $f(x)$ está
+\emph{definido}, e caso contrário \emph{indefinido}. Se $f(x)$ está definido,
+escrevemos $f(x) \fdefined$, caso contrário $f(x) \fundefined$. O
+\emph{domínio} de uma função parcial~$f$ é o subconjunto de~$A$ onde ela
+está definida, isto é, $\dom{f} = \Setabs{x \in A}{f(x) \fdefined}$.
 \end{defn}
 
 \begin{ex}
-Every function $f\colon A \to B$ is also a partial function. Partial
-functions that are defined everywhere on~$A$---O.s.\@, what we so far
-have simply called a function---are also called \emph{total}
-functions.
+Toda função $f\colon A \to B$ é também uma função parcial. Funções parciais
+que estão definidas em todo~$A$---isto é, o que até agora
+chamávamos simplesmente de função---também são chamadas de funções \emph{totais}.
 \end{ex}
 
 \begin{ex}
-The partial function $f \colon \Real \pto \Real$ given by $f(x) = 1/x$
-is undefined for $x = 0$, and defined everywhere else.
+A função parcial $f \colon \Real \pto \Real$ dada por $f(x) = 1/x$
+é indefinida para $x = 0$ e definida em todo o restante.
 \end{ex}
 
 \begin{prob}
-Given $f\colon A \pto B$, define the partial function $g\colon B \pto
-A$ by: for any $y \in B$, if there is a unique $x \in A$ such that
-$f(x) = y$, then $g(y) = x$; otherwise $g(y) \fundefined$.  Show that
-if $f$ is injective, then $g(f(x)) = x$ for all $x \in \dom{f}$, and
-$f(g(y)) = y$ for all $y \in \ran{f}$.
+Dada $f\colon A \pto B$, defina a função parcial $g\colon B \pto
+A$ por: para qualquer $y \in B$, se existe um único $x \in A$ tal que
+$f(x) = y$, então $g(y) = x$; caso contrário $g(y) \fundefined$.  Mostre que
+se $f$ é injetiva, então $g(f(x)) = x$ para todo $x \in \dom{f}$ e
+$f(g(y)) = y$ para todo $y \in \ran{f}$.
 \end{prob}
 
-\begin{defn}[Graph of a partial function]
-Let $f\colon A \pto B$ be a partial function. The \emph{graph} of~$f$
-is the relation $R_f \subseteq A \times B$ defined by
+\begin{defn}[Gráfico de uma função parcial]
+Seja $f\colon A \pto B$ uma função parcial. O \emph{gráfico} de~$f$
+é a relação $R_f \subseteq A \times B$ definida por
 \[
 R_f = \Setabs{\tuple{x,y}}{f(x) = y}.
 \]
 \end{defn}
 
 \begin{prop}
-Suppose $R \subseteq A \times B$ has the property that whenever $Rxy$
-and $Rxy'$ then $y = y'$.  Then $R$ is the graph of the partial
-function $f\colon A \pto B$ defined by: if there is a $y$ such that
-$Rxy$, then $f(x) = y$, otherwise $f(x) \fundefined$.  If $R$ is also
-\emph{serial}, O.s.\@, for each $x \in A$ there is a $y \in B$ such that
-$Rxy$, then $f$ is total.
+Suponha que $R \subseteq A \times B$ tem a propriedade de que sempre que $Rxy$
+e $Rxy'$ então $y = y'$.  Então $R$ é o gráfico da função parcial
+$f\colon A \pto B$ definida por: se existe um $y$ tal que
+$Rxy$, então $f(x) = y$, caso contrário $f(x) \fundefined$.  Se $R$ também é
+\emph{serial}, isto é, para cada $x \in A$ existe um $y \in B$ tal que
+$Rxy$, então $f$ é total.
 \end{prop}
 
 \begin{proof}
-Suppose there is a $y$ such that $Rxy$.  If there were another $y'
-\neq y$ such that $Rxy'$, the condition on $R$ would be
-violated. Hence, if there is a $y$ such that $Rxy$, that $y$ is
-unique, and so $f$ is well-defined.  Obviously, $R_f = R$ and $f$ is
-total if~$R$ is serial.
+Suponha que existe um $y$ tal que $Rxy$.  Se existisse outro $y'
+\neq y$ tal que $Rxy'$, a condição sobre $R$ seria
+violada. Portanto, se existe um $y$ tal que $Rxy$, esse $y$ é
+único, e assim $f$ é bem definida.  Obviamente, $R_f = R$ e $f$ é
+total se~$R$ é serial.
 \end{proof}
 
 \end{document}

@@ -7,95 +7,95 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{prf}{int}}
-      {\olfileid{pl}{prf}{int}}
+      {\olfileid[pt]{fol}{prf}{int}}
+      {\olfileid[pt]{pl}{prf}{int}}
 
-\olsection{Introduction}
+\olsection{Introdução}
 
-Logics commonly have both a semantics and !!a{derivation}
-system. The semantics concerns concepts such as truth, satisfiability,
-validity, and entailment.  The purpose of !!{derivation} systems is to
-provide a purely syntactic method of establishing entailment and
-validity.  They are purely syntactic in the sense that a
-!!{derivation} in such a system is a finite syntactic object, usually
-a sequence (or other finite arrangement) of !!{sentence}s or
-!!{formula}s.  Good !!{derivation} systems have the property that any
-given sequence or arrangement of !!{sentence}s or !!{formula}s can be
-verified mechanically to be ``correct.''
+As lógicas comumente têm tanto uma semântica quanto um sistema de
+!!{derivation}. A semântica trata de conceitos como verdade,
+satisfatibilidade, validade e consequência.  O propósito dos sistemas de
+!!{derivation} é fornecer um método puramente sintático de estabelecer
+consequência e validade.  Eles são puramente sintáticos no sentido de
+que uma !!{derivation} em tal sistema é um objeto sintático finito,
+geralmente uma sequência (ou outra disposição finita) de !!{sentence}s
+ou !!{formula}s.  Bons sistemas de !!{derivation} têm a propriedade de
+que qualquer sequência ou disposição dada de !!{sentence}s ou
+!!{formula}s pode ser verificada mecanicamente como ``correta''.
 
-The simplest (and historically first) !!{derivation} systems for
-first-order logic were \emph{axiomatic}.  A sequence of !!{formula}s
-counts as !!a{derivation} in such a system if each individual
-!!{formula} in it is either among a fixed set of ``axioms'' or follows
-from !!{formula}s coming before it in the sequence by one of a fixed
-number of ``inference rules''---and it can be mechanically verified if
-!!a{formula} is an axiom and whether it follows correctly from other
-!!{formula}s by one of the inference rules.  Axiomatic !!{derivation}
-systems are easy to describe---and also easy to handle
-meta-theoretically---but !!{derivation}s in them are hard to read and
-understand, and are also hard to produce.
+Os sistemas de !!{derivation} mais simples (e historicamente os
+primeiros) para a lógica de primeira ordem foram \emph{axiomáticos}.
+Uma sequência de !!{formula}s conta como uma !!{derivation} em tal
+sistema se cada !!{formula} individual nela é ou está entre um conjunto
+fixo de ``axiomas'' ou segue de !!{formula}s anteriores na sequência por
+uma entre um número fixo de ``regras de inferência''---e pode ser
+verificado mecanicamente se uma !!{formula} é um axioma e se segue
+corretamente de outras !!{formula}s por uma das regras de inferência.
+Sistemas de !!{derivation} axiomáticos são fáceis de descrever---e
+também fáceis de tratar meta-teoricamente---mas as !!{derivation}s neles
+são difíceis de ler e entender, e também difíceis de produzir.
 
-Other !!{derivation} systems have been developed with the aim of
-making it easier to construct !!{derivation}s or easier to understand
-!!{derivation}s once they are complete.  Examples are natural
-deduction, truth trees, also known as tableaux proofs, and the sequent
-calculus.  Some !!{derivation} systems are designed especially with
-mechanization in mind, p.ex., the resolution method is easy to
-implement in software (but its !!{derivation}s are essentially
-impossible to understand). Most of these other !!{derivation} systems
-represent !!{derivation}s as trees of !!{formula}s rather than
-sequences. This makes it easier to see which parts of !!a{derivation}
-depend on which other parts.
+Outros sistemas de !!{derivation} foram desenvolvidos com o objetivo de
+facilitar a construção de !!{derivation}s ou facilitar a compreensão de
+!!{derivation}s uma vez completas.  Exemplos são a dedução natural,
+árvores de verdade, também conhecidas como provas por tableaux, e o
+cálculo de sequentes.  Alguns sistemas de !!{derivation} são projetados
+especialmente com a mecanização em mente; por exemplo, o método da
+resolução é fácil de implementar em software (mas suas !!{derivation}s
+são essencialmente impossíveis de entender). A maioria desses outros
+sistemas de !!{derivation} representa !!{derivation}s como árvores de
+!!{formula}s em vez de sequências. Isso facilita ver quais partes de
+uma !!{derivation} dependem de quais outras partes.
 
-So for a given logic, such as first-order logic, the different
-!!{derivation} systems will give different explications of what it is
-for !!a{sentence} to be a \emph{theorem} and what it means for
-!!a{sentence} to be !!{derivable} from some others. However that is
-done (via axiomatic !!{derivation}s, natural deductions, sequent
-!!{derivation}s, truth trees, resolution refutations), we want these
-relations to match the semantic notions of validity and
-entailment. Let's write $\Proves !A$ for ``$!A$~is a theorem'' and
-``$\Gamma \Proves !A$'' for ``$!A$~is !!{derivable} from~$\Gamma$.''
-However $\Proves$~is defined, we want it to match up with $\Entails$,
-that is:
+Assim, para uma dada lógica, como a lógica de primeira ordem, os
+diferentes sistemas de !!{derivation} darão diferentes explicações do
+que significa uma !!{sentence} ser um \emph{teorema} e o que significa
+uma !!{sentence} ser !!{derivable} a partir de outras. Seja como for
+feito isso (via !!{derivation}s axiomáticas, deduções naturais,
+!!{derivation}s de sequentes, árvores de verdade, refutações por
+resolução), queremos que essas relações correspondam às noções
+semânticas de validade e consequência. Escrevamos $\Proves !A$ para
+``$!A$~é um teorema'' e ``$\Gamma \Proves !A$'' para ``$!A$~é
+!!{derivable} de~$\Gamma$.'' Seja como for $\Proves$ definido,
+queremos que corresponda a $\Entails$, isto é:
 \begin{enumerate}
-\item $\Proves !A$ if and only if $\Entails !A$
-\item $\Gamma \Proves !A$ if and only if $\Gamma \Entails !A$
+\item $\Proves !A$ se, e somente se, $\Entails !A$
+\item $\Gamma \Proves !A$ se, e somente se, $\Gamma \Entails !A$
 \end{enumerate}
-The ``only if'' direction of the above is called
-\emph{soundness}. !!^a{derivation} system is sound if !!{derivability}
-guarantees entailment (or validity). Every decent !!{derivation}
-system has to be sound; unsound !!{derivation} systems are not useful
-at all. After all, the entire purpose of !!a{derivation} is to provide
-a syntactic guarantee of validity or entailment. We'll prove soundness
-for the !!{derivation} systems we present.
+A direção ``somente se'' acima é chamada de \emph{correção}. Um
+sistema de !!{derivation} é correto se a !!{derivability} garante
+consequência (ou validade). Todo sistema de !!{derivation} decente tem
+que ser correto; sistemas de !!{derivation} incorretos não são úteis de
+modo algum. Afinal, o propósito inteiro de uma !!{derivation} é
+fornecer uma garantia sintática de validade ou consequência. Provaremos
+a correção para os sistemas de !!{derivation} que apresentamos.
 
-The converse ``if'' direction is also important: it is called
-\emph{completeness}. A complete !!{derivation} system is strong enough
-to show that $!A$~is a theorem whenever $!A$~is valid, and that
-$\Gamma \Proves !A$ whenever $\Gamma \Entails !A$.
-Completeness is harder to establish, and some logics have no complete
-!!{derivation} systems. First-order logic does. Kurt G\"odel was the
-first one to prove completeness for !!a{derivation} system of
-first-order logic in his 1929 dissertation.
+A direção conversa ``se'' também é importante: é chamada de
+\emph{completude}. Um sistema de !!{derivation} completo é forte o
+suficiente para mostrar que $!A$~é um teorema sempre que $!A$~é válida,
+e que $\Gamma \Proves !A$ sempre que $\Gamma \Entails !A$.
+A completude é mais difícil de estabelecer, e algumas lógicas não têm
+sistemas de !!{derivation} completos. A lógica de primeira ordem tem.
+Kurt G\"odel foi o primeiro a provar a completude para um sistema de
+!!{derivation} da lógica de primeira ordem em sua dissertação de 1929.
 
-Another concept that is connected to !!{derivation} systems is that of
-\emph{consistency}. A set of !!{sentence}s is called inconsistent if
-anything whatsoever can be !!{derive}d from it, and consistent
-otherwise.  Inconsistency is the syntactic counterpart to
-unsatisfiablity: like unsatisfiable sets, inconsistent sets of
-!!{sentence}s do not make good theories, they are defective in a
-fundamental way. Consistent sets of !!{sentence}s may not be true or
-useful, but at least they pass that minimal threshold of logical
-usefulness.  For different !!{derivation} systems the specific
-definition of consistency of sets of !!{sentence}s might differ, but
-like~$\Proves$, we want consistency to coincide with its semantic
-counterpart, satisfiability. We want it to always be the case that
-$\Gamma$ is consistent if and only if it is satisfiable. Here, the
-``only if'' direction amounts to completeness (consistency guarantees
-satisfiability), and the ``if'' direction amounts to soundness
-(satisfiability guarantees consistency).  In fact, for classical
-first-order logic, the two versions of soundness and completeness are
-equivalent.
+Outro conceito ligado aos sistemas de !!{derivation} é o de
+\emph{consistência}. Um conjunto de !!{sentence}s é chamado inconsistente
+se qualquer coisa pode ser !!{derive}da dele, e consistente caso
+contrário.  A inconsistência é a contrapartida sintática da
+insatisfatibilidade: como conjuntos insatisfatíveis, conjuntos
+inconsistentes de !!{sentence}s não fazem boas teorias; são defeituosos
+de maneira fundamental. Conjuntos consistentes de !!{sentence}s podem
+não ser verdadeiros ou úteis, mas pelo menos passam esse limiar mínimo
+de utilidade lógica.  Para diferentes sistemas de !!{derivation}, a
+definição específica de consistência de conjuntos de !!{sentence}s pode
+diferir, mas como~$\Proves$, queremos que a consistência coincida com
+sua contrapartida semântica, a satisfatibilidade. Queremos que seja
+sempre o caso que $\Gamma$ é consistente se, e somente se, é
+satisfatível. Aqui, a direção ``somente se'' corresponde à completude
+(consistência garante satisfatibilidade), e a direção ``se''
+corresponde à correção (satisfatibilidade garante consistência).  De
+fato, para a lógica clássica de primeira ordem, as duas versões de
+correção e completude são equivalentes.
 
 \end{document}

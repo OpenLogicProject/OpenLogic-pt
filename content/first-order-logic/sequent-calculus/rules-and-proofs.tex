@@ -7,68 +7,68 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{seq}{rul}}
-      {\olfileid{pl}{seq}{rul}}
+      {\olfileid[pt]{fol}{seq}{rul}}
+      {\olfileid[pt]{pl}{seq}{rul}}
 
-\olsection{Rules and \usetoken{P}{derivation}}
+\olsection{Regras e \usetoken{P}{derivation}}
 
-For the following, let $\Gamma, \Delta, \Pi, \Lambda$ represent finite
-sequences of !!{sentence}s.
+Para o que segue, sejam $\Gamma, \Delta, \Pi, \Lambda$ representando
+sequências finitas de !!{sentence}s.
 
-\begin{defn}[Sequent]
-A \emph{sequent} is an expression of the form
+\begin{defn}[Sequente]
+Um \emph{sequente} é uma expressão da forma
 \[
 \Gamma \Sequent \Delta
 \]
-where $\Gamma$ and $\Delta$ are finite (possibly empty) sequences of
-!!{sentence}s of the language $\Lang L$. $\Gamma$ is called the
-\emph{antecedent}, while $\Delta$ is the \emph{succedent}.
+em que $\Gamma$ e $\Delta$ são sequências finitas (possivelmente vazias) de
+!!{sentence}s da linguagem $\Lang L$. $\Gamma$ é chamado de
+\emph{antecedente}, enquanto $\Delta$ é o \emph{sucedente}.
 \end{defn}
 
 \begin{explain}
-The intuitive idea behind a sequent is: if all of the !!{sentence}s in
-the antecedent hold, then at least one of the !!{sentence}s in the
-succedent holds. That is, if $\Gamma = \tuple{!A_1, \dots, !A_m}$ and
-$\Delta = \tuple{!B_1, \dots, !B_n}$, then $\Gamma \Sequent \Delta$
-holds iff
+A ideia intuitiva por trás de um sequente é: se todas as !!{sentence}s no
+antecedente valem, então ao menos uma das !!{sentence}s no
+sucedente vale. Isto é, se $\Gamma = \tuple{!A_1, \dots, !A_m}$ e
+$\Delta = \tuple{!B_1, \dots, !B_n}$, então $\Gamma \Sequent \Delta$
+vale se, e somente se,
 \[
 (!A_1 \land \cdots \land !A_m) \lif (!B_1 \lor \cdots \lor
 !B_n)
 \]
-holds. There are two special cases: where $\Gamma$ is empty and when
-$\Delta$~is empty. When $\Gamma$ is empty, O.s.\@, $m = 0$, $\quad
-\Sequent \Delta$ holds iff $!B_1 \lor \dots \lor !B_n$ holds. When
-$\Delta$ is empty, O.s.\@, $n = 0$, $\Gamma \Sequent \quad$ holds iff
-$\lnot(!A_1 \land \dots \land !A_m)$ does.  We say a sequent is valid
-iff the corresponding !!{sentence} is valid.
+vale. Há dois casos especiais: quando $\Gamma$ é vazio e quando
+$\Delta$~é vazio. Quando $\Gamma$ é vazio, isto é, $m = 0$, $\quad
+\Sequent \Delta$ vale se, e somente se, $!B_1 \lor \dots \lor !B_n$ vale. Quando
+$\Delta$ é vazio, isto é, $n = 0$, $\Gamma \Sequent \quad$ vale se, e somente se,
+$\lnot(!A_1 \land \dots \land !A_m)$ vale.  Dizemos que um sequente é válido
+se, e somente se, a !!{sentence} correspondente é válida.
 \end{explain}
 
-If $\Gamma$ is a sequence of !!{sentence}s, we write $\Gamma, !A$ for
-the result of appending $!A$ to the right end of~$\Gamma$ (and $!A,
-\Gamma$ for the result of appending $!A$ to the left end
-of~$\Gamma$). If $\Delta$ is a sequence of !!{sentence}s also, then $\Gamma,
-\Delta$ is the concatenation of the two sequences.
+Se $\Gamma$ é uma sequência de !!{sentence}s, escrevemos $\Gamma, !A$ para
+o resultado de acrescentar $!A$ à extremidade direita de~$\Gamma$ (e $!A,
+\Gamma$ para o resultado de acrescentar $!A$ à extremidade esquerda
+de~$\Gamma$). Se $\Delta$ também é uma sequência de !!{sentence}s, então $\Gamma,
+\Delta$ é a concatenação das duas sequências.
 
-\begin{defn}[Initial Sequent]
-An \emph{initial sequent} is a sequent
-\iftag{prvFalse,prvTrue}{of one of the following forms:
+\begin{defn}[Sequente Inicial]
+Um \emph{sequente inicial} é um sequente
+\iftag{prvFalse,prvTrue}{de uma das seguintes formas:
   \begin{enumerate}
     \item $!A \Sequent !A$
     \tagitem{prvTrue}{$\quad \Sequent \ltrue$}{}
     \tagitem{prvFalse}{$\lfalse \Sequent \quad$}{}
   \end{enumerate}}
-{of the form $!A \Sequent !A$} for any !!{sentence} $!A$ in the language.
+{da forma $!A \Sequent !A$} para qualquer !!{sentence} $!A$ na linguagem.
 \end{defn}
 
-!!^{derivation}s in the sequent calculus are certain trees of
-sequents, where the topmost sequents are initial sequents, and if a
-sequent stands below one or two other sequents, it must follow
-correctly by a rule of inference.  The rules for $\Log{LK}$ are
-divided into two main types: \emph{logical} rules and
-\emph{structural} rules.  The logical rules are named for the !!{main
-  operator} of the !!{sentence} containing $!A$ and/or $!B$ in the
-lower sequent. Each one comes in two versions, one for inferring a
-sequent with the !!{sentence} containing the !!{operator} on the left,
-and one with the !!{sentence} on the right.
+!!^{derivation}s no cálculo de sequentes são certas árvores de
+sequentes, em que os sequentes no topo são sequentes iniciais e, se um
+sequente está abaixo de um ou dois outros sequentes, ele deve seguir
+corretamente por uma regra de inferência.  As regras para $\Log{LK}$
+dividem-se em dois tipos principais: regras \emph{lógicas} e
+regras \emph{estruturais}.  As regras lógicas recebem o nome do !!{main operator}
+da !!{sentence} que contém $!A$ e/ou $!B$ no
+sequente inferior. Cada uma vem em duas versões, uma para inferir um
+sequente com a !!{sentence} que contém o !!{operator} à esquerda,
+e uma com a !!{sentence} à direita.
 
 \end{document}

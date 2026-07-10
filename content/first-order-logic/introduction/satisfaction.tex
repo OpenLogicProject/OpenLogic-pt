@@ -6,109 +6,111 @@
 
 \begin{document}
 
-\olfileid{fol}{int}{sat}
+\olfileid[pt]{fol}{int}{sat}
 
-\olsection{Satisfaction}
+\olsection{Satisfação}
 
-We can already skip ahead to the semantics of first-order logic once
-we know what !!{formula}s are: here, the basic definition is that of 
-!!a{structure}. For our simple language, !!a{structure}~$\Struct M$ has
-just three components: a non-empty set $\Domain{M}$ called the
-\emph{!!{domain}}, what $\Obj a$ picks out in~$\Struct M$, and what
-$\Obj P$ is true of in~$\Struct M$.  The object picked out by~$\Obj a$
-is denoted~$\Assign{\Obj a}{M}$ and the set of things $\Obj P$ is true
-of by~$\Assign{\Obj P}{M}$. !!^a{structure}~$\Struct{M}$ consists of
-just these three things: $\Domain{M}$, $\Assign{\Obj a}{M} \in
-\Domain{M}$ and $\Assign{\Obj P}{M} \subseteq \Domain{M}$. The general
-case will be more complicated, since there will be many !!{predicate}s
-and !!{constant}s, the !!{constant}s can have more than one place, and
-there will also be !!{function}s.
+Já podemos avançar para a semântica da lógica de primeira ordem assim
+que sabemos o que são !!{formula}s: aqui, a definição básica é a de
+!!a{structure}. Para nossa linguagem simples, uma !!{structure}
+~$\Struct M$ tem apenas três componentes: um conjunto não vazio
+$\Domain{M}$ chamado de \emph{!!{domain}}, o que $\Obj a$ designa
+em~$\Struct M$, e do que $\Obj P$ é verdadeiro em~$\Struct M$.  O
+objeto designado por~$\Obj a$ é denotado por~$\Assign{\Obj a}{M}$ e o
+conjunto de coisas das quais $\Obj P$ é verdadeiro
+por~$\Assign{\Obj P}{M}$. !!^a{structure}~$\Struct{M}$ consiste
+apenas nestas três coisas: $\Domain{M}$, $\Assign{\Obj a}{M} \in
+\Domain{M}$ e $\Assign{\Obj P}{M} \subseteq \Domain{M}$. O caso geral
+será mais complicado, pois haverá muitos !!{predicate}s e
+!!{constant}s, os !!{constant}s podem ter mais de um lugar, e haverá
+também !!{function}s.
 
-This is enough to give a definition of satisfaction for !!{formula}s
-that don't contain !!{variable}s.  The idea is to give an inductive
-definition that mirrors the way we have defined !!{formula}s. We
-specify when an atomic formula is satisfied in~$\Struct{M}$, and then
-when, p.ex., $\lnot !A$ is satisfied in~$\Struct{M}$ on the basis of
-whether or not $!A$ is satisfied in~$\Struct{M}$. P.ex., we could
-define:
+Isso basta para dar uma definição de satisfação para !!{formula}s que
+não contêm !!{variable}s.  A ideia é dar uma definição indutiva que
+espelha a maneira como definimos !!{formula}s. Especificamos quando
+uma fórmula atômica é satisfeita em~$\Struct{M}$, e então quando, por
+exemplo, $\lnot !A$ é satisfeita em~$\Struct{M}$ com base em se $!A$
+é ou não satisfeita em~$\Struct{M}$. Por exemplo, poderíamos definir:
 \begin{enumerate}
-  \item $\Atom{\Obj P}{\Obj a}$ is satisfied in~$\Struct{M}$ iff
-  $\Assign{\Obj a}{M} \in \Assign{\Obj P}{M}$.
-  \item $\lnot !A$ is satisfied in~$\Struct{M}$ iff $!A$ is not
-  satisfied in~$\Struct{M}$.
-  \item $(!A \land !B)$ is satisfied in~$\Struct{M}$ iff $!A$ is
-  satisfied in~$\Struct{M}$, and $!B$ is satisfied in~$\Struct{M}$ as
-  well.
+  \item $\Atom{\Obj P}{\Obj a}$ é satisfeita em~$\Struct{M}$ se, e
+  somente se, $\Assign{\Obj a}{M} \in \Assign{\Obj P}{M}$.
+  \item $\lnot !A$ é satisfeita em~$\Struct{M}$ se, e somente se, $!A$
+  não é satisfeita em~$\Struct{M}$.
+  \item $(!A \land !B)$ é satisfeita em~$\Struct{M}$ se, e somente se,
+  $!A$ é satisfeita em~$\Struct{M}$ e $!B$ também é satisfeita
+  em~$\Struct{M}$.
 \end{enumerate}
-Let's say that $\Domain{M} = \{0, 1, 2\}$, $\Assign{\Obj a}{M} = 1$,
-and $\Assign{\Obj P}{M} = \{1, 2\}$. This definition would tell us
-that $\Atom{\Obj P}{\Obj a}$ is satisfied in~$\Struct{M}$ (since
-$\Assign{\Obj a}{M} =  1 \in \{1,2\} = \Assign{\Obj P}{M}$). It tells
-us further that $\lnot \Atom{\Obj P}{\Obj a}$ is not satisfied
-in~$\Struct{M}$, and that in turn $\lnot\lnot \Atom{\Obj P}{\Obj
-a}$ is and $(\lnot \Atom{\Obj P}{\Obj a} \land \Atom{\Obj P}{\Obj a})$
-is not satisfied, and so on.
+Digamos que $\Domain{M} = \{0, 1, 2\}$, $\Assign{\Obj a}{M} = 1$ e
+$\Assign{\Obj P}{M} = \{1, 2\}$. Esta definição nos diria que
+$\Atom{\Obj P}{\Obj a}$ é satisfeita em~$\Struct{M}$ (pois $\Assign{\Obj
+a}{M} = 1 \in \{1,2\} = \Assign{\Obj P}{M}$). Nos diria ainda que
+$\lnot \Atom{\Obj P}{\Obj a}$ não é satisfeita em~$\Struct{M}$, e que,
+por sua vez, $\lnot\lnot \Atom{\Obj P}{\Obj a}$ é, e que $(\lnot
+\Atom{\Obj P}{\Obj a} \land \Atom{\Obj P}{\Obj a})$ não é satisfeita, e
+assim por diante.
 
-The trouble comes when we want to give a definition for the
-quantifiers: we'd like to say something like, ``$\lexists[\Obj
-v_0][\Atom{\Obj P}{\Obj v_0}]$ is satisfied iff $\Atom{\Obj P}{\Obj
-v_0}$ is satisfied.'' But the !!{structure}~$\Struct{M}$ doesn't tell
-us what to do about !!{variable}s. What we actually want to say is
-that $\Atom{\Obj P}{\Obj v_0}$ is satisfied \emph{for some value
-of~$\Obj v_0$}.  To make this precise we need a way to assign
-!!{element}s of~$\Domain{M}$ not just to $\Obj a$ but also to~$\Obj
-v_0$. To this end, we introduce !!{variable} \emph{assignments}.
-!!^a{variable} assignment is simply a function~$s$ that maps
-!!{variable}s to !!{element}s of~$\Domain{M}$ (in our example, to one
-of $1$, $2$, or~$3$).  Since we don't know beforehand which
-!!{variable}s might appear in !!a{formula} we can't limit which
-!!{variable}s $s$ assigns values to. The simple solution is to
-require that $s$ assigns values to \emph{all} !!{variable}s~$\Obj
-v_0$, $\Obj v_1$, \dots\@ We'll just use only the ones we need.
+A dificuldade surge quando queremos dar uma definição para os
+quantificadores: gostaríamos de dizer algo como: ``$\lexists[\Obj
+v_0][\Atom{\Obj P}{\Obj v_0}]$ é satisfeita se, e somente se,
+$\Atom{\Obj P}{\Obj v_0}$ é satisfeita.'' Mas a !!{structure}
+~$\Struct{M}$ não nos diz o que fazer com !!{variable}s. O que
+realmente queremos dizer é que $\Atom{\Obj P}{\Obj v_0}$ é satisfeita
+\emph{para algum valor de~$\Obj v_0$}.  Para tornar isso preciso,
+precisamos de uma maneira de atribuir !!{element}s de~$\Domain{M}$ não
+apenas a $\Obj a$, mas também a~$\Obj v_0$. Para isso, introduzimos
+\emph{atribuições de variáveis}. Uma atribuição de variáveis é
+simplesmente uma função~$s$ que mapeia !!{variable}s para
+!!{element}s de~$\Domain{M}$ (em nosso exemplo, para um entre $1$,
+$2$ ou~$3$).  Como não sabemos de antemão quais !!{variable}s podem
+aparecer em uma !!{formula}, não podemos limitar a quais !!{variable}s
+$s$ atribui valores. A solução simples é exigir que $s$ atribua valores
+a \emph{todas} as !!{variable}s~$\Obj v_0$, $\Obj v_1$, \dots\@
+Usaremos apenas aquelas de que precisarmos.
 
-Instead of defining satisfaction of !!{formula}s just relative to
-!!a{structure}, we'll define it relative to
-!!a{structure}~$\Struct{M}$ \emph{and} !!a{variable} assignment~$s$,
-and write $\Sat{M}{!A}[s]$ for short. Our definition will now include
-an additional clause to deal with atomic !!{formula}s containing
+Em vez de definir a satisfação de !!{formula}s apenas em relação a uma
+!!{structure}, definiremos em relação a uma !!{structure}~$\Struct{M}$
+\emph{e} uma atribuição de variáveis~$s$, e escreveremos
+$\Sat{M}{!A}[s]$ por brevidade. Nossa definição agora incluirá uma
+cláusula adicional para lidar com !!{formula}s atômicas contendo
 !!{variable}s:
 \begin{enumerate}
-  \item $\Sat{M}{\Atom{\Obj P}{\Obj a}}[s]$ iff
+  \item $\Sat{M}{\Atom{\Obj P}{\Obj a}}[s]$ se, e somente se,
   $\Assign{\Obj a}{M} \in \Assign{\Obj P}{M}$.
-  \item $\Sat{M}{\Atom{\Obj P}{\Obj v_i}}[s]$ iff
+  \item $\Sat{M}{\Atom{\Obj P}{\Obj v_i}}[s]$ se, e somente se,
   $s(\Obj v_i) \in \Assign{\Obj P}{M}$.
-  \item $\Sat{M}{\lnot !A}[s]$ iff not $\Sat{M}{!A}[s]$.
-  \item $\Sat{M}{(!A \land !B)}[s]$ iff $\Sat{M}{!A}[s]$ and $\Sat{M}{!B}[s]$.
+  \item $\Sat{M}{\lnot !A}[s]$ se, e somente se, não $\Sat{M}{!A}[s]$.
+  \item $\Sat{M}{(!A \land !B)}[s]$ se, e somente se, $\Sat{M}{!A}[s]$ e
+  $\Sat{M}{!B}[s]$.
 \end{enumerate}
-Ok, this solves one problem: we can now say when $\Struct{M}$
-satisfies $\Atom{\Obj P}{\Obj v_0}$ for the value~$s(\Obj v_0)$. To
-get the definition right for $\lexists[\Obj v_0][\Atom{\Obj P}{\Obj
-v_0}]$ we have to do one more thing:  We want to have that
-$\Sat{M}{\lexists[\Obj v_0][\Atom{\Obj P}{\Obj v_0}]}[s]$ iff
-$\Sat{M}{\Atom{\Obj P}{\Obj v_0}}[s']$ for \emph{some} way $s'$ of
-assigning a value to~$\Obj v_0$. But the value assigned to~$\Obj v_0$
-does not necessarily have to be the value that $s(\Obj v_0)$ picks
-out.  We'll introduce a notation for that: if $m \in \Domain{M}$, then
-we let $\Subst{s}{m}{\Obj v_0}$ be the assignment that is just
-like~$s$ (for all !!{variable}s other than~$\Obj v_0$), except to
-$\Obj v_0$ it assigns~$m$. Now our definition can be:
+Ok, isso resolve um problema: agora podemos dizer quando $\Struct{M}$
+satisfaz $\Atom{\Obj P}{\Obj v_0}$ para o valor~$s(\Obj v_0)$. Para
+obter a definição correta para $\lexists[\Obj v_0][\Atom{\Obj P}{\Obj
+v_0}]$ temos que fazer mais uma coisa: queremos que
+$\Sat{M}{\lexists[\Obj v_0][\Atom{\Obj P}{\Obj v_0}]}[s]$ se, e somente
+se, $\Sat{M}{\Atom{\Obj P}{\Obj v_0}}[s']$ para \emph{alguma} maneira
+$s'$ de atribuir um valor a~$\Obj v_0$. Mas o valor atribuído a~$\Obj
+v_0$ não precisa necessariamente ser o valor que $s(\Obj v_0)$ escolhe.
+Introduziremos uma notação para isso: se $m \in \Domain{M}$, então
+deixamos $\Subst{s}{m}{\Obj v_0}$ ser a atribuição que é igual a~$s$
+(para todas as !!{variable}s diferentes de~$\Obj v_0$), exceto que a
+$\Obj v_0$ atribui~$m$. Agora nossa definição pode ser:
 \begin{enumerate}\setcounter{enumi}{4}
-  \item $\Sat{M}{\lexists[\Obj v_i][!A]}[s]$ iff
-  $\Sat{M}{!A}[\Subst{s}{m}{\Obj v_i}]$ for some~$m \in \Domain{M}$.
+  \item $\Sat{M}{\lexists[\Obj v_i][!A]}[s]$ se, e somente se,
+  $\Sat{M}{!A}[\Subst{s}{m}{\Obj v_i}]$ para algum~$m \in \Domain{M}$.
 \end{enumerate}
-Does it work out? Let's say we let $s(\Obj v_i) = 0$ for all~$i \in
-\Nat$. $\Sat{M}{\lexists[\Obj v_0][\Atom{\Obj P}{\Obj v_0}]}[s]$ iff
-there is an $m \in \Domain{M}$ so that $\Sat{M}{\Atom{\Obj P}{\Obj
-v_0}}[\Subst{s}{m}{\Obj v_0}]$. And there is: we can choose $m = 1$ or
-$m = 2$. Note that this is true even if the value~$s(\Obj v_0)$
-assigned to~$\Obj v_0$ by $s$ itself---in this case, $0$---doesn't do
-the job. We have $\Sat{M}{\Atom{\Obj P}{\Obj v_0}}[\Subst{s}{1}{\Obj
-v_0}]$ but not $\Sat{M}{\Atom{\Obj P}{\Obj v_0}}[s]$.
+Funciona? Digamos que $s(\Obj v_i) = 0$ para todo~$i \in \Nat$.
+$\Sat{M}{\lexists[\Obj v_0][\Atom{\Obj P}{\Obj v_0}]}[s]$ se, e somente
+se, há um $m \in \Domain{M}$ tal que $\Sat{M}{\Atom{\Obj P}{\Obj
+v_0}}[\Subst{s}{m}{\Obj v_0}]$. E há: podemos escolher $m = 1$ ou
+$m = 2$. Note que isso é verdadeiro mesmo que o valor~$s(\Obj v_0)$
+atribuído a~$\Obj v_0$ por $s$---neste caso, $0$---não faça o
+trabalho. Temos $\Sat{M}{\Atom{\Obj P}{\Obj v_0}}[\Subst{s}{1}{\Obj
+v_0}]$, mas não $\Sat{M}{\Atom{\Obj P}{\Obj v_0}}[s]$.
 
-If this looks confusing and cumbersome: it is. But the added
-complexity is required to give a precise, inductive definition of
-satisfaction for all !!{formula}s, and we need something like it to
-precisely define the semantic notions.  There are other ways of doing
-it, but they are all equally (in)elegant.
+Se isso parece confuso e trabalhoso: é. Mas a complexidade adicional é
+necessária para dar uma definição precisa e indutiva de satisfação para
+todas as !!{formula}s, e precisamos de algo assim para definir
+precisamente as noções semânticas.  Há outras maneiras de fazer isso,
+mas todas são igualmente (in)elegantes.
 
 \end{document}

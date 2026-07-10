@@ -6,21 +6,21 @@
 
 \begin{document}
 
-\olfileid{sfr}{rel}{tre}
-\olsection{Trees}
+\olfileid[pt]{sfr}{rel}{tre}
+\olsection{Árvores}
 
-A particular kind of partial order which plays an important role in
-all parts of logic is a \emph{tree}. Finite trees occur in elementary
-parts of logic: for example, !!{formula}s can be understood in terms
-of their decomposition into a syntax tree, while !!{derivation}s in
-many !!{derivation} systems also take the form of finite trees.
+Um tipo particular de ordem parcial que desempenha um papel importante em
+todas as partes da lógica é uma \emph{árvore}. Árvores finitas aparecem em partes
+elementares da lógica: por exemplo, !!{formula}s podem ser entendidas em termos
+de sua decomposição em uma árvore sintática, enquanto !!{derivation}s em
+muitos sistemas de !!{derivation} também tomam a forma de árvores finitas.
 %
-Infinite trees appear already in the proof of the completeness
-theorems for propositional and first-order logic, and are used
-throughout mathematical logic.
+Árvores infinitas aparecem já na prova dos teoremas de completude
+para a lógica proposicional e de primeira ordem, e são usadas
+em toda a lógica matemática.
 
-The set-theoretic concept of a tree is closely related to the notion
-of a tree in graph theory. Here is a picture of a (finite) tree:
+O conceito de árvore da teoria dos conjuntos está intimamente relacionado à noção
+de árvore na teoria dos grafos. Aqui está uma figura de uma árvore (finita):
 
 \begin{center}
 \begin{tikzpicture}[nodes={draw, circle}, -]
@@ -34,97 +34,96 @@ of a tree in graph theory. Here is a picture of a (finite) tree:
 \end{tikzpicture}
 \end{center}
 
-The lowermost node~$r$ is the root. Every node other than $r$ has
-exactly one parent node immediately below it. We can think of the relation
-a node~$x$ stands in to a node~$y$ if $y$ can be reached from~$x$ by
-following edges upwards as $x$ being an \emph{ancestor} of~$y$. 
+O nó mais baixo~$r$ é a raiz. Todo nó diferente de $r$ tem
+exatamente um nó pai imediatamente abaixo dele. Podemos pensar na relação
+em que um nó~$x$ está para um nó~$y$ se $y$ pode ser alcançado a partir de~$x$
+seguindo arestas para cima como $x$ sendo um \emph{ancestral} de~$y$.
 
-The ancestor relation in a tree is a strict partial order. This
-motivates the set-theoretic definition. To state it we need two
-concepts. A \emph{least element} in a set~$A$ partially ordered
-by~$\le$ is !!a{element} $x \in A$ such that for all $y \in A$ we have
-that~$x \le y$. A set is \emph{well-ordered} by~$\le$ if every one of
-its non-empty subsets has a least element.
+A relação de ancestralidade em uma árvore é uma ordem parcial estrita. Isso
+motiva a definição teórico-conjuntista. Para enunciá-la, precisamos de dois
+conceitos. Um \emph{menor elemento} em um conjunto~$A$ parcialmente ordenado
+por~$\le$ é !!a{element} $x \in A$ tal que para todo $y \in A$ temos
+que~$x \le y$. Um conjunto é \emph{bem ordenado} por~$\le$ se cada um de
+seus subconjuntos não vazios tem um menor elemento.
 
-\begin{defn}[Tree]
-A \emph{tree} is a pair $T = \tuple{A, \le}$ such that $A$ is a set
-and $\le$ is a partial order on~$A$ with a unique least element
-$r \in A$ (called the \emph{root}) such that for all $x \in A$,
-the set $\Setabs{y}{y \le x}$ is well-ordered by~$\le$.
+\begin{defn}[Árvore]
+Uma \emph{árvore} é um par $T = \tuple{A, \le}$ tal que $A$ é um conjunto
+e $\le$ é uma ordem parcial em~$A$ com um único menor elemento
+$r \in A$ (chamado de \emph{raiz}) tal que para todo $x \in A$,
+o conjunto $\Setabs{y}{y \le x}$ é bem ordenado por~$\le$.
 \end{defn}
 
-\begin{defn}[Successors]
-Suppose $T = \tuple{A, \le}$ is a tree.
-If $x,y \in A$, $x < y$, and there is no $z \in A$ such that
-$x < z < y$, then we say that $y$ is a \emph{successor} of~$x$.
+\begin{defn}[Sucessores]
+Suponha $T = \tuple{A, \le}$ é uma árvore.
+Se $x,y \in A$, $x < y$, e não existe $z \in A$ tal que
+$x < z < y$, então dizemos que $y$ é um \emph{sucessor} de~$x$.
 \end{defn}
 
-The successors of $x \in A$ are also called its \emph{children}. If
-$y$ is a successor of~$x$, then we call $x$ the \emph{predecessor} or
-\emph{parent} of~$y$.
+Os sucessores de $x \in A$ também são chamados de seus \emph{filhos}. Se
+$y$ é um sucessor de~$x$, então chamamos $x$ de \emph{predecessor} ou
+\emph{pai} de~$y$.
 
 \begin{prop}
-If $\tuple{A,\le}$ is a tree, then every $x \in A$ other than the root
-has at most one predecessor.
+Se $\tuple{A,\le}$ é uma árvore, então todo $x \in A$ diferente da raiz
+tem no máximo um predecessor.
 \end{prop}
 
 \begin{proof}
-  Suppose $y_1 < x$ and $y_2 < x$ and $y_1 \neq y_2$. Then $\{y_1,
-  y_2\} \subseteq \Setabs{z}{z<x}$. Since $\Setabs{z}{z<x}$ is
-  well-ordered by~$\le$, its subset $\{y_1, y_2\}$ has a least
-  element, which obviously must be either $y_1$ or~$y_2$. So either
-  $y_1 \le y_2$ or $y_2 \le y_1$. We assumed that $y_1 \neq y_2$, so
-  actually either $y_1 < y_2$ or $y_2 < y_1$. Since we assumed that
-  $y_1 < x$ and $y_2 < x$, we furthermore have that either $y_1 < y_2
-  < x$ or $y_2 < y_1 < x$. So $y_1$ and $y_2$ cannot both be
-  predecessors of~$x$.
+  Suponha $y_1 < x$ e $y_2 < x$ e $y_1 \neq y_2$. Então $\{y_1,
+  y_2\} \subseteq \Setabs{z}{z<x}$. Como $\Setabs{z}{z<x}$ é
+  bem ordenado por~$\le$, seu subconjunto $\{y_1, y_2\}$ tem um menor
+  elemento, que obviamente deve ser ou $y_1$ ou~$y_2$. Então ou
+  $y_1 \le y_2$ ou $y_2 \le y_1$. Supusemos que $y_1 \neq y_2$, então
+  na verdade ou $y_1 < y_2$ ou $y_2 < y_1$. Como supusemos que
+  $y_1 < x$ e $y_2 < x$, temos ainda que ou $y_1 < y_2
+  < x$ ou $y_2 < y_1 < x$. Então $y_1$ e $y_2$ não podem ambos ser
+  predecessores de~$x$.
 \end{proof}
 
 \begin{defn}
-A tree $T = \tuple{A, \le}$ is said to be \emph{infinite} if $A$ is an
-infinite set, and \emph{finite} otherwise. If $T$ is such that every
-$x \in A$ has only finitely many successors, then we say that $T$ is
-\emph{finitely branching}.
+Uma árvore $T = \tuple{A, \le}$ é dita \emph{infinita} se $A$ é um
+conjunto infinito, e \emph{finita} caso contrário. Se $T$ é tal que todo
+$x \in A$ tem apenas um número finito de sucessores, então dizemos que $T$ é
+\emph{finitamente ramificada}.
 \end{defn}
 
-\begin{defn}[Branches]
-Given a tree $T = \tuple{A, \le}$, a \emph{branch} of~$T$ is a
-maximal chain in~$T$, O.s.\@, a set $B \subseteq A$ such that
-for any $x, y \in B$ either $x \le y$ or $y \le x$, and for any
-$z \in X \setminus B$ there exists $u \in B$ such that neither
-$z \le u$ nor $u \le z$.
+\begin{defn}[Ramos]
+Dada uma árvore $T = \tuple{A, \le}$, um \emph{ramo} de~$T$ é uma
+cadeia maximal em~$T$, isto é, um conjunto $B \subseteq A$ tal que
+para quaisquer $x, y \in B$ ou $x \le y$ ou $y \le x$, e para qualquer
+$z \in X \setminus B$ existe $u \in B$ tal que nem
+$z \le u$ nem $u \le z$.
 %
-We use $[T]$ to denote the set of all branches of $T$.
+Usamos $[T]$ para denotar o conjunto de todos os ramos de $T$.
 \end{defn}
 
 \begin{ex}
-A classic example of a finitely branching tree is the
-\emph{infinite binary tree} of finite sequences of $0$s and~$1$s,
-sometimes denoted $\{0,1\}^*$ or~$\Bin^*$, ordered by the extension
-relation $\sqsubseteq$ (p.ex., $101 \sqsubseteq 101101$).
-Since any binary string can always be extended by adding
-a $0$ or a $1$ on the end, this tree contains infinitely
-many elements: every element~$s$ has exactly two successors, $s0$ and~$s1$. Its root is the empty sequence $\emptyseq$.
+Um exemplo clássico de árvore finitamente ramificada é a
+\emph{árvore binária infinita} de sequências finitas de $0$s e~$1$s,
+às vezes denotada $\{0,1\}^*$ ou~$\Bin^*$, ordenada pela relação de
+extensão $\sqsubseteq$ (p.ex., $101 \sqsubseteq 101101$).
+Como qualquer cadeia binária pode sempre ser estendida adicionando
+um $0$ ou um $1$ no final, esta árvore contém infinitos
+elementos: todo elemento~$s$ tem exatamente dois sucessores, $s0$ e~$s1$. Sua raiz é a sequência vazia $\emptyseq$.
 \end{ex}
 
 \begin{ex}
-Slightly more generally, the set of finite sequences of natural
-numbers~$\Nat^*$ with the extension relation~$\sqsubseteq$ is also a
-tree. It is obviously not finitely branching: every $s \in \Nat^*$ has
-infinitely many successors~$sn$, one for every $n \in \Nat$. Every $A
-\subseteq \Nat^*$ which is closed under~$\sqsubseteq$ is a
-\emph{subtree} of~$\Nat^*$. (That is, $A$ is such that if $s \in A$
-and $s' \sqsubseteq s$, then also $s' \in A$.) All finite trees can be
-represented as finite subtrees of~$\Nat^*$.
+De maneira um pouco mais geral, o conjunto de sequências finitas de números naturais~$\Nat^*$ com a relação de extensão~$\sqsubseteq$ também é uma
+árvore. É obviamente não finitamente ramificada: todo $s \in \Nat^*$ tem
+infinitos sucessores~$sn$, um para cada $n \in \Nat$. Todo $A
+\subseteq \Nat^*$ que é fechado sob~$\sqsubseteq$ é uma
+\emph{subárvore} de~$\Nat^*$. (Isto é, $A$ é tal que se $s \in A$
+e $s' \sqsubseteq s$, então também $s' \in A$.) Todas as árvores finitas podem ser
+representadas como subárvores finitas de~$\Nat^*$.
 \end{ex}
 
-\begin{prop}[K\H{o}nig's lemma]
-If $T = \tuple{A,\le}$ is a finitely branching infinite tree,
-then $T$ has an infinite branch.
+\begin{prop}[Lema de K\H{o}nig]
+Se $T = \tuple{A,\le}$ é uma árvore infinita finitamente ramificada,
+então $T$ tem um ramo infinito.
 \end{prop}
 
-A special case of K\H{o}nig's lemma widely used in computability
-theory, known as \emph{weak K\H{o}nig's lemma}, is the following: any
-infinite subtree of $\{0,1\}^*$ has an infinite branch.
+Um caso especial do Lema de K\H{o}nig amplamente usado em teoria da
+computabilidade, conhecido como \emph{Lema Fraco de K\H{o}nig}, é o seguinte: qualquer
+subárvore infinita de $\{0,1\}^*$ tem um ramo infinito.
 
 \end{document}

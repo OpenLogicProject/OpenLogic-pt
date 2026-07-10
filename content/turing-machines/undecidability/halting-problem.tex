@@ -6,144 +6,150 @@
 
 \begin{document}
 
-\olfileid{tur}{und}{hal}
-\olsection{The Halting Problem}
+\olfileid[pt]{tur}{und}{hal}
+\olsection{O Problema da Parada}
 
 \begin{explain}
-Assume we have fixed some enumeration of Turing machine
-descriptions.  Each Turing machine thus receives an \emph{index}: its
-place in the enumeration $M_1$, $M_2$, $M_3$, \dots{} of Turing machine
-descriptions.
+Suponha que tenhamos fixado alguma enumeração das descrições de
+máquinas de Turing. Cada máquina de Turing recebe assim um
+\emph{índice}: seu lugar na enumeração $M_1$, $M_2$, $M_3$, \dots{} das
+descrições de máquinas de Turing.
 
-We know that there must be non-Turing-computable functions: the set of
-Turing machine descriptions---and hence the set of Turing machines---is
-!!{enumerable}, but the set of all functions from $\Nat$ to $\Nat$ is
-not. But we can find specific examples of non-computable functions as
-well. One such function is the halting function.
+Sabemos que devem existir funções não-Turing-computáveis: o conjunto
+de descrições de máquinas de Turing---e, portanto, o conjunto de
+máquinas de Turing---é !!{enumerable}, mas o conjunto de todas as
+funções de $\Nat$ a $\Nat$ não é. Mas também podemos encontrar
+exemplos específicos de funções não computáveis. Uma dessas funções é
+a função de parada.
 \end{explain}
 
-\begin{defn}[Halting function]
- The \emph{halting function}~$h$ is defined as
+\begin{defn}[Função de parada]
+ A \emph{função de parada}~$h$ é definida como
 \[
 h(e,n) =
 \begin{cases}
-  \text{0} & \text{if machine~$M_e$ does not halt for input $n$} \\
-  \text{1} & \text{if machine~$M_e$ halts for input $n$}
+  \text{0} & \text{se a máquina~$M_e$ não para na entrada $n$} \\
+  \text{1} & \text{se a máquina~$M_e$ para na entrada $n$}
 \end{cases}
 \]
 \end{defn}
 
-\begin{defn}[Halting problem]
-The \emph{Halting Problem} is the problem of determining (for any $e$, $n$)
-whether the Turing machine~$M_e$ halts for an input of~$n$ strokes.
+\begin{defn}[Problema da parada]
+O \emph{Problema da Parada} é o problema de determinar (para quaisquer
+$e$, $n$) se a máquina de Turing~$M_e$ para com uma entrada de~$n$
+traços.
 \end{defn}
 
 \begin{explain}
-We show that~$h$ is not Turing-computable by showing that a related
-function,~$s$, is not Turing-computable. This proof relies on the fact
-that anything that can be computed by a Turing machine can be computed
-by a disciplined Turing machine (\olref[mac][dis]{sec}), and the fact
-that two Turing machines can be hooked together to create a single
-machine (\olref[mac][cmb]{sec}).
+Mostramos que~$h$ não é Turing-computável mostrando que uma função
+relacionada,~$s$, não é Turing-computável. Esta prova baseia-se no
+fato de que tudo o que pode ser computado por uma máquina de Turing
+pode ser computado por uma máquina de Turing disciplinada
+(\olref[mac][dis]{sec}), e no fato de que duas máquinas de Turing podem
+ser conectadas para criar uma única máquina (\olref[mac][cmb]{sec}).
 \end{explain}
 
-\begin{defn} The function~$s$ is defined as
+\begin{defn} A função~$s$ é definida como
 \[
 s(e) =
 \begin{cases}
-  \text{0} & \text{if machine~$M_e$ does not halt for input $e$} \\
-  \text{1} & \text{if machine~$M_e$ halts for input $e$}
+  \text{0} & \text{se a máquina~$M_e$ não para na entrada $e$} \\
+  \text{1} & \text{se a máquina~$M_e$ para na entrada $e$}
 \end{cases}
 \]
 \end{defn}
 
 \begin{lem}
-The function~$s$ is not Turing computable.
+A função~$s$ não é Turing-computável.
 \end{lem}
 
 \begin{proof}
-We suppose, for contradiction, that the function~$s$ is Turing
-computable.  Then there would be a Turing machine~$S$ that
-computes~$s$. We may assume, without loss of generality, that when $S$
-halts, it does so while scanning the first square (O.s.\@, that it is
-disciplined).  This machine can be ``hooked up'' to another
-machine~$J$, which halts if it is started on input~$0$ (O.s.\@, if it
-reads $\TMblank$ in the initial state while scanning the square to the
-right of the end-of-tape symbol), and otherwise wanders off to the
-right, never halting. $S \concat J$, the machine created by hooking
-$S$ to~$J$, is a Turing machine, so it is $M_e$ for some~$e$ (O.s.\@, it
-appears somewhere in the enumeration). Start $M_e$ on an input of~$e$
-$\TMstroke$s. There are two possibilities: either $M_e$ halts or it
-does not halt.
+Suponha, por contradição, que a função~$s$ seja Turing-computável.
+Então haveria uma máquina de Turing~$S$ que computa~$s$. Podemos supor,
+sem perda de generalidade, que quando $S$ para, ela o faz examinando o
+primeiro quadrado (isto é, que ela é disciplinada). Esta máquina pode
+ser ``conectada'' a outra máquina~$J$, que para se for iniciada na
+entrada~$0$ (isto é, se ela lê $\TMblank$ no estado inicial enquanto
+examina o quadrado à direita do símbolo de fim de fita), e caso
+contrário vagueia para a direita, sem nunca parar. $S \concat J$, a
+máquina criada conectando-se $S$ a~$J$, é uma máquina de Turing, logo é
+$M_e$ para algum~$e$ (isto é, aparece em algum lugar da enumeração).
+Inicie $M_e$ em uma entrada de~$e$ $\TMstroke$. Há duas
+possibilidades: ou $M_e$ para ou não para.
 \begin{enumerate}
-\item Suppose $M_e$ halts for an input of $e$ $\TMstroke$s. Then $s(e)
-  = 1$. So $S$, when started on~$e$, halts with a single $\TMstroke$
-  as output on the tape.  Then $J$ starts with a $\TMstroke$ on the
-  tape. In that case $J$ does not halt. But $M_e$ is the machine $S
-  \concat J$, so it should do exactly what $S$ followed by $J$ would
-  do (O.s.\@, in this case, wander off to the right and never halt).  So
-  $M_e$ cannot halt for an input of $e$ $\TMstroke$'s.
+\item Suponha que $M_e$ pare para uma entrada de $e$ $\TMstroke$. Então
+  $s(e) = 1$. Assim, $S$, quando iniciada em~$e$, para com um único
+  $\TMstroke$ como saída na fita. Então $J$ começa com um $\TMstroke$
+  na fita. Nesse caso, $J$ não para. Mas $M_e$ é a máquina $S \concat
+  J$, de modo que ela deveria fazer exatamente o que $S$ seguida de
+  $J$ faria (isto é, neste caso, vaguear para a direita e nunca
+  parar). Logo, $M_e$ não pode parar para uma entrada de $e$
+  $\TMstroke$.
 
-\item Now suppose $M_e$ does not halt for an input of $e$
-  $\TMstroke$s.  Then $s(e) = 0$, and $S$, when started on input~$e$,
-  halts with a blank tape.  $J$,~when started on a blank tape,
-  immediately halts.  Again, $M_e$ does what $S$ followed by~$J$ would
-  do, so $M_e$ must halt for an input of $e$ $\TMstroke$'s.
+\item Agora suponha que $M_e$ não pare para uma entrada de $e$
+  $\TMstroke$. Então $s(e) = 0$, e $S$, quando iniciada na entrada~$e$,
+  para com uma fita em branco. $J$,~quando iniciada em uma fita em
+  branco, para imediatamente. Novamente, $M_e$ faz o que $S$ seguida
+  de~$J$ faria, de modo que $M_e$ deve parar para uma entrada de $e$
+  $\TMstroke$.
 \end{enumerate}
-In each case we arrive at a contradiction with our assumption. This
-shows there cannot be a Turing machine~$S$: $s$~is not Turing
-computable.
+Em cada caso chegamos a uma contradição com nossa suposição. Isso
+mostra que não pode haver uma máquina de Turing~$S$: $s$~não é
+Turing-computável.
 \end{proof}
 
-\begin{thm}[Unsolvability of the Halting Problem]
-\ollabel{thm:halting-problem} The halting problem is unsolvable, O.s.\@,
-the function~$h$ is not Turing computable.
+\begin{thm}[Insolubilidade do Problema da Parada]
+\ollabel{thm:halting-problem} O problema da parada é insolúvel, isto
+é, a função~$h$ não é Turing-computável.
 \end{thm}
 
 \begin{proof}
-Suppose $h$ were Turing computable, say, by a Turing machine~$H$. We
-could use $H$ to build a Turing machine that computes~$s$: First, make
-a copy of the input (separated by a~$\TMblank$ symbol). Then move back
-to the beginning, and run~$H$.  We can clearly make a machine that
-does the former (see \cref{tur:mac:dis:prob:copier}), and if $H$
-existed, we would be able to ``hook it up'' to such a copier machine
-to get a new machine which would determine if $M_e$ halts on
-input~$e$, O.s.\@, computes~$s$. But we've already shown that no such
-machine can exist. Hence, $h$~is also not Turing computable.
+Suponha que $h$ fosse Turing-computável, digamos, por uma máquina de
+Turing~$H$. Poderíamos usar $H$ para construir uma máquina de Turing
+que computa~$s$: primeiro, fazer uma cópia da entrada (separada por um
+símbolo~$\TMblank$). Depois, voltar ao início e executar~$H$.
+Claramente podemos fazer uma máquina que realiza a primeira tarefa
+(veja \cref{tur:mac:dis:prob:copier}), e se $H$ existisse, poderíamos
+``conectá-la'' a tal máquina copiadora para obter uma nova máquina que
+determinaria se $M_e$ para na entrada~$e$, isto é, computa~$s$. Mas já
+mostramos que não pode existir tal máquina. Portanto, $h$~também não é
+Turing-computável.
 \end{proof}
 
 \begin{prob}
-The Three Halting (3-Halt) problem is the problem of giving a decision
-procedure to determine whether or not an arbitrarily chosen Turing
-Machine halts for an input of three $\TMstroke$'s on an otherwise
-blank tape. Prove that the 3-Halt problem is unsolvable.
+O problema da Parada com Três (3-Parada) é o problema de dar um
+procedimento de decisão para determinar se uma máquina de Turing
+escolhida arbitrariamente para ou não para uma entrada de três
+$\TMstroke$ em uma fita que, fora isso, está em branco. Prove que o
+problema 3-Parada é insolúvel.
 \end{prob}
 
 \begin{prob}
-Show that if the halting problem is solvable for Turing machine and
-input pairs $M_e$ and~$n$ where $e \neq n$, then it is also solvable
-for the cases where $e = n$.
+Mostre que se o problema da parada é solúvel para pares de máquina de
+Turing e entrada $M_e$ e~$n$ em que $e \neq n$, então ele também é
+solúvel para os casos em que $e = n$.
 \end{prob}
 
 \begin{prob}
-We proved that the halting problem is unsolvable if the input is a
-number~$e$, which identifies a Turing machine~$M_e$ via an enumeration
-of all Turing machines.  What if we allow the description of Turing
-machines from \olref[tur][und][enu]{sec} directly as input?  Can there
-be a Turing machine which decides the halting problem but takes as
-input descriptions of Turing machines rather than indices?  Explain
-why or why not.
+Provamos que o problema da parada é insolúvel se a entrada é um
+número~$e$, que identifica uma máquina de Turing~$M_e$ por meio de uma
+enumeração de todas as máquinas de Turing. E se permitirmos a
+descrição de máquinas de Turing de \olref[tur][und][enu]{sec}
+diretamente como entrada? Pode haver uma máquina de Turing que decide
+o problema da parada, mas que recebe como entrada descrições de
+máquinas de Turing em vez de índices? Explique por que sim ou por que
+não.
 \end{prob}
 
-\begin{prob} Show that the \emph{partial} function~$s'$ is defined as
+\begin{prob} Mostre que a função \emph{parcial}~$s'$ definida como
   \[
   s'(e) =
   \begin{cases}
-    \text{1} & \text{if machine~$M_e$ halts for input $e$}\\
-    \text{undefined} & \text{if machine~$M_e$ does not halt for input $e$}
+    \text{1} & \text{se a máquina~$M_e$ para na entrada $e$}\\
+    \text{indefinida} & \text{se a máquina~$M_e$ não para na entrada $e$}
   \end{cases}
   \]
-  \emph{is} Turing computable.
+  \emph{é} Turing-computável.
 \end{prob}
 
 \end{document}

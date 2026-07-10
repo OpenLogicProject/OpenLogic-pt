@@ -7,35 +7,35 @@
 
 \begin{document}
 
-\olfileid{sfr}{fun}{iso}
-\olsection{Isomorphism}
+\olfileid[pt]{sfr}{fun}{iso}
+\olsection{Isomorfismo}
 
 \begin{explain}
-An \emph{isomorphism} is a bijection that preserves the structure of
-the sets it relates, where structure is a matter of the relationships
-that obtain between the !!{element}s of the sets. Consider the
-following two sets $X=\{1,2,3\}$ and $Y=\{4,5,6\}$. These sets are
-both structured by the relations successor, less than, and greater
-than. An isomorphism between the two sets is !!a{bijection} that
-preserves those structures. So !!a{bijective} function $f \colon X
-\to Y$ is an isomorphism if, $i<j$ iff $f(i)<f(j)$, $i>j$ iff
-$f(i)>f(j)$, and $j$ is the successor of $i$ iff $f(j)$ is the
-successor of $f(i)$.
+Um \emph{isomorfismo} é uma bijeção que preserva a estrutura dos
+conjuntos que relaciona, onde estrutura é uma questão das relações
+que valem entre os !!{element}s dos conjuntos. Considere os
+seguintes dois conjuntos $X=\{1,2,3\}$ e $Y=\{4,5,6\}$. Estes conjuntos são
+ambos estruturados pelas relações sucessor, menor que e maior
+que. Um isomorfismo entre os dois conjuntos é !!a{bijection} que
+preserva essas estruturas. Assim, uma função !!{bijective} $f \colon X
+\to Y$ é um isomorfismo se $i<j$ sse $f(i)<f(j)$, $i>j$ sse
+$f(i)>f(j)$, e $j$ é o sucessor de $i$ sse $f(j)$ é o
+sucessor de $f(i)$.
 \end{explain}
 
-\begin{defn}[Isomorphism]
-Let $U$ be the pair $\langle X, R\rangle$ and $V$ be the pair $\langle
-Y, S\rangle$ such that $X$ and $Y$ are sets and $R$ and $S$ are
-relations on $X$ and $Y$ respectively. A !!{bijection} $f$ from $X$ to
-$Y$ is an \emph{isomorphism} from $U$ to $V$ iff it preserves the
-relational structure, that is, for any $x_{1}$ and $x_{2}$ in $X$,
-$\tuple{x_1,x_2} \in R$ iff $\tuple{f(x_1),f(x_2)} \in S$.
+\begin{defn}[Isomorfismo]
+Seja $U$ o par $\langle X, R\rangle$ e $V$ o par $\langle
+Y, S\rangle$ tais que $X$ e $Y$ são conjuntos e $R$ e $S$ são
+relações sobre $X$ e $Y$ respectivamente. Uma !!{bijection} $f$ de $X$ para
+$Y$ é um \emph{isomorfismo} de $U$ para $V$ sse preserva a
+estrutura relacional, isto é, para quaisquer $x_{1}$ e $x_{2}$ em $X$,
+$\tuple{x_1,x_2} \in R$ sse $\tuple{f(x_1),f(x_2)} \in S$.
 \end{defn}
 
 \begin{ex}
-Consider the following two sets $X=\{1,2,3\}$ and $Y=\{4,5,6\}$, and
-the relations less than and greater than. The function $f\colon X \to
-Y$ where $f(x) = 7-x$ is an isomorphism between $\tuple{X,<}$ and
+Considere os seguintes dois conjuntos $X=\{1,2,3\}$ e $Y=\{4,5,6\}$ e
+as relações menor que e maior que. A função $f\colon X \to
+Y$ onde $f(x) = 7-x$ é um isomorfismo entre $\tuple{X,<}$ e
 $\tuple{Y,>}$.
 \end{ex}
 

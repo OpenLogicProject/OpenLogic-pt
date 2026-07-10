@@ -7,13 +7,13 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{ntd}{prl}}
-      {\olfileid{pl}{ntd}{prl}}
+      {\olfileid[pt]{fol}{ntd}{prl}}
+      {\olfileid[pt]{pl}{ntd}{prl}}
 
-\olsection{Propositional Rules}
+\olsection{Regras Proposicionais}
 
 
-\subsection{Rules for $\land$}
+\subsection{Regras para $\land$}
 
 \begin{defish}
 \AxiomC{$!A$}
@@ -35,7 +35,7 @@
 \end{tabular}
 \end{defish}
 
-\subsection{Rules for $\lor$}
+\subsection{Regras para $\lor$}
 
 \begin{defish}
 \begin{tabular}{r}
@@ -60,7 +60,7 @@
 \DisplayProof
 \end{defish}
 
-\subsection{Rules for $\lif$}
+\subsection{Regras para $\lif$}
 
 \begin{defish}
 \AxiomC{$\Discharge{!A}{n}$}
@@ -76,7 +76,7 @@
 \DisplayProof
 \end{defish}
 
-\subsection{Rules for $\lnot$}
+\subsection{Regras para $\lnot$}
 
 \begin{defish}
 \AxiomC{$\Discharge{!A}{n}$}
@@ -93,7 +93,7 @@
 \DisplayProof
 \end{defish}
 
-\subsection{Rules for $\lfalse$}
+\subsection{Regras para $\lfalse$}
 
 \begin{defish}
 \AxiomC{$\lfalse$}
@@ -108,13 +108,13 @@
 \DisplayProof
 \end{defish}
 
-Note that $\Intro{\lnot}$ and $\FalseCl$ are very similar: The
-difference is that $\Intro{\lnot}$ derives a negated
-!!{sentence}~$\lnot !A$ but $\FalseCl$ a positive !!{sentence}~$!A$.
+Note que $\Intro{\lnot}$ e $\FalseCl$ são muito semelhantes: a
+diferença é que $\Intro{\lnot}$ deriva uma !!{sentence} negada~$\lnot
+!A$, mas $\FalseCl$, uma !!{sentence} positiva~$!A$.
 
-Whenever a rule indicates that some assumption may be discharged, we
-take this to be a permission, but not a requirement. P.ex., in the
-$\Intro{\lif}$ rule, we may discharge any number of assumptions of the
-form~$!A$ in the !!{derivation} of the premise~$!B$, including zero.
+Sempre que uma regra indica que alguma hipótese pode ser descarregada, nós
+tomamos isso como uma permissão, mas não uma exigência. Por exemplo, na
+regra $\Intro{\lif}$, podemos descarregar qualquer número de hipóteses da
+forma~$!A$ na !!{derivation} da premissa~$!B$, inclusive zero.
 
 \end{document}

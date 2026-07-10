@@ -1,0 +1,102 @@
+% Notação matemática (curso Set Theory PT) — alinhada ao texto importado em settheory.tex
+
+\clearpage
+\phantomsection
+\chapter*{Notação}
+\markboth{\MakeUppercase{Notação}}{\MakeUppercase{Notação}}
+\addcontentsline{toc}{chapter}{Notação}
+
+\noindent
+Símbolos e abreviaturas usados com frequência neste volume (incluindo capítulos de pré-requisitos sobre conjuntos, relações e funções). Quando o mesmo símbolo tiver mais de um uso, o contexto (ou a definição na secção indicada) desambigua. Para vocabulário e noções em prosa, ver o \emph{Glossário}.
+
+\section*{Lógica e teorias}
+
+\begin{description}
+\item[$\Proves$] Relação de dedutibilidade sintática (``a teoria prova\ldots'').
+\item[$\lif$, $\liff$, $\lnot$, $\land$, $\lor$] Implicação, bicondicional, negação, conjunção, disjunção.
+\item[$\lexists$, $\lforall$] Quantificadores existencial e universal.
+\item[$\Th{T}$] Letra ou nome curto para uma teoria (conjunto de sentenças) de primeira ordem com símbolo primitivo~$\in$.
+\end{description}
+
+\section*{Conjuntos, relações e ordens}
+
+\begin{description}
+\item[$\emptyset$] Conjunto vazio.
+\item[$\in$, $\subseteq$, $\subsetneq$] Pertence a; subconjunto; subconjunto próprio.
+\item[$\cup$, $\cap$, $\setminus$] União, intersecção, diferença.
+\item[$\Pow{X}$, $\wp(X)$] Conjunto potência de~$X$.
+\item[$\tuple{a,b}$, $\tuple{a_1,\ldots,a_n}$] Par ordenado; $n$-upla ordenada.
+\item[$\Setabs{x}{\phi(x)}$] Conjunto dos~$x$ que verificam~$\phi(x)$ (quando definível no contexto).
+\item[$\equivrep{a}{R}$, $\equivclass{A}{R}$] Classe de equivalência de~$a$; conjunto das classes em~$A$.
+\item[$\Id{A}$] Relação identidade sobre~$A$: $\Setabs{\tuple{x,x}}{x \in A}$.
+\item[$R^n$, $R \mid S$] Potências e composição de relações (definidas no capítulo de relações).
+\item[$R^+$] Fecho transitivo da relação~$R$ (união das potências $R^n$ com $n \geq 1$). \emph{Atenção:} em algumas passagens sobre ordens, $R^+$ denota $R \cup \Id{A}$ (reflexivação de uma ordem estrita); o contexto distingue.
+\item[$R^*$] Fecho reflexivo transitivo: $R^+ \cup \Id{A}$ (definição padrão no capítulo de relações).
+\end{description}
+
+\section*{Funções}
+
+\begin{description}
+\item[$\dom{f}$] Domínio de~$f$.
+\item[$\operatorname{Im}(f)$] Imagem de~$f$ (neste volume a imagem aparece sob esta forma).
+\item[$f \restrict A$] Restrição de~$f$ ao subconjunto~$A$.
+\item[$g \circ f$] Composição (aplicar primeiro~$f$, depois~$g$).
+\item[$\funfromto{X}{Y}$] Conjunto de todas as funções de~$X$ para~$Y$.
+\item[$\funimage{f}{A}$] Imagem do conjunto~$A$ por~$f$: $\Setabs{f(x)}{x \in A}$.
+\item[$\mathrm{comp}(\sigma)$] Comprimento de uma sequência finita~$\sigma$.
+\end{description}
+
+\section*{Números habituais}
+
+\begin{description}
+\item[$\Nat$, $\Int$, $\Rat$, $\Real$] Naturais, inteiros, racionais, reais.
+\end{description}
+
+\section*{Ordinais e aritmética ordinal}
+
+\begin{description}
+\item[$\omega$] Primeiro ordinal limite (identificado com os naturais de von Neumann).
+\item[$\alpha^{+}$] Sucessor ordinal de~$\alpha$.
+\item[$+$, $\cdot$ entre ordinais] Adição e multiplicação \emph{ordinais} (símbolos iguais aos da aritmética usual; o contexto distingue).
+\item[$\ordexpo{\alpha}{\beta}$] Exponenciação ordinal, quando aparece explicitamente.
+\item[$\ordtype{A,R}$] Tipo de ordem da estrutura bem ordenada $\tuple{A,R}$.
+\item[$\rlexless$] Ordem lexicográfica restrita (usada em produtos de ordinais ordenados).
+\item[$\disjointsum$] Soma ordenada disjunta de ordinais (soma como ordem em cópias disjuntas).
+\item[$\supstrict(X)$] Para $X$ conjunto de ordinais, o menor ordinal estritamente maior que todo o membro de~$X$ (no PDF aparece como $\mathrm{lsub}(X)$, convenção herdada do projeto original em inglês).
+\end{description}
+
+\section*{Cardinalidade e equipotência}
+
+\begin{description}
+\item[$\card{X}$] Cardinalidade (tamanho) do conjunto~$X$.
+\item[$\cardeq{A}{B}$, $\cardle{A}{B}$, $\cardless{A}{B}$] Comparação de tamanhos: equipotência ($\approx$); não maior ($\preceq$); estritamente menor ($\prec$), no sentido dos capítulos sobre cardinalidade.
+\item[$\cardneq{A}{B}$, $\cardnless{\alpha}{A}$] Negação de equipotência; e formulações do tipo ``não existe injeção de um ordinal em $A$'' usadas, por exemplo, no lema de Hartogs.
+\item[$\prec$, $\preceq$, $\approx$] Ordem e equivalência entre cardinais (no sentido introduzido nos capítulos de cardinais).
+\item[$\aleph_\alpha$, $\beth_\alpha$] Sucessões transfinitas de cardinais infinitos (\textit{alef} e \textit{beth}).
+\item[$\cardfont{a}$, $\cardfont{b}$] Letras góticas para designar cardinais.
+\item[$\oplus$, $\otimes$, potências cardinais] Soma, produto e exponenciação entre cardinais.
+\item[$\cardsucc{\kappa}$] Sucessor cardinal, quando notado explicitamente.
+\end{description}
+
+\section*{Hierarquia cumulativa, posto e fecho}
+
+\begin{description}
+\item[$V_\alpha$] Estágio de nível~$\alpha$ na hierarquia cumulativa de conjuntos.
+\item[$\mathrm{posto}(x)$] Posto do conjunto~$x$: o menor ordinal~$\alpha$ com $x \subseteq V_\alpha$ (em inglês costuma dizer-se \emph{rank}).
+\item[$\mathrm{ft}(x)$] Fecho transitivo do \emph{conjunto}~$x$. A abreviatura \emph{ft} segue as iniciais de \emph{fecho transitivo}; em inglês usa-se muitas vezes \emph{trcl} (\textit{tr}ansitive \textit{cl}osure).
+\item[$\closureofunder{f}{o}$] Menor conjunto que contém~$o$ e é fechado sob a função~$f$ (estruturas de Dedekind, naturais de von Neumann, etc.).
+\end{description}
+
+\section*{Objetos tipo Frege e cardinalidade Tarski--Scott}
+
+\begin{description}
+\item[$\# x\,\phi(x)$] Notação abreviada para certos objetos definidos a partir de fórmulas (número de Hume, extensões de Frege, conforme o contexto).
+\item[$\mathrm{tsc}(A)$] Cardinalidade no sentido \emph{Tarski--Scott} de um conjunto~$A$.
+\end{description}
+
+\section*{Geometria e medida (paradoxos da escolha)}
+
+\begin{description}
+\item[$\onesphere$] Esfera (contexto de decomposição paradoxal).
+\item[$\rotationsgroup$] Grupo de rotações usado nas construções de Vitali e afins.
+\end{description}

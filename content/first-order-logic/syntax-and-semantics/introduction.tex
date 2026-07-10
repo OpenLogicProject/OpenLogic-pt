@@ -6,63 +6,66 @@
 
 \begin{document}
 
-\olfileid{fol}{syn}{int}
+\olfileid[pt]{fol}{syn}{int}
 
-\olsection{Introduction}
+\olsection{Introdução}
 
-In order to develop the theory and metatheory of first-order logic, we
-must first define the syntax and semantics of its expressions.  The
-expressions of first-order logic are terms and !!{formula}s.  Terms
-are formed from !!{variable}s, !!{constant}s, and !!{function}s.
-!!^{formula}s, in turn, are formed from !!{predicate}s together with
-terms (these form the smallest, ``atomic'' !!{formula}s), and then
-from atomic !!{formula}s we can form more complex ones using logical
-connectives and quantifiers.  There are many different ways to set
-down the formation rules; we give just one possible one. Other systems
-will chose different symbols, will select different sets of
-connectives as primitive, will use parentheses differently (or even not
-at all, as in the case of so-called Polish notation).  What all
-approaches have in common, though, is that the formation rules define
-the set of terms and !!{formula}s \emph{inductively}. If done
-properly, every expression can result essentially in only one way
-according to the formation rules.  The inductive definition resulting
-in expressions that are \emph{uniquely readable} means we can give
-meanings to these expressions using the same method---inductive
-definition.
+Para desenvolver a teoria e a metateoria da lógica de primeira ordem,
+devemos primeiro definir a sintaxe e a semântica de suas expressões.  As
+expressões da lógica de primeira ordem são termos e !!{formula}s.  Os
+termos são formados a partir de !!{variable}s, !!{constant}s e
+!!{function}s. As !!^{formula}s, por sua vez, são formadas a partir de
+!!{predicate}s juntamente com termos (estes formam as !!{formula}s
+atômicas, as menores), e então a partir de !!{formula}s atômicas
+podemos formar outras mais complexas usando conectivos lógicos e
+quantificadores.  Há muitas maneiras diferentes de estabelecer as
+regras de formação; apresentamos apenas uma possível. Outros sistemas
+escolherão símbolos diferentes, selecionarão conjuntos diferentes de
+conectivos como primitivos, usarão parênteses de maneira diferente (ou
+nem os usarão, como no caso da chamada notação polonesa).  O que todas
+as abordagens têm em comum, no entanto, é que as regras de formação
+definem o conjunto de termos e !!{formula}s \emph{indutivamente}. Se
+feito corretamente, toda expressão pode resultar essencialmente de
+apenas uma maneira de acordo com as regras de formação.  A definição
+indutiva que resulta em expressões de leitura \emph{única} significa
+que podemos dar significados a essas expressões usando o mesmo
+método---definição indutiva.
 
-Giving the meaning of expressions is the domain of semantics.  The
-central concept in semantics is that of satisfaction in
-!!a{structure}. !!^a{structure} gives meaning to the building blocks
-of the language: !!a{domain} is a non-empty set of objects. The
-quantifiers are interpreted as ranging over this domain, !!{constant}s
-are assigned elements in the domain, !!{function}s are assigned
-functions from the !!{domain} to itself, and !!{predicate}s are
-assigned relations on the !!{domain}.  The !!{domain} together with
-assignments to the basic vocabulary constitutes
-!!a{structure}. !!^{variable}s may appear in !!{formula}s, and in
-order to give a semantics, we also have to assign !!{element}s of the
-!!{domain} to them---this is a variable assignment. The satisfaction
-relation, finally, brings these together. !!^a{formula} may be satisfied
-in !!a{structure}~$\Struct{M}$ relative to a variable assignment~$s$,
-written as $\Sat{M}{!A}[s]$. This relation is also defined by
-induction on the structure of~$!A$, using the truth tables for the
-logical connectives to define, say, satisfaction of $!A \land !B$ in
-terms of satisfaction (or not) of $!A$ and ~$!B$.  It then turns out
-that the variable assignment is irrelevant if the !!{formula}~$!A$ is
-!!a{sentence}, O.s.\@, has no free variables, and so we can talk of
-!!{sentence}s being simply satisfied (or not) in !!{structure}s.
+Dar o significado das expressões é o domínio da semântica.  O conceito
+central na semântica é o de satisfação em !!a{structure}. Uma
+!!^a{structure} dá significado aos blocos de construção da linguagem:
+um !!a{domain} é um conjunto não vazio de objetos. Os quantificadores
+são interpretados como variando sobre esse domínio, !!{constant}s são
+atribuídas a elementos do domínio, !!{function}s são atribuídas a
+funções do !!{domain} em si mesmo, e !!{predicate}s são atribuídos a
+relações sobre o !!{domain}.  O !!{domain} juntamente com as
+atribuições ao vocabulário básico constitui !!a{structure}. As
+!!^{variable}s podem aparecer em !!{formula}s e, para dar uma semântica,
+também temos que atribuir !!{element}s do !!{domain} a elas---isto é
+uma atribuição de variáveis. A relação de satisfação, finalmente, une
+tudo isso. Uma !!^a{formula} pode ser satisfeita em !!a{structure}
+~$\Struct{M}$ em relação a uma atribuição de variáveis~$s$, escrito como
+$\Sat{M}{!A}[s]$. Esta relação também é definida por indução na
+estrutura de~$!A$, usando as tabelas-verdade dos conectivos lógicos
+para definir, por exemplo, a satisfação de $!A \land !B$ em termos da
+satisfação (ou não) de $!A$ e de~$!B$.  Verifica-se então que a
+atribuição de variáveis é irrelevante se a !!{formula}~$!A$ é
+!!a{sentence}, isto é, não tem variáveis livres, de modo que podemos
+falar de !!{sentence}s sendo simplesmente satisfeitas (ou não) em
+!!{structure}s.
 
-On the basis of the satisfaction relation $\Sat{M}{!A}$ for sentences
-we can then define the basic semantic notions of validity, entailment,
-and satisfiability.  A sentence is valid, $\Entails !A$, if every
-structure satisfies it. It is entailed by a set of !!{sentence}s,
-$\Gamma \Entails !A$, if every !!{structure} that satisfies all the
-!!{sentence}s in~$\Gamma$ also satisfies~$!A$. And a set of sentences
-is satisfiable if some !!{structure} satisfies all !!{sentence}s in it
-at the same time.  Because !!{formula}s are inductively defined, and
-satisfaction is in turn defined by induction on the structure of
-!!{formula}s, we can use induction to prove properties of our
-semantics and to relate the semantic notions defined.
+Com base na relação de satisfação $\Sat{M}{!A}$ para sentenças,
+podemos então definir as noções semânticas básicas de validade,
+consequência e satisfatibilidade.  Uma sentença é válida, $\Entails !A$,
+se toda estrutura a satisfaz. Ela é consequência de um conjunto de
+!!{sentence}s, $\Gamma \Entails !A$, se toda !!{structure} que
+satisfaz todas as !!{sentence}s em~$\Gamma$ também satisfaz~$!A$. E um
+conjunto de sentenças é satisfatível se alguma !!{structure} satisfaz
+todas as !!{sentence}s nele ao mesmo tempo.  Como as !!{formula}s são
+definidas indutivamente, e a satisfação é, por sua vez, definida por
+indução na estrutura das !!{formula}s, podemos usar indução para provar
+propriedades da nossa semântica e relacionar as noções semânticas
+definidas.
 
 
 

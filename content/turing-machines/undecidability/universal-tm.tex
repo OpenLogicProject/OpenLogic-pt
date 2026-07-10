@@ -6,134 +6,134 @@
 
 \begin{document}
 
-\olfileid{tur}{und}{uni}
-\olsection{Universal Turing Machines}
+\olfileid[pt]{tur}{und}{uni}
+\olsection{Máquinas de Turing Universais}
 
-In \olref[enu]{sec} we discussed how every Turing machine can be
-described by a finite sequence of integers. This sequence encodes the
-states, alphabet, start state, and instructions of the Turing machine.
-We also pointed out that the set of all of these descriptions is
-!!{enumerable}. Since the set of such descriptions is !!{denumerable},
-this means that there is !!a{surjective} function from~$\Nat$ to
-these descriptions. Such !!a{surjective} function can be obtained, for
-instance, using Cantor's zig-zag method.  It gives us a way of
-enumerating all (descriptions) of Turing machines. If we fix one such
-enumeration, it now makes sense to talk of the $1$st, $2$nd, \dots,
-$e$th Turing machine.  These numbers are called \emph{indices}.
+Na \olref[enu]{sec} discutimos como toda máquina de Turing pode ser
+descrita por uma sequência finita de inteiros. Essa sequência codifica
+os estados, o alfabeto, o estado inicial e as instruções da máquina de
+Turing. Também observamos que o conjunto de todas essas descrições é
+!!{enumerable}. Como o conjunto de tais descrições é !!{denumerable},
+isso significa que há uma função !!{surjective} de~$\Nat$ nessas
+descrições. Uma tal função !!{surjective} pode ser obtida, por exemplo,
+usando o método zigue-zague de Cantor. Ele nos dá uma maneira de
+enumerar todas as (descrições de) máquinas de Turing. Se fixarmos uma
+tal enumeração, passa a fazer sentido falar da primeira, da segunda,
+\dots, $e$-ésima máquina de Turing. Esses números são chamados de
+\emph{índices}.
 
 \begin{defn}
-If $M$~is the $e$th Turing machine (in our fixed enumeration), we
-say that $e$~is an \emph{index} of~$M$. We write $M_e$ for the $e$th
-Turing machine.
+Se $M$~é a $e$-ésima máquina de Turing (em nossa enumeração fixada),
+dizemos que $e$~é um \emph{índice} de~$M$. Escrevemos $M_e$ para a
+$e$-ésima máquina de Turing.
 \end{defn}
 
-A machine may have more than one index, p.ex., two descriptions of~$M$
-may differ in the order in which we list its instructions, and these
-different descriptions will have different indices.
+Uma máquina pode ter mais de um índice; por exemplo, duas descrições
+de~$M$ podem diferir na ordem em que listamos suas instruções, e essas
+diferentes descrições terão índices diferentes.
 
-Importantly, it is possible to give the enumeration of Turing machine
-descriptions in such a way that we can effectively compute the
-description of~$M$ from its index, and to effectively compute an index
-of a machine~$M$ from its description.  By the Church--Turing thesis,
-it is then possible to find a Turing machine which recovers the
-description of the Turing machine with index~$e$ and writes the
-corresponding description on its tape as output. The description would
-be a sequence of blocks of~$\TMstroke$'s (representing the positive
-integers in the sequence describing~$M_e$).
+É importante notar que é possível dar a enumeração das descrições de
+máquinas de Turing de tal modo que possamos computar efetivamente a
+descrição de~$M$ a partir de seu índice, e computar efetivamente um
+índice de uma máquina~$M$ a partir de sua descrição. Pela tese de
+Church-Turing, é então possível encontrar uma máquina de Turing que
+recupera a descrição da máquina de Turing com índice~$e$ e escreve a
+descrição correspondente em sua fita como saída. A descrição seria uma
+sequência de blocos de~$\TMstroke$ (representando os inteiros positivos
+na sequência que descreve~$M_e$).
 
-Given this, it now becomes natural to ask: what functions of Turing
-machine indices are themselves computable by Turing machines? What
-properties of Turing machine indices can be decided by Turing
-machines?  An example: the function that maps an index~$e$ to the
-number of states the Turing machine with index~$e$ has, is computable
-by a Turing machine. Here's what such a Turing machine would do:
-started on a tape containing a single block of $e$~$\TMstroke$'s, it
-would first decode $e$ into its description. The description is now
-represented by a sequence of blocks of~$\TMstroke$'s on the tape.
-Since the first !!{element} in this sequence is the number of states.
-So all that has to be done now is to erase everything but the first
-block of $\TMstroke$'s and then halt.
+Diante disso, torna-se natural perguntar: que funções de índices de
+máquinas de Turing são elas próprias computáveis por máquinas de
+Turing? Que propriedades de índices de máquinas de Turing podem ser
+decididas por máquinas de Turing? Um exemplo: a função que leva um
+índice~$e$ ao número de estados que a máquina de Turing com índice~$e$
+possui é computável por uma máquina de Turing. Eis o que tal máquina
+de Turing faria: iniciada em uma fita contendo um único bloco de
+$e$~$\TMstroke$, ela primeiro decodificaria $e$ em sua descrição. A
+descrição passa a ser representada por uma sequência de blocos
+de~$\TMstroke$ na fita. Como o primeiro !!{element} nessa sequência é
+o número de estados, tudo o que resta a fazer agora é apagar tudo,
+exceto o primeiro bloco de $\TMstroke$, e então parar.
 
-A remarkable result is the following:
+Um resultado notável é o seguinte:
 
-\begin{thm}\ollabel{thm:universal-tm} There is a \emph{universal
-  Turing machine}~$U$ which, when started on input $\tuple{e,n}$ 
+\begin{thm}\ollabel{thm:universal-tm} Há uma \emph{máquina de Turing
+  universal}~$U$ que, quando iniciada na entrada $\tuple{e,n}$,
   \begin{enumerate}
-    \item halts iff $M_e$ halts on input~$n$, and
-    \item if $M_e$ halts with output $m$, so does~$U$.
+    \item para se, e somente se, $M_e$ para na entrada~$n$, e
+    \item se $M_e$ para com saída $m$, então $U$ também para.
   \end{enumerate}
-  $U$ thus computes the function $f\colon \Nat \times \Nat \pto \Nat$
-  given by $f(e,n) = m$ if $M_e$ started on input~$n$ halts with
-  output~$m$, and undefined otherwise.
+  Assim, $U$ computa a função $f\colon \Nat \times \Nat \pto \Nat$
+  dada por $f(e,n) = m$ se $M_e$ iniciada na entrada~$n$ para com
+  saída~$m$, e indefinida caso contrário.
 \end{thm}
 
 \begin{proof}
-  To actually produce~$U$ is basically impossible, since it is an
-  extremely complicated machine. But we can describe in outline how it
-  works, and then invoke the Church--Turing thesis.  When it starts,
-  $U$'s tape contains a block of $e$ $\TMstroke$'s followed by a block
-  of $n$~$\TMstroke$'s. It first ``decodes'' the index~$e$ to the
-  right of the input~$n$. This produces a list of numbers (O.s.\@,
-  blocks of $\TMstroke$'s separated by~$\TMblank$'s) that describes
-  the instructions of machine~$M_e$. $U$ then writes the number of the
-  start state of~$M_e$ and the number~$1$ on the tape to the right of
-  the description of~$M_e$. (Again, these are represented in unary, as
-  blocks of $\TMstroke$'s.) Next, it copies the input (block of
-  $n$~$\TMstroke$'s) to the right---but it replaces each $\TMstroke$
-  by a block of three $\TMstroke$'s (remember, the number of the $\TMstroke$
-  symbol is~$3$, $1$ being the number of~$\TMendtape$ and $2$ being
-  the number of~$\TMblank$). At the left end of this sequence of blocks
-  (separated by $\TMblank$ symbols on the tape of~$U$), it writes a
-  single~$\TMstroke$, the code for~$\TMendtape$.
+  Produzir de fato~$U$ é basicamente impossível, já que se trata de
+  uma máquina extremamente complicada. Mas podemos descrever em linhas
+  gerais como ela funciona, e então invocar a tese de Church-Turing.
+  Quando ela começa, a fita de~$U$ contém um bloco de $e$ $\TMstroke$
+  seguido de um bloco de $n$~$\TMstroke$. Ela primeiro ``decodifica''
+  o índice~$e$ à direita da entrada~$n$. Isso produz uma lista de
+  números (isto é, blocos de $\TMstroke$ separados por~$\TMblank$) que
+  descreve as instruções da máquina~$M_e$. Em seguida, $U$ escreve o
+  número do estado inicial de~$M_e$ e o número~$1$ na fita, à direita
+  da descrição de~$M_e$. (Novamente, esses são representados em unário,
+  como blocos de $\TMstroke$.) Depois, ela copia a entrada (bloco de
+  $n$~$\TMstroke$) para a direita---mas substitui cada $\TMstroke$ por
+  um bloco de três $\TMstroke$ (lembre-se, o número do símbolo
+  $\TMstroke$ é~$3$, sendo $1$ o número de~$\TMendtape$ e $2$ o número
+  de~$\TMblank$). Na extremidade esquerda dessa sequência de blocos
+  (separados por símbolos $\TMblank$ na fita de~$U$), ela escreve um
+  único~$\TMstroke$, o código de~$\TMendtape$.
 
-  $U$ now has on its tape: the index~$e$, the number~$n$, the code
-  number of the start state (the ``current state''), the number of the
-  initial head position~$1$ (the ``current head position''), and the
-  initial contents of the ``tape'' (a sequence of blocks
-  of~$\TMstroke$'s representing the code numbers of the symbols
-  of~$M_e$---the ``symbols''---separated by~$\TMblank$'s).
+  $U$ agora tem em sua fita: o índice~$e$, o número~$n$, o número de
+  código do estado inicial (o ``estado atual''), o número da posição
+  inicial do cabeçote~$1$ (a ``posição atual do cabeçote'') e o
+  conteúdo inicial da ``fita'' (uma sequência de blocos
+  de~$\TMstroke$ representando os números de código dos símbolos
+  de~$M_e$---os ``símbolos''---separados por~$\TMblank$).
 
-  It now simulates what $M_e$ would do if started on input~$n$, by
-  doing the following:
+  Ela agora simula o que $M_e$ faria se iniciada na entrada~$n$,
+  fazendo o seguinte:
   \begin{enumerate}
-    \item Find the number~$k$ of the ``current head position'' (at the
-    beginning, that's~$1$),
-    \item Move to the $k$th block in the ``tape'' to see what the
-    ``symbol'' there is,
+    \item Encontrar o número~$k$ da ``posição atual do cabeçote'' (no
+    início, esse é~$1$),
+    \item Mover-se para o $k$-ésimo bloco na ``fita'' para ver qual é o
+    ``símbolo'' ali,
     \item\ollabel{find-inst}%
-    Find the instruction matching the current ``state'' and
-    ``symbol,''
-    \item Move back to the $k$th block on the ``tape'' and replace the
-    ``symbol'' there with the code number of the symbol $M_e$ would
-    write,
-    \item Move the head to where it records the current ``state'' and
-    replace the number there with the number of the new state,
-    \item Move to the place where it records the ``tape position'' and
-    erase a~$\TMstroke$ or add a~$\TMstroke$ (if the instruction says
-    to move left or right, respectively).
-    \item Repeat.\footnote{We're glossing over some subtle
-    difficulties here. P.ex., $U$~may need some extra space when it
-    increases the counter where it keeps track of the ``current head
-    position''---in that case it will have to move the entire ``tape''
-    to the right.}
+    Encontrar a instrução que corresponde ao ``estado'' e ao
+    ``símbolo'' atuais,
+    \item Voltar para o $k$-ésimo bloco na ``fita'' e substituir o
+    ``símbolo'' ali pelo número de código do símbolo que $M_e$
+    escreveria,
+    \item Mover o cabeçote para onde ela registra o ``estado'' atual e
+    substituir o número ali pelo número do novo estado,
+    \item Mover-se para o lugar onde ela registra a ``posição na fita''
+    e apagar um~$\TMstroke$ ou adicionar um~$\TMstroke$ (se a instrução
+    mandar mover para a esquerda ou para a direita, respectivamente).
+    \item Repetir.\footnote{Estamos passando por cima de algumas
+    dificuldades sutis aqui. Por exemplo, $U$~pode precisar de algum
+    espaço extra quando incrementa o contador onde mantém o registro
+    da ``posição atual do cabeçote''---nesse caso, terá de mover toda
+    a ``fita'' para a direita.}
   \end{enumerate}
-  If $M_e$ started on input~$n$ never halts, then $U$ also never
-  halts, so its output is undefined.
+  Se $M_e$ iniciada na entrada~$n$ nunca para, então $U$ também nunca
+  para, de modo que sua saída é indefinida.
 
-  If in step~\olref{find-inst} it turns out that the description
-  of~$M_e$ contains no instruction for the current
-  ``state''/``symbol'' pair, then $M_e$ would halt. If this happens,
-  $U$ erases the part of its tape to the left of the ``tape.'' For
-  each block of three~$\TMstroke$'s (representing a~$\TMstroke$ on
-  $M_e$'s tape), it writes a $\TMstroke$ on the left end of its own
-  tape, and successively erases the ``tape.'' When this is done,
-  $U$'s~tape contains a single block of~$\TMstroke$'s of length~$m$.
+  Se no passo~\olref{find-inst} acontecer de a descrição de~$M_e$ não
+  conter nenhuma instrução para o par ``estado''/``símbolo'' atual,
+  então $M_e$ pararia. Se isso acontecer, $U$ apaga a parte de sua
+  fita à esquerda da ``fita''. Para cada bloco de três~$\TMstroke$
+  (representando um~$\TMstroke$ na fita de~$M_e$), ela escreve um
+  $\TMstroke$ na extremidade esquerda de sua própria fita, e apaga
+  sucessivamente a ``fita''. Quando isso está concluído, a fita de~$U$
+  contém um único bloco de~$\TMstroke$ de comprimento~$m$.
   
-  If $U$ encounters something other than a block of
-  three~$\TMstroke$'s on the ``tape,'' it immediately halts. Since
-  $U$'s~tape in this case does not contain a single block
-  of~$\TMstroke$'s, its output is not a natural number, O.s.\@, $f(e,n)$
-  is undefined in this case.
+  Se $U$ encontrar algo diferente de um bloco de três~$\TMstroke$ na
+  ``fita'', ela para imediatamente. Como a fita de~$U$ nesse caso não
+  contém um único bloco de~$\TMstroke$, sua saída não é um número
+  natural, isto é, $f(e,n)$ é indefinida nesse caso.
 \end{proof}
 
 \end{document}

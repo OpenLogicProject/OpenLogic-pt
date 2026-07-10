@@ -6,11 +6,11 @@
 
 \begin{document}
 
-\olfileid{fol}{ntd}{qrl}
+\olfileid[pt]{fol}{ntd}{qrl}
 
-\olsection{Quantifier Rules}
+\olsection{Regras de Quantificadores}
 
-\subsection{Rules for $\lforall$}
+\subsection{Regras para $\lforall$}
 
 \begin{defish}
 \AxiomC{$!A(a)$}
@@ -24,16 +24,16 @@
 \DisplayProof
 \end{defish}
 
-In the rules for~$\lforall$, $t$ is a closed term (a term that does
-not contain any variables), and $a$~is !!a{constant} which does not
-occur in the conclusion~$\lforall[x][!A(x)]$, or in any assumption
-which is !!{undischarged} in the !!{derivation} ending with the
-premise~$!A(a)$. We call $a$ the \emph{eigenvariable} of the
-\Intro{\lforall} inference.\footnote{We use the term ``eigenvariable''
-even though $a$ in the above rule is a constant. This has historical
-reasons.}
+Nas regras para~$\lforall$, $t$ é um termo fechado (um termo que não
+contém nenhuma variável), e $a$~é !!a{constant} que não
+ocorre na conclusão~$\lforall[x][!A(x)]$, nem em qualquer hipótese
+que esteja !!{undischarged} na !!{derivation} que termina com a
+premissa~$!A(a)$. Chamamos $a$ de \emph{variável própria} da
+inferência \Intro{\lforall}.\footnote{Usamos o termo ``variável própria''
+embora $a$ na regra acima seja uma constante. Isso tem razões
+históricas.}
 
-\subsection{Rules for $\lexists$}
+\subsection{Regras para $\lexists$}
 
 \begin{defish}
 \AxiomC{$\Atom{!A}{t}$}
@@ -49,49 +49,49 @@ reasons.}
 \DisplayProof
 \end{defish}
 
-Again, $t$ is a closed term, and $a$ is !!a{constant} which does not
-occur in the premise $\lexists[x][!A(x)]$, in the conclusion~$!C$, or
-any assumption which is !!{undischarged} in the !!{derivation}s ending
-with the two premises (other than the assumptions $!A(a)$). We call
-$a$ the \emph{eigenvariable} of the \Elim{\lexists} inference.
+Novamente, $t$ é um termo fechado, e $a$ é !!a{constant} que não
+ocorre na premissa $\lexists[x][!A(x)]$, na conclusão~$!C$, nem em
+qualquer hipótese que esteja !!{undischarged} nas !!{derivation}s que terminam
+com as duas premissas (além das hipóteses $!A(a)$). Chamamos
+$a$ de \emph{variável própria} da inferência \Elim{\lexists}.
 
-The condition that an eigenvariable neither occur in the premises nor
-in any assumption that is !!{undischarged} in the !!{derivation}s
-leading to the premises for the \Intro{\lforall} or \Elim{\lexists}
-inference is called the \emph{eigenvariable condition}.
+A condição de que uma variável própria não ocorra nem nas premissas nem
+em qualquer hipótese que esteja !!{undischarged} nas !!{derivation}s
+que levam às premissas para a inferência \Intro{\lforall} ou \Elim{\lexists}
+é chamada de \emph{condição de variável própria}.
 
 \begin{explain}
-Recall the convention that when $!A$ is !!a{formula} with the
-!!{variable}~$x$ free, we indicate this by writing~$!A(x)$. In the
-same context, $!A(t)$ then is short for~$\Subst{!A}{t}{x}$. So we
-could also write the $\Intro\lexists$ rule as:
+Lembre-se da convenção de que, quando $!A$ é !!a{formula} com a
+!!{variable}~$x$ livre, indicamos isso escrevendo~$!A(x)$. No
+mesmo contexto, $!A(t)$ é então uma abreviação de~$\Subst{!A}{t}{x}$. Assim,
+poderíamos também escrever a regra $\Intro\lexists$ como:
 \begin{prooftree}
 \AxiomC{$\Subst{!A}{t}{x}$}
 \RightLabel{\Intro{\lexists}}
 \UnaryInfC{$\lexists[x][!A]$}
 \end{prooftree}
-Note that $t$ may already occur in~$!A$, p.ex., $!A$~might
-be~$\Atom{\Obj P}{t,x}$.  Thus, inferring $\lexists[x][\Atom{\Obj
-P}{t,x}]$ from~$\Atom{\Obj P}{t,t}$ is a correct application
-of~$\Intro\lexists$---you may ``replace'' one or more, and not
-necessarily all, occurrences of~$t$ in the premise by the bound
-!!{variable}~$x$. However, the eigenvariable conditions in
-$\Intro\lforall$ and~$\Elim\lexists$ require that the !!{constant}~$a$
-does not occur in~$!A$. So, you cannot correctly infer
-$\lforall[x][\Atom{\Obj P}{a,x}]$ from $\Atom{\Obj P}{a,a}$
-using~$\Intro\lforall$.
+Note que $t$ pode já ocorrer em~$!A$, por exemplo, $!A$~poderia
+ser~$\Atom{\Obj P}{t,x}$.  Assim, inferir $\lexists[x][\Atom{\Obj
+P}{t,x}]$ de~$\Atom{\Obj P}{t,t}$ é uma aplicação correta
+de~$\Intro\lexists$---pode-se ``substituir'' uma ou mais, e não
+necessariamente todas, as ocorrências de~$t$ na premissa pela
+!!{variable}~$x$ ligada. Contudo, as condições de variável própria em
+$\Intro\lforall$ e~$\Elim\lexists$ exigem que a !!{constant}~$a$
+não ocorra em~$!A$. Portanto, não se pode inferir corretamente
+$\lforall[x][\Atom{\Obj P}{a,x}]$ de $\Atom{\Obj P}{a,a}$
+usando~$\Intro\lforall$.
 \end{explain}
 
 \begin{explain}
-In \Intro{\lexists} and \Elim{\lforall} there are no restrictions, and
-the term~$t$ can be anything, so we do not have to worry about any
-conditions. On the other hand, in the \Elim{\lexists} and
-\Intro{\lforall} rules, the eigenvariable condition requires that the
-!!{constant}~$a$ does not occur anywhere in the conclusion or in an
-!!{undischarged} assumption. The condition is necessary to ensure that
-the system is sound, O.s.\@, only !!{derive}s !!{sentence}s from
-!!{undischarged} assumptions from which they follow. Without this
-condition, the following would be allowed:
+Em \Intro{\lexists} e \Elim{\lforall} não há restrições, e
+o termo~$t$ pode ser qualquer coisa, de modo que não temos de nos
+preocupar com nenhuma condição. Por outro lado, nas regras \Elim{\lexists} e
+\Intro{\lforall}, a condição de variável própria exige que a
+!!{constant}~$a$ não ocorra em lugar algum na conclusão nem em uma
+hipótese !!{undischarged}. A condição é necessária para garantir que
+o sistema seja correto, isto é, que só !!{derive}s !!{sentence}s de
+hipóteses !!{undischarged}s das quais elas se seguem. Sem essa
+condição, o seguinte seria permitido:
 \begin{prooftree}
   \AxiomC{$\lexists[x][!A(x)]$}
   \AxiomC{$\Discharge{!A(a)}{1}$}
@@ -100,11 +100,11 @@ condition, the following would be allowed:
   \RightLabel{\Elim{\lexists}}
   \BinaryInfC{$\lforall[x][!A(x)]$}
 \end{prooftree}
-However, $\lexists[x][!A(x)] \Entails/ \lforall[x][!A(x)]$.
+Contudo, $\lexists[x][!A(x)] \Entails/ \lforall[x][!A(x)]$.
 
-As the elimination rules for quantifiers only allow substituting
-closed terms for !!{variable}s, it follows that any !!{formula} that
-can be derived from a set of !!{sentence}s is itself !!a{sentence}.
+Como as regras de eliminação para quantificadores só permitem substituir
+!!{variable}s por termos fechados, segue-se que qualquer !!{formula} que
+possa ser derivada de um conjunto de !!{sentence}s é ela própria !!a{sentence}.
 \end{explain}
 
 

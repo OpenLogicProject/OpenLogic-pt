@@ -1,0 +1,34 @@
+% Ajustes da capa PT.
+%
+% Problema: o título PT "Conjuntos, Lógica, Computação" ocupa 3 linhas (o EN
+% "Sets, Logic, Computation" ocupa 2), porque as palavras são mais longas. Com
+% o tamanho de fonte original (65pt), o bloco título+subtítulo desce e invade a
+% faixa ilustrada, que começa em 3.5in.
+%
+% A faixa ilustrada NÃO pode ser descida: a arte (os retratos) tem ~4.5in de
+% altura e a página tem 8in; começando em 3.5in vai de 3.5in a 8.0in (o fundo
+% exacto). Se a faixa descer, a arte ultrapassa os 8in e o retrato de baixo
+% (Noether) fica cortado — foi esse o efeito colateral do ajuste anterior.
+%
+% Solução correcta: manter a faixa em 3.5in (como no EN, para a arte chegar ao
+% fundo sem cortes) e reduzir o título e o subtítulo, encurtando também os
+% espaços verticais, para que o bloco título+subtítulo caiba acima de 3.5in.
+
+\RequirePackage{etoolbox}
+
+% Título PT um pouco menor que o original (65pt); redução quase imperceptível
+% face ao ajuste anterior (48pt).
+\renewcommand*{\OLPtitlecoverfont}{\fontsize{45pt}{49pt}\sffamily\bfseries}
+
+% Subtítulo ligeiramente menor.
+\renewcommand*{\OLPsubtitlecoverfont}{\fontsize{21pt}{25pt}\sffamily\bfseries}
+
+% Mais margem no topo (1.7cm -> 1.15cm): o bloco título+subtítulo desce um
+% pouco, longe da borda superior.
+\patchcmd{\OLPscreencover}{\vspace*{1.7cm}}{\vspace*{1.15cm}}{}{%
+  \PackageError{slc}{Falha ao ajustar o topo da capa PT}{}}
+
+% ...e o espaço entre título e subtítulo (1cm -> 0.4cm), para o conjunto caber
+% acima da faixa (que permanece em 3.5in).
+\patchcmd{\OLPscreencover}{\vspace*{1cm}}{\vspace*{0.4cm}}{}{%
+  \PackageError{slc}{Falha ao ajustar o espaco titulo-subtitulo PT}{}}

@@ -1,0 +1,364 @@
+% !TeX root = ./settheory-screen.tex
+% settheory.tex
+%
+% driver file settheory.tex to produce text
+
+\pretocmd{\OLEndChapterHook}{%
+  \IfFileExists{include/summary-\thechapter}{%
+    \section*{Resumo}\addcontentsline{toc}{section}{Resumo}%
+    \let\emph\textbf\input{include/summary-\thechapter}\let\emph\textit%
+  }{}%
+}{}{}
+
+\problemsperchapter
+
+\allowdisplaybreaks
+
+\frontmatter
+
+\OLPfrontmatter
+
+\input{include/preface}
+
+\mainmatter
+
+\part{Prelúdio}
+
+\olchapter{his}{set}{História e Mitologia}
+
+Para compreender o significado filosófico da teoria dos conjuntos, ajuda
+ter alguma ideia de por que ela surgiu. Para isso, ajuda pensar um pouco
+na história e na mitologia da matemática. Assim, antes mesmo de
+começarmos a discutir a teoria dos conjuntos, começaremos com uma
+``história'' muito breve. Mas a colocamos entre aspas, porque é muito breve,
+extremamente seletiva e algo contestável.
+
+\olimport*[history/set-theory]{infinitesimals}
+\olimport*[history/set-theory]{limits}
+\olimport*[history/set-theory]{pathologies}
+\olimport*[history/set-theory]{mythology}
+
+\section{Roteiro}
+
+Parte da lição da secção anterior é que a história da matemática foi em grande
+medida escrita pelos vencedores. Tinham machados para afiar; machados
+filosóficos e matemáticos. O estudo sério da história da matemática é
+seriamente difícil (e gratificante), e a Coruja de Minerva só levanta
+voo ao crepúsculo.
+
+Apesar disso, é incontestável que os resultados ``patológicos''
+envolveram o desenvolvimento de novas ferramentas matemáticas fascinantes
+e uma reconsideração dos padrões de rigor matemático. Por exemplo,
+exigiram pensar o contínuo (a ``reta real'') de determinado modo,
+e pensar as funções como mapas ponto a ponto. E, no fim, o
+desenvolvimento completo de todas essas ferramentas exigiu o
+desenvolvimento rigoroso da teoria dos conjuntos. O restante deste livro
+explicará algo desse desenvolvimento.
+
+\Olref[sfr][][]{part} apresentará uma versão da teoria \emph{ingênua} dos
+conjuntos, facilmente suficiente para desenvolver toda a matemática
+acabada de descrever. Isto levará algum tempo. Mas, ao fim de
+\olref[sfr][][]{part}, estaremos em condições de compreender como tratar
+números reais como certos conjuntos, e como tratar funções sobre
+eles---incluindo curvas preenchedoras de espaço---como \emph{outros}
+conjuntos.
+
+Mas a \emph{ingenuidade} dessa teoria dos conjuntos emergirá na
+\olref[sth][][]{part}, quando encontrarmos paradoxos da teoria dos conjuntos
+e a necessidade sentida de descrever as coisas com muito mais precisão.
+Nesse ponto, precisaremos desenvolver um tratamento axiomático dos
+conjuntos, com o qual possamos recuperar todos os nossos resultados
+ingênuos, evitando (esperemos) paradoxos. (A Coruja do rigor matemático
+também só levanta voo ao crepúsculo.)
+
+\OLEndChapterHook
+
+\olpart{sfr}{Teoria Ingênua dos Conjuntos}
+
+\section*{Introdução à \Olref[sfr][][]{part}}
+
+Na \olref[sfr][][]{part}, consideraremos os conjuntos de forma ingênua e
+informal. \Olref[sfr][set][]{chap} apresentará a ideia básica, a de que os
+conjuntos são coleções consideradas extensionalmente, e introduzirá algumas
+operações muito elementares. Em seguida,
+\crefrange{sfr:rel::chap}{sfr:fun::chap} explicarão como a teoria dos conjuntos
+nos permite falar de relações e, portanto, de funções.
+
+\Crefrange{sfr:siz::chap}{sfr:infinite::chap} tratarão então de algumas das
+primeiras realizações da teoria ingênua dos conjuntos. Em
+\olref[sfr][siz][]{chap}, exploramos como comparar conjuntos quanto ao seu
+tamanho. No \olref[sfr][arith][]{chap}, exploramos como se podem reduzir os
+inteiros, os racionais e os reais à teoria dos conjuntos juntamente com
+aritmética elementar. No \olref[sfr][infinite][]{chap}, consideramos como se
+pode implementar aritmética elementar no seio da teoria dos conjuntos.
+
+Repetindo, tudo isto será feito de forma \emph{ingênua}. Mas tudo o que
+fizermos na \olref[sfr][][]{part} pode ser feito com rigor perfeito, na teoria
+formal dos conjuntos que introduzimos na \olref[sth][][]{part}.
+
+\olchapter{sfr}{set}{Começando}
+
+\olimport*[sets-functions-relations/sets]{basics}
+\olimport*[sets-functions-relations/sets]{subsets}
+\olimport*[sets-functions-relations/sets]{important-sets}
+\olimport*[sets-functions-relations/sets]{unions-and-intersections}
+\olimport*[sets-functions-relations/sets]{pairs-and-products}
+\olimport*[sets-functions-relations/sets]{russells-paradox}
+
+\OLEndChapterHook
+
+\olchapter{sfr}{rel}{Relações}
+
+\olimport*[sets-functions-relations/relations]{relations-as-sets}
+\olimport*[sets-functions-relations/relations]{reflections}
+\olimport*[sets-functions-relations/relations]{special-properties}
+\olimport*[sets-functions-relations/relations]{equivalence-relations}
+\olimport*[sets-functions-relations/relations]{orders}
+\olimport*[sets-functions-relations/relations]{operations}
+
+\OLEndChapterHook
+
+\olchapter{sfr}{fun}{Funções}
+
+\olimport*[sets-functions-relations/functions]{function-basics}
+\olimport*[sets-functions-relations/functions]{function-kinds}
+\olimport*[sets-functions-relations/functions]{functions-relations}
+\olimport*[sets-functions-relations/functions]{inverses}
+\olimport*[sets-functions-relations/functions]{composition}
+
+\OLEndChapterHook
+
+\olchapter{sfr}{siz}{O Tamanho dos Conjuntos}
+
+% Igualar espaço vertical dos displays ao do texto «longo»: em PT as quebras
+% de linha mudam o \predisplaysize e o TeX usa skips «curtos» (menores) só
+% nalguns displays — o cap. 5 fica visualmente irregular face ao original.
+\begingroup
+\setlength{\abovedisplayshortskip}{\abovedisplayskip}%
+\setlength{\belowdisplayshortskip}{\belowdisplayskip}%
+
+\olimport*[sets-functions-relations/size-of-sets]{introduction}
+\olimport*[sets-functions-relations/size-of-sets]{enumerability-alt}
+\olimport*[sets-functions-relations/size-of-sets]{zig-zag}
+\olimport*[sets-functions-relations/size-of-sets]{pairing}
+\olimport*[sets-functions-relations/size-of-sets]{non-enumerability-alt}
+\olimport*[sets-functions-relations/size-of-sets]{reduction-alt}
+\olimport*[sets-functions-relations/size-of-sets]{equinumerous-sets}
+\olimport*[sets-functions-relations/size-of-sets]{comparing-size}
+\olimport*[sets-functions-relations/size-of-sets]{schroder-bernstein}
+\olimport*[history/set-theory]{cantor-plane}
+\olimport*[history/set-theory]{hilbert-curve}
+
+\endgroup
+
+\OLEndChapterHook
+
+\olsetchapter{nosection}
+\chapter{Aritmetização}
+
+No \olref[his][set][]{chap}, consideramos parte do enquadramento
+histórico, nomeadamente \emph{por que} temos sequer teoria dos
+conjuntos.
+\Crefrange{sfr:set::chap}{sfr:siz::chap} percorreram depois alguns
+princípios da teoria ingênua dos conjuntos. Compreendemos assim, de
+modo ingênuo, como construir relações e funções, comparar os tamanhos
+dos conjuntos e \emph{coisas desse gênero}.
+
+Com isto assimilado, podemos abordar algumas das primeiras conquistas
+da teoria dos conjuntos na redução (em certo sentido) de grandes
+parcelas da matemática à teoria dos conjuntos e à aritmética. Esse é o
+objetivo deste capítulo.
+
+\olimport*[sets-functions-relations/arithmetization]{arithmetization}
+
+\chapter{Conjuntos Infinitos}
+
+No capítulo anterior, mostramos como construir, de certo modo, várias
+coisas---inteiros, racionais e reais---assumindo uma teoria ingênua dos
+conjuntos e os números naturais. A pergunta deste capítulo é: podemos
+construir o próprio conjunto dos números naturais \emph{em si} usando a
+teoria dos conjuntos?
+
+\olimport*[sets-functions-relations/infinite]{infinite}
+\olresetchapter
+
+\OLEndPartHook
+
+\olpart{sth}{A Concepção Iterativa}
+
+\section*{Introdução à \Olref[sth][][]{part}}
+
+\Olref[sfr][][]{part} tratou os conjuntos de modo ingênuo e informal. É
+tempo de apertar o rigor e apresentar uma teoria formal dos conjuntos.
+Esse é o objetivo da \olref[sth][][]{part}.
+
+A nossa teoria formal é uma teoria de primeira ordem com um único
+predicado binário, $\in$. Enunciaremos vários axiomas que regem o
+comportamento da relação de pertença. Contudo, introduziremos estes
+axiomas só à medida que forem necessários, e consideraremos como
+poderíamos justificá-los quando os encontrarmos. Como resultado,
+introduziremos os nossos axiomas \emph{ao longo} dos capítulos
+seguintes.
+
+Pode, no entanto, ser útil ao leitor ter uma lista de todos os axiomas
+num só lugar. Eis \emph{todos} os axiomas que consideraremos na
+\olref[sth][][]{part}. Como na \olref[sfr][][]{part}, a escolha de
+minúsculas e maiúsculas nas letras orienta-se apenas pela legibilidade:
+
+\begin{defish}
+\emph{Extensionalidade.}
+\[\forall A \forall B(\forall x(x \in A \liff x \in B) \lif A = B)\]
+\end{defish}
+
+\begin{defish}
+\emph{União.}
+\[
+\forall A \exists U \forall x(x \in U \liff (\exists b \in A)x \in b),
+\]
+isto é, $\bigcup A$ existe para qualquer conjunto~$A$.
+\end{defish}
+
+\begin{defish}
+\emph{Pares.}
+\[
+\forall a \forall b \exists P \forall x (x \in P \liff
+(x = a \lor x = b)),
+\]
+isto é, $\{a, b\}$ existe para quaisquer $a$ e~$b$.
+\end{defish}
+
+\begin{defish}
+\emph{Conjuntos potência.}
+\[
+\forall A \exists P \forall x(x \in P \liff (\forall z \in x)z \in A),
+\]
+isto é, $\Pow{A}$ existe para qualquer conjunto~$A$.
+\end{defish}
+
+\begin{defish}
+\emph{Infinito.}
+\begin{multline*}
+\exists I((\exists o \in I)\forall x(x \notin o) \land {}\\
+(\forall x \in I)(\exists s \in I)\forall z(z \in s \liff (z \in x \lor z = x))),
+\end{multline*}
+isto é, existe um conjunto que tem $\emptyset$ como !!a{element} e que
+é fechado para $x \mapsto x \cup \{x\}$.
+\end{defish}
+
+\begin{defish}
+\emph{Fundamentação.}
+\[
+\forall A(\forall x\, x \notin A \lor (\exists b \in A)(\forall x \in A)x \notin b),
+\]
+isto é, $A = \emptyset$ ou $(\exists b \in A)A\cap b = \emptyset$.
+\end{defish}
+
+\begin{defish}
+\emph{Boa ordenação.}
+Para todo o conjunto $A$, existe uma relação que bem ordena $A$.
+(Escrever este axioma em lógica de primeira ordem seria demasiado penoso
+para valer a pena aqui.)
+\end{defish}
+
+\begin{defish}
+\emph{Esquema de separação.}
+Para qualquer fórmula $\phi(x)$ que não contenha~``$S$'':
+\[
+\forall A \exists S \forall x(x \in S \liff (\phi(x) \land x \in A)),
+\]
+isto é, $\Setabs{x \in A}{\phi(x)}$ existe para qualquer conjunto~$A$.
+\end{defish}
+
+\begin{defish}
+\emph{Esquema de substituição.} Para qualquer fórmula $\phi(x, y)$ que não contenha~``$B$'':
+\[
+\forall A((\forall x \in A)\lexists![y][\phi(x,y)] \lif \exists B \forall y (y \in B \liff (\exists x \in A)\phi(x,y))),
+\]
+isto é, $\Setabs{y}{(\exists x \in A)\phi(x,y)}$ existe para qualquer $A$, se $\phi$ for ``funcional''.
+\end{defish}
+
+Em ambos os esquemas, as fórmulas podem conter parâmetros. De fato,
+ao longo de \olref[sth][][]{part}, seguimos a convenção de que qualquer
+fórmula pode conter parâmetros. (Ver
+\olref[sfr][infinite][induction]{sec} para recordar o que significa dizer
+que uma fórmula pode conter parâmetros.)
+
+\begin{description}
+\item[$\Zminus$] é Extensionalidade, União, Pares, Conjuntos potência, Infinito, Separação.
+\item[$\Z$] é $\Zminus$ mais Fundamentação.
+\item[$\ZFminus$] é $\Z$ mais Substituição.
+\item[$\ZF$] é $\ZFminus$ mais Fundamentação.
+\item[$\ZFC$] é $\ZF$ mais Boa ordenação.
+\end{description}
+
+\olimport*[set-theory/story]{story}
+
+\chapter{Passos rumo a $\Z$}
+
+No capítulo anterior, consideramos a concepção iterativa de conjunto.
+Neste capítulo, tentaremos extrair a maior parte dos axiomas da teoria de
+conjuntos de Zermelo, O.s.\@,~$\Z$. A abordagem é \emph{inteiramente}
+inspirada em \citet{Boolos1971}, \citet{Scott1974} e
+\citet{Shoenfield:AST}. 
+
+\olsetchapter{nosection}
+\olimport*[set-theory/z]{z}
+\olresetchapter
+
+\olimport*[set-theory/ordinals]{ordinals}
+
+\olimport*[set-theory/spine]{spine}
+
+\olimport*[set-theory/replacement]{replacement}
+
+\olimport*[set-theory/ord-arithmetic]{ord-arithmetic}
+
+\olimport*[set-theory/cardinals]{cardinals}
+
+\chapter{Aritmética Cardinal}
+
+No \olref[sth][cardinals][]{chap}, desenvolvemos uma teoria dos
+cardinais. O passo seguinte é esboçar uma teoria da aritmética cardinal.
+Este capítulo resume brevemente alguns fatos elementares e depois
+aponta algumas das dificuldades, que se revelam fascinantes e
+filosoficamente densas.
+
+\olsetchapter{nosection}
+\olimport*[set-theory/card-arithmetic]{card-arithmetic}
+\olresetchapter
+
+\olimport*[set-theory/choice]{choice}
+
+\stopproblems
+\def\ifproblems#1{}
+
+\appendix
+
+\setlength{\olphotowidth}{.45\textwidth}
+
+\chapter{Biografias}
+
+\olimport*[history/biographies]{georg-cantor}
+
+\olimport*[history/biographies]{kurt-goedel}
+
+\olimport*[history/biographies]{bertrand-russell}
+
+\olimport*[history/biographies]{alfred-tarski}
+
+\olimport*[history/biographies]{ernst-zermelo}
+
+\backmatter
+
+\clearpage
+
+\photocredits
+
+\bibliographystyle{\olpath/bib/natbib-oup}
+\bibliography{\olpath/bib/open-logic}
+
+\input{include/siglas}
+\input{include/notacao}
+\input{include/glossario-termos}
+
+\olimport*[]{open-logic-about}

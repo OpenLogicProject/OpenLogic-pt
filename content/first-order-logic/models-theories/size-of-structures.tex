@@ -6,20 +6,20 @@
 
 \begin{document}
 
-\olfileid{fol}{mat}{siz}
+\olfileid[pt]{fol}{mat}{siz}
 
-\olsection{Expressing the Size of \printtoken{P}{structure}}
+\olsection{Expressando o Tamanho de \printtoken{P}{structure}}
 
 \begin{explain}
-There are some properties of structures we can express even without
-using the non-logical symbols of a language.  For instance, there are
-!!{sentence}s which are true in !!a{structure} iff the !!{domain} of
-the !!{structure} has at least, at most, or exactly a certain
-number~$n$ of !!{element}s.
+Há algumas propriedades de estruturas que podemos expressar mesmo sem
+usar os símbolos não lógicos de uma linguagem.  Por exemplo, há
+!!{sentence}s que são verdadeiras em !!a{structure} se, e somente se, o
+!!{domain} da !!{structure} tem pelo menos, no máximo ou exatamente um
+certo número~$n$ de !!{element}s.
 \end{explain}
 
 \begin{prop}
-The !!{sentence}
+A !!{sentence}
 \begin{multline*}
   !A_{\ge n} \ident \lexists[x_1][\lexists[x_2][\dots\lexists[x_n][{}]]]\\
   \begin{aligned}
@@ -30,14 +30,15 @@ The !!{sentence}
 \eq/[x_{n-1}][x_n])
 \end{aligned}
 \end{multline*}
-is true in !!a{structure}~$\Struct M$ iff $\Domain M$ contains at
-least $n$ !!{element}s. Consequently, $\Sat{M}{\lnot !A_{\ge n+1}}$ iff
-$\Domain M$ contains at most~$n$ !!{element}s.
+é verdadeira em !!a{structure}~$\Struct M$ se, e somente se, $\Domain M$
+contém pelo menos $n$ !!{element}s. Consequentemente,
+$\Sat{M}{\lnot !A_{\ge n+1}}$ se, e somente se, $\Domain M$ contém no
+máximo~$n$ !!{element}s.
 
 \end{prop}
 
 \begin{prop}
-The !!{sentence}
+A !!{sentence}
 \begin{multline*}
 !A_{= n} \ident \lexists[x_1][\lexists[x_2][\dots\lexists[x_n][{}]]] \\
 \begin{aligned}
@@ -49,24 +50,24 @@ The !!{sentence}
 \lforall[y][(\eq[y][x_1] \lor \dots \lor \eq[y][x_n]]))
 \end{aligned}
 \end{multline*}
-is true in !!a{structure}~$\Struct M$ iff $\Domain M$ contains
-exactly $n$ !!{element}s.
+é verdadeira em !!a{structure}~$\Struct M$ se, e somente se, $\Domain M$
+contém exatamente $n$ !!{element}s.
 \end{prop}
 
 \begin{prop}
-A !!{structure} is infinite iff it is a model of
+Uma !!{structure} é infinita se, e somente se, é um modelo de
 \[
 \{!A_{\ge 1}, !A_{\ge 2}, !A_{\ge 3}, \dots \}.
 \]
 \end{prop}
 
-There is no single purely logical sentence which is true in~$\Struct
-M$ iff $\Domain M$ is infinite.  However, one can give !!{sentence}s with
-non-logical !!{predicate}s which only have infinite models (although
-not every infinite !!{structure} is a model of them).  The property of
-being a finite structure, and the property of being a
-!!{nonenumerable} structure cannot even be expressed with an infinite
-set of !!{sentence}s.  These facts follow from the compactness and
-L\"owenheim--Skolem theorems.
+Não há uma única sentença puramente lógica que seja verdadeira
+em~$\Struct M$ se, e somente se, $\Domain M$ é infinito.  No entanto,
+pode-se dar !!{sentence}s com !!{predicate}s não lógicos que só têm
+modelos infinitos (embora nem toda !!{structure} infinita seja modelo
+delas).  A propriedade de ser uma estrutura finita e a propriedade de
+ser uma estrutura !!{nonenumerable} nem sequer podem ser expressas com
+um conjunto infinito de !!{sentence}s.  Estes fatos seguem dos
+teoremas da compacidade e de L\"owenheim--Skolem.
 
 \end{document}

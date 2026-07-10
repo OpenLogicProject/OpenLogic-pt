@@ -6,42 +6,41 @@
 
 \begin{document}
 
-\olfileid{tur}{mac}{ctt}
-\olsection{The Church--Turing Thesis}
+\olfileid[pt]{tur}{mac}{ctt}
+\olsection{A Tese de Church--Turing}
 
-Turing machines are supposed to be a precise replacement for the
-concept of an effective procedure. Turing thought that anyone who
-grasped both the concept of an effective procedure and the concept
-of a Turing machine would have the intuition that anything that could
-be done via an effective procedure could be done by Turing machine.
-This claim is given support by the fact that all the other proposed
-precise replacements for the concept of an effective procedure turn
-out to be extensionally equivalent to the concept of a Turing machine
----that is, they can compute exactly the same set of functions. This
-claim is called the \emph{Church--Turing thesis}.
+As máquinas de Turing devem ser um substituto preciso do
+conceito de procedimento efetivo. Turing pensava que quem
+compreendesse tanto o conceito de procedimento efetivo quanto o de
+máquina de Turing teria a intuição de que tudo o que pudesse
+ser feito por meio de um procedimento efetivo poderia ser feito por uma máquina de Turing.
+Essa afirmação é sustentada pelo fato de que todas as outras propostas
+precisas de substituto do conceito de procedimento efetivo se mostram
+extensionalmente equivalentes ao conceito de máquina de Turing
+---ou seja, podem computar exatamente o mesmo conjunto de funções. Essa
+afirmação chama-se \emph{tese de Church--Turing}.
 
-\begin{defn}[Church--Turing thesis]
-The \emph{Church--Turing Thesis} states that anything computable via
-an effective procedure is Turing computable.
+\begin{defn}[Tese de Church--Turing]
+A \emph{tese de Church--Turing} afirma que tudo o que é computável por meio
+de um procedimento efetivo é computável por máquina de Turing.
 \end{defn}
 
-The Church--Turing thesis is appealed to in two ways.  The first kind
-of use of the Church--Turing thesis is an excuse for laziness.  Suppose
-we have a description of an effective procedure to compute something,
-say, in ``pseudo-code.''  Then we can invoke the Church--Turing thesis
-to justify the claim that the same function is computed by some Turing
-machine, even if we have not in fact constructed it.
+A tese de Church--Turing é invocada de duas maneiras. O primeiro tipo
+de uso é uma desculpa para a preguiça. Suponha
+que temos uma descrição de um procedimento efetivo para computar algo,
+digamos, em ``pseudocódigo.'' Então podemos invocar a tese de Church--Turing
+para justificar a afirmação de que a mesma função é computada por alguma máquina de Turing,
+mesmo que não a tenhamos de fato construído.
 
-The other use of the Church--Turing thesis is more philosophically
-interesting.  It can be shown that there are functions which cannot be
-computed by Turing machines.  From this, using the Church--Turing
-thesis, one can conclude that it cannot be effectively computed, using
-any procedure whatsoever.  For if there were such a procedure, by the
-Church--Turing thesis, it would follow that there would be a Turing
-machine for it.  So if we can prove that there is no Turing machine
-that computes it, there also can't be an effective procedure.  In
-particular, the Church--Turing thesis is invoked to claim that the
-so-called halting problem not only cannot be solved by Turing
-machines, it cannot be effectively solved at all.
+O outro uso da tese de Church--Turing é mais filosoficamente
+interessante. Pode-se mostrar que existem funções que não podem ser
+computadas por máquinas de Turing. Disso, usando a tese de Church--Turing,
+conclui-se que não podem ser computadas efetivamente, usando
+qualquer procedimento que seja. Pois se houvesse tal procedimento, pela
+tese de Church--Turing seguiria que haveria uma máquina de Turing para ele. Assim, se podemos provar que não há máquina de Turing
+que o compute, também não pode haver um procedimento efetivo. Em
+particular, a tese de Church--Turing é invocada para afirmar que o
+chamado problema da parada não só não pode ser resolvido por máquinas de Turing,
+como não pode ser resolvido efetivamente de modo algum.
 
 \end{document}

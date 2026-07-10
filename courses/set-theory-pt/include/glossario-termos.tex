@@ -1,0 +1,250 @@
+% Glossário de termos — curso Set Theory PT (só vocabulário e noções nomeadas; ordem alfabética dentro de cada tema)
+
+\clearpage
+\phantomsection
+\chapter*{Glossário}
+\markboth{\MakeUppercase{Glossário}}{\MakeUppercase{Glossário}}
+\addcontentsline{toc}{chapter}{Glossário}
+
+\noindent
+Este glossário reúne \textbf{termos} (palavras e expressões usadas no discurso matemático do livro). Os \textbf{símbolos} e as \textbf{listas formais} de abreviaturas teóricas estão no capítulo \emph{Notação}. As entradas agrupam-se por tema, na ordem de leitura; dentro de cada tema, vão em ordem alfabética em português.
+
+\section*{Prelúdio e motivação histórica}
+
+\begin{description}
+\item[Continuidade] Noção de ``sem saltos'' para funções sobre o contínuo, afinada no século XIX com argumentos do tipo épsilon-delta e no rigor de Cauchy e Weierstrass; motiva a necessidade de fundamentos.
+\item[Curva (Jordan)] Neste livro, mapa contínuo de um intervalo para o plano; contexto para curvas preenchedoras e exemplos geométricos ``patológicos''.
+\item[Curva preenchedora de espaço] Mapa contínuo que sobrecarrega uma dimensão (por exemplo curvas de Peano ou de Hilbert), desafiando a intuição de dimensão e pressionando a noção rigorosa de função e de conjunto.
+\item[Derivada] Taxa de variação instantânea, desenvolvida primeiro com ideias de infinitesimal e depois no rigor moderno.
+\item[Diferenciabilidade] Propriedade de admitir derivada; contrasta com continuidade e com exemplos limite discutidos no prelúdio.
+\item[Função] No prelúdio, objeto central do cálculo; mais adiante, tratada conjuntisticamente como relação funcional ou conjunto de pares ordenados.
+\item[Infinitesimal] Quantidade ``infinitamente pequena'' usada heuristicamente antes do rigor moderno; parte da história que leva à formalização.
+\item[Limite] Conceito que articula aproximação e continuidade; peça-chave na crise de rigor do século XIX.
+\item[Mitologia da matemática] Expressão do texto para narrativas simplificadoras ou exageradas sobre descoberta e progresso; contrapõe-se ao estudo histórico sério.
+\item[Patologia / patológico] Exemplos que violam intuições ingénuas (funções, curvas, cardinalidades), muitas vezes motores de novo rigor.
+\item[Rigor matemático] Padrões de definição e prova que tornam os resultados auditáveis; o prelúdio explica parte da pressão histórica em direção à teoria dos conjuntos.
+\item[Teoria dos conjuntos] Quadro no qual, no fim do livro, se modelam números, funções e análise; o prelúdio apresenta parte das razões históricas dessa adopção.
+\end{description}
+
+\section*{Conjuntos (teoria ingênua)}
+
+\begin{description}
+\item[Coleção extensional] Ideia de que um conjunto fica determinado pelos seus membros, não pela maneira de o descrever; base da extensionalidade.
+\item[Compreensão (princípio ingénuo)] Princípio de formar o conjunto de todos os objetos que satisfazem uma condição; sob a ingenuidade total, conduz ao paradoxo de Russell.
+\item[Conjunto] Coleção considerada como objeto matemático; na parte ingénua, tratada informalmente antes dos axiomas restritivos.
+\item[Conjunto vazio] Conjunto sem elementos; ponto de partida de muitas construções.
+\item[Conjunto potência] Conjunto de todos os subconjuntos de um conjunto dado; aparece no axioma homónimo na teoria formal.
+\item[Diferença de conjuntos] Conjunto dos elementos da primeira parcela que não pertencem à segunda.
+\item[Elemento / membro] Objeto que ``pertence'' a um conjunto; o texto distingue léxico conforme o original em inglês (\textit{element} / \textit{member}).
+\item[Extensionalidade (ingénua)] Princípio de que conjuntos com os mesmos membros são iguais; na teoria formal torna-se o axioma de extensionalidade.
+\item[Intersecção] Conjunto dos objetos que pertencem simultaneamente a todos os conjuntos de uma família; inclui intersecção de dois conjuntos e intersecção de uma família arbitrária.
+\item[Par ordenado] Objeto que codifica ordem; base para relações e funções como conjuntos.
+\item[Paradoxo de Russell] Contradição obtida ao considerar ``o conjunto de todos os conjuntos que não são membros de si próprios''; motiva a teoria axiomática.
+\item[Parte própria] Subconjunto estrito; usado na definição de infinito de Dedekind.
+\item[Produto cartesiano] Conjunto de todos os pares ordenados cujas primeiras componentes vêm de um conjunto e as segundas de outro (e generalizações).
+\item[Subconjunto] Conjunto cujos membros são todos membros de outro; subconjunto próprio se, além disso, falta pelo menos um membro do conjunto maior.
+\item[Tupla] Generalização de par ordenado para várias componentes; usada em aritmetização e em estruturas ordenadas.
+\item[União] Conjunto dos membros dos membros de uma família; inclui união de dois conjuntos e união de uma família arbitrária.
+\item[União disjunta] Construção que ``etiqueta'' cópias disjuntas de conjuntos; usada em ordinais e cardinalidade para somas ordenadas.
+\end{description}
+
+\section*{Relações e ordens (teoria ingênua)}
+
+\begin{description}
+\item[Anti-simetria] Se dois elementos se relacionam mutuamente, então são iguais; típica de ordens parciais reflexivas.
+\item[Assimetria] Nunca dois elementos distintos se relacionam mutuamente nos dois sentidos; típica de ordens estritas.
+\item[Classe de equivalência] Conjunto dos elementos relacionados a um dado membro por uma relação de equivalência.
+\item[Conexa (relação)] Para quaisquer dois elementos distintos, um relaciona-se com o outro num dos sentidos (ordem total).
+\item[Divisibilidade] Exemplo de ordem parcial sobre os inteiros; ilustra relações não lineares.
+\item[Equivalência (relação)] Relação reflexiva, simétrica e transitiva; particiona o domínio em classes.
+\item[Fecho reflexivo] Acrescentar à relação todos os pares na diagonal (cada elemento relacionado consigo); atenção à sobrecarga do símbolo de fecho transitivo noutros capítulos.
+\item[Fecho reflexivo transitivo] Menor relação reflexiva e transitiva que contém a relação dada; no capítulo de operações aparece construída a partir do fecho transitivo e da diagonal.
+\item[Fecho transitivo (relação)] Menor relação transitiva que contém a relação dada, obtida como união das potências iteradas da relação.
+\item[Identidade (relação)] Relação que relaciona cada elemento apenas consigo, sobre um conjunto dado.
+\item[Irreflexividade] Nenhum elemento se relaciona consigo.
+\item[Ordem estrita] Relação irreflexiva e transitiva (e, em geral, assimétrica); contrapõe-se à ordem reflexiva.
+\item[Ordem linear / total] Ordem parcial conexa: quaisquer dois elementos são comparáveis.
+\item[Ordem parcial] Relação reflexiva, anti-simétrica e transitiva.
+\item[Pré-ordem] Relação reflexiva e transitiva (não exige anti-simetria).
+\item[Quociente] Conjunto de classes de equivalência sob uma relação de equivalência.
+\item[Reflexividade] Todo elemento relaciona-se consigo.
+\item[Relação binária] Subconjunto de um produto cartesiano; base para ordens, equivalências e funções.
+\item[Relação inversa] Relação obtida invertendo a ordem dos pares.
+\item[Restrição (relação)] Relação obtida considerando apenas elementos de um subconjunto do domínio.
+\item[Simetria] Se um elemento relaciona-se com outro, o segundo relaciona-se com o primeiro.
+\item[Transitividade] Se o primeiro relaciona-se com o segundo e o segundo com o terceiro, então o primeiro relaciona-se com o terceiro.
+\end{description}
+
+\section*{Funções (teoria ingênua)}
+
+\begin{description}
+\item[Aplicação] Termo usado quando o original distingue \textit{application} de \textit{map}; designa o valor ou o acto de aplicar uma função a um argumento.
+\item[Bijeção] Função simultaneamente injetiva e sobrejetiva; admite inversa bilateral.
+\item[Composição de funções] Aplicar primeiro uma função e depois outra; exige compatibilidade entre imagem da primeira e domínio da segunda.
+\item[Contradomínio] Conjunto onde a função toma valores declarados; pode ser estritamente maior que a imagem.
+\item[Domínio] Conjunto de argumentos para os quais a função está definida.
+\item[Extensionalidade (funções)] Duas funções com o mesmo domínio e os mesmos valores ponto a ponto são iguais.
+\item[Função] Relação em que cada argumento do domínio tem exactamente um valor; identificada com o seu gráfico.
+\item[Gráfico (de função)] Conjunto de pares argumento-valor; identifica a função com uma relação binária especial.
+\item[Imagem] Conjunto dos valores que a função toma no seu domínio.
+\item[Injeção] Função que nunca envia dois argumentos distintos para o mesmo valor.
+\item[Inversa] Função que reverte outra; existência global equivalente à bijeção, ou uso de inversas à esquerda ou à direita.
+\item[Mapa / mapeamento] Sinónimos estáveis de \textit{map} / \textit{mapping} no original; designam função.
+\item[Relação funcional] Relação em que cada elemento do domínio tem exactamente um sucessor pela relação.
+\item[Restrição (função)] Função obtida limitando o domínio a um subconjunto, mantendo os mesmos valores.
+\item[Sobrejeção] Função cuja imagem coincide com o contradomínio declarado.
+\item[Valor] Objeto associado a um argumento pela função.
+\end{description}
+
+\section*{Cardinalidade ingênua}
+
+\begin{description}
+\item[Cardinalidade (informal)] ``Tamanho'' de um conjunto, refinado depois por equipotência e pela teoria dos cardinais.
+\item[Confinito] Conjunto equipotente a um subconjunto próprio de si; na presença dos axiomas usuais, alinha-se com o infinito de Dedekind.
+\item[Diagonalização] Argumento que constrói um objecto diferindo de cada linha de uma lista (Cantor, conjunto potência dos naturais, sequências binárias).
+\item[Enumerável] Equipotente ao conjunto dos naturais ou a um segmento inicial finito; no texto ingénuo, também caracterizado por injeção nos naturais.
+\item[Enumeração] Lista ou bijeção que organiza todos os membros de um conjunto com índices naturais.
+\item[Equipotência] Relação entre dois conjuntos quando existe bijeção de um para o outro; ``mesmo tamanho'' em sentido conjuntista.
+\item[Não enumerável] Conjunto que não é enumerável; exemplo paradigmático no livro: o conjunto potência dos naturais.
+\item[Redução (enumerabilidade)] Provar não enumerabilidade transportando a dificuldade a partir de outro conjunto já conhecido por não enumerável.
+\item[Teorema de Cantor] Para qualquer conjunto, o seu conjunto potência tem cardinalidade estritamente maior; não existe sobrejeção do conjunto para o seu conjunto potência.
+\item[Teorema de Schr\"oder--Bernstein] Se cada um de dois conjuntos injeta no outro, então são equipotentes; a prova completa é adiada até à teoria dos cardinais.
+\end{description}
+
+\section*{Aritmetização e construção dos números}
+
+\begin{description}
+\item[Construção de Cauchy] Reais como classes de equivalência de sequências de Cauchy de racionais.
+\item[Cortes de Dedekind] Partições dos racionais em dois conjuntos que modelam a completude da recta real.
+\item[Inteiros] Construídos a partir dos naturais por equivalência em pares (diferenças formais).
+\item[Racionais] Construídos como classes de equivalência de pares de inteiros (fracções formais).
+\item[Reais] Construídos por cortes de Dedekind ou por Cauchy; completam a cadeia natural dos sistemas numéricos no livro.
+\item[Sucessor aritmético] Operação que gera o ``próximo'' natural na estrutura deduzida dos axiomas de Peano codificados em teoria dos conjuntos.
+\end{description}
+
+\section*{Infinito, naturais e indução}
+
+\begin{description}
+\item[Álgebra de Dedekind] Estrutura com sucessor injectivo, elemento inicial fora da imagem do sucessor e princípio da indução; modelo para os naturais.
+\item[Fecho indutivo] Menor conjunto que contém um gerador e é fechado sob uma operação; no tratamento de von Neumann coincide com o conjunto dos naturais.
+\item[Indução matemática] Princípio que permite provar propriedades para todos os naturais a partir do caso inicial e do passo indutivo.
+\item[Infinito de Dedekind] Conjunto equipotente a uma parte própria de si; caracterização do infinito antes do desenvolvimento completo da hierarquia ordinal.
+\item[Números naturais] No von Neumann, o conjunto dos ordinais finitos; base para a aritmetização no livro.
+\item[Recursão] Método para definir funções nos naturais (e generalizações) especificando valor inicial e passo iterativo.
+\item[Sucessor (von Neumann)] Operação conjuntista que gera o próximo estágio a partir de um conjunto; usada na construção dos naturais e dos ordinais.
+\end{description}
+
+\section*{Concepção iterativa, paradoxos e filosofia}
+
+\begin{description}
+\item[Compreensão impredicativa] Definição de um objeto por referência a uma totalidade que inclui o próprio objeto; tema na crítica predicativista.
+\item[Concepção iterativa] Visão de que os conjuntos são formados estágio a estágio, em contraste com a ``totalidade'' ingénua.
+\item[Extensionalidade (justificação)] Motivação filosófica para identificar conjuntos pela coincidência de membros.
+\item[\textit{Grundgesetze}] Obra de Frege; sistema em que a compreensão irrestrita conduz à contradição.
+\item[Paradoxo de Russell (revisitado)] Retorno ao paradoxo após a narrativa axiomática; liga ingenuidade, classes e diagonalização.
+\item[Predicatividade] Restrição a definições que não quantificam sobre totais ``maiores'' que o objeto definido.
+\item[Urelemento] Objecto sem membros que não é o conjunto vazio; discutido como opcional face à teoria pura de conjuntos.
+\end{description}
+
+\section*{Axiomas e fragmentos de teoria}
+
+\begin{description}
+\item[Axioma da escolha] Existência de função de escolha para famílias de conjuntos não vazios; caracteriza a teoria com escolha face à sem escolha.
+\item[Axioma da extensionalidade] Conjuntos com os mesmos membros são iguais.
+\item[Axioma da fundamentação] Cada conjunto não vazio tem um membro disjunto dele; evita ciclos de pertença e patologias associadas.
+\item[Axioma da regularidade] Formulação equivalente à fundamentação no desenvolvimento do livro (equivalência demonstrada módulo o fragmento adequado da teoria).
+\item[Axioma da união] Para qualquer conjunto, existe a união dos seus membros.
+\item[Axioma do conjunto potência] Para qualquer conjunto, existe o conjunto de todos os seus subconjuntos.
+\item[Axioma do infinito] Afirma a existência de um conjunto indutivo adequado para fundar os naturais de von Neumann.
+\item[Axioma dos pares] Para quaisquer dois objectos, existe o par (não ordenado) formado por eles.
+\item[Esquema de separação] Para cada propriedade definível, o subconjunto dos membros de um conjunto dado que a verificam é conjunto; restringe a compreensão.
+\item[Esquema de substituição] A imagem de um conjunto por uma relação funcional definível é conjunto; distingue a força de Zermelo--Fraenkel da de Zermelo puro.
+\item[Teoria de Zermelo--Fraenkel] Teoria de primeira ordem com predicado de pertença, axiomas de Zermelo e substituição; variantes sem escolha ou com escolha aparecem no texto.
+\item[Teoria de Zermelo] Fragmento com os axiomas de Zermelo (sem substituição, conforme o enquadramento do livro).
+\item[Teoria dos Níveis] Teoria mais fraca baseada na ideia de ``níveis''; relacionada com Zermelo--Fraenkel e com extensões discutidas na parte de substituição.
+\item[Extensão Zr] Teoria obtida acrescentando axiomas fortes à Teoria dos Níveis; no texto, todo conjunto tem posto e a teoria supera Zermelo puro.
+\end{description}
+
+\section*{Ordinais}
+
+\begin{description}
+\item[Boa ordenação] Ordem linear em que todo subconjunto não vazio tem mínimo; em certos contextos, equivalente a princípios de escolha.
+\item[Indução transfinita] Generalização da indução para ordinais arbitrários; ferramenta central em provas sobre a hierarquia e sobre postos.
+\item[Limite (ordinal)] Ordinal não zero que não é sucessor; acumula todos os ordinais menores.
+\item[Ordinal] No sentido de von Neumann: conjunto transitivo bem ordenado pela pertença.
+\item[Ordinal inicial] Menor ordinal de uma dada cardinalidade infinita; liga cardinais a ordinais escolhidos canonicamente.
+\item[Ordem bem ordenada] Estrutura ordenada isomorfa a um ordinal, ou, equivalentemente, estritamente bem fundamentada na ordem.
+\item[Representação ordinal] Todo bem ordenamento é isomorfo a um único ordinal.
+\item[Segmento inicial] Subconjunto fechado para predecessores na ordem; usado em isomorfismos de ordens.
+\item[Sucessor ordinal] Próximo estágio após um ordinal dado na construção de von Neumann.
+\item[Transitivo (conjunto)] Se um membro pertence a um membro do conjunto, então pertence ao próprio conjunto; propriedade dos ordinais e dos estágios da hierarquia.
+\end{description}
+
+\section*{Hierarquia cumulativa, posto e fundação}
+
+\begin{description}
+\item[Estágio da hierarquia] Nível indexado por um ordinal na hierarquia cumulativa; conjunto de tudo o que aparece ``antes'' desse ordinal.
+\item[Fecho transitivo (conjunto)] Menor conjunto transitivo que contém um conjunto dado; no volume, o texto adopta uma abreviatura consagrada na lista de notação.
+\item[Hierarquia cumulativa] Família de estágios indexada pelos ordinais, acumulando conjuntos estágio a estágio; modelo formal da concepção iterativa.
+\item[Posto] Menor ordinal $\alpha$ tal que o conjunto dado é subconjunto do estágio $\alpha$ da hierarquia; mede profundidade na cumulativa.
+\item[Recursão na hierarquia] Definições e provas por indução nos ordinais ou nos estágios da hierarquia.
+\end{description}
+
+\section*{Substituição e limitação de tamanho}
+
+\begin{description}
+\item[Limitação de tamanho] Princípio que impede a formação de ``conjuntos demasiado grandes'' sem critério; contrapõe-se à compreensão irrestrita.
+\item[Reflexão (metatema)] Tópicos sobre o que a linguagem de primeira ordem consegue exprimir sobre a hierarquia vista como totalidade.
+\end{description}
+
+\section*{Aritmética ordinal}
+
+\begin{description}
+\item[Adição ordinal] Operação que ``cola'' duas boas ordenações; em geral não comutativa.
+\item[Exponenciação ordinal] Potenciação transfinita baseada na multiplicação ordinal; distinta da exponenciação cardinal.
+\item[Multiplicação ordinal] Repetição ordenada de uma boa ordenação; liga-se a produtos lexicográficos.
+\item[Ordem lexicográfica] Ordem em produtos que compara primeiro numa coordenada e depois noutra; usada na aritmética ordinal.
+\end{description}
+
+\section*{Cardinais e comparabilidade}
+
+\begin{description}
+\item[Cardinal] No livro, sobretudo como ordinal inicial ou como objeto que codifica o ``tamanho'' de um conjunto; as sucessões alef e beth dos infinitos aparecem na parte final.
+\item[Cardinal inicial] Ver \emph{Ordinal inicial}; identifica um cardinal infinito com o menor ordinal da sua cardinalidade.
+\item[Comparabilidade de cardinais] Relações de não maior, estritamente menor e equipotência entre tamanhos; sem Axioma da Escolha, a comparabilidade falha em geral.
+\item[Hartogs (ordinal de)] Menor ordinal que não se injeta num conjunto dado; ferramenta para comparar tamanhos sem escolha global.
+\item[Tipo de ordem] Ordinal associado a um bem ordenamento, único a menos de isomorfismo.
+\end{description}
+
+\section*{Aritmética cardinal e hipóteses do contínuo}
+
+\begin{description}
+\item[Aritmética cardinal] Operações de soma, produto e potência entre cardinais; leis distintas da aritmética ordinal.
+\item[Cofinalidade] Menor ordinal que serve de domínio para uma função com imagem ilimitada num cardinal dado; usada em limitações de cardinalidade.
+\item[Continuo] Cardinalidade da recta real; no desenvolvimento clássico, identifica-se com a potência do conjunto dos naturais.
+\item[Hipótese do Contínuo] Não existe cardinal estritamente entre o dos naturais e o do continuo; independente da teoria usual com escolha.
+\item[Hipótese Generalizada do Contínuo] Identificação, para todo ordinal, das duas sucessões canónicas dos infinitos que o livro nota com alef e beth; implica a Hipótese do Contínuo.
+\item[Independência da hipótese do contínuo] Resultado de que nem a hipótese nem a sua negação se demonstram só com os axiomas habituais; o livro resume o panorama (Gödel, Cohen e posteriores).
+\item[Ponto fixo de alef ou de beth] Cardinal que coincide com o termo indexado pela própria cardinal na sucessão alef ou beth; existência por argumentos de limite.
+\item[Sucessor cardinal] Menor cardinal estritamente maior que um cardinal dado.
+\end{description}
+
+\section*{Escolha e princípios fracos}
+
+\begin{description}
+\item[Axioma da boa ordenação] Todo conjunto pode ser bem ordenado por alguma relação; no livro figura na enumeração da teoria com escolha e é equivalente ao Axioma da Escolha.
+\item[Conjunto não mensurável] Subconjunto da recta real sem medida de Lebesgue compatível com a invariância por translação; construção associada a escolhas (Vitali).
+\item[Decomposição paradoxal] Construções que decompõem sólidos e recompõem por isometrias, possíveis com o Axioma da Escolha (contexto Banach--Tarski).
+\item[Escolha enumerável] Princípio que afirma escolha apenas para famílias enumeráveis de conjuntos não vazios; capítulo dedicado.
+\item[Escolha (noção)] Uso frequente do texto para designar o Axioma da Escolha quando se trabalha na teoria com escolha.
+\item[Função de escolha] Associa a cada membro de uma família de conjuntos não vazios um elemento desse membro; a existência global para toda família é o Axioma da Escolha.
+\item[Teorema da boa ordenação] Todo conjunto admite uma boa ordenação; equivalente ao Axioma da Escolha no tratamento clássico.
+\end{description}
+
+\section*{Cardinalidade no sentido de Tarski e Scott}
+
+\begin{description}
+\item[Cardinalidade Tarski--Scott] Noção de ``tamanho'' que dispensa o teorema da boa ordenação; permite falar de cardinalidade sem assumir o Axioma da Escolha.
+\item[Número de Hume] Abstracção de cardinalidade por equinumerosidade, no enquadramento filosófico do texto.
+\item[Extensão de Frege] Objeto abstrato associado a uma condição; contexto histórico e lógico ligado a paradoxos e a alternativas conjuntistas.
+\end{description}

@@ -6,62 +6,62 @@
 
 \begin{document}
 
-\olfileid{tur}{mac}{cmb}
-\olsection{Combining Turing Machines}
+\olfileid[pt]{tur}{mac}{cmb}
+\olsection{Combinando Máquinas de Turing}
 
 \begin{explain}
-The examples of Turing machines we have seen so far have been fairly
-simple in nature. But in fact, any problem that can be solved with any
-modern programming language can also be solved with Turing machines.
-To build more complex Turing machines, it is important to convince
-ourselves that we can combine them, so we can build machines to solve
-more complex problems by breaking the procedure into simpler parts.
-If we can find a natural way to break a complex problem down into
-constituent parts, we can tackle the problem in several stages,
-creating several simple Turing machines and combining them into one
-machine that can solve the problem. This point is especially important
-when tackling the Halting Problem in the next section.
+Os exemplos de máquinas de Turing que vimos até agora foram bastante
+simples por natureza. Mas, de fato, qualquer problema que possa ser resolvido com qualquer
+linguagem de programação moderna também pode ser resolvido com máquinas de Turing.
+Para construir máquinas de Turing mais complexas, é importante nos convencer
+de que podemos combiná-las, de modo a construir máquinas que resolvam
+problemas mais complexos quebrando o procedimento em partes mais simples.
+Se conseguirmos encontrar uma maneira natural de quebrar um problema complexo em
+partes constituintes, podemos atacar o problema em vários estágios,
+criando várias máquinas de Turing simples e combinando-as em uma única
+máquina capaz de resolver o problema. Esse ponto é especialmente importante
+ao atacar o Problema da Parada na próxima seção.
 
-How do we combine Turing machines $M = \tuple{Q, \Sigma, q_0, \delta}$
-and~$M' = \tuple{Q', \Sigma', q_0', \delta'}$?  We now use the
-configuration of the tape after $M$~has halted as the input
-configuration of a run of machine~$M'$.  To get a single Turing
-machine $M \frown M'$ that does this, do the following:
+Como combinamos as máquinas de Turing $M = \tuple{Q, \Sigma, q_0, \delta}$
+e~$M' = \tuple{Q', \Sigma', q_0', \delta'}$?  Usamos agora a
+configuração da fita após $M$~ter parado como a configuração de entrada
+de uma execução da máquina~$M'$.  Para obter uma única máquina de Turing
+$M \frown M'$ que faz isso, faça o seguinte:
 \begin{enumerate}
-    \item Renumber (or relabel) all the states~$Q'$ of~$M'$ so that $M$
-    and~$M'$ have no states in common ($Q \cap Q' = \emptyset$).
-    \item The states of $M \frown M'$ are $Q \cup Q'$.
-    \item The tape alphabet is $\Sigma \cup \Sigma'$.
-    \item The start state is~$q_0$.
-    \item The transition function is the function $\delta''$ given by:
+    \item Renumere (ou rerrotule) todos os estados~$Q'$ de~$M'$ de modo que $M$
+    e~$M'$ não tenham estados em comum ($Q \cap Q' = \emptyset$).
+    \item Os estados de $M \frown M'$ são $Q \cup Q'$.
+    \item O alfabeto da fita é $\Sigma \cup \Sigma'$.
+    \item O estado inicial é~$q_0$.
+    \item A função de transição é a função $\delta''$ dada por:
     \[\delta''(q,\sigma) =
     \begin{cases}
-      \delta(q,\sigma) & \text{if $q \in Q$}\\
-      \delta'(q,\sigma) & \text{if $q \in Q'$}\\
-      \tuple{q_0', \sigma, \TMstay} & \text{if $q \in Q$ and
-      $\delta(q,\sigma)$ is undefined}
+      \delta(q,\sigma) & \text{se $q \in Q$}\\
+      \delta'(q,\sigma) & \text{se $q \in Q'$}\\
+      \tuple{q_0', \sigma, \TMstay} & \text{se $q \in Q$ e
+      $\delta(q,\sigma)$ é indefinida}
     \end{cases}\]
 \end{enumerate}
-The resulting machine uses the instructions of~$M$ when it is in a
-state $q \in Q$, the instructions of~$M'$ when it is in a state~$q \in
-Q'$. When it is in a state $q \in Q$ and is scanning a symbol~$\sigma$
-for which $M$ has no transition (O.s.\@, $M$ would have halted), it
-enters the start state of~$M'$ (and leaves the tape contents and head
-position as it is).
+A máquina resultante usa as instruções de~$M$ quando está em um
+estado $q \in Q$, e as instruções de~$M'$ quando está em um estado~$q \in
+Q'$. Quando está em um estado $q \in Q$ e examina um símbolo~$\sigma$
+para o qual $M$ não tem transição (isto é, $M$ teria parado), ela
+entra no estado inicial de~$M'$ (e deixa o conteúdo da fita e a posição
+da cabeça como estão).
 
-Note that unless the machine~$M$ is disciplined, we don't know where
-the tape head is when $M$~halts, so the halting configuration of~$M$
-need not have the head scanning square~$1$. When combining machines,
-it's important to keep this in mind.
+Note que, a menos que a máquina~$M$ seja disciplinada, não sabemos onde
+está a cabeça da fita quando $M$~para, então a configuração de parada de~$M$
+não precisa ter a cabeça examinando o quadrado~$1$. Ao combinar máquinas,
+é importante ter isso em mente.
 \end{explain}
 
 \begin{ex}
-\emph{Combining Machines:} We'll design a machine which, when started
-on input consisting of two blocks of~$\TMstroke$'s of length $n$
-and~$m$, halts with a single block of $2(m+n)$ $\TMstroke$'s on the
-tape. In order to build this machine, we can combine two machines we
-are already familiar with: the addition machine, and the doubler. We
-begin by drawing a state diagram for the addition machine.
+\emph{Combinando Máquinas:} Projetaremos uma máquina que, quando iniciada
+com uma entrada composta de dois blocos de~$\TMstroke$ de comprimento $n$
+e~$m$, para com um único bloco de $2(m+n)$ $\TMstroke$ na
+fita. Para construir essa máquina, podemos combinar duas máquinas que
+já conhecemos: a máquina de adição e a duplicadora. Começamos
+desenhando um diagrama de estado para a máquina de adição.
 \[
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
                     semithick]
@@ -78,11 +78,11 @@ begin by drawing a state diagram for the addition machine.
         (C) edge [loop above] node {\TMtrans{\TMstroke}{\TMblank}{\TMstay}} (C);
 \end{tikzpicture}
 \]
-Instead of halting in state~$q_2$, we want to continue operation in
-order to double the output. Recall that the doubler machine erases the
-first stroke in the input and writes two strokes in a separate output.
-Let's add an instruction to make sure the tape head is reading the
-first stroke of the output of the addition machine.
+Em vez de parar no estado~$q_2$, queremos continuar a operação a fim
+de duplicar a saída. Lembre-se de que a máquina duplicadora apaga o
+primeiro traço da entrada e escreve dois traços em uma saída separada.
+Vamos adicionar uma instrução para garantir que a cabeça da fita esteja lendo o
+primeiro traço da saída da máquina de adição.
 \[
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
                     semithick]
@@ -103,11 +103,11 @@ first stroke of the output of the addition machine.
             edge node[left, xshift=-2mm] {\TMtrans{\TMendtape}{\TMendtape}{\TMright}} (E);
 \end{tikzpicture}
 \]
-It is now easy to double the input---all we have to do is connect the
-doubler machine onto state~$q_4$. This requires renaming the states of
-the doubler machine so that they start at~$q_4$ instead
-of~$q_0$---this way we don't end up with two starting states. The
-final diagram should look as in \olref{fig:combined}.
+Agora é fácil duplicar a entrada---tudo o que temos a fazer é conectar a
+máquina duplicadora ao estado~$q_4$. Isso requer renomear os estados da
+máquina duplicadora de modo que comecem em~$q_4$ em vez
+de~$q_0$---dessa forma não acabamos com dois estados iniciais. O
+diagrama final deve ter a aparência da \olref{fig:combined}.
 \begin{figure}
 \[
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
@@ -144,28 +144,28 @@ final diagram should look as in \olref{fig:combined}.
         edge              node {\TMtrans{\TMblank}{\TMblank}{\TMright}} (E);
 \end{tikzpicture}
 \]
-\caption{Combining adder and doubler machines}
+\caption{Combinando as máquinas de adição e duplicadora}
 \ollabel{fig:combined}
 \end{figure}
 \end{ex}
 
 \begin{prop}
-    If $M$ and $M'$ are disciplined and compute the functions $f\colon
-    \Nat^k \to \Nat$ and $f'\colon \Nat \to \Nat$, respectively, then
-    $M \frown M'$ is disciplined and computes~$\comp{f}{f'}$.
+    Se $M$ e $M'$ são disciplinadas e computam as funções $f\colon
+    \Nat^k \to \Nat$ e $f'\colon \Nat \to \Nat$, respectivamente, então
+    $M \frown M'$ é disciplinada e computa~$\comp{f}{f'}$.
 \end{prop}
 
 \begin{proof}
-    Since $M$ is disciplined, when it halts with
-    output~$f(n_1,\dots,n_k) = m$, the head is scanning square~$1$. If
-    we now enter the start state of~$M'$, the machine will halt with
-    output $f'(m)$, again scanning square~$1$. The other conditions of
-    \olref[dis]{defn:disciplined} are also satisfied.
+    Como $M$ é disciplinada, quando para com
+    saída~$f(n_1,\dots,n_k) = m$, a cabeça está examinando o quadrado~$1$. Se
+    agora entrarmos no estado inicial de~$M'$, a máquina parará com
+    saída $f'(m)$, novamente examinando o quadrado~$1$. As demais condições de
+    \olref[dis]{defn:disciplined} também são satisfeitas.
 \end{proof}
 
 \begin{prob}
-    Give a disciplined Turing machine computing $f(x) = x+2$ by taking
-    the machine~$M$ from \cref{tur:mac:dis:prob:disc-succ} and
-    construct $M \frown M$.
+    Dê uma máquina de Turing disciplinada que computa $f(x) = x+2$ tomando
+    a máquina~$M$ de \cref{tur:mac:dis:prob:disc-succ} e
+    construindo $M \frown M$.
 \end{prob}
 \end{document}

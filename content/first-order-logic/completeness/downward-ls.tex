@@ -6,58 +6,60 @@
 
 \begin{document}
 
-\olfileid{fol}{com}{dls}
-\olsection{The L\"owenheim--Skolem Theorem}
+\olfileid[pt]{fol}{com}{dls}
+\olsection{O Teorema de L\"owenheim--Skolem}
 
-The L\"owenheim--Skolem Theorem says that if a theory has an infinite
-model, then it also has a model that is at most !!{denumerable}. An
-immediate consequence of this fact is that first-order logic cannot
-express that the size of !!a{structure} is !!{nonenumerable}: any
-!!{sentence} or set of !!{sentence}s satisfied in all
-!!{nonenumerable} !!{structure}s is also satisfied in some
-!!{enumerable} structure.
+O Teorema de L\"owenheim--Skolem diz que se uma teoria tem um modelo
+infinito, então ela também tem um modelo que é no máximo
+!!{denumerable}. Uma consequência imediata desse fato é que a lógica de
+primeira ordem não pode expressar que o tamanho de !!a{structure} é
+!!{nonenumerable}: qualquer !!{sentence} ou conjunto de !!{sentence}s
+satisfeito em todas as !!{structure}s !!{nonenumerable}s também é
+satisfeito em alguma estrutura !!{enumerable}.
 
-\begin{thm} 
-\ollabel{thm:downward-ls} If $\Gamma$ is consistent then it has
-!!a{enumerable} model, O.s.\@, it is satisfiable in !!a{structure}
-whose domain is either finite or !!{denumerable}.
+\begin{thm}
+\ollabel{thm:downward-ls} Se $\Gamma$ é consistente, então ela tem
+um modelo !!{enumerable}, isto é, é satisfatível em !!a{structure}
+cujo domínio é finito ou !!{denumerable}.
 \end{thm}
 
 \begin{proof}
-If $\Gamma$ is consistent, the !!{structure}~$\Struct M$ delivered by
-the proof of the completeness theorem has a domain $\Domain{M}$ that
-is no larger than the set of the terms of the language~$\Lang L$. So
-$\Struct M$ is at most !!{denumerable}.
+Se $\Gamma$ é consistente, a !!{structure}~$\Struct M$ fornecida pela
+prova do teorema da completude tem um domínio $\Domain{M}$ que não é
+maior do que o conjunto dos termos da linguagem~$\Lang L$. Assim
+$\Struct M$ é no máximo !!{denumerable}.
 \end{proof}
 
 \begin{thm}
-\ollabel{noidentity-ls} If $\Gamma$ is a consistent set of !!{sentence}s
-in the language of first-order logic without identity, then it has
-!!a{denumerable} model, O.s.\@, it is satisfiable in !!a{structure}
-whose domain is infinite and !!{enumerable}.
+\ollabel{noidentity-ls} Se $\Gamma$ é um conjunto consistente de
+!!{sentence}s na linguagem da lógica de primeira ordem sem identidade,
+então ela tem um modelo !!{denumerable}, isto é, é satisfatível em
+!!a{structure} cujo domínio é infinito e !!{enumerable}.
 \end{thm}
 
 \begin{proof}
-If $\Gamma$ is consistent and contains no sentences in which identity
-appears, then the !!{structure}~$\Struct M$ delivered by the proof of
-the completeness theorem has a domain $\Domain{M}$ identical to the set
-of terms of the language~$\Lang L'$. So $\Struct{M}$ is
-!!{denumerable}, since $\Trm[L']$ is.
+Se $\Gamma$ é consistente e não contém sentenças em que a identidade
+aparece, então a !!{structure}~$\Struct M$ fornecida pela prova do
+teorema da completude tem um domínio $\Domain{M}$ idêntico ao conjunto
+dos termos da linguagem~$\Lang L'$. Assim $\Struct{M}$ é
+!!{denumerable}, pois $\Trm[L']$ o é.
 \end{proof}
 
-\begin{ex}[Skolem's Paradox]
-Zermelo--Fraenkel set theory~$\Log{ZFC}$ is a very powerful framework
-in which practically all mathematical statements can be expressed,
-including facts about the sizes of sets. So for instance, $\Log{ZFC}$
-can prove that the set~$\Real$ of real numbers is !!{nonenumerable},
-it can prove Cantor's Theorem that the power set of any set is larger
-than the set itself, etc.  If $\Log{ZFC}$ is consistent, its models
-are all infinite, and moreover, they all contain !!{element}s about
-which the theory says that they are !!{nonenumerable}, such as the
-element that makes true the theorem of~$\Log{ZFC}$ that the power set
-of the natural numbers exists. By the L\"owenheim--Skolem Theorem,
-$\Log{ZFC}$ also has !!{enumerable} models---models that contain
-``!!{nonenumerable}'' sets but which themselves are !!{enumerable}.
+\begin{ex}[Paradoxo de Skolem]
+A teoria dos conjuntos de Zermelo--Fraenkel~$\Log{ZFC}$ é um arcabouço
+muito poderoso no qual praticamente todas as afirmações matemáticas
+podem ser expressas, incluindo fatos sobre os tamanhos de conjuntos.
+Assim, por exemplo, $\Log{ZFC}$ pode provar que o conjunto~$\Real$ dos
+números reais é !!{nonenumerable}, pode provar o Teorema de Cantor de
+que o conjunto potência de qualquer conjunto é maior do que o próprio
+conjunto, etc.  Se $\Log{ZFC}$ é consistente, seus modelos são todos
+infinitos e, além disso, todos contêm !!{element}s sobre os quais a
+teoria diz que são !!{nonenumerable}s, como o elemento que torna
+verdadeiro o teorema de~$\Log{ZFC}$ de que o conjunto potência dos
+números naturais existe. Pelo Teorema de L\"owenheim--Skolem,
+$\Log{ZFC}$ também tem modelos !!{enumerable}s---modelos que contêm
+conjuntos ``!!{nonenumerable}s'', mas que eles mesmos são
+!!{enumerable}s.
 \end{ex}
 
 \end{document}

@@ -6,110 +6,110 @@
 
 \begin{document}
 
-\olfileid{fol}{syn}{ext}
+\olfileid[pt]{fol}{syn}{ext}
 
-\olsection{Extensionality}
+\olsection{Extensionalidade}
 
 \begin{explain}
-Extensionality, sometimes called relevance, can be expressed
-informally as follows: the only factors that bear upon the
-satisfaction of !!{formula}~$!A$ in !!a{structure}~$\Struct M$
-relative to !!a{variable} assignment~$s$, are the size of the
-!!{domain} and the assignments made by~$\Struct M$ and~$s$ to the
-elements of the language that actually appear in~$!A$.
+A extensionalidade, às vezes chamada de relevância, pode ser expressa
+informalmente da seguinte forma: os únicos fatores que influenciam a
+satisfação de !!{formula}~$!A$ em !!a{structure}~$\Struct M$
+em relação a uma atribuição de variáveis~$s$ são o tamanho do
+!!{domain} e as atribuições feitas por~$\Struct M$ e~$s$ aos
+elementos da linguagem que de fato aparecem em~$!A$.
 
-One immediate consequence of extensionality is that where two
-!!{structure}s~$\Struct M$ and~$\Struct M'$ agree on all the elements
-of the language appearing in a sentence~$!A$ and have the same
-domain,~$\Struct M$ and~$\Struct M'$ must also agree on whether or not
-$!A$ itself is true.
+Uma consequência imediata da extensionalidade é que, quando duas
+!!{structure}s~$\Struct M$ e~$\Struct M'$ concordam em todos os elementos
+da linguagem que aparecem em uma sentença~$!A$ e têm o mesmo
+domínio,~$\Struct M$ e~$\Struct M'$ também devem concordar quanto a se
+$!A$ em si é verdadeira ou não.
 \end{explain}
 
-\begin{prop}[Extensionality]
+\begin{prop}[Extensionalidade]
   \ollabel{prop:extensionality}
-  Let $!A$ be !!a{formula}, and $\Struct M_1$ and $\Struct M_2$ be
-  !!{structure}s with $\Domain{M_1} = \Domain{M_2}$, and $s$ a
-  variable assignment on $\Domain{M_1} = \Domain{M_2}$.  If
+  Seja $!A$ !!a{formula}, e $\Struct M_1$ e $\Struct M_2$
+  !!{structure}s com $\Domain{M_1} = \Domain{M_2}$, e $s$ uma
+  atribuição de variáveis sobre $\Domain{M_1} = \Domain{M_2}$. Se
   $\Assign{c}{M_1} = \Assign{c}{M_2}$, $\Assign{R}{M_1}=\Assign{R}{M_2}$,
-  and $\Assign{f}{M_1} = \Assign{f}{M_2}$ for every !!{constant}~$c$,
-  relation symbol~$R$, and !!{function} $f$ occurring in~$!A$, then
-  $\Sat{M_1}{!A}[s]$ iff $\Sat{M_2}{!A}[s]$.
+  e $\Assign{f}{M_1} = \Assign{f}{M_2}$ para todo !!{constant}~$c$,
+  símbolo de relação~$R$, e !!{function} $f$ que ocorre em~$!A$, então
+  $\Sat{M_1}{!A}[s]$ sse $\Sat{M_2}{!A}[s]$.
 \end{prop}
 
 \begin{proof}
-  First prove (by induction on~$t$) that for every term,
-  $\Value{t}{M_1}[s] = \Value{t}{M_2}[s]$.  Then prove the proposition
-  by induction on~$!A$, making use of the claim just proved for the
-  induction basis (where $!A$ is atomic).
+  Primeiro prove (por indução sobre~$t$) que, para todo termo,
+  $\Value{t}{M_1}[s] = \Value{t}{M_2}[s]$. Então prove a proposição
+  por indução sobre~$!A$, fazendo uso da afirmação que acabamos de provar para a
+  base da indução (onde $!A$ é atômica).
 \end{proof}
 
 \begin{prob}
-Carry out the proof of \olref[fol][syn][ext]{prop:extensionality} in
-detail.
+Faça a prova de \olref[fol][syn][ext]{prop:extensionality} em
+detalhe.
 \end{prob}
 
-\begin{cor}[Extensionality for !!^{sentence}s]
+\begin{cor}[Extensionalidade para !!^{sentence}s]
   \ollabel{cor:extensionality-sent}
-  Let $!A$ be !!a{sentence} and $\Struct{M_1}$, $\Struct{M_2}$ as in
-  \olref{prop:extensionality}. Then $\Sat{M_1}{!A}$ iff $\Sat{M_2}{!A}$.
+  Seja $!A$ !!a{sentence} e $\Struct{M_1}$, $\Struct{M_2}$ como em
+  \olref{prop:extensionality}. Então $\Sat{M_1}{!A}$ sse $\Sat{M_2}{!A}$.
 \end{cor}
 
 \begin{proof}
-Follows from \olref{prop:extensionality} by \olref[ass]{cor:sat-sentence}.
+Segue de \olref{prop:extensionality} por \olref[ass]{cor:sat-sentence}.
 \end{proof}
 
-Moreover, the value of a term, and whether or not !!a{structure}
-satisfies !!a{formula}, only depend on the values of its subterms.
+Além disso, o valor de um termo, e se !!a{structure}
+satisfaz ou não !!a{formula}, dependem apenas dos valores de seus subtermos.
 
 \begin{prop}\ollabel{prop:ext-terms}
-Let $\Struct M$ be !!a{structure}, $t$ and $t'$ terms, and $s$ a
-variable assignment. Then $\Value{\Subst{t}{t'}{x}}{M}[s] =
+Seja $\Struct M$ !!a{structure}, $t$ e $t'$ termos, e $s$ uma
+atribuição de variáveis. Então $\Value{\Subst{t}{t'}{x}}{M}[s] =
 \Value{t}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}]$.
 \end{prop}
 
 \begin{proof}
-By induction on~$t$.
+Por indução sobre~$t$.
 \begin{enumerate}
-\item If $t$ is a constant, say, $t\ident c$, then $\Subst{t}{t'}{x} =
-  c$, and $\Value{c}{M}[s] = \Assign{c}{M} =
+\item Se $t$ é uma constante, digamos, $t\ident c$, então $\Subst{t}{t'}{x} =
+  c$, e $\Value{c}{M}[s] = \Assign{c}{M} =
   \Value{c}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}]$.
 
-\item If $t$ is a variable other than~$x$, say, $t \ident y$, then
-  $\Subst{t}{t'}{x} = y$, and $\Value{y}{M}[s] =
-  \Value{y}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}]$ since
+\item Se $t$ é uma variável diferente de~$x$, digamos, $t \ident y$, então
+  $\Subst{t}{t'}{x} = y$, e $\Value{y}{M}[s] =
+  \Value{y}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}]$ já que
   $\varAssign{s}{\Subst{s}{\Value{t'}{M}[s]}{x}}{x}$.
 
-\item If $t \ident x$, then $\Subst{t}{t'}{x} = t'$. But
-  $\Value{x}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}] = \Value{t'}{M}[s]$ by
-  definition of~$\Subst{s}{\Value{t'}{M}[s]}{x}$.
+\item Se $t \ident x$, então $\Subst{t}{t'}{x} = t'$. Mas
+  $\Value{x}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}] = \Value{t'}{M}[s]$ pela
+  definição de~$\Subst{s}{\Value{t'}{M}[s]}{x}$.
 
-\item If $t \ident \Atom{f}{t_1,\dots,t_n}$ then we have:
+\item Se $t \ident \Atom{f}{t_1,\dots,t_n}$ então temos:
 \begin{multline*}
   \Value{\Subst{t}{t'}{x}}{M}[s]  = \\
   \begin{aligned}[b]
 & = \Value{\Atom{f}{\Subst{t_1}{t'}{x}, \dots, \Subst{t_n}{t'}{x}}}{M}[s]\\
-& \qquad    \text{ by definition of $\Subst{t}{t'}{x}$}\\
+& \qquad    \text{ pela definição de $\Subst{t}{t'}{x}$}\\
 & = \Assign{f}{M}(\Value{\Subst{t_1}{t'}{x}}{M}[s], \dots,
     \Value{\Subst{t_n}{t'}{x}}{M}[s])\\
-    & \qquad  \text{ by definition of $\Value{\Atom{f}{\dots}}{M}[s]$}\\
+    & \qquad  \text{ pela definição de $\Value{\Atom{f}{\dots}}{M}[s]$}\\
 & = \Assign{f}{M}(\Value{t_1}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}], \dots,
    \Value{t_n}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}])\\
-& \qquad    \text{ by induction hypothesis}\\
+& \qquad    \text{ pela hipótese de indução}\\
 & = \Value{t}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}]
-    \text{ by definition of $\Value{\Atom{f}{\dots}}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}]$}
+    \text{ pela definição de $\Value{\Atom{f}{\dots}}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}]$}
   \end{aligned}
 \end{multline*}
 \end{enumerate}
 \end{proof}
 
-\begin{prop}\ollabel{prop:ext-formulas} Let $\Struct M$ be
-!!a{structure}, $!A$ !!a{formula}, $t'$~a term, and $s$~a variable
-assignment. Then $\Sat{M}{\Subst{!A}{t'}{x}}[s]$ iff
+\begin{prop}\ollabel{prop:ext-formulas} Seja $\Struct M$
+!!a{structure}, $!A$ !!a{formula}, $t'$~um termo, e $s$~uma
+atribuição de variáveis. Então $\Sat{M}{\Subst{!A}{t'}{x}}[s]$ sse
 $\Sat{M}{!A}[\Subst{s}{\Value{t'}{M}[s]}{x}]$.
 \end{prop}
 
 \begin{proof}
-Exercise.
+Exercício.
 \end{proof}
 
 \begin{prob}
@@ -117,21 +117,21 @@ Prove \olref[fol][syn][ext]{prop:ext-formulas}
 \end{prob}
 
 \begin{explain}
-  The point of
-  \cref{fol:syn:ext:prop:ext-terms,fol:syn:ext:prop:ext-formulas} is
-  the following. Suppose we have a term $t$ or !!a{formula}~$!A$ and
-  some term~$t'$, and we want to know the value of $\Subst{t}{t'}{x}$
-  or whether or not $\Subst{!A}{t'}{x}$ is satisfied in
-  !!a{structure}~$\Struct M$ relative to !!a{variable} assignment~$s$.
-  Then we can either perform the substitution first and then consider
-  the value or satisfaction relative to $\Struct{M}$ and~$s$, or we
-  can first determine the value~$m = \Value{t'}{M}[s]$ of $t'$ in
-  $\Struct{M}$ relative to~$s$, change the !!{variable} assignment
-  to~$\Subst{s}{m}{x}$ and then consider the value of~$t$ in
-  $\Struct{M}$ and~$\Subst{s}{m}{x}$, or whether
+  O ponto de
+  \cref{fol:syn:ext:prop:ext-terms,fol:syn:ext:prop:ext-formulas} é
+  o seguinte. Suponha que temos um termo $t$ ou !!a{formula}~$!A$ e
+  algum termo~$t'$, e queremos saber o valor de $\Subst{t}{t'}{x}$
+  ou se $\Subst{!A}{t'}{x}$ é ou não satisfeita em
+  !!a{structure}~$\Struct M$ em relação a uma atribuição de variáveis~$s$.
+  Então podemos ou realizar a substituição primeiro e depois considerar
+  o valor ou a satisfação em relação a $\Struct{M}$ e~$s$, ou
+  podemos primeiro determinar o valor~$m = \Value{t'}{M}[s]$ de $t'$ em
+  $\Struct{M}$ em relação a~$s$, mudar a atribuição de variáveis
+  para~$\Subst{s}{m}{x}$ e então considerar o valor de~$t$ em
+  $\Struct{M}$ e~$\Subst{s}{m}{x}$, ou se
   $\Sat{M}{!A}[\Subst{s}{m}{x}]$.
   \Cref{fol:syn:ext:prop:ext-terms,fol:syn:ext:prop:ext-formulas}
-  guarantee that the answer will be the same, whichever way we do it.
+  garantem que a resposta será a mesma, independentemente de como o façamos.
 \end{explain}
 
 \end{document}

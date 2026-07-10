@@ -6,22 +6,22 @@
 
 \begin{document}
 
-\olfileid{fol}{ntd}{sid}
+\olfileid[pt]{fol}{ntd}{sid}
 
-\olsection{Soundness with \usetoken{S}{identity}}
+\olsection{Correção com \usetoken{S}{identity}}
 
 \begin{prop}
-Natural deduction with rules for $\eq$ is sound.
+A dedução natural com regras para $\eq$ é correta.
 \end{prop}
 
 \begin{proof}
-Any !!{formula} of the form $\eq[t][t]$ is valid, since
-for every !!{structure}~$\Struct M$, $\Sat{M}{\eq[t][t]}$. (Note that
-we assume the term $t$ to be closed, O.s.\@, it contains no variables,
-so variable assignments are irrelevant).
+Qualquer !!{formula} da forma $\eq[t][t]$ é válida, pois
+para toda !!{structure}~$\Struct M$, $\Sat{M}{\eq[t][t]}$. (Note que
+assumimos que o termo $t$ é fechado, isto é, não contém variáveis,
+de modo que as atribuições de variáveis são irrelevantes).
 
-Suppose the last inference in !!a{derivation} is \Elim{\eq}, O.s.\@, the
-!!{derivation} has the following form:
+Suponha que a última inferência em uma !!{derivation} é \Elim{\eq},
+isto é, a !!{derivation} tem a seguinte forma:
 \begin{prooftree}
   \AxiomC{$\Gamma_1$}
   \RightLabel{$\delta_1$}
@@ -32,16 +32,16 @@ Suppose the last inference in !!a{derivation} is \Elim{\eq}, O.s.\@, the
   \RightLabel{\Elim{\eq}}
   \BinaryInfC{$!A(t_2)$}
 \end{prooftree}
-The premises $\eq[t_1][t_2]$ and $!A(t_1)$ are !!{derive}d from
-!!{undischarged} assumptions~$\Gamma_1$ and $\Gamma_2$, respectively.
-We want to show that $!A(t_2)$ follows from $\Gamma_1 \cup \Gamma_2$.
-Consider !!a{structure}~$\Struct{M}$ with $\Sat{M}{\Gamma_1 \cup
-  \Gamma_2}$. By induction hypothesis, $\Sat{M}{!A(t_1)}$ and
-$\Sat{M}{\eq[t_1][t_2]}$. Therefore, $\Value{t_1}{M} = \Value{t_2}{M}$. Let
-$s$ be any variable assignment, and $m = \Value{t_1}{M} = \Value{t_2}{M}$. By
-\olref[fol][syn][ext]{prop:ext-formulas}, $\Sat{M}{!A(t_1)}[s]$ iff
-$\Sat{M}{!A(x)}[\Subst{s}{m}{x}]$ iff $\Sat{M}{!A(t_2)}[s]$. Since
-$\Sat{M}{!A(t_1)}$, we have $\Sat{M}{!A(t_2)}$.
+As premissas $\eq[t_1][t_2]$ e $!A(t_1)$ são !!{derive}das a partir de
+hipóteses !!{undischarged}s~$\Gamma_1$ e $\Gamma_2$, respectivamente.
+Queremos mostrar que $!A(t_2)$ segue de $\Gamma_1 \cup \Gamma_2$.
+Considere uma !!{structure}~$\Struct{M}$ com $\Sat{M}{\Gamma_1 \cup
+  \Gamma_2}$. Pela hipótese de indução, $\Sat{M}{!A(t_1)}$ e
+$\Sat{M}{\eq[t_1][t_2]}$. Portanto, $\Value{t_1}{M} = \Value{t_2}{M}$. Seja
+$s$ qualquer atribuição de variáveis e $m = \Value{t_1}{M} = \Value{t_2}{M}$. Por
+\olref[fol][syn][ext]{prop:ext-formulas}, $\Sat{M}{!A(t_1)}[s]$ se, e somente se,
+$\Sat{M}{!A(x)}[\Subst{s}{m}{x}]$ se, e somente se, $\Sat{M}{!A(t_2)}[s]$. Como
+$\Sat{M}{!A(t_1)}$, temos $\Sat{M}{!A(t_2)}$.
 \end{proof}
 
 \end{document}

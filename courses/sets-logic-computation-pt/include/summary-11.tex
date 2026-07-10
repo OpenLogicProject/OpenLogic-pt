@@ -1,0 +1,32 @@
+\emph{Sistemas de prova} fornecem métodos puramente sintáticos para
+caracterizar consequência e compatibilidade entre
+sentenças. A \emph{dedução natural} é um desses sistemas de
+prova. Uma \emph{derivação} nela consiste em uma árvore de fórmulas. As
+fórmulas mais ao topo em uma derivação são \emph{hipóteses}. Todas as demais
+fórmulas, para que a derivação seja correta, devem ser corretamente
+justificadas por uma de várias \emph{regras de inferência}. Elas vêm em
+pares: uma regra de introdução e uma regra de eliminação para cada conectivo e
+quantificador. Por exemplo, se uma fórmula~$!A$ é justificada por uma
+regra $\Elim{\lif}$, as fórmulas precedentes (as \emph{premissas}) devem
+ser $!B \lif !A$ e $!B$ (para algum~$!B$). Algumas regras de inferência também
+permitem que hipóteses sejam \emph{descarregadas}. Por exemplo, se $!A \lif
+!B$ é inferida de $!B$ usando $\Intro{\lif}$, quaisquer ocorrências
+de~$!A$ como hipóteses na derivação que leva à premissa~$!B$
+podem ser descarregadas, e recebe um rótulo que também é registrado na
+inferência.
+
+Se há uma derivação com fórmula final~$!A$ e todas as hipóteses estão
+descarregadas, dizemos que $!A$ é um \emph{teorema} e escrevemos~$\Proves !A$. Se
+todas as hipóteses não descarregadas estão em algum conjunto~$\Gamma$, dizemos
+que $!A$ é \emph{derivável de}~$\Gamma$ e escrevemos $\Gamma \Proves !A$. Se
+$\Gamma \Proves \lfalse$, dizemos que $\Gamma$ é \emph{inconsistente}; caso
+contrário, \emph{consistente}. Essas noções são inter-relacionadas; por
+exemplo, $\Gamma \Proves !A$ se e somente se $\Gamma \cup \{\lnot !A\}$ é
+inconsistente. Elas são também relacionadas às noções semânticas
+correspondentes; por exemplo, se $\Gamma \Proves !A$, então $\Gamma \Entails
+!A$. Essa propriedade dos sistemas de prova---o que pode ser derivado de
+$\Gamma$ tem garantia de ser consequência de~$\Gamma$---é chamada de
+\emph{correção}. O \emph{teorema da correção} é provado por indução sobre o
+comprimento das derivações, mostrando que cada inferência individual preserva a
+consequência de sua conclusão a partir das hipóteses abertas, desde que suas
+premissas sejam consequência de suas hipóteses não descarregadas.

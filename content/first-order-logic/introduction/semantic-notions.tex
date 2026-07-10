@@ -6,43 +6,45 @@
 
 \begin{document}
 
-\olfileid{fol}{int}{sem}
+\olfileid[pt]{fol}{int}{sem}
 
-\olsection{Semantic Notions}
+\olsection{Noções Semânticas}
 
-We mentioned above that when we consider whether $\Sat{M}{!A}[s]$
-holds, we (for convenience) let $s$ assign values to all !!{variable}s,
-but only the values it assigns to !!{variable}s in~$!A$ are used.  In
-fact, it's only the values of \emph{free} variables in~$!A$ that
-matter. Of course, because we're careful, we are going to prove this
-fact. Since !!{sentence}s have no free variables, $s$~doesn't matter
-at all when it comes to whether or not they are satisfied in
-!!a{structure}.  So, when $!A$ is !!a{sentence} we can define
-$\Sat{M}{!A}$ to mean ``$\Sat{M}{!A}[s]$ for all~$s$,'' which as it
-happens is true iff $\Sat{M}{!A}[s]$ for at least one~$s$. We need to
-introduce !!{variable} assignments to get a working definition of
-satisfaction for !!{formula}s, but for !!{sentence}s, satisfaction is
-independent of the !!{variable} assignments.
+Mencionamos acima que, quando consideramos se $\Sat{M}{!A}[s]$ vale,
+(por conveniência) deixamos $s$ atribuir valores a todas as
+!!{variable}s, mas apenas os valores que atribui às !!{variable}s
+em~$!A$ são usados.  De fato, são apenas os valores das
+!!{variable}s \emph{livres} em~$!A$ que importam. É claro que, por
+sermos cuidadosos, vamos provar esse fato. Como as !!{sentence}s não têm
+variáveis livres, $s$~não importa de modo algum quando se trata de
+saber se são satisfeitas em !!a{structure}.  Assim, quando $!A$ é
+!!a{sentence}, podemos definir $\Sat{M}{!A}$ como significando
+``$\Sat{M}{!A}[s]$ para todo~$s$,'' o que, aliás, é verdadeiro se, e
+somente se, $\Sat{M}{!A}[s]$ para pelo menos um~$s$. Precisamos
+introduzir atribuições de variáveis para obter uma definição funcional
+de satisfação para !!{formula}s, mas para !!{sentence}s, a satisfação é
+independente das atribuições de variáveis.
 
-Once we have a definition of ``$\Sat{M}{!A}$,'' we know what ``case''
-and ``true in'' mean as far as !!{sentence}s of first-order logic are
-concerned. On the basis of the definition of $\Sat{M}{!A}$ for
-!!{sentence}s we can then define the basic semantic notions of
-validity, entailment, and satisfiability.  A sentence is valid,
-$\Entails !A$, if every !!{structure} satisfies it. It is entailed by
-a set of !!{sentence}s, $\Gamma \Entails !A$, if every !!{structure}
-that satisfies all the !!{sentence}s in~$\Gamma$ also satisfies~$!A$.
-And a set of !!{sentence}s is satisfiable if some !!{structure}
-satisfies all !!{sentence}s in it at the same time.
+Uma vez que temos uma definição de ``$\Sat{M}{!A}$,'' sabemos o que
+``caso'' e ``verdadeira em'' significam no que diz respeito às
+!!{sentence}s da lógica de primeira ordem. Com base na definição de
+$\Sat{M}{!A}$ para !!{sentence}s, podemos então definir as noções
+semânticas básicas de validade, consequência e satisfatibilidade.  Uma
+sentença é válida, $\Entails !A$, se toda !!{structure} a satisfaz. Ela
+é consequência de um conjunto de !!{sentence}s, $\Gamma \Entails !A$,
+se toda !!{structure} que satisfaz todas as !!{sentence}s em~$\Gamma$
+também satisfaz~$!A$. E um conjunto de !!{sentence}s é satisfatível se
+alguma !!{structure} satisfaz todas as !!{sentence}s nele ao mesmo
+tempo.
 
-Because !!{formula}s are inductively defined, and satisfaction is in
-turn defined by induction on the structure of !!{formula}s, we can use
-induction to prove properties of our semantics and to relate the
-semantic notions defined.  We'll collect and prove some of these
-properties, partly because they are individually interesting, but
-mainly because many of them will come in handy when we go on to
-investigate the relation between semantics and !!{derivation} systems. In order
-to do so, we'll also have to define (precisely, O.s.\@, by induction)
-some syntactic notions and operations we haven't mentioned yet.
+Como as !!{formula}s são definidas indutivamente, e a satisfação é, por
+sua vez, definida por indução na estrutura das !!{formula}s, podemos
+usar indução para provar propriedades da nossa semântica e relacionar as
+noções semânticas definidas.  Vamos reunir e provar algumas dessas
+propriedades, em parte porque são individualmente interessantes, mas
+principalmente porque muitas delas serão úteis quando formos investigar
+a relação entre semântica e sistemas de !!{derivation}. Para isso,
+também teremos que definir (precisamente, isto é, por indução) algumas
+noções sintáticas e operações que ainda não mencionamos.
 
 \end{document}

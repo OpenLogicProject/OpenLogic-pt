@@ -6,43 +6,43 @@
 
 \begin{document}
 
-\olfileid{tur}{mac}{una}
-\olsection{Unary Representation of Numbers}
+\olfileid[pt]{tur}{mac}{una}
+\olsection{Representação Unária de Números}
 
 \begin{explain}
-Turing machines work on sequences of symbols written on their tape.
-Depending on the alphabet a Turing machine uses, these sequences of
-symbols can represent various inputs and outputs.  Of particular
-interest, of course, are Turing machines which compute
-\emph{arithmetical} functions, O.s.\@, functions of natural numbers.  A
-simple way to represent positive integers is by coding them as
-sequences of a single symbol~$\TMstroke$.  If $n \in \Nat$, let
-$\TMstroke^n$ be the empty sequence if $n = 0$, and otherwise the
-sequence consisting of exactly $n$ $\TMstroke$'s.
+As máquinas de Turing trabalham sobre sequências de símbolos escritos em sua fita.
+Dependendo do alfabeto que uma máquina de Turing usa, essas sequências de
+símbolos podem representar diversas entradas e saídas.  De particular
+interesse, é claro, estão as máquinas de Turing que computam
+funções \emph{aritméticas}, isto é, funções de números naturais.  Uma
+maneira simples de representar inteiros positivos é codificá-los como
+sequências de um único símbolo~$\TMstroke$.  Se $n \in \Nat$, seja
+$\TMstroke^n$ a sequência vazia se $n = 0$, e caso contrário a
+sequência composta de exatamente $n$ $\TMstroke$.
 \end{explain}
 
-\begin{defn}[Computation]
-A Turing machine~$M$ \emph{computes} the function $f\colon \Nat^k \to \Nat$ iff
-$M$~halts on input
+\begin{defn}[Computação]
+Uma máquina de Turing~$M$ \emph{computa} a função $f\colon \Nat^k \to \Nat$ sse
+$M$~para com a entrada
 \[
 \TMstroke^{n_1} \TMblank \TMstroke^{n_2} \TMblank \dots \TMblank \TMstroke^{n_k}
 \]
-with output $\TMstroke^{f(n_1, \dots, n_k)}$.
+produzindo a saída $\TMstroke^{f(n_1, \dots, n_k)}$.
 \end{defn}
 
 \begin{prob}
-  Give a definition for when a Turing machine~$M$ computes the
-  function $f\colon \Nat^k \to \Nat^m$.
+  Dê uma definição para quando uma máquina de Turing~$M$ computa a
+  função $f\colon \Nat^k \to \Nat^m$.
 \end{prob}
 
 \begin{ex}\ollabel{ex:adder}
-\emph{Addition:}
-Let's build a machine that computes the function $f(n,m) = n + m$.
-This requires a machine that starts with two blocks of $\TMstroke$'s
-of length $n$ and~$m$ on the tape, and halts with one block consisting
-of $n+m$~$\TMstroke$'s. The two input blocks of~$\TMstroke$'s are
-separated by a~$\TMblank$, so one method would be to write a stroke on
-the square containing the $\TMblank$, and erase the last~$\TMstroke$.
+\emph{Adição:}
+Vamos construir uma máquina que computa a função $f(n,m) = n + m$.
+Isso requer uma máquina que comece com dois blocos de $\TMstroke$
+de comprimento $n$ e~$m$ na fita, e pare com um único bloco composto
+de $n+m$~$\TMstroke$. Os dois blocos de entrada de~$\TMstroke$ estão
+separados por um~$\TMblank$, então um método seria escrever um traço no
+quadrado que contém o $\TMblank$, e apagar o último~$\TMstroke$.
 \begin{figure}\[
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
                     semithick]
@@ -58,37 +58,37 @@ the square containing the $\TMblank$, and erase the last~$\TMstroke$.
             edge node {\TMtrans{\TMblank}{\TMblank}{\TMleft}} (C)
         (C) edge [loop above] node {\TMtrans{\TMstroke}{\TMblank}{\TMstay}} (C);
 \end{tikzpicture}
-\]\caption{A machine computing $f(x,y) = x+y$}
+\]\caption{Uma máquina que computa $f(x,y) = x+y$}
 \ollabel{fig:adder}
 \end{figure}
 \end{ex}
 
 \begin{prob}
-Trace through the configurations of the machine from
-\olref[tur][mac][una]{ex:adder} for input~$\tuple{3,2}$. What happens
-if the machine computes $0+0$?
+Rastreie as configurações da máquina de
+\olref[tur][mac][una]{ex:adder} para a entrada~$\tuple{3,2}$. O que acontece
+se a máquina computa $0+0$?
 \end{prob}
 
 \begin{explain}
-In \olref[rep]{ex:doubler}, we gave an example of a Turing machine
-that takes as input a sequence of~$\TMstroke$'s and halts with a sequence
-of twice as many~$\TMstroke$'s on the tape---the doubler machine.
-However, because the output contains $\TMblank$'s to the left of the
-doubled block of~$\TMstroke$'s, it does not actually compute the
-function $f(x) = 2x$, as you might have assumed. We'll describe two
-ways of fixing that.
+Em \olref[rep]{ex:doubler}, demos um exemplo de uma máquina de Turing
+que recebe como entrada uma sequência de~$\TMstroke$ e para com uma sequência
+de duas vezes mais~$\TMstroke$ na fita---a máquina duplicadora.
+No entanto, como a saída contém $\TMblank$ à esquerda do
+bloco duplicado de~$\TMstroke$, ela não computa de fato a
+função $f(x) = 2x$, como você poderia ter suposto. Descreveremos duas
+maneiras de corrigir isso.
 \end{explain}
 
 \begin{ex}
-The machine in \olref{fig:doubler-disc} computes the function $f(x) =
-2x$. Instead of erasing the input and writing two $\TMstroke$'s at the
-far right for every $\TMstroke$ in the input as the machine from
-\olref[rep]{ex:doubler} does, this machine adds a single~$\TMstroke$
-to the right for every~$\TMstroke$ in the input. It has to keep track
-of where the input ends, so it leaves a~$\TMblank$ between the input
-and the added strokes, which it fills with a~$\TMstroke$ at the very
-end. And we have to ``remember'' where we are in the input, so we
-temporarily replace a~$\TMstroke$ in the input block by a~$\TMblank$.
+A máquina em \olref{fig:doubler-disc} computa a função $f(x) =
+2x$. Em vez de apagar a entrada e escrever dois $\TMstroke$ na
+extremidade direita para cada $\TMstroke$ da entrada, como faz a máquina de
+\olref[rep]{ex:doubler}, esta máquina adiciona um único~$\TMstroke$
+à direita para cada~$\TMstroke$ da entrada. Ela precisa rastrear
+onde a entrada termina, então deixa um~$\TMblank$ entre a entrada
+e os traços adicionados, que ela preenche com um~$\TMstroke$ bem ao
+final. E temos que ``lembrar'' onde estamos na entrada, então
+substituímos temporariamente um~$\TMstroke$ do bloco de entrada por um~$\TMblank$.
   \begin{figure}
 \[
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
@@ -123,28 +123,28 @@ temporarily replace a~$\TMstroke$ in the input block by a~$\TMblank$.
     (8) edge [loop right] node {\TMtrans{\TMstroke}{\TMblank}{\TMstay}} (8);
     \end{tikzpicture}
 \]
-\caption{A machine computing $f(x) = 2x$}
+\caption{Uma máquina que computa $f(x) = 2x$}
 \ollabel{fig:doubler-disc}
 \end{figure}
 \end{ex}
 
 \begin{ex}\ollabel{ex:mover}
-A second possibility for computing $f(x) = 2x$ is to keep the original
-doubler machine, but add states and instructions at the end which move
-the doubled block of strokes to the far left of the tape.  The machine
-in \olref{fig:mover} does just this last part: started on a tape
-consisting of a block of~$\TMblank$'s followed by a block
-of~$\TMstroke$'s (and the head positioned anywhere in the block
-of~$\TMblank$'s), it erases the $\TMstroke$'s one at a time and writes
-them at the beginning of the tape. In order to be able to tell when it
-is done, it first marks the end of the block of $\TMstroke$'s with
-a~$\TMendtape$ symbol, which gets deleted at the end. We've started
-numbering the states at~$q_6$, so they can be added to the doubler
-machine. All you'll need is an additional instruction $\delta(q_0,
-\TMblank) = \tuple{q_6,\TMblank,\TMstay}$, O.s.\@, an arrow from~$q_0$
-to~$q_6$ labelled~$\TMtrans{\TMblank}{\TMblank}{\TMstay}$. (There is
-one subtle problem: the resulting machine does not work for
-input~$x=0$. We'll leave this as an exercise.)
+Uma segunda possibilidade para computar $f(x) = 2x$ é manter a máquina
+duplicadora original, mas adicionar estados e instruções ao final que movam
+o bloco duplicado de traços para a extremidade esquerda da fita.  A máquina
+em \olref{fig:mover} faz exatamente esta última parte: iniciada em uma fita
+composta de um bloco de~$\TMblank$ seguido de um bloco
+de~$\TMstroke$ (e com a cabeça posicionada em qualquer lugar do bloco
+de~$\TMblank$), ela apaga os $\TMstroke$ um a um e os escreve
+no início da fita. Para conseguir saber quando ela
+termina, primeiro marca o fim do bloco de $\TMstroke$ com
+um símbolo~$\TMendtape$, que é apagado ao final. Começamos a
+numerar os estados em~$q_6$, de modo que possam ser adicionados à máquina
+duplicadora. Tudo de que você precisará é uma instrução adicional $\delta(q_0,
+\TMblank) = \tuple{q_6,\TMblank,\TMstay}$, isto é, uma seta de~$q_0$
+para~$q_6$ rotulada~$\TMtrans{\TMblank}{\TMblank}{\TMstay}$. (Há
+um problema sutil: a máquina resultante não funciona para a
+entrada~$x=0$. Deixaremos isso como exercício.)
 \begin{figure}
   \[
   \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
@@ -179,58 +179,58 @@ input~$x=0$. We'll leave this as an exercise.)
     (13) edge node {\TMtrans{\TMendtape}{\TMblank}{\TMstay}} (14);
   \end{tikzpicture}
   \]
-  \caption{Moving a block of $\TMstroke$'s to the left}
+  \caption{Movendo um bloco de $\TMstroke$ para a esquerda}
   \ollabel{fig:mover}
 \end{figure}
 \end{ex}
 
 \begin{prob}
-In \olref[tur][mac][una]{ex:mover} we described a machine consisting
-of a combination of the doubler machine from
-\olref[tur][mac][una]{fig:doubler-disc} and the mover machine from
-\olref[tur][mac][una]{fig:mover}. What happens if you start this
-combined machine on input~$x=0$, O.s.\@, on an empty tape?  How would
-you fix the machine so that in this case the machine halts with
-output~$2x=0$? (You should be able to do this by adding one state and
-one transition.)
+Em \olref[tur][mac][una]{ex:mover} descrevemos uma máquina composta
+de uma combinação da máquina duplicadora de
+\olref[tur][mac][una]{fig:doubler-disc} e da máquina movedora de
+\olref[tur][mac][una]{fig:mover}. O que acontece se você inicia essa
+máquina combinada com a entrada~$x=0$, isto é, em uma fita vazia?  Como você
+corrigiria a máquina de modo que, nesse caso, ela parasse com
+saída~$2x=0$? (Você deve conseguir fazer isso adicionando um estado e
+uma transição.)
 \end{prob}
 
 \begin{prob}
-\emph{Subtraction:} Design a Turing machine that when given an input
-of two non-empty strings of strokes of length $n$ and~$m$, where $n >
-m$, computes the function $f(n,m) = n - m$.
+\emph{Subtração:} Projete uma máquina de Turing que, ao receber uma entrada
+de duas cadeias não vazias de traços de comprimento $n$ e~$m$, em que $n >
+m$, compute a função $f(n,m) = n - m$.
 \end{prob}
 
 \begin{prob}
-\emph{Equality:} Design a Turing machine to compute the following function:
+\emph{Igualdade:} Projete uma máquina de Turing para computar a seguinte função:
 \[
 \fn{equality}(n,m) = 
 \begin{cases}
-  \text{1} & \text{if~$n = m$} \\
-  \text{0} & \text{if~$n \neq m$}
+  \text{1} & \text{se~$n = m$} \\
+  \text{0} & \text{se~$n \neq m$}
 \end{cases}
 \]
-where~$n$ and~$m \in \PosInt$.
+em que~$n$ e~$m \in \PosInt$.
 \end{prob}
 
 \begin{prob}
-Design a Turing machine to compute the function $\min(x,y)$ where $x$
-and $y$ are positive integers represented on the tape by strings of
-$\TMstroke$'s separated by a $\TMblank$. You may use additional
-symbols in the alphabet of the machine.
+Projete uma máquina de Turing para computar a função $\min(x,y)$, em que $x$
+e $y$ são inteiros positivos representados na fita por cadeias de
+$\TMstroke$ separadas por um $\TMblank$. Você pode usar símbolos
+adicionais no alfabeto da máquina.
 
-The function $\min$ selects the smallest value from its arguments, so
-$\min(3,5)=3$, $\min(20,16)=16$, and $\min(4,4)=4$, and so on.
+A função $\min$ seleciona o menor valor entre seus argumentos, de modo que
+$\min(3,5)=3$, $\min(20,16)=16$, e $\min(4,4)=4$, e assim por diante.
 \end{prob}
 
 \begin{defn}
-  A Turing machine~$M$ computes the partial function $f\colon \Nat^k
-  \pto \Nat$ iff, 
+  Uma máquina de Turing~$M$ computa a função parcial $f\colon \Nat^k
+  \pto \Nat$ sse, 
   \begin{enumerate}
-    \item $M$ halts on input $\TMstroke^{n_1}\concat\TMblank\concat
-    \dots \concat\TMblank\concat\TMstroke^{n_k}$ with output $\TMstroke^{m}$ if $f(n_1, \dots, n_k) = m$.
-    \item $M$ does not halt at all, or with an output that is not a
-    single block of~$\TMstroke$'s if $f(n_1, \dots, n_k)$ is undefined.
+    \item $M$ para com a entrada $\TMstroke^{n_1}\concat\TMblank\concat
+    \dots \concat\TMblank\concat\TMstroke^{n_k}$ produzindo a saída $\TMstroke^{m}$ se $f(n_1, \dots, n_k) = m$.
+    \item $M$ não para de modo algum, ou para com uma saída que não é um
+    único bloco de~$\TMstroke$ se $f(n_1, \dots, n_k)$ é indefinida.
   \end{enumerate}
 \end{defn}
 

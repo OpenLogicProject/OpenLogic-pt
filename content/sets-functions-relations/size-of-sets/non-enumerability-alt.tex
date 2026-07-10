@@ -11,23 +11,23 @@
 \olsection{Conjuntos Não Enumeráveis}
 
 \begin{editorial}
-  Esta secção prova a não enumerabilidade de $\Bin^\omega$ e de $\Pow{\Nat}$
-  usando as definições na \olref[enm-alt]{sec}, O.s.\@, exigindo uma bijeção
+  Esta seção prova a não enumerabilidade de $\Bin^\omega$ e de $\Pow{\Nat}$
+  usando as definições na \olref[enm-alt]{sec}, isto é, exigindo uma bijeção
   com~$\Nat$ em vez de uma sobrejeção a partir de~$\PosInt$.
 \end{editorial}
 
 \begin{explain}
 O conjunto $\Nat$ dos números naturais é infinito. Também é trivialmente
 !!{enumerable}. O fato notável, porém, é que existem conjuntos
-\emph{!!{nonenumerable}s}, O.s.\@, conjuntos que não são !!{enumerable}s (ver
+\emph{!!{nonenumerable}s}, isto é, conjuntos que não são !!{enumerable}s (ver
 \olref[sfr][siz][enm-alt]{defn:enumerable}).
 
 Isto pode surpreender. Afinal, dizer que $A$ é !!{nonenumerable} é dizer que
-\emph{não} existe !!{bijection} $f \colon \Nat \to A$; O.s.\@, nenhuma função que
+\emph{não} existe !!{bijection} $f \colon \Nat \to A$; isto é, nenhuma função que
 mapeie os infinitos !!{element}s de~$\Nat$ para~$A$ esgota todo~$A$. Logo, se $A$
 é !!{nonenumerable}, há ``mais'' !!{element}s em~$A$ do que números naturais.
 
-Para provar que um conjunto é !!{nonenumerable}, há que mostrar que não pode
+Para provar que um conjunto é !!{nonenumerable}, é preciso mostrar que não pode
 existir uma !!{bijection} adequada. A melhor forma é mostrar que qualquer tentativa
 de enumerar !!{element}s de~$A$ tem de deixar pelo menos um !!{element} de fora;
 isto mostra que nenhuma função $f\colon \Nat \to A$ é !!{surjective}. Uma
@@ -41,8 +41,8 @@ símbolo~`$\Bin$' significa binário, e podemos pensar nele como o conjunto de
 dois elementos
 $\{0,1\}$.)\oliflabeldef{sfr:card-arithmetic:card-opps:sec}{\footnote{Com mais
 rigor, deveríamos estipular que $\Bin^\omega$ é o conjunto de todas as
-$\omega$-sequências de $0$s e~$1$s, O.s.\@, o conjunto
-$\funfromto{\omega}{\{0,1\}}$. Mas o significado disto só ficará claro em
+$\omega$-sequências de $0$s e~$1$s, isto é, o conjunto
+$\funfromto{\omega}{\{0,1\}}$. Mas o significado disto só ficará claro na
 \olref[sfr][card-arithmetic][card-opps]{sec}.}{} Esta formulação ligeiramente
 laxa não deve causar confusões por agora, contudo.}
 \end{explain}
@@ -69,11 +69,11 @@ $m$-ésima coluna:
 \end{array}
 \]
 Construiremos agora uma cadeia infinita, $d$, de $0$s e~$1$s que não está nesta
-lista, especificando cada uma das suas entradas, O.s.\@, $d(n)$ para todo $n \in
+lista, especificando cada uma das suas entradas, isto é, $d(n)$ para todo $n \in
 \Nat$. Intuitivamente, lemos a diagonal da matriz acima (daí o nome ``método
 diagonal'') e trocamos cada $0$ por~$1$ e cada $1$ por~$0$. De modo mais abstrato,
 definimos $d(n)$ como $0$ ou $1$ consoante o $n$-ésimo !!{element} da diagonal,
-$s_n(n)$, seja $1$ ou $0$, O.s.:
+$s_n(n)$, seja $1$ ou $0$, isto é:
 \[
 d(n) =
 \begin{cases}
@@ -82,13 +82,13 @@ d(n) =
 \end{cases}
 \]
 Claramente $d \in \Bin^\omega$, pois é uma cadeia infinita de $0$s e~$1$s. Mas
-construímos $d$ de modo que $d(n) \neq s_n(n)$ para qualquer $n \in \Nat$, O.s.\@,
+construímos $d$ de modo que $d(n) \neq s_n(n)$ para qualquer $n \in \Nat$, isto é,
 $d$ difere de $s_n$ na sua $n$-ésima entrada. Logo $d \neq s_n$ para qualquer $n\in
 \Nat$, pelo que $d$ não pode estar na lista $s_0$, $s_1$, $s_2$, \dots
 
 Mostramos assim que, dada uma enumeração arbitrária de algum subconjunto de
 $\Bin^\omega$, ela omite algum !!{element} de $\Bin^\omega$. Logo não existe
-enumeração do conjunto $\Bin^\omega$, O.s.\@, $\Bin^\omega$ é !!{nonenumerable}.
+enumeração do conjunto $\Bin^\omega$, isto é, $\Bin^\omega$ é !!{nonenumerable}.
 \end{proof}
 
 \begin{explain}

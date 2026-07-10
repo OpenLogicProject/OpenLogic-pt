@@ -6,92 +6,92 @@
 
 \begin{document}
 
-\olfileid{fol}{syn}{sbf}
+\olfileid[pt]{fol}{syn}{sbf}
 
 \olsection{\printtoken{P}{subformula}}
 
 \begin{explain}
-It is often useful to talk about the !!{formula}s that ``make up'' a
-given !!{formula}.  We call these its \emph{!!{subformula}s}.  Any
-!!{formula} counts as !!a{subformula} of itself; a subformula of $!A$
-other than $!A$ itself is a \emph{proper !!{subformula}}.
+Frequentemente é útil falar sobre as !!{formula}s que ``compõem'' uma
+dada !!{formula}.  Chamamos estas de suas \emph{!!{subformula}s}.  Qualquer
+!!{formula} conta como !!a{subformula} de si mesma; uma subfórmula de $!A$
+diferente do próprio $!A$ é uma \emph{!!{subformula} própria}.
 \end{explain}
 
-\begin{defn}[Immediate !!^{subformula}]
-If $!A$ is !!a{formula}, the \emph{immediate !!{subformula}s}
-of $!A$ are defined inductively as follows:
+\begin{defn}[!!^{subformula} imediata]
+Se $!A$ é !!a{formula}, as \emph{!!{subformula}s imediatas}
+de $!A$ são definidas indutivamente como segue:
 \begin{enumerate}
-\item Atomic !!{formula}s have no immediate !!{subformula}s.
+\item !!^{formula}s atômicas não têm !!{subformula}s imediatas.
 
-\tagitem{prvNot}{\indcase{!A}{\lnot !B}{The only immediate
-    !!{subformula} of $\indfrm$ is~$!B$.}}{}
+\tagitem{prvNot}{\indcase{!A}{\lnot !B}{A única
+    !!{subformula} imediata de $\indfrm$ é~$!B$.}}{}
 
-\item \indcase{!A}{(!B \ast !C)}{The immediate !!{subformula}s of
-  $\indfrm$ are $!B$ and $!C$ ($\ast$ is any one of the two-place
-  connectives).}
+\item \indcase{!A}{(!B \ast !C)}{As !!{subformula}s imediatas de
+  $\indfrm$ são $!B$ e $!C$ ($\ast$ é qualquer um dos conectivos
+  de dois lugares).}
 
-\tagitem{prvAll}{\indcase{!A}{\lforall[x][!B]}{The only immediate
-    !!{subformula} of $\indfrm$ is~$!B$.}}{}
+\tagitem{prvAll}{\indcase{!A}{\lforall[x][!B]}{A única
+    !!{subformula} imediata de $\indfrm$ é~$!B$.}}{}
 
-\tagitem{prvEx}{\indcase{!A}{\lexists[x][!B]}{The only immediate
-    !!{subformula} of $\indfrm$ is~$!B$.}}{}
+\tagitem{prvEx}{\indcase{!A}{\lexists[x][!B]}{A única
+    !!{subformula} imediata de $\indfrm$ é~$!B$.}}{}
 \end{enumerate}
 \end{defn}
 
-\begin{defn}[Proper !!^{subformula}]
-If $!A$ is !!a{formula}, the \emph{proper !!{subformula}s}
-of $!A$ are defined recursively as follows:
+\begin{defn}[!!^{subformula} própria]
+Se $!A$ é !!a{formula}, as \emph{!!{subformula}s próprias}
+de $!A$ são definidas recursivamente como segue:
 \begin{enumerate}
-\item Atomic !!{formula}s have no proper !!{subformula}s.
+\item !!^{formula}s atômicas não têm !!{subformula}s próprias.
 
-\tagitem{prvNot}{\indcase{!A}{\lnot !B}{The proper !!{subformula}s of
-    $\indfrm$ are~$!B$ together with all proper !!{subformula}s
-    of~$!B$.}}{}
+\tagitem{prvNot}{\indcase{!A}{\lnot !B}{As !!{subformula}s próprias de
+    $\indfrm$ são~$!B$ juntamente com todas as !!{subformula}s próprias
+    de~$!B$.}}{}
 
-\item \indcase{!A}{(!B \ast !C)}{The proper !!{subformula}s of
-  $\indfrm$ are $!B$, $!C$, together with all proper !!{subformula}s
-  of $!B$ and those of~$!C$.}
+\item \indcase{!A}{(!B \ast !C)}{As !!{subformula}s próprias de
+  $\indfrm$ são $!B$, $!C$, juntamente com todas as !!{subformula}s próprias
+  de $!B$ e as de~$!C$.}
 
-\tagitem{prvAll}{\indcase{!A}{\lforall[x][!B]}{The proper
-    !!{subformula}s of $\indfrm$ are~$!B$ together with all proper
-    !!{subformula}s of~$!B$.}}{}
+\tagitem{prvAll}{\indcase{!A}{\lforall[x][!B]}{As !!{subformula}s
+    próprias de $\indfrm$ são~$!B$ juntamente com todas as
+    !!{subformula}s próprias de~$!B$.}}{}
 
-\tagitem{prvEx}{\indcase{!A}{\lexists[x][!B]}{The proper
-    !!{subformula}s of $\indfrm$ are~$!B$ together with all proper
-    !!{subformula}s of~$!B$.}}{}
+\tagitem{prvEx}{\indcase{!A}{\lexists[x][!B]}{As !!{subformula}s
+    próprias de $\indfrm$ são~$!B$ juntamente com todas as
+    !!{subformula}s próprias de~$!B$.}}{}
 \end{enumerate}
 \end{defn}
 
 \begin{defn}[!!^{subformula}]
-The !!{subformula}s of $!A$ are $!A$ itself together with all its
-proper !!{subformula}s.
+As !!{subformula}s de $!A$ são o próprio $!A$ juntamente com todas as suas
+!!{subformula}s próprias.
 \end{defn}
 
 \begin{explain}
-Note the subtle difference in how we have defined immediate
-!!{subformula}s and proper !!{subformula}s.  In the first case, we
-have directly defined the immediate !!{subformula}s of a formula~$!A$
-for each possible form of~$!A$.  It is an explicit definition by
-cases, and the cases mirror the inductive definition of the set of
-!!{formula}s.  In the second case, we have also mirrored the way the
-set of all !!{formula}s is defined, but in each case we have also
-included the proper !!{subformula}s of the smaller !!{formula}s $!B$,
-$!C$ in addition to these !!{formula}s themselves.  This makes the
-definition \emph{recursive}.  In general, a definition of a function
-on an inductively defined set (in our case, !!{formula}s) is recursive
-if the cases in the definition of the function make use of
-the function itself. To be well defined, we must make sure, however,
-that we only ever use the values of the function for arguments that
-come ``before'' the one we are defining---in our case, when defining
-``proper !!{subformula}'' for $(!B \ast !C)$ we only use the proper
-!!{subformula}s of the ``earlier'' !!{formula}s $!B$ and $!C$.
+Note a diferença sutil em como definimos !!{subformula}s
+imediatas e !!{subformula}s próprias.  No primeiro caso,
+definimos diretamente as !!{subformula}s imediatas de uma fórmula~$!A$
+para cada forma possível de~$!A$.  É uma definição explícita por
+casos, e os casos espelham a definição indutiva do conjunto de
+!!{formula}s.  No segundo caso, também espelhamos a maneira como o
+conjunto de todas as !!{formula}s é definido, mas em cada caso também
+incluímos as !!{subformula}s próprias das !!{formula}s menores $!B$,
+$!C$ além dessas próprias !!{formula}s.  Isso torna a
+definição \emph{recursiva}.  Em geral, uma definição de uma função
+sobre um conjunto definido indutivamente (no nosso caso, !!{formula}s) é recursiva
+se os casos na definição da função fazem uso da
+própria função. Para ser bem definida, devemos garantir, no entanto,
+que só usamos os valores da função para argumentos que
+vêm ``antes'' daquele que estamos definindo---no nosso caso, ao definir
+``!!{subformula} própria'' para $(!B \ast !C)$ usamos apenas as
+!!{subformula}s próprias das !!{formula}s ``anteriores'' $!B$ e $!C$.
 \end{explain}
 
 \begin{prop}
 \ollabel{prop:subfrm-trans}
-Suppose $!B$ is a subformula of $!A$ and $!C$ is a subformula of $!B$.
-Then $!C$ is a subformula of $!A$. In other words, the subformula
-relation is transitive.
+Suponha que $!B$ é uma subfórmula de $!A$ e $!C$ é uma subfórmula de $!B$.
+Então $!C$ é uma subfórmula de $!A$. Em outras palavras, a relação de subfórmula
+é transitiva.
 \end{prop}
 
 \begin{prob}
@@ -100,8 +100,8 @@ Prove \olref[fol][syn][sbf]{prop:subfrm-trans}.
 
 \begin{prop}
 \ollabel{prop:count-subfrms}
-Suppose $!A$ is a formula with $n$ connectives and quantifiers.
-Then $!A$ has at most $2n+1$ subformulas.
+Suponha que $!A$ é uma fórmula com $n$ conectivos e quantificadores.
+Então $!A$ tem no máximo $2n+1$ subfórmulas.
 \end{prop}
 
 \begin{prob}

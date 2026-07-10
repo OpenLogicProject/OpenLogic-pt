@@ -7,77 +7,76 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{com}{cpd}}
-      {\olfileid{pl}{com}{cpd}}
+      {\olfileid[pt]{fol}{com}{cpd}}
+      {\olfileid[pt]{pl}{com}{cpd}}
 
-\olsection{A Direct Proof of the Compactness Theorem}
+\olsection{Uma Prova Direta do Teorema da Compacidade}
 
-We can prove the Compactness Theorem directly, without appealing to
-the Completeness Theorem, using the same ideas as in the proof of the
-completeness theorem.  In the proof of the Completeness Theorem we
-started with a consistent set~$\Gamma$ of !!{sentence}s, expanded it
-to a consistent\iftag{FOL}{, saturated,}{} and !!{complete}
-set~$\Gamma^*$ of !!{sentence}s, and then showed that in the
-\iftag{FOL}{term
-  model~$\Struct{M(\Gamma^*)}$}{!!{valuation}~$\pAssign{v(\Gamma^*)}$}
-constructed from $\Gamma^*$, all !!{sentence}s of~$\Gamma$ are true,
-so $\Gamma$ is satisfiable.
+Podemos provar o Teorema da Compacidade diretamente, sem apelar ao
+Teorema da Completude, usando as mesmas ideias da prova do
+teorema da completude.  Na prova do Teorema da Completude,
+começamos com um conjunto~$\Gamma$ consistente de !!{sentence}s,
+expandimos-o para um conjunto~$\Gamma^*$ de !!{sentence}s consistente\iftag{FOL}{, saturado,}{} e
+!!{complete}, e então mostramos que no
+\iftag{FOL}{modelo de termos~$\Struct{M(\Gamma^*)}$}{!!{valuation}~$\pAssign{v(\Gamma^*)}$}
+construído a partir de $\Gamma^*$, todas as !!{sentence}s de~$\Gamma$ são verdadeiras,
+de modo que $\Gamma$ é satisfatível.
 
-We can use the same method to show that a finitely satisfiable set of
-sentences is satisfiable. We just have to prove the corresponding
-versions of the results leading to the truth lemma where we replace
-``consistent'' with ``finitely satisfiable.''
+Podemos usar o mesmo método para mostrar que um conjunto finitamente
+satisfatível de sentenças é satisfatível. Só temos que provar as
+versões correspondentes dos resultados que levam ao lema da verdade,
+substituindo ``consistente'' por ``finitamente satisfatível''.
 
 \begin{prop}
 \ollabel{prop:fsat-ccs}
-Suppose $\Gamma$ is !!{complete} and finitely satisfiable. Then:
+Suponha que $\Gamma$ é !!{complete} e finitamente satisfatível. Então:
 \begin{enumerate}
 \tagitem{prvAnd}{$(!A \land !B) \in \Gamma$
-  iff both $!A \in \Gamma$ and $!B \in \Gamma$.}{}
+  se, e somente se, tanto $!A \in \Gamma$ quanto $!B \in \Gamma$.}{}
 
-\tagitem{prvOr}{$(!A \lor !B) \in \Gamma$ iff
-  either $!A \in \Gamma$ or $!B \in \Gamma$.}{}
+\tagitem{prvOr}{$(!A \lor !B) \in \Gamma$ se, e somente se,
+  $!A \in \Gamma$ ou $!B \in \Gamma$.}{}
 
-\tagitem{prvIf}{$(!A \lif !B) \in \Gamma$ iff
-  either $!A \notin \Gamma$ or $!B \in \Gamma$.}{}
+\tagitem{prvIf}{$(!A \lif !B) \in \Gamma$ se, e somente se,
+  $!A \notin \Gamma$ ou $!B \in \Gamma$.}{}
 \end{enumerate}
 \end{prop}
 
 \tagprob{FOL}
 \begin{prob}
-Prove \olref[fol][com][cpd]{prop:fsat-ccs}. Avoid the use of $\Proves$.
+Prove \olref[fol][com][cpd]{prop:fsat-ccs}. Evite o uso de $\Proves$.
 \end{prob}
 \tagendprob
 
 \tagprob{notFOL}
 \begin{prob}
-Prove \olref[pl][com][cpd]{prop:fsat-ccs}. Avoid the use of $\Proves$.
+Prove \olref[pl][com][cpd]{prop:fsat-ccs}. Evite o uso de $\Proves$.
 \end{prob}
 \tagendprob
 
 \iftag{FOL}{%
 \begin{lem}
-\ollabel{lem:fsat-henkin} Every finitely satisfiable set~$\Gamma$ can
-be extended to a saturated finitely satisfiable set~$\Gamma'$.
+\ollabel{lem:fsat-henkin} Todo conjunto finitamente satisfatível~$\Gamma$ pode
+ser estendido a um conjunto saturado finitamente satisfatível~$\Gamma'$.
 \end{lem}
 }{}
 
 \tagprob{FOL}
 \begin{prob}
-Prove \olref[fol][com][cpd]{lem:fsat-henkin}. (Hint: The crucial step
-is to show that if $\Gamma_n$ is finitely satisfiable, so is $\Gamma_n
-\cup \{!D_n\}$, without any appeal to !!{derivation}s or consistency.)
+Prove \olref[fol][com][cpd]{lem:fsat-henkin}. (Dica: o passo crucial
+é mostrar que se $\Gamma_n$ é finitamente satisfatível, então $\Gamma_n
+\cup \{!D_n\}$ também o é, sem qualquer apelo a !!{derivation}s ou consistência.)
 \end{prob}
 \tagendprob
 
 \iftag{FOL}{
 \begin{prop}\ollabel{prop:fsat-instances}
-Suppose $\Gamma$ is complete, finitely satisfiable, and saturated.
+Suponha que $\Gamma$ é completo, finitamente satisfatível e saturado.
 \begin{tagenumerate}{prvEx,prvAll}
-\tagitem{prvEx}{$\lexists[x][!A(x)] \in \Gamma$ iff $!A(t) \in \Gamma$
-  for at least one closed term~$t$.}{}
-\tagitem{prvAll}{$\lforall[x][!A(x)] \in \Gamma$ iff $!A(t) \in \Gamma$
-  for all closed terms~$t$.}{}
+\tagitem{prvEx}{$\lexists[x][!A(x)] \in \Gamma$ se, e somente se, $!A(t) \in \Gamma$
+  para pelo menos um termo fechado~$t$.}{}
+\tagitem{prvAll}{$\lforall[x][!A(x)] \in \Gamma$ se, e somente se, $!A(t) \in \Gamma$
+  para todos os termos fechados~$t$.}{}
 \end{tagenumerate}
 \end{prop}
 }{}
@@ -89,72 +88,71 @@ Prove \olref[fol][com][cpd]{prop:fsat-instances}.
 \tagendprob
 
 \begin{lem}
-\ollabel{lem:fsat-lindenbaum} Every finitely satisfiable set~$\Gamma$
-can be extended to !!a{complete} and finitely satisfiable
-set~$\Gamma^*$.
+\ollabel{lem:fsat-lindenbaum} Todo conjunto finitamente satisfatível~$\Gamma$
+pode ser estendido a um conjunto !!{complete} e finitamente satisfatível
+~$\Gamma^*$.
 \end{lem}
 
 \tagprob{FOL}
 \begin{prob}
-Prove \olref[fol][com][cpd]{lem:fsat-lindenbaum}.  (Hint: the crucial
-step is to show that if $\Gamma_n$ is finitely satisfiable, then
-either $\Gamma_n \cup \{!A_n\}$ or $\Gamma_n \cup \{\lnot !A_n\}$ is
-finitely satisfiable.)
+Prove \olref[fol][com][cpd]{lem:fsat-lindenbaum}.  (Dica: o passo crucial
+é mostrar que se $\Gamma_n$ é finitamente satisfatível, então
+ou $\Gamma_n \cup \{!A_n\}$ ou $\Gamma_n \cup \{\lnot !A_n\}$ é
+finitamente satisfatível.)
 \end{prob}
 \tagendprob
 
 \tagprob{notFOL}
 \begin{prob}
-Prove \olref[pl][com][cpd]{lem:fsat-lindenbaum}.  (Hint: the crucial
-step is to show that if $\Gamma_n$ is finitely satisfiable, then
-either $\Gamma_n \cup \{!A_n\}$ or $\Gamma_n \cup \{\lnot !A_n\}$ is
-finitely satisfiable.)
+Prove \olref[pl][com][cpd]{lem:fsat-lindenbaum}.  (Dica: o passo crucial
+é mostrar que se $\Gamma_n$ é finitamente satisfatível, então
+ou $\Gamma_n \cup \{!A_n\}$ ou $\Gamma_n \cup \{\lnot !A_n\}$ é
+finitamente satisfatível.)
 \end{prob}
 \tagendprob
 
-\begin{thm}[Compactness]
-\ollabel{thm:compactness-direct} $\Gamma$ is satisfiable if and only
-if it is finitely satisfiable.
+\begin{thm}[Compacidade]
+\ollabel{thm:compactness-direct} $\Gamma$ é satisfatível se, e somente se,
+é finitamente satisfatível.
 \end{thm}
 
 \begin{proof}
-If $\Gamma$ is satisfiable, then there is
+Se $\Gamma$ é satisfatível, então há
 \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}
-such that $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ for all $!A \in \Gamma$.
-Of course, this \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} also
-satisfies every finite subset of~$\Gamma$, so $\Gamma$ is finitely
-satisfiable.
+tal que $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ para todo $!A \in \Gamma$.
+É claro que esta \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} também
+satisfaz todo subconjunto finito de~$\Gamma$, de modo que $\Gamma$ é finitamente
+satisfatível.
 
-Now suppose that $\Gamma$ is finitely satisfiable.\iftag{FOL}{ By
-  \olref{lem:fsat-henkin}, there is a finitely satisfiable, saturated
-  set $\Gamma' \supseteq \Gamma$.}{} By \olref{lem:fsat-lindenbaum},
-$\iftag{FOL}{\Gamma'}{\Gamma}$ can be extended to !!a{complete} and
-finitely satisfiable set~$\Gamma^*$\iftag{FOL}{, and $\Gamma^*$ is
-  still saturated}{}. Construct the \iftag{FOL}{term
-  model~$\Struct{M(\Gamma^*)}$}{!!{valuation}~$\pAssign{v(\Gamma^*)}$}
-as in \olref[mod]{defn:termmodel}.\iftag{FOL}{ Note that
-\olref[mod]{prop:quant-termmodel} did not rely on the fact that
-$\Gamma^*$ is consistent (or !!{complete} or saturated, for that
-matter), but just on the fact that $\Struct{M(\Gamma^*)}$ is covered.}{}
-The proof of the Truth Lemma (\olref[mod]{lem:truth}) goes through if
-we replace references to \olref[ccs]{prop:ccs}\iftag{FOL}{ and
-\olref[hen]{prop:saturated-instances} by references to
-\olref{prop:fsat-ccs} and \olref{prop:fsat-instances}}.
+Agora suponha que $\Gamma$ é finitamente satisfatível.\iftag{FOL}{ Por
+  \olref{lem:fsat-henkin}, há um conjunto finitamente satisfatível e saturado
+  $\Gamma' \supseteq \Gamma$.}{} Por \olref{lem:fsat-lindenbaum},
+$\iftag{FOL}{\Gamma'}{\Gamma}$ pode ser estendido a um conjunto !!{complete} e
+finitamente satisfatível~$\Gamma^*$\iftag{FOL}{, e $\Gamma^*$ ainda é
+  saturado}{}. Construa o \iftag{FOL}{modelo de termos
+  ~$\Struct{M(\Gamma^*)}$}{!!{valuation}~$\pAssign{v(\Gamma^*)}$}
+como em \olref[mod]{defn:termmodel}.\iftag{FOL}{ Note que
+\olref[mod]{prop:quant-termmodel} não dependeu do fato de que
+$\Gamma^*$ é consistente (ou !!{complete} ou saturado, aliás), mas apenas do fato de que $\Struct{M(\Gamma^*)}$ é coberta.}{}
+A prova do Lema da Verdade (\olref[mod]{lem:truth}) funciona se
+substituirmos referências a \olref[ccs]{prop:ccs}\iftag{FOL}{ e
+\olref[hen]{prop:saturated-instances} por referências a
+\olref{prop:fsat-ccs} e \olref{prop:fsat-instances}}.
 \end{proof}
 
 \tagprob{FOL}
 \begin{prob}
-Write out the complete proof of the Truth Lemma
-(\olref[fol][com][mod]{lem:truth}) in the version required for the
-proof of \olref[fol][com][cpd]{thm:compactness-direct}.
+Escreva a prova completa do Lema da Verdade
+(\olref[fol][com][mod]{lem:truth}) na versão necessária para a
+prova de \olref[fol][com][cpd]{thm:compactness-direct}.
 \end{prob}
 \tagendprob
 
 \tagprob{notFOL}
 \begin{prob}
-Write out the complete proof of the Truth Lemma
-(\olref[pl][com][mod]{lem:truth}) in the version required for the
-proof of \olref[pl][com][cpd]{thm:compactness-direct}.
+Escreva a prova completa do Lema da Verdade
+(\olref[pl][com][mod]{lem:truth}) na versão necessária para a
+prova de \olref[pl][com][cpd]{thm:compactness-direct}.
 \end{prob}
 \tagendprob
 

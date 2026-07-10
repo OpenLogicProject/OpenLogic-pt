@@ -6,120 +6,124 @@
 
 \begin{document}
 
-\olfileid{fol}{byd}{hol}
+\olfileid[pt]{fol}{byd}{hol}
 
-\olsection{Higher-Order logic}
+\olsection{Lógica de Ordem Superior}
 
-Passing from first-order logic to second-order logic enabled us to
-talk about sets of objects in the first-order !!{domain}, within the
-formal language. Why stop there? For example, third-order logic should
-enable us to deal with sets of sets of objects, or perhaps even sets
-which contain both objects and sets of objects. And fourth-order logic
-will let us talk about sets of objects of that kind. As you may have
-guessed, one can iterate this idea arbitrarily.
+Passar da lógica de primeira ordem para a de segunda ordem nos permitiu
+falar sobre conjuntos de objetos no !!{domain} de primeira ordem, dentro da
+linguagem formal. Por que parar aí? Por exemplo, a lógica de terceira
+ordem deveria nos permitir lidar com conjuntos de conjuntos de objetos,
+ou talvez até conjuntos que contenham tanto objetos quanto conjuntos de
+objetos. E a lógica de quarta ordem nos permitirá falar sobre conjuntos
+de objetos desse tipo. Como se pode imaginar, pode-se iterar essa ideia
+arbitrariamente.
 
-In practice, higher-order logic is often !!{formula}ted in terms of
-functions instead of relations. (Modulo the natural identifications,
-this difference is inessential.) Given some basic ``sorts'' $A$, $B$,
-$C$,~\dots (which we will now call ``types''), we can create new ones
-by stipulating
+Na prática, a lógica de ordem superior é frequentemente formulada em
+termos de funções em vez de relações. (Módulo as identificações naturais,
+essa diferença é inessencial.) Dadas algumas ``ordenações'' básicas $A$, $B$,
+$C$,~\dots (que agora chamaremos de ``tipos''), podemos criar novos
+estipulando
 \begin{quote}
-If $\sigma$ and $\tau$ are finite types then so is $\sigma \to \tau$.
+Se $\sigma$ e $\tau$ são tipos finitos, então $\sigma \to \tau$ também o é.
 \end{quote}
-Think of types as syntactic ``labels,'' which classify the objects we
-want in our !!{domain}; $\sigma \to \tau$ describes those objects that
-are functions which take objects of type~$\sigma$ to objects of
-type~$\tau$. For example, we might want to have a type $\Omega$ of
-truth values, ``true'' and ``false,'' and a type $\Nat$ of natural
-numbers. In that case, you can think of objects of type $\Nat \to
-\Omega$ as unary relations, or subsets of $\Nat$; objects of type
-$\Nat \to \Nat$ are functions from natural numbers to natural numbers;
-and objects of type $(\Nat \to \Nat) \to \Nat$ are ``functionals,''
-that is, higher-type functions that take functions to numbers.
+Pense nos tipos como ``rótulos'' sintáticos que classificam os objetos que
+queremos em nosso !!{domain}; $\sigma \to \tau$ descreve aqueles objetos que
+são funções que levam objetos de tipo~$\sigma$ a objetos de
+tipo~$\tau$. Por exemplo, podemos querer ter um tipo $\Omega$ de
+valores de verdade, ``verdadeiro'' e ``falso'', e um tipo $\Nat$ de números
+naturais. Nesse caso, pode-se pensar em objetos de tipo $\Nat \to
+\Omega$ como relações unárias, ou subconjuntos de $\Nat$; objetos de tipo
+$\Nat \to \Nat$ são funções de números naturais para números naturais;
+e objetos de tipo $(\Nat \to \Nat) \to \Nat$ são ``funcionais'',
+isto é, funções de tipo superior que levam funções a números.
 
-As in the case of second-order logic, one can think of higher-order
-logic as a kind of many-sorted logic, where there is a sort for each
-type of object we want to consider. But it is usually clearer just to
-define the syntax of higher-type logic from the ground up. For
-example, we can define a set of finite types inductively, as follows:
+Como no caso da lógica de segunda ordem, pode-se pensar na lógica de
+ordem superior como uma espécie de lógica de múltiplas ordenações, em que
+há uma ordenação para cada tipo de objeto que queremos considerar. Mas é
+usualmente mais
+claro simplesmente definir a sintaxe da lógica de tipos superiores a
+partir dos fundamentos. Por exemplo, podemos definir um conjunto de tipos
+finitos indutivamente, da seguinte forma:
 \begin{enumerate}
-\item $\Nat$ is a finite type.
-\item If $\sigma$ and $\tau$ are finite types, then so is $\sigma
-  \to \tau$.
-\item If $\sigma$ and $\tau$ are finite types, so is $\sigma \times
-  \tau$.
+\item $\Nat$ é um tipo finito.
+\item Se $\sigma$ e $\tau$ são tipos finitos, então $\sigma
+  \to \tau$ também o é.
+\item Se $\sigma$ e $\tau$ são tipos finitos, então $\sigma \times
+  \tau$ também o é.
 \end{enumerate}
-Intuitively, $\Nat$ denotes the type of the natural numbers,
-$\sigma \to \tau$ denotes the type of functions from $\sigma$ to
-$\tau$, and $\sigma \times \tau$ denotes the type of pairs of objects,
-one from $\sigma$ and one from $\tau$. We can then define a set of
-terms inductively, as follows:
+Intuitivamente, $\Nat$ denota o tipo dos números naturais,
+$\sigma \to \tau$ denota o tipo de funções de $\sigma$ para
+$\tau$, e $\sigma \times \tau$ denota o tipo de pares de objetos,
+um de $\sigma$ e outro de $\tau$. Podemos então definir um conjunto de
+termos indutivamente, da seguinte forma:
 \begin{enumerate}
-\item For each type $\sigma$, there is a stock of variables $x$, $y$,
-  $z$, \dots of type $\sigma$
-\item $\Obj 0$ is a term of type $\Nat$
-\item $\Obj S$ (successor) is a term of type $\Nat \to \Nat$
-\item If $s$ is a term of type $\sigma$, and $t$ is a term of type
-  $\Nat \to (\sigma \to \sigma)$, then $\Obj{R}_{st}$ is a term of type
+\item Para cada tipo $\sigma$, há um estoque de variáveis $x$, $y$,
+  $z$, \dots de tipo $\sigma$
+\item $\Obj 0$ é um termo de tipo $\Nat$
+\item $\Obj S$ (sucessor) é um termo de tipo $\Nat \to \Nat$
+\item Se $s$ é um termo de tipo $\sigma$, e $t$ é um termo de tipo
+  $\Nat \to (\sigma \to \sigma)$, então $\Obj{R}_{st}$ é um termo de tipo
   $\Nat \to \sigma$
-\item If $s$ is a term of type $\tau \to \sigma$ and $t$ is a
-  term of type~$\tau$, then $s(t)$ is a term of type $\sigma$
-\item If $s$ is a term of type~$\sigma$ and $x$ is a variable of
-  type~$\tau$, then $\lambd[x][s]$ is a term of type $\tau \to \sigma$.
-\item If $s$ is a term of type~$\sigma$ and $t$ is a term of
-  type~$\tau$, then $\tuple{s, t}$ is a term of type $\sigma \times
+\item Se $s$ é um termo de tipo $\tau \to \sigma$ e $t$ é um
+  termo de tipo~$\tau$, então $s(t)$ é um termo de tipo $\sigma$
+\item Se $s$ é um termo de tipo~$\sigma$ e $x$ é uma variável de
+  tipo~$\tau$, então $\lambd[x][s]$ é um termo de tipo $\tau \to \sigma$.
+\item Se $s$ é um termo de tipo~$\sigma$ e $t$ é um termo de
+  tipo~$\tau$, então $\tuple{s, t}$ é um termo de tipo $\sigma \times
   \tau$.
-\item If $s$ is a term of type~$\sigma \times \tau$ then $p_1(s)$ is a
-  term of type~$\sigma$ and $p_2(s)$ is a term of type~$\tau$.
+\item Se $s$ é um termo de tipo~$\sigma \times \tau$, então $p_1(s)$ é um
+  termo de tipo~$\sigma$ e $p_2(s)$ é um termo de tipo~$\tau$.
 \end{enumerate}
-Intuitively, $\Obj{R}_{st}$ denotes the function defined recursively by
+Intuitivamente, $\Obj{R}_{st}$ denota a função definida recursivamente por
 \begin{align*}
 \Obj{R}_{st}(0) & = s \\
 \Obj{R}_{st}(x+1) & = t(x, R_{st}(x)),
 \end{align*}
-$\tuple{s, t}$ denotes the pair whose first component is~$s$ and whose
-second component is~$t$, and $p_1(s)$ and~$p_2(s)$ denote the first
-and second elements (``projections'') of~$s$. Finally, $\lambd[x][s]$
-denotes the function~$f$ defined by
+$\tuple{s, t}$ denota o par cuja primeira componente é~$s$ e cuja
+segunda componente é~$t$, e $p_1(s)$ e~$p_2(s)$ denotam o primeiro
+e o segundo elementos (``projeções'') de~$s$. Finalmente, $\lambd[x][s]$
+denota a função~$f$ definida por
 \[
 f(x) = s
 \]
-for any~$x$ of type~$\sigma$; so item (6) gives us a form of
-comprehension, enabling us to define functions using
-terms. !!^{formula}s are built up from !!{identity} statements $\eq[s][t]$
-between terms of the same type, the usual propositional connectives,
-and higher-type quantification. One can then take the axioms of the
-system to be the basic equations governing the terms defined above,
-together with the usual rules of logic with quantifiers and !!{identity}.
+para qualquer~$x$ de tipo~$\sigma$; assim o item (6) nos dá uma forma de
+compreensão, permitindo-nos definir funções usando
+termos. As !!{formula}s são construídas a partir de afirmações de
+!!{identity} $\eq[s][t]$ entre termos do mesmo tipo, dos conectivos
+proposicionais usuais e da quantificação de ordem superior. Pode-se então
+tomar os axiomas do sistema como as equações básicas que governam os
+termos definidos acima, juntamente com as regras usuais da lógica com
+quantificadores e !!{identity}.
 
-If one augments the finite type system with a type $\Omega$ of truth
-values, one has to include axioms which govern its use as well. In
-fact, if one is clever, one can get rid of complex !!{formula}s
-entirely, replacing them with terms of type $\Omega$!{} The proof
-system can then be modified accordingly. The result is essentially the
-\emph{simple theory of types} set forth by Alonzo Church in the 1930s.
+Se se aumenta o sistema de tipos finitos com um tipo $\Omega$ de valores
+de verdade, é preciso incluir axiomas que governem seu uso também. De
+fato, se se for astuto, pode-se eliminar !!{formula}s complexas
+inteiramente, substituindo-as por termos de tipo $\Omega$!{} O sistema de
+prova pode então ser modificado de acordo. O resultado é essencialmente a
+\emph{teoria simples dos tipos} apresentada por Alonzo Church na década de
+1930.
 
-As in the case of second-order logic, there are different versions of
-higher-type semantics that one might want to use. In the full version,
-variables of type $\sigma \to \tau$ range over the set of \emph{all}
-functions from the objects of type~$\sigma$ to objects of type~$\tau$.
-As you might expect, this semantics is too strong to admit a complete,
-effective !!{derivation} system. But one can consider a weaker semantics, in
-which !!a{structure} consists of sets of elements $T_\tau$ for each
-type $\tau$, together with appropriate operations for application,
-projection, etc. If the details are carried out correctly, one can
-obtain completeness theorems for the kinds of !!{derivation} systems described
-above.
+Como no caso da lógica de segunda ordem, há diferentes versões de
+semântica de tipos superiores que se pode querer usar. Na versão completa,
+variáveis de tipo $\sigma \to \tau$ variam sobre o conjunto de \emph{todas}
+as funções dos objetos de tipo~$\sigma$ para objetos de tipo~$\tau$.
+Como se pode imaginar, essa semântica é forte demais para admitir um
+sistema de !!{derivation} completo e efetivo. Mas pode-se considerar uma
+semântica mais fraca, em que !!a{structure} consiste em conjuntos de
+elementos $T_\tau$ para cada tipo $\tau$, juntamente com operações
+apropriadas para aplicação, projeção, etc. Se os detalhes forem
+desenvolvidos corretamente, pode-se obter teoremas de completude para os
+tipos de sistemas de !!{derivation} descritos acima.
 
-Higher-type logic is attractive because it provides a framework in
-which we can embed a good deal of mathematics in a natural way:
-starting with $\Nat$, one can define real numbers, continuous
-functions, and so on. It is also particularly attractive in the
-context of intuitionistic logic, since the types have clear
-``constructive'' interpretations. In fact, one can develop constructive
-versions of higher-type semantics (based on intuitionistic, rather
-than classical logic) that clarify these constructive interpretations
-quite nicely, and are, in many ways, more interesting than the
-classical counterparts.
+A lógica de ordem superior é atraente porque fornece um arcabouço no
+qual podemos embutir boa parte da matemática de maneira natural: a partir
+de $\Nat$, pode-se definir números reais, funções contínuas e assim por
+diante. É também particularmente atraente no contexto da lógica
+intuicionista, pois os tipos têm interpretações ``construtivas'' claras.
+De fato, pode-se desenvolver versões construtivas da semântica de tipos
+superiores (baseadas na lógica intuicionista, em vez da clássica) que
+esclarecem bastante essas interpretações construtivas e são, em muitos
+aspectos, mais interessantes do que as contrapartes clássicas.
 
 \end{document}

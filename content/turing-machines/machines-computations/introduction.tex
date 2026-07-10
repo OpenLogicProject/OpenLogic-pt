@@ -6,125 +6,122 @@
 
 \begin{document}
 
-\olfileid{tur}{mac}{int} 
-\olsection{Introduction}
+\olfileid[pt]{tur}{mac}{int} 
+\olsection{Introdução}
 
-What does it mean for a function, say, from $\Nat$ to $\Nat$ to be
-\emph{computable}? Among the first answers, and the most well known
-one, is that a function is computable if it can be computed by a
-Turing machine. This notion was set out by Alan Turing in 1936.
-Turing machines are an example of \emph{a model of computation}---they
-are a mathematically precise way of defining the idea of a
-``computational procedure.''  What exactly that means is debated, but
-it is widely agreed that Turing machines are one way of specifying
-computational procedures.  Even though the term ``Turing machine''
-evokes the image of a physical machine with moving parts, strictly
-speaking a Turing machine is a purely mathematical construct, and as
-such it idealizes the idea of a computational procedure.  For
-instance, we place no restriction on either the time or memory
-requirements of a Turing machine: Turing machines can compute
-something even if the computation would require more storage space or
-more steps than there are atoms in the universe.
+O que significa dizer que uma função, digamos, de $\Nat$ para $\Nat$ é
+\emph{computável}? Entre as primeiras respostas, e a mais conhecida,
+está a de que uma função é computável se puder ser computada por uma
+máquina de Turing. Essa noção foi apresentada por Alan Turing em 1936.
+As máquinas de Turing são um exemplo de \emph{modelo de computação}---uma
+maneira matematicamente precisa de definir a ideia de um
+``procedimento computacional.'' O que exatamente isso significa é debatido, mas
+há amplo consenso de que as máquinas de Turing são uma forma de especificar
+procedimentos computacionais. Embora o termo ``máquina de Turing''
+evoque a imagem de uma máquina física com partes móveis, estritamente
+falando uma máquina de Turing é um construto puramente matemático e, como
+tal, idealiza a ideia de um procedimento computacional. Por
+exemplo, não impomos restrição alguma aos requisitos de tempo ou memória
+de uma máquina de Turing: máquinas de Turing podem computar
+algo mesmo que a computação exija mais espaço de armazenamento ou
+mais passos do que há átomos no universo.
 
 \begin{explain}
-It is perhaps best to think of a Turing
-machine as a program for a special kind of imaginary mechanism. This
-mechanism consists of a \emph{tape} and a \emph{read-write head}. In
-our version of Turing machines, the tape is infinite in one direction
-(to the right), and it is divided into \emph{squares}, each of which
-may contain a symbol from a finite \emph{alphabet}. Such alphabets can
-contain any number of different symbols, but we will mainly make do
-with three: $\TMendtape$, $\TMblank$, and $\TMstroke$. When the
-mechanism is started, the tape is empty (O.s.\@, each square contains
-the symbol $\TMblank$) except for the leftmost square, which contains
-$\TMendtape$, and a finite number of squares which contain the
-\emph{input}. At any time, the mechanism is in one of a finite number
-of \emph{states}. At the outset, the head scans the leftmost square
-and in a specified \emph{initial state}. At each step of the
-mechanism's run, the content of the square currently scanned together
-with the state the mechanism is in and the Turing machine program
-determine what happens next. The Turing machine program is given by a
-partial function which takes as input a state~$q$ and a
-symbol~$\sigma$ and outputs a triple~$\tuple{q', \sigma',
-  D}$. Whenever the mechanism is in state $q$ and reads symbol
-$\sigma$, it replaces the symbol on the current square with $\sigma'$,
-the head moves left, right, or stays put according to whether $D$ is
-$\TMleft$, $\TMright$, or $\TMstay$, and the mechanism goes into
-state~$q'$.
+Talvez seja melhor pensar em uma máquina de Turing
+como um programa para um tipo especial de mecanismo imaginário. Esse
+mecanismo consiste em uma \emph{fita} e uma \emph{cabeça de leitura-escrita}. Na
+nossa versão das máquinas de Turing, a fita é infinita em uma direção
+(à direita) e é dividida em \emph{quadrados}, cada um dos quais
+pode conter um símbolo de um \emph{alfabeto} finito. Esses alfabetos podem
+conter qualquer número de símbolos diferentes, mas nos contentaremos em geral
+com três: $\TMendtape$, $\TMblank$ e $\TMstroke$. Quando o
+mecanismo é iniciado, a fita está vazia (ou seja, cada quadrado contém
+o símbolo $\TMblank$), exceto o quadrado mais à esquerda, que contém
+$\TMendtape$, e um número finito de quadrados que contêm a
+\emph{entrada}. A qualquer momento, o mecanismo está em um de um número finito de
+\emph{estados}. No início, a cabeça examina o quadrado mais à esquerda
+e em um \emph{estado inicial} especificado. A cada passo da
+execução do mecanismo, o conteúdo do quadrado atualmente examinado, junto
+com o estado em que o mecanismo se encontra e o programa da máquina de Turing,
+determinam o que acontece em seguida. O programa da máquina de Turing é dado por uma
+função parcial que recebe como entrada um estado~$q$ e um
+símbolo~$\sigma$ e produz uma tripla~$\tuple{q', \sigma',
+  D}$. Sempre que o mecanismo está no estado $q$ e lê o símbolo
+$\sigma$, substitui o símbolo no quadrado atual por $\sigma'$, a cabeça move-se à esquerda, à direita ou permanece no lugar conforme $D$ seja
+$\TMleft$, $\TMright$ ou $\TMstay$, e o mecanismo passa ao
+estado~$q'$.
 
-For instance, consider the situation in \olref{fig:tm}.
+Por exemplo, considere a situação em \olref{fig:tm}.
 \begin{figure}
   \olasset{\olpath/assets/diagrams/turing-machine.tikz}
-  \caption{A Turing machine executing its program.}
+  \caption{Uma máquina de Turing executando seu programa.}
   \ollabel{fig:tm}
 \end{figure}
-The visible part of the tape of the Turing machine contains the
-end-of-tape symbol $\TMendtape$ on the leftmost square, followed by
-three $1$'s, a $0$, and four more $1$'s.  The
-head is reading the third square from the left, which contains
-a~$1$, and is in state~$q_1$---we say ``the machine is reading
-a $1$ in state~$q_1$.'' If the program of the Turing machine
-returns, for input $\tuple{q_1, 1}$, the triple $\tuple{q_2,
-0, \TMstay}$, the machine would now replace the~$1$ on
-the third square with a~$0$, leave the read/write head where it
-is, and switch to state~$q_2$.  If then the program returns
-$\tuple{q_3, 0, \TMright}$ for input $\tuple{q_2, 0}$,
-the machine would now overwrite the~$0$ with another~$0$
-(effectively, leaving the content of the tape under the read/write
-head unchanged), move one square to the right, and enter state~$q_3$.
-And so on.
+A parte visível da fita da máquina de Turing contém o
+símbolo de fim de fita $\TMendtape$ no quadrado mais à esquerda, seguido de
+três $1$'s, um $0$ e mais quatro $1$'s. A
+cabeça está lendo o terceiro quadrado da esquerda, que contém
+um~$1$, e está no estado~$q_1$---dizemos que ``a máquina está lendo
+um $1$ no estado~$q_1$.'' Se o programa da máquina de Turing
+retornar, para a entrada $\tuple{q_1, 1}$, a tripla $\tuple{q_2,
+0, \TMstay}$, a máquina substituiria o~$1$ no
+terceiro quadrado por um~$0$, deixaria a cabeça de leitura/escrita onde está
+e passaria ao estado~$q_2$. Se então o programa retornar
+$\tuple{q_3, 0, \TMright}$ para a entrada $\tuple{q_2, 0}$,
+a máquina sobrescreveria o~$0$ com outro~$0$
+(efetivamente, deixando inalterado o conteúdo da fita sob a cabeça de leitura/escrita), moveria um quadrado à direita e entraria no estado~$q_3$.
+E assim por diante.
 
-We say that the machine \emph{halts} when it encounters some state,
-$q_n$, and symbol, $\sigma$ such that there is no instruction for
-$\tuple{q_n, \sigma}$, O.s.\@, the transition function for input
-$\tuple{q_n,\sigma}$ is undefined. In other words, the machine has no
-instruction to carry out, and at that point, it ceases
-operation. Halting is sometimes represented by a specific halt
-state~$h$.  This will be demonstrated in more detail later on.
+Dizemos que a máquina \emph{para} quando encontra algum estado,
+$q_n$, e símbolo, $\sigma$, tais que não há instrução para
+$\tuple{q_n, \sigma}$, ou seja, a função de transição para a entrada
+$\tuple{q_n,\sigma}$ é indefinida. Em outras palavras, a máquina não tem
+instrução a executar e, nesse ponto, cessa a
+operação. A parada às vezes é representada por um estado de parada
+específico~$h$. Isso será demonstrado com mais detalhes adiante.
 \end{explain}
 
 \begin{digress}
-The beauty of Turing's paper, ``On computable numbers,'' is that he
-presents not only a formal definition, but also an argument that the
-definition captures the intuitive notion of computability.
-From the definition, it should be clear that any function computable
-by a Turing machine is computable in the intuitive sense. Turing
-offers three types of argument that the converse is true, O.s.\@, that
-any function that we would naturally regard as computable is
-computable by such a machine. They are (in Turing's words):
+A beleza do artigo de Turing, ``On computable numbers,'' está em que ele
+apresenta não só uma definição formal, mas também um argumento de que a
+definição captura a noção intuitiva de computabilidade.
+Pela definição, deve ficar claro que toda função computável
+por uma máquina de Turing é computável no sentido intuitivo. Turing
+oferece três tipos de argumento de que o inverso é verdadeiro, ou seja, que
+toda função que naturalmente consideraríamos computável é
+computável por tal máquina. São eles (nas palavras de Turing):
 \begin{enumerate}
-\item A direct appeal to intuition.
-\item A proof of the equivalence of two definitions (in case the new
-  definition has a greater intuitive appeal).
-\item Giving examples of large classes of numbers which are
-  computable.
+\item Um apelo direto à intuição.
+\item Uma prova da equivalência de duas definições (caso a nova
+  definição tenha maior apelo intuitivo).
+\item Dar exemplos de grandes classes de números que são
+  computáveis.
 \end{enumerate}
-Our goal is to try to define the notion of computability ``in
-principle,'' O.s.\@, without taking into account practical limitations
-of time and space. Of course, with the broadest definition of
-computability in place, one can then go on to consider computation
-with bounded resources; this forms the heart of the subject known as
-``computational complexity.''
+Nosso objetivo é tentar definir a noção de computabilidade ``em
+princípio,'' ou seja, sem levar em conta limitações práticas
+de tempo e espaço. Claro, com a definição mais ampla de
+computabilidade em vigor, pode-se então considerar computação
+com recursos limitados; isso forma o cerne do assunto conhecido como
+``complexidade computacional.''
 \end{digress}
 
 \begin{history}
-Alan Turing invented Turing machines in 1936. While his interest at
-the time was the decidability of first-order logic, the paper has been
-described as a definitive paper on the foundations of computer
-design. In the paper, Turing focuses on computable real numbers, O.s.\@,
-real numbers whose decimal expansions are computable; but he notes
-that it is not hard to adapt his notions to computable functions on
-the natural numbers, and so on.  Notice that this was a full five
-years before the first working general purpose computer was built in
-1941 (by the German Konrad Zuse in his parent's living room), seven
-years before Turing and his colleagues at Bletchley Park built the
-code-breaking Colossus (1943), nine years before the American ENIAC
-(1945), twelve years before the first British general purpose
-computer---the Manchester Small-Scale Experimental Machine---was built in
-Manchester (1948), and thirteen years before the Americans first
-tested the BINAC (1949). The Manchester SSEM has the distinction of
-being the first stored-program computer---previous machines had to be
-rewired by hand for each new task.
+Alan Turing inventou as máquinas de Turing em 1936. Embora seu interesse na
+época fosse a decidibilidade da lógica de primeira ordem, o artigo tem sido
+descrito como um trabalho definitivo sobre os fundamentos do projeto de
+computadores. No artigo, Turing concentra-se em números reais computáveis, ou seja,
+números reais cujas expansões decimais são computáveis; mas observa
+que não é difícil adaptar suas noções a funções computáveis sobre
+os números naturais, e assim por diante. Note que isso foi cinco
+anos inteiros antes de o primeiro computador de propósito geral em funcionamento ser construído em
+1941 (pelo alemão Konrad Zuse na sala de estar dos pais), sete
+anos antes de Turing e seus colegas em Bletchley Park construírem o
+Colossus que quebrava códigos (1943), nove anos antes do ENIAC americano
+(1945), doze anos antes do primeiro computador britânico de propósito geral---a Manchester Small-Scale Experimental Machine---ser construída em
+Manchester (1948), e treze anos antes dos americanos testarem o
+BINAC (1949). A Manchester SSEM tem a distinção de
+ser o primeiro computador com programa armazenado---as máquinas anteriores tinham de ser
+recabeada manualmente para cada nova tarefa.
 \end{history}
 
 \end{document}

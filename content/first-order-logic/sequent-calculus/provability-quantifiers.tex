@@ -6,27 +6,27 @@
 
 \begin{document}
 
-\olfileid{fol}{seq}{qpr}
-\olsection{\usetoken{S}{derivability} and the Quantifiers}
+\olfileid[pt]{fol}{seq}{qpr}
+\olsection{\usetoken{S}{derivability} e os Quantificadores}
 
 \begin{explain}
-  The completeness theorem also requires that the sequent calculus
-  rules yield the facts about~$\Proves$ established in this
-  section.
+  O teorema da completude também exige que as regras do cálculo de
+  sequentes produzam os fatos sobre~$\Proves$ estabelecidos nesta
+  seção.
 \end{explain}
 
 \begin{thm}
-\ollabel{thm:strong-generalization} If $c$ is a constant not occurring
-in $\Gamma$ or $!A(x)$ and $\Gamma \Proves !A(c)$, then $\Gamma
+\ollabel{thm:strong-generalization} Se $c$ é uma constante que não ocorre
+em $\Gamma$ ou $!A(x)$ e $\Gamma \Proves !A(c)$, então $\Gamma
 \Proves \lforall[x][!A(x)]$.
 \end{thm}
 
 \begin{proof}
-Let $\pi_0$ be an $\Log{LK}$-!!{derivation} of $\Gamma_0 \Sequent !A(c)$
-for some finite $\Gamma_0 \subseteq \Gamma$.  By adding a
-$\RightR{\lforall}$ inference, we obtain !!a{derivation} of $\Gamma_0 \Sequent
-\lforall[x][!A(x)]$, since $c$ does not occur in $\Gamma$ or $!A(x)$
-and thus the eigenvariable condition is satisfied.
+Seja $\pi_0$ uma $\Log{LK}$-!!{derivation} de $\Gamma_0 \Sequent !A(c)$
+para algum $\Gamma_0 \subseteq \Gamma$ finito.  Acrescentando uma
+inferência $\RightR{\lforall}$, obtemos !!a{derivation} de $\Gamma_0 \Sequent
+\lforall[x][!A(x)]$, já que $c$ não ocorre em $\Gamma$ ou $!A(x)$
+e, assim, a condição de variável própria é satisfeita.
 \end{proof}
 
 \begin{prop}
@@ -39,14 +39,14 @@ and thus the eigenvariable condition is satisfied.
 
 \begin{proof}
 \begin{tagenumerate}{prvEx,prvAll}
-\tagitem{prvEx}{The sequent $!A(t) \Sequent \lexists[x][!A(x)]$ is
+\tagitem{prvEx}{O sequente $!A(t) \Sequent \lexists[x][!A(x)]$ é
   !!{derivable}:
   \begin{prooftree}
     \Axiom$!A(t) \fCenter !A(t)$
     \RightLabel{\RightR{\lexists}}
     \UnaryInf$!A(t) \fCenter \lexists[x][!A(x)]$
     \end{prooftree}}{}
-\tagitem{prvAll}{The sequent $\lforall[x][!A(x)] \Sequent !A(t)$ is
+\tagitem{prvAll}{O sequente $\lforall[x][!A(x)] \Sequent !A(t)$ é
   !!{derivable}:
   \begin{prooftree}
     \Axiom$!A(t) \fCenter !A(t)$

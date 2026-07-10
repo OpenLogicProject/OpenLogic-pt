@@ -6,172 +6,172 @@
 
 \begin{document}
 
-\olfileid{mth}{prf}{ex1}
+\olfileid[pt]{mth}{prf}{ex1}
 
-\olsection{An Example} 
+\olsection{Um Exemplo} 
 
-Our first example is the following simple fact about unions and
-intersections of sets.  It will illustrate unpacking definitions,
-proofs of conjunctions, of universal claims, and proof by cases.
+Nosso primeiro exemplo é o seguinte fato simples sobre uniões e
+interseções de conjuntos.  Ele ilustrará o desdobramento de definições,
+provas de conjunções, de afirmações universais, e a prova por casos.
 
 \begin{prop}
-For any sets $A$, $B$, and $C$, $A \cup (B \cap C) = (A \cup B)
+Para quaisquer conjuntos $A$, $B$ e $C$, $A \cup (B \cap C) = (A \cup B)
 \cap (A \cup C)$
 \end{prop}
 
-Let's prove it!{}
+Vamos prová-la!{}
 
 \begin{proof}
-We want to show that for any sets $A$, $B$, and $C$, $A \cup (B \cap
+Queremos mostrar que, para quaisquer conjuntos $A$, $B$ e $C$, $A \cup (B \cap
 C) = (A \cup B) \cap (A \cup C)$
 \begin{quote}
-First we unpack the definition of ``$=$'' in the statement of the
-proposition. Recall that proving sets identical means showing that the
-sets have the same !!{element}s. That is, all !!{element}s of $A \cup
-(B \cap C)$ are also !!{element}s of $(A \cup B) \cap (A \cup C)$, and
-vice versa.  The ``vice versa'' means that also every !!{element} of $(A
-\cup B) \cap (A \cup C)$ must be !!a{element} of $A \cup (B \cap
-C)$.  So in unpacking the definition, we see that we have to prove a
-conjunction.  Let's record this:
+Primeiro desdobramos a definição de ``$=$'' no enunciado da
+proposição. Lembre-se de que provar que conjuntos são idênticos significa mostrar que os
+conjuntos têm os mesmos !!{element}s. Isto é, todos os !!{element}s de $A \cup
+(B \cap C)$ são também !!{element}s de $(A \cup B) \cap (A \cup C)$, e
+vice-versa.  O ``vice-versa'' significa que também todo !!{element} de $(A
+\cup B) \cap (A \cup C)$ deve ser !!a{element} de $A \cup (B \cap
+C)$.  Assim, ao desdobrar a definição, vemos que temos que provar uma
+conjunção.  Vamos registrar isso:
 \end{quote}
-By definition, $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$ iff
-every !!{element} of $A \cup (B \cap C)$ is also !!a{element} of $(A
-\cup B) \cap (A \cup C)$, and every !!{element} of $(A \cup B) \cap (A
-\cup C)$ is !!a{element} of $A \cup (B \cap C)$.
+Por definição, $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$ sse
+todo !!{element} de $A \cup (B \cap C)$ é também !!a{element} de $(A
+\cup B) \cap (A \cup C)$, e todo !!{element} de $(A \cup B) \cap (A
+\cup C)$ é !!a{element} de $A \cup (B \cap C)$.
 \begin{quote}
-Since this is a conjunction, we must prove each conjunct
-separately. Lets start with the first: let's prove that every
-!!{element} of $A \cup (B \cap C)$ is also !!a{element} of $(A
+Como isso é uma conjunção, devemos provar cada conjuntiva
+separadamente. Vamos começar pela primeira: vamos provar que todo
+!!{element} de $A \cup (B \cap C)$ é também !!a{element} de $(A
 \cup B) \cap (A \cup C)$.
 
-This is a universal claim, and so we consider an arbitrary !!{element}
-of $A \cup (B \cap C)$ and show that it must also be !!a{element} of
-$(A \cup B) \cap (A \cup C)$. We'll pick a variable to call this
-arbitrary !!{element} by, say,~$z$.  Our proof continues:
+Esta é uma afirmação universal, e por isso consideramos um !!{element}
+arbitrário de $A \cup (B \cap C)$ e mostramos que ele também deve ser !!a{element} de
+$(A \cup B) \cap (A \cup C)$. Vamos escolher uma variável para chamar esse
+!!{element} arbitrário, digamos,~$z$.  Nossa prova continua:
 \end{quote}
-First, we prove that every !!{element} of $A \cup (B \cap C)$ is also
-!!a{element} of $(A \cup B) \cap (A \cup C)$. Let $z \in A \cup (B
-\cap C)$. We have to show that $z \in (A \cup B) \cap (A \cup C)$.
+Primeiro, provamos que todo !!{element} de $A \cup (B \cap C)$ é também
+!!a{element} de $(A \cup B) \cap (A \cup C)$. Seja $z \in A \cup (B
+\cap C)$. Temos que mostrar que $z \in (A \cup B) \cap (A \cup C)$.
 \begin{quote}  
-Now it is time to unpack the definition of $\cup$ and~$\cap$. For
-instance, the definition of $\cup$ is: $A \cup B = \Setabs{z}{z \in A
-  \text{ or } z \in B}$.  When we apply the definition to ``$A \cup (B
-\cap C)$,'' the role of the ``$B$'' in the definition is now played by
-``$B \cap C$,'' so $A \cup (B \cap C) = \Setabs{z}{z \in A \text{ or }
-  z \in B \cap C}$.  So our assumption that $z \in A \cup (B \cap C)$
-amounts to: $z \in \Setabs{z}{z \in A \text{ or } z \in B \cap
-  C}$. And $z \in \Setabs{z}{\dots z\dots}$ iff \dots $z$ \dots, O.s.\@,
-in this case, $z \in A$ or $z \in B \cap C$.
+Agora é hora de desdobrar a definição de $\cup$ e~$\cap$. Por
+exemplo, a definição de $\cup$ é: $A \cup B = \Setabs{z}{z \in A
+  \text{ ou } z \in B}$.  Quando aplicamos a definição a ``$A \cup (B
+\cap C)$,'' o papel do ``$B$'' na definição passa a ser desempenhado por
+``$B \cap C$,'' de modo que $A \cup (B \cap C) = \Setabs{z}{z \in A \text{ ou }
+  z \in B \cap C}$.  Então nossa suposição de que $z \in A \cup (B \cap C)$
+equivale a: $z \in \Setabs{z}{z \in A \text{ ou } z \in B \cap
+  C}$. E $z \in \Setabs{z}{\dots z\dots}$ sse \dots $z$ \dots, isto é,
+neste caso, $z \in A$ ou $z \in B \cap C$.
 \end{quote}
-By the definition of $\cup$, either $z \in A$ or $z \in B \cap C$.
+Pela definição de $\cup$, ou $z \in A$ ou $z \in B \cap C$.
 \begin{quote}
-Since this is a disjunction, it will be useful to apply proof by
-cases. We take the two cases, and show that in each one, the
-conclusion we're aiming for (namely, ``$z \in (A \cup B) \cap (A \cup
-C)$'') obtains.
+Como isso é uma disjunção, será útil aplicar a prova por
+casos. Tomamos os dois casos, e mostramos que, em cada um, a
+conclusão que buscamos (a saber, ``$z \in (A \cup B) \cap (A \cup
+C)$'') se obtém.
 \end{quote}
-Case 1: Suppose that $z \in A$.
+Caso 1: Suponha que $z \in A$.
 \begin{quote}
-There's not much more to work from based on our assumptions. So let's
-look at what we have to work with in the conclusion. We want to show
-that $z \in (A \cup B) \cap (A \cup C)$. Based on the definition of
-$\cap$, if we want to show that $z \in (A \cup B) \cap (A \cup C)$, we
-have to show that it's in both $(A \cup B)$ and $(A \cup C)$. But $z
-\in A \cup B$ iff $z \in A$ or $z \in B$, and we already have (as the
-assumption of case~1) that $z \in A$. By the same
-reasoning---switching $C$ for $B$---$z \in A \cup C$. This argument
-went in the reverse direction, so let's record our reasoning in the
-direction needed in our proof.
+Não há muito mais com que trabalhar a partir das nossas suposições. Então vamos
+olhar para o que temos com que trabalhar na conclusão. Queremos mostrar
+que $z \in (A \cup B) \cap (A \cup C)$. Com base na definição de
+$\cap$, se queremos mostrar que $z \in (A \cup B) \cap (A \cup C)$,
+temos que mostrar que ele está tanto em $(A \cup B)$ quanto em $(A \cup C)$. Mas $z
+\in A \cup B$ sse $z \in A$ ou $z \in B$, e já temos (como a
+suposição do caso~1) que $z \in A$. Pelo mesmo
+raciocínio---trocando $C$ por $B$---$z \in A \cup C$. Esse argumento
+foi na direção inversa, então vamos registrar nosso raciocínio na
+direção necessária à nossa prova.
 \end{quote}
-Since $z \in A$, $z \in A$ or $z \in B$, and hence, by definition
-of~$\cup$, $z \in A \cup B$. Similarly, $z \in A \cup C$.  But this
-means that $z \in (A \cup B) \cap (A \cup C)$, by definition
-of~$\cap$.
+Como $z \in A$, $z \in A$ ou $z \in B$, e logo, pela definição
+de~$\cup$, $z \in A \cup B$. De modo semelhante, $z \in A \cup C$.  Mas isso
+significa que $z \in (A \cup B) \cap (A \cup C)$, pela definição
+de~$\cap$.
 \begin{quote}
-This completes the first case of the proof by cases. Now we want to
-derive the conclusion in the second case, where $z \in B \cap C$.
+Isso completa o primeiro caso da prova por casos. Agora queremos
+derivar a conclusão no segundo caso, em que $z \in B \cap C$.
 \end{quote}
-Case 2: Suppose that $z \in B \cap C$.
+Caso 2: Suponha que $z \in B \cap C$.
 \begin{quote}
-Again, we are working with the intersection of two sets. Let's apply
-the definition of~$\cap$:
+Novamente, estamos trabalhando com a interseção de dois conjuntos. Vamos aplicar
+a definição de~$\cap$:
 \end{quote}
-Since $z \in B \cap C$, $z$ must be !!a{element} of both $B$ and $C$, by
-definition of~$\cap$.
+Como $z \in B \cap C$, $z$ deve ser !!a{element} tanto de $B$ quanto de $C$, pela
+definição de~$\cap$.
 \begin{quote}
-It's time to look at our conclusion again. We have to show that $z$ is
-in both $(A \cup B)$ and $(A \cup C)$. And again, the solution is
-immediate.
+É hora de olhar de novo para a nossa conclusão. Temos que mostrar que $z$ está
+tanto em $(A \cup B)$ quanto em $(A \cup C)$. E, novamente, a solução é
+imediata.
 \end{quote}
-Since $z \in B$, $z \in (A \cup B)$. Since $z \in C$, also $z \in (A
-\cup C)$.  So, $z \in (A \cup B) \cap (A \cup C)$.
+Como $z \in B$, $z \in (A \cup B)$. Como $z \in C$, também $z \in (A
+\cup C)$.  Então, $z \in (A \cup B) \cap (A \cup C)$.
 \begin{quote}
-Here we applied the definitions of $\cup$ and $\cap$ again, but since
-we've already recalled those definitions, and already showed that if
-$z$ is in one of two sets it is in their union, we don't have to be as
-explicit in what we've done.
+Aqui aplicamos as definições de $\cup$ e $\cap$ novamente, mas como
+já relembramos essas definições, e já mostramos que, se
+$z$ está em um de dois conjuntos, ele está na união deles, não precisamos ser tão
+explícitos no que fizemos.
 
-We've completed the second case of the proof by cases, so now we can
-assert our first conclusion.
+Completamos o segundo caso da prova por casos, então agora podemos
+afirmar nossa primeira conclusão.
 \end{quote}
-So, if $z \in A \cup (B \cap C)$ then $z \in (A \cup B) \cap (A \cup C)$.
+Então, se $z \in A \cup (B \cap C)$, então $z \in (A \cup B) \cap (A \cup C)$.
 \begin{quote}
-Now we just want to show the other direction, that every !!{element}
-of $(A \cup B) \cap (A \cup C)$ is !!a{element} of $A \cup (B \cap
-C)$. As before, we prove this universal claim by assuming we have an
-arbitrary !!{element} of the first set and show it must be in the
-second set. Let's state what we're about to do.
+Agora queremos apenas mostrar a outra direção, que todo !!{element}
+de $(A \cup B) \cap (A \cup C)$ é !!a{element} de $A \cup (B \cap
+C)$. Como antes, provamos essa afirmação universal supondo que temos um
+!!{element} arbitrário do primeiro conjunto e mostrando que ele deve estar no
+segundo conjunto. Vamos declarar o que estamos prestes a fazer.
 \end{quote}
-Now, assume that $z \in (A \cup B) \cap (A \cup C)$. We want to show
-that $z \in A \cup (B \cap C)$.
+Agora, suponha que $z \in (A \cup B) \cap (A \cup C)$. Queremos mostrar
+que $z \in A \cup (B \cap C)$.
 \begin{quote}
-We are now working from the hypothesis that $z \in (A \cup B) \cap (A
-\cup C)$. It hopefully isn't too confusing that we're using the
-same~$z$ here as in the first part of the proof.  When we finished
-that part, all the assumptions we've made there are no longer in
-effect, so now we can make new assumptions about what $z$ is.  If that
-is confusing to you, just replace $z$ with a different variable in
-what follows.
+Estamos agora trabalhando a partir da hipótese de que $z \in (A \cup B) \cap (A
+\cup C)$. Esperamos que não seja confuso demais estarmos usando o
+mesmo~$z$ aqui que na primeira parte da prova.  Quando terminamos
+aquela parte, todas as suposições que fizemos ali deixaram de estar em
+vigor, então agora podemos fazer novas suposições sobre o que $z$ é.  Se isso
+for confuso para você, basta substituir $z$ por uma variável diferente no
+que segue.
 
-We know that $z$ is in both $A \cup B$ and $A \cup C$, by definition
-of~$\cap$. And by the definition of $\cup$, we can further unpack this
-to: either $z \in A$ or $z \in B$, and also either $z \in A$ or $z \in
-C$. This looks like a proof by cases again---except the ``and'' makes
-it confusing. You might think that this amounts to there being three
-possibilities: $z$ is either in $A$, $B$ or $C$. But that would be a
-mistake.  We have to be careful, so let's consider each disjunction in
-turn.
+Sabemos que $z$ está tanto em $A \cup B$ quanto em $A \cup C$, pela definição
+de~$\cap$. E, pela definição de $\cup$, podemos desdobrar isso ainda mais
+em: ou $z \in A$ ou $z \in B$, e também ou $z \in A$ ou $z \in
+C$. Isso parece uma prova por casos de novo---exceto que o ``e'' a torna
+confusa. Você poderia pensar que isso equivale a haver três
+possibilidades: $z$ está ou em $A$, $B$ ou $C$. Mas isso seria um
+erro.  Temos que ter cuidado, então vamos considerar cada disjunção por
+vez.
 \end{quote}
-By definition of $\cap$, $z \in A \cup B$ and $z \in A \cup C$. By
-definition of $\cup$, $z \in A$ or $z \in B$. We distinguish cases.
+Pela definição de $\cap$, $z \in A \cup B$ e $z \in A \cup C$. Pela
+definição de $\cup$, $z \in A$ ou $z \in B$. Distinguimos casos.
 \begin{quote}
-Since we're focusing on the first disjunction, we haven't gotten our
-second disjunction (from unpacking $A \cup C$) yet. In fact, we don't
-need it yet. The first case is $z \in A$, and !!a{element} of a set is
-also !!a{element} of the union of that set with any other. So case~1
-is easy:
+Como estamos nos concentrando na primeira disjunção, ainda não obtivemos nossa
+segunda disjunção (do desdobramento de $A \cup C$). De fato, ainda não
+precisamos dela. O primeiro caso é $z \in A$, e !!a{element} de um conjunto é
+também !!a{element} da união desse conjunto com qualquer outro. Então o caso~1
+é fácil:
 \end{quote}
-Case 1: Suppose that $z \in A$. It follows that $z \in A \cup (B \cap
+Caso 1: Suponha que $z \in A$. Segue-se que $z \in A \cup (B \cap
 C)$.
 \begin{quote}
-Now for the second case, $z \in B$. Here we'll unpack the second
-$\cup$ and do another proof-by-cases:
+Agora, para o segundo caso, $z \in B$. Aqui desdobraremos o segundo
+$\cup$ e faremos outra prova por casos:
 \end{quote}
-Case 2: Suppose that $z \in B$. Since $z \in A \cup C$, either $z \in
-A$ or $z \in C$. We distinguish cases further:
+Caso 2: Suponha que $z \in B$. Como $z \in A \cup C$, ou $z \in
+A$ ou $z \in C$. Distinguimos os casos ainda mais:
 
-Case 2a: $z \in A$. Then, again, $z \in A \cup (B \cap C)$.
+Caso 2a: $z \in A$. Então, novamente, $z \in A \cup (B \cap C)$.
 \begin{quote}
-Ok, this was a bit weird. We didn't actually need the assumption
-that~$z \in B$ for this case, but that's ok.
+Ok, isso foi um pouco estranho. Na verdade, não precisamos da suposição
+de que~$z \in B$ para este caso, mas tudo bem.
 \end{quote}
-Case 2b: $z \in C$. Then $z \in B$ and $z \in C$, so $z \in B \cap C$,
-and consequently, $z \in A \cup (B \cap C)$.
+Caso 2b: $z \in C$. Então $z \in B$ e $z \in C$, de modo que $z \in B \cap C$,
+e consequentemente, $z \in A \cup (B \cap C)$.
 \begin{quote}
-This concludes both proofs-by-cases and so we're done with the second
-half.
+Isso conclui ambas as provas por casos, e assim terminamos a segunda
+metade.
 \end{quote}
-So, if $z \in (A \cup B) \cap (A \cup C)$ then $z \in A \cup (B \cap C)$.
+Então, se $z \in (A \cup B) \cap (A \cup C)$, então $z \in A \cup (B \cap C)$.
 \end{proof}
 
 \end{document}

@@ -6,49 +6,51 @@
 
 \begin{document}
 
-\olfileid{fol}{int}{syn}
+\olfileid[pt]{fol}{int}{syn}
 
-\olsection{Syntax}
+\olsection{Sintaxe}
 
-We first must make precise what strings of symbols count as
-!!{sentence}s of first-order logic.  We'll do this later; for now
-we'll just proceed by example.  The basic building blocks---the
-vocabulary---of first-order logic divides into two parts. The first
-part is the symbols we use to say specific things or to pick out
-specific things. We pick out things using !!{constant}s, and we say
-stuff about the things we pick out using !!{predicate}s.  E.g, we
-might use $\Obj a$ as !!a{constant} to pick out a single thing, and
-then say something about it using the !!{sentence}~$\Atom{\Obj P}{\Obj
-a}$.  If you have meanings for ``$\Obj a$'' and ``$\Obj P$'' in mind,
-you can read $\Atom{\Obj P}{\Obj a}$ as a sentence of English (and you
-probably have done so when you first learned formal logic).  Once you
-have such simple !!{sentence}s of first-order logic, you can build
-more complex ones using the second part of the vocabulary: the logical
-symbols (connectives and quantifiers). So, for instance, we can form
-expressions like $(\Atom{\Obj P}{\Obj a} \land \Atom{\Obj Q}{\Obj b})$
-or~$\lexists[\Obj x][\Atom{\Obj P}{\Obj x}]$.
+Primeiro devemos tornar preciso quais cadeias de símbolos contam como
+!!{sentence}s da lógica de primeira ordem.  Faremos isso mais adiante; por
+enquanto, procederemos por exemplos.  Os blocos de construção básicos---o
+vocabulário---da lógica de primeira ordem dividem-se em duas partes. A
+primeira parte são os símbolos que usamos para dizer coisas específicas ou
+para destacar coisas específicas. Destacamos coisas usando
+!!{constant}s, e dizemos coisas sobre o que destacamos usando
+!!{predicate}s.  Por exemplo, poderíamos usar $\Obj a$ como
+!!a{constant} para destacar uma única coisa, e então dizer algo sobre ela
+usando a !!{sentence}~$\Atom{\Obj P}{\Obj a}$.  Se você tem significados
+para ``$\Obj a$'' e ``$\Obj P$'' em mente, pode ler $\Atom{\Obj P}{\Obj a}$
+como uma sentença do inglês (e provavelmente já fez isso quando aprendeu
+lógica formal pela primeira vez).  Uma vez que se tem tais !!{sentence}s
+simples da lógica de primeira ordem, pode-se construir outras mais complexas
+usando a segunda parte do vocabulário: os símbolos lógicos (conectivos e
+quantificadores). Assim, por exemplo, podemos formar expressões como
+$(\Atom{\Obj P}{\Obj a} \land \Atom{\Obj Q}{\Obj b})$ ou
+~$\lexists[\Obj x][\Atom{\Obj P}{\Obj x}]$.
 
-In order to provide the precise definitions of semantics and the rules
-of our !!{derivation} systems required for rigorous meta-logical study, we
-first of all have to give a precise definition of what counts as
-!!a{sentence} of first-order logic. The basic idea is easy enough to
-understand: there are some simple !!{sentence}s we can form from just
-!!{predicate}s and !!{constant}s, such as~$\Atom{\Obj P}{\Obj a}$. And
-then from these we form more complex ones using the connectives and
-quantifiers. But what exactly are the rules by which we are allowed to
-form more complex !!{sentence}s?  These must be specified, otherwise
-we have not defined ``!!{sentence} of first-order logic'' precisely
-enough. There are a few issues. The first one is to get the right
-strings to count as !!{sentence}s. The second one is to do this in
-such a way that we can give mathematical proofs about \emph{all}
-!!{sentence}s. Finally, we'll have to also give precise definitions of
-some rudimentary operations with !!{sentence}s, such as ``replace
-every $\Obj x$ in~$!A$ by~$\Obj b$.'' The trouble is that the
-quantifiers and !!{variable}s we have in first-order logic make it not
-entirely obvious how this should be done. P.ex., should $\lexists[\Obj
-x][\Atom{\Obj P}{\Obj a}]$ count as !!a{sentence}? What about
-$\lexists[\Obj x][\lexists[\Obj x][\Atom{\Obj P}{\Obj x}]]$? What
-should the result of ``replace $\Obj x$ by~$\Obj b$ in $(\Atom{\Obj
-P}{\Obj x} \land \lexists[\Obj x][\Atom{\Obj P}{\Obj x}])$'' be?
+Para fornecer as definições precisas de semântica e as regras dos nossos
+sistemas de !!{derivation} necessárias para o estudo meta-lógico rigoroso,
+temos primeiro que dar uma definição precisa do que conta como
+!!a{sentence} da lógica de primeira ordem. A ideia básica é fácil o
+suficiente de entender: há algumas !!{sentence}s simples que podemos formar
+apenas a partir de !!{predicate}s e !!{constant}s, como~$\Atom{\Obj P}{\Obj
+a}$. E então a partir destas formamos outras mais complexas usando os
+conectivos e quantificadores. Mas quais são exatamente as regras pelas quais
+nos é permitido formar !!{sentence}s mais complexas?  Elas devem ser
+especificadas; caso contrário, não definimos ``!!{sentence} da lógica de
+primeira ordem'' com precisão suficiente. Há algumas questões. A primeira
+é obter as cadeias certas para contarem como !!{sentence}s. A segunda é
+fazê-lo de tal forma que possamos dar provas matemáticas sobre
+\emph{todas} as !!{sentence}s. Finalmente, teremos também que dar definições
+precisas de algumas operações rudimentares com !!{sentence}s, como
+``substituir todo $\Obj x$ em~$!A$ por~$\Obj b$.'' O problema é que os
+quantificadores e !!{variable}s que temos na lógica de primeira ordem
+tornam não inteiramente óbvio como isso deve ser feito. Por exemplo,
+$\lexists[\Obj x][\Atom{\Obj P}{\Obj a}]$ deve contar como
+!!a{sentence}? E quanto a $\lexists[\Obj x][\lexists[\Obj
+x][\Atom{\Obj P}{\Obj x}]]$? Qual deveria ser o resultado de ``substituir
+$\Obj x$ por~$\Obj b$ em $(\Atom{\Obj P}{\Obj x} \land \lexists[\Obj
+x][\Atom{\Obj P}{\Obj x}])$''?
 
 \end{document}

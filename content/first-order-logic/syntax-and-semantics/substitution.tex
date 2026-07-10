@@ -6,121 +6,121 @@
 
 \begin{document}
 
-\olfileid{fol}{syn}{sub}
+\olfileid[pt]{fol}{syn}{sub}
 
-\olsection{Substitution}
+\olsection{Substituição}
 
-\begin{defn}[Substitution in a term]
-We define $\Subst{s}{t}{x}$, the result of \emph{substituting} $t$
-for every occurrence of~$x$ in $s$, recursively:
+\begin{defn}[Substituição em um termo]
+Definimos $\Subst{s}{t}{x}$, o resultado de \emph{substituir} $t$
+por toda ocorrência de~$x$ em $s$, recursivamente:
 \begin{enumerate}
-\item \indcase{s}{c}{$\Subst{\indfrm}{t}{x}$ is just $s$.}
+\item \indcase{s}{c}{$\Subst{\indfrm}{t}{x}$ é simplesmente $s$.}
 
-\item \indcase{s}{y}{$\Subst{\indfrm}{t}{x}$ is also just~$s$,
-  provided $y$ is a variable and $y \not\ident x$.}
+\item \indcase{s}{y}{$\Subst{\indfrm}{t}{x}$ é também simplesmente~$s$,
+  desde que $y$ seja uma variável e $y \not\ident x$.}
 
-\item \indcase{s}{x}{$\Subst{\indfrm}{t}{x}$ is~$t$.}
+\item \indcase{s}{x}{$\Subst{\indfrm}{t}{x}$ é~$t$.}
 
-\item\indcase{s}{\Atom{f}{t_1, \dots, t_n}}{$\Subst{\indfrmp}{t}{x}$ is
+\item\indcase{s}{\Atom{f}{t_1, \dots, t_n}}{$\Subst{\indfrmp}{t}{x}$ é
   $\Atom{f}{\Subst{t_1}{t}{x}, \dots, \Subst{t_n}{t}{x}}$.}
 \end{enumerate}
 \end{defn}
 
 \begin{defn}
-A term~$t$ is \emph{!!{free for}} $x$ in $!A$ if none of the free
-occurrences of~$x$ in $!A$ occur in the scope of a quantifier that
-binds a variable in~$t$.
+Um termo~$t$ está \emph{!!{free for}} $x$ em $!A$ se nenhuma das
+ocorrências livres de~$x$ em $!A$ ocorre no escopo de um quantificador que
+liga uma variável em~$t$.
 \end{defn}
 
 \begin{ex} ~
 \begin{enumerate}
-\item $\Obj v_8$ is free for $\Obj v_1$ in $\lexists[\Obj
+\item $\Obj v_8$ está livre para $\Obj v_1$ em $\lexists[\Obj
   v_3]\Atom{\Obj A^2_4}{\Obj v_3,\Obj v_1}$
 
-\item $\Obj f^2_1(\Obj v_1, \Obj v_2)$ is \emph{not} free for $\Obj
-  v_0$ in $\lforall[\Obj v_2]\Atom{\Obj A^2_4}{\Obj v_0,\Obj v_2}$
+\item $\Obj f^2_1(\Obj v_1, \Obj v_2)$ \emph{não} está livre para $\Obj
+  v_0$ em $\lforall[\Obj v_2]\Atom{\Obj A^2_4}{\Obj v_0,\Obj v_2}$
 \end{enumerate}
 \end{ex}
 
-\begin{defn}[Substitution in !!a{formula}]
-If $!A$ is !!a{formula}, $x$~is !!a{variable}, and $t$~is a term
-!!{free for}~$x$ in~$!A$, then $\Subst{!A}{t}{x}$ is the result of
-substituting $t$ for all free occurrences of~$x$ in~$!A$.
+\begin{defn}[Substituição em !!a{formula}]
+Se $!A$ é !!a{formula}, $x$~é !!a{variable}, e $t$~é um termo
+!!{free for}~$x$ em~$!A$, então $\Subst{!A}{t}{x}$ é o resultado de
+substituir $t$ por todas as ocorrências livres de~$x$ em~$!A$.
 \begin{enumerate}
-\tagitem{prvFalse}{\indcase{!A}{\lfalse}{$\Subst{\indfrm}{t}{x}$ is
+\tagitem{prvFalse}{\indcase{!A}{\lfalse}{$\Subst{\indfrm}{t}{x}$ é
     $\lfalse$.}}{}
 
-\tagitem{prvTrue}{\indcase{!A}{\ltrue}{$\Subst{\indfrm}{t}{x}$ is
+\tagitem{prvTrue}{\indcase{!A}{\ltrue}{$\Subst{\indfrm}{t}{x}$ é
     $\ltrue$.}}{}
 
 \item \indcase{!A}{\Atom{P}{t_1,\dots,
-    t_n}}{$\Subst{\indfrm}{t}{x}$ is $\Atom{P}{\Subst{t_1}{t}{x},
+    t_n}}{$\Subst{\indfrm}{t}{x}$ é $\Atom{P}{\Subst{t_1}{t}{x},
     \dots, \Subst{t_n}{t}{x}}$.}
 
-\item \indcase{!A}{\eq[t_1][t_2]}{$\Subst{\indfrmp}{t}{x}$ is
+\item \indcase{!A}{\eq[t_1][t_2]}{$\Subst{\indfrmp}{t}{x}$ é
   $\Subst{t_1}{t}{x} = \Subst{t_2}{t}{x}$.}
 
-\tagitem{prvNot}{\indcase{!A}{\lnot !B}{$\Subst{\indfrmp}{t}{x}$ is
+\tagitem{prvNot}{\indcase{!A}{\lnot !B}{$\Subst{\indfrmp}{t}{x}$ é
     $\lnot \Subst{!B}{t}{x}$.}}{}
 
 \tagitem{prvAnd}{\indcase{!A}{(!B \land
-    !C)}{$\Subst{\indfrmp}{t}{x}$ is $(\Subst{!B}{t}{x} \land
+    !C)}{$\Subst{\indfrmp}{t}{x}$ é $(\Subst{!B}{t}{x} \land
     \Subst{!C}{t}{x})$.}}{}
 
 \tagitem{prvOr}{\indcase{!A}{(!B \lor
-    !C)}{$\Subst{\indfrmp}{t}{x}$ is $(\Subst{!B}{t}{x} \lor
+    !C)}{$\Subst{\indfrmp}{t}{x}$ é $(\Subst{!B}{t}{x} \lor
     \Subst{!C}{t}{x})$.}}{}
 
 \tagitem{prvIf}{\indcase{!A}{(!B \lif
-    !C)}{$\Subst{\indfrmp}{t}{x}$ is $(\Subst{!B}{t}{x} \lif
+    !C)}{$\Subst{\indfrmp}{t}{x}$ é $(\Subst{!B}{t}{x} \lif
     \Subst{!C}{t}{x})$.}}{}
 
 \tagitem{prvIff}{\indcase{!A}{(!B \liff
-    !C)}{$\Subst{\indfrmp}{t}{x}$ is $(\Subst{!B}{t}{x} \liff
+    !C)}{$\Subst{\indfrmp}{t}{x}$ é $(\Subst{!B}{t}{x} \liff
     \Subst{!C}{t}{x})$.}}{}
 
 \tagitem{prvAll}{
 \indcase{!A}{\lforall[y][!B]}{$\Subst{\indfrmp}{t}{x}$
-    is $\lforall[y][\Subst{!B}{t}{x}]$, provided $y$ is a variable
-    other than $x$; otherwise $\Subst{\indfrmp}{t}{x}$
-    is just $\indfrm$.}}{}
+    é $\lforall[y][\Subst{!B}{t}{x}]$, desde que $y$ seja uma variável
+    diferente de $x$; caso contrário $\Subst{\indfrmp}{t}{x}$
+    é simplesmente $\indfrm$.}}{}
 
 \tagitem{prvEx}{
 \indcase{!A}{\lexists[y][!B]}{$\Subst{\indfrmp}{t}{x}$
-    is $\lexists[y][\Subst{!B}{t}{x}]$, provided $y$ is a variable
-    other than $x$; otherwise $\Subst{\indfrmp}{t}{x}$
-    is just $\indfrm$.}}{}
+    é $\lexists[y][\Subst{!B}{t}{x}]$, desde que $y$ seja uma variável
+    diferente de $x$; caso contrário $\Subst{\indfrmp}{t}{x}$
+    é simplesmente $\indfrm$.}}{}
 \end{enumerate}
 \end{defn}
 
 \begin{explain}
-Note that substitution may be vacuous: If $x$ does not occur in $!A$
-at all, then $\Subst{!A}{t}{x}$ is just~$!A$.
+Note que a substituição pode ser vácua: Se $x$ não ocorre de modo algum em $!A$,
+então $\Subst{!A}{t}{x}$ é simplesmente~$!A$.
 
-The restriction that $t$ must be !!{free for}~$x$ in~$!A$ is necessary to
-exclude cases like the following. If $!A \ident \lexists[y][x < y]$
-and $t \ident y$, then $\Subst{!A}{t}{x}$ would be $\lexists[y][y <
-  y]$. In this case the free variable $y$ is ``captured'' by the
-quantifier $\lexists[y]$ upon substitution, and that is undesirable.
-For instance, we would like it to be the case that whenever
-$\lforall[x][!B]$ holds, so does $\Subst{!B}{t}{x}$. But consider
-$\lforall[x][\lexists[y][x < y]]$ (here $!B$ is $\lexists[y][x <
-  y]$). It is a sentence that is true about, p.ex., the natural numbers:
-for every number~$x$ there is a number~$y$ greater than it. If we
-allowed $y$ as a possible substitution for~$x$, we would end up with
-$\Subst{!B}{y}{x} \ident \lexists[y][y < y]$, which is false. We
-prevent this by requiring that none of the free variables in~$t$ would
-end up being bound by a quantifier in~$!A$.
+A restrição de que $t$ deve estar !!{free for}~$x$ em~$!A$ é necessária para
+excluir casos como o seguinte. Se $!A \ident \lexists[y][x < y]$
+e $t \ident y$, então $\Subst{!A}{t}{x}$ seria $\lexists[y][y <
+  y]$. Neste caso a variável livre $y$ é ``capturada'' pelo
+quantificador $\lexists[y]$ ao substituir, e isso é indesejável.
+Por exemplo, gostaríamos que fosse o caso que, sempre que
+$\lforall[x][!B]$ vale, $\Subst{!B}{t}{x}$ também vale. Mas considere
+$\lforall[x][\lexists[y][x < y]]$ (aqui $!B$ é $\lexists[y][x <
+  y]$). É uma sentença que é verdadeira a respeito, por exemplo, dos números naturais:
+para todo número~$x$ há um número~$y$ maior que ele. Se
+permitíssemos $y$ como uma possível substituição para~$x$, terminaríamos com
+$\Subst{!B}{y}{x} \ident \lexists[y][y < y]$, que é falsa. 
+Prevenimos isso exigindo que nenhuma das variáveis livres em~$t$
+acabe sendo ligada por um quantificador em~$!A$.
 \end{explain}
 
-We often use the following convention to avoid cumbersome notation: If
-$!A$ is !!a{formula} which may contain the !!{variable}~$x$ free, we
-also write~$!A(x)$ to indicate this. When it is clear which $!A$
-and~$x$ we have in mind, and $t$ is a term (assumed to be free for $x$
-in $!A(x)$), then we write $!A(t)$ as short for $\Subst{!A}{t}{x}$. So
-for instance, we might say, ``we call $!A(t)$ an instance
-of~$\lforall[x][!A(x)]$.'' By this we mean that if $!A$~is any
-!!{formula}, $x$~!!a{variable}, and $t$~a term that's free for~$x$
-in~$!A$, then $\Subst{!A}{t}{x}$ is an instance of~$\lforall[x][!A]$.
+Frequentemente usamos a seguinte convenção para evitar notação incômoda: Se
+$!A$ é !!a{formula} que pode conter a !!{variable}~$x$ livre, também
+escrevemos~$!A(x)$ para indicar isso. Quando está claro qual $!A$
+e~$x$ temos em mente, e $t$ é um termo (suposto estar livre para $x$
+em $!A(x)$), então escrevemos $!A(t)$ como abreviação de $\Subst{!A}{t}{x}$. Assim,
+por exemplo, poderíamos dizer, ``chamamos $!A(t)$ de uma instância
+de~$\lforall[x][!A(x)]$.'' Com isso queremos dizer que se $!A$~é qualquer
+!!{formula}, $x$~!!a{variable}, e $t$~um termo que está livre para~$x$
+em~$!A$, então $\Subst{!A}{t}{x}$ é uma instância de~$\lforall[x][!A]$.
 
 \end{document}

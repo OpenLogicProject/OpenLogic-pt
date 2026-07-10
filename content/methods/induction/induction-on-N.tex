@@ -6,119 +6,119 @@
 
 \begin{document}
 
-\olfileid{mth}{ind}{inN}
+\olfileid[pt]{mth}{ind}{inN}
 
-\olsection{Induction on~$\Nat$}
+\olsection{Indução em~$\Nat$}
 
-In its simplest form, induction is a technique used to prove results
-for all natural numbers. It uses the fact that by starting from $0$
-and repeatedly adding~$1$ we eventually reach every natural number. So
-to prove that something is true for every number, we can (1)~establish
-that it is true for $0$ and (2)~show that whenever it is true for a
-number~$n$, it is also true for the next number~$n+1$.  If we
-abbreviate ``number~$n$ has property $P$'' by $P(n)$ (and ``number~$k$
-has property $P$'' by $P(k)$, etc.), then a proof by induction that
-$P(n)$ for all $n \in \Nat$ consists of:
+Em sua forma mais simples, a indução é uma técnica usada para provar resultados
+para todos os números naturais. Ela usa o fato de que, começando em $0$
+e somando~$1$ repetidamente, eventualmente alcançamos todo número natural. Assim,
+para provar que algo é verdadeiro para todo número, podemos (1)~estabelecer
+que é verdadeiro para $0$ e (2)~mostrar que, sempre que é verdadeiro para um
+número~$n$, também é verdadeiro para o número seguinte~$n+1$.  Se
+abreviarmos ``o número~$n$ tem a propriedade $P$'' por $P(n)$ (e ``o número~$k$
+tem a propriedade $P$'' por $P(k)$, etc.), então uma prova por indução de que
+$P(n)$ para todo $n \in \Nat$ consiste em:
 \begin{enumerate}
-\item a proof of $P(0)$, and
-\item a proof that, for any~$k$, if $P(k)$ then $P(k+1)$.
+\item uma prova de $P(0)$, e
+\item uma prova de que, para qualquer~$k$, se $P(k)$ então $P(k+1)$.
 \end{enumerate}
-To make this crystal clear, suppose we have both (1) and~(2).  Then
-(1) tells us that $P(0)$ is true.  If we also have~(2), we know in
-particular that if $P(0)$ then $P(0+1)$, O.s.\@, $P(1)$. This follows
-from the general statement ``for any~$k$, if $P(k)$ then $P(k+1)$'' by
-putting~$0$ for~$k$. So by modus ponens, we have that~$P(1)$. From (2)
-again, now taking $1$ for~$n$, we have: if $P(1)$ then~$P(2)$. Since
-we've just established~$P(1)$, by modus ponens, we have~$P(2)$. And so
-on.  For any number~$n$, after doing this $n$~times, we eventually
-arrive at~$P(n)$.  So (1) and~(2) together establish~$P(n)$ for any $n
+Para deixar isso bem claro, suponha que tenhamos tanto (1) quanto~(2).  Então
+(1) nos diz que $P(0)$ é verdadeiro.  Se também tivermos~(2), sabemos em
+particular que, se $P(0)$, então $P(0+1)$, isto é, $P(1)$. Isso decorre
+da afirmação geral ``para qualquer~$k$, se $P(k)$ então $P(k+1)$'' ao
+pôr~$0$ no lugar de~$k$. Então, por modus ponens, temos que~$P(1)$. De (2)
+novamente, agora tomando $1$ por~$n$, temos: se $P(1)$ então~$P(2)$. Como
+acabamos de estabelecer~$P(1)$, por modus ponens, temos~$P(2)$. E assim
+por diante.  Para qualquer número~$n$, depois de fazer isso $n$~vezes, eventualmente
+chegamos a~$P(n)$.  Então (1) e~(2) juntos estabelecem~$P(n)$ para qualquer $n
 \in \Nat$.
 
-Let's look at an example.  Suppose we want to find out how many
-different sums we can throw with $n$ dice.  Although it might seem
-silly, let's start with $0$ dice.  If you have no dice there's only one
-possible sum you can ``throw'': no dots at all, which sums to~$0$. So
-the number of different possible throws is~$1$. If you have only one
-die, O.s.\@, $n=1$, there are six possible values, $1$ through~$6$. With
-two dice, we can throw any sum from $2$ through $12$, that's $11$
-possibilities.  With three dice, we can throw any number from $3$ to
-$18$, O.s.\@, $16$ different possibilities.  $1$, $6$, $11$, $16$: looks
-like a pattern: maybe the answer is $5n+1$?  Of course, $5n+1$ is the
-maximum possible, because there are only $5n+1$ numbers between $n$,
-the lowest value you can throw with $n$ dice (all $1$'s) and $6n$, the
-highest you can throw (all $6$'s).
+Vejamos um exemplo.  Suponha que queiramos descobrir quantas
+somas diferentes podemos lançar com $n$ dados.  Embora possa parecer
+bobo, vamos começar com $0$ dados.  Se você não tem dados, há apenas uma
+soma possível que você pode ``lançar'': nenhum ponto, que soma~$0$. Assim,
+o número de lançamentos possíveis diferentes é~$1$. Se você tem apenas um
+dado, isto é, $n=1$, há seis valores possíveis, de $1$ a~$6$. Com
+dois dados, podemos lançar qualquer soma de $2$ a $12$, ou seja, $11$
+possibilidades.  Com três dados, podemos lançar qualquer número de $3$ a
+$18$, isto é, $16$ possibilidades diferentes.  $1$, $6$, $11$, $16$: parece
+um padrão: talvez a resposta seja $5n+1$?  É claro que $5n+1$ é o
+máximo possível, pois há apenas $5n+1$ números entre $n$,
+o menor valor que você pode lançar com $n$ dados (todos $1$) e $6n$, o
+maior que você pode lançar (todos $6$).
 
 \begin{thm}
-  With $n$ dice one can throw all $5n+1$ possible values between $n$
-  and $6n$.
+  Com $n$ dados pode-se lançar todos os $5n+1$ valores possíveis entre $n$
+  e $6n$.
 \end{thm}
 
 \begin{proof}
-Let $P(n)$ be the claim: ``It is possible to throw any number between
-$n$ and~$6n$ using $n$~dice.''  To use induction, we prove:
+Seja $P(n)$ a afirmação: ``É possível lançar qualquer número entre
+$n$ e~$6n$ usando $n$~dados.''  Para usar a indução, provamos:
 \begin{enumerate}
-\item The \emph{induction basis} $P(1)$, O.s.\@, with just one die,
-  you can throw any number between $1$ and $6$.
-\item The \emph{induction step}, for all $k$, if $P(k)$ then~$P(k+1)$.
+\item A \emph{base da indução} $P(1)$, isto é, com apenas um dado,
+  você pode lançar qualquer número entre $1$ e $6$.
+\item O \emph{passo da indução}, para todo $k$, se $P(k)$ então~$P(k+1)$.
 \end{enumerate}
 
-(1) Is proved by inspecting a $6$-sided die. It has all 6 sides, and
-every number between $1$ and~$6$ shows up one on of the sides. So it
-is possible to throw any number between $1$ and~$6$ using a single
-die.
+(1) é provado inspecionando um dado de $6$ lados. Ele tem todos os 6 lados, e
+todo número entre $1$ e~$6$ aparece em um dos lados. Então é
+possível lançar qualquer número entre $1$ e~$6$ usando um único
+dado.
 
-To prove (2), we assume the antecedent of the conditional, O.s.\@,
-$P(k)$. This assumption is called the \emph{inductive hypothesis}.  We
-use it to prove~$P(k+1)$. The hard part is to find a way of thinking
-about the possible values of a throw of $k+1$ dice in terms of the
-possible values of throws of $k$~dice plus of throws of the extra
-$k+1$-st die---this is what we have to do, though, if we want to use
-the inductive hypothesis.
+Para provar (2), supomos o antecedente do condicional, isto é,
+$P(k)$. Essa suposição é chamada de \emph{hipótese indutiva}.  Nós a
+usamos para provar~$P(k+1)$. A parte difícil é encontrar um modo de pensar
+sobre os valores possíveis de um lançamento de $k+1$ dados em termos dos
+valores possíveis de lançamentos de $k$~dados, somados aos lançamentos do dado
+extra, o $(k+1)$-ésimo---é isso, porém, que temos que fazer, se quisermos usar
+a hipótese indutiva.
 
-The inductive hypothesis says we can get any number between $k$
-and~$6k$ using $k$~dice.  If we throw a~$1$ with our $(k+1)$-st die,
-this adds $1$ to the total. So we can throw any value between $k+1$
-and $6k+1$ by throwing $k$~dice and then rolling a~$1$ with the
-$(k+1)$-st die.  What's left?  The values $6k+2$ through $6k+6$.  We
-can get these by rolling $k$ $6$s and then a number between $2$ and
-$6$ with our $(k+1)$-st die. Together, this means that with $k+1$ dice
-we can throw any of the numbers between $k+1$ and $6(k+1)$, O.s.\@,
-we've proved~$P(k+1)$ using the assumption~$P(k)$, the inductive
-hypothesis.
+A hipótese indutiva diz que podemos obter qualquer número entre $k$
+e~$6k$ usando $k$~dados.  Se lançamos um~$1$ com nosso $(k+1)$-ésimo dado,
+isso acrescenta $1$ ao total. Então podemos lançar qualquer valor entre $k+1$
+e $6k+1$ lançando $k$~dados e depois rolando um~$1$ com o
+$(k+1)$-ésimo dado.  O que falta?  Os valores de $6k+2$ a $6k+6$.  Podemos
+obtê-los rolando $k$ dados em $6$ e depois um número entre $2$ e
+$6$ com nosso $(k+1)$-ésimo dado. Juntos, isso significa que, com $k+1$ dados,
+podemos lançar qualquer um dos números entre $k+1$ e $6(k+1)$, isto é,
+provamos~$P(k+1)$ usando a suposição~$P(k)$, a hipótese
+indutiva.
 \end{proof}
 
-Very often we use induction when we want to prove something about a
-series of objects (numbers, sets, etc.) that is itself defined
-``inductively,'' O.s.\@, by defining the $(n+1)$-st object in terms of
-the $n$-th.  For instance, we can define the sum~$s_n$ of the natural
-numbers up to~$n$ by
+Muito frequentemente usamos a indução quando queremos provar algo sobre uma
+série de objetos (números, conjuntos, etc.) que é, ela própria, definida
+``indutivamente,'' isto é, definindo o $(n+1)$-ésimo objeto em termos do
+$n$-ésimo.  Por exemplo, podemos definir a soma~$s_n$ dos números naturais
+até~$n$ por
 \begin{align*}
   s_0 & = 0\\
   s_{n+1} & = s_n + (n+1)
 \end{align*}
-This definition gives:
+Esta definição dá:
 \begin{align*}
   s_0 & = 0,\\
   s_1 & = s_0 + 1 && = 1,\\
   s_2 & = s_1 + 2 && = 1 + 2 = 3\\
   s_3 & = s_2 + 3 && = 1 + 2 + 3 = 6, \text{ etc.}
 \end{align*}
-Now we can prove, by induction, that $s_n = n(n+1)/2$.
+Agora podemos provar, por indução, que $s_n = n(n+1)/2$.
 
 \begin{prop}
   $s_n = n(n+1)/2$.
 \end{prop}
 
 \begin{proof}
-  We have to prove (1) that $s_0 = 0\cdot(0 + 1)/2$ and (2) if $s_k =
-  k(k+1)/2$ then $s_{k+1} = (k+1)(k+2)/2$.  (1) is obvious. To prove
-  (2), we assume the inductive hypothesis: $s_k = k(k+1)/2$. Using it,
-  we have to show that $s_{k+1} = (k+1)(k+2)/2$.
+  Temos que provar (1) que $s_0 = 0\cdot(0 + 1)/2$ e (2) se $s_k =
+  k(k+1)/2$ então $s_{k+1} = (k+1)(k+2)/2$.  (1) é óbvio. Para provar
+  (2), supomos a hipótese indutiva: $s_k = k(k+1)/2$. Usando-a,
+  temos que mostrar que $s_{k+1} = (k+1)(k+2)/2$.
 
-  What is $s_{k+1}$?  By the definition, $s_{k+1} = s_k + (k+1)$.  By
-  inductive hypothesis, $s_k = k(k+1)/2$. We can substitute this into
-  the previous equation, and then just need a bit of arithmetic of
-  fractions:
+  O que é $s_{k+1}$?  Pela definição, $s_{k+1} = s_k + (k+1)$.  Pela
+  hipótese indutiva, $s_k = k(k+1)/2$. Podemos substituir isso na
+  equação anterior, e então só precisamos de um pouco de aritmética de
+  frações:
   \begin{align*}
     s_{k+1} & = \frac{k(k+1)}{2} + (k+1) = {}\\
     & = \frac{k(k+1)}{2} + \frac{2(k+1)}{2} = {}\\
@@ -127,10 +127,10 @@ Now we can prove, by induction, that $s_n = n(n+1)/2$.
   \end{align*}
 \end{proof}
 
-The important lesson here is that if you're proving something about
-some inductively defined sequence $a_n$, induction is the obvious way
-to go. And even if it isn't (as in the case of the possibilities of
-dice throws), you can use induction if you can somehow relate the case
-for~$k+1$ to the case for~$k$.
+A lição importante aqui é que, se você está provando algo sobre
+alguma sequência definida indutivamente $a_n$, a indução é o caminho óbvio
+a seguir. E, mesmo quando não é (como no caso das possibilidades de
+lançamentos de dados), você pode usar a indução se conseguir, de alguma forma, relacionar o caso
+para~$k+1$ ao caso para~$k$.
 
 \end{document}

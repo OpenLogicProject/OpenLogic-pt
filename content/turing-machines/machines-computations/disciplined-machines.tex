@@ -6,52 +6,52 @@
 
 \begin{document}
 
-\olfileid{tur}{mac}{dis}
-\olsection{Disciplined Machines}
+\olfileid[pt]{tur}{mac}{dis}
+\olsection{Máquinas Disciplinadas}
 
 \begin{explain}
-In section \olref[hal]{sec}, we considered Turing machines that have a
-single, designated halting state~$h$---such machines are guaranteed to
-halt, if they halt at all, in state~$h$.  In this way, machines with a
-single halting state are more ``disciplined'' than we allow Turing
-machines in general to be.  There are other restrictions we might
-impose on the behavior of Turing machines.  For instance, we also have
-not prohibited Turing machines from ever erasing the tape-end marker
-on square~$0$, or to attempt to move left from square~$0$. (Our
-definition states that the head simply stays on square~$0$ in this
-case; other definitions have the machine halt.) It is likewise
-sometimes desirable to be able to assume that a Turing machine, if
-it halts at all, halts on square~$1$.
+Na \olref[hal]{sec}, consideramos máquinas de Turing que têm um
+único estado de parada designado~$h$---tais máquinas são garantidas de
+parar, se pararem de fato, no estado~$h$. Dessa forma, máquinas com um
+único estado de parada são mais ``disciplinadas'' do que permitimos que
+máquinas de Turing sejam em geral. Há outras restrições que podemos
+impor ao comportamento das máquinas de Turing. Por exemplo, também não
+proibimos máquinas de Turing de apagar o marcador de fim de fita
+no quadrado~$0$, ou de tentar mover-se à esquerda a partir do quadrado~$0$. (Nossa
+definição afirma que a cabeça simplesmente permanece no quadrado~$0$ nesse
+caso; outras definições fazem a máquina parar.) Da mesma forma, às vezes é
+desejável poder supor que uma máquina de Turing, se
+parar de fato, para no quadrado~$1$.
 \end{explain}
 
 \begin{defn}\ollabel{defn:disciplined}
-A Turing machine~$M$ is \emph{disciplined} iff
+Uma máquina de Turing~$M$ é \emph{disciplinada} sse
 \begin{enumerate}
-    \item it has a designated single halting state~$h$,
-    \item it halts, if it halts at all, while scanning square~$1$,
-    \item it never erases the $\TMendtape$ symbol on square~$0$, and
-    \item it never attempts to move left from square~$0$.
+    \item ela tem um único estado de parada designado~$h$,
+    \item ela para, se parar de fato, enquanto examina o quadrado~$1$,
+    \item ela nunca apaga o símbolo $\TMendtape$ no quadrado~$0$, e
+    \item ela nunca tenta mover-se à esquerda a partir do quadrado~$0$.
 \end{enumerate}
 \end{defn}
 
 \begin{explain}
-We have already discussed that any Turing machine can be changed into
-one with the same behavior but with a designated halting state. This is
-done simply by adding a new state~$h$, and adding an instruction
-$\delta(q, \sigma) = \tuple{h, \sigma, N}$ for any pair
-$\tuple{q,\sigma}$ where the original $\delta$~is undefined.  It is
-true, although tedious to prove, that any Turing machine~$M$ can be
-turned into a disciplined Turing machine~$M'$ which halts on the same
-inputs and produces the same output. For instance, if the Turing
-machine halts and is not on square~$1$, we can add some instructions
-to make the head move left until it finds the tape-end marker, then
-move one square to the right, then halt.  We'll leave you to think
-about how the other conditions can be dealt with.
+Já discutimos que qualquer máquina de Turing pode ser transformada em
+uma com o mesmo comportamento, mas com um estado de parada designado. Isso é
+feito simplesmente adicionando um novo estado~$h$, e adicionando uma instrução
+$\delta(q, \sigma) = \tuple{h, \sigma, N}$ para qualquer par
+$\tuple{q,\sigma}$ onde o $\delta$ original é indefinido. É
+verdade, embora tedioso de provar, que qualquer máquina de Turing~$M$ pode ser
+transformada em uma máquina de Turing disciplinada~$M'$ que para nas mesmas
+entradas e produz a mesma saída. Por exemplo, se a máquina de Turing
+para e não está no quadrado~$1$, podemos adicionar algumas instruções
+para fazer a cabeça mover-se à esquerda até encontrar o marcador de fim de fita, depois
+mover um quadrado à direita, e então parar. Deixamos a você pensar
+sobre como as outras condições podem ser tratadas.
 \end{explain}
 
 \begin{ex}
-    In \olref{fig:adder-disc}, we turn the addition machine
-    from \olref[una]{ex:adder} into a disciplined machine.
+    Em \olref{fig:adder-disc}, transformamos a máquina de adição
+    de \olref[una]{ex:adder} em uma máquina disciplinada.
     \begin{figure}\[
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
                     semithick]
@@ -71,26 +71,26 @@ about how the other conditions can be dealt with.
         (D) edge [loop above] node {\TMtrans{\TMstroke}{\TMstroke}{\TMleft}} (D)
         edge node {\TMtrans{\TMendtape}{\TMendtape}{\TMright}} (H);
 \end{tikzpicture}
-\]\caption{A disciplined addition machine}
+\]\caption{Uma máquina de adição disciplinada}
 \ollabel{fig:adder-disc}
 \end{figure}
 \end{ex}
 
-\begin{prop}\ollabel{prop:disciplined} For every Turing machine~$M$,
-there is a disciplined Turing machine~$M'$ which halts with output~$O$
-if $M$~halts with output~$O$, and does not halt if $M$~does not halt.
-In particular, any function $f\colon\Nat^n \to \Nat$ computable by a
-Turing machine is also computable by a disciplined Turing machine.
+\begin{prop}\ollabel{prop:disciplined} Para toda máquina de Turing~$M$,
+há uma máquina de Turing disciplinada~$M'$ que para com saída~$O$
+se $M$~para com saída~$O$, e não para se $M$~não para.
+Em particular, qualquer função $f\colon\Nat^n \to \Nat$ computável por uma
+máquina de Turing também é computável por uma máquina de Turing disciplinada.
 \end{prop}
 
 \begin{prob}\label{tur:mac:dis:prob:disc-succ}
-Give a disciplined machine that computes $f(x) = x+1$.
+Dê uma máquina disciplinada que computa $f(x) = x+1$.
 \end{prob}
 
 
 \begin{prob}\label{tur:mac:dis:prob:copier}
-Find a disciplined machine which, when started on input $\TMstroke^n$
-produces output $\TMstroke^n \concat \TMblank \concat \TMstroke^n$.
+Encontre uma máquina disciplinada que, quando iniciada com entrada $\TMstroke^n$
+produz saída $\TMstroke^n \concat \TMblank \concat \TMstroke^n$.
 \end{prob}
 
 \end{document}

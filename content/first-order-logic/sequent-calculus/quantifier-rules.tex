@@ -6,11 +6,11 @@
 
 \begin{document}
 
-\olfileid{fol}{seq}{qrl}
+\olfileid[pt]{fol}{seq}{qrl}
 
-\olsection{Quantifier Rules}
+\olsection{Regras de Quantificadores}
 
-\subsection{Rules for $\lforall$}
+\subsection{Regras para $\lforall$}
 
 \begin{defish}
 \Axiom$ !A(t), \Gamma \fCenter \Delta$
@@ -24,14 +24,14 @@
 \DisplayProof
 \end{defish}
 
-In \LeftR{\lforall}, $t$ is a closed term (O.s.\@, one without
-variables). In \RightR{\lforall}, $a$~is !!a{constant} which must not
-occur anywhere in the lower sequent of the \RightR{\lforall} rule. We
-call $a$ the \emph{eigenvariable} of the \RightR{\forall}
-inference.\footnote{We use the term ``eigenvariable'' even though $a$
-in the above rule is !!a{constant}. This has historical reasons.}
+Em \LeftR{\lforall}, $t$ é um termo fechado (isto é, um termo sem
+variáveis). Em \RightR{\lforall}, $a$~é !!a{constant} que não pode
+ocorrer em lugar algum do sequente inferior da regra \RightR{\lforall}.
+Chamamos $a$ de \emph{variável própria} da inferência
+\RightR{\forall}.\footnote{Usamos o termo ``variável própria'' embora $a$
+na regra acima seja !!a{constant}. Isso tem razões históricas.}
 
-\subsection{Rules for $\lexists$}
+\subsection{Regras para $\lexists$}
 
 \begin{defish}
 \Axiom$ !A(a), \Gamma \fCenter \Delta $
@@ -45,45 +45,45 @@ in the above rule is !!a{constant}. This has historical reasons.}
 \DisplayProof
 \end{defish}
 
-Again, $t$~is a closed term, and $a$~is !!a{constant} which does not
-occur in the lower sequent of the \LeftR{\lexists} rule. We call $a$
-the \emph{eigenvariable} of the \LeftR{\lexists} inference.
+Novamente, $t$~é um termo fechado, e $a$~é !!a{constant} que não
+ocorre no sequente inferior da regra \LeftR{\lexists}. Chamamos $a$ de
+\emph{variável própria} da inferência \LeftR{\lexists}.
 
-The condition that an eigenvariable not occur in the lower sequent of
-the \RightR{\lforall} or \LeftR{\lexists} inference is called the
-\emph{eigenvariable condition}.
+A condição de que uma variável própria não ocorra no sequente inferior
+da inferência \RightR{\lforall} ou \LeftR{\lexists} é chamada de
+\emph{condição de variável própria}.
 
 \begin{explain}
-Recall the convention that when $!A$ is !!a{formula} with the
-!!{variable}~$x$ free, we indicate this by writing~$!A(x)$. In the
-same context, $!A(t)$ then is short for~$\Subst{!A}{t}{x}$. So we
-could also write the \RightR{\lexists} rule as:
+Lembre-se da convenção de que, quando $!A$ é !!a{formula} com a
+!!{variable}~$x$ livre, indicamos isso escrevendo~$!A(x)$. No
+mesmo contexto, $!A(t)$ é então uma abreviação de~$\Subst{!A}{t}{x}$. Assim,
+poderíamos também escrever a regra \RightR{\lexists} como:
 \begin{prooftree}
   \Axiom$\Gamma \fCenter \Delta, \Subst{!A}{t}{x}$
   \RightLabel{\RightR{\lexists}}
   \UnaryInf$\Gamma \fCenter \Delta, \lexists[x][!A]$
 \end{prooftree}
-Note that $t$ may already occur in~$!A$, p.ex., $!A$~might
-be~$\Atom{\Obj P}{t,x}$. Thus, inferring $\Gamma \Sequent \Delta,
-\lexists[x][\Atom{\Obj P}{t,x}]$ from~$\Gamma \Sequent \Delta,
-\Atom{\Obj P}{t,t}$ is a correct application
-of~\RightR{\lexists}---you may ``replace'' one or more, and not
-necessarily all, occurrences of~$t$ in the premise by the bound
-!!{variable}~$x$. However, the eigenvariable conditions in
-\RightR{\lforall} and~\LeftR{\lexists} require that the
-!!{constant}~$a$ does not occur in~$!A$. So, you cannot correctly
-infer $\Gamma \Sequent \Delta, \lforall[x][\Atom{\Obj P}{a,x}]$ from
-$\Gamma \Sequent \Delta, \Atom{\Obj P}{a,a}$ using~$\RightR{\lforall}$.
+Note que $t$ pode já ocorrer em~$!A$, por exemplo, $!A$~poderia
+ser~$\Atom{\Obj P}{t,x}$. Assim, inferir $\Gamma \Sequent \Delta,
+\lexists[x][\Atom{\Obj P}{t,x}]$ de~$\Gamma \Sequent \Delta,
+\Atom{\Obj P}{t,t}$ é uma aplicação correta
+de~\RightR{\lexists}---pode-se ``substituir'' uma ou mais, e não
+necessariamente todas, as ocorrências de~$t$ na premissa pela
+!!{variable}~$x$ ligada. Contudo, as condições de variável própria em
+\RightR{\lforall} e~\LeftR{\lexists} exigem que a
+!!{constant}~$a$ não ocorra em~$!A$. Portanto, não se pode
+inferir corretamente $\Gamma \Sequent \Delta, \lforall[x][\Atom{\Obj P}{a,x}]$ de
+$\Gamma \Sequent \Delta, \Atom{\Obj P}{a,a}$ usando~$\RightR{\lforall}$.
 \end{explain}
 
 \begin{explain}
-In \RightR{\lexists} and \LeftR{\lforall} there are no restrictions on
-the term~$t$. On the other hand, in the \LeftR{\lexists} and
-\RightR{\lforall} rules, the eigenvariable condition requires that the
-!!{constant}~$a$ does not occur anywhere outside of~$!A(a)$ in the
-upper sequent. It is necessary to ensure that the system is sound,
-O.s.\@, only !!{derive}s sequents that are valid. Without this
-condition, the following would be allowed:
+Em \RightR{\lexists} e \LeftR{\lforall} não há restrições sobre
+o termo~$t$. Por outro lado, nas regras \LeftR{\lexists} e
+\RightR{\lforall}, a condição de variável própria exige que a
+!!{constant}~$a$ não ocorra em lugar algum fora de~$!A(a)$ no
+sequente superior. Isso é necessário para garantir que o sistema seja correto,
+isto é, que só !!{derive} sequentes que sejam válidos. Sem essa
+condição, o seguinte seria permitido:
 \begin{prooftree}
   \Axiom$!A(a) \fCenter !A(a)$
   \RightLabel{*\LeftR{\lexists}}
@@ -98,7 +98,7 @@ condition, the following would be allowed:
   \RightLabel{\LeftR{\lexists}}
   \UnaryInf$\lexists[x][!A(x)] \fCenter \lforall[x][!A(x)]$
 \end{prooftree}
-However, $\lexists[x][!A(x)] \Sequent \lforall[x][!A(x)]$ is not valid.
+Contudo, $\lexists[x][!A(x)] \Sequent \lforall[x][!A(x)]$ não é válido.
 \end{explain}
 
 \end{document}

@@ -6,100 +6,100 @@
 
 \begin{document}
 
-\olfileid{mth}{ind}{sti}
+\olfileid[pt]{mth}{ind}{sti}
 
-\olsection{Structural Induction}
+\olsection{Indução Estrutural}
 
-So far we have used induction to establish results about all natural
-numbers. But a corresponding principle can be used directly to prove
-results about all !!{element}s of an inductively defined set.  This
-often called \emph{structural} induction, because it depends on the
-structure of the inductively defined objects.
+Até aqui usamos a indução para estabelecer resultados sobre todos os números
+naturais. Mas um princípio correspondente pode ser usado diretamente para provar
+resultados sobre todos os !!{element}s de um conjunto definido indutivamente.  Isso é
+frequentemente chamado de indução \emph{estrutural}, porque depende da
+estrutura dos objetos definidos indutivamente.
 
-Generally, an inductive definition is given by (a)~a list of
-``initial'' !!{element}s of the set and (b)~a list of operations which
-produce new !!{element}s of the set from old ones. In the case of nice
-terms, for instance, the initial objects are the letters. We only have
-one operation: the operations are
+Em geral, uma definição indutiva é dada por (a)~uma lista de
+!!{element}s ``iniciais'' do conjunto e (b)~uma lista de operações que
+produzem novos !!{element}s do conjunto a partir de antigos. No caso dos termos
+bonitos, por exemplo, os objetos iniciais são as letras. Temos apenas
+uma operação: as operações são
 \begin{align*}
   o(s_1, s_2) = & [s_1 \circ s_2]
 \end{align*}
-You can even think of the natural numbers~$\Nat$ themselves as being
-given by an inductive definition: the initial object is~$0$, and the
-operation is the successor function~$x + 1$.
+Você pode até pensar nos próprios números naturais~$\Nat$ como sendo
+dados por uma definição indutiva: o objeto inicial é~$0$, e a
+operação é a função sucessor~$x + 1$.
 
-In order to prove something about all elements of an inductively
-defined set, O.s.\@, that every !!{element} of the set has a
-property~$P$, we must:
+Para provar algo sobre todos os elementos de um conjunto definido
+indutivamente, isto é, que todo !!{element} do conjunto tem uma
+propriedade~$P$, devemos:
 \begin{enumerate}
-\item Prove that the initial objects have~$P$
-\item Prove that for each operation~$o$, if the arguments have~$P$,
-  so does the result.
+\item Provar que os objetos iniciais têm~$P$
+\item Provar que, para cada operação~$o$, se os argumentos têm~$P$,
+  o resultado também tem.
 \end{enumerate}
-For instance, in order to prove something about all nice terms, we
-would prove that it is true about all letters, and that it is true
-about $[s_1 \circ s_2]$ provided it is true of $s_1$ and $s_2$
-individually.
+Por exemplo, para provar algo sobre todos os termos bonitos, nós
+provaríamos que é verdadeiro para todas as letras, e que é verdadeiro
+para $[s_1 \circ s_2]$ desde que seja verdadeiro de $s_1$ e $s_2$
+individualmente.
 
 \begin{prop}
-  The number of $[$ equals the number of $]$ in any nice term~$t$.
+  O número de $[$ é igual ao número de $]$ em qualquer termo bonito~$t$.
 \end{prop}
 
 \begin{proof}
-We use structural induction.  Nice terms are inductively defined, with
-letters as initial objects and the operation $o$ for constructing new
-nice terms out of old ones.
+Usamos a indução estrutural.  Os termos bonitos são definidos indutivamente, com
+as letras como objetos iniciais e a operação $o$ para construir novos
+termos bonitos a partir de antigos.
 \begin{enumerate}
-\item The claim is true for every letter, since the number of $[$ in a
-  letter by itself is~$0$ and the number of $]$ in it is also~$0$.
-\item Suppose the number of $[$ in $s_1$ equals the number of $]$, and
-  the same is true for $s_2$. The number of $[$ in $o(s_1, s_2)$, O.s.\@, in
-    $[s_1 \circ s_2]$, is the sum of the number of $[$ in $s_1$ and
-      $s_2$ plus one. The number of $]$ in $o(s_1, s_2)$ is the sum of the number
-    of $]$ in $s_1$ and $s_2$ plus one. Thus, the number of $[$ in $o(s_1, s_2)$
-    equals the number of $]$ in $o(s_1,s_2)$.
+\item A afirmação é verdadeira para toda letra, já que o número de $[$ em uma
+  letra isolada é~$0$ e o número de $]$ nela também é~$0$.
+\item Suponha que o número de $[$ em $s_1$ é igual ao número de $]$, e
+  o mesmo é verdadeiro para $s_2$. O número de $[$ em $o(s_1, s_2)$, isto é, em
+    $[s_1 \circ s_2]$, é a soma do número de $[$ em $s_1$ e
+      $s_2$ mais um. O número de $]$ em $o(s_1, s_2)$ é a soma do número
+    de $]$ em $s_1$ e $s_2$ mais um. Assim, o número de $[$ em $o(s_1, s_2)$
+    é igual ao número de $]$ em $o(s_1,s_2)$.
 \end{enumerate}
 \end{proof}
 
 \begin{prob}
-  Prove by structural induction that no nice term starts with~$]$.
+  Prove, por indução estrutural, que nenhum termo bonito começa com~$]$.
 \end{prob}
 
-Let's give another proof by structural induction: a proper initial
-segment of a string~$t$ of symbols is any string~$s$ that agrees with
-$t$ symbol by symbol, read from the left, but $t$ is longer. So,
-p.ex., $[a \circ {}$ is a proper initial segment of $[a \circ b]$, but
-neither are $[b \circ {}$ (they disagree at the second symbol) nor $[a
-\circ b]$ (they are the same length).
+Vamos dar outra prova por indução estrutural: um segmento inicial próprio
+de uma cadeia~$t$ de símbolos é qualquer cadeia~$s$ que concorda com
+$t$ símbolo por símbolo, lida da esquerda, mas $t$ é mais longa. Assim,
+por exemplo, $[a \circ {}$ é um segmento inicial próprio de $[a \circ b]$, mas
+nem $[b \circ {}$ (discordam no segundo símbolo) nem $[a
+\circ b]$ (têm o mesmo comprimento) o são.
 
 \begin{prop}\ollabel{prop:initial}
-  Every proper initial segment of a nice term~$t$ has more $[$'s than
-    $]$'s.
+  Todo segmento inicial próprio de um termo bonito~$t$ tem mais $[$ do que
+    $]$.
 \end{prop}
 
 \begin{proof}
-  By induction on~$t$:
+  Por indução em~$t$:
   \begin{enumerate}
-  \item $t$ is a letter by itself: Then $t$ has no proper initial segments.
-  \item $t = [s_1 \circ s_2]$ for some nice terms $s_1$ and~$s_2$. If $r$ is
-    a proper initial segment of $t$, there are a number of
-    possibilities:
+  \item $t$ é uma letra isolada: Então $t$ não tem segmentos iniciais próprios.
+  \item $t = [s_1 \circ s_2]$ para alguns termos bonitos $s_1$ e~$s_2$. Se $r$ é
+    um segmento inicial próprio de $t$, há várias
+    possibilidades:
     \begin{enumerate}
-    \item $r$ is just $[$: Then $r$ has one more $[$ than it does~$]$.
-    \item $r$ is $[r_1$ where $r_1$ is a proper initial segment
-      of~$s_1$: Since $s_1$ is a nice term, by induction hypothesis, $r_1$
-      has more $[$ than $]$ and the same is true for $[r_1$.
-    \item $r$ is $[s_1$ or $[s_1 \circ {}$: By the previous result, the
-      number of $[$ and $]$ in~$s_1$ are equal; so the number of $[$
-      in $[s_1$ or $[s_1 \circ {}$ is one more than the number of~$]$.
-    \item $r$ is $[s_1 \circ r_2$ where $r_2$ is a proper initial segment
-      of~$s_2$:  By induction hypothesis, $r_2$ contains more $[$ than
-      $]$. By the previous result, the number of $[$ and of
-      $]$ in~$s_1$ are equal. So the number of $[$ in $[s_1 \circ r_2$
-      is greater than the number of~$]$.
-    \item $r$ is $[s_1 \circ s_2$: By the previous result, the number of
-      $[$ and $]$ in $s_1$ are equal, and the same for~$s_2$. So there
-      is one more $[$ in $[s_1 \circ s_2$ than there are~$]$.
+    \item $r$ é apenas $[$: Então $r$ tem um $[$ a mais do que~$]$.
+    \item $r$ é $[r_1$ em que $r_1$ é um segmento inicial próprio
+      de~$s_1$: Como $s_1$ é um termo bonito, por hipótese de indução, $r_1$
+      tem mais $[$ do que $]$, e o mesmo é verdadeiro para $[r_1$.
+    \item $r$ é $[s_1$ ou $[s_1 \circ {}$: Pelo resultado anterior, o
+      número de $[$ e $]$ em~$s_1$ é igual; então o número de $[$
+      em $[s_1$ ou $[s_1 \circ {}$ é um a mais do que o número de~$]$.
+    \item $r$ é $[s_1 \circ r_2$ em que $r_2$ é um segmento inicial próprio
+      de~$s_2$:  Por hipótese de indução, $r_2$ contém mais $[$ do que
+      $]$. Pelo resultado anterior, o número de $[$ e de
+      $]$ em~$s_1$ é igual. Então o número de $[$ em $[s_1 \circ r_2$
+      é maior do que o número de~$]$.
+    \item $r$ é $[s_1 \circ s_2$: Pelo resultado anterior, o número de
+      $[$ e $]$ em $s_1$ é igual, e o mesmo para~$s_2$. Então há
+      um $[$ a mais em $[s_1 \circ s_2$ do que há~$]$.
     \end{enumerate}
   \end{enumerate}
 \end{proof}

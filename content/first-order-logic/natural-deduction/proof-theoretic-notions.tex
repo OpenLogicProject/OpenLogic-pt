@@ -7,83 +7,83 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{ntd}{ptn}}
-      {\olfileid{pl}{ntd}{ptn}}
+      {\olfileid[pt]{fol}{ntd}{ptn}}
+      {\olfileid[pt]{pl}{ntd}{ptn}}
 
-\olsection{Proof-Theoretic Notions}
+\olsection{Noções da Teoria da Prova}
 
 \begin{editorial}
-This section collects the definitions the provability relation
-and consistency for natural deduction.
+Esta seção reúne as definições da relação de demonstrabilidade
+e de consistência para a dedução natural.
 \end{editorial}
 
 \begin{explain}
-Just as we've defined a number of important semantic notions
-(validity, entailment, satisfiability), we now define corresponding
-\emph{proof-theoretic notions}.  These are not defined by appeal to
-satisfaction of !!{sentence}s in !!{structure}s, but by appeal to the
-!!{derivability} or !!{nonderivability} of certain !!{sentence}s from
-others.  It was an important discovery that these notions coincide.
-That they do is the content of the \emph{soundness} and
-\emph{completeness theorems}.
+Assim como definimos várias noções semânticas importantes
+(validade, consequência, satisfatibilidade), agora definimos noções
+\emph{da Teoria da Prova} correspondentes.  Elas não são definidas por
+apelo à satisfação de !!{sentence}s em !!{structure}s, mas por apelo à
+!!{derivability} ou !!{nonderivability} de certas !!{sentence}s a
+partir de outras.  Foi uma descoberta importante que essas noções
+coincidem. Que coincidem é o conteúdo dos teoremas de
+\emph{correção} e \emph{completude}.
 \end{explain}
 
 
-\begin{defn}[Theorems]
-A !!{sentence}~$!A$ is a \emph{theorem} if there is !!a{derivation}
-of~$!A$ in natural deduction in which all assumptions are
-!!{discharged}.  We write $\Proves !A$ if $!A$ is a theorem and
-$\Proves/ !A$ if it is not.
+\begin{defn}[Teoremas]
+Uma !!{sentence}~$!A$ é um \emph{teorema} se há uma !!{derivation}
+de~$!A$ em dedução natural na qual todas as hipóteses são
+!!{discharged}s.  Escrevemos $\Proves !A$ se $!A$ é um teorema e
+$\Proves/ !A$ se não o é.
 \end{defn}
 
 \begin{defn}[!!^{derivability}]
-!!^a{sentence} $!A$ is \emph{!!{derivable} from} a set of
-!!{sentence}s~$\Gamma$, $\Gamma \Proves !A$, if there is a
-!!{derivation} with conclusion~$!A$ and in which every assumption
-is either !!{discharged} or is in~$\Gamma$. If $!A$ is not
-!!{derivable} from $\Gamma$ we write $\Gamma \Proves/ !A$.
+!!^a{sentence} $!A$ é \emph{!!{derivable} de} um conjunto de
+!!{sentence}s~$\Gamma$, $\Gamma \Proves !A$, se há uma
+!!{derivation} com conclusão~$!A$ e na qual toda hipótese
+é ou !!{discharged} ou está em~$\Gamma$. Se $!A$ não é
+!!{derivable} de $\Gamma$, escrevemos $\Gamma \Proves/ !A$.
 \end{defn}
 
-\begin{defn}[Consistency]
-A set of !!{sentence}s~$\Gamma$ is \emph{inconsistent} iff $\Gamma
-\Proves \lfalse$.  If $\Gamma$ is not inconsistent, O.s.\@, if
-$\Gamma \Proves/ \lfalse$, we say it is \emph{consistent}.
+\begin{defn}[Consistência]
+Um conjunto de !!{sentence}s~$\Gamma$ é \emph{inconsistente} se, e somente se, $\Gamma
+\Proves \lfalse$.  Se $\Gamma$ não é inconsistente, isto é, se
+$\Gamma \Proves/ \lfalse$, dizemos que é \emph{consistente}.
 \end{defn}
 
-\begin{prop}[Reflexivity]
+\begin{prop}[Reflexividade]
 \ollabel{prop:reflexivity}
-If $!A \in \Gamma$, then $\Gamma \Proves !A$.
+Se $!A \in \Gamma$, então $\Gamma \Proves !A$.
 \end{prop}
 
 \begin{proof}
-The assumption $!A$ by itself is !!a{derivation} of~$!A$ where every
-!!{undischarged} assumption (O.s.\@, $!A$) is in~$\Gamma$.
+A hipótese $!A$ por si só é uma !!{derivation} de~$!A$ em que toda
+hipótese !!{undischarged} (isto é, $!A$) está em~$\Gamma$.
 \end{proof}
   
 
-\begin{prop}[Monotonicity]
+\begin{prop}[Monotonicidade]
 \ollabel{prop:monotonicity}
-If $\Gamma \subseteq \Delta$ and $\Gamma \Proves !A$, then $\Delta
+Se $\Gamma \subseteq \Delta$ e $\Gamma \Proves !A$, então $\Delta
 \Proves !A$.
 \end{prop}
 
 \begin{proof}
-Any !!{derivation} of $!A$ from $\Gamma$ is also !!a{derivation} of
-$!A$ from~$\Delta$.
+Qualquer !!{derivation} de $!A$ a partir de $\Gamma$ é também uma !!{derivation} de
+$!A$ a partir de~$\Delta$.
 \end{proof}
 
-\begin{prop}[Transitivity]
+\begin{prop}[Transitividade]
 \ollabel{prop:transitivity}
-If $\Gamma \Proves !A$ and $\{!A\} \cup \Delta \Proves
-!B$, then $\Gamma \cup \Delta \Proves !B$.
+Se $\Gamma \Proves !A$ e $\{!A\} \cup \Delta \Proves
+!B$, então $\Gamma \cup \Delta \Proves !B$.
 \end{prop}
 
 \begin{proof}
-If $\Gamma \Proves !A$, there is !!a{derivation}~$\delta_0$ of~$!A$
-with all !!{undischarged} assumptions in~$\Gamma$.  If $\{!A\} \cup
-\Delta \Proves !B$, then there is !!a{derivation}~$\delta_1$ of~$!B$
-with all !!{undischarged} assumptions in~$\{!A\} \cup \Delta$.
-Now consider:
+Se $\Gamma \Proves !A$, há uma !!{derivation}~$\delta_0$ de~$!A$
+com todas as hipóteses !!{undischarged}s em~$\Gamma$.  Se $\{!A\} \cup
+\Delta \Proves !B$, então há uma !!{derivation}~$\delta_1$ de~$!B$
+com todas as hipóteses !!{undischarged}s em~$\{!A\} \cup \Delta$.
+Considere agora:
 \begin{prooftree}
   \AxiomC{$\Delta, \Discharge{!A}{1}$}
   \RightLabel{$\delta_1$}
@@ -96,29 +96,29 @@ Now consider:
   \RightLabel{\Elim{\lif}}
   \BinaryInfC{$!B$}
 \end{prooftree}
-The !!{undischarged} assumptions are now all among $\Gamma \cup
-\Delta$, so this shows $\Gamma \cup \Delta \Proves !B$.
+As hipóteses !!{undischarged}s estão agora todas entre $\Gamma \cup
+\Delta$, de modo que isto mostra $\Gamma \cup \Delta \Proves !B$.
 \end{proof}
 
-When $\Gamma = \{!A_1, !A_2, \ldots, !A_k\}$ is a finite set we may use the simplified notation $!A_1,!A_2,\ldots,!A_k \Proves !B$ for $\Gamma \Proves !B$, in particular $!A \Proves !B$ means that $\{!A\} \Proves !B$.
+Quando $\Gamma = \{!A_1, !A_2, \ldots, !A_k\}$ é um conjunto finito, podemos usar a notação simplificada $!A_1,!A_2,\ldots,!A_k \Proves !B$ para $\Gamma \Proves !B$; em particular, $!A \Proves !B$ significa que $\{!A\} \Proves !B$.
 
-Note that if $\Gamma \Proves !A$ and $!A
-\Proves !B$, then $\Gamma \Proves !B$. It follows also that if $!A_1,
-\dots, !A_n \Proves !B$ and $\Gamma \Proves !A_i$ for each~$i$, then
+Note que se $\Gamma \Proves !A$ e $!A
+\Proves !B$, então $\Gamma \Proves !B$. Segue também que se $!A_1,
+\dots, !A_n \Proves !B$ e $\Gamma \Proves !A_i$ para cada~$i$, então
 $\Gamma \Proves !B$.
 
 \begin{prop}
 \ollabel{prop:incons}
-The following are equivalent. 
+As seguintes afirmações são equivalentes.
     \begin{enumerate}
-      \item \( \Gamma \) is inconsistent.
-      \item \( \Gamma \Proves {!A} \) for every !!{sentence}~\( {!A} \).
-      \item \( \Gamma \Proves {!A} \) and \( \Gamma \Proves \lnot {!A} \) for some !!{sentence}~\( {!A} \).
+      \item \( \Gamma \) é inconsistente.
+      \item \( \Gamma \Proves {!A} \) para toda !!{sentence}~\( {!A} \).
+      \item \( \Gamma \Proves {!A} \) e \( \Gamma \Proves \lnot {!A} \) para alguma !!{sentence}~\( {!A} \).
     \end{enumerate}
 \end{prop}
 
 \begin{proof}
-Exercise.
+Exercício.
 \end{proof}
 
 \tagprob{FOL}
@@ -133,25 +133,25 @@ Prove \olref[pl][ntd][ptn]{prop:incons}
 \end{prob}
 \tagendprob
 
-\begin{prop}[Compactness]
+\begin{prop}[Compacidade]
   \ollabel{prop:proves-compact}
   \begin{enumerate}
-  \item If $\Gamma \Proves !A$ then there is a finite subset $\Gamma_0
-    \subseteq \Gamma$ such that $\Gamma_0 \Proves !A$.
-  \item If every finite subset of~$\Gamma$ is
-    consistent, then $\Gamma$ is consistent.
+  \item Se $\Gamma \Proves !A$, então há um subconjunto finito $\Gamma_0
+    \subseteq \Gamma$ tal que $\Gamma_0 \Proves !A$.
+  \item Se todo subconjunto finito de~$\Gamma$ é
+    consistente, então $\Gamma$ é consistente.
   \end{enumerate}
 \end{prop}
 
 \begin{proof}
   \begin{enumerate}
-    \item If $\Gamma \Proves !A$, then there is
-      !!a{derivation}~$\delta$ of~$!A$ from~$\Gamma$. Let $\Gamma_0$
-      be the set of !!{undischarged} assumptions of~$\delta$.  Since
-      any !!{derivation} is finite, $\Gamma_0$ can only contain
-      finitely many !!{sentence}s.  So, $\delta$ is !!a{derivation}
-      of~$!A$ from a finite~$\Gamma_0 \subseteq \Gamma$.
-    \item This is the contrapositive of (1) for the special case $!A
+    \item Se $\Gamma \Proves !A$, então há uma
+      !!{derivation}~$\delta$ de~$!A$ a partir de~$\Gamma$. Seja $\Gamma_0$
+      o conjunto de hipóteses !!{undischarged}s de~$\delta$.  Como
+      toda !!{derivation} é finita, $\Gamma_0$ só pode conter
+      finitamente muitas !!{sentence}s.  Assim, $\delta$ é uma !!{derivation}
+      de~$!A$ a partir de um $\Gamma_0$ finito $\subseteq \Gamma$.
+    \item Isto é a contrapositiva de (1) no caso especial $!A
       \ident \lfalse$.
   \end{enumerate}
 \end{proof}

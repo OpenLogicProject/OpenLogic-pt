@@ -6,348 +6,347 @@
 
 \begin{document}
 
-\olfileid{mth}{prf}{pat}
+\olfileid[pt]{mth}{prf}{pat}
 
-\olsection{Inference Patterns}
+\olsection{Padrões de Inferência}
 
-Proofs are composed of individual inferences. When we make an
-inference, we typically indicate that by using a word like ``so,''
-``thus,'' or ``therefore.''  The inference often relies on one or two
-facts we already have available in our proof---it may be something we
-have assumed, or something that we've concluded by an inference
-already.  To be clear, we may label these things, and in the inference
-we indicate what other statements we're using in the inference.  An
-inference will often also contain an explanation of \emph{why} our new
-conclusion follows from the things that come before it.  There are
-some common patterns of inference that are used very often in proofs;
-we'll go through some below. Some patterns of inference, like proofs
-by induction, are more involved (and will be discussed later).
+As provas são compostas de inferências individuais. Quando fazemos uma
+inferência, normalmente a indicamos usando uma palavra como ``então,''
+``assim,'' ou ``portanto.''  A inferência muitas vezes se apoia em um ou dois
+fatos que já temos disponíveis em nossa prova---pode ser algo que
+supusemos, ou algo que concluímos por uma inferência
+anterior.  Para deixar claro, podemos rotular essas coisas, e na inferência
+indicamos quais outras afirmações estamos usando na inferência.  Uma
+inferência muitas vezes também conterá uma explicação de \emph{por que} nossa nova
+conclusão decorre das coisas que a precedem.  Há
+alguns padrões comuns de inferência que são usados com muita frequência em provas;
+percorreremos alguns deles abaixo. Alguns padrões de inferência, como as provas
+por indução, são mais elaborados (e serão discutidos mais adiante).
 
-We've already discussed one pattern of inference: unpacking, or
-applying, a definition. When we unpack a definition, we just restate
-something that involves the definiendum by using the definiens. For
-instance, suppose that we have already established in the course of a
-proof that $D = E$ (a). Then we may apply the definition of $=$ for sets
-and infer: ``Thus, by definition from (a), every !!{element}
-of~$D$ is !!a{element} of~$E$ and vice versa.''
+Já discutimos um padrão de inferência: desdobrar, ou
+aplicar, uma definição. Quando desdobramos uma definição, apenas reenunciamos
+algo que envolve o definiendum usando o definiens. Por
+exemplo, suponha que já tenhamos estabelecido no curso de uma
+prova que $D = E$ (a). Então podemos aplicar a definição de $=$ para conjuntos
+e inferir: ``Assim, por definição, de (a), todo !!{element}
+de~$D$ é !!a{element} de~$E$ e vice-versa.''
 
-Somewhat confusingly, we often do not write the justification of an
-inference when we actually make it, but before.  Suppose we haven't
-already proved that $D = E$, but we want to.  If $D = E$ is the
-conclusion we aim for, then we can restate this aim also by applying
-the definition: to prove $D = E$ we have to prove that every
-!!{element} of~$D$ is !!a{element} of~$E$ and vice versa.  So our
-proof will have the form: (a) prove that every !!{element} of~$D$ is
-!!a{element} of~$E$; (b) every !!{element} of~$E$ is !!a{element}
-of~$D$; (c) therefore, from (a) and (b) by definition of $=$, $D = E$.
-But we would usually not write it this way. Instead we might write
-something like,
+De modo um tanto confuso, muitas vezes não escrevemos a justificativa de uma
+inferência quando de fato a fazemos, mas antes.  Suponha que ainda não
+tenhamos provado que $D = E$, mas queremos.  Se $D = E$ é a
+conclusão que buscamos, então podemos reenunciar esse objetivo também aplicando
+a definição: para provar $D = E$ temos que provar que todo
+!!{element} de~$D$ é !!a{element} de~$E$ e vice-versa.  Assim, nossa
+prova terá a forma: (a) provar que todo !!{element} de~$D$ é
+!!a{element} de~$E$; (b) todo !!{element} de~$E$ é !!a{element}
+de~$D$; (c) portanto, de (a) e (b), pela definição de $=$, $D = E$.
+Mas normalmente não escreveríamos desse jeito. Em vez disso, poderíamos escrever
+algo como,
 \begin{quote}
-We want to show $D = E$. By definition of~$=$, this amounts to showing
-that every !!{element} of~$D$ is !!a{element} of~$E$ and vice
-versa.
+Queremos mostrar $D = E$. Pela definição de~$=$, isso equivale a mostrar
+que todo !!{element} de~$D$ é !!a{element} de~$E$ e vice-versa.
 
-(a) \dots (a proof that every !!{element} of~$D$ is !!a{element}
-of~$E$) \dots
+(a) \dots (uma prova de que todo !!{element} de~$D$ é !!a{element}
+de~$E$) \dots
 
-(b) \dots (a proof that every !!{element}
-of~$E$ is !!a{element} of~$D$) \dots
+(b) \dots (uma prova de que todo !!{element}
+de~$E$ é !!a{element} de~$D$) \dots
 \end{quote}
 
-\subsection{Using a Conjunction}
+\subsection{Usando uma Conjunção}
 
-Perhaps the simplest inference pattern is that of drawing as
-conclusion one of the conjuncts of a conjunction. In other words: if
-we have assumed or already proved that $p$ and~$q$, then we're
-entitled to infer that~$p$ (and also that~$q$).  This is such a basic
-inference that it is often not mentioned.  For instance, once we've
-unpacked the definition of $D = E$ we've established that every
-!!{element} of~$D$ is !!a{element} of~$E$ and vice versa. From this
-we can conclude that every !!{element} of~$E$ is !!a{element} of~$D$
-(that's the ``vice versa'' part).  
+Talvez o padrão de inferência mais simples seja o de tirar como
+conclusão uma das conjuntivas de uma conjunção. Em outras palavras: se
+supusemos ou já provamos que $p$ e~$q$, então temos o
+direito de inferir que~$p$ (e também que~$q$).  Essa é uma inferência tão básica
+que muitas vezes não é mencionada.  Por exemplo, uma vez que tenhamos
+desdobrado a definição de $D = E$, estabelecemos que todo
+!!{element} de~$D$ é !!a{element} de~$E$ e vice-versa. Disso
+podemos concluir que todo !!{element} de~$E$ é !!a{element} de~$D$
+(essa é a parte do ``vice-versa'').  
 
-\subsection{Proving a Conjunction}
+\subsection{Provando uma Conjunção}
 
-Sometimes what you'll be asked to prove will have the form of a
-conjunction; you will be asked to ``prove $p$ and $q$.'' In this case,
-you simply have to do two things: prove $p$, and then prove $q$. You
-could divide your proof into two sections, and for clarity, label
-them. When you're making your first notes, you might write ``(1) Prove
-$p$'' at the top of the page, and ``(2) Prove $q$'' in the middle of
-the page. (Of course, you might not be explicitly asked to prove a
-conjunction but find that your proof requires that you prove a
-conjunction. For instance, if you're asked to prove that $D = E$ you
-will find that, after unpacking the definition of~$=$, you have to
-prove: every !!{element} of~$D$ is !!a{element} of~$E$
-\emph{and} every !!{element} of~$E$ is !!a{element} of~$D$).
+Às vezes, o que lhe pedirão para provar terá a forma de uma
+conjunção; pedirão a você que ``prove $p$ e $q$.'' Nesse caso,
+você simplesmente tem que fazer duas coisas: provar $p$, e então provar $q$. Você
+poderia dividir sua prova em duas seções e, para maior clareza, rotulá-las.
+Quando estiver fazendo suas primeiras anotações, você pode escrever ``(1) Provar
+$p$'' no topo da página, e ``(2) Provar $q$'' no meio da
+página. (É claro que você pode não ser explicitamente solicitado a provar uma
+conjunção, mas descobrir que sua prova exige que você prove uma
+conjunção. Por exemplo, se lhe pedem para provar que $D = E$, você
+descobrirá que, após desdobrar a definição de~$=$, você tem que
+provar: todo !!{element} de~$D$ é !!a{element} de~$E$
+\emph{e} todo !!{element} de~$E$ é !!a{element} de~$D$).
 
-\subsection{Proving a Disjunction}
+\subsection{Provando uma Disjunção}
 
-When what you are proving takes the form of a disjunction (O.s.\@, it is
-an statement of the form ``$p$ or $q$''), it is enough to show that
-one of the disjuncts is true.  However, it basically never happens
-that either disjunct just follows from the assumptions of your
-theorem. More often, the assumptions of your theorem are themselves
-disjunctive, or you're showing that all things of a certain kind have
-one of two properties, but some of the things have the one and others
-have the other property.  This is where proof by cases is
-useful (see below).
+Quando o que você está provando assume a forma de uma disjunção (isto é, é
+uma afirmação da forma ``$p$ ou $q$''), basta mostrar que
+um dos disjuntos é verdadeiro.  No entanto, basicamente nunca acontece
+de qualquer um dos disjuntos simplesmente decorrer das suposições do seu
+teorema. Mais frequentemente, as suposições do seu teorema são elas próprias
+disjuntivas, ou você está mostrando que todas as coisas de certo tipo têm
+uma de duas propriedades, mas algumas das coisas têm uma e outras
+têm a outra propriedade.  É aqui que a prova por casos é
+útil (veja abaixo).
 
-\subsection{Conditional Proof}
+\subsection{Prova Condicional}
 
-Many theorems you will encounter are in conditional form (O.s.\@, show
-that if $p$ holds, then $q$ is also true). These cases are nice and
-easy to set up---simply assume the antecedent of the conditional (in
-this case, $p$) and prove the conclusion~$q$ from it.  So if your
-theorem reads, ``If $p$ then $q$,'' you start your proof with ``assume
-$p$'' and at the end you should have proved~$q$.
+Muitos teoremas que você encontrará estão na forma condicional (isto é, mostre
+que se $p$ vale, então $q$ também é verdadeiro). Esses casos são bons e
+fáceis de montar---basta supor o antecedente do condicional (neste
+caso, $p$) e provar a conclusão~$q$ a partir dele.  Então, se o seu
+teorema diz ``Se $p$ então $q$,'' você começa sua prova com ``suponha
+$p$'' e, ao final, você deve ter provado~$q$.
 
-Conditionals may be stated in different ways. So instead of ``If $p$
-then $q$,'' a theorem may state that ``$p$ only if $q$,'' ``$q$ if
-$p$,'' or ``$q$, provided $p$.'' These all mean the same and require
-assuming $p$ and proving~$q$ from that assumption.  Recall that a
-biconditional (``$p$ if and only if (iff) $q$'') is really two
-conditionals put together: if $p$ then $q$, and if $q$ then~$p$. All
-you have to do, then, is two instances of conditional proof: one for
-the first conditional and another one for the second. Sometimes,
-however, it is possible to prove an ``iff'' statement by chaining
-together a bunch of other ``iff'' statements so that you start with
-``$p$'' an end with ``$q$''---but in that case you have to make sure
-that each step really is an ``iff.''
+Os condicionais podem ser enunciados de maneiras diferentes. Assim, em vez de ``Se $p$
+então $q$,'' um teorema pode afirmar que ``$p$ somente se $q$,'' ``$q$ se
+$p$,'' ou ``$q$, desde que $p$.'' Todos eles significam o mesmo e exigem
+supor $p$ e provar~$q$ a partir dessa suposição.  Lembre-se de que um
+bicondicional (``$p$ se e somente se (sse) $q$'') é, na verdade, dois
+condicionais postos juntos: se $p$ então $q$, e se $q$ então~$p$. Tudo
+o que você tem que fazer, então, são duas instâncias de prova condicional: uma para
+o primeiro condicional e outra para o segundo. Às vezes,
+no entanto, é possível provar uma afirmação ``sse'' encadeando
+um monte de outras afirmações ``sse'', de modo que você comece com
+``$p$'' e termine com ``$q$''---mas, nesse caso, você tem que garantir
+que cada passo realmente seja um ``sse.''
 
-\subsection{Universal Claims}
+\subsection{Afirmações Universais}
 
-Using a universal claim is simple: if something is true for anything,
-it's true for each particular thing.  So if, say, the hypothesis of
-your proof is $A \subseteq B$, that means (unpacking the definition
-of~$\subseteq$), that, for every $x \in A$, $x \in B$. Thus, if you
-already know that $z \in A$, you can conclude $z \in B$.
+Usar uma afirmação universal é simples: se algo é verdadeiro para qualquer coisa,
+é verdadeiro para cada coisa particular.  Então, se, digamos, a hipótese da
+sua prova é $A \subseteq B$, isso significa (desdobrando a definição
+de~$\subseteq$) que, para todo $x \in A$, $x \in B$. Assim, se você
+já sabe que $z \in A$, você pode concluir $z \in B$.
 
-Proving a universal claim may seem a little bit tricky. Usually these
-statements take the following form: ``If $x$ has~$P$, then it
-has~$Q$'' or ``All $P$s are $Q$s.'' Of course, it might not fit this
-form perfectly, and it takes a bit of practice to figure out what
-you're asked to prove exactly. But: we often have to prove that all objects
-with some property have a certain other property.
+Provar uma afirmação universal pode parecer um pouco complicado. Normalmente essas
+afirmações assumem a seguinte forma: ``Se $x$ tem~$P$, então ele
+tem~$Q$'' ou ``Todos os $P$ são $Q$.'' É claro que pode não se ajustar a essa
+forma perfeitamente, e é preciso um pouco de prática para descobrir o que
+exatamente lhe pedem para provar. Mas: muitas vezes temos que provar que todos os objetos
+com alguma propriedade têm uma certa outra propriedade.
 
-The way to prove a universal claim is to introduce names or variables,
-for the things that have the one property and then show that they also
-have the other property.  We might put this by saying that to prove
-something for \emph{all}~$P$s you have to prove it for an
-\emph{arbitrary}~$P$. And the name introduced is a name for an
-arbitrary~$P$.  We typically use single letters as these names for
-arbitrary things, and the letters usually follow conventions: p.ex., we
-use $n$ for natural numbers, $!A$ for !!{formula}s, $A$ for sets, $f$
-for functions, etc.
+A maneira de provar uma afirmação universal é introduzir nomes ou variáveis
+para as coisas que têm uma propriedade e então mostrar que elas também
+têm a outra propriedade.  Poderíamos expressar isso dizendo que, para provar
+algo para \emph{todos} os $P$, você tem que prová-lo para um
+$P$~\emph{arbitrário}. E o nome introduzido é um nome para um
+$P$~arbitrário.  Normalmente usamos letras isoladas como esses nomes para
+coisas arbitrárias, e as letras costumam seguir convenções: por exemplo,
+usamos $n$ para números naturais, $!A$ para !!{formula}s, $A$ para conjuntos, $f$
+para funções, etc.
 
-The trick is to maintain generality throughout the proof. You start by
-assuming that an arbitrary object (``$x$'') has the property~$P$, and
-show (based only on definitions or what you are allowed to assume)
-that $x$ has the property~$Q$. Because you have not stipulated what
-$x$ is specifically, other that it has the property $P$, then you can
-assert that everything with $P$ has the property~$Q$. In short, $x$ is a
-stand-in for \emph{all} things with property~$P$.
+O truque é manter a generalidade ao longo da prova. Você começa
+supondo que um objeto arbitrário (``$x$'') tem a propriedade~$P$, e
+mostra (com base apenas em definições ou no que lhe é permitido supor)
+que $x$ tem a propriedade~$Q$. Como você não estipulou o que
+$x$ é especificamente, a não ser que ele tem a propriedade $P$, então você pode
+afirmar que tudo que tem $P$ tem a propriedade~$Q$. Em suma, $x$ é um
+substituto para \emph{todas} as coisas com a propriedade~$P$.
 
 \begin{prop}
-  For all sets $A$ and $B$, $A \subseteq A \cup B$.
+  Para todos os conjuntos $A$ e $B$, $A \subseteq A \cup B$.
 \end{prop}
 
 \begin{proof}
-  Let $A$ and $B$ be arbitrary sets.  We want to show that $A
-  \subseteq A \cup B$. By definition of $\subseteq$, this amounts to:
-  for every $x$, if $x \in A$ then $x \in A \cup B$. So let $x \in A$
-  be an arbitrary !!{element} of~$A$. We have to show that $x \in A
-  \cup B$. Since $x \in A$, $x \in A$ or $x \in B$. Thus, $x \in
-  \Setabs{x}{x \in A \lor x \in B}$. But that, by definition of $\cup
-  $, means $x \in A \cup B$.
+  Sejam $A$ e $B$ conjuntos arbitrários.  Queremos mostrar que $A
+  \subseteq A \cup B$. Pela definição de $\subseteq$, isso equivale a:
+  para todo $x$, se $x \in A$ então $x \in A \cup B$. Então seja $x \in A$
+  !!a{element} arbitrário de~$A$. Temos que mostrar que $x \in A
+  \cup B$. Como $x \in A$, $x \in A$ ou $x \in B$. Assim, $x \in
+  \Setabs{x}{x \in A \lor x \in B}$. Mas isso, pela definição de $\cup
+  $, significa $x \in A \cup B$.
 \end{proof}
 
 
-\subsection{Proof by Cases}
+\subsection{Prova por Casos}
 
-Suppose you have a disjunction as an assumption or as an already
-established conclusion---you have assumed or proved that $p$ or $q$ is
-true.  You want to prove $r$.  You do this in two steps: first you
-assume that $p$ is true, and prove~$r$, then you assume that $q$ is
-true and prove~$r$ again.  This works because we assume or know that
-one of the two alternatives holds. The two steps establish that either
-one is sufficient for the truth of~$r$.  (If both are true, we have
-not one but two reasons for why $r$~is true. It is not necessary to
-separately prove that $r$~is true assuming both $p$ and~$q$.)  To
-indicate what we're doing, we announce that we ``distinguish cases.''
-For instance, suppose we know that $x \in B \cup C$.  $B \cup C$ is
-defined as $\Setabs{x}{x \in B \text{ or } x \in C}$. In other words,
-by definition, $x \in B$ or $x \in C$. We would prove that $x \in A$
-from this by first assuming that $x \in B$, and proving $x \in A$ from
-this assumption, and then assume $x \in C$, and again prove $x \in A$
-from this.  You would write ``We distinguish cases'' under the
-assumption, then ``Case (1): $x \in B$'' underneath, and ``Case (2):
-$x \in C$ halfway down the page. Then you'd proceed to fill in the top
-half and the bottom half of the page.
+Suponha que você tenha uma disjunção como suposição ou como conclusão já
+estabelecida---você supôs ou provou que $p$ ou $q$ é
+verdadeira.  Você quer provar $r$.  Você faz isso em dois passos: primeiro você
+supõe que $p$ é verdadeira, e prova~$r$, e depois supõe que $q$ é
+verdadeira e prova~$r$ novamente.  Isso funciona porque supomos ou sabemos que
+uma das duas alternativas vale. Os dois passos estabelecem que qualquer
+uma delas é suficiente para a verdade de~$r$.  (Se ambas são verdadeiras, temos
+não uma, mas duas razões para que $r$~seja verdadeira. Não é necessário
+provar separadamente que $r$~é verdadeira supondo tanto $p$ quanto~$q$.)  Para
+indicar o que estamos fazendo, anunciamos que ``distinguimos casos.''
+Por exemplo, suponha que saibamos que $x \in B \cup C$.  $B \cup C$ é
+definido como $\Setabs{x}{x \in B \text{ ou } x \in C}$. Em outras palavras,
+por definição, $x \in B$ ou $x \in C$. Provaríamos que $x \in A$
+a partir disso supondo primeiro que $x \in B$, e provando $x \in A$ a partir
+dessa suposição, e então supondo $x \in C$, e novamente provando $x \in A$
+a partir disso.  Você escreveria ``Distinguimos casos'' sob a
+suposição, depois ``Caso (1): $x \in B$'' abaixo, e ``Caso (2):
+$x \in C$'' na metade da página. Então você prosseguiria preenchendo a metade
+superior e a metade inferior da página.
 
-Proof by cases is especially useful if what you're proving is itself
-disjunctive. Here's a simple example:
+A prova por casos é especialmente útil se o que você está provando é, ele mesmo,
+disjuntivo. Eis um exemplo simples:
 
 \begin{prop}
-Suppose $B \subseteq D$ and $C \subseteq E$. Then $B \cup C \subseteq
+Suponha $B \subseteq D$ e $C \subseteq E$. Então $B \cup C \subseteq
 D \cup E$.
 \end{prop}
 
 \begin{proof}
-  Assume (a) that $B \subseteq D$ and (b) $C \subseteq E$. By
-  definition, any $x \in B$ is also $\in D$ (c) and any $x \in C$ is
-  also $\in E$ (d).  To show that $B \cup C \subseteq D \cup E$, we
-  have to show that if $x \in B \cup C$ then $x \in D \cup E$ (by
-  definition of $\subseteq$). $x \in B \cup C$ iff $x \in B$ or $x \in
-  C$ (by definition of~$\cup$). Similarly, $x \in D \cup E$ iff $x \in
-  D$ or $x \in E$. So, we have to show: for any $x$, if $x \in B$ or
-  $x \in C$, then $x \in D$ or $x \in E$.
+  Suponha (a) que $B \subseteq D$ e (b) $C \subseteq E$. Por
+  definição, qualquer $x \in B$ também está $\in D$ (c) e qualquer $x \in C$ também
+  está $\in E$ (d).  Para mostrar que $B \cup C \subseteq D \cup E$,
+  temos que mostrar que se $x \in B \cup C$ então $x \in D \cup E$ (pela
+  definição de $\subseteq$). $x \in B \cup C$ sse $x \in B$ ou $x \in
+  C$ (pela definição de~$\cup$). De modo semelhante, $x \in D \cup E$ sse $x \in
+  D$ ou $x \in E$. Então, temos que mostrar: para qualquer $x$, se $x \in B$ ou
+  $x \in C$, então $x \in D$ ou $x \in E$.
 
   \begin{quote}
-  So far we've only unpacked definitions!{} We've reformulated our
-  proposition without $\subseteq$ and $\cup$ and are left with trying
-  to prove a universal conditional claim. By what we've discussed
-  above, this is done by assuming that $x$ is something about which we
-  assume the ``if'' part is true, and we'll go on to show that the
-  ``then'' part is true as well. In other words, we'll assume that $x
-  \in B$ or $x \in C$ and show that $x \in D$ or $x \in
-  E$.\footnote{This paragraph just explains what we're doing---it's
-    not part of the proof, and you don't have to go into all this
-    detail when you write down your own proofs.}
+  Até aqui só desdobramos definições!{} Reformulamos nossa
+  proposição sem $\subseteq$ e $\cup$ e ficamos tentando
+  provar uma afirmação condicional universal. Pelo que discutimos
+  acima, isso é feito supondo que $x$ é algo a respeito do qual
+  supomos que a parte do ``se'' é verdadeira, e passaremos a mostrar que a
+  parte do ``então'' também é verdadeira. Em outras palavras, suporemos que $x
+  \in B$ ou $x \in C$ e mostraremos que $x \in D$ ou $x \in
+  E$.\footnote{Este parágrafo apenas explica o que estamos fazendo---não
+    é parte da prova, e você não precisa entrar em todo esse
+    detalhe quando escreve suas próprias provas.}
   \end{quote}
 
-  Suppose that $x \in B$ or $x \in C$. We have to show that $x \in D$
-  or $x \in E$. We distinguish cases.
+  Suponha que $x \in B$ ou $x \in C$. Temos que mostrar que $x \in D$
+  ou $x \in E$. Distinguimos casos.
 
-  Case 1: $x \in B$. By (c), $x \in D$. Thus, $x \in D$ or $x \in
-  E$. (Here we've made the inference discussed in the preceding
-  subsection!)
+  Caso 1: $x \in B$. Por (c), $x \in D$. Assim, $x \in D$ ou $x \in
+  E$. (Aqui fizemos a inferência discutida na subseção
+  anterior!)
       
-  Case 2: $x \in C$. By (d), $x \in E$. Thus, $x \in D$ or $x \in E$.
+  Caso 2: $x \in C$. Por (d), $x \in E$. Assim, $x \in D$ ou $x \in E$.
  \end{proof}
 
 
-\subsection{Proving an Existence Claim}
+\subsection{Provando uma Afirmação de Existência}
 
-When asked to prove an existence claim, the question will usually be
-of the form ``prove that there is an~$x$ such that $\dots x \dots$'',
-O.s.\@, that some object that has the property described by ``$\dots x
-\dots$''. In this case you'll have to identify a suitable object and show
-that it has the required property.  This sounds straightforward, but a
-proof of this kind can be tricky. Typically it involves
-\emph{constructing} or \emph{defining} an object and proving that the
-object so defined has the required property. Finding the right object
-may be hard, proving that it has the required property may be hard,
-and sometimes it's even tricky to show that you've succeeded in
-defining an object at all!{}
+Quando lhe pedem para provar uma afirmação de existência, a questão normalmente será
+da forma ``prove que há um~$x$ tal que $\dots x \dots$'',
+isto é, que algum objeto tem a propriedade descrita por ``$\dots x
+\dots$''. Nesse caso, você terá que identificar um objeto adequado e mostrar
+que ele tem a propriedade exigida.  Isso parece direto, mas uma
+prova desse tipo pode ser complicada. Tipicamente, ela envolve
+\emph{construir} ou \emph{definir} um objeto e provar que o
+objeto assim definido tem a propriedade exigida. Encontrar o objeto certo
+pode ser difícil, provar que ele tem a propriedade exigida pode ser difícil,
+e às vezes é até complicado mostrar que você teve sucesso em
+definir um objeto!{}
 
-Generally, you'd write this out by specifying the object, p.ex., ``let
-$x$ be \dots'' (where \dots{} specifies which object you have in
-mind), possibly proving that $\dots$ in fact describes an object that
-exists, and then go on to show that $x$ has the property~$Q$. Here's a
-simple example.
+Em geral, você escreveria isso especificando o objeto, por exemplo, ``seja
+$x$ \dots'' (em que \dots{} especifica qual objeto você tem em
+mente), possivelmente provando que $\dots$ de fato descreve um objeto que
+existe, e então passaria a mostrar que $x$ tem a propriedade~$Q$. Eis um
+exemplo simples.
 
 \begin{prop}
-  Suppose that $x \in B$. Then there is an~$A$ such that $A \subseteq
-  B$ and $A \neq \emptyset$.
+  Suponha que $x \in B$. Então há um~$A$ tal que $A \subseteq
+  B$ e $A \neq \emptyset$.
 \end{prop}
 
 \begin{proof}
-  Assume $x \in B$. Let $A = \{x\}$.
+  Suponha $x \in B$. Seja $A = \{x\}$.
   \begin{quote}
-    Here we've defined the set~$A$ by enumerating its
-    !!{element}s. Since we assume that $x$ is an object, and we can
-    always form a set by enumerating its !!{element}s, we don't have
-    to show that we've succeeded in defining a set~$A$ here.  However,
-    we still have to show that $A$ has the properties required by the
-    proposition. The proof isn't complete without that!{}
+    Aqui definimos o conjunto~$A$ enumerando seus
+    !!{element}s. Como supomos que $x$ é um objeto, e sempre podemos
+    formar um conjunto enumerando seus !!{element}s, não temos
+    que mostrar que tivemos sucesso em definir um conjunto~$A$ aqui.  No entanto,
+    ainda temos que mostrar que $A$ tem as propriedades exigidas pela
+    proposição. A prova não está completa sem isso!{}
   \end{quote}
-  Since $x \in A$, $A \neq \emptyset$.
+  Como $x \in A$, $A \neq \emptyset$.
   \begin{quote}
-    This relies on the definition of $A$ as $\{x\}$ and the obvious
-    facts that $x \in \{x\}$ and $x \notin \emptyset$.
+    Isso se apoia na definição de $A$ como $\{x\}$ e nos fatos óbvios
+    de que $x \in \{x\}$ e $x \notin \emptyset$.
   \end{quote}
-  Since $x$ is the only !!{element} of~$\{x\}$, and $x \in B$, every
-  !!{element} of~$A$ is also !!a{element} of~$B$. By definition
-  of~$\subseteq$, $A \subseteq B$.
+  Como $x$ é o único !!{element} de~$\{x\}$, e $x \in B$, todo
+  !!{element} de~$A$ é também !!a{element} de~$B$. Pela definição
+  de~$\subseteq$, $A \subseteq B$.
 \end{proof}
 
-\subsection{Using Existence Claims}
+\subsection{Usando Afirmações de Existência}
 
-Suppose you know that some existence claim is true (you've proved it,
-or it's a hypothesis you can use), say, ``for some~$x$, $x \in A$'' or
-``there is an $x \in A$.''  If you want to use it in your proof, you
-can just pretend that you have a name for one of the things which your
-hypothesis says exist. Since $A$ contains at least one thing, there
-are things to which that name might refer. You might of course not be
-able to pick one out or describe it further (other than that it is
-$\in A$). But for the purpose of the proof, you can pretend that you
-have picked it out and give a name to it. It's important to pick a
-name that you haven't already used (or that appears in your
-hypotheses), otherwise things can go wrong. In your proof, you
-indicate this by going from ``for some $x$, $x \in A$'' to ``Let $a
-\in A$.''  Now you can reason about~$a$, use some other hypotheses, etc.,
-until you come to a conclusion, $p$. If $p$ no longer mentions~$a$, $p$ is
-independent of the asusmption that $a \in A$, and you've shown that it
-follows just from the assumption ``for some $x$, $x \in A$.''
+Suponha que você saiba que alguma afirmação de existência é verdadeira (você a provou,
+ou ela é uma hipótese que você pode usar), digamos, ``para algum~$x$, $x \in A$'' ou
+``há um $x \in A$.''  Se você quiser usá-la em sua prova, você
+pode simplesmente fingir que tem um nome para uma das coisas que sua
+hipótese diz existir. Como $A$ contém pelo menos uma coisa, há
+coisas a que esse nome poderia se referir. É claro que você pode não ser
+capaz de escolher uma ou de descrevê-la mais (a não ser que ela é
+$\in A$). Mas, para os fins da prova, você pode fingir que
+a escolheu e dar-lhe um nome. É importante escolher um
+nome que você ainda não tenha usado (ou que apareça nas suas
+hipóteses), caso contrário as coisas podem dar errado. Em sua prova, você
+indica isso passando de ``para algum $x$, $x \in A$'' para ``Seja $a
+\in A$.''  Agora você pode raciocinar sobre~$a$, usar algumas outras hipóteses, etc.,
+até chegar a uma conclusão, $p$. Se $p$ não menciona mais~$a$, $p$ é
+independente da suposição de que $a \in A$, e você mostrou que ele
+decorre apenas da suposição ``para algum $x$, $x \in A$.''
 
 \begin{prop}
-If $A \neq \emptyset$, then $A \cup B \neq \emptyset$.
+Se $A \neq \emptyset$, então $A \cup B \neq \emptyset$.
 \end{prop}
 
 \begin{proof}
-  Suppose $A \neq \emptyset$. So for some $x$, $x \in A$. 
+  Suponha $A \neq \emptyset$. Então, para algum $x$, $x \in A$. 
   \begin{quote}
-    Here we first just restated the hypothesis of the
-    proposition. This hypothesis, O.s.\@, $A \neq \emptyset$, hides an
-    existential claim, which you get to only by unpacking a few
-    definitions. The definition of $=$ tells us that $A = \emptyset$
-    iff every $x \in A$ is also $\in \emptyset$ and every $x \in
-    \emptyset$ is also $\in A$. Negating both sides, we get: $A \neq
-    \emptyset$ iff either some $x \in A$ is $\notin \emptyset$ or some
-    $x \in \emptyset$ is $\notin A$. Since nothing is $\in \emptyset$,
-    the second disjunct can never be true, and ``$x \in A$ and $x
-    \notin \emptyset$'' reduces to just $x \in A$. So $x \neq
-    \emptyset$ iff for some $x$, $x \in A$. That's an existence
-    claim. Now we use that existence claim by introducing a name for
-    one of the !!{element}s of~$A$:
+    Aqui apenas reenunciamos a hipótese da
+    proposição. Essa hipótese, isto é, $A \neq \emptyset$, esconde uma
+    afirmação existencial, à qual você só chega desdobrando algumas
+    definições. A definição de $=$ nos diz que $A = \emptyset$
+    sse todo $x \in A$ também está $\in \emptyset$ e todo $x \in
+    \emptyset$ também está $\in A$. Negando ambos os lados, obtemos: $A \neq
+    \emptyset$ sse ou algum $x \in A$ está $\notin \emptyset$ ou algum
+    $x \in \emptyset$ está $\notin A$. Como nada está $\in \emptyset$,
+    o segundo disjunto nunca pode ser verdadeiro, e ``$x \in A$ e $x
+    \notin \emptyset$'' se reduz a apenas $x \in A$. Então $A \neq
+    \emptyset$ sse, para algum $x$, $x \in A$. Essa é uma afirmação de
+    existência. Agora usamos essa afirmação de existência introduzindo um nome para
+    um dos !!{element}s de~$A$:
   \end{quote}
-  Let $a \in A$.
+  Seja $a \in A$.
   \begin{quote}
-    Now we've introduced a name for one of the things~$\in A$. We'll
-    continue to argue about~$a$, but we'll be careful to only assume
-    that $a \in A$ and nothing else:
+    Agora introduzimos um nome para uma das coisas~$\in A$. Continuaremos
+    a argumentar sobre~$a$, mas teremos o cuidado de supor apenas
+    que $a \in A$ e nada mais:
   \end{quote}
-  Since $a \in A$, $a \in A \cup B$, by definition of~$\cup$. So for
-  some $x$, $x \in A \cup B$, O.s.\@, $A \cup B \neq \emptyset$.
+  Como $a \in A$, $a \in A \cup B$, pela definição de~$\cup$. Então, para
+  algum $x$, $x \in A \cup B$, isto é, $A \cup B \neq \emptyset$.
   \begin{quote}
-    In that last step, we went from ``$a \in A \cup B$'' to ``for some
-    $x$, $x \in A \cup B$.'' That doesn't mention $a$ anymore, so we
-    know that ``for some $x$, $x \in A \cup B$'' follows from ``for
-    some $x$, $x \in A$ alone.'' But that means that $A \cup B \neq
+    Naquele último passo, fomos de ``$a \in A \cup B$'' para ``para algum
+    $x$, $x \in A \cup B$.'' Isso não menciona mais $a$, então
+    sabemos que ``para algum $x$, $x \in A \cup B$'' decorre de ``para
+    algum $x$, $x \in A$'' apenas. Mas isso significa que $A \cup B \neq
     \emptyset$.
   \end{quote}
 \end{proof}
 
-It's maybe good practice to keep bound variables like ``$x$'' separate
-from hypothetical names like $a$, like we did. In practice, however, we
-often don't and just use $x$, like so:
+Talvez seja boa prática manter variáveis ligadas como ``$x$'' separadas
+de nomes hipotéticos como $a$, como fizemos. Na prática, porém,
+muitas vezes não o fazemos e apenas usamos $x$, assim:
 \begin{quote}
-Suppose $A \neq \emptyset$, O.s.\@, there is an $x \in A$. By definition
-of $\cup$, $x \in A \cup B$. So $A \cup B \neq \emptyset$.
+Suponha $A \neq \emptyset$, isto é, há um $x \in A$. Pela definição
+de $\cup$, $x \in A \cup B$. Então $A \cup B \neq \emptyset$.
 \end{quote}
-However, when you do this, you have to be extra careful that you use
-different $x$'s and $y$'s for different existential claims. For
-instance, the following is \emph{not} a correct proof of ``If $A \neq
-\emptyset$ and $B \neq \emptyset$ then $A \cap B \neq \emptyset$''
-(which is not true).
+No entanto, quando você faz isso, tem que ter um cuidado extra para usar
+$x$ e $y$ diferentes para afirmações existenciais diferentes. Por
+exemplo, a seguinte \emph{não} é uma prova correta de ``Se $A \neq
+\emptyset$ e $B \neq \emptyset$ então $A \cap B \neq \emptyset$''
+(o que não é verdade).
 \begin{quote}
-Suppose $A \neq \emptyset$ and $B \neq \emptyset$. So for some $x$, $x
-\in A$ and also for some $x$, $x \in B$. Since $x \in A$ and $x \in
-B$, $x \in A \cap B$, by definition of~$\cap$. So $A \cap B \neq
+Suponha $A \neq \emptyset$ e $B \neq \emptyset$. Então, para algum $x$, $x
+\in A$ e também, para algum $x$, $x \in B$. Como $x \in A$ e $x \in
+B$, $x \in A \cap B$, pela definição de~$\cap$. Então $A \cap B \neq
 \emptyset$.
 \end{quote}
-Can you spot where the incorrect step occurs and explain why the
-result does not hold?
+Você consegue identificar onde ocorre o passo incorreto e explicar por que o
+resultado não vale?
 
 \end{document}

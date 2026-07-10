@@ -7,69 +7,72 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{com}{int}}
-      {\olfileid{pl}{com}{int}}
+      {\olfileid[pt]{fol}{com}{int}}
+      {\olfileid[pt]{pl}{com}{int}}
 
-\olsection{Introduction}
+\olsection{Introdução}
 
-The completeness theorem is one of the most fundamental results about
-logic.  It comes in two formulations, the equivalence of which we'll
-prove.  In its first formulation it says something fundamental about
-the relationship between semantic consequence and our !!{derivation}
-system: if !!a{sentence}~$!A$ follows from some !!{sentence}s
-$\Gamma$, then there is also !!a{derivation} that establishes $\Gamma
-\Proves !A$. Thus, the !!{derivation} system is as strong as it can
-possibly be without proving things that don't actually follow.
+O teorema da completude é um dos resultados mais fundamentais sobre
+lógica.  Ele vem em duas formulações, cuja equivalência iremos
+provar.  Em sua primeira formulação, ele diz algo fundamental sobre
+a relação entre consequência semântica e nosso sistema de
+!!{derivation}: se !!a{sentence}~$!A$ segue de algumas !!{sentence}s
+$\Gamma$, então também existe !!a{derivation} que estabelece $\Gamma
+\Proves !A$. Assim, o sistema de !!{derivation} é tão forte quanto pode
+possivelmente ser sem provar coisas que de fato não se seguem.
 
-In its second formulation, it can be stated as a model existence
-result: every consistent set of !!{sentence}s is satisfiable.
-Consistency is a proof-theoretic notion: it says that our
-!!{derivation} system is unable to produce certain !!{derivation}s.
-But who's to say that just because there are no !!{derivation}s of a
-certain sort from~$\Gamma$, it's guaranteed that there is
+Em sua segunda formulação, ele pode ser enunciado como um resultado de
+existência de modelo: todo conjunto consistente de !!{sentence}s é
+satisfatível.  A consistência é uma noção da teoria da prova: ela diz
+que nosso sistema de !!{derivation} é incapaz de produzir certas
+!!{derivation}s.  Mas quem garante que, só porque não há !!{derivation}s
+de um certo tipo a partir de~$\Gamma$, está garantido que existe
 \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!{valuation}{~$\pAssign{v}$}
-with $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$}? Before the
-completeness theorem was first proved---in fact before we had the
-!!{derivation} systems we now do---the great German mathematician
-David Hilbert held the view that consistency of mathematical theories
-guarantees the existence of the objects they are about. He put it as
-follows in a letter to Gottlob Frege:
+com $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$}? Antes de
+o teorema da completude ser provado pela primeira vez --- na verdade,
+antes de termos os sistemas de !!{derivation} que temos hoje --- o grande
+matemático alemão David Hilbert defendia a visão de que a consistência
+das teorias matemáticas garante a existência dos objetos de que elas
+tratam. Ele colocou isso da seguinte forma em uma carta a Gottlob
+Frege:
 \begin{quote}
-  If the arbitrarily given axioms do not contradict one another with
-  all their consequences, then they are true and the things defined by
-  the axioms exist. This is for me the criterion of truth and
-  existence. 
+  Se os axiomas dados arbitrariamente não se contradizem uns aos
+  outros com todas as suas consequências, então eles são verdadeiros e
+  as coisas definidas pelos axiomas existem. Este é para mim o critério
+  de verdade e existência. 
 \end{quote}
-Frege vehemently disagreed. The second formulation of the completeness
-theorem shows that Hilbert was right in at least the sense that if the
-axioms are consistent, then \emph{some}
-\iftag{FOL}{!!{structure}}{!!{valuation}} exists that makes them all
-true.
+Frege discordou veementemente. A segunda formulação do teorema da
+completude mostra que Hilbert estava certo pelo menos no sentido de que,
+se os axiomas são consistentes, então existe \emph{alguma}
+\iftag{FOL}{!!{structure}}{!!{valuation}} que os torna todos
+verdadeiros.
 
-These aren't the only reasons the completeness theorem---or rather,
-its proof---is important.  It has a number of important consequences,
-some of which we'll discuss separately.  For instance, since any
-!!{derivation} that shows $\Gamma \Proves !A$ is finite and so can
-only use finitely many of the !!{sentence}s in~$\Gamma$, it follows by
-the completeness theorem that if $!A$ is a consequence of~$\Gamma$, it
-is already a consequence of a finite subset of~$\Gamma$.  This is
-called \emph{compactness}.  Equivalently, if every finite subset of
-$\Gamma$ is consistent, then $\Gamma$ itself must be consistent.
+Estas não são as únicas razões pelas quais o teorema da completude ---
+ou melhor, sua prova --- é importante.  Ele tem uma série de
+consequências importantes, algumas das quais discutiremos
+separadamente.  Por exemplo, como toda !!{derivation} que mostra
+$\Gamma \Proves !A$ é finita e, portanto, só pode usar uma quantidade
+finita das !!{sentence}s em~$\Gamma$, segue do teorema da completude
+que, se $!A$ é uma consequência de~$\Gamma$, então já é uma
+consequência de um subconjunto finito de~$\Gamma$.  Isso é chamado de
+\emph{compacidade}.  Equivalentemente, se todo subconjunto finito de
+$\Gamma$ é consistente, então o próprio $\Gamma$ deve ser consistente.
 
-Although the compactness theorem follows from the completeness theorem
-via the detour through !!{derivation}s, it is also possible to use the
-\emph{the proof of} the completeness theorem to establish it
-directly. For what the proof does is take a set of !!{sentence}s with
-a certain property---consistency---and constructs !!a{structure} out
-of this set that has certain properties (in this case, that it
-satisfies the set). Almost the very same construction can be used to
-directly establish compactness, by starting from ``finitely
-satisfiable'' sets of !!{sentence}s instead of consistent ones.
-\iftag{FOL}{The construction also yields other consequences, p.ex.,
-  that any satisfiable set of !!{sentence}s has a finite or
-  !!{denumerable}s model.  (This result is called the
-  L\"owenheim--Skolem theorem.)  In general, the construction of
-  !!{structure}s from sets of !!{sentence}s is used often in logic,
-  and sometimes even in philosophy.}{}
+Embora o teorema da compacidade decorra do teorema da completude
+pelo desvio através de !!{derivation}s, também é possível usar a
+\emph{prova do} teorema da completude para estabelecê-lo
+diretamente. Pois o que a prova faz é tomar um conjunto de !!{sentence}s
+com uma certa propriedade --- a consistência --- e construir
+!!a{structure} a partir desse conjunto que possui certas propriedades
+(neste caso, que ela satisfaz o conjunto). Quase exatamente a mesma
+construção pode ser usada para estabelecer a compacidade diretamente,
+partindo de conjuntos ``finitamente satisfatíveis'' de !!{sentence}s em
+vez de conjuntos consistentes.
+\iftag{FOL}{A construção também produz outras consequências, por exemplo,
+  que todo conjunto satisfatível de !!{sentence}s tem um modelo finito ou
+  !!{denumerable}s.  (Esse resultado é chamado de
+  teorema de L\"owenheim--Skolem.)  Em geral, a construção de
+  !!{structure}s a partir de conjuntos de !!{sentence}s é usada com frequência
+  em lógica, e às vezes até em filosofia.}{}
 
 \end{document}

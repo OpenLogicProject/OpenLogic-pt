@@ -7,77 +7,82 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{prf}{axd}}
-      {\olfileid{pl}{prf}{axd}}
+      {\olfileid[pt]{fol}{prf}{axd}}
+      {\olfileid[pt]{pl}{prf}{axd}}
 
-\olsection{Axiomatic \usetoken{P}{derivation}}
+\olsection{Dedução Axiomática}
 
-Axiomatic !!{derivation}s are the oldest and simplest logical
-!!{derivation} systems. Its !!{derivation}s are simply sequences of
-!!{sentence}s.  A sequence of !!{sentence}s counts as a correct
-!!{derivation} if every !!{sentence}~$!A$ in it satisfies one of the
-following conditions:
+As !!{derivation}s axiomáticas são os sistemas de !!{derivation}
+lógicos mais antigos e mais simples. Suas !!{derivation}s são
+simplesmente sequências de !!{sentence}s.  Uma sequência de
+!!{sentence}s conta como uma !!{derivation} correta se toda
+!!{sentence}~$!A$ nela satisfaz uma das seguintes condições:
 \begin{enumerate}
-\item $!A$ is an axiom, or
-\item $!A$ is !!a{element} of a given set~$\Gamma$ of !!{sentence}s, or
-\item $!A$ is justified by a rule of inference.
+\item $!A$ é um axioma, ou
+\item $!A$ é !!a{element} de um dado conjunto~$\Gamma$ de !!{sentence}s, ou
+\item $!A$ é justificada por uma regra de inferência.
 \end{enumerate}
-To be an axiom, $!A$ has to have the form of one of a number of fixed
-!!{sentence} schemas. There are many sets of axiom schemas that
-provide a satisfactory (sound and complete) !!{derivation} system for
-first-order logic. Some are organized according to the connectives
-they govern, p.ex., the schemas
+Para ser um axioma, $!A$ tem que ter a forma de um entre vários
+esquemas fixos de !!{sentence}. Há muitos conjuntos de esquemas de
+axiomas que fornecem um sistema de !!{derivation} satisfatório
+(correto e completo) para a lógica de primeira ordem. Alguns são
+organizados de acordo com os conectivos que governam, por exemplo, os
+esquemas
 \[
 !A \lif (!B \lif !A) \qquad !B \lif (!B \lor !C) \qquad (!B \land !C) \lif !B
 \]
-are common axioms that govern $\lif$, $\lor$ and~$\land$. Some axiom systems
-aim at a minimal number of axioms. Depending on the connectives that
-are taken as primitives, it is even possible to find axiom systems
-that consist of a single axiom.
+são axiomas comuns que governam $\lif$, $\lor$ e~$\land$. Alguns
+sistemas de axiomas visam um número mínimo de axiomas. Dependendo dos
+conectivos tomados como primitivos, é até possível encontrar sistemas
+de axiomas que consistem em um único axioma.
 
-A rule of inference is a conditional statement that gives a sufficient
-condition for !!a{sentence} in !!a{derivation} to be justified. Modus
-ponens is one very common such rule: it says that if $!A$ and $!A \lif
-!B$ are already justified, then $!B$ is justified. This means that a
-line in !!a{derivation} containing the !!{sentence}~$!B$ is justified,
-provided that both $!A$ and $!A \lif !B$ (for some !!{sentence}~$!A$)
-appear in the !!{derivation} before~$!B$.
+Uma regra de inferência é uma afirmação condicional que dá uma
+condição suficiente para que uma !!{sentence} em uma !!{derivation}
+seja justificada. O modus ponens é uma regra muito comum desse tipo:
+diz que se $!A$ e $!A \lif !B$ já estão justificados, então $!B$ está
+justificado. Isso significa que uma linha em uma !!{derivation} que
+contém a !!{sentence}~$!B$ está justificada, desde que tanto $!A$
+quanto $!A \lif !B$ (para alguma !!{sentence}~$!A$) apareçam na
+!!{derivation} antes de~$!B$.
 
-The $\Proves$ relation based on axiomatic !!{derivation}s is defined
-as follows: $\Gamma \Proves !A$ iff there is !!a{derivation} with the
-!!{sentence}~$!A$ as its last formula (and $\Gamma$ is taken as the
-set of !!{sentence}s in that !!{derivation} which are justified by~(2) above).  $!A$
-is a theorem if~$!A$ has !!a{derivation} where~$\Gamma$ is empty,
-O.s.\@, every !!{sentence} in the !!{derivation} is justified either by (1)
-or~(3). For instance, here is !!a{derivation} that shows that $\Proves
-!A  \lif (!B \lif (!B \lor !A))$:
+A relação $\Proves$ baseada em !!{derivation}s axiomáticas é definida
+da seguinte forma: $\Gamma \Proves !A$ se, e somente se, há uma
+!!{derivation} com a !!{sentence}~$!A$ como sua última fórmula (e
+$\Gamma$ é tomado como o conjunto de !!{sentence}s nessa !!{derivation}
+que são justificadas por~(2) acima).  $!A$ é um teorema se~$!A$ tem
+uma !!{derivation} em que~$\Gamma$ é vazio, isto é, toda !!{sentence}
+na !!{derivation} é justificada por (1) ou~(3). Por exemplo, aqui está
+uma !!{derivation} que mostra que $\Proves !A  \lif (!B \lif (!B \lor
+!A))$:
 \begin{derivation}
   1. & $!B \lif (!B \lor !A)$ \\
   2. & $(!B \lif (!B \lor !A)) \lif (!A  \lif (!B \lif (!B \lor !A)))$\\
   3. & $!A  \lif (!B \lif (!B \lor !A))$
 \end{derivation}
-The !!{sentence} on line~1 is of the form of the axiom $!A \lif (!A
-\lor !B)$ (with the roles of $!A$ and $!B$ reversed). The sentence on
-line~2 is of the form of the axiom $!A \lif (!B \lif !A)$. Thus, both
-lines are justified. Line~3 is justified by modus ponens: if we
-abbreviate it as $!D$, then line~2 has the form $!C \lif !D$, where
-$!C$ is $!B \lif (!B \lor !A)$, O.s.\@, line~1.
+A !!{sentence} na linha~1 tem a forma do axioma $!A \lif (!A \lor
+!B)$ (com os papéis de $!A$ e $!B$ invertidos). A sentença na
+linha~2 tem a forma do axioma $!A \lif (!B \lif !A)$. Assim, ambas
+as linhas estão justificadas. A linha~3 é justificada por modus
+ponens: se a abreviarmos como $!D$, então a linha~2 tem a forma $!C
+\lif !D$, onde $!C$ é $!B \lif (!B \lor !A)$, isto é, a linha~1.
 
-A set $\Gamma$ is inconsistent if $\Gamma \Proves \lfalse$. A complete
-axiom system will also prove that $\lfalse \lif !A$ for any~$!A$, and
-so if $\Gamma$ is inconsistent, then $\Gamma \Proves !A$ for any~$!A$.
+Um conjunto $\Gamma$ é inconsistente se $\Gamma \Proves \lfalse$. Um
+sistema de axiomas completo também provará que $\lfalse \lif !A$ para
+qualquer~$!A$, e assim, se $\Gamma$ é inconsistente, então $\Gamma
+\Proves !A$ para qualquer~$!A$.
 
-Systems of axiomatic !!{derivation}s for logic were first given by
-Gottlob Frege in his 1879 \emph{Begriffsschrift}, which for this
-reason is often considered the first work of modern logic. They were
-perfected in Alfred North Whitehead and Bertrand Russell's
-\emph{Principia Mathematica} and by David Hilbert and his students in
-the 1920s. They are thus often called ``Frege systems'' or ``Hilbert
-systems.'' They are very versatile in that it is often easy to find
-an axiomatic system for a logic. Because !!{derivation}s have a very
-simple structure and only one or two inference rules, it is also
-relatively easy to prove things \emph{about} them. However, they are
-very hard to use in practice, O.s.\@, it is difficult to find and write
-proofs.
+Sistemas de !!{derivation}s axiomáticas para lógica foram dados pela
+primeira vez por Gottlob Frege em sua \emph{Begriffsschrift} de 1879,
+que por essa razão é frequentemente considerada a primeira obra da
+lógica moderna. Foram aperfeiçoados em \emph{Principia Mathematica} de
+Alfred North Whitehead e Bertrand Russell e por David Hilbert e seus
+alunos na década de 1920. São assim frequentemente chamados de
+``sistemas de Frege'' ou ``sistemas de Hilbert''. São muito versáteis
+no sentido de que é frequentemente fácil encontrar um sistema axiomático
+para uma lógica. Porque as !!{derivation}s têm uma estrutura muito
+simples e apenas uma ou duas regras de inferência, também é
+relativamente fácil provar coisas \emph{sobre} eles. No entanto, são
+muito difíceis de usar na prática, isto é, é difícil encontrar e escrever
+provas.
 
 \end{document}

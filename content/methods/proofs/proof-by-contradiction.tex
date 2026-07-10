@@ -6,214 +6,214 @@
 
 \begin{document}
 
-\olfileid{mth}{prf}{con}
+\olfileid[pt]{mth}{prf}{con}
 
-\olsection{Proof by Contradiction} 
+\olsection{Prova por Contradição} 
 
-In the first instance, proof by contradiction is an inference pattern
-that is used to prove negative claims.  Suppose you want to show that
-some claim~$p$ is \emph{false}, O.s.\@, you want to show~$\lnot p$.  The
-most promising strategy is to (a) suppose that $p$~is true, and (b)
-show that this assumption leads to something you know to be false.
-``Something known to be false'' may be a result that conflicts
-with---contradicts---$p$ itself, or some other hypothesis of the
-overall claim you are considering.  For instance, a proof of ``if $q$
-then $\lnot p$'' involves assuming that $q$~is true and proving~$\lnot
-p$ from it. If you prove $\lnot p$ by contradiction, that means
-assuming $p$ in addition to~$q$. If you can prove $\lnot q$ from $p$,
-you have shown that the assumption~$p$ leads to something that
-contradicts your other assumption~$q$, since $q$~and $\lnot q$ cannot
-both be true.  Of course, you have to use other inference patterns in
-your proof of the contradiction, as well as unpacking definitions.
-Let's consider an example.
+Em primeira instância, a prova por contradição é um padrão de inferência
+usado para provar afirmações negativas.  Suponha que você queira mostrar que
+alguma afirmação~$p$ é \emph{falsa}, isto é, você quer mostrar~$\lnot p$.  A
+estratégia mais promissora é (a) supor que $p$~é verdadeira, e (b)
+mostrar que essa suposição leva a algo que você sabe ser falso.
+``Algo que se sabe ser falso'' pode ser um resultado que entra em conflito
+com---contradiz---o próprio~$p$, ou alguma outra hipótese da
+afirmação geral que você está considerando.  Por exemplo, uma prova de ``se $q$
+então $\lnot p$'' envolve supor que $q$~é verdadeira e provar~$\lnot
+p$ a partir disso. Se você prova $\lnot p$ por contradição, isso significa
+supor $p$ além de~$q$. Se você consegue provar $\lnot q$ a partir de $p$,
+mostrou que a suposição~$p$ leva a algo que
+contradiz sua outra suposição~$q$, já que $q$~e $\lnot q$ não podem
+ser ambas verdadeiras.  É claro que você tem que usar outros padrões de inferência em
+sua prova da contradição, bem como desdobrar definições.
+Vamos considerar um exemplo.
 
 \begin{prop}
-  If $A \subseteq B$ and $B = \emptyset$, then $A$ has no !!{element}s.
+  Se $A \subseteq B$ e $B = \emptyset$, então $A$ não tem !!{element}s.
 \end{prop}
 
 \begin{proof}
-  Suppose $A \subseteq B$ and $B = \emptyset$. We want to show that
-  $A$ has no !!{element}s.
+  Suponha $A \subseteq B$ e $B = \emptyset$. Queremos mostrar que
+  $A$ não tem !!{element}s.
   \begin{quote}
-    Since this is a conditional claim, we assume the antecedent and
-    want to prove the consequent. The consequent is: $A$ has no
-    !!{element}s. We can make that a bit more explicit: it's not the
-    case that there is an~$x \in A$.
+    Como esta é uma afirmação condicional, supomos o antecedente e
+    queremos provar o consequente. O consequente é: $A$ não tem
+    !!{element}s. Podemos tornar isso um pouco mais explícito: não é o
+    caso de que haja um~$x \in A$.
   \end{quote}
-  $A$ has no !!{element}s iff it's not the case that there is an~$x$
-  such that $x \in A$.
+  $A$ não tem !!{element}s sse não é o caso de que haja um~$x$
+  tal que $x \in A$.
   \begin{quote}
-    So we've determined that what we want to prove is really a
-    negative claim~$\lnot p$, namely: it's not the case that there is
-    an $x \in A$.  To use proof by contradiction, we have to assume the
-    corresponding positive claim~$p$, O.s.\@, there is an $x \in A$, and
-    prove a contradiction from it.  We indicate that we're doing a
-    proof by contradiction by writing ``by way
-    of contradiction, assume'' or even just ``suppose not,'' and then state
-    the assumption~$p$.
+    Então determinamos que o que queremos provar é, na verdade, uma
+    afirmação negativa~$\lnot p$, a saber: não é o caso de que haja
+    um $x \in A$.  Para usar a prova por contradição, temos que supor a
+    afirmação positiva correspondente~$p$, isto é, há um $x \in A$, e
+    provar uma contradição a partir dela.  Indicamos que estamos fazendo uma
+    prova por contradição escrevendo ``por
+    absurdo, suponha'' ou mesmo apenas ``suponha que não,'' e então enunciamos
+    a suposição~$p$.
   \end{quote}
-  Suppose not: there is an $x \in A$.
+  Suponha que não: há um $x \in A$.
   \begin{quote}
-    This is now the new assumption we'll use to obtain a
-    contradiction. We have two more assumptions: that $A \subseteq B$
-    and that $B = \emptyset$. The first gives us that $x \in B$:
+    Esta é agora a nova suposição que usaremos para obter uma
+    contradição. Temos mais duas suposições: que $A \subseteq B$
+    e que $B = \emptyset$. A primeira nos dá que $x \in B$:
   \end{quote}
-  Since $A \subseteq B$, $x \in B$.
+  Como $A \subseteq B$, $x \in B$.
   \begin{quote}
-    But since $B = \emptyset$, every !!{element} of $B$ (p.ex., $x$)
-    must also be !!a{element} of~$\emptyset$.
+    Mas como $B = \emptyset$, todo !!{element} de $B$ (por exemplo, $x$)
+    também deve ser !!a{element} de~$\emptyset$.
   \end{quote}
-  Since $B = \emptyset$, $x \in \emptyset$. This is a contradiction,
-  since by definition $\emptyset$ has no !!{element}s.
+  Como $B = \emptyset$, $x \in \emptyset$. Isso é uma contradição,
+  já que, por definição, $\emptyset$ não tem !!{element}s.
   \begin{quote}
-    This already completes the proof: we've arrived at what we need (a
-    contradiction) from the assumptions we've set up, and this means
-    that the assumptions can't all be true. Since the first two
-    assumptions ($A \subseteq B$ and $B = \emptyset$) are not
-    contested, it must be the last assumption introduced (there is an
-    $x \in A$) that must be false. But if we want to be thorough, we
-    can spell this out.
+    Isso já completa a prova: chegamos ao que precisávamos (uma
+    contradição) a partir das suposições que montamos, e isso significa
+    que as suposições não podem ser todas verdadeiras. Como as duas primeiras
+    suposições ($A \subseteq B$ e $B = \emptyset$) não são
+    contestadas, deve ser a última suposição introduzida (há um
+    $x \in A$) que tem que ser falsa. Mas, se quisermos ser minuciosos,
+    podemos explicitar isso.
   \end{quote}
-  Thus, our assumption that there is an $x \in A$ must be false, hence,
-  $A$ has no !!{element}s by proof by contradiction.
+  Assim, nossa suposição de que há um $x \in A$ tem que ser falsa, logo,
+  $A$ não tem !!{element}s, por prova por contradição.
 \end{proof}
 
-Every positive claim is trivially equivalent to a negative claim: $p$
-iff $\lnot\lnot p$.  So proofs by contradiction can also be used to
-establish positive claims ``indirectly,'' as follows: To prove~$p$,
-read it as the negative claim $\lnot\lnot p$. If we can prove a
-contradiction from $\lnot p$, we've established $\lnot\lnot p$ by
-proof by contradiction, and hence~$p$.
+Toda afirmação positiva é trivialmente equivalente a uma afirmação negativa: $p$
+sse $\lnot\lnot p$.  Assim, as provas por contradição também podem ser usadas para
+estabelecer afirmações positivas ``indiretamente,'' como segue: Para provar~$p$,
+leia-o como a afirmação negativa $\lnot\lnot p$. Se conseguirmos provar uma
+contradição a partir de $\lnot p$, estabelecemos $\lnot\lnot p$ por
+prova por contradição, e portanto~$p$.
 
-In the last example, we aimed to prove a negative claim, namely that
-$A$ has no !!{element}s, and so the assumption we made for the purpose
-of proof by contradiction (O.s.\@, that there is an $x \in A$) was a
-positive claim. It gave us something to work with, namely the
-hypothetical $x \in A$ about which we continued to reason until we got
-to $x \in \emptyset$.
+No último exemplo, buscávamos provar uma afirmação negativa, a saber, que
+$A$ não tem !!{element}s, e por isso a suposição que fizemos para os fins
+da prova por contradição (isto é, que há um $x \in A$) era uma
+afirmação positiva. Ela nos deu algo com que trabalhar, a saber, o
+hipotético $x \in A$ sobre o qual continuamos a raciocinar até chegarmos
+a $x \in \emptyset$.
 
-When proving a positive claim indirectly, the assumption you'd make
-for the purpose of proof by contradiction would be negative. But very
-often you can easily reformulate a positive claim as a negative claim,
-and a negative claim as a positive claim.  Our previous proof would
-have been essentially the same had we proved ``$A = \emptyset$''
-instead of the negative consequent ``$A$ has no !!{element}s.'' (By
-definition of $=$, ``$A = \emptyset$'' is a general claim, since it
-unpacks to ``every !!{element} of~$A$ is an !!{element} of~$\emptyset$
-and vice versa''.) But it is easily seen to be equivalent to the
-negative claim ``not: there is an $x \in A$.''
+Ao provar uma afirmação positiva indiretamente, a suposição que você faria
+para os fins da prova por contradição seria negativa. Mas muito
+frequentemente você pode facilmente reformular uma afirmação positiva como uma afirmação negativa,
+e uma afirmação negativa como uma afirmação positiva.  Nossa prova anterior teria
+sido essencialmente a mesma se tivéssemos provado ``$A = \emptyset$''
+em vez do consequente negativo ``$A$ não tem !!{element}s.'' (Pela
+definição de $=$, ``$A = \emptyset$'' é uma afirmação geral, já que
+ela se desdobra em ``todo !!{element} de~$A$ é !!a{element} de~$\emptyset$
+e vice-versa''.) Mas é facilmente visto que ela é equivalente à
+afirmação negativa ``não: há um $x \in A$.''
 
-So it is sometimes easier to work with $\lnot p$ as an assumption than
-it is to prove~$p$ directly.  Even when a direct proof is just as
-simple or even simpler (as in the next examples), some people prefer to
-proceed indirectly.  If the double negation confuses you, think of a
-proof by contradiction of some claim as a proof of a contradiction
-from the \emph{opposite} claim. So, a proof by contradiction of $\lnot
-p$ is a proof of a contradiction from the assumption~$p$; and proof by
-contradiction of~$p$ is a proof of a contradiction from~$\lnot p$.
+Então, às vezes é mais fácil trabalhar com $\lnot p$ como suposição do
+que provar~$p$ diretamente.  Mesmo quando uma prova direta é igualmente
+simples ou até mais simples (como nos próximos exemplos), algumas pessoas preferem
+proceder indiretamente.  Se a dupla negação o confunde, pense em uma
+prova por contradição de alguma afirmação como uma prova de uma contradição
+a partir da afirmação \emph{oposta}. Assim, uma prova por contradição de $\lnot
+p$ é uma prova de uma contradição a partir da suposição~$p$; e a prova por
+contradição de~$p$ é uma prova de uma contradição a partir de~$\lnot p$.
 
 \begin{prop}
 $A \subseteq A \cup B$.
 \end{prop}
 
 \begin{proof}
-  We want to show that $A \subseteq A \cup B$.
+  Queremos mostrar que $A \subseteq A \cup B$.
   \begin{quote}
-    On the face of it, this is a positive claim: every $x \in A$ is
-    also in $A \cup B$.  The negation of that is: some $x \in A$ is
-    $\notin A \cup B$. So we can prove the claim indirectly by
-    assuming this negated claim, and showing that it leads to a
-    contradiction.
+    À primeira vista, esta é uma afirmação positiva: todo $x \in A$ está
+    também em $A \cup B$.  A negação disso é: algum $x \in A$ está
+    $\notin A \cup B$. Então podemos provar a afirmação indiretamente
+    supondo essa afirmação negada, e mostrando que ela leva a uma
+    contradição.
     \end{quote}
-  Suppose not, O.s.\@, $A \nsubseteq A \cup B$.
+  Suponha que não, isto é, $A \nsubseteq A \cup B$.
   \begin{quote}
-    We have a definition of $A \subseteq A \cup B$: every $x \in A$ is
-    also $\in A \cup B$.  To understand what $A \nsubseteq A \cup B$
-    means, we have to use some elementary logical manipulation on the
-    unpacked definition: it's false that every $x \in A$ is also $\in
-    A \cup B$ iff there is \emph{some}~$x \in A$ that is $\notin C$.
-    (This is a place where you want to be very careful: many students'
-    attempted proofs by contradiction fail because they analyze the
-    negation of a claim like ``all $A$s are $B$s'' incorrectly.) In
-    other words, $A \nsubseteq A \cup B$ iff there is an $x$ such that
-    $x \in A$ and $x \notin A \cup B$. From then on, it's easy.
+    Temos uma definição de $A \subseteq A \cup B$: todo $x \in A$ está
+    também $\in A \cup B$.  Para entender o que $A \nsubseteq A \cup B$
+    significa, temos que usar alguma manipulação lógica elementar sobre a
+    definição desdobrada: é falso que todo $x \in A$ esteja também $\in
+    A \cup B$ sse há \emph{algum}~$x \in A$ que está $\notin C$.
+    (Este é um ponto em que você quer ser muito cuidadoso: muitas tentativas de
+    prova por contradição de estudantes falham porque eles analisam a
+    negação de uma afirmação como ``todos os $A$ são $B$'' incorretamente.) Em
+    outras palavras, $A \nsubseteq A \cup B$ sse há um $x$ tal que
+    $x \in A$ e $x \notin A \cup B$. A partir daí, é fácil.
   \end{quote}
-  So, there is an $x \in A$ such that $x \notin A \cup B$.  By
-  definition of $\cup$, $x \in A \cup B$ iff $x \in A$ or $x \in
-  B$. Since $x \in A$, we have $x \in A \cup B$. This contradicts the
-  assumption that $x \notin A \cup B$. 
+  Então, há um $x \in A$ tal que $x \notin A \cup B$.  Pela
+  definição de $\cup$, $x \in A \cup B$ sse $x \in A$ ou $x \in
+  B$. Como $x \in A$, temos $x \in A \cup B$. Isso contradiz a
+  suposição de que $x \notin A \cup B$. 
 \end{proof}
 
 \begin{prob}
-Prove \emph{indirectly} that $A \cap B \subseteq A$.
+Prove \emph{indiretamente} que $A \cap B \subseteq A$.
 \end{prob}
 
 \begin{prop}
-If $A \subseteq B$ and $B \subseteq C$ then $A \subseteq C$.
+Se $A \subseteq B$ e $B \subseteq C$ então $A \subseteq C$.
 \end{prop}
 
 \begin{proof}
-  Suppose $A \subseteq B$ and $B \subseteq C$. We want to show $A
+  Suponha $A \subseteq B$ e $B \subseteq C$. Queremos mostrar $A
   \subseteq C$.
   \begin{quote}
-    Let's proceed indirectly: we assume the negation of what we want
-    to etablish.
+    Vamos proceder indiretamente: supomos a negação do que queremos
+    estabelecer.
   \end{quote}
-  Suppose not, O.s.\@, $A \nsubseteq C$.
+  Suponha que não, isto é, $A \nsubseteq C$.
   \begin{quote}
-    As before, we reason that $A \nsubseteq C$ iff not every $x \in A$
-    is also $\in C$, O.s.\@, some $x \in A$ is $\notin C$.  Don't worry,
-    with practice you won't have to think hard anymore to unpack
-    negations like this.
+    Como antes, raciocinamos que $A \nsubseteq C$ sse nem todo $x \in A$
+    está também $\in C$, isto é, algum $x \in A$ está $\notin C$.  Não se preocupe,
+    com prática você não terá mais que pensar muito para desdobrar
+    negações como esta.
   \end{quote}
-  In other words, there is an~$x$ such that $x \in A$ and $x \notin C$.
+  Em outras palavras, há um~$x$ tal que $x \in A$ e $x \notin C$.
   \begin{quote}
-    Now we can use this to get to our contradiction. Of course, we'll
-    have to use the other two assumptions to do it.
+    Agora podemos usar isso para chegar à nossa contradição. É claro que
+    teremos que usar as outras duas suposições para fazê-lo.
   \end{quote}
-  Since $A \subseteq B$, $x \in B$. Since $B \subseteq C$, $x \in
-  C$. But this contradicts $x \notin C$.
+  Como $A \subseteq B$, $x \in B$. Como $B \subseteq C$, $x \in
+  C$. Mas isso contradiz $x \notin C$.
 \end{proof}
 
 \begin{prop}
-If $A \cup B = A \cap B$ then $A = B$.
+Se $A \cup B = A \cap B$ então $A = B$.
 \end{prop}
 
 \begin{proof}
-  Suppose $A \cup B = A \cap B$. We want to show that $A = B$.
+  Suponha $A \cup B = A \cap B$. Queremos mostrar que $A = B$.
   \begin{quote}
-    The beginning is now routine:
+    O começo é agora rotineiro:
   \end{quote}
-  Assume, by way of contradiction, that $A \neq B$.
+  Suponha, por absurdo, que $A \neq B$.
   \begin{quote}
-    Our assumption for the proof by contradiction is that $A \neq
-    B$. Since $A = B$ iff $A \subseteq B$ an $B \subseteq A$, we get
-    that $A \neq B$ iff $A \nsubseteq B$ \emph{or} $B \nsubseteq
-    A$. (Note how important it is to be careful when manipulating
-    negations!{}) To prove a contradiction from this disjunction, we
-    use a proof by cases and show that in each case, a contradiction
-    follows.
+    Nossa suposição para a prova por contradição é que $A \neq
+    B$. Como $A = B$ sse $A \subseteq B$ e $B \subseteq A$, obtemos
+    que $A \neq B$ sse $A \nsubseteq B$ \emph{ou} $B \nsubseteq
+    A$. (Note como é importante ter cuidado ao manipular
+    negações!{}) Para provar uma contradição a partir dessa disjunção,
+    usamos uma prova por casos e mostramos que, em cada caso, uma contradição
+    se segue.
   \end{quote}
-  $A \neq B$ iff $A \nsubseteq B$ or $B \nsubseteq A$. We distinguish
-  cases.
+  $A \neq B$ sse $A \nsubseteq B$ ou $B \nsubseteq A$. Distinguimos
+  casos.
   \begin{quote}
-    In the first case, we assume $A \nsubseteq B$, O.s.\@, for some $x$,
-    $x \in A$ but $\notin B$. $A \cap B$ is defined as those
-    !!{element}s that $A$ and $B$ have in common, so if something
-    isn't in one of them, it's not in the intersection. $A \cup B$ is
-    $A$ together with $B$, so anything in either is also in the
-    union. This tells us that $x \in A \cup B$ but $x \notin A \cap
-    B$, and hence that $A \cap B \neq A \cup B$.
+    No primeiro caso, supomos $A \nsubseteq B$, isto é, para algum $x$,
+    $x \in A$ mas $\notin B$. $A \cap B$ é definido como aqueles
+    !!{element}s que $A$ e $B$ têm em comum, então, se algo
+    não está em um deles, não está na interseção. $A \cup B$ é
+    $A$ junto com $B$, então qualquer coisa em um ou outro está também na
+    união. Isso nos diz que $x \in A \cup B$ mas $x \notin A \cap
+    B$, e logo que $A \cap B \neq A \cup B$.
   \end{quote}
   
-  Case 1: $A \nsubseteq B$. Then for some $x$, $x \in A$ but $x \notin
-  B$. Since $x \notin B$, then $x \notin A \cap B$. Since $x \in A$,
-  $x \in A \cup B$. So, $A \cap B \neq A \cup B$, contradicting the
-  assumption that $A \cap B = A \cup B$.
+  Caso 1: $A \nsubseteq B$. Então, para algum $x$, $x \in A$ mas $x \notin
+  B$. Como $x \notin B$, então $x \notin A \cap B$. Como $x \in A$,
+  $x \in A \cup B$. Então, $A \cap B \neq A \cup B$, contradizendo a
+  suposição de que $A \cap B = A \cup B$.
 
-  Case 2: $B \nsubseteq A$. Then for some $y$, $y \in B$ but $y \notin
-  A$. As before, we have $y \in A \cup B$ but $y \notin A \cap B$, and
-  so $A \cap B \neq A \cup B$, again contradicting $A \cap B = A \cup
+  Caso 2: $B \nsubseteq A$. Então, para algum $y$, $y \in B$ mas $y \notin
+  A$. Como antes, temos $y \in A \cup B$ mas $y \notin A \cap B$, e
+  assim $A \cap B \neq A \cup B$, novamente contradizendo $A \cap B = A \cup
   B$. 
 \end{proof}
 

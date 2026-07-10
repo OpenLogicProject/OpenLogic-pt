@@ -6,99 +6,100 @@
 
 \begin{document}
 
-\olfileid{cmp}{tur}{con}
-\olsection{Configurations and Computations}
+\olfileid[pt]{cmp}{tur}{con}
+\olsection{Configurações e Computações}
 
 \begin{explain}
-Recall tracing through the configurations of the even machine earlier.
-The imaginary mechanism consisting of tape, read/write head, and
-Turing machine program is really just an intuitive way of visualizing
-what a Turing machine computation is.  Formally, we can define the
-computation of a Turing machine on a given input as a sequence of
-\emph{configurations}---and a configuration in turn is a sequence of
-symbols (corresponding to the contents of the tape at a given point in
-the computation), a number indicating the position of the read/write
-head, and a state. Using these, we can define what the Turing
-machine~$M$ computes on a given input.
+Lembre-se de acompanhar as configurações da máquina dos pares
+anteriormente. O mecanismo imaginário formado pela fita, pela cabeça de
+leitura-escrita e pelo programa da máquina de Turing é, na verdade, apenas
+uma maneira intuitiva de visualizar o que é uma computação de máquina de
+Turing. Formalmente, podemos definir a computação de uma máquina de Turing
+sobre uma dada entrada como uma sequência de
+\emph{configurações}---e uma configuração, por sua vez, é uma sequência de
+símbolos (correspondendo ao conteúdo da fita em um dado ponto da
+computação), um número que indica a posição da cabeça de leitura-escrita
+e um estado. Com isso, podemos definir o que a máquina de
+Turing~$M$ computa sobre uma dada entrada.
 \end{explain}
 
-\begin{defn}[Configuration]
-A \emph{configuration} of Turing machine $M = \tuple{Q, \Sigma, q_0,
-\delta}$ is a triple $\tuple{C, m, q}$ where
+\begin{defn}[Configuração]
+Uma \emph{configuração} da máquina de Turing $M = \tuple{Q, \Sigma, q_0,
+\delta}$ é uma tripla $\tuple{C, m, q}$ onde
 \begin{enumerate}
-\item $C \in \Sigma^*$ is a finite sequence of symbols from $\Sigma$,
-\item $m \in \Nat$ is a number $< \len{C}$, and
+\item $C \in \Sigma^*$ é uma sequência finita de símbolos de $\Sigma$,
+\item $m \in \Nat$ é um número $< \len{C}$, e
 \item $q \in Q$
 \end{enumerate}
-Intuitively, the sequence~$C$ is the content of the tape (symbols of
-all squares from the leftmost square to the last non-blank or
-previously visited square), $m$~is the number of the square the
-read/write head is scanning (beginning with $0$ being the number of
-the leftmost square), and $q$ is the current state of the machine.
+Intuitivamente, a sequência~$C$ é o conteúdo da fita (símbolos de
+todos os quadrados desde o quadrado mais à esquerda até o último não
+vazio ou previamente visitado), $m$~é o número do quadrado que a
+cabeça de leitura-escrita está examinando (começando com $0$ como o número do
+quadrado mais à esquerda), e $q$ é o estado atual da máquina.
 \end{defn}
 
 \begin{explain}
-The potential input for a Turing machine is a sequence of symbols,
-usually a sequence that encodes a number in some form.  The initial
-configuration of the Turing machine is that configuration in which we
-start the Turing machine to work on that input: the tape contains the
-tape end marker immediately followed by the input written on the
-squares to the right, the read/write head is scanning the leftmost
-square of the input (O.s.\@, the square to the right of the left end
-marker), and the mechanism is in the designated start state~$q_0$.
+A possível entrada para uma máquina de Turing é uma sequência de símbolos,
+geralmente uma sequência que codifica um número de alguma forma. A
+configuração inicial da máquina de Turing é aquela configuração em que
+iniciamos a máquina de Turing para trabalhar sobre essa entrada: a fita contém o
+marcador de fim de fita imediatamente seguido da entrada escrita nos
+quadrados à direita, a cabeça de leitura-escrita está examinando o quadrado
+mais à esquerda da entrada (ou seja, o quadrado à direita do marcador de
+fim esquerdo), e o mecanismo está no estado inicial designado~$q_0$.
 \end{explain}
 
-\begin{defn}[Initial configuration]
-The \emph{initial configuration} of $M$ for input $I \in \Sigma^*$ is
+\begin{defn}[Configuração inicial]
+A \emph{configuração inicial} de $M$ para a entrada $I \in \Sigma^*$ é
 \[
 \tuple{\TMendtape \frown I, 1, q_0}.
 \]
 \end{defn}
 
 \begin{explain}
-The~$\frown$ symbol is for \emph{concatenation}---the input string
-begins immediately to the left end marker.
+O símbolo~$\frown$ denota \emph{concatenação}---a cadeia de entrada
+começa imediatamente após o marcador de fim esquerdo.
 \end{explain}
 
 \begin{defn}
-We say that a configuration $\tuple{C, m, q}$ \emph{yields the
-configuration $\tuple{C', m', q'}$ in one step} (according to~$M$),
-iff
+Dizemos que uma configuração $\tuple{C, m, q}$ \emph{produz a
+configuração $\tuple{C', m', q'}$ em um passo} (de acordo com~$M$),
+sse
 \begin{enumerate}
-\item the $m$-th symbol of $C$ is $\sigma$,
-\item the instruction set of $M$ specifies $\delta(q, \sigma) =
+\item o $m$-ésimo símbolo de $C$ é $\sigma$,
+\item o conjunto de instruções de $M$ especifica $\delta(q, \sigma) =
   \tuple{q', \sigma', D}$,
-\item the $m$-th symbol of $C'$ is $\sigma'$, and 
+\item o $m$-ésimo símbolo de $C'$ é $\sigma'$, e 
 \item
 \begin{enumerate}
-\item $D = L$ and $m' = m - 1$ if $m>0$, otherwise $m'=0$, or
-\item $D = R$ and $m' = m + 1$, or
-\item $D = N$ and $m' = m$,
+\item $D = L$ e $m' = m - 1$ se $m>0$, caso contrário $m'=0$, ou
+\item $D = R$ e $m' = m + 1$, ou
+\item $D = N$ e $m' = m$,
 \end{enumerate}
-\item if $m' = \len{C}$, then $\len{C'} = \len{C} + 1$ and the $m'$-th
-  symbol of $C'$ is~$\TMblank$. Otherwise $\len{C'}=\len{C}$.
-\item for all $i$ such that $i < \len{C}$ and $i \neq m$, $C'(i) = C(i)$,
+\item se $m' = \len{C}$, então $\len{C'} = \len{C} + 1$ e o $m'$-ésimo
+  símbolo de $C'$ é~$\TMblank$. Caso contrário $\len{C'}=\len{C}$.
+\item para todo $i$ tal que $i < \len{C}$ e $i \neq m$, $C'(i) = C(i)$,
 \end{enumerate}
 \end{defn}
 
 \begin{defn}\ollabel{defn:run-output}
-A \emph{run of $M$ on input~$I$} is a sequence $C_i$ of configurations
-of $M$, where $C_0$ is the initial configuration of $M$ for input~$I$,
-and each $C_i$ yields $C_{i+1}$ in one step.
+Uma \emph{execução de $M$ sobre a entrada~$I$} é uma sequência $C_i$ de configurações
+de $M$, onde $C_0$ é a configuração inicial de $M$ para a entrada~$I$,
+e cada $C_i$ produz $C_{i+1}$ em um passo.
 
-We say that $M$ \emph{halts on input $I$ after $k$ steps} if $C_k =
-\tuple{C, m, q}$, the $m$th symbol of~$C$ is~$\sigma$, and $\delta(q,
-\sigma)$ is undefined.  In that case, the \emph{output} of~$M$ for
-input~$I$ is~$O$, where $O$ is a string of symbols not ending
-in~$\TMblank$ such that $C = \TMendtape \concat O \concat \TMblank^j$
-for some~$j \in \Nat$. ($\TMblank^j$ is a sequence of $j$ $\TMblank$'s.)
+Dizemos que $M$ \emph{para sobre a entrada $I$ após $k$ passos} se $C_k =
+\tuple{C, m, q}$, o $m$-ésimo símbolo de~$C$ é~$\sigma$, e $\delta(q,
+\sigma)$ é indefinido. Nesse caso, a \emph{saída} de~$M$ para a
+entrada~$I$ é~$O$, onde $O$ é uma cadeia de símbolos que não termina
+em~$\TMblank$ tal que $C = \TMendtape \concat O \concat \TMblank^j$
+para algum~$j \in \Nat$. ($\TMblank^j$ é uma sequência de $j$ $\TMblank$'s.)
 \end{defn}
 
 \begin{explain}
-According to this definition, the output~$O$ of~$M$ always 
-ends in a symbol other than~$\TMblank$, or, if at time~$k$ the entire
-tape is filled with~$\TMblank$ (except for the leftmost~$\TMendtape$),
-$O$~is the empty string.
+De acordo com esta definição, a saída~$O$ de~$M$ sempre 
+termina em um símbolo diferente de~$\TMblank$, ou, se no instante~$k$ toda a
+fita estiver preenchida com~$\TMblank$ (exceto o~$\TMendtape$ mais à esquerda),
+$O$~é a cadeia vazia.
 \end{explain}
 
 \end{document}

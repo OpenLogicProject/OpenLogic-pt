@@ -6,104 +6,103 @@
 
 \begin{document}
 
-\olfileid{mth}{prf}{rea}
-\olsection{Reading Proofs}
+\olfileid[pt]{mth}{prf}{rea}
+\olsection{Lendo Provas}
 
-Proofs you find in textbooks and articles very seldom give all the
-details we have so far included in our examples. Authors often do not
-draw attention to when they distinguish cases, when they give an
-indirect proof, or don't mention that they use a definition.  So when
-you read a proof in a textbook, you will often have to fill in those
-details for yourself in order to understand the proof. Doing this is
-also good practice to get the hang of the various moves you have to
-make in a proof. Let's look at an example.
+As provas que você encontra em livros-texto e artigos muito raramente
+fornecem todos os detalhes que incluímos até agora em nossos exemplos.
+Os autores frequentemente não chamam a atenção para quando distinguem
+casos, quando dão uma prova indireta, ou não mencionam que usam uma
+definição.  Assim, quando você lê uma prova em um livro-texto, muitas
+vezes terá de preencher esses detalhes por conta própria para entender
+a prova. Fazer isso também é um bom exercício para pegar o jeito dos
+vários passos que você tem de dar em uma prova. Vejamos um exemplo.
 
-\begin{prop}[Absorption]
-For all sets $A$, $B$,
+\begin{prop}[Absorção]
+Para todos os conjuntos $A$, $B$,
 \[
 A \cap (A \cup B) = A
 \]
 \end{prop}
 
 \begin{proof}
-If $z \in A \cap (A \cup B)$, then $z \in A$, so $A \cap (A \cup B)
-\subseteq A$. Now suppose $z \in A$. Then also $z \in A \cup B$, and
-therefore also $z \in A \cap (A \cup B)$.
+Se $z \in A \cap (A \cup B)$, então $z \in A$, logo $A \cap (A \cup B)
+\subseteq A$. Agora suponha $z \in A$. Então também $z \in A \cup B$, e
+portanto também $z \in A \cap (A \cup B)$.
 \end{proof}
 
-The preceding proof of the absorption law is very condensed. There is
-no mention of any definitions used, no ``we have to prove that''
-before we prove it, etc. Let's unpack it.  The proposition proved is a
-general claim about any sets $A$ and $B$, and when the proof mentions
-$A$ or $B$, these are variables for arbitrary sets.  The general
-claims the proof establishes is what's required to prove identity of
-sets, O.s.\@, that every !!{element} of the left side of the identity is
-!!a{element} of the right and vice versa.  
+A prova precedente da lei da absorção é muito condensada. Não há
+menção a quaisquer definições usadas, nenhum ``temos de provar que''
+antes de prová-lo, etc. Vamos desempacotá-la.  A proposição provada é
+uma afirmação geral sobre quaisquer conjuntos $A$ e $B$, e quando a
+prova menciona $A$ ou $B$, estes são variáveis para conjuntos
+arbitrários.  As afirmações gerais que a prova estabelece são o que se
+exige para provar a identidade de conjuntos, isto é, que todo
+!!{element} do lado esquerdo da identidade é !!a{element} do direito e
+vice-versa.
 
 \begin{quote}
-``If $z \in A \cap (A \cup B)$, then $z \in A$, so $A \cap (A \cup B)
+``Se $z \in A \cap (A \cup B)$, então $z \in A$, logo $A \cap (A \cup B)
   \subseteq A$.''
 \end{quote}
 
-This is the first half of the proof of the identity: it establishes
-that if an arbitrary~$z$ is !!a{element} of the left side, it is also
-!!a{element} of the right, O.s.\@, $A \cap (A \cup B) \subseteq A$.
-Assume that $z \in A \cap (A \cup B)$. Since $z$ is an !!{element} of
-the intersection of two sets iff it is an !!{element} of both sets, we
-can conclude that $z \in A$ and also $z \in A \cup B$. In particular,
-$z \in A$, which is what we wanted to show.  Since that's all that has
-to be done for the first half, we know that the rest of the proof must
-be a proof of the second half, O.s.\@, a proof that $A \subseteq A \cap
-(A \cup B)$.
+Esta é a primeira metade da prova da identidade: ela estabelece
+que, se um~$z$ arbitrário é !!a{element} do lado esquerdo, ele também é
+!!a{element} do direito, isto é, $A \cap (A \cup B) \subseteq A$.
+Assuma que $z \in A \cap (A \cup B)$. Como $z$ é !!a{element} da
+interseção de dois conjuntos se, e somente se, é !!a{element} de ambos
+os conjuntos, podemos concluir que $z \in A$ e também $z \in A \cup B$.
+Em particular, $z \in A$, que é o que queríamos mostrar.  Como isso é
+tudo o que precisa ser feito para a primeira metade, sabemos que o
+restante da prova deve ser uma prova da segunda metade, isto é, uma
+prova de que $A \subseteq A \cap (A \cup B)$.
 
 \begin{quote}
-``Now suppose $z \in A$. Then also $z \in A \cup B$, and
-therefore also $z \in A \cap (A \cup B)$.''
+``Agora suponha $z \in A$. Então também $z \in A \cup B$, e
+portanto também $z \in A \cap (A \cup B)$.''
 \end{quote}
 
-We start by assuming that $z \in A$, since we are showing that, for
-any~$z$, if $z \in A$ then $z \in A \cap (A \cup B)$.  To show that $z
-\in A \cap (A \cup B)$, we have to show (by definition of ``$\cap$'')
-that (i) $z \in A$ and also (ii) $z \in A \cup B$. Here (i) is just
-our assumption, so there is nothing further to prove, and that's why
-the proof does not mention it again. For (ii), recall that $z$ is
-!!a{element} of a union of sets iff it is an !!{element} of at least
-one of those sets. Since $z \in A$, and $A \cup B$ is the union of $A$
-and $B$, this is the case here. So $z \in A \cup B$. We've shown both
-(i) $z \in A$ and (ii) $z \in A \cup B$, hence, by definition of
-``$\cap$,'' $z \in A \cap (A \cup B)$.  The proof doesn't mention
-those definitions; it's assumed the reader has already internalized
-them.  If you haven't, you'll have to go back and remind yourself what
-they are. Then you'll also have to recognize why it follows from $z
-\in A$ that $z \in A \cup B$, and from $z \in A$ and $z \in A \cup B$
-that $z \in A \cap (A \cup B)$.
+Começamos assumindo que $z \in A$, já que estamos mostrando que, para
+qualquer~$z$, se $z \in A$ então $z \in A \cap (A \cup B)$.  Para mostrar
+que $z \in A \cap (A \cup B)$, temos de mostrar (pela definição de
+``$\cap$'') que (i) $z \in A$ e também (ii) $z \in A \cup B$. Aqui (i) é
+justamente nossa suposição, então não há mais nada a provar, e é por isso
+que a prova não a menciona novamente. Para (ii), lembre-se de que $z$ é
+!!a{element} de uma união de conjuntos se, e somente se, é !!a{element}
+de pelo menos um desses conjuntos. Como $z \in A$, e $A \cup B$ é a união
+de $A$ e $B$, este é o caso aqui. Então $z \in A \cup B$. Mostramos
+ambos (i) $z \in A$ e (ii) $z \in A \cup B$, logo, pela definição de
+``$\cap$,'' $z \in A \cap (A \cup B)$.  A prova não menciona essas
+definições; presume-se que o leitor já as tenha internalizado.  Se você
+não as internalizou, terá de voltar e relembrar quais são. Então também
+terá de reconhecer por que decorre de $z \in A$ que $z \in A \cup B$, e
+de $z \in A$ e $z \in A \cup B$ que $z \in A \cap (A \cup B)$.
 
-Here's another version of the proof above, with everything made
-explicit:
+Eis outra versão da prova acima, com tudo tornado explícito:
 \begin{proof}{}
-[By definition of $=$ for sets, $A \cap (A \cup B) = A$ we have to
-  show (a) $A \cap (A \cup B) \subseteq A$ and (b) $A \cap (A \cup B)
-  \subseteq A$. (a): By definition of $\subseteq$, we have to show
-  that if $z \in A \cap (A \cup B)$, then $z \in A$.]  If $z \in A
-\cap (A \cup B)$, then $z \in A$ [since by definition of $\cap$, $z
-  \in A \cap (A \cup B)$ iff $z \in A$ and $z \in A \cup B$], so $A
-\cap (A \cup B) \subseteq A$. [(b): By definition of $\subseteq$, we
-  have to show that if $z \in A$, then $z \in A \cap (A \cup B)$.] Now
-suppose [(1)] $z \in A$. Then also [(2)] $z \in A \cup B$ [since by
-  (1) $z \in A$ or $z \in B$, which by definition of $\cup$ means $z
-  \in A \cup B$], and therefore also $z \in A \cap (A \cup B)$ [since
-  the definition of $\cap$ requires that $z \in A$, O.s.\@, (1), and $z
-  \in A \cup B)$, O.s.\@, (2)].
+[Pela definição de $=$ para conjuntos, $A \cap (A \cup B) = A$, temos
+  de mostrar (a) $A \cap (A \cup B) \subseteq A$ e (b) $A \cap (A \cup B)
+  \subseteq A$. (a): Pela definição de $\subseteq$, temos de mostrar
+  que se $z \in A \cap (A \cup B)$, então $z \in A$.]  Se $z \in A
+\cap (A \cup B)$, então $z \in A$ [já que pela definição de $\cap$, $z
+  \in A \cap (A \cup B)$ se, e somente se, $z \in A$ e $z \in A \cup B$], logo $A
+\cap (A \cup B) \subseteq A$. [(b): Pela definição de $\subseteq$,
+  temos de mostrar que se $z \in A$, então $z \in A \cap (A \cup B)$.] Agora
+suponha [(1)] $z \in A$. Então também [(2)] $z \in A \cup B$ [já que por
+  (1) $z \in A$ ou $z \in B$, o que pela definição de $\cup$ significa $z
+  \in A \cup B$], e portanto também $z \in A \cap (A \cup B)$ [já que
+  a definição de $\cap$ requer que $z \in A$, isto é, (1), e $z
+  \in A \cup B)$, isto é, (2)].
 \end{proof}
 
 \begin{prob}
-Expand the following proof of $A \cup (A \cap B) = A$, where you
-mention all the inference patterns used, why each step follows from
-assumptions or claims established before it, and where we have to
-appeal to which definitions.
+Expanda a seguinte prova de $A \cup (A \cap B) = A$, mencionando todos
+os padrões de inferência usados, por que cada passo decorre de
+suposições ou afirmações estabelecidas antes dele, e onde temos de
+apelar para quais definições.
 \begin{proof}
-  If $z \in A \cup (A \cap B)$ then $z \in A$ or $z \in A \cap B$. If
-  $z \in A \cap B$, $z \in A$. Any $z \in A$ is also $\in A \cup (A
+  Se $z \in A \cup (A \cap B)$ então $z \in A$ ou $z \in A \cap B$. Se
+  $z \in A \cap B$, $z \in A$. Qualquer $z \in A$ está também $\in A \cup (A
   \cap B)$.
 \end{proof}
 \end{prob}

@@ -6,44 +6,43 @@
 
 \begin{document}
 
-\olfileid{fol}{seq}{prq}
+\olfileid[pt]{fol}{seq}{prq}
 
-\olsection{\usetoken{P}{derivation} with Quantifiers}
+\olsection{\usetoken{P}{derivation} com Quantificadores}
 
 \begin{ex}
-Give an $\Log{LK}$-!!{derivation} of the sequent $\lexists[x][\lnot !A(x)]
+Dê uma $\Log{LK}$-!!{derivation} do sequente $\lexists[x][\lnot !A(x)]
 \Sequent \lnot \lforall[x][!A(x)]$.
 
-When dealing with quantifiers, we have to make sure not to violate the
-eigenvariable condition, and sometimes this requires us to play around
-with the order of carrying out certain inferences. In general, it
-helps to try and take care of rules subject to the eigenvariable
-condition first (they will be lower down in the finished proof). Also,
-it is a good idea to try and look ahead and try to guess what the
-initial sequent might look like. In our case, it will have to be
-something like $!A(a) \Sequent !A(a)$. That means that when we are
-``reversing'' the quantifier rules, we will have to pick the same
-term---what we will call $a$---for both the $\lforall$ and the
-$\lexists$ rule. If we picked different terms for each rule, we would
-end up with something like $!A(a) \Sequent !A(b)$, which, of course,
-is not derivable.
+Ao lidar com quantificadores, temos de cuidar para não violar a
+condição de variável própria, e às vezes isso exige que brinquemos com
+a ordem de execução de certas inferências. Em geral, ajuda tentar
+cuidar primeiro das regras sujeitas à condição de variável própria
+(elas ficarão mais abaixo na prova finalizada). Além disso, é uma boa
+ideia tentar olhar adiante e adivinhar como o sequente inicial poderia
+ser. No nosso caso, ele terá de ser algo como $!A(a) \Sequent !A(a)$.
+Isso significa que, ao ``reverter'' as regras de quantificador,
+teremos de escolher o mesmo termo---que chamaremos de $a$---tanto para
+a regra $\lforall$ quanto para a regra $\lexists$. Se escolhêssemos
+termos diferentes para cada regra, acabaríamos com algo como $!A(a)
+\Sequent !A(b)$, que, é claro, não é derivável.
 
-Starting as usual, we write
+Começando como de costume, escrevemos
 \begin{prooftree}
 \AxiomC{}
 \UnaryInf$\lexists[x][\lnot !A(x)] \fCenter \lnot \lforall[x][!A(x)]$
 \end{prooftree}
-We could either carry out the \LeftR{\exists} rule or the \RightR{\lnot}
-rule. Since the \LeftR{\exists} rule is subject to the eigenvariable
-condition, it's a good idea to take care of it sooner rather than
-later, so we'll do that one first.
+Poderíamos executar a regra \LeftR{\exists} ou a regra \RightR{\lnot}.
+Como a regra \LeftR{\exists} está sujeita à condição de variável
+própria, é uma boa ideia cuidar dela mais cedo do que mais
+tarde, então faremos essa primeiro.
 \begin{prooftree}
 \AxiomC{}
 \UnaryInf$ \lnot !A(a) \fCenter \lnot \lforall[x][!A(x)]$
 \RightLabel{\LeftR{\lexists}}
 \UnaryInf$ \lexists[x][\lnot !A(x)] \fCenter \lnot \lforall[x][!A(x)]$
 \end{prooftree}
-Applying the \LeftR{\lnot} and \RightR{\lnot} rules backwards, we get
+Aplicando as regras \LeftR{\lnot} e \RightR{\lnot} de trás para frente, obtemos
 \begin{prooftree}
 \AxiomC{}
 \UnaryInf$\lforall[x][!A(x)] \fCenter !A(a)$
@@ -56,11 +55,11 @@ Applying the \LeftR{\lnot} and \RightR{\lnot} rules backwards, we get
 \RightLabel{\LeftR{\lexists}}
 \UnaryInf$ \lexists[x] \lnot !A(x) \fCenter \lnot \lforall[x] !A(x)$
 \end{prooftree}
-At this point, our only option is to carry out the \LeftR{\forall}
-rule. Since this rule is not subject to the eigenvariable restriction,
-we're in the clear. Remember, we want to try and obtain an initial
-sequent (of the form $!A(a) \Sequent !A(a)$), so we should choose $a$
-as our argument for $!A$ when we apply the rule.
+Neste ponto, nossa única opção é executar a regra \LeftR{\forall}.
+Como essa regra não está sujeita à restrição de variável própria,
+estamos livres. Lembre-se, queremos tentar obter um sequente
+inicial (da forma $!A(a) \Sequent !A(a)$), então devemos escolher $a$
+como nosso argumento para $!A$ ao aplicarmos a regra.
 \begin{prooftree}
 \Axiom$!A(a) \fCenter !A(a)$
 \RightLabel{\LeftR{\lforall}}
@@ -74,16 +73,16 @@ as our argument for $!A$ when we apply the rule.
 \RightLabel{\LeftR{\lexists}}
 \UnaryInf$ \lexists[x][ \lnot !A(x)] \fCenter \lnot \lforall[x][!A(x)]$
 \end{prooftree}
-It is important, especially when dealing with quantifiers, to double
-check at this point that the eigenvariable condition has not been
-violated. Since the only rule we applied that is subject to the
-eigenvariable condition was \LeftR{\exists}, and the eigenvariable~$a$
-does not occur in its lower sequent (the end-sequent), this is a
-correct !!{derivation}.
+É importante, especialmente ao lidar com quantificadores, verificar com
+cuidado neste ponto que a condição de variável própria não foi
+violada. Como a única regra que aplicamos sujeita à condição de
+variável própria foi \LeftR{\exists}, e a variável própria~$a$
+não ocorre em seu sequente inferior (o sequente final), esta é uma
+!!{derivation} correta.
 \end{ex}
 
 \begin{prob}
-Give !!{derivation}s of the following sequents:
+Dê !!{derivation}s dos seguintes sequentes:
 \begin{enumerate}
 \item $\Sequent (\lforall[x][!A(x)] \land \lforall[y][!B(y)]) \lif
 \lforall[z][(!A(z) \land !B(z))]$.
@@ -98,13 +97,13 @@ Give !!{derivation}s of the following sequents:
 \end{prob}
 
 \begin{prob}
-Give !!{derivation}s of the following sequents:
+Dê !!{derivation}s dos seguintes sequentes:
 \begin{enumerate}
 \item $\Sequent \lnot\lforall[x][!A(x)] \lif \lexists[x][\lnot!A(x)]$.
 \item $(\lforall[x][!A(x)] \lif !B) \Sequent \lexists[y][(!A(y) \lif !B)]$.
 \item $\Sequent \lexists[x][(!A(x) \lif \lforall[y][!A(y)])]$.
 \end{enumerate}
-(These all require the $\RightR{\Contraction}$~rule.)
+(Todos esses requerem a regra $\RightR{\Contraction}$.)
 \end{prob}
 
 \end{document}

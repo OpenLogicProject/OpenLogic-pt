@@ -1,0 +1,24 @@
+Uma \emph{linguagem de primeira ordem} consiste em símbolos de \emph{constante},
+\emph{função} e \emph{predicado}. Os símbolos de função e de constante
+recebem um número especificado de argumentos. Na \emph{linguagem da
+aritmética}, por exemplo, temos um único símbolo de constante~$\Obj 0$, um
+símbolo de função unário $\prime$, dois símbolos de função binários~$+$ e
+$\times$, e um símbolo de predicado binário~$<$. A partir de \emph{variáveis}
+e de símbolos de constante e de função, formamos os \emph{termos} de uma
+linguagem. A partir dos termos de uma linguagem junto com seus símbolos de predicado,
+bem como o \emph{símbolo de identidade}~$\eq$, formamos as
+\emph{fórmulas atômicas}. E, por sua vez, a partir delas, usando os conectivos
+lógicos $\lnot$, $\lor$, $\land$, $\lif$, $\liff$ e os
+quantificadores $\lforall$ e $\lexists$, formamos suas fórmulas. Como
+temos o cuidado de sempre incluir os parênteses necessários no processo de
+formação de termos e fórmulas, há sempre exatamente um modo de ler
+uma fórmula. Isso torna possível definir coisas por indução sobre a
+estrutura das fórmulas.
+
+As ocorrências de variáveis em fórmulas são às vezes governadas por um
+quantificador correspondente: se uma variável ocorre no \emph{escopo} de
+um quantificador, ela é considerada \emph{ligada}; caso contrário,
+\emph{livre}. Esses conceitos têm todos definições indutivas, e
+também definimos indutivamente a operação de \emph{substituição} de um termo
+por uma variável em uma fórmula. As fórmulas sem ocorrências de variáveis
+livres são chamadas de \emph{sentenças}.

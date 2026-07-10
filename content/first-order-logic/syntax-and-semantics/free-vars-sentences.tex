@@ -6,95 +6,95 @@
 
 \begin{document}
 
-\olfileid{fol}{syn}{fvs}
+\olfileid[pt]{fol}{syn}{fvs}
 
-\olsection{Free \printtoken{P}{variable} and \printtoken{P}{sentence}}
+\olsection{\printtoken{P}{variable} Livres e \printtoken{P}{sentence}}
 
-\begin{defn}[Free occurrences of !!a{variable}]
+\begin{defn}[Ocorrências livres de !!a{variable}]
 \ollabel{defn:free-occ}
-The \emph{free} occurrences of !!a{variable} in !!a{formula} are defined
-inductively as follows:
+As ocorrências \emph{livres} de !!a{variable} em !!a{formula} são definidas
+indutivamente como segue:
 \begin{enumerate}
-\item \indcase*{!A}{$!A$ is atomic}{all !!{variable} occurrences in
-  $\indfrm$ are free.}
+\item \indcase*{!A}{$!A$ é atômica}{todas as ocorrências de !!{variable} em
+  $\indfrm$ são livres.}
 
-\tagitem{prvNot}{\indcase{!A}{\lnot !B}{the free !!{variable}
-  occurrences of $\indfrm$ are exactly those of $!B$.}}{}
+\tagitem{prvNot}{\indcase{!A}{\lnot !B}{as ocorrências livres de !!{variable}
+  de $\indfrm$ são exatamente as de $!B$.}}{}
 
-\item \indcase{!A}{(!B \ast !C)}{the free
-  !!{variable} occurrences of $\indfrm$ are those in $!B$
-  together with those in~$!C$.}
+\item \indcase{!A}{(!B \ast !C)}{as ocorrências livres de
+  !!{variable} de $\indfrm$ são as em $!B$
+  juntamente com as em~$!C$.}
 
-\tagitem{prvAll}{\indcase{!A}{\lforall[x][!B]}{the free !!{variable}
-  occurrences in $\indfrm$ are all of those in~$!B$ except for
-  occurrences of~$x$.}}{}
+\tagitem{prvAll}{\indcase{!A}{\lforall[x][!B]}{as ocorrências livres de !!{variable}
+  em $\indfrm$ são todas as em~$!B$ exceto as
+  ocorrências de~$x$.}}{}
 
-\tagitem{prvEx}{\indcase{!A}{\lexists[x][!B]}{the free !!{variable}
-  occurrences in $\indfrm$ are all of those in~$!B$ except for
-  occurrences of~$x$.}}{}
+\tagitem{prvEx}{\indcase{!A}{\lexists[x][!B]}{as ocorrências livres de !!{variable}
+  em $\indfrm$ são todas as em~$!B$ exceto as
+  ocorrências de~$x$.}}{}
 \end{enumerate}
 \end{defn}
 
-\begin{defn}[Bound Variables]
-An occurrence of !!a{variable} in a formula~$!A$ is \emph{bound} if
-it is not free.
+\begin{defn}[Variáveis Ligadas]
+Uma ocorrência de !!a{variable} em uma fórmula~$!A$ é \emph{ligada} se
+não é livre.
 \end{defn}
 
 \begin{prob}
-Give an inductive definition of the bound variable occurrences along
-the lines of \olref[fol][syn][fvs]{defn:free-occ}.
+Dê uma definição indutiva das ocorrências de variáveis ligadas nos
+moldes de \olref[fol][syn][fvs]{defn:free-occ}.
 \end{prob}
 
-\begin{defn}[Scope]
-\iftag{prvAll}{If $\lforall[x][!B]$ is an occurrence of a subformula
-  in a formula~$!A$, then the corresponding occurrence of~$!B$ in~$!A$
-  is called the \emph{scope} of the corresponding occurrence
-  of~$\lforall[x]$. \iftag{prvEx}{Similarly for $\lexists[x]$.}{}}{If
-  $\lexists[x][!B]$ is an occurrence of a subformula in a
-  formula~$!A$, then the corresponding occurrence of~$!B$ in~$!A$ is
-  called the \emph{scope} of the corresponding occurrence
-  of~$\lexists[x]$.}
+\begin{defn}[Escopo]
+\iftag{prvAll}{Se $\lforall[x][!B]$ é uma ocorrência de uma subfórmula
+  em uma fórmula~$!A$, então a ocorrência correspondente de~$!B$ em~$!A$
+  é chamada de \emph{escopo} da ocorrência correspondente
+  de~$\lforall[x]$. \iftag{prvEx}{Analogamente para $\lexists[x]$.}{}}{Se
+  $\lexists[x][!B]$ é uma ocorrência de uma subfórmula em uma
+  fórmula~$!A$, então a ocorrência correspondente de~$!B$ em~$!A$ é
+  chamada de \emph{escopo} da ocorrência correspondente
+  de~$\lexists[x]$.}
 
-If $!B$ is the scope of a quantifier occurrence
-\iftag{prvAll}{$\lforall[x]$\iftag{prvEx}{ or
-    $\lexists[x]$}{}}{$\lexists[x]$} in~$!A$, then the free occurrences of
-$x$ in~$!B$ are bound in \iftag{prvAll}{$\lforall[x][!B]$\iftag{prvEx}{ and
-$\lexists[x][!B]$}{}}{$\lexists[x][!B]$}. We say that these
-occurrences are \emph{bound by} the
-mentioned quantifier occurrence.
+Se $!B$ é o escopo de uma ocorrência de quantificador
+\iftag{prvAll}{$\lforall[x]$\iftag{prvEx}{ ou
+    $\lexists[x]$}{}}{$\lexists[x]$} em~$!A$, então as ocorrências livres de
+$x$ em~$!B$ são ligadas em \iftag{prvAll}{$\lforall[x][!B]$\iftag{prvEx}{ e
+$\lexists[x][!B]$}{}}{$\lexists[x][!B]$}. Dizemos que essas
+ocorrências são \emph{ligadas pela}
+ocorrência de quantificador mencionada.
 \end{defn}
 
 \begin{ex}
-Consider the following formula:
+Considere a seguinte fórmula:
 \[
 \lexists[\Obj v_0][\underbrace{\Atom{\Obj A^2_0}{\Obj v_0,\Obj v_1}}_{!B}] 
 \]
-$!B$ represents the scope of $\lexists[\Obj v_0]$. 
-The quantifier binds the occurrence of $\Obj v_0$ in $!B$, but
-does not bind the occurrence of $\Obj v_1$. So $\Obj v_1$ is
-a free variable in this case.
+$!B$ representa o escopo de $\lexists[\Obj v_0]$. 
+O quantificador liga a ocorrência de $\Obj v_0$ em $!B$, mas
+não liga a ocorrência de $\Obj v_1$. Então $\Obj v_1$ é
+uma variável livre neste caso.
 
 
-We can now see how this might work in a more complicated 
-!!{formula}~$!A$:
+Agora podemos ver como isso poderia funcionar em uma 
+!!{formula}~$!A$ mais complicada:
 \[
 \lforall[\Obj v_0][\underbrace{(\Atom{\Obj A^1_0}{\Obj v_0} \lif
     \Atom{\Obj A^2_0}{\Obj v_0, \Obj v_1})}_{!B}] \lif \lexists[\Obj
   v_1][\underbrace{(\Atom{\Obj A^2_1}{\Obj v_0, \Obj v_1} \lor \lforall[\Obj v_0][\overbrace{\lnot \Atom{\Obj A^1_1}{\Obj v_0}}^{!D}])}_{!C}]
 \]
-$!B$ is the scope of the first $\lforall[\Obj v_0]$, $!C$ is the scope
-of $\lexists[\Obj v_1]$, and $!D$ is the scope of the second
-$\lforall[\Obj v_0]$.  The first $\lforall[\Obj v_0]$ binds the
-occurrences of $\Obj v_0$ in~$!B$, $\lexists[\Obj v_1]$ binds the occurrence
-of $\Obj v_1$ in $!C$, and the second $\lforall[\Obj v_0]$ binds the
-occurrence of $\Obj v_0$ in~$!D$.  The first occurrence of $\Obj v_1$
-and the fourth occurrence of $\Obj v_0$ are free in~$!A$. The last
-occurrence of $\Obj v_0$ is free in $!D$, but bound in $!C$ and~$!A$.
+$!B$ é o escopo do primeiro $\lforall[\Obj v_0]$, $!C$ é o escopo
+de $\lexists[\Obj v_1]$, e $!D$ é o escopo do segundo
+$\lforall[\Obj v_0]$.  O primeiro $\lforall[\Obj v_0]$ liga as
+ocorrências de $\Obj v_0$ em~$!B$, $\lexists[\Obj v_1]$ liga a ocorrência
+de $\Obj v_1$ em $!C$, e o segundo $\lforall[\Obj v_0]$ liga a
+ocorrência de $\Obj v_0$ em~$!D$.  A primeira ocorrência de $\Obj v_1$
+e a quarta ocorrência de $\Obj v_0$ são livres em~$!A$. A última
+ocorrência de $\Obj v_0$ é livre em $!D$, mas ligada em $!C$ e~$!A$.
 \end{ex}
 
-\begin{defn}[Sentence]
-!!^a{formula}~$!A$ is \article{sentence} \emph{!!{sentence}} iff it
-contains no free occurrences of !!{variable}s.
+\begin{defn}[Sentença]
+!!^a{formula}~$!A$ é \article{sentence} \emph{!!{sentence}} sse
+não contém ocorrências livres de !!{variable}s.
 \end{defn}
 
 % add examples!

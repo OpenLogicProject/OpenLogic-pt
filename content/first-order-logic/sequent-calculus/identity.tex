@@ -6,18 +6,18 @@
 
 \begin{document}
 
-\olfileid{fol}{seq}{ide}
+\olfileid[pt]{fol}{seq}{ide}
 
-\olsection{\usetoken{P}{derivation} with \usetoken{S}{identity}}
+\olsection{\usetoken{P}{derivation} com \usetoken{S}{identity}}
 
-!!^{derivation}s with !!{identity} require additional initial sequents
-and inference rules.
+!!^{derivation}s com !!{identity} requerem sequentes iniciais e
+regras de inferência adicionais.
 
-\begin{defn}[Initial sequents for $\eq$]
-If $t$ is a closed term, then ${} \Sequent \eq[t][t]$ is an initial sequent.
+\begin{defn}[Sequentes iniciais para $\eq$]
+Se $t$ é um termo fechado, então ${} \Sequent \eq[t][t]$ é um sequente inicial.
 \end{defn}
 
-The rules for $\eq$ are ($t_1$ and $t_2$ are closed terms):
+As regras para $\eq$ são ($t_1$ e $t_2$ são termos fechados):
 
 \begin{defish}
 \Axiom$ \eq[t_1][t_2], \Gamma \fCenter \Delta, !A(t_1) $
@@ -32,7 +32,7 @@ The rules for $\eq$ are ($t_1$ and $t_2$ are closed terms):
 \end{defish}
 
 \begin{ex}
-If $s$ and $t$ are closed terms, then $\eq[s][t], !A(s)
+Se $s$ e $t$ são termos fechados, então $\eq[s][t], !A(s)
 \Proves !A(t)$:
 \begin{prooftree}
 \Axiom$ !A(s) \fCenter !A(s)$
@@ -41,10 +41,10 @@ If $s$ and $t$ are closed terms, then $\eq[s][t], !A(s)
 \RightLabel{$\eq$}
 \UnaryInf$\eq[s][t], !A(s)  \fCenter !A(t)$
 \end{prooftree}
-This may be familiar as the principle of substitutability of
-identicals, or Leibniz' Law.
+Isso pode ser familiar como o princípio da substitutibilidade de
+idênticos, ou Lei de Leibniz.
 
-$\Log{LK}$ proves that $\eq$ is symmetric and transitive:
+$\Log{LK}$ prova que $\eq$ é simétrica e transitiva:
 \begin{prooftree}
 \Axiom$ \fCenter \eq[t_1][t_1] $
 \RightLabel{\LeftR{\Weakening}}
@@ -60,12 +60,12 @@ $\Log{LK}$ proves that $\eq$ is symmetric and transitive:
 \RightLabel{\LeftR{\Exchange}}
 \UnaryInf$\eq[t_1][t_2], \eq[t_2][t_3]  \fCenter \eq[t_1][t_3]$
 \end{prooftree}
-In the !!{derivation} on the left, the !!{formula}~$\eq[x][t_1]$ is our
-$!A(x)$. On the right, we take $!A(x)$ to be~$\eq[t_1][x]$.
+Na !!{derivation} à esquerda, a !!{formula}~$\eq[x][t_1]$ é o nosso
+$!A(x)$. À direita, tomamos $!A(x)$ como~$\eq[t_1][x]$.
 \end{ex}
 
 \begin{prob}
-Give !!{derivation}s of the following sequents:
+Dê !!{derivation}s dos seguintes sequentes:
 \begin{enumerate}
 \item $\Sequent \lforall[x][\lforall[y][((x = y \land !A(x)) \lif !A(y))]]$
 \item $\lexists[x][!A(x)] \land \lforall[y][\lforall[z][((!A(y) \land

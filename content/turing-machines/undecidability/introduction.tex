@@ -6,92 +6,100 @@
 
 \begin{document}
 
-\olfileid{tur}{und}{int} 
-\olsection{Introduction}
+\olfileid[pt]{tur}{und}{int} 
+\olsection{Introdução}
 
-It might seem obvious that not every function, even every arithmetical
-function, can be computable. There are just too many, whose behavior
-is too complicated.  Functions defined from the decay of radioactive
-particles, for instance, or other chaotic or random behavior. Suppose
-we start counting 1-second intervals from a given time, and define the
-function $f(n)$ as the number of particles in the universe that decay
-in the $n$-th 1-second interval after that initial moment.  This seems
-like a candidate for a function we cannot ever hope to compute.
+Pode parecer óbvio que nem toda função, nem mesmo toda função
+aritmética, pode ser computável. Há simplesmente um número grande
+demais delas, cujo comportamento é complicado demais. Funções
+definidas a partir do decaimento de partículas radioativas, por
+exemplo, ou de outro comportamento caótico ou aleatório. Suponha que
+comecemos a contar intervalos de 1 segundo a partir de um dado
+instante e definamos a função $f(n)$ como o número de partículas no
+universo que decaem no $n$-ésimo intervalo de 1 segundo após aquele
+momento inicial. Esta parece ser uma candidata a função que jamais
+poderemos ter esperança de computar.
 
-But it is one thing to not be able to imagine how one would compute
-such functions, and quite another to actually prove that they are
-uncomputable.  In fact, even functions that seem hopelessly
-complicated may, in an abstract sense, be computable.  For instance,
-suppose the universe is finite in time---some day, in the very distant
-future the universe will contract into a single point, as some
-cosmological theories predict. Then there is only a finite (but
-incredibly large) number of seconds from that initial moment for which
-$f(n)$ is defined.  And any function which is defined for only finitely
-many inputs is computable: we could list the outputs in one big table,
-or code it in one very big Turing machine state transition diagram.
+Mas uma coisa é não conseguir imaginar como se computaria tais
+funções, e outra bem diferente é de fato provar que elas são
+incomputáveis. Na verdade, mesmo funções que parecem irremediavelmente
+complicadas podem, em um sentido abstrato, ser computáveis. Por
+exemplo, suponha que o universo seja finito no tempo---algum dia, num
+futuro muito distante, o universo se contrairá em um único ponto, como
+preveem algumas teorias cosmológicas. Então há apenas um número finito
+(mas incrivelmente grande) de segundos a partir daquele momento
+inicial para os quais $f(n)$ está definida. E qualquer função que
+esteja definida para apenas finitas entradas é computável: poderíamos
+listar as saídas em uma grande tabela, ou codificá-la em um diagrama
+de transição de estados de máquina de Turing muito grande.
 
-We are often interested in special cases of functions whose values give
-the answers to yes/no questions.  For instance, the question ``is $n$
-a prime number?'' is associated with the function
+Frequentemente estamos interessados em casos especiais de funções
+cujos valores fornecem as respostas a perguntas de sim/não. Por
+exemplo, a pergunta ``$n$ é um número primo?'' está associada à função
 \[
 \fn{isprime}(n) = \begin{cases}
-  1 & \text{if $n$ is prime}\\
-  0 & \text{otherwise.}
+  1 & \text{se $n$ é primo}\\
+  0 & \text{caso contrário.}
   \end{cases}
 \]
-We say that a yes/no question can be \emph{effectively decided}, if
-the associated $1/0$-valued function is effectively computable.
+Dizemos que uma pergunta de sim/não pode ser \emph{efetivamente
+decidida} se a função associada de valores $1/0$ é efetivamente
+computável.
 
-To prove mathematically that there are functions which cannot be
-effectively computed, or problems that cannot effectively decided, it
-is essential to fix a specific model of computation, and show
-that there are functions it cannot compute or problems it cannot
-decide.  We can show, for instance, that not every function can be
-computed by Turing machines, and not every problem can be decided by
-Turing machines.  We can then appeal to the Church--Turing thesis to
-conclude that not only are Turing machines not powerful enough to
-compute every function, but no effective procedure can.
+Para provar matematicamente que há funções que não podem ser
+efetivamente computadas, ou problemas que não podem ser efetivamente
+decididos, é essencial fixar um modelo específico de computação e
+mostrar que há funções que ele não pode computar ou problemas que ele
+não pode decidir. Podemos mostrar, por exemplo, que nem toda função
+pode ser computada por máquinas de Turing, e nem todo problema pode ser
+decidido por máquinas de Turing. Podemos então apelar para a tese de
+Church-Turing para concluir que não apenas as máquinas de Turing não
+são poderosas o suficiente para computar toda função, como também
+nenhum procedimento efetivo o é.
 
-The key to proving such negative results is the fact that we can
-assign numbers to Turing machines themselves.  The easiest way to do
-this is to enumerate them, perhaps by fixing a specific way to write
-down Turing machines and their programs, and then listing them in a
-systematic fashion.  Once we see that this can be done, then the
-existence of Turing-uncomputable functions follows by simple
-cardinality considerations: the set of functions from $\Nat$ to~$\Nat$ (in
-fact, even just from $\Nat$ to $\{0, 1\}$) are !!{nonenumerable}, but
-since we can enumerate all the Turing machines, the set of Turing-computable
-functions is only !!{denumerable}.
+A chave para provar tais resultados negativos é o fato de que podemos
+atribuir números às próprias máquinas de Turing. A maneira mais fácil
+de fazer isso é enumerá-las, talvez fixando um modo específico de
+escrever máquinas de Turing e seus programas e, em seguida,
+listando-os de maneira sistemática. Uma vez que vejamos que isso pode
+ser feito, então a existência de funções Turing-incomputáveis decorre
+de simples considerações de cardinalidade: o conjunto de funções de
+$\Nat$ a~$\Nat$ (na verdade, mesmo apenas de $\Nat$ a $\{0, 1\}$) é
+!!{nonenumerable}, mas como podemos enumerar todas as máquinas de
+Turing, o conjunto de funções Turing-computáveis é apenas
+!!{denumerable}.
 
-We can also define \emph{specific} functions and problems which we can
-prove to be uncomputable and undecidable, respectively.  One such
-problem is the so-called \emph{Halting Problem.} Turing machines can
-be finitely described by listing their instructions.  Such a
-description of a Turing machine, O.s.\@, a Turing machine program, can
-of course be used as input to another Turing machine.  So we can
-consider Turing machines that decide questions about other Turing
-machines.  One particularly interesting question is this: ``Does the
-given Turing machine eventually halt when started on input~$n$?''  It
-would be nice if there were a Turing machine that could decide this
-question: think of it as a quality-control Turing machine which
-ensures that Turing machines don't get caught in infinite loops and
-such.  The interesting fact, which Turing proved, is that there cannot
-be such a Turing machine. There cannot be a single Turing machine
-which, when started on input consisting of a description of a Turing
-machine $M$ and some number~$n$, will always halt with either output
-$1$ or $0$ according to whether $M$ machine would have halted when
-started on input $n$ or not.
+Também podemos definir funções e problemas \emph{específicos} que
+podemos provar ser incomputáveis e indecidíveis, respectivamente. Um
+desses problemas é o assim chamado \emph{Problema da Parada.} Máquinas
+de Turing podem ser finitamente descritas listando-se suas instruções.
+Tal descrição de uma máquina de Turing, isto é, um programa de máquina
+de Turing, pode é claro ser usada como entrada para outra máquina de
+Turing. Assim, podemos considerar máquinas de Turing que decidem
+perguntas sobre outras máquinas de Turing. Uma pergunta
+particularmente interessante é esta: ``A máquina de Turing dada
+eventualmente para quando iniciada na entrada~$n$?'' Seria bom se
+houvesse uma máquina de Turing que pudesse decidir essa pergunta:
+pense nela como uma máquina de Turing de controle de qualidade que
+garante que as máquinas de Turing não fiquem presas em laços infinitos
+e coisas do tipo. O fato interessante, que Turing provou, é que não
+pode haver tal máquina de Turing. Não pode haver uma única máquina de
+Turing que, quando iniciada em uma entrada que consiste em uma
+descrição de uma máquina de Turing $M$ e algum número~$n$, sempre pare
+com saída $1$ ou $0$ conforme a máquina $M$ teria parado ou não quando
+iniciada na entrada $n$.
 
-Once we have examples of specific undecidable problems we can use them
-to show that other problems are undecidable, too.  For instance, one
-celebrated undecidable problem is the question, ``Is the first-order
-!!{formula}~$!A$ valid?''.  There is no Turing machine which, given as
-input a first-order !!{formula}~$!A$, is guaranteed to halt with
-output $1$ or $0$ according to whether $!A$ is valid or not.
-Historically, the question of finding a procedure to effectively solve
-this problem was called simply ``the'' decision problem; and so we say
-that the decision problem is unsolvable.  Turing and Church proved this
-result independently at around the same time, so it is also called the
-Church--Turing Theorem.
+Uma vez que tenhamos exemplos de problemas indecidíveis específicos,
+podemos usá-los para mostrar que outros problemas também são
+indecidíveis. Por exemplo, um célebre problema indecidível é a
+pergunta ``A !!{formula}~$!A$ de primeira ordem é válida?''. Não há
+máquina de Turing que, dada como entrada uma !!{formula}~$!A$ de
+primeira ordem, tenha garantia de parar com saída $1$ ou $0$ conforme
+$!A$ seja válida ou não. Historicamente, a questão de encontrar um
+procedimento para resolver efetivamente esse problema foi chamada
+simplesmente de ``o'' problema da decisão; e assim dizemos que o
+problema da decisão é insolúvel. Turing e Church provaram esse
+resultado independentemente mais ou menos na mesma época, de modo que
+ele também é chamado de Teorema de Church-Turing.
 
 \end{document}

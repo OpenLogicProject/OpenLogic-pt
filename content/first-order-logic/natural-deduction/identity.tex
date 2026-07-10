@@ -6,11 +6,12 @@
 
 \begin{document}
 
-\olfileid{fol}{ntd}{ide}
+\olfileid[pt]{fol}{ntd}{ide}
 
-\olsection{\usetoken{P}{derivation} with \usetoken{S}{identity}}
+\olsection{\usetoken{P}{derivation} com \usetoken{S}{identity}}
 
-!!^{derivation}s with !!{identity} require additional inference rules.
+As !!^{derivation}s com !!{identity} requerem regras de inferência
+adicionais.
 
 \begin{defish}
 \AxiomC{}
@@ -33,37 +34,37 @@
 \end{tabular}
 \end{defish}
 
-In the above rules, $t$, $t_1$, and $t_2$ are closed terms. The
-\Intro{\eq} rule allows us to !!{derive} any identity statement of the
-form $\eq[t][t]$ outright, from no assumptions.
+Nas regras acima, $t$, $t_1$ e $t_2$ são termos fechados. A regra
+\Intro{\eq} nos permite derivar qualquer afirmação de identidade da
+forma $\eq[t][t]$ diretamente, sem hipóteses.
 
 \begin{ex}
-If $s$ and $t$ are closed terms, then $!A(s), \eq[s][t] \Proves !A(t)$:
+Se $s$ e $t$ são termos fechados, então $!A(s), \eq[s][t] \Proves !A(t)$:
 \begin{prooftree}
 \AxiomC{$\eq[s][t]$}
 \AxiomC{$!A(s)$}
 \RightLabel{$\Elim{\eq}$}
 \BinaryInfC{$!A(t)$}
 \end{prooftree}
-This may be familiar as the ``principle of substitutability of
-identicals,'' or Leibniz' Law.
+Isto pode ser familiar como o ``princípio da substituibilidade dos
+identicos'', ou Lei de Leibniz.
 \end{ex}
 
 \begin{prob}
-Prove that $=$ is both symmetric and transitive, O.s.\@, give
-!!{derivation}s of $\lforall[x][\lforall[y][(\eq[x][y] \lif
-    \eq[y][x])]]$ and $\lforall[x][\lforall[y][\lforall[z]((\eq[x][y]
+Prove que $=$ é simétrica e transitiva, isto é, dê
+!!{derivation}s de $\lforall[x][\lforall[y][(\eq[x][y] \lif
+    \eq[y][x])]]$ e $\lforall[x][\lforall[y][\lforall[z]((\eq[x][y]
     \land \eq[y][z]) \lif \eq[x][z])]]$
 \end{prob}
 
 \begin{ex}
-We !!{derive} the !!{sentence}
+!!^{derive}mos a !!{sentence}
 \begin{align*}
 & \lforall[x][\lforall[y][((!A(x) \land !A(y)) \lif \eq[x][y])]]
-\intertext{from the !!{sentence}}
+\intertext{a partir da !!{sentence}}
 & \lexists[x][\lforall[y][(!A(y) \lif \eq[y][x])]]
 \end{align*}
-We develop the !!{derivation} backwards:
+Desenvolvemos a !!{derivation} de trás para frente:
 \begin{prooftree}
 \AxiomC{$\lexists[x][\lforall[y][(!A(y) \lif \eq[y][x])]]
 \quad \Discharge{!A(a) \land !A(b)}{1}$}
@@ -75,9 +76,9 @@ We develop the !!{derivation} backwards:
 \RightLabel{\Intro{\lforall}}
 \UnaryInfC{$\lforall[x][\lforall[y][((!A(x) \land !A(y)) \lif \eq[x][y])]]$}
 \end{prooftree}
-We'll now have to use the main assumption: since it is an existential
-!!{formula}, we use \Elim{\lexists} to !!{derive} the intermediary
-conclusion $\eq[a][b]$.
+Agora teremos que usar a hipótese principal: como é uma !!{formula}
+existencial, usamos \Elim{\lexists} para derivar a conclusão
+intermediária $\eq[a][b]$.
 \begin{prooftree}
 \AxiomC{$\lexists[x][\lforall[y][(!A(y) \lif \eq[y][x])]]$}
 \AxiomC{$\Discharge{\lforall[y][(!A(y) \lif \eq[y][c]])}{2}$}
@@ -93,10 +94,10 @@ conclusion $\eq[a][b]$.
 \RightLabel{\Intro{\lforall}}
 \UnaryInfC{$\lforall[x][\lforall[y][((!A(x) \land !A(y)) \lif \eq[x][y])]]$}
 \end{prooftree}
-The sub-!!{derivation} on the top right is completed by using its
-assumptions to show that $\eq[a][c]$ and $\eq[b][c]$. This requires two
-separate !!{derivation}s. The !!{derivation} for $\eq[a][c]$ is as
-follows:
+A sub-!!{derivation} no canto superior direito é completada usando suas
+hipóteses para mostrar que $\eq[a][c]$ e $\eq[b][c]$. Isso requer duas
+!!{derivation}s separadas. A !!{derivation} para $\eq[a][c]$ é a
+seguinte:
 \begin{prooftree}
 \AxiomC{$\Discharge{\lforall[y][(!A(y) \lif \eq[y][c]])}{2}$}
 \RightLabel{\Elim{\lforall}}
@@ -107,12 +108,12 @@ follows:
 \RightLabel{\Elim{\lif}}
 \BinaryInfC{$\eq[a][c]$}
 \end{prooftree}
-From $\eq[a][c]$ and $\eq[b][c]$ we !!{derive} $\eq[a][b]$ by
+De $\eq[a][c]$ e $\eq[b][c]$ !!{derive}mos $\eq[a][b]$ por
 \Elim{\eq}.
 \end{ex}
 
 \begin{prob}
-Give !!{derivation}s of the following !!{formula}s:
+Dê !!{derivation}s das seguintes !!{formula}s:
 \begin{enumerate}
 \item $\lforall[x][\lforall[y][((\eq[x][y] \land !A(x)) \lif !A(y))]]$
 \item $\lexists[x][!A(x)] \land \lforall[y][\lforall[z][((!A(y) \land

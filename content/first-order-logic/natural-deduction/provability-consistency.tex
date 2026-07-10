@@ -7,24 +7,24 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{ntd}{prv}}
-      {\olfileid{pl}{ntd}{prv}}
+      {\olfileid[pt]{fol}{ntd}{prv}}
+      {\olfileid[pt]{pl}{ntd}{prv}}
       
-\olsection{\usetoken{S}{derivability} and Consistency}
+\olsection{\usetoken{S}{derivability} e Consistência}
 
-We will now establish a number of properties of the !!{derivability}
-relation.  They are independently interesting, but each will play a
-role in the proof of the completeness theorem.
+Estabeleceremos agora várias propriedades da relação de
+!!{derivability}.  Elas são independentemente interessantes, mas cada
+uma desempenhará um papel na prova do teorema da completude.
 
 \begin{prop}\ollabel{prop:provability-contr}
-  If $\Gamma \Proves !A$ and $\Gamma \cup \{!A\}$ is inconsistent,
-  then $\Gamma$ is inconsistent.
+  Se $\Gamma \Proves !A$ e $\Gamma \cup \{!A\}$ é inconsistente,
+  então $\Gamma$ é inconsistente.
 \end{prop}
 
 \begin{proof}
-Let the !!{derivation} of~$!A$ from~$\Gamma$ be~$\delta_1$ and the
-!!{derivation} of~$\lfalse$ from $\Gamma \cup \{!A\}$
-be~$\delta_2$. We can then !!{derive}:
+Seja a !!{derivation} de~$!A$ a partir de~$\Gamma$ igual a~$\delta_1$ e a
+!!{derivation} de~$\lfalse$ a partir de $\Gamma \cup \{!A\}$
+igual a~$\delta_2$. Podemos então derivar:
 \begin{prooftree}
 \AxiomC{$\Gamma, \Discharge{!A}{1}$}
 \RightLabel{$\delta_2$}
@@ -37,20 +37,20 @@ be~$\delta_2$. We can then !!{derive}:
 \RightLabel{\Elim{\lnot}}
 \BinaryInfC{$\lfalse$}
 \end{prooftree}
-In the new !!{derivation}, the assumption~$!A$ is !!{discharged}, so it is
-!!a{derivation} from~$\Gamma$.
+Na nova !!{derivation}, a hipótese~$!A$ é !!{discharged}, de modo que é
+uma !!{derivation} a partir de~$\Gamma$.
 \end{proof}
 
 \begin{prop}
 \ollabel{prop:prov-incons}
-$\Gamma \Proves !A$ iff $\Gamma \cup \{\lnot !A\}$ is inconsistent.
+$\Gamma \Proves !A$ se, e somente se, $\Gamma \cup \{\lnot !A\}$ é inconsistente.
 \end{prop}
 
 \begin{proof}
-First suppose $\Gamma \Proves !A$, O.s.\@, there is
-!!a{derivation}~$\delta_0$ of~$!A$ from !!{undischarged}
-assumptions~$\Gamma$. We obtain !!a{derivation} of $\lfalse$ from
-$\Gamma \cup \{\lnot !A\}$ as follows:
+Primeiro suponha que $\Gamma \Proves !A$, isto é, há uma
+!!{derivation}~$\delta_0$ de~$!A$ a partir de hipóteses
+!!{undischarged}s~$\Gamma$. Obtemos uma !!{derivation} de $\lfalse$ a partir de
+$\Gamma \cup \{\lnot !A\}$ da seguinte forma:
 \begin{prooftree}
   \AxiomC{$\lnot !A$}
   \AxiomC{$\Gamma$}
@@ -60,10 +60,10 @@ $\Gamma \cup \{\lnot !A\}$ as follows:
   \BinaryInfC{$\lfalse$}
 \end{prooftree}
 
-Now assume $\Gamma \cup \{\lnot !A\}$ is inconsistent, and let
-$\delta_1$ be the corresponding !!{derivation} of~$\lfalse$ from
-!!{undischarged} assumptions in~$\Gamma \cup \{\lnot !A\}$. We obtain
-!!a{derivation} of~$!A$ from~$\Gamma$ alone by using~$\FalseCl$:
+Agora suponha que $\Gamma \cup \{\lnot !A\}$ é inconsistente, e seja
+$\delta_1$ a !!{derivation} correspondente de~$\lfalse$ a partir de
+hipóteses !!{undischarged}s em~$\Gamma \cup \{\lnot !A\}$. Obtemos
+uma !!{derivation} de~$!A$ apenas a partir de~$\Gamma$ usando~\FalseCl:
 \begin{prooftree}
   \AxiomC{$\Gamma, \Discharge{\lnot !A}{1}$}
   \RightLabel{$\delta_1$}
@@ -75,19 +75,19 @@ $\delta_1$ be the corresponding !!{derivation} of~$\lfalse$ from
 \end{proof}
 
 \begin{prob}
-Prove that $\Gamma \Proves \lnot !A$ iff $\Gamma \cup \{!A\}$ is
-inconsistent.
+Prove que $\Gamma \Proves \lnot !A$ se, e somente se, $\Gamma \cup \{!A\}$ é
+inconsistente.
 \end{prob}
 
 \begin{prop}\ollabel{prop:explicit-inc}
-  If $\Gamma \Proves !A$ and $\lnot !A \in \Gamma$, then $\Gamma$ is
-  inconsistent.
+  Se $\Gamma \Proves !A$ e $\lnot !A \in \Gamma$, então $\Gamma$ é
+  inconsistente.
 \end{prop}
 
 \begin{proof}
-  Suppose $\Gamma \Proves !A$ and $\lnot !A \in \Gamma$.  Then there
-  is !!a{derivation}~$\delta$ of~$!A$ from~$\Gamma$. Consider this
-    simple application of the $\Elim{\lnot}$ rule:
+  Suponha que $\Gamma \Proves !A$ e $\lnot !A \in \Gamma$.  Então há
+  uma !!{derivation}~$\delta$ de~$!A$ a partir de~$\Gamma$. Considere esta
+    aplicação simples da regra $\Elim{\lnot}$:
   \begin{prooftree}
     \AxiomC{$\lnot !A$}
     \AxiomC{$\Gamma$}
@@ -96,19 +96,19 @@ inconsistent.
     \RightLabel{\Elim{\lnot}}
     \BinaryInfC{$\lfalse$}
   \end{prooftree}
-  Since $\lnot !A \in \Gamma$, all !!{undischarged} assumptions are
-  in~$\Gamma$, this shows that $\Gamma \Proves \lfalse$.
+  Como $\lnot !A \in \Gamma$, todas as hipóteses !!{undischarged}s estão
+  em~$\Gamma$; isto mostra que $\Gamma \Proves \lfalse$.
 \end{proof}
 
 \begin{prop}\ollabel{prop:provability-exhaustive}
-  If $\Gamma \cup \{!A\}$ and $\Gamma \cup \{\lnot !A\}$ are both
-  inconsistent, then $\Gamma$ is inconsistent.
+  Se $\Gamma \cup \{!A\}$ e $\Gamma \cup \{\lnot !A\}$ são ambos
+  inconsistentes, então $\Gamma$ é inconsistente.
 \end{prop}
 
 \begin{proof}
-There are !!{derivation}s $\delta_1$ and $\delta_2$ of~$\lfalse$ from
-  $\Gamma \cup \{ !A \}$ and $\lfalse$ from $\Gamma \cup \{ \lnot !A
-  \}$, respectively. We can then !!{derive}
+Há !!{derivation}s $\delta_1$ e $\delta_2$ de~$\lfalse$ a partir de
+  $\Gamma \cup \{ !A \}$ e de $\lfalse$ a partir de $\Gamma \cup \{ \lnot !A
+  \}$, respectivamente. Podemos então derivar
 \begin{prooftree}
 \AxiomC{$\Gamma, \Discharge{\lnot !A}{2}$}
 \RightLabel{$\delta_2$}
@@ -123,9 +123,9 @@ There are !!{derivation}s $\delta_1$ and $\delta_2$ of~$\lfalse$ from
 \RightLabel{\Elim{\lnot}}
 \BinaryInfC{$\lfalse$}
 \end{prooftree}
-Since the assumptions $!A$ and $\lnot !A$ are !!{discharged}, this is
-!!a{derivation} of~$\lfalse$ from~$\Gamma$ alone. Hence $\Gamma$ is
-inconsistent.
+Como as hipóteses $!A$ e $\lnot !A$ são !!{discharged}s, isto é
+uma !!{derivation} de~$\lfalse$ apenas a partir de~$\Gamma$. Logo $\Gamma$ é
+inconsistente.
 \end{proof}
 
 \end{document}

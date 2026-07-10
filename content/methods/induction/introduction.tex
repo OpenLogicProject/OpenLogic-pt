@@ -6,46 +6,46 @@
 
 \begin{document}
 
-\olfileid{mth}{ind}{int}
+\olfileid[pt]{mth}{ind}{int}
 
-\olsection{Introduction}
+\olsection{Introdução}
 
-Induction is an important proof technique which is used, in different
-forms, in almost all areas of logic, theoretical computer science, and
-mathematics.  It is needed to prove many of the results in logic.
+A indução é uma técnica de prova importante, usada, em diferentes
+formas, em quase todas as áreas da lógica, da ciência da computação teórica e da
+matemática.  Ela é necessária para provar muitos dos resultados em lógica.
 
-Induction is often contrasted with deduction, and characterized as the
-inference from the particular to the general.  For instance, if we
-observe many green emeralds, and nothing that we would call an emerald
-that's not green, we might conclude that all emeralds are green. This
-is an inductive inference, in that it proceeds from many particular
-cases (this emerald is green, that emerald is green, etc.) to a
-general claim (all emeralds are green).  \emph{Mathematical} induction
-is also an inference that concludes a general claim, but it is of a
-very different kind than this ``simple induction.''
+A indução é frequentemente contrastada com a dedução, e caracterizada como a
+inferência do particular para o geral.  Por exemplo, se
+observamos muitas esmeraldas verdes, e nada que chamaríamos de esmeralda
+que não seja verde, poderíamos concluir que todas as esmeraldas são verdes. Essa
+é uma inferência indutiva, no sentido de que procede de muitos casos
+particulares (esta esmeralda é verde, aquela esmeralda é verde, etc.) a uma
+afirmação geral (todas as esmeraldas são verdes).  A indução \emph{matemática}
+também é uma inferência que conclui uma afirmação geral, mas é de um
+tipo muito diferente dessa ``indução simples.''
 
-Very roughly, an inductive proof in mathematics concludes that all
-mathematical objects of a certain sort have a certain property.  In
-the simplest case, the mathematical objects an inductive proof is
-concerned with are natural numbers.  In that case an inductive proof
-is used to establish that all natural numbers have some property, and
-it does this by showing that
+De modo bem aproximado, uma prova indutiva em matemática conclui que todos os
+objetos matemáticos de certo tipo têm uma certa propriedade.  No
+caso mais simples, os objetos matemáticos com que uma prova indutiva se
+ocupa são os números naturais.  Nesse caso, uma prova indutiva
+é usada para estabelecer que todos os números naturais têm alguma propriedade, e
+faz isso mostrando que
 \begin{enumerate}
-    \item $0$ has the property, and
-    \item whenever a number~$k$ has the property, so does~$k+1$.
+    \item $0$ tem a propriedade, e
+    \item sempre que um número~$k$ tem a propriedade, também~$k+1$ a tem.
 \end{enumerate}
-Induction on natural numbers can then also often be used to prove
-general claims about mathematical objects that can be assigned numbers. For
-instance, finite sets each have a finite number~$n$ of elements, and
-if we can use induction to show that every number~$n$ has the property
-``all finite sets of size~$n$ are \dots'' then we will have shown
-something about all finite sets.
+A indução sobre os números naturais pode então, também, ser frequentemente usada para provar
+afirmações gerais sobre objetos matemáticos aos quais se podem atribuir números. Por
+exemplo, conjuntos finitos têm, cada um, um número finito~$n$ de elementos, e
+se pudermos usar a indução para mostrar que todo número~$n$ tem a propriedade
+``todos os conjuntos finitos de tamanho~$n$ são \dots'' então teremos mostrado
+algo sobre todos os conjuntos finitos.
 
-Induction can also be generalized to mathematical objects that are
-\emph{inductively defined}.  For instance, expressions of a formal
-language such as those of first-order logic are defined inductively.
-\emph{Structural induction} is a way to prove results about all such
-expressions.  Structural induction, in particular, is very
-useful---and widely used---in logic.
+A indução também pode ser generalizada para objetos matemáticos que são
+\emph{definidos indutivamente}.  Por exemplo, as expressões de uma linguagem
+formal, como as da lógica de primeira ordem, são definidas indutivamente.
+A \emph{indução estrutural} é um modo de provar resultados sobre todas essas
+expressões.  A indução estrutural, em particular, é muito
+útil---e amplamente usada---em lógica.
 
 \end{document}

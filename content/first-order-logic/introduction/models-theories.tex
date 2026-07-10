@@ -6,65 +6,69 @@
 
 \begin{document}
 
-\olfileid{fol}{int}{mod}
+\olfileid[pt]{fol}{int}{mod}
 
-\olsection{Models and Theories}
+\olsection{Modelos e Teorias}
 
-Once we've defined the syntax and semantics of first-order logic, we
-can get to work investigating the properties of !!{structure}s and the
-semantic notions. We can also define !!{derivation} systems, and
-investigate those.  For a set of !!{sentence}s, we can ask: what
-!!{structure}s make all the !!{sentence}s in that set true?  Given a
-set of !!{sentence}s~$\Gamma$, !!a{structure}~$\Struct{M}$ that
-satisfies them is called a \emph{model of~$\Gamma$}.  We might start
-from~$\Gamma$ and try to find its models---what do they look like? How
-big or small do they have to be? But we might also start with a single
-!!{structure} or collection of !!{structure}s and ask: what
-!!{sentence}s are true in them?  Are there !!{sentence}s that
-\emph{characterize} these !!{structure}s in the sense that they, and
-only they, are true in them? These kinds of questions are the domain
-of \emph{model theory}.  They also underlie the \emph{axiomatic
-  method}: describing a collection of !!{structure}s by a set of
-!!{sentence}s, the axioms of a theory. This is made possible by the
-observation that exactly those !!{sentence}s entailed in first-order
-logic by the axioms are true in all models of the axioms.
+Uma vez que definimos a sintaxe e a semântica da lógica de primeira
+ordem, podemos trabalhar investigando as propriedades de
+!!{structure}s e as noções semânticas. Também podemos definir sistemas
+de !!{derivation} e investigá-los.  Para um conjunto de
+!!{sentence}s, podemos perguntar: quais !!{structure}s tornam todas as
+!!{sentence}s desse conjunto verdadeiras?  Dado um conjunto de
+!!{sentence}s~$\Gamma$, uma !!{structure}~$\Struct{M}$ que as satisfaz
+é chamada de \emph{modelo de~$\Gamma$}.  Podemos começar
+de~$\Gamma$ e tentar encontrar seus modelos---como eles são? Quão
+grandes ou pequenos precisam ser? Mas também podemos começar com uma
+única !!{structure} ou coleção de !!{structure}s e perguntar: quais
+!!{sentence}s são verdadeiras nelas?  Há !!{sentence}s que
+\emph{caracterizam} essas !!{structure}s no sentido de que elas, e
+somente elas, são verdadeiras nelas? Esses tipos de questões são o
+domínio da \emph{teoria dos modelos}.  Elas também fundamentam o
+\emph{método axiomático}: descrever uma coleção de !!{structure}s por
+um conjunto de !!{sentence}s, os axiomas de uma teoria. Isso é possível
+pela observação de que exatamente aquelas !!{sentence}s que são consequência
+na lógica de primeira ordem dos axiomas são verdadeiras em todos os
+modelos dos axiomas.
 
-As a very simple example, consider preorders. A preorder is a
-relation~$R$ on some set~$A$ which is both reflexive and transitive.
-A set~$A$ with a two-place relation $R \subseteq A \times A$ on it is
-exactly what we would need to give !!a{structure} for a first-order
-language with a single two-place relation symbol~$\Obj P$: we would
-set $\Domain{M} = A$ and $\Assign{\Obj P}{M} = R$.  Since $R$~is a
-preorder, it is reflexive and transitive, and we can find a
-set~$\Gamma$ of !!{sentence}s of first-order logic that say this:
+Como exemplo muito simples, considere pré-ordens. Uma pré-ordem é uma
+relação~$R$ sobre algum conjunto~$A$ que é reflexiva e transitiva.
+Um conjunto~$A$ com uma relação binária $R \subseteq A \times A$ sobre
+ele é exatamente o que precisaríamos para dar uma !!{structure} para uma
+linguagem de primeira ordem com um único símbolo de predicado de dois
+lugares~$\Obj P$: definiríamos $\Domain{M} = A$ e $\Assign{\Obj P}{M} =
+R$.  Como $R$~é uma pré-ordem, é reflexiva e transitiva, e podemos
+encontrar um conjunto~$\Gamma$ de !!{sentence}s da lógica de primeira
+ordem que diz isso:
 \begin{align*}
   & \lforall[\Obj v_0][\Atom{\Obj P}{\Obj v_0,\Obj v_0}]\\
   & \lforall[\Obj v_0][\lforall[\Obj v_1][\lforall[\Obj v_2][((\Atom{\Obj P}{\Obj v_0,\Obj v_1} \land \Atom{\Obj P}{\Obj v_1,\Obj v_2}) \lif \Atom{\Obj P}{\Obj v_0,\Obj v_2})]]]
 \end{align*}
-These !!{sentence}s are just the symbolizations of ``for any~$x$,
-$Rxx$'' ($R$ is reflexive) and ``whenever $Rxy$ and $Ryz$ then also
-$Rxz$'' ($R$ is transitive). We see that !!a{structure}~$\Struct{M}$
-is a model of these two !!{sentence}s~$\Gamma$ iff $R$ (O.s.\@,
-$\Assign{\Obj P}{M}$), is a preorder on~$A$ (O.s.\@, $\Domain{M}$). In
-other words, the models of $\Gamma$ are exactly the preorders. Any
-property of all preorders that can be expressed in the first-order
-language with just~$\Obj P$ as !!{predicate} (like reflexivity and
-transitivity above), is entailed by the two !!{sentence}s in~$\Gamma$
-and vice versa.  So anything we can prove about models of~$\Gamma$ we
-have proved about all preorders.
+Estas !!{sentence}s são apenas as simbolizações de ``para todo~$x$,
+$Rxx$'' ($R$ é reflexiva) e ``sempre que $Rxy$ e $Ryz$, então também
+$Rxz$'' ($R$ é transitiva). Vemos que uma !!{structure}~$\Struct{M}$
+é um modelo dessas duas !!{sentence}s~$\Gamma$ se, e somente se, $R$
+(isto é, $\Assign{\Obj P}{M}$), é uma pré-ordem sobre~$A$ (isto é,
+$\Domain{M}$). Em outras palavras, os modelos de $\Gamma$ são
+exatamente as pré-ordens. Qualquer propriedade de todas as pré-ordens
+que possa ser expressa na linguagem de primeira ordem apenas com~$\Obj P$
+como !!{predicate} (como reflexividade e transitividade acima), é
+consequência das duas !!{sentence}s em~$\Gamma$ e vice-versa.  Assim,
+qualquer coisa que possamos provar sobre modelos de~$\Gamma$ provamos
+sobre todas as pré-ordens.
 
-For any particular theory and class of models (such as $\Gamma$ and
-all preorders), there will be interesting questions about what can be
-expressed in the corresponding first-order language, and what cannot
-be expressed. There are some properties of !!{structure}s that are
-interesting for all languages and classes of models, namely those
-concerning the size of the !!{domain}.  One can always express, for
-instance, that the !!{domain} contains exactly $n$~!!{element}s, for
-any~$n \in \PosInt$.  One can also express, using a set of infinitely
-many !!{sentence}s, that the !!{domain} is infinite.  But one cannot
-express that the domain is finite, or that the domain is
-!!{nonenumerable}. These results about the limitations of first-order
-languages are consequences of the compactness and L\"owenheim--Skolem
-theorems.
+Para qualquer teoria particular e classe de modelos (como $\Gamma$ e
+todas as pré-ordens), haverá questões interessantes sobre o que pode ser
+expresso na linguagem de primeira ordem correspondente, e o que não pode
+ser expresso. Há algumas propriedades de !!{structure}s que são
+interessantes para todas as linguagens e classes de modelos, a saber,
+aquelas que dizem respeito ao tamanho do !!{domain}.  Pode-se sempre
+expressar, por exemplo, que o !!{domain} contém exatamente $n$~!!{element}s,
+para qualquer~$n \in \PosInt$.  Pode-se também expressar, usando um
+conjunto de infinitas !!{sentence}s, que o !!{domain} é
+infinito.  Mas não se pode expressar que o domínio é finito, ou que o
+domínio é !!{nonenumerable}. Estes resultados sobre as limitações das
+linguagens de primeira ordem são consequências dos teoremas da
+compacidade e de L\"owenheim--Skolem.
 
 \end{document}

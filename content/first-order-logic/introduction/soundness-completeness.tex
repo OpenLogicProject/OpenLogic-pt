@@ -6,63 +6,65 @@
 
 \begin{document}
 
-\olfileid{fol}{int}{scp}
+\olfileid[pt]{fol}{int}{scp}
 
-\olsection{Soundness and Completeness}
+\olsection{Correção e Completude}
 
-We'll also introduce !!{derivation} systems for first-order logic.  There are
-many !!{derivation} systems that logicians have developed, but they all define
-the same !!{derivability} relation between !!{sentence}s. We say that
-$\Gamma$ \emph{!!{derive}s}~$!A$, $\Gamma \Proves !A$, if there is
-!!a{derivation} of a certain precisely defined sort. !!^{derivation}s
-are always finite arrangements of symbols---perhaps a list of
-!!{sentence}s, or some more complicated structure.  The purpose of
-!!{derivation} systems is to provide a tool to determine if !!a{sentence} is
-entailed by some set~$\Gamma$.  In order to serve that purpose, it
-must be true that $\Gamma \Entails !A$ if, and only if, $\Gamma
-\Proves !A$.
+Também introduziremos sistemas de !!{derivation} para a lógica de
+primeira ordem.  Há muitos sistemas de !!{derivation} que os lógicos
+desenvolveram, mas todos definem a mesma relação de !!{derivability}
+entre !!{sentence}s. Dizemos que $\Gamma$ \emph{!!{derive}}~$!A$,
+$\Gamma \Proves !A$, se há uma !!{derivation} de um certo tipo
+precisamente definido. As !!{derivation}s são sempre disposições
+finitas de símbolos---talvez uma lista de !!{sentence}s, ou alguma
+estrutura mais complicada.  O propósito dos sistemas de
+!!{derivation} é fornecer uma ferramenta para determinar se uma
+!!{sentence} é consequência de algum conjunto~$\Gamma$.  Para servir a
+esse propósito, deve ser verdade que $\Gamma \Entails !A$ se, e
+somente se, $\Gamma \Proves !A$.
 
-If $\Gamma \Proves !A$ but not $\Gamma \Entails !A$, our !!{derivation} system
-would be too strong, prove too much.  The property that if $\Gamma
-\Proves !A$ then $\Gamma \Entails !A$ is called \emph{soundness}, and
-it is a minimal requirement on any good !!{derivation} system. On the other
-hand, if $\Gamma \Entails !A$ but not $\Gamma \Proves !A$, then our
-!!{derivation} system is too weak, it doesn't prove enough.  The property that
-if $\Gamma \Entails !A$ then $\Gamma \Proves !A$ is called
-\emph{completeness}. Soundness is usually relatively easy to prove (by
-induction on the structure of !!{derivation}s, which are inductively
-defined). Completeness is harder to prove.
+Se $\Gamma \Proves !A$ mas não $\Gamma \Entails !A$, nosso sistema de
+!!{derivation} seria forte demais, provaria demais.  A propriedade de
+que se $\Gamma \Proves !A$ então $\Gamma \Entails !A$ é chamada de
+\emph{correção}, e é um requisito mínimo para qualquer bom sistema de
+!!{derivation}. Por outro lado, se $\Gamma \Entails !A$ mas não
+$\Gamma \Proves !A$, então nosso sistema de !!{derivation} é fraco
+demais, não prova o suficiente.  A propriedade de que se $\Gamma
+\Entails !A$ então $\Gamma \Proves !A$ é chamada de
+\emph{completude}. A correção é usualmente relativamente fácil de
+provar (por indução na estrutura das !!{derivation}s, que são
+definidas indutivamente). A completude é mais difícil de provar.
 
-Soundness and completeness have a number of important consequences. If
-a set of !!{sentence}s~$\Gamma$ !!{derive}s a contradiction (such as
-$!A \land \lnot !A$) it is called \emph{inconsistent}. Inconsistent
-$\Gamma$s cannot have any models, they are unsatisfiable. From
-completeness the converse follows: any $\Gamma$ that is not
-inconsistent---or, as we will say, \emph{consistent}---has a model. In
-fact, this is equivalent to completeness, and is the form of
-completeness we will actually prove.  It is a deep and perhaps
-surprising result: just because you cannot prove $!A \land \lnot !A$
-from $\Gamma$ guarantees that there is !!a{structure} that is as
-$\Gamma$ describes it.  So completeness gives an answer to the
-question: which sets of !!{sentence}s have models? Answer: all and only
-consistent sets do.
+Correção e completude têm várias consequências importantes. Se um
+conjunto de !!{sentence}s~$\Gamma$ !!{derive} uma contradição (como
+$!A \land \lnot !A$), ele é chamado de \emph{inconsistente}.
+$\Gamma$s inconsistentes não podem ter modelos; são insatisfatíveis. Da
+completude segue a contrapositiva: qualquer $\Gamma$ que não seja
+inconsistente---ou, como diremos, \emph{consistente}---tem um modelo.
+De fato, isso é equivalente à completude, e é a forma de completude que
+de fato provaremos.  É um resultado profundo e talvez surpreendente:
+apenas o fato de que você não pode provar $!A \land \lnot !A$ a partir
+de $\Gamma$ garante que há uma !!{structure} que é como $\Gamma$ a
+descreve.  Assim, a completude dá uma resposta à pergunta: quais
+conjuntos de !!{sentence}s têm modelos? Resposta: todos e somente os
+conjuntos consistentes têm.
 
-The soundness and completeness theorems have two important
-consequences: the compactness and the L\"owenheim--Skolem theorem.
-These are important results in the theory of models, and can be used
-to establish many interesting results. We've already mentioned two:
-first-order logic cannot express that the !!{domain} of !!a{structure}
-is finite or that it is !!{nonenumerable}.
+Os teoremas de correção e completude têm duas consequências
+importantes: a compacidade e o teorema de L\"owenheim--Skolem. Estes
+são resultados importantes na teoria de modelos e podem ser usados
+para estabelecer muitos resultados interessantes. Já mencionamos dois:
+a lógica de primeira ordem não pode expressar que o !!{domain} de uma
+!!{structure} é finito ou que é !!{nonenumerable}.
 
-Historically, all of this---how to define syntax and semantics of
-first-order logic, how to define good !!{derivation} systems, how to prove that
-they are sound and complete, getting clear about what can and cannot
-be expressed in first-order languages---took a long time to figure out
-and get right.  We now know how to do it, but going through all the
-details can still be confusing and tedious.  But it's also important,
-because the methods developed here for the formal language of
-first-order logic are applied all over the place in logic, computer
-science, and linguistics. So working through the details pays off in
-the long run.
+Historicamente, tudo isso---como definir a sintaxe e a semântica da
+lógica de primeira ordem, como definir bons sistemas de
+!!{derivation}, como provar que são corretos e completos, ficar claro
+sobre o que pode e não pode ser expresso em linguagens de primeira
+ordem---levou muito tempo para ser descoberto e acertado.  Agora
+sabemos como fazer isso, mas percorrer todos os detalhes ainda pode ser
+confuso e tedioso.  Mas também é importante, porque os métodos
+desenvolvidos aqui para a linguagem formal da lógica de primeira ordem
+são aplicados em todo lugar em lógica, ciência da computação e
+linguística. Assim, trabalhar os detalhes compensa a longo prazo.
 
 \end{document}
