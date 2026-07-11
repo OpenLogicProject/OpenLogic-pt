@@ -1,69 +1,80 @@
-# Set Theory: An Open Introduction (Portuguese)
+# Set Theory (Portuguese / pt-BR)
 
-[![Book Cover](https://st.openlogicproject.org/settheory.png)](https://st.openlogicproject.org/settheory-screen.pdf)
+_Teoria dos Conjuntos_ is the Portuguese (pt-BR) **translation and
+adaptation, by Pedro Lima**, of _Set Theory: An Open Introduction_ by Tim
+Button — a brief introduction to the philosophy of set theory, built on the
+_[Open Logic Text](https://github.com/OpenLogicProject/OpenLogic/)_.
 
-_Set Theory: An Open Introduction_ is a brief introduction to the
-philosophy of set theory. It is written for students with a little
-background in logic, and some high school mathematics. By the end of
-this book, students reading it might have a sense of:
+This directory contains only the LaTeX driver files, configuration,
+translated front matter, and book-specific figures (`assets/diagrams/`).
+The **translated content** lives one level up in this same repository
+(`locale/pt/content/`), and the build also requires the English _Open
+Logic Text_ for shared macros, class files, assets, and any not-yet
+translated material.
 
-- why set theory came about;
-- how to reduce large swathes of mathematics to set theory + arithmetic;
-- how to embed arithmetic in set theory;
-- what the cumulative iterative conception of set amounts to;
-- how one might try to justify the axioms of ZFC.
+## How this is organized (consolidated layout)
 
-This repository/directory only contains the LaTeX files and
-illustrations needed to typeset the textbook _Set Theory_, which in
-turn requires the _[Open Logic
-Text](https://github.com/OpenLogicProject/OpenLogic/)_. Most of the
-material making up the text comes from [Tim
-Button](http://www.nottub.com/)'s _Open Set Theory_.
+The English books are standalone repositories cloned into
+`OpenLogic/courses/`. The **Portuguese** editions instead live *inside* the
+localization repository `OpenLogic-pt`, which is cloned into `locale/pt/`:
 
-You can [download the
-PDF](https://st.openlogicproject.org/settheory-screen.pdf)
-from the [Open Logic builds
-site](https://st.openlogicproject.org/).
-
-You can order a hardcopy of the Fall 2021 edition from
-Amazon [[US](https://www.amazon.com/dp/B09KN65FFQ)|[CA](https://www.amazon.ca/dp/B09KN65FFQ)|[UK](https://www.amazon.co.uk/dp/B09KN65FFQ)|[DE](https://www.amazon.de/dp/B09KN65FFQ)|[AU](https://www.amazon.com.au/dp/B09KN65FFQ)].
-
-
-To install and compile:
-
-- Download/install the _Open Logic Text_ from
-  [GitHub](https://github.com/OpenLogicProject/OpenLogic/), including
-  [photos](https://github.com/OpenLogicProject/photos) if you want those.
-- Navigate to the subdirectory `courses/`
-- Put the content of this repository into a subdirectory of it, say
-  `courses/set-theory`.
-
-If you use `git`, this should do it:
 ```
-# git clone https://github.com/OpenLogicProject/OpenLogic.git
-# cd OpenLogic/courses
-# git clone https://github.com/OpenLogicProject/set-theory.git
-# cd ../assets
-# git clone https://github.com/OpenLogicProject/photos.git
+OpenLogic/                                   # English upstream: sty/, assets/, misc/, content/
+└── locale/
+    └── pt/                                  # OpenLogic-pt (this localization)
+        ├── content/                         # translated content
+        └── courses/
+            ├── set-theory-pt/               # <-- this book
+            └── sets-logic-computation-pt/
 ```
-Inside `courses/set-theory`, you can now compile:
+
+## Building the book
+
 ```
-# pdflatex settheory-screen
+# 1. English upstream + shared cover/photo assets
+git clone https://github.com/OpenLogicProject/OpenLogic.git
+cd OpenLogic/assets
+git clone https://github.com/OpenLogicProject/photos.git
+git clone https://github.com/OpenLogicProject/portraits.git
+cd ..
+
+# 2. This localization, into locale/pt
+cd locale
+git clone https://github.com/OpenLogicProject/OpenLogic-pt.git pt
+cd pt
+
+# 3. gitinfo2 hooks, so the credits page shows the real Git revision/date
+#    (see githooks/README.md for details)
+cp githooks/post-commit githooks/post-checkout githooks/post-merge .git/hooks/
+git checkout HEAD        # generates .git/gitHeadInfo.gin
+
+# 4. Build
+cd courses/set-theory-pt
+make                     # or: latexmk -pdf settheory-screen
 ```
-or just `# make` if you have `latexmk` installed. (You'll also have to
-do `bibtex settheory-screen` for the bibliography.)
 
-The file `settheory-screen.tex` produces a color version of the text
-with smaller margins for screen reading.
+`make` regenerates `olprevision.tex` (via `../../../../misc/makeolprevision`
+— this file is **generated, not versioned**) and runs `latexmk` with the
+bibliography. Building by hand also works, but then also run `bibtex
+settheory-screen` for the bibliography.
 
-The file loads `settheory.tex`, which contains the actual material. It
-in turn includes other files, most of them from the `OpenLogic`
-repository. So you won't get a complete book unless you download into
-the right subdirectory of and compile from there.
+`settheory-screen.tex` produces the color on-screen version;
+`settheory-print.tex` the print version. Both load `settheory.tex`, which
+pulls most of its material from the `OpenLogic` repository, so the book only
+compiles from within this directory of a full `OpenLogic` + `locale/pt`
+checkout.
 
-[![Creative Commons License](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by.png)](https://creativecommons.org/licenses/by/4.0/) 
+The English original (and public PDFs) are at
+<https://st.openlogicproject.org/>.
 
-_[Set Theory](https://github.com/OpenLogicProject/set-theory/)_ by
-[Tim Button](http://nottub.com/) is licensed under a [Creative Commons
+## License
+
+[![Creative Commons License](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by.png)](https://creativecommons.org/licenses/by/4.0/)
+
+_Set Theory_ by [Tim Button](http://nottub.com/), translated and adapted
+into Portuguese by Pedro Lima, is licensed under a [Creative Commons
 Attribution 4.0 International
-License](http://creativecommons.org/licenses/by/4.0/).
+License](https://creativecommons.org/licenses/by/4.0/). It is based on
+_[The Open Logic Text](https://github.com/OpenLogicProject/OpenLogic)_ by
+the [Open Logic Project](https://openlogicproject.org/), used under a
+Creative Commons Attribution 4.0 International License.

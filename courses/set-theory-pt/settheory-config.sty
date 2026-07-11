@@ -1,0 +1,24 @@
+% settheory-config.sty
+% Configuracao local do curso "Teoria dos Conjuntos" (localizacao PT).
+% Carregado automaticamente por open-logic.sty via \oljobname-config.sty.
+
+% Os diagramas proprios da Teoria dos Conjuntos (funcoes, injecao,
+% sobrejecao, bijecao e composicao) em assets/diagrams/ usam \node[fit=...],
+% pelo que a biblioteca TikZ "fit" tem de estar carregada.
+\usetikzlibrary{fit}
+
+% -- Credito de traducao (pagina de rosto + caixa de licenca) --------------
+% \olremixedby e \ollicensetext sao definidos em
+% locale/pt/open-logic-locale.sty; este ficheiro e carregado depois
+% (open-logic.sty), por isso estas redefinicoes prevalecem. O credito
+% aparece por baixo do autor na pagina de rosto e dentro da caixa de
+% licenca (pagina de copyright e contracapa); nunca na capa frontal, que
+% so mostra titulo, subtitulo e ilustracao.
+
+\renewcommand*{\olremixedby}{%
+  Adaptado por \OLPauthor\\[.5ex]
+  {\fontsize{12pt}{14pt}\selectfont Tradução e adaptação de Pedro Lima}}
+
+\renewcommand*{\ollicensetext}[3]{%
+  \textit{#1}, de #2, tradução e adaptação de Pedro Lima,
+  está licenciado sob a #3.}

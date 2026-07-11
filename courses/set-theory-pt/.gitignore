@@ -12,3 +12,10 @@
 *.synctex.gz
 *.pdf
 *.xmpi
+
+# olprevision.tex e gerado por 'make' (misc/makeolprevision); nao versionar.
+olprevision.tex
+
+# Diagramas proprios desta traducao sao ficheiros-fonte: sobrepoe o
+# padrao generico "*.tikz" herdado de ../../.gitignore (regra knitr).
+!assets/diagrams/*.tikz

@@ -136,3 +136,9 @@ sympy-plots-for-*.tex/
 # html etc. files
 *.html
 *.css
+
+# olprevision.tex e gerado por 'make' (misc/makeolprevision); nao versionar.
+olprevision.tex
+
+# PDF/A metadata gerado pelo pdfx durante o build.
+*.xmpi
