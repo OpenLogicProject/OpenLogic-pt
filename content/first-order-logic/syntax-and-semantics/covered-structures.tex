@@ -35,28 +35,28 @@ definido como segue:
 
 \begin{ex}
 Seja~$\Lang L$ a linguagem com os !!{constant}s $\Obj{zero}$,
-$\Obj{one}$, $\Obj{two}$, \dots, o !!{predicate} binário~$<$, e os
+$\Obj{um}$, $\Obj{dois}$, \dots, o !!{predicate} binário~$<$, e os
 !!{function}s binários $+$ e $\times$. Então !!a{structure}~$\Struct
 M$ para~$\Lang L$ é aquela com domínio $\Domain M = \{0, 1, 2, \ldots
 \}$ e atribuições $\Assign{\Obj{zero}}{M} = 0$,
-$\Assign{\Obj{one}}{M} = 1$, $\Assign{\Obj{two}}{M} = 2$, e assim
+$\Assign{\Obj{um}}{M} = 1$, $\Assign{\Obj{dois}}{M} = 2$, e assim
 por diante. Para o símbolo de relação binário $<$, o conjunto $\Assign{<}{M}$ é
 o conjunto de todos os pares $\tuple{c_1, c_2} \in \Domain{M}^2$ tais que
 $c_1$ é menor que~$c_2$: por exemplo, $\tuple{1, 3} \in
 \Assign{<}{M}$ mas $\tuple{2, 2} \notin \Assign{<}{M}$. Para o
 !!{function} binário $+$, defina $\Assign{+}{M}$ da maneira usual---por
 exemplo, $\Assign{+}{M}(2,3)$ resulta em~$5$, e analogamente para o
-!!{function} binário~$\times$. Portanto, o !!{value} de $\Obj{four}$ é
-apenas~$4$, e o !!{value} de $\times(\Obj{two},
-+(\Obj{three},\Obj{zero}))$ (ou em notação infixa, $\Obj{two} \times
-(\Obj{three} + \Obj{zero})$) é
+!!{function} binário~$\times$. Portanto, o !!{value} de $\Obj{quatro}$ é
+apenas~$4$, e o !!{value} de $\times(\Obj{dois},
++(\Obj{tres},\Obj{zero}))$ (ou em notação infixa, $\Obj{dois} \times
+(\Obj{tres} + \Obj{zero})$) é
 \begin{multline*}
-\Value{\times(\Obj{two}, +(\Obj{three},\Obj{zero}))}{M} =\\
+\Value{\times(\Obj{dois}, +(\Obj{tres},\Obj{zero}))}{M} =\\
 \begin{aligned}
-& =\Assign{\times}{M}(\Value{\Obj{two}}{M}, \Value{+(\Obj{three}, \Obj{zero})}{M})\\
-& = \Assign{\times}{M}(\Value{\Obj{two}}{M}, \Assign{+}{M}(\Value{\Obj{three}}{M},
+& =\Assign{\times}{M}(\Value{\Obj{dois}}{M}, \Value{+(\Obj{tres}, \Obj{zero})}{M})\\
+& = \Assign{\times}{M}(\Value{\Obj{dois}}{M}, \Assign{+}{M}(\Value{\Obj{tres}}{M},
 \Value{\Obj{zero}}{M})) \\
-& = \Assign{\times}{M}(\Assign{\Obj{two}}{M}, \Assign{+}{M}(\Assign{\Obj{three}}{M},
+& = \Assign{\times}{M}(\Assign{\Obj{dois}}{M}, \Assign{+}{M}(\Assign{\Obj{tres}}{M},
 \Assign{\Obj{zero}}{M})) \\
 & = \Assign{\times}{M}(2, \Assign{+}{M}(3, 0)) \\
 & = \Assign{\times}{M}(2, 3) \\

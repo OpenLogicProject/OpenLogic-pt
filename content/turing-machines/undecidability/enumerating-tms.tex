@@ -52,7 +52,7 @@ de Turing na \olref{fig:variants}.
 edge [bend left] node {\TMtrans{A}{A}{\TMright}} (A);
 \end{tikzpicture}
 \end{center}
-\caption{Variantes da máquina \emph{Even}}
+\caption{Variantes da máquina \emph{Par}}
 \ollabel{fig:variants}
 \end{figure}
 Esses dois diagramas correspondem a duas máquinas, $M$ com o alfabeto
@@ -69,7 +69,7 @@ símbolos e estados. Na verdade, podemos simplesmente pensar nos
 símbolos e estados de uma máquina de Turing como inteiros positivos:
 em vez de $\sigma_0$ pense~$1$, em vez de $\sigma_1$ pense~$2$, etc.;
 $\TMendtape$ é~$1$, $\TMblank$ é~$2$, etc. Dessa forma, a máquina
-\emph{Even} torna-se a máquina representada na
+\emph{Par} torna-se a máquina representada na
 \olref{fig:standard-even}.
 \begin{figure}
 \[\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
@@ -84,7 +84,7 @@ $\TMendtape$ é~$1$, $\TMblank$ é~$2$, etc. Dessa forma, a máquina
 edge [bend left] node {\TMtrans{3}{3}{\TMright}} (A);
 \end{tikzpicture}
 \]
-\caption{Uma máquina \emph{Even} padrão}
+\caption{Uma máquina \emph{Par} padrão}
 \ollabel{fig:standard-even}
 \end{figure}
 Poderíamos chamar de máquina \emph{padrão} uma máquina de Turing cujos
@@ -110,7 +110,7 @@ $2$ para~$\TMright$ e $3$ para~$\TMstay$).
 
 Dessa forma, toda máquina de Turing padrão pode ser descrita por uma
 lista finita de inteiros positivos, isto é, como uma sequência $s_M \in
-(\PosInt)^*$. Por exemplo, a máquina \emph{Even} padrão é codificada
+(\PosInt)^*$. Por exemplo, a máquina \emph{Par} padrão é codificada
 pela sequência
 \[
 2, \underbrace{1, 2}_Q, 3, \overbrace{1, 2, 3}^\Sigma, 1, \underbrace{1, 3, 2, 3, 2}_{\delta(1,3) = \tuple{2,3,R}}, 

@@ -35,8 +35,8 @@ multinacional'', que recebe dois argumentos, onde o primeiro argumento
 usarmos variáveis $a$, $b$, $c$ para variar sobre cidadãos franceses e $x$, $y$, $z$
 para variar sobre cidadãos alemães, então
 \[
-\lforall[a][\lforall x][(\Atom{\Obj{MarriedTo}}{a,x} \lif
-(\Atom{\Obj{DrinksWine}}{a} \lor \lnot \Atom{\Obj{EatsWurst}}{x})]]
+\lforall[a][\lforall x][(\Atom{\Obj{CasadoCom}}{a,x} \lif
+(\Atom{\Obj{BebeVinho}}{a} \lor \lnot \Atom{\Obj{ComeWurst}}{x})]]
 \]
 afirma que, se algum francês for casado com um alemão, ou o
 francês bebe vinho ou o alemão não come wurst.
@@ -46,16 +46,16 @@ maneira natural, reunindo todos os objetos dos !!{domain}s de múltiplas ordena�
 em um único !!{domain} de primeira ordem, usando !!{predicate}s unários para acompanhar
 as ordenações e relativizando quantificadores. Por exemplo, a linguagem de primeira ordem
 correspondente ao exemplo acima teria !!{predicate}s unários
-``$\Obj{German}$'' e ``$\Obj{French}$'', além das outras relações
+``$\Obj{Alemao}$'' e ``$\Obj{Frances}$'', além das outras relações
 descritas, com os requisitos de ordenação eliminados. Um quantificador ordenado $\lforall[x][!A]$, onde $x$ é !!a{variable} da ordenação alemã, traduz-se para
 \[
-\lforall[x][(\Atom{\Obj{German}}{x} \lif !A)].
+\lforall[x][(\Atom{\Obj{Alemao}}{x} \lif !A)].
 \]
 Precisamos adicionar axiomas que garantam que as ordenações sejam separadas---por exemplo,
-$\lforall[x][\lnot (\Atom{\Obj{German}}{x} \land
-  \Atom{\Obj{French}}{x})]$---, bem como axiomas que garantam que
+$\lforall[x][\lnot (\Atom{\Obj{Alemao}}{x} \land
+  \Atom{\Obj{Frances}}{x})]$---, bem como axiomas que garantam que
 ``bebe vinho'' só vale de objetos que satisfazem o !!{predicate}
-$\Atom{\Obj{French}}{x}$, etc. Com essas convenções e axiomas, não
+$\Atom{\Obj{Frances}}{x}$, etc. Com essas convenções e axiomas, não
 é difícil mostrar que !!{sentence}s de múltiplas ordenações traduzem-se em
 !!{sentence}s de primeira ordem, e !!{derivation}s de múltiplas ordenações traduzem-se
 em !!{derivation}s de primeira ordem. Além disso, !!{structure}s de múltiplas ordenações

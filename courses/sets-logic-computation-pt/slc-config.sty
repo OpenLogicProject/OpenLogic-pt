@@ -20,6 +20,29 @@
 %   o default em open-logic-config.sty é "Assumption")
 \DeclareDocumentMacro \TAss {Hipótese}
 
+% - `\Cut`: rótulo da regra de corte do cálculo de sequentes (o default em
+%   open-logic-config.sty:218 é "Cut"). open-logic.sty carrega antes deste
+%   ficheiro, por isso a redefinição prevalece.
+\DeclareDocumentMacro \Cut {\ensuremath{\mathrm{Corte}}}
+
+% - Diagramas de autómatos / máquinas de Turing: os nós "initial" mostram
+%   "start" por defeito da biblioteca TikZ automata (carregada por
+%   open-logic.sty). Localizar para "início".
+\tikzset{initial text={início}}
+
+% - Cabeçalho corrente (OLPpage): títulos PT longos (ex.: cap. 13 "Além da
+%   lógica de primeira ordem", cap. 14 "Computações de Máquinas de Turing")
+%   alcançavam/ultrapassavam o número de página em \small. Reduzir a fonte do
+%   cabeçalho para \footnotesize dá folga. Vai em \AtBeginDocument porque a
+%   classe só define o pagestyle OLPpage no início do documento (e o hook da
+%   classe, registado antes deste, corre primeiro).
+\AtBeginDocument{%
+  \makeoddhead{OLPpage}{\footnotesize\sffamily\color{OLPcolor}\leftmark}{}%
+    {\color{OLPcolor}\sffamily\bfseries\thepage}%
+  \makeevenhead{OLPpage}{\footnotesize\sffamily\color{OLPcolor}\leftmark}{}%
+    {\color{OLPcolor}\sffamily\bfseries\thepage}%
+}
+
 % Tokens EN do curso (sobrescritos pelos PT abaixo)
 \settexttoken{enumerable}{countable}{countable}
 \settexttoken{nonenumerable}*{uncountable}{uncountable}
