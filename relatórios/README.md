@@ -1,13 +1,16 @@
 # Relatórios do processo de tradução (PT)
 
 Esta pasta reúne a documentação técnica do processo de tradução e
-adaptação para português dos livros do Open Logic Project — sobretudo o
-*Sets, Logic, Computation* (SLC) e o *Set Theory*. Servem o **próximo
-tradutor**: mostram como o trabalho foi planeado, executado, auditado e
-verificado, para que o pipeline seja reconstituível.
+adaptação para português do livro *Sets, Logic, Computation* (SLC) do
+Open Logic Project — em português, *Conjuntos, Lógica, Computação*.
+Servem o **próximo tradutor**: mostram como o trabalho foi planeado,
+executado, auditado e verificado, para que o pipeline seja reconstituível.
 
-Estão em português e são documentos de **processo** (não fazem parte dos
-livros). Ficam aqui, dentro da localização, porque é onde um tradutor os
+Todos estes relatórios dizem respeito apenas ao SLC; não cobrem outros
+livros do projeto.
+
+Estão em português e são documentos de **processo** (não fazem parte do
+livro). Ficam aqui, dentro da localização, porque é onde um tradutor os
 procuraria.
 
 ## Nota histórica (importante para ler sem confusão)
@@ -18,12 +21,10 @@ correspondem à estrutura atual. Equivalências:
 
 - `OpenLogic-original/` → o repositório inglês upstream (`OpenLogic`).
 - `OpenLogic-traduzido/` → a cópia de trabalho da tradução, que veio a
-  tornar-se **`locale/pt/`** neste repositório.
-- Referências a repositórios separados por livro (ex.: um `set-theory-pt`
-  autónomo) → hoje tudo vive num só repositório, `OpenLogic-pt`, com os
-  cursos em **`locale/pt/courses/<livro>-pt/`**.
-- `relatorios/finalizacao-slc/` (sem acento, em textos antigos) → a pasta
-  atual chama-se **`finalização-slc/`**.
+  tornar-se **`locale/pt/`** neste repositório; o curso do SLC vive em
+  **`locale/pt/courses/sets-logic-computation-pt/`**.
+- `relatorios/finalizacao-slc/` (sem acentos, em textos antigos) → as
+  pastas atuais são **`relatórios/finalização-slc/`**.
 
 O conteúdo técnico (achados, decisões, correções) mantém-se válido; só os
 caminhos mudaram conforme acima.
