@@ -27,9 +27,9 @@ $ pdflatex open-logic-complete
 This repository also contains complete Portuguese editions of Open Logic
 textbooks, under `courses/`:
 
-- `courses/sets-logic-computation-pt/` — _Conjuntos, Lógica, Computação_
+- `courses/sets-logic-computation/` — _Conjuntos, Lógica, Computação_
   (translated and adapted by Pedro Lima)
-- `courses/set-theory-pt/` — _Teoria dos Conjuntos_ (translated and adapted
+- `courses/set-theory/` — _Teoria dos Conjuntos_ (translated and adapted
   by Pedro Lima)
 
 Each course has its own `README.md` with full build instructions. In short:

@@ -65,7 +65,7 @@ compiles from within this directory of a full `OpenLogic` + `locale/pt`
 checkout.
 
 The English original (and public PDFs) are at
-<https://st.openlogicproject.org/>.
+<https://builds.openlogicproject.org/>.
 
 ## License
 
