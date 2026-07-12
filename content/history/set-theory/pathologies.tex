@@ -4,10 +4,7 @@
 
 \olfileid[pt]{his}{set}{pathology}
 \olsection{Patologias}
-% Só nesta secção: evita \flushbottom a esticar parágrafos quando a figura
-% de Hilbert (indivisível) desequilibra a página; repõe-se \flushbottom no fim.
-\raggedbottom
-% Interlinhado compacto: \PatologiaCompactSpread em settheory-config.sty.
+% Interlinhado compacto: \PatologiaCompactSpread em open-logic-config.sty.
 \begin{patologiascompactas}
 
 Contudo, a definição de um \emph{limite} acabou por permitir construções bastante ``patológicas''.
@@ -108,6 +105,10 @@ parte nenhuma; intuitivamente porque, no limite infinito, a função
 muda abruptamente de direção a cada instante. (Esboçaremos a construção de Hilbert
 com mais pormenor na \olref[his][set][hilbertcurve]{sec}.)
 
+\enlargethispage{2\baselineskip}%
+% PT mais longo que EN: se o bloco final não couber, passa inteiro à página
+% seguinte (evita viúva «propaganda» / linha órfã no topo da pág. seguinte).
+\needspace{8\baselineskip}%
 Para o bem ou para o mal, estas construções geométricas ``patológicas''
 foram tratadas como motivo para duvidar de apelos à intuição geométrica. Tornaram-se
 algo próximo de \emph{propaganda} por uma nova forma de fazer
@@ -117,5 +118,4 @@ portanto um duplo propósito: como aviso contra confiar na
 intuição geométrica, e como uma demonstração da fertilidade de novas
 formas de pensar.
 
-\flushbottom
 \end{document}
