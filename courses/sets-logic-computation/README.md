@@ -1,5 +1,7 @@
 # Sets, Logic, Computation (Portuguese / pt-BR)
 
+[![Book Cover](https://slc.openlogicproject.org/pt/slc.png)](https://slc.openlogicproject.org/pt/slc-screen.pdf)
+
 _Conjuntos, Lógica, Computação_ is the Portuguese (pt-BR) **translation
 and adaptation, by Pedro Lima**, of _Sets, Logic, Computation_ by Richard
 Zach — itself a remix of the _[Open Logic
@@ -14,6 +16,13 @@ content** lives one level up in this same repository
 (`locale/pt/content/`), and the build also requires the English _Open
 Logic Text_ for shared macros, class files, assets, and any not-yet
 translated material.
+
+You can download the PDF of the most recent version from the [Open
+Logic builds site](https://builds.openlogicproject.org/):
+
+- [Screen version](https://slc.openlogicproject.org/pt/slc-screen.pdf)
+- [Print version](https://slc.openlogicproject.org/pt/slc-print.pdf)
+
 
 ## How this is organized (consolidated layout)
 

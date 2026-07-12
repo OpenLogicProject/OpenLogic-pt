@@ -1,5 +1,8 @@
 # Set Theory (Portuguese / pt-BR)
 
+[![Book Cover](https://st.openlogicproject.org/pt/settheory.png)](https://st.openlogicproject.org/pt/settheory-screen.pdf)
+
+
 _Teoria dos Conjuntos_ is the Portuguese (pt-BR) **translation and
 adaptation, by Pedro Lima**, of _Set Theory: An Open Introduction_ by Tim
 Button — a brief introduction to the philosophy of set theory, built on the
@@ -11,6 +14,12 @@ The **translated content** lives one level up in this same repository
 (`locale/pt/content/`), and the build also requires the English _Open
 Logic Text_ for shared macros, class files, assets, and any not-yet
 translated material.
+
+You can download the PDF of the most recent version from the [Open
+Logic builds site](https://builds.openlogicproject.org/):
+
+- [Screen version](https://st.openlogicproject.org/pt/settheory-screen.pdf)
+- [Print version](https://st.openlogicproject.org/pt/settheory-print.pdf)
 
 ## How this is organized (consolidated layout)
 
