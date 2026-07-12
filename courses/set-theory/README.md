@@ -1,7 +1,7 @@
+# Teoria dos Conjuntos
 # Set Theory (Portuguese / pt-BR)
 
 [![Book Cover](https://st.openlogicproject.org/pt/settheory.png)](https://st.openlogicproject.org/pt/settheory-screen.pdf)
-
 
 _Teoria dos Conjuntos_ is the Portuguese (pt-BR) **translation and
 adaptation, by Pedro Lima**, of _Set Theory: An Open Introduction_ by Tim
