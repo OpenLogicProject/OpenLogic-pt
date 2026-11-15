@@ -6,124 +6,132 @@
 
 \begin{document}
 
-\olfileid{nml}{fil}{int}
+\olfileid[pt]{nml}{fil}{int}
 
-\olsection{Introduction}
+\olsection{Introdução}
 
-One important question about a logic is always whether it is
-decidable, O.s.\@, if there is an effective procedure which will answer
-the question ``is this !!{formula} valid.'' Propositional logic is
-decidable: we can effectively test if !!a{formula} is a tautology by
-constructing a truth table, and for a given !!{formula}, the truth
-table is finite.  But we can't obviously test if a modal formula is
-true in all models, for there are infinitely many of them.  We can
-list all the finite models relevant to a given formula, since only the
-assignment of subsets of worlds to !!{propositional variable}s which
-actually occur in the !!{formula} are relevant. If the accessibility
-relation is fixed, the possible different assignments $V(p)$ are just
-all the subsets of~$W$, and if $\card{W} = n$ there are $2^n$ of
-those. If our !!{formula}~$!A$ contains $m$ !!{propositional
-  variable}s there are then $2^{nm}$ different models with~$n$
-worlds. For each one, we can test if~$!A$ is true at all worlds,
-simply by computing the truth value of~$!A$ in each. Of course, we
-also have to check all possible accessibility relations, but there are
-only finitely many relations on~$n$ worlds as well (specifically, the
-number of subsets of $W \times W$, O.s.\@, $2^{n^2}$.
+Uma questão importante acerca de uma lógica é sempre saber se ela é
+decidível, isto é, se existe um procedimento efetivo que responda à
+pergunta ``esta !!{formula} é válida?''. A lógica proposicional é
+decidível: podemos testar efetivamente se !!a{formula} é uma tautologia
+construindo uma tabela de verdade e, para uma !!{formula} dada, a
+tabela de verdade é finita. Mas não podemos testar de maneira óbvia se
+uma fórmula modal é verdadeira em todos os modelos, pois há
+infinitos modelos. Podemos enumerar todos os modelos finitos relevantes
+para uma fórmula dada, pois só são relevantes as atribuições de
+subconjuntos de mundos às !!{propositional variable}s que de fato
+ocorrem na !!{formula}. Se a relação de acessibilidade é fixa, as
+diferentes atribuições possíveis $V(p)$ são simplesmente todos os
+subconjuntos de~$W$ e, se $\card{W} = n$, há $2^n$ deles. Se nossa
+!!{formula}~$!A$ contém $m$ !!{propositional
+  variable}s, há então $2^{nm}$ modelos diferentes com~$n$ mundos.
+Para cada um, podemos testar se~$!A$ é verdadeira em todos os mundos,
+simplesmente calculando o valor de verdade de~$!A$ em cada um deles. É
+claro que também devemos verificar todas as relações de acessibilidade
+possíveis, mas há apenas um número finito de relações sobre~$n$ mundos
+(mais precisamente, o número de subconjuntos de $W \times W$, isto é,
+$2^{n^2}$.
 
-If we are not interested in the logic~\Log{K}, but a logic defined by
-some class of models (p.ex., the reflexive transitive models), we also
-have to be able to test if the accessibility relation is of the right
-kind. We can do that whenever the frames we are interested in are
-definable by modal !!{formula}s (p.ex., by testing if \Ax{T} and \Ax{4}
-valid in the frame). So, the idea would be to run through all the
-finite frames, test each one if it is a frame in the class we're
-interested in, then list all the possible models on that frame and
-test if $!A$ is true in each. If not, stop: $!A$ is not valid in the
-class of models of interest.
+Se não estamos interessados na lógica~\Log{K}, mas em uma lógica
+definida por alguma classe de modelos (por exemplo, os modelos
+reflexivos e transitivos), também devemos ser capazes de testar se a
+relação de acessibilidade é do tipo correto. Podemos fazê-lo sempre que
+os frames de nosso interesse são definíveis por !!{formula}s modais
+(por exemplo, testando se \Ax{T} e \Ax{4} são válidos no frame). Assim,
+a ideia seria percorrer todos os frames finitos, testar se cada um é um
+frame da classe de nosso interesse, enumerar em seguida todos os
+modelos possíveis sobre esse frame e testar se $!A$ é verdadeira em
+cada um. Se não for, paramos: $!A$ não é válida na classe de modelos
+de interesse.
 
-There is a problem with this idea: we don't know when, if ever, we can
-stop looking. If the !!{formula} has a finite countermodel, our procedure will
-find it. But if it has no finite countermodel, we won't get an
-answer. The !!{formula} may be valid (no countermodels at all), or it
-may have only an infinite countermodel, which we'll never look at. This
-problem can be overcome if we can show that every !!{formula} that has
-a countermodel has a finite countermodel. If this is the case we say
-the logic has the \emph{finite model property}.
+Há um problema com essa ideia: não sabemos quando, se é que isso
+ocorrerá, podemos parar de procurar. Se a !!{formula} tem um
+contramodelo finito, nosso procedimento o encontrará. Mas, se ela não
+tem contramodelo finito, não obteremos uma resposta. A !!{formula} pode
+ser válida (sem qualquer contramodelo), ou pode ter apenas um
+contramodelo infinito, que nunca examinaremos. Esse problema pode ser
+superado se pudermos mostrar que toda !!{formula} que tem um
+contramodelo tem um contramodelo finito. Nesse caso, dizemos que a
+lógica tem a \emph{propriedade dos modelos finitos}.
 
-But how would we show that a logic has the finite model property? One
-way of doing this would be to find a way to turn an infinite
-(counter)model of~$!A$ into a finite one. If that can be done, then
-whenever there is a model in which $!A$ is not true, then the
-resulting finite model also makes $!A$ not true. That finite model
-will show up on our list of all finite models, and we will eventually
-determine, for every formula that is not valid, that it isn't. Our
-procedure won't terminate if the formula is valid. If we can show in
-addition that there is some maximum size that the finite model our
-procedure provides can have, and that this maximum size depends only
-on the !!{formula}~$!A$, we will have a size up to which we have to
-test finite models in our search for countermodels. If we haven't
-found a countermodel by then, there are none. Then our procedure will,
-in fact, decide the question ``is $!A$ valid?'' for any
-!!{formula}~$!A$.
+Mas como mostrar que uma lógica tem a propriedade dos modelos finitos?
+Uma maneira seria encontrar um modo de transformar um (contra)modelo
+infinito de~$!A$ em um modelo finito. Se isso puder ser feito, sempre
+que houver um modelo no qual $!A$ não é verdadeira, o modelo finito
+resultante também tornará $!A$ não verdadeira. Esse modelo finito
+aparecerá em nossa lista de todos os modelos finitos e, para toda
+fórmula que não seja válida, acabaremos determinando que ela não é
+válida. Nosso procedimento não terminará se a fórmula for válida. Se,
+além disso, pudermos mostrar que existe algum tamanho máximo que o
+modelo finito fornecido por nosso procedimento pode ter, e que esse
+tamanho máximo depende apenas da !!{formula}~$!A$, teremos um tamanho
+até o qual devemos testar modelos finitos em nossa busca por
+contramodelos. Se até então não tivermos encontrado um contramodelo,
+não haverá nenhum. Nosso procedimento decidirá então, de fato, a
+pergunta ``$!A$ é válida?'' para qualquer !!{formula}~$!A$.
 
-A strategy that often works for turning infinite structures into
-finite structures is that of ``identifying'' !!{element}s of the
-structure which behave the same way in relevant respects. If there are
-infinitely many worlds in~$\mModel{M}$ that behave the same in
-relevant respects, then we may be able to collect \emph{all} worlds in
-finitely many (possibly infinite) ``classes'' of such worlds. In other
-words, we should partition the set of worlds in the right way, O.s.\@,
-in such a way that each partition contains infinitely many worlds, but
-there are only finitely many partitions. Then we define a new
-model~$\mModel{M^*}$ where the worlds are the partitions. Finitely
-many partitions in the old model give us finitely many worlds in the
-new model, O.s.\@, a finite model. Let's call the partition a world~$w$
-is in $[w]$. We'll want it to be the case that $\mSat{M}{!A}[w]$ iff
-$\mSat{M^*}{!A}[{[w]}]$, since we want the new model to be a
-countermodel to~$!A$ if the old one was. This requires that we define
-the partition, as well as the accessibility relation of~$\mModel{M^*}$
-in the right way.
+Uma estratégia que muitas vezes funciona para transformar estruturas
+infinitas em estruturas finitas é ``identificar'' !!{element}s da
+estrutura que se comportam da mesma maneira nos aspectos relevantes.
+Se há infinitos mundos em~$\mModel{M}$ que se comportam da mesma
+maneira nos aspectos relevantes, talvez possamos reunir \emph{todos}
+os mundos em um número finito de ``classes'' (possivelmente infinitas)
+de tais mundos. Em outras palavras, poderíamos tentar particionar o conjunto de
+mundos da maneira correta, isto é, de modo que cada parte contenha
+infinitos mundos, mas haja apenas um número finito de partes. Definimos
+então um novo modelo~$\mModel{M^*}$ cujos mundos são as partes. Um
+número finito de partes no modelo antigo nos dá um número finito de
+mundos no modelo novo, isto é, um modelo finito. Chamemos a
+parte à qual pertence um mundo~$w$ de~$[w]$. Queremos que
+$\mSat{M}{!A}[w]$ se e somente se $\mSat{M^*}{!A}[{[w]}]$, pois
+queremos que o novo modelo seja um contramodelo de~$!A$ se o antigo o
+era. Isso exige que definamos da maneira correta tanto a partição
+quanto a relação de acessibilidade de~$\mModel{M^*}$.
 
-To see how this would go, first imagine we have no accessibility
-relation. $\mSat{M}{\Box !B}[w]$ iff for some $v \in W$,
-$\mSat{M}{\Box !B}[v]$, and the same for $\mModel{M^*}$, except with
-$[w]$ and $[v]$. As a first idea, let's say that two worlds $u$ and
-$v$ are equivalent (belong to the same partition) if they agree on all
-!!{propositional variable}s in~$\mModel{M}$, O.s.\@, $\mSat{M}{p}[u]$
-iff $\mSat{M}{p}[v]$. Let $V^*(p) = \Setabs{[w]}{\mSat{M}{p}[w]}$.
-Our aim is to show that $\mSat{M}{!A}[w]$ iff
-$\mSat{M^*}{!A}[{[w]}]$. Obviously, we'd prove this by induction: The
-base case would be $!A \equiv p$. First suppose $\mSat{M}{p}[w]$. Then
-$[w] \in V^*$ by definition, so $\mSat{M^*}{p}[{[w]}]$. Now suppose
-that $\mSat{M^*}{p}[{[w]}]$. That means that $[w] \in V^*(p)$, O.s.\@,
-for some $v$ equivalent to~$w$, $\mSat{M}{p}[v]$. But ``$w$ equivalent
-to $v$'' means ``$w$ and $v$ make all the same !!{propositional variable}s
-true,'' so $\mSat{M}{p}[w]$. Now for the inductive step, p.ex., $!A
-\ident \lnot !B$. Then $\mSat{M}{\lnot !B}[w]$ iff $\mSat/{M}{!B}[w]$
-iff $\mSat/{M^*}{!B}[{[w]}]$ (by inductive hypothesis) iff
-$\mSat{M^*}{\lnot !B}[{[w]}]$. Similarly for the other non-modal
-operators. It also works for $\Box$: suppose $\mSat{M^*}{\Box
-  !B}[{[w]}]$. That means that for every $[u]$,
-$\mSat{M^*}{!B}[{[u]}]$. By inductive hypothesis, for every $u$,
-$\mSat{M}{!B}[u]$. Consequently, $\mSat{M}{\Box !B}[w]$.
+Para ver como isso funcionaria, imagine primeiro que não temos relação
+de acessibilidade. $\mSat{M}{\Box !B}[w]$ se e somente se, para algum
+$v \in W$, $\mSat{M}{\Box !B}[v]$, e o mesmo vale para
+$\mModel{M^*}$, mas com $[w]$ e $[v]$. Como primeira ideia, digamos que
+dois mundos $u$ e $v$ são equivalentes (pertencem à mesma parte) se
+concordam quanto a todas as !!{propositional variable}s em~$\mModel{M}$,
+isto é, $\mSat{M}{p}[u]$ se e somente se $\mSat{M}{p}[v]$. Seja
+$V^*(p) = \Setabs{[w]}{\mSat{M}{p}[w]}$. Nosso objetivo é mostrar que
+$\mSat{M}{!A}[w]$ se e somente se $\mSat{M^*}{!A}[{[w]}]$.
+Evidentemente, demonstraríamos isso por indução: o caso base seria
+$!A \equiv p$. Primeiro, suponha $\mSat{M}{p}[w]$. Então
+$[w] \in V^*$ por definição, logo $\mSat{M^*}{p}[{[w]}]$. Suponha
+agora que $\mSat{M^*}{p}[{[w]}]$. Isso significa que
+$[w] \in V^*(p)$, isto é, para algum $v$ equivalente a~$w$,
+$\mSat{M}{p}[v]$. Mas ``$w$ equivalente a $v$'' significa que ``$w$ e
+$v$ tornam verdadeiras exatamente as mesmas !!{propositional variable}s'',
+logo $\mSat{M}{p}[w]$. Para o passo indutivo, por exemplo, seja
+$!A \ident \lnot !B$. Então $\mSat{M}{\lnot !B}[w]$ se e somente se
+$\mSat/{M}{!B}[w]$ se e somente se $\mSat/{M^*}{!B}[{[w]}]$ (pela
+hipótese de indução) se e somente se $\mSat{M^*}{\lnot !B}[{[w]}]$.
+O mesmo vale para os outros operadores não modais. Isso também
+funciona para $\Box$: suponha $\mSat{M^*}{\Box !B}[{[w]}]$. Isso
+significa que, para todo $[u]$, $\mSat{M^*}{!B}[{[u]}]$. Pela hipótese
+de indução, para todo $u$, $\mSat{M}{!B}[u]$. Consequentemente,
+$\mSat{M}{\Box !B}[w]$.
 
-In the general case, where we have to also define the accessibility
-relation for $\mModel{M^*}$, things are more complicated. We'll call a
-model~$\mModel{M^*}$ a \emph{filtration} if its accessibility
-relation~$R^*$ satisfies the conditions required to make the inductive
-proof above go through. Then any filtration~$\mModel{M^*}$ will make
-$!A$ true at $[w]$ iff $\mModel{M}$ makes $!A$ true at~$w$. However,
-now we also have to show that there \emph{are} filtrations, O.s.\@, we
-can define~$R^*$ so that it satisfies the required conditions. In
-order for this to work, however, we have to require that worlds $u$,
-$v$ count as equivalent not just when they agree on all
-!!{propositional variable}s, but on all sub-!!{formula}s
-of~$!A$. Since $!A$ has only finitely many sub-!!{formula}s, this will
-still guarantee that the filtration is finite. There is not just one
-way to define a filtration, and in order to make sure that the
-accessibility relation of the filtration satisfies the required
-properties (p.ex., reflexive, transitive, etc.) we have to be inventive
-with the definition of~$R^*$.
+No caso geral, em que também devemos definir a relação de
+acessibilidade de $\mModel{M^*}$, as coisas são mais complicadas.
+Chamaremos um modelo~$\mModel{M^*}$ de \emph{filtração} se sua relação
+de acessibilidade~$R^*$ satisfizer as condições necessárias para que a
+demonstração indutiva acima funcione. Então, qualquer
+filtração~$\mModel{M^*}$ tornará $!A$ verdadeira em $[w]$ se e somente
+se $\mModel{M}$ tornar $!A$ verdadeira em~$w$. Contudo, agora também
+devemos mostrar que \emph{existem} filtrações, isto é, que podemos
+definir~$R^*$ de modo que ela satisfaça as condições exigidas. Para que
+isso funcione, contudo, devemos exigir que os mundos $u$, $v$ contem
+como equivalentes não apenas quando concordam quanto a todas as
+!!{propositional variable}s, mas quanto a todas as sub-!!{formula}s
+de~$!A$. Como $!A$ tem apenas um número finito de sub-!!{formula}s,
+isso ainda garantirá que a filtração seja finita. Não há uma única
+maneira de definir uma filtração e, para garantir que a relação de
+acessibilidade da filtração satisfaça as propriedades exigidas (por
+exemplo, reflexividade, transitividade etc.), devemos ser criativos na
+definição de~$R^*$.
 
 
 \end{document}

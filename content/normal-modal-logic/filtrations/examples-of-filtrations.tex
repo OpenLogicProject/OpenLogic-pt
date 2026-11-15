@@ -6,104 +6,105 @@
 
 \begin{document}
 
-\olfileid{nml}{fil}{exf}
+\olfileid[pt]{nml}{fil}{exf}
 
-\olsection{Examples of Filtrations}
+\olsection{Exemplos de filtrações}
 
-We have not yet shown that there are any filtrations. But indeed, for
-any model $\mModel{M}$, there are many filtrations of $\mModel{M}$
-through $\Gamma$. We identify two, in particular: the finest and
-coarsest filtrations. Filtrations of the same models will differ in
-their accessibility relation (as \olref[fil]{defn:filtration} stipulates
-directly what $W^*$ and~$V^*$ should be). The finest filtration
-will have as few related worlds as possible, whereas the coarsest will
-have as many as possible.
+Ainda não mostramos que existe alguma filtração. Na verdade, para todo
+modelo $\mModel{M}$ há muitas filtrações de $\mModel{M}$ por meio de
+$\Gamma$. Destacamos duas: a filtração mais fina e a mais grossa.
+Filtrações dos mesmos modelos diferem em sua relação de acessibilidade
+(pois \olref[fil]{defn:filtration} estipula diretamente como devem ser
+$W^*$ e~$V^*$). A filtração mais fina terá o menor número possível de
+mundos relacionados, ao passo que a mais grossa terá o maior número
+possível.
 
 \begin{defn}
-  Where $\Gamma$ is closed under subformulas, the \emph{finest}
-  filtration $\mModel{M^*}$ of a model $\mModel{M}$ is defined by putting:
+  Se $\Gamma$ é fechado sob subfórmulas, a filtração \emph{mais fina}
+  $\mModel{M^*}$ de um modelo $\mModel{M}$ é definida estipulando:
   \[
-  R^*[u][v] \quad \text{if and only if} \quad \exists u'\in [u] \;
+  R^*[u][v] \quad \text{se, e somente se,} \quad \exists u'\in [u] \;
   \exists v' \in [v] : Ru'v'.
   \]
 \end{defn}
 
 \begin{prop}\ollabel{prop:finest}
-  The finest filtration $\mModel{M^*}$ is indeed a filtration. 
+  A filtração mais fina $\mModel{M^*}$ é de fato uma filtração. 
 \end{prop}
 
 \begin{proof}
-  We need to check that $R^*$, so defined, satisfies
-  \olref[fil]{defn:filtration}\olref[fil]{defn:filtration-R}. We check
-  the three conditions in turn.
+  Precisamos verificar que $R^*$, assim definida, satisfaz
+  \olref[fil]{defn:filtration}\olref[fil]{defn:filtration-R}.
+  Verificamos sucessivamente as três condições.
 
-  If $Ruv$ then since $u \in [u]$ and $v \in [v]$, also $R^*[u][v]$,
-  so \olref[fil]{defn:filtration-R1} is satisfied.
+  Se $Ruv$, então, como $u \in [u]$ e $v \in [v]$, também $R^*[u][v]$;
+  portanto, \olref[fil]{defn:filtration-R1} é satisfeita.
   
-  \iftag{prvBox}{\iftag{probBox}{We leave the verification of
-      \olref[fil]{defn:filtration-R2} as an exercise.}{For
-        \olref[fil]{defn:filtration-R2}, suppose $\Box!A \in \Gamma$,
-        $R^*[u][v]$, and $\mSat{M}{\Box!A}[u]$. By definition of
-        $R^*$, there are $u' \equiv u$ and $v' \equiv v$ such that
-        $Ru'v'$. Since $u$ and $u'$ agree on $\Gamma$, also
-        $\mSat{M}{\Box!A}[u']$, so that $\mSat{M}{!A}[v']$. By closure
-        of $\Gamma$ under sub-!!{formula}s, $v$ and $v'$ agree on
-        $!A$, so $\mSat{M}{!A}[v]$, as desired.}}{}
+  \iftag{prvBox}{\iftag{probBox}{Deixamos a verificação de
+      \olref[fil]{defn:filtration-R2} como exercício.}{Para
+        \olref[fil]{defn:filtration-R2}, suponha $\Box!A \in \Gamma$,
+        $R^*[u][v]$ e $\mSat{M}{\Box!A}[u]$. Pela definição de
+        $R^*$, existem $u' \equiv u$ e $v' \equiv v$ tais que
+        $Ru'v'$. Como $u$ e $u'$ concordam em $\Gamma$, também
+        $\mSat{M}{\Box!A}[u']$; logo, $\mSat{M}{!A}[v']$. Pelo fechamento
+        de $\Gamma$ sob sub-!!{formula}s, $v$ e $v'$ concordam em
+        $!A$; portanto, $\mSat{M}{!A}[v]$, como desejado.}}{}
   
-  \iftag{prvDiamond}{\iftag{probDiamond}{We leave the verification of
-      \olref[fil]{defn:filtration-R3} as an exercise.}{To verify
-        \olref[fil]{defn:filtration-R3}, suppose $\Diamond!A \in
-        \Gamma$, $R^*[u][v]$, and $\mSat{M}{!A}[v]$.  By definition of
-        $R^*$, there are $u' \equiv u$ and $v' \equiv v$ such that
-        $Ru'v'$. Since $v$ and $v'$ agree on~$\Gamma$, and $\Gamma$ is
-        closed under sub-!!{formula}s, also $\mSat{M}{!A}[v']$, so
-        that $\mSat{M}{\Diamond !A}[u']$.  Since $u$ and $u'$ also
-        agree on $\Gamma$, $\mSat{M}{\Diamond !A}[u]$.}}{}
+  \iftag{prvDiamond}{\iftag{probDiamond}{Deixamos a verificação de
+      \olref[fil]{defn:filtration-R3} como exercício.}{Para verificar
+        \olref[fil]{defn:filtration-R3}, suponha $\Diamond!A \in
+        \Gamma$, $R^*[u][v]$ e $\mSat{M}{!A}[v]$. Pela definição de
+        $R^*$, existem $u' \equiv u$ e $v' \equiv v$ tais que
+        $Ru'v'$. Como $v$ e $v'$ concordam em~$\Gamma$ e $\Gamma$ é
+        fechado sob sub-!!{formula}s, também $\mSat{M}{!A}[v']$; logo,
+        $\mSat{M}{\Diamond !A}[u']$. Como $u$ e $u'$ também concordam
+        em $\Gamma$, $\mSat{M}{\Diamond !A}[u]$.}}{}
 \end{proof}
 
 \begin{probtag}{probBox,probDiamond}
-  Complete the proof of \olref[nml][fil][exf]{prop:finest}.
+  Complete a demonstração de \olref[nml][fil][exf]{prop:finest}.
 \end{probtag}
 
 \begin{defn}
-  Where $\Gamma$ is closed under subformulas, the \emph{coarsest}
-  filtration~$\mModel{M^*}$ of a model~$\mModel{M}$ is defined by
-  putting $R^*[u][v]$ if and only if
-  \iftag{notprvBox,notprvDiamond}{the following condition is
-    met:}{\emph{both} of the following conditions are met:}
+  Se $\Gamma$ é fechado sob subfórmulas, a filtração \emph{mais grossa}
+  ~$\mModel{M^*}$ de um modelo~$\mModel{M}$ é definida estipulando que
+  $R^*[u][v]$ se, e somente se,
+  \iftag{notprvBox,notprvDiamond}{a condição a seguir é
+    satisfeita:}{\emph{ambas} as condições a seguir são satisfeitas:}
   \begin{tagenumerate}{prvBox,prvDiamond}
-  \tagitem{prvBox}{\ollabel{defn:coarsest-Box}If $\Box!A \in \Gamma$
-    and $\mSat{M}{\Box!A}[u]$ then
+  \tagitem{prvBox}{\ollabel{defn:coarsest-Box}Se $\Box!A \in \Gamma$
+    e $\mSat{M}{\Box!A}[u]$, então
     $\mSat{M}{!A}[v]$\iftag{prvDiamond}{;}{.}}{}
-  \tagitem{prvDiamond}{\ollabel{defn:coarsest-Diamond}If $\Diamond!A
-    \in \Gamma$ and $\mSat{M}{!A}[v]$ then
+  \tagitem{prvDiamond}{\ollabel{defn:coarsest-Diamond}Se $\Diamond!A
+    \in \Gamma$ e $\mSat{M}{!A}[v]$, então
     $\mSat{M}{\Diamond!A}[u]$.}{}
   \end{tagenumerate}
 \end{defn}
 
 \begin{prop}
-  The coarsest filtration $\mModel{M^*}$ is indeed a filtration. 
+  A filtração mais grossa $\mModel{M^*}$ é de fato uma filtração. 
 \end{prop}
 
 \begin{proof}
-  Given the definition of $R^*$, the only condition that is left to
-  verify is the implication from $Ruv$ to $R^*[u][v]$. So assume
-  $Ruv$. \iftag{prvBox}{Suppose $\Box!A \in \Gamma$ and
-    $\mSat{M}{\Box!A}[u]$; then obviously
-    $\mSat{M}{!A}[v]$\iftag{prvDiamond}{, and
-      \olref{defn:coarsest-Box} is
-      satisfied. }{.}}{}\iftag{prvDiamond}{Suppose $\Diamond!A \in
-    \Gamma$ and $\mSat{M}{!A}[v]$. Then $\mSat{M}{\Diamond!A}[u]$
-    since~$Ruv$\iftag{prvBox}{, and \olref{defn:coarsest-Diamond} is
-      satisfied}{}.}{}
+  Dada a definição de $R^*$, a única condição que resta verificar é a
+  implicação de $Ruv$ para $R^*[u][v]$. Suponha, portanto, $Ruv$.
+  \iftag{prvBox}{Suponha $\Box!A \in \Gamma$ e
+    $\mSat{M}{\Box!A}[u]$; então, evidentemente,
+    $\mSat{M}{!A}[v]$\iftag{prvDiamond}{, e
+      \olref{defn:coarsest-Box} é
+      satisfeita. }{.}}{}\iftag{prvDiamond}{Suponha $\Diamond!A \in
+    \Gamma$ e $\mSat{M}{!A}[v]$. Então $\mSat{M}{\Diamond!A}[u]$,
+    pois~$Ruv$\iftag{prvBox}{, e \olref{defn:coarsest-Diamond} é
+      satisfeita}{}.}{}
 \end{proof}
 
 \begin{ex}
-  Let $W = \PosInt$, $Rnm$ iff $m = n + 1$, and $V(p) = \Setabs{2n}{n \in
-    \Nat}$. The model $\mModel{M} = \tuple{W, R, V}$ is depicted in
-  \olref{fig:ex-filtration}. The worlds are $1$, $2$, etc.; each
-  world can access exactly one other world---its successor---and $p$ is
-  true at all and only the even numbers.
+  Seja $W = \PosInt$, valha $Rnm$ sse $m = n + 1$ e seja
+  $V(p) = \Setabs{2n}{n \in \Nat}$. O modelo $\mModel{M} =
+  \tuple{W, R, V}$ é representado em \olref{fig:ex-filtration}. Os
+  mundos são $1$, $2$ etc.; cada mundo acessa exatamente um outro
+  mundo---seu sucessor---e $p$ é verdadeira em todos, e somente, os
+  números pares.
 
   \begin{figure}
     \centering
@@ -131,48 +132,48 @@ have as many as possible.
       \draw[->,bend left] (4) to (3);
       \draw[->,reflexive above] (4) to (4);
     \end{tikzpicture}
-    \caption{An infinite model and its filtrations.}
+    \caption{Um modelo infinito e suas filtrações.}
     \ollabel{fig:ex-filtration}
   \end{figure}
   
-  Now let $\Gamma$ be the set of sub-!!{formula}s of~$\Box p \lif p$,
-  O.s.\@, $\{p, \Box p, \Box p \lif p\}$. $p$ is true at all and only
-  the even numbers, $\Box p$ is true at all and only the odd numbers,
-  so $\Box p \lif p$ is true at all and only the even numbers. In
-  other words, every odd number makes $\Box p$ true but $p$ and $\Box
-  p \lif p$ false; every even number makes $p$ and $\Box p \lif p$
-  true, but $\Box p$ false. So $W^* = \{ [1], [2] \}$, where $[1] =
-  \{1, 3, 5, \dots\}$ and $[2] = \{2, 4, 6, \dots\}$. Since $2 \in
-  V(p)$, $[2] \in V^*(p)$; since $1 \notin V(p)$, $[1] \notin
-  V^*(p)$. So $V^*(p) = \{[2]\}$.
+  Seja agora $\Gamma$ o conjunto das sub-!!{formula}s de~$\Box p \lif p$,
+  isto é, $\{p, \Box p, \Box p \lif p\}$. $p$ é verdadeira em todos,
+  e somente, os números pares; $\Box p$ é verdadeira em todos, e somente,
+  os números ímpares; logo, $\Box p \lif p$ é verdadeira em todos, e
+  somente, os números pares. Em outras palavras, todo número ímpar torna
+  $\Box p$ verdadeira, mas $p$ e~$\Box p \lif p$ falsas; todo número par
+  torna $p$ e $\Box p \lif p$ verdadeiras mas $\Box p$ falsa. Portanto,
+  $W^* = \{ [1], [2] \}$, em que $[1] = \{1, 3, 5, \dots\}$ e
+  $[2] = \{2, 4, 6, \dots\}$. Como $2 \in V(p)$, $[2] \in V^*(p)$;
+  como $1 \notin V(p)$, $[1] \notin V^*(p)$. Logo, $V^*(p) = \{[2]\}$.
 
-  Any filtration based on $W^*$ must have an accessibility relation
-  that includes $\tuple{[1], [2]}, \tuple{[2],[1]}$: since $R12$, we
-  must have $R^*[1][2]$ by
-  \olref[fil]{defn:filtration}\olref[fil]{defn:filtration-R1}, and
-  since $R23$ we must have $R^*[2][3]$, and $[3]=[1]$. It cannot
-  include $\tuple{[1],[1]}$: if it did, we'd have $R^*[1][1]$,
-  $\mSat{M}{\Box p}[1]$ but $\mSat/{M}{p}[1]$, contradicting
-  \olref[fil]{defn:filtration-R2}. Nothing requires or rules out that
-  $R^*[2][2]$. So, there are two possible filtrations of~$\mModel{M}$,
-  corresponding to the two accessibility relations
+  Toda filtração baseada em $W^*$ deve ter uma relação de acessibilidade
+  que inclua $\tuple{[1], [2]}, \tuple{[2],[1]}$: como $R12$, devemos ter
+  $R^*[1][2]$ por \olref[fil]{defn:filtration}
+  \olref[fil]{defn:filtration-R1}; como $R23$, devemos ter $R^*[2][3]$,
+  e $[3]=[1]$. Ela não pode incluir $\tuple{[1],[1]}$: se incluísse,
+  teríamos $R^*[1][1]$, $\mSat{M}{\Box p}[1]$, mas $\mSat/{M}{p}[1]$,
+  em contradição com \olref[fil]{defn:filtration-R2}. Nada exige nem
+  exclui $R^*[2][2]$. Há, portanto, duas filtrações possíveis de
+  ~$\mModel{M}$, correspondentes às duas relações de acessibilidade
   \[
-  \{\tuple{[1],[2]}, \tuple{[2],[1]}\} \text{ and }
+  \{\tuple{[1],[2]}, \tuple{[2],[1]}\} \text{ e }
   \{\tuple{[1],[2]}, \tuple{[2],[1]}, \tuple{[2],[2]}\}.
   \]
-  In either case, $p$ and $\Box p \lif p$ are false and $\Box p$ is
-  true at~$[1]$; $p$ and $\Box p \lif p$ are true and $\Box p$ is
-  false at~$[2]$.
+  Em ambos os casos, $p$ e $\Box p \lif p$ são falsas e $\Box p$ é
+  verdadeira em~$[1]$; $p$ e $\Box p \lif p$ são verdadeiras e
+  $\Box p$ é falsa em~$[2]$.
 \end{ex}
 
 
 \begin{prob}
-  Consider the following model $\mModel{M} = \tuple{W, R, V}$ where $W
-  = \Setabs{0\sigma}{\sigma \in \Bin^*}$, the set of sequences of $0$s
-  and~$1$s starting with~$0$, with $R\sigma\sigma'$ iff $\sigma' =
-  \sigma 0$ or $\sigma' = \sigma 1$, and $V(p) = \Setabs{\sigma
-    0}{\sigma \in \Bin^*}$ and $V(q) = \Setabs{\sigma 1}{\sigma \in
-    \Bin^* \setminus \{1\}}$. Here's a picture:
+  Considere o modelo $\mModel{M} = \tuple{W, R, V}$ a seguir, em que
+  $W = \Setabs{0\sigma}{\sigma \in \Bin^*}$ é o conjunto das sequências
+  de $0$s e~$1$s que começam por~$0$, com $R\sigma\sigma'$ sse
+  $\sigma' = \sigma 0$ ou $\sigma' = \sigma 1$, e
+  $V(p) = \Setabs{\sigma 0}{\sigma \in \Bin^*}$ e
+  $V(q) = \Setabs{\sigma 1}{\sigma \in \Bin^* \setminus \{1\}}$.
+  Eis uma representação:
   \begin{center}
     \begin{tikzpicture}[modal,
         node distance=2cm
@@ -216,13 +217,12 @@ have as many as possible.
       \draw[dotted] (011) to (0111);
     \end{tikzpicture}
   \end{center}
-  We have $\mSat/{M}{\Box(p \lor q) \lif (\Box p \lor \Box q)}[w]$ for
-  every~$w$.
+  Temos $\mSat/{M}{\Box(p \lor q) \lif (\Box p \lor \Box q)}[w]$ para
+  todo~$w$.
 
-  Let $\Gamma$ be the set of sub-!!{formula}s of~$\Box(p \lor q) \lif
-  (\Box p \lor \Box q)$. What are $W^*$ and~$V^*$?  What is the
-  accessibility relation of the finest filtration of~$\mModel{M}$? Of the
-  coarsest?
+  Seja $\Gamma$ o conjunto das sub-!!{formula}s de~$\Box(p \lor q) \lif
+  (\Box p \lor \Box q)$. Quais são $W^*$ e~$V^*$? Qual é a relação de
+  acessibilidade da filtração mais fina de~$\mModel{M}$? E da mais grossa?
 \end{prob}
 
 \end{document}

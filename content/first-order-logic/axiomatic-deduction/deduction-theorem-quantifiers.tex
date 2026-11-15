@@ -6,53 +6,53 @@
 
 \begin{document}
 
-\olfileid{fol}{axd}{ddq}
+\olfileid[pt]{fol}{axd}{ddq}
 
-\olsection{The Deduction Theorem with Quantifiers}
+\olsection{O teorema da dedução com quantificadores}
 
-\begin{thm}[Deduction Theorem]
-\ollabel{thm:deduction-thm-q} If $\Gamma \cup \{!A\} \Proves !B$,
-then $\Gamma \Proves !A \lif !B$.
+\begin{thm}[Teorema da dedução]
+\ollabel{thm:deduction-thm-q} Se $\Gamma \cup \{!A\} \Proves !B$,
+então $\Gamma \Proves !A \lif !B$.
 \end{thm}
 
 \begin{proof}
-We again proceed by induction on the length
-of the !!{derivation} of $!B$ from $\Gamma \cup \{!A\}$.
+Procedemos novamente por indução sobre o comprimento
+da !!{derivation} de $!B$ a partir de $\Gamma \cup \{!A\}$.
 
-The proof of the induction basis is identical to that in the proof
-of~\olref[ded]{thm:deduction-thm}.
+A demonstração da base da indução é idêntica à apresentada na
+demonstração de~\olref[ded]{thm:deduction-thm}.
 
-For the inductive step, suppose again that the !!{derivation} of $!B$
-from $\Gamma \cup \{!A\}$ ends with a step~$!B$ which is justified by
-an inference rule. If the inference rule is modus ponens, we proceed
-as in the proof of \olref[ded]{thm:deduction-thm}. If the inference
-rule is \QR, we know that $!B \ident !C \lif \lforall[x][!D(x)]$ and
-!!a{formula} of the form $!C \lif !D(a)$ appears earlier in the
-!!{derivation}, where $a$ does not occur in~$!C$, $!A$, or $\Gamma$. We
-thus have that
+Para o passo indutivo, suponha novamente que a !!{derivation} de $!B$
+a partir de $\Gamma \cup \{!A\}$ termina com um passo~$!B$ justificado por
+uma regra de inferência. Se a regra de inferência for modus ponens,
+procedemos como na demonstração de \olref[ded]{thm:deduction-thm}. Se a
+regra de inferência for \QR, sabemos que $!B \ident !C \lif \lforall[x][!D(x)]$
+e que !!a{formula} da forma $!C \lif !D(a)$ aparece anteriormente na
+!!{derivation}, em que $a$ não ocorre em~$!C$, $!A$ nem em $\Gamma$. Temos,
+portanto,
 \begin{align*}
   \Gamma \cup \{!A\} & \Proves !C \lif !D(a),\\
-  \intertext{and the induction hypothesis applies, O.s.\@, we have that}
+  \intertext{e a hipótese de indução se aplica, isto é, temos}
     \Gamma & \Proves !A \lif (!C \lif !D(a)).\\
-  \intertext{By}
+  \intertext{Por}
   & \Proves (!A \lif (!C \lif !D(a))) \lif ((!A \land !C) \lif !D(a))\\
-  \intertext{and modus ponens we get}
+  \intertext{e por modus ponens obtemos}
   \Gamma & \Proves (!A \land !C) \lif !D(a).\\
-  \intertext{Since the eigenvariable condition still applies, we can add a step to this !!{derivation} justified by \QR, and get}
+  \intertext{Como a condição de variável própria continua satisfeita, podemos acrescentar a essa !!{derivation} um passo justificado por \QR e obter}
     \Gamma & \Proves (!A \land !C) \lif \lforall[x][!D(x)].\\
-    \intertext{We also have}
+    \intertext{Também temos}
     & \Proves ((!A \land !C) \lif \lforall[x][!D(x)]) \lif (!A \lif (!C \lif \lforall[x][!D(x)]),\\
-    \intertext{so by modus ponens,}
+    \intertext{portanto, por modus ponens,}
     \Gamma & \Proves !A \lif (!C \lif \lforall[x][!D(x)]),
 \end{align*}
-O.s.\@, $\Gamma \Proves !B$.
+isto é, $\Gamma \Proves !A \lif !B$.
 
-We leave the case where $!B$ is justified by the rule \QR, but is of
-the form $\lexists[x][!D(x)] \lif !C$, as an exercise.
+Deixamos como exercício o caso em que $!B$ é justificada pela regra \QR,
+mas tem a forma $\lexists[x][!D(x)] \lif !C$.
 \end{proof}
 
 \begin{prob}
-  Complete the proof of \olref[fol][axd][ddq]{thm:deduction-thm-q}.
+  Complete a demonstração de \olref[fol][axd][ddq]{thm:deduction-thm-q}.
 \end{prob}
 
 \end{document}

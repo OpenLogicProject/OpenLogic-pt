@@ -6,108 +6,108 @@
 
 \begin{document}
 
-\olfileid{lam}{ldf}{fp}
+\olfileid[pt]{lam}{ldf}{fp}
 
-\olsection{Fixpoints}
+\olsection{Pontos fixos}
 
-Suppose we wanted to define the factorial function by recursion as a
-term $\fn{Fac}$ with the following property:
+Suponha que quiséssemos definir recursivamente a função fatorial como um
+termo $\fn{Fac}$ com a seguinte propriedade:
 \[
 \fn{Fac} \ident \lambd[n][\fn{IsZero}\, n\, \num 1 (\fn{Mult}\, n (\fn{Fac}(\fn{Pred} \, n)))]
 \]
-That is, the factorial of $n$ is $1$ if $n = 0$, and $n$ times the
-factorial of $n-1$ otherwise.  Of course, we cannot define the term
-$\fn{Fac}$ this way since $\fn{Fac}$ itself occurs in the right-hand
-side. Such recursive definitions involving self-reference
-are not part of the lambda calculus. Defining a term, p.ex., by
+Isto é, o fatorial de $n$ é $1$ se $n = 0$, e, caso contrário, é $n$ vezes o
+fatorial de $n-1$. Naturalmente, não podemos definir o termo
+$\fn{Fac}$ desse modo, pois o próprio $\fn{Fac}$ ocorre no lado
+direito. Definições recursivas desse tipo, que envolvem autorreferência,
+não fazem parte do cálculo lambda. Definir um termo, por exemplo, por
 \[
-\fn{Mult} \ident \lambd[ab][a (\fn{Add}\, a) 0]
+\fn{Mult} \ident \lambd[ab][a (\fn{Add}\, b) 0]
 \]
-only involves previously defined terms in the right-hand side, such as
-$\fn{Add}$. We can always remove $\fn{Add}$ by replacing it with its
-defining term.  This would give the term $\fn{Mult}$ as a pure lambda
-term; if $\fn{Add}$ itself involved defined terms (as, p.ex.,
-$\fn{Add}'$ does), we could continue this process and finally arrive at
-a pure lambda term.
+envolve apenas termos previamente definidos no lado direito, como
+$\fn{Add}$. Sempre podemos eliminar $\fn{Add}$ substituindo-o por seu
+termo definidor. Isso daria o termo $\fn{Mult}$ como um termo lambda
+puro. Se o próprio $\fn{Add}$ envolvesse termos definidos (como ocorre, por exemplo,
+com $\fn{Add}'$), poderíamos continuar esse processo e finalmente chegar a
+um termo lambda puro.
 
-However this is not true in the case of recursive definitions like the
-one of $\fn{Fac}$ above. If we replace the occurrence of $\fn{Fac}$ on
-the right-hand side with the definition of $\fn{Fac}$ itself, we get:
+No entanto, isso não vale para definições recursivas como a de
+$\fn{Fac}$ acima. Se substituirmos a ocorrência de $\fn{Fac}$ no
+lado direito pela própria definição de $\fn{Fac}$, obtemos:
 \begin{align*}
   \fn{Fac} & \ident \lambd[n][\fn{IsZero}\, n\, \num{1}] \\
     & \qquad (\fn{Mult}\, n
   ((\lambd[n][\fn{IsZero} \, n \, \num 1\, (\fn{Mult}\, n\, (\fn{Fac}
     (\fn{Pred}\, n)))]) (\fn{Pred}\, n)))
 \end{align*}
-and we still haven't gotten rid of $\fn{Fac}$ on the right-hand
-side. Clearly, if we repeat this process, the definition keeps growing
-longer and the process never results in a pure lambda term. Thus this
-way of defining factorial (or more generally recursive functions)
-is not feasible.
+e ainda não eliminamos $\fn{Fac}$ do lado direito.
+É evidente que, se repetirmos esse processo, a definição ficará cada vez
+mais longa e o processo nunca resultará em um termo lambda puro. Portanto, esse
+modo de definir o fatorial (ou, mais geralmente, funções recursivas)
+não é viável.
 
-The recursive definition does tell us something, though: If $f$ were a
-term representing the factorial function, then the term
+A definição recursiva, contudo, nos diz algo: se $f$ fosse um
+termo que representasse a função fatorial, então o termo
 \[
 \fn{Fac}' \ident \lambd[g][\lambd[n][\fn{IsZero} \, n \, \num 1\, (\fn{Mult} \, n\, (g (\fn{Pred} n)))]]
 \]
-applied to the term $f$, O.s.\@, $\fn{Fac}'\,f$, also represents the
-factorial function.  That is, if we regard $\fn{Fac}'$ as a function
-accepting a function and returning a function, the value of
-$\fn{Fac'}\, f$ is just~$f$, provided $f$ is the factorial. A
-function~$f$ with the property that $\fn{Fac}' \, f \equal[\beta] f$ is called
-a \emph{fixpoint} of $\fn{Fac}'$. So, the factorial is a fixpoint of
+aplicado ao termo $f$, isto é, $\fn{Fac}'\,f$, também representaria a
+função fatorial. Isto é, se considerarmos $\fn{Fac}'$ uma função
+que recebe uma função e devolve uma função, o valor de
+$\fn{Fac'}\, f$ é simplesmente~$f$, desde que $f$ seja o fatorial. Uma
+função~$f$ com a propriedade de que $\fn{Fac}' \, f \equal[\beta] f$ é chamada
+\emph{ponto fixo} de $\fn{Fac}'$. Assim, o fatorial é um ponto fixo de
 $\fn{Fac}'$.
 
-There are terms in the lambda calculus that compute the fixpoints of a
-given term, and these terms can then be used to turn a term like
-$\fn{Fac}'$ into the definition of the factorial. 
+Há termos no cálculo lambda que calculam os pontos fixos de um
+termo dado, e esses termos podem então ser usados para transformar um termo como
+$\fn{Fac}'$ em uma definição do fatorial. 
 
 \begin{defn}
   \ollabel{defn:Turing-Y}
-  The \emph{Y-combinator} is the term:
+  O \emph{combinador Y} é o termo:
   \[
   Y \ident (\lambd[ux][x(uux)])(\lambd[ux][x(uux)]).
   \]
 \end{defn}
 
 \begin{thm}
-  $Y$ has the property that $Yg \red g(Yg)$ for any term $g$. Thus,
-  $Yg$ is always a fixpoint of~$g$.
+  $Y$ tem a propriedade de que $Yg \red g(Yg)$ para qualquer termo $g$. Assim,
+  $Yg$ é sempre um ponto fixo de~$g$.
 \end{thm}
 
 \begin{proof}
-  Let's abbreviate $(\lambd[ux][x(uux)])$ by~$U$, so that $Y \ident UU$. Then
+  Abreviemos $(\lambd[ux][x(uux)])$ por~$U$, de modo que $Y \ident UU$. Então
   \begin{align*}
     Y g &\ident (\lambd[ux][x(uux)])U\,g \\
     &\red (\lambd[x][x(UUx)])g\\
     & \red g(UUg) \ident g(Yg).
   \end{align*}
-  Since $g(Yg)$ and $Yg$ both reduce to $g(Yg)$, $g(Yg) \equal[\beta]
-  Yg$, so $Yg$ is a fixpoint of~$g$.
+  Como $g(Yg)$ e $Yg$ se reduzem ambos a $g(Yg)$, $g(Yg) \equal[\beta]
+  Yg$; portanto, $Yg$ é um ponto fixo de~$g$.
 \end{proof}
 
-Of course, since $Yg$ is a redex, the reduction can continue indefinitely:
+Naturalmente, como $Yg$ é um redex, a redução pode continuar indefinidamente:
 \begin{align*}
   Y g &\red g (Y g) \\
     &\red g (g (Y g)) \\
     &\red g(g (g (Y g)))\\
     &\ldots
 \end{align*}
-So we can think of $Yg$ as $g$ applied to itself infinitely many
-times. If we apply~$g$ to it one additional time, we---so to
-speak---aren't doing anything extra; $g$~applied to~$g$ applied
-infinitely many times to~$Yg$ is still $g$~applied to~$Yg$ infinitely
-many times.
+Assim, podemos pensar em $Yg$ como $g$ aplicado a si mesmo infinitas
+vezes. Se lhe aplicarmos~$g$ uma vez mais, por assim
+dizer, não faremos nada adicional; $g$~aplicado a~$g$, aplicado
+infinitas vezes a~$Yg$, ainda é $g$~aplicado a~$Yg$ infinitas
+vezes.
 
-Note that the above sequence of $\beta$-reduction steps starting
-with~$Yg$ is infinite. So if we apply $Yg$ to some term, O.s.\@,
-consider $(Yg)N$, that term will also reduce to infinitely many
-different terms, namely $(g(Yg))N$, $(g(g(Yg)))N$, \dots. It is
-nevertheless possible that some \emph{other} sequence of reduction
-steps does terminate in a normal form.
+Observe que a sequência acima de passos de redução~$\beta$ que começa
+com~$Yg$ é infinita. Assim, se aplicarmos $Yg$ a algum termo, isto é,
+se considerarmos $(Yg)N$, esse termo também se reduzirá a infinitos
+termos diferentes, a saber, $(g(Yg))N$, $(g(g(Yg)))N$, \dots. Ainda assim,
+é possível que alguma \emph{outra} sequência de passos de redução
+termine em uma forma normal.
 
-Take the factorial for instance. Define $\fn{Fac}$ as $Y\, \fn{Fac}'$
-(O.s.\@, a fixpoint of $\fn{Fac'}$). Then:
+Considere, por exemplo, o fatorial. Defina $\fn{Fac}$ como $Y\, \fn{Fac}'$
+(isto é, um ponto fixo de $\fn{Fac'}$). Então:
 \begin{align*}
   \fn{Fac}\,\num 3
   &\red Y\, \fn{Fac}' \, \num 3 \\
@@ -117,12 +117,12 @@ Take the factorial for instance. Define $\fn{Fac}$ as $Y\, \fn{Fac}'$
   & \red \fn{IsZero} \, \num 3\, \num 1\,
       (\fn{Mult}\, \num 3\, (\fn{Fac} (\fn{Pred}\, \num 3))) \\
   &\red  \fn{Mult}\, \num 3 \, (\fn{Fac} \, \num 2).
-  \intertext{Similarly,}
+  \intertext{De modo semelhante,}
   \fn{Fac}\,\num 2
   &\red  \fn{Mult}\, \num 2 \, (\fn{Fac} \, \num 1) \\
   \fn{Fac}\,\num 1
   &\red  \fn{Mult}\, \num 1 \, (\fn{Fac} \, \num 0)
-  \intertext{but}
+  \intertext{mas}
   \fn{Fac}\,\num 0
   &\red \fn{Fac}' (Y \,\fn{Fac}') \, \num 0 \\
   &\ident (\lambd[x][\lambd[n][\fn{IsZero} \, n\, \num 1\,
@@ -130,47 +130,48 @@ Take the factorial for instance. Define $\fn{Fac}$ as $Y\, \fn{Fac}'$
   & \red \fn{IsZero} \, \num 0\, \num 1\,
       (\fn{Mult}\, \num 0\, (\fn{Fac} (\fn{Pred}\, \num 0))).\\
   &\red \num 1.
-  \intertext{So together}
+  \intertext{Portanto, em conjunto,}
   \fn{Fac}\,\num 3
   &\red  \fn{Mult}\, \num 3 \,
   (\fn{Mult} \, \num 2\, (\fn{Mult} \, \num 1\, \num 1)).
 \end{align*}
 
-What goes for $\fn{Fac'}$ goes for any recursive definition. Suppose we
-have a recursive equation
+O que vale para $\fn{Fac'}$ vale para qualquer definição recursiva. Suponha que
+tenhamos uma equação recursiva
 \begin{align*}
 g\,x_1\dots x_n & \equal[\beta] N
-\intertext{where $N$ may contain~$g$ and $x_1$, \dots,~$x_n$. Then there is
-always a term~$G \ident (Y \lambd[g][\lambd[x_1\dots x_n][N]])$ such
-that}
+\intertext{onde $N$ pode conter~$g$ e $x_1$, \dots,~$x_n$. Então sempre existe
+um termo~$G$ dado por}
+G & \ident (Y \lambd[g][\lambd[x_1\dots x_n][N]])\\
+\intertext{tal que}
 G\,x_1 \dots x_n & \equal[\beta] \Subst{N}{G}{g}.
-\intertext{For by the fixpoint theorem,}
+\intertext{Pois, pelo teorema do ponto fixo,}
 G \ident (Y \lambd[g][\lambd[x_1\dots x_n][N]]) & \red \lambd[g][\lambd[x_1\dots x_n][N]](Y \lambd[g][\lambd[x_1\dots x_n][N]])\\
 & \ident (\lambd[g][\lambd[x_1\dots x_n][N]])\,G
-\intertext{and consequently}
+\intertext{e, consequentemente,}
 G\,x_1 \dots x_n 
 & \red (\lambd[g][\lambd[x_1\dots x_n][N]])\,G\,x_1\dots x_n\\
 & \red (\lambd[x_1\dots x_n][\Subst{N}{G}{g}])\,x_1\dots x_n\\
   & \red \Subst{N}{G}{g}.
 \end{align*}
 
-The $Y$ combinator of \olref{defn:Turing-Y} is due to Alan
-Turing. Alonzo Church had proposed a different version which we'll
-call~$Y_C$:
+O combinador $Y$ de \olref{defn:Turing-Y} deve-se a Alan
+Turing. Alonzo Church havia proposto uma versão diferente, que chamaremos
+de~$Y_C$:
 \[
 Y_C \ident \lambd[g][(\lambd[x][g(xx)])(\lambd[x][g(xx)])].
 \]
-Church's combinator is a bit weaker than Turing's in that $Yg
-\equal[\beta] g(Yg)$ but not $Yg \bred g(Yg)$. Let $V$ be the term
-$\lambd[x][g(xx)]$, so that $Y_C \ident \lambd[g][VV]$. Then
+O combinador de Church é um pouco mais fraco que o de Turing, pois $Y_C g
+\equal[\beta] g(Y_C g)$, mas não $Y_C g \bred g(Y_C g)$. Seja $V$ o termo
+$\lambd[x][g(xx)]$, de modo que $Y_C \ident \lambd[g][VV]$. Então
 \begin{align*}
   VV & \ident (\lambd[x][g(xx)])V \red g(VV)
-  \text{ and thus}\\
-  Y_C g & \ident (\lambd[g][VV])g \red VV \red g(VV), \text{ but also}\\
+  \text{ e, portanto,}\\
+  Y_C g & \ident (\lambd[g][VV])g \red VV \red g(VV), \text{ mas também}\\
   g(Y_C g) & \ident g((\lambd[g][VV])g) \red g(VV).
 \end{align*}
-In other words, $Y_Cg$ and $g(Y_Cg)$ reduce to a common term $g(VV)$; so $Y_Cg
-\equal[\beta] g(Y_Cg)$. This is often enough for applications.
+Em outras palavras, $Y_C g$ e $g(Y_C g)$ se reduzem a um termo comum
+$g(VV)$; logo, $Y_C g \equal[\beta] g(Y_C g)$. Isso costuma bastar para
+as aplicações.
 
 \end{document}
-

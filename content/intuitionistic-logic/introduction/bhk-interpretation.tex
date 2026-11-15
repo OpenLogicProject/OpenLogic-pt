@@ -6,153 +6,157 @@
 
 \begin{document}
 
-\olfileid{int}{int}{bhk}
+\olfileid[pt]{int}{int}{bhk}
 
-\olsection{The Brouwer--Heyting--Kolmogorov Interpretation}
+\olsection{A interpretação de Brouwer--Heyting--Kolmogorov}
 
 \begin{editorial}
-  Proofs of validity of intuitionistic propositions using the BHK
-  interpretation are confusing; they have to be explained better.
+  As provas de validade de proposições intuicionistas que usam a
+  interpretação BHK são confusas; precisam ser melhor explicadas.
 \end{editorial}
 
-There is an informal constructive interpretation of the intuitionist
-connectives, usually known as the Brouwer--Heyting--Kolmogorov
-interpretation. It uses the notion of a ``construction,'' which you
-may think of as a constructive proof. (We don't use ``proof'' in the
-BHK interpretation so as not to get confused with the notion of
-!!a{derivation} in a formal !!{derivation} system.) Based on this intuitive
-notion, the BHK interpretation explains the meanings of the
-intuitionistic connectives.
+Há uma interpretação construtiva informal dos conectivos
+intuicionistas, normalmente conhecida como interpretação de
+Brouwer--Heyting--Kolmogorov. Ela usa a noção de ``construção'', que
+pode ser entendida como uma prova construtiva. (Não usamos ``prova'' na
+interpretação BHK para evitar confusão com a noção de !!a{derivation}
+em um sistema formal de !!{derivation}.) Com base nessa noção intuitiva,
+a interpretação BHK explica os significados dos conectivos
+intuicionistas.
 
 \begin{enumerate}
-\item We assume that we know what constitutes a construction of an atomic
-  statement.
-\item A construction of $!A_1 \land !A_2$ is a pair $\tuple{M_1, M_2}$
-  where $M_1$ is a construction of~$!A_1$ and $M_2$ is a construction
-  of~$!A_2$.
-\item A construction of $!A_1 \lor !A_2$ is a pair $\tuple{s, M}$
-  where $s$ is~$1$ and $M$ is a construction of~$!A_1$, or $s$ is~$2$
-  and $M$ is a construction of~$!A_2$.
-\item A construction of $!A \lif !B$ is a function that converts a
-  construction of~$!A$ into a construction of~$!B$.
-\item There is no construction for~$\lfalse$ (absurdity).
-\item $\lnot !A$ is defined as synonym for $!A \lif \lfalse$. That is,
-  a construction of $\lnot !A$ is a function converting a construction
-  of~$!A$ into a construction of~$\lfalse$.
+\item Supomos saber o que constitui uma construção de uma afirmação
+  atômica.
+\item Uma construção de $!A_1 \land !A_2$ é um par $\tuple{M_1, M_2}$,
+  em que $M_1$ é uma construção de~$!A_1$ e $M_2$ é uma construção
+  de~$!A_2$.
+\item Uma construção de $!A_1 \lor !A_2$ é um par $\tuple{s, M}$,
+  em que $s$ é~$1$ e $M$ é uma construção de~$!A_1$, ou $s$ é~$2$
+  e $M$ é uma construção de~$!A_2$.
+\item Uma construção de $!A \lif !B$ é uma função que converte uma
+  construção de~$!A$ em uma construção de~$!B$.
+\item Não há construção de~$\lfalse$ (o absurdo).
+\item $\lnot !A$ é definida como sinônimo de $!A \lif \lfalse$. Isto é,
+  uma construção de $\lnot !A$ é uma função que converte uma construção
+  de~$!A$ em uma construção de~$\lfalse$.
 \end{enumerate}
 
 \begin{ex}
-Take $\lnot \lfalse$ for example. A construction of it is a function
-which, given any construction of $\lfalse$ as input, provides a
-construction of~$\lfalse$ as output. Obviously, the identity
-function~$\Id{}$ is such a construction: given a construction~$M$
-of~$\lfalse$, $\Id{}(M) = M$ yields a construction of~$\lfalse$.
+Considere, por exemplo, $\lnot \lfalse$. Uma construção dela é uma
+função que, dada como entrada qualquer construção de $\lfalse$,
+fornece como saída uma construção de~$\lfalse$. Evidentemente, a
+função identidade~$\Id{}$ é uma construção desse tipo: dada uma
+construção~$M$ de~$\lfalse$, $\Id{}(M) = M$ produz uma construção
+de~$\lfalse$.
 \end{ex}
 
-Generally speaking, $\lnot !A$ means ``A construction of $!A$ is impossible''.
+Em termos gerais, $\lnot !A$ significa ``Uma construção de $!A$ é impossível''.
 
 \begin{ex}
-Let us prove $!A \lif \lnot \lnot !A$ for any proposition~$!A$, which
-is $!A \lif ((!A \lif \lfalse) \lif \lfalse)$. The construction should
-be a function~$f$ that, given a construction~$M$ of $!A$, returns a
-construction~$f(M)$ of $(!A \lif \lfalse) \lif \lfalse$. Here is
-how~$f$ constructs the construction of $(!A \lif \lfalse) \lif
-\lfalse$: We have to define a function $g$ which, when given a
-construction~$h$ of $!A \lif \lfalse$ as input, outputs a construction
-of~$\lfalse$. We can define $g$ as follows: apply the input~$h$ to the
-construction~$M$ of $!A$ (that we received earlier). Since the
-output~$h(M)$ of $h$ is a construction of $\lfalse$, $f(M)(h) = h(M)$ is a
-construction of~$\lfalse$ if $M$ is a construction of~$!A$.
+Provemos $!A \lif \lnot \lnot !A$ para qualquer proposição~$!A$, isto
+é, $!A \lif ((!A \lif \lfalse) \lif \lfalse)$. A construção deve ser
+uma função~$f$ que, dada uma construção~$M$ de $!A$, devolva uma
+construção~$f(M)$ de $(!A \lif \lfalse) \lif \lfalse$. Eis como~$f$
+constrói a construção de $(!A \lif \lfalse) \lif \lfalse$: precisamos
+definir uma função $g$ que, ao receber como entrada uma construção~$h$
+de $!A \lif \lfalse$, produza uma construção de~$\lfalse$. Podemos
+definir $g$ assim: aplique a entrada~$h$ à construção~$M$ de $!A$ (que
+recebemos anteriormente). Como a saída~$h(M)$ de $h$ é uma construção
+de $\lfalse$, $f(M)(h) = h(M)$ é uma construção de~$\lfalse$ se $M$ é
+uma construção de~$!A$.
 \end{ex}
 
 \begin{ex}
-Let us give a construction for $\lnot(!A \land \lnot !A)$, O.s.\@, $(!A
-\land (!A \lif \lfalse)) \lif \lfalse$. This is a function~$f$ which,
-given as input a construction~$M$ of $!A \land (!A \lif \lfalse)$,
-yields a construction of~$\lfalse$. A construction of a conjunction
-$!B_1 \land !B_2$ is a pair $\tuple{N_1, N_2}$ where $N_1$ is a
-construction of~$!B_1$ and $N_2$ is a construction of~$!B_2$. We can
-define functions $p_1$ and $p_2$ which recover from a construction of
-$!B_1 \land !B_2$ the constructions of $!B_1$ and $!B_2$, respectively:
+Apresentemos uma construção de $\lnot(!A \land \lnot !A)$, isto é,
+$(!A \land (!A \lif \lfalse)) \lif \lfalse$. Trata-se de uma função~$f$
+que, dada como entrada uma construção~$M$ de
+$!A \land (!A \lif \lfalse)$, produz uma construção de~$\lfalse$. Uma
+construção de uma conjunção $!B_1 \land !B_2$ é um par
+$\tuple{N_1, N_2}$, em que $N_1$ é uma construção de~$!B_1$ e $N_2$ é
+uma construção de~$!B_2$. Podemos definir funções $p_1$ e $p_2$ que,
+a partir de uma construção de $!B_1 \land !B_2$, recuperam,
+respectivamente, as construções de $!B_1$ e $!B_2$:
 \begin{align*}
   p_1(\tuple{N_1, N_2}) &= N_1\\
   p_2(\tuple{N_1, N_2}) &= N_2
 \end{align*}
-Here is what $f$ does: First it applies $p_1$ to its input~$M$. That
-yields a construction of~$!A$. Then it applies $p_2$ to~$M$, yielding
-a construction of~$!A \lif \lfalse$. Such a construction, in turn, is
-a function~$p_2(M)$ which, if given as input a construction of~$!A$,
-yields a construction of~$\lfalse$. In other words, if we apply
-$p_2(M)$ to $p_1(M)$, we get a construction of~$\lfalse$.  Thus, we
-can define $f(M) = p_2(M)(p_1(M))$.
+Eis o que $f$ faz: primeiro, aplica $p_1$ à sua entrada~$M$. Isso
+produz uma construção de~$!A$. Depois, aplica $p_2$ a~$M$, produzindo
+uma construção de~$!A \lif \lfalse$. Essa construção, por sua vez, é
+uma função~$p_2(M)$ que, se receber como entrada uma construção de~$!A$,
+produz uma construção de~$\lfalse$. Em outras palavras, se aplicarmos
+$p_2(M)$ a $p_1(M)$, obteremos uma construção de~$\lfalse$. Portanto,
+podemos definir $f(M) = p_2(M)(p_1(M))$.
 \end{ex}
 
 \begin{ex}
-Let us give a construction of $((!A \land !B) \lif !C) \lif (!A \lif
-(!B \lif !C))$, O.s.\@, a function $f$ which turns a construction~$g$ of
-$(!A \land !B) \lif !C$ into a construction of $(!A \lif (!B \lif
-!C))$. The construction $g$ is itself a function (from constructions
-of $!A \land !B$ to constructions of~$C$). And the output $f(g)$ is a
-function~$h_g$ from constructions of $!A$ to functions from constructions
-of~$!B$ to constructions of~$!C$.
+Apresentemos uma construção de $((!A \land !B) \lif !C) \lif (!A \lif
+(!B \lif !C))$, isto é, uma função $f$ que transforma uma construção~$g$
+de $(!A \land !B) \lif !C$ em uma construção de $(!A \lif (!B \lif
+!C))$. A construção $g$ é ela própria uma função (de construções de
+$!A \land !B$ para construções de~$C$). A saída $f(g)$ é uma
+função~$h_g$ que leva construções de $!A$ a funções que levam construções
+de~$!B$ a construções de~$!C$.
 
-Ok, this is confusing.  We have to construct a certain function $h_g$,
-which will be the output of $f$ for input~$g$. The input of~$h_g$ is a
-construction~$M$ of~$!A$. The output of $h_g(M)$ should be a
-function~$k_M$ from constructions~$N$ of~$!B$ to constructions
-of~$!C$. Let $k_{g,M}(N) = g(\tuple{M, N})$. Remember that $\tuple{M,
-  N}$ is a construction of~$!A \land !B$. So $k_{g,M}$ is a
-construction of $!B \lif !C$: it maps constructions~$N$ of~$!B$ to
-constructions of~$!C$.  Now let $h_g(M) = k_{g,M}$. That's a function
-that maps constructions~$M$ of~$!A$ to constructions $k_{g,M}$ of $!B
-\lif !C$. Now let $f(g) = h_g$. That's a function that maps
-constructions $g$ of $(!A \land !B) \lif !C$ to constructions of $!A
-\lif (!B \lif !C)$. Whew!{}
+Certo, isto é confuso. Precisamos construir certa função $h_g$, que
+será a saída de $f$ para a entrada~$g$. A entrada de~$h_g$ é uma
+construção~$M$ de~$!A$. A saída de $h_g(M)$ deve ser uma função~$k_M$
+que leva construções~$N$ de~$!B$ a construções de~$!C$. Seja
+$k_{g,M}(N) = g(\tuple{M, N})$. Recorde que $\tuple{M, N}$ é uma
+construção de~$!A \land !B$. Assim, $k_{g,M}$ é uma construção de
+$!B \lif !C$: ela leva construções~$N$ de~$!B$ a construções de~$!C$.
+Agora, seja $h_g(M) = k_{g,M}$. Essa é uma função que leva construções~$M$
+de~$!A$ a construções $k_{g,M}$ de $!B \lif !C$. Por fim, seja
+$f(g) = h_g$. Essa é uma função que leva construções $g$ de
+$(!A \land !B) \lif !C$ a construções de $!A \lif (!B \lif !C)$.
+Ufa!{}
 \end{ex}
 
-The statement $!A \lor \lnot !A$ is called the Law of Excluded
-Middle. We can prove it for some specific $!A$ (p.ex., $\lfalse \lor
-\lnot \lfalse$), but not in general. This is because the
-intuitionistic disjunction requires a construction of one of the
-disjuncts, but there are statements which currently can neither be
-proved nor refuted (say, Goldbach's conjecture). However, you can't
-refute the law of excluded middle either: that is, $\lnot \lnot (!A
-\lor \lnot !A)$ holds.
+A afirmação $!A \lor \lnot !A$ é chamada de lei do terceiro excluído.
+Podemos prová-la para certos $!A$ específicos (por exemplo,
+$\lfalse \lor \lnot \lfalse$), mas não em geral. Isso ocorre porque a
+disjunção intuicionista exige uma construção de um dos disjuntos, mas
+há afirmações que atualmente não podem ser provadas nem refutadas
+(por exemplo, a conjectura de Goldbach). Contudo, tampouco se pode
+refutar a lei do terceiro excluído: isto é, $\lnot \lnot (!A \lor
+\lnot !A)$ vale.
 
 \begin{ex}
-To prove $\lnot \lnot (!A \lor \lnot !A)$, we need a function~$f$ that
-transforms a construction of $\lnot(!A \lor \lnot !A)$, O.s.\@, of $(!A
-\lor (!A \lif \lfalse)) \lif \lfalse$, into a construction
-of~$\lfalse$.  In other words, we need a function $f$ such that $f(g)$
-is a construction of~$\lfalse$ if $g$ is a construction of $\lnot(!A
-\lor \lnot !A)$.
+Para provar $\lnot \lnot (!A \lor \lnot !A)$, precisamos de uma
+função~$f$ que transforme uma construção de
+$\lnot(!A \lor \lnot !A)$, isto é, de $(!A \lor (!A \lif \lfalse))
+\lif \lfalse$, em uma construção de~$\lfalse$. Em outras palavras,
+precisamos de uma função $f$ tal que $f(g)$ seja uma construção
+de~$\lfalse$ se $g$ for uma construção de
+$\lnot(!A \lor \lnot !A)$.
 
-Suppose $g$ is a construction of $\lnot(!A \lor \lnot !A)$, O.s.\@, a
-function that transforms a construction of $!A \lor \lnot !A$ into a
-construction of~$\lfalse$.  A construction of $!A \lor \lnot !A$ is a
-pair $\tuple{s, M}$ where either $s = 1$ and $M$ is a construction of
-$!A$, or $s = 2$ and $M$ is a construction of $\lnot !A$. Let $h_1$ be
-the function mapping a construction~$M_1$ of $!A$ to a construction of
-$!A \lor \lnot !A$: it maps $M_1$ to $\tuple{1, M_2}$. And let $h_2$
-be the function mapping a construction~$M_2$ of $\lnot !A$ to a
-construction of $!A \lor \lnot !A$: it maps $M_2$ to $\tuple{2, M_2}$.
+Suponha que $g$ seja uma construção de $\lnot(!A \lor \lnot !A)$,
+isto é, uma função que transforma uma construção de
+$!A \lor \lnot !A$ em uma construção de~$\lfalse$. Uma construção de
+$!A \lor \lnot !A$ é um par $\tuple{s, M}$ no qual ou $s = 1$ e $M$
+é uma construção de $!A$, ou $s = 2$ e $M$ é uma construção de
+$\lnot !A$. Seja $h_1$ a função que leva uma construção~$M_1$ de $!A$
+a uma construção de $!A \lor \lnot !A$: ela leva $M_1$ a
+$\tuple{1, M_1}$. Seja $h_2$ a função que leva uma construção~$M_2$ de
+$\lnot !A$ a uma construção de $!A \lor \lnot !A$: ela leva $M_2$ a
+$\tuple{2, M_2}$.
 
-Let $k$ be $\comp{h_1}{g}$: it is a function which, if given a
-construction of~$!A$, returns a construction of~$\lfalse$, O.s.\@, it is
-a construction of~$!A \lif \lfalse$ or $\lnot !A$. Now let $l$ be
-$\comp{h_2}{g}$. It is a function which, given a construction of
-$\lnot !A$, provides a construction of~$\lfalse$. Since $k$ is a
-construction of $\lnot !A$, $l(k)$ is a construction of~$\lfalse$.
+Seja $k$ igual a $\comp{h_1}{g}$: trata-se de uma função que, dada uma
+construção de~$!A$, devolve uma construção de~$\lfalse$, isto é, uma
+construção de~$!A \lif \lfalse$ ou $\lnot !A$. Agora, seja $l$ igual a
+$\comp{h_2}{g}$. Trata-se de uma função que, dada uma construção de
+$\lnot !A$, fornece uma construção de~$\lfalse$. Como $k$ é uma
+construção de $\lnot !A$, $l(k)$ é uma construção de~$\lfalse$.
 
-Together, what we've done is describe how we can turn a
-construction~$g$ of $\lnot(!A \lor \lnot !A)$ into a construction
-of~$\lfalse$, O.s.\@, the function $f$ mapping a construction~$g$ of
-$\lnot(!A \lor \lnot !A)$ to the construction $l(k)$ of~$\lfalse$ is a
-construction of $\lnot\lnot(!A \lor \lnot !A)$.
+Em conjunto, descrevemos como transformar uma construção~$g$ de
+$\lnot(!A \lor \lnot !A)$ em uma construção de~$\lfalse$, isto é, a
+função $f$ que leva uma construção~$g$ de
+$\lnot(!A \lor \lnot !A)$ à construção $l(k)$ de~$\lfalse$ é uma
+construção de $\lnot\lnot(!A \lor \lnot !A)$.
 \end{ex}
 
-As you can see, using the BHK interpretation to show the
-intuitionistic validity of !!{formula}s quickly becomes cumbersome
-and confusing. Luckily, there are better !!{derivation} systems for
-intuitionistic logic, and more precise semantic interpretations.
+Como se pode ver, usar a interpretação BHK para mostrar a validade
+intuicionista de !!{formula}s rapidamente se torna trabalhoso e
+confuso. Felizmente, há sistemas de !!{derivation} melhores para a
+lógica intuicionista, bem como interpretações semânticas mais precisas.
 \end{document}

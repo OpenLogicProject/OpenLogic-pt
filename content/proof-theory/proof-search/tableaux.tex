@@ -1,0 +1,201 @@
+% Part: proof-theory
+% Chapter: proof-search
+% Section: tableaux
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{pt}{ps}{tab}
+
+\olsection{Tableaux}
+
+Os sistemas de tableaux são sistemas de !!{proof} estreitamente
+relacionados aos cálculos de sequentes e particularmente adequados à
+busca de provas, tanto manualmente quanto em implementações de software.
+Em vez de construir árvores de sequentes, nos tableaux !!a{proof} é uma
+árvore de !!{formula}s. No entanto, ao contrário da dedução natural, as
+regras refletem as do cálculo de sequentes. Uma !!{proof} por tableau é,
+em essência, uma busca explícita por um modelo. Por isso, os tableaux às
+vezes são chamados de tableaux \emph{semânticos} ou também de
+\emph{árvores de verdade}.
+
+Um tableau \emph{com sinais} é uma árvore de !!{formula}s com sinais,
+que podem ter a forma $\sFmla{\True}{!A}$ ou $\sFmla{\False}{!A}$. As
+árvores crescem para baixo. Elas começam com !!{formula}s que especificam
+o que queremos !!{prove}. Por exemplo, para !!{prove} um sequente $!A,
+!B \Sequent !C, !D$, começaríamos com $\sFmla{\True}{!A},
+\sFmla{\True}{!B}, \sFmla{\False}{!C}, \sFmla{\False}{!D}$.
+!!^a{structure} que torna $!A$ e~$!B$ verdadeiras e $!C$ e~$!D$ falsas
+é !!a{structure} que mostra que $!A, !B \Sequent !C, !D$ não é
+válido. 
+
+Um nó folha (o mais baixo) do tableau pode ser estendido por regras de
+extensão de ramo, que acrescentam outros nós ao mesmo ramo ou acrescentam
+dois nós irmãos abaixo dele, dividindo o ramo em dois novos ramos. As
+regras podem ser aplicadas a qualquer !!{formula} com sinal que esteja
+acima no mesmo ramo. As regras de extensão de ramo do sistema clássico
+de tableaux \Log{Tc} são apresentadas em \olref{tab:Tc}.
+
+\subfile{rules-Tc}
+
+Como se pode ver, as regras são simplesmente as de \Log{G3c} de cabeça
+para baixo, e os sinais $\True$ e $\False$ indicam, respectivamente, se
+!!a{formula} é principal no lado esquerdo ou direito de um sequente.
+
+Um ramo de um tableau é \emph{fechado} se contém tanto
+$\sFmla{\True}{!A}$ quanto $\sFmla{\False}{!A}$. Se todos os ramos são
+fechados, dizemos que o tableau inteiro está fechado. Por exemplo, este
+é um tableau de cláusulas para $!A \lor (!B \land !C) \Sequent (!A \lor
+!B) \land (!A \lor !C)$, isto é, que começa com
+$\sFmla{\True}{!A \lor (!B \land !C)}$ e
+$\sFmla{\False}{(!A \lor !B) \land (!A \lor !C)}$:
+\begin{maxwidth}
+  \begin{tableau}{}
+  [\sFmla{\True}{\formula{A} \lor (\formula{B} \land \formula{C})},
+    just=\TAss, checked
+    [\sFmla{\False}{(\formula{A} \lor \formula{B}) \land
+        (\formula{A} \lor \formula{C})}, just=\TAss, checked
+      [\sFmla{\True}{\formula{A}}, just={\TRule{\True}{\lor}[1]}
+        [\sFmla{\False}{\formula{A} \lor \formula{B}},
+          just={\TRule{\False}{\land}[2]}, checked
+          [\sFmla{\False}{\formula{A}},
+            just={\TRule{\False}{\lor}[4]}
+            [\sFmla{\False}{\formula{B}},
+              just={\TRule{\False}{\lor}[4]}, close]
+          ]
+        ]
+        [\sFmla{\False}{\formula{A} \lor \formula{C}},
+          just={\TRule{\False}{\land}[2]}, checked
+          [\sFmla{\False}{\formula{A}},
+            just={\TRule{\False}{\lor}[4]}
+            [\sFmla{\False}{\formula{C}},
+              just={\TRule{\False}{\lor}[4]}, close]
+          ]
+        ]
+      ]
+      [\sFmla{\True}{\formula{B} \land \formula{C}},
+        just={\TRule{\True}{\lor}[1]}, checked
+        [\sFmla{\False}{\formula{A} \lor \formula{B}},
+          just={\TRule{\False}{\land}[2]}, checked
+          [\sFmla{\True}{\formula{B}},
+            just={\TRule{\True}{\land}[3]}, move by=2
+            [\sFmla{\True}{\formula{C}},
+              just={\TRule{\True}{\land}[3]}
+              [\sFmla{\False}{\formula{A}},
+                just={\TRule{\False}{\lor}[4]}
+                [\sFmla{\False}{\formula{B}},
+                  just={\TRule{\False}{\lor}[4]},close
+                ]
+              ]
+            ]
+          ]
+        ]
+        [\sFmla{\False}{\formula{A} \lor \formula{C}},
+          just={\TRule{\False}{\land}[2]}, checked
+          [\sFmla{\True}{\formula{B}},
+            just={\TRule{\True}{\land}[3]}, move by=2
+              [\sFmla{\True}{\formula{C}},
+                just={\TRule{\True}{\land}[3]}
+                [\sFmla{\False}{\formula{A}},
+                  just={\TRule{\False}{\lor}[4]}
+                  [\sFmla{\False}{\formula{C}},
+                  just={\TRule{\False}{\lor}[4]},close
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+\end{tableau}
+\end{maxwidth}
+
+As marcas de verificação indicam que a regra correspondente foi aplicada
+a !!a{formula} em todos os ramos abaixo dela. O símbolo~$\otimes$ indica
+que um ramo está fechado. Os números de linha após as regras indicam a
+quais !!{formula}s com sinais a regra é aplicada (a saber, à !!{formula}
+no mesmo ramo e na linha indicada).
+
+A busca de provas é simples em tableaux. Geramos um tableau em etapas.
+Na etapa~$0$, apenas escrevemos no topo as !!{formula}s iniciais. Na
+etapa~$n+1$, fazemos o seguinte para cada nó folha: encontramos a primeira
+fórmula com sinal (a mais alta) que ainda não foi marcada; aplicamos a
+regra de extensão de ramo a essa fórmula; depois que a regra tiver sido
+aplicada em todo ramo que contém a fórmula com sinal em questão, nós a
+marcamos. (O exemplo acima é gerado com esse algoritmo.)
+
+As !!{formula}s com sinais da forma $\sFmla{\True}{\lforall}$ e
+$\sFmla{\False}{\lexists}$ nunca são marcadas e, portanto, precisam de
+tratamento especial. Se estiverem presentes, precisamos garantir que as
+regras $\TRule{\True}{\forall}$ e $\TRule{\False}{\lexists}$ sejam
+finalmente aplicadas a todos os termos pertinentes. Podemos garantir isso,
+por exemplo, aplicando-as em cada etapa a todas essas fórmulas em todos os
+ramos (depois de tratar a !!{formula} com sinal mais alta que não tenha
+essa forma). O termo $t$ usado é o primeiro termo~$t$ que pode ser
+construído a partir das !!{constant}s que já ocorrem no ramo (ou $\Obj
+c_0$, se nenhuma !!{constant} ocorre) e das !!{function}s que ocorrem nas
+!!{formula}s iniciais, e tal que a !!{formula} com sinal correspondente
+$\sFmla{\True}{!B(t)}$ ou~$\sFmla{\False}{!B(t)}$ ainda não ocorra no
+ramo.
+
+Se essa busca de provas não produz um tableau fechado, ele contém um
+ramo aberto finito no qual todas as !!{formula}s não atômicas estão
+marcadas, ou então a busca produz uma árvore infinita com ramificação
+finita, que necessariamente contém um ramo infinito. Assim como em
+\olref[cpl]{sec}, podemos definir !!a{structure}~$\Struct{M}$ tal que,
+se $\sFmla{\True}{!A}$ ocorre no ramo, então $\Sat{M}{!A}$, e, se
+$\sFmla{\False}{!A}$ ocorre, então $\Sat/{M}{!A}$. (Tomamos $\Theta =
+\Setabs{!A}{\sFmla{\True}{!A} \text{ no ramo}}$ e $\Xi =
+\Setabs{!A}{\sFmla{\False}{!A} \text{ no ramo}}$.)
+
+Os tableaux gerados por esse método de busca de provas podem ser
+traduzidos facilmente em provas de \Log{G3c}, atribuindo-se um sequente
+a cada nó. Se as fórmulas iniciais correspondem a um sequente $\Gamma
+\Sequent \Delta$, rotulamos cada uma delas com $\Gamma \Sequent
+\Delta$. Se um ramo é estendido pela aplicação de uma regra de extensão
+a uma !!{formula} com sinal $\sFmla{\True}{!A}$, a folha recebe o rótulo
+$!A, \Pi \Sequent \Lambda$; se a regra é aplicada a uma !!{formula} com
+sinal $\sFmla{\False}{!A}$, a folha recebe o rótulo $\Pi \Sequent
+\Lambda, !A$. Quando o tableau aplica uma regra
+\TRule{\True}{\star}, aplicamos ao sequente a regra \LeftR{\star} (com
+$!A$ principal); quando ele aplica uma regra \TRule{\False}{\star},
+aplicamos a regra \RightR{\star}. As premissas da regra são os sequentes
+que rotulam os nós correspondentes acrescentados ao tableau. Quando um
+tableau se fecha com $\sFmla{\True}{!A}$ e $\sFmla{\False}{!A}$, o
+rótulo do nó folha final será um sequente da forma $!A, \Pi \Sequent
+\Lambda, !A$. Alguns nós sucessivos no tableau receberão o mesmo
+sequente; eliminamos as duplicatas. Por exemplo, o tableau acima se
+traduz na !!{proof}:
+
+\begin{maxwidth}
+$
+\Axiom$!A \fCenter !A, !B$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$!A \fCenter !A \lor !B$
+\Axiom$!A \fCenter !A, !C$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$!A \fCenter !A \lor !C$
+\RightLabel{\RightR{\land}}
+\BinaryInf$!A \fCenter (!A \lor !B) \land (!A \lor !C)$
+\Axiom$!B, !C \fCenter !A, !B$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$!B, !C \fCenter !A \lor !B$
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!B \land !C \fCenter !A \lor !B$
+\Axiom$!B, !C \fCenter !A, !C$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$!B, !C \fCenter !A \lor !C$
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!B \land !C \fCenter !A \lor !C$
+\RightLabel{\RightR{\land}}
+\BinaryInf$!B \land !C \fCenter (!A \lor !B) \land
+(!A \lor !C)$
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$!A \lor (!B \land !C) \fCenter (!A \lor !B) \land
+(!A \lor !C)$
+\DisplayProof$
+\end{maxwidth}
+
+\end{document}
