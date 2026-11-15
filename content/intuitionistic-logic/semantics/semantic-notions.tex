@@ -6,52 +6,53 @@
 
 \begin{document}
 
-\olfileid{int}{sem}{sem}
+\olfileid[pt]{int}{sem}{sem}
 
-\olsection{Semantic Notions}
+\olsection{Noções semânticas}
 
 \begin{defn}
-  We say $!A$ is \emph{true in the model $\mModel{M} = \tuple{W,R,V}$,} $
-  \mSat{M}{!A}$, iff $\mSat{M}{!A}[w]$ for all $w \in W$.
-  $!A$ is \emph{valid}, $\Entails !A$, iff it is true in all models.
-  We say a set of !!{formula}s~$\Gamma$ \emph{entails}~$!A$, $\Gamma
-  \Entails !A$, iff for every model~$\mModel{M}$ and every~$w$ such
-  that $\mSat{M}{\Gamma}[w]$, $\mSat{M}{!A}[w]$.
+  Dizemos que $!A$ é \emph{verdadeira no modelo
+  $\mModel{M} = \tuple{W,R,V}$,} $\mSat{M}{!A}$, sse
+  $\mSat{M}{!A}[w]$ para todo $w \in W$. $!A$ é \emph{válida},
+  $\Entails !A$, sse é verdadeira em todos os modelos. Dizemos que um
+  conjunto de !!{formula}s~$\Gamma$ \emph{implica}~$!A$, $\Gamma
+  \Entails !A$, sse, para todo modelo~$\mModel{M}$ e todo~$w$ tais
+  que $\mSat{M}{\Gamma}[w]$, $\mSat{M}{!A}[w]$.
 \end{defn}
 
 \begin{prop}\ollabel{prop:sat-entails}
   \begin{enumerate}
-  \item\ollabel{prop:sat-entails1} If $\mSat{M}{\Gamma}[w]$ and
-    $\Gamma \Entails !A$, then $\mSat{M}{!A}[w]$.
-  \item\ollabel{prop:sat-entails2} If $\mSat{M}{\Gamma}$ and $\Gamma
-    \Entails !A$, then $\mSat{M}{!A}$.
+  \item\ollabel{prop:sat-entails1} Se $\mSat{M}{\Gamma}[w]$ e
+    $\Gamma \Entails !A$, então $\mSat{M}{!A}[w]$.
+  \item\ollabel{prop:sat-entails2} Se $\mSat{M}{\Gamma}$ e $\Gamma
+    \Entails !A$, então $\mSat{M}{!A}$.
   \end{enumerate}
 \end{prop}
 
 \begin{proof}
   \begin{enumerate}
-  \item Suppose $\mSat{M}{\Gamma}$. Since $\Gamma \Entails !A$, we
-    know that if $\mSat{M}{\Gamma}[w]$, then $\mSat{M}{!A}[w]$. Since
-    $\mSat{M}{\Gamma}[u]$ for all every $u \in W$,
-    $\mSat{M}{\Gamma}[w]$. Hence $\mSat{M}{!A}[w]$.
-  \item Follows immediately from \olref{prop:sat-entails1}.
+  \item Suponha $\mSat{M}{\Gamma}$. Como $\Gamma \Entails !A$,
+    sabemos que, se $\mSat{M}{\Gamma}[w]$, então
+    $\mSat{M}{!A}[w]$. Como $\mSat{M}{\Gamma}[u]$ para todo
+    $u \in W$, $\mSat{M}{\Gamma}[w]$. Logo $\mSat{M}{!A}[w]$.
+  \item Segue imediatamente de \olref{prop:sat-entails1}.
   \end{enumerate}
 \end{proof}
 
 
 \begin{defn}\ollabel{defn:restrict}
-  Suppose $\mModel{M}$ is a relational model and $w \in W$. The
-  \emph{restriction} $\mModel{M}_w=\tuple{W_w, R_w, V_w}$
-  of~$\mModel{M}$ to~$w$ is given by:
+  Suponha que $\mModel{M}$ seja um modelo relacional e que $w \in W$.
+  A \emph{restrição} $\mModel{M}_w=\tuple{W_w, R_w, V_w}$
+  de~$\mModel{M}$ a~$w$ é dada por:
   \begin{align*}
     W_w & = \Setabs{u \in W}{Rwu},\\
-    R_w  & = R \cap (W_w)^2, \text{ and}\\
+    R_w  & = R \cap (W_w)^2, \text{ e}\\
     V_w(p) & = V(p) \cap W_w.
   \end{align*}
 \end{defn}
 
 \begin{prop}\ollabel{prop:restrict}
-  $\mSat{M}{!A}[w]$ iff $\mSat{M_w}{!A}$.
+  $\mSat{M}{!A}[w]$ sse $\mSat{M_w}{!A}$.
 \end{prop}
 
 \begin{prob}
@@ -59,15 +60,16 @@
 \end{prob}
 
 \begin{prop}
-  Suppose for every model~$\mModel{M}$ such that $\mSat{M}{\Gamma}$,
-  $\mSat{M}{!A}$. Then $\Gamma \Entails !A$.
+  Suponha que, para todo modelo~$\mModel{M}$ tal que
+  $\mSat{M}{\Gamma}$, tenhamos $\mSat{M}{!A}$. Então
+  $\Gamma \Entails !A$.
 \end{prop}
 
 \begin{proof}
-  Suppose that $\mSat{M}{\Gamma}[w]$. By the \olref{prop:restrict}
-  applied to every~$!B \in \Gamma$, we have $\mSat{M_w}{\Gamma}$. By
-  the assumption, we have $\mSat{M_w}{!A}$. By \olref{prop:restrict}
-  again, we get $\mSat{M}{!A}[w]$.
+  Suponha $\mSat{M}{\Gamma}[w]$. Pela \olref{prop:restrict} aplicada
+  a todo~$!B \in \Gamma$, temos $\mSat{M_w}{\Gamma}$. Pela hipótese,
+  temos $\mSat{M_w}{!A}$. Aplicando novamente
+  \olref{prop:restrict}, obtemos $\mSat{M}{!A}[w]$.
 \end{proof}
 
 \end{document}

@@ -6,14 +6,14 @@
 
 \begin{document}
 
-\olfileid{nml}{prf}{dua}
+\olfileid[pt]{nml}{prf}{dua}
 
-\olsection{Dual \usetoken{P}{formula}}
+\olsection{\usetoken{P}{formula} duais}
 
 \begin{defn}\ollabel{def:duals}
-  Each of the !!{formula}s \Ax{T}, \Ax{B}, \Ax{4}, and
-  \Ax{5} has a \emph{dual}, denoted by a subscripted diamond, as
-  follows:
+  Cada uma das !!{formula}s \Ax{T}, \Ax{B}, \Ax{4} e
+  \Ax{5} tem uma \emph{dual}, denotada por um losango subscrito, como
+  segue:
   \begin{align}
     \tag{\Ax{T_\Diamond}} p & \lif \Diamond p\\
     \tag{\Ax{B_\Diamond}} \Diamond\Box p & \lif p\\
@@ -22,21 +22,21 @@
     \end{align}
 \end{defn}
 
-Each of the above dual !!{formula}s is obtained from the corresponding
-!!{formula} by substituting $\lnot p$ for $p$, contraposing, replacing
-$\lnot\Box\lnot$ by $\Diamond$, and replacing $\lnot\Diamond\lnot$
-by~$\Box$. \Ax{D}, O.s.\@, $\Box!A \lif \Diamond!A$ is its own dual in
-that sense.
+Cada uma das !!{formula}s duais acima é obtida da !!{formula}
+correspondente substituindo $\lnot p$ por $p$, tomando a contrapositiva,
+substituindo $\lnot\Box\lnot$ por $\Diamond$ e substituindo
+$\lnot\Diamond\lnot$ por~$\Box$. \Ax{D}, isto é,
+$\Box!A \lif \Diamond!A$, é sua própria dual nesse sentido.
 
 \begin{prop}\ollabel{prop:dualsys}
-  For each !!{formula}~$!A$ in \olref[nml][prf][dua]{def:duals}:
+  Para cada !!{formula}~$!A$ em \olref[nml][prf][dua]{def:duals}:
   $\Log{K}!A = \Log{K}!A_{\Diamond}$.
 \end{prop}
 \begin{proof}
-  Exercise.
+  Exercício.
 \end{proof}
 \begin{prob}
-  Prove \olref[nml][prf][dua]{prop:dualsys}.
+  Demonstre \olref[nml][prf][dua]{prop:dualsys}.
 \end{prob}
 
 \end{document}

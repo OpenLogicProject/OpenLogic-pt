@@ -6,82 +6,81 @@
 
 \begin{document}
 
-\olfileid{lam}{syn}{eta}
-\olsection{$\eta$-conversion}
+\olfileid[pt]{lam}{syn}{eta}
+\olsection{Conversão~$\eta$}
 
-There is another relation on $\lambda$ terms. In \olref[fv]{sec} we
-used the example $\lambd[x][(fx)]$, which accepts an argument and
-applies $f$ to it.  In other words, it is the same function as~$f$:
-$\lambd[x][(fx)]N$ and $fN$ both reduce to~$fN$.  We use
-$\eta$-reduction (and $\eta$-extension) to capture this idea.
+Há outra relação sobre termos~$\lambda$. Em \olref[fv]{sec}, usamos o exemplo
+$\lambd[x][(fx)]$, que recebe um argumento e aplica $f$ a ele. Em outras
+palavras, é a mesma função que~$f$: tanto $\lambd[x][(fx)]N$ como $fN$ se
+reduzem a~$fN$. Usamos a redução~$\eta$ (e a extensão~$\eta$) para capturar
+essa ideia.
 
-\begin{defn}[$\eta$-contraction, $\eredone$]
+\begin{defn}[Contração~$\eta$, $\eredone$]
   \ollabel{defn:beredone}
-  \emph{$\eta$-contraction} ($\eredone$) is the smallest compatible relation
-  on terms satisfying the following condition:
+  A \emph{contração~$\eta$} ($\eredone$) é a menor relação compatível sobre
+  termos que satisfaz a seguinte condição:
   \[
-    \lambd[x][M x] \eredone M \text{ provided } x \notin FV(M)
+    \lambd[x][M x] \eredone M \text{ desde que } x \notin FV(M)
   \]
 \end{defn}
 
-\begin{defn}[$\beta\eta$-reduction, $\bered$] \ollabel{defn:bered}
-  \emph{$\beta\eta$-reduction} ($\bered$) is the smallest reflexive,
-  transitive relation on terms containing $\bredone$ and $\eredone$,
-  O.s.\@, the rules of reflexivity and transitive plus the following two
-  rules:
+\begin{defn}[Redução~$\beta\eta$, $\bered$] \ollabel{defn:bered}
+  A \emph{redução~$\beta\eta$} ($\bered$) é a menor relação reflexiva e
+  transitiva sobre termos que contém $\bredone$ e $\eredone$; isto é, as
+  regras de reflexividade e transitividade mais as duas regras a seguir:
   \begin{enumerate}
-  \item If $M \bredone N$ then $M \bered N$. \ollabel{defn:bered3}
-  \item If $M \eredone N$ then $M \bered N$. \ollabel{defn:bered4}
+  \item Se $M \bredone N$, então $M \bered N$. \ollabel{defn:bered3}
+  \item Se $M \eredone N$, então $M \bered N$. \ollabel{defn:bered4}
   \end{enumerate}
     
 \end{defn}
 
 \begin{defn}
-  We extend the equivalence relation $\equal$ with the $\eta$-conversion rule:
+  Ampliamos a relação de equivalência $\equal$ com a regra de conversão~$\eta$:
   \[
   \lambd[x][f x] \equal f
   \]
-  and denote the extended relation as $\equal[\eta]$.
+  e denotamos a relação ampliada por $\equal[\eta]$.
 \end{defn}
 
-$\eta$-equivalence is important because it is related to extensionality
-of lambda terms:
+A equivalência~$\eta$ é importante porque está relacionada à extensionalidade
+dos termos lambda:
 
-\begin{defn}[Extensionality]
-  We extend the equivalence relation $\equal$ with the (\ext) rule:
+\begin{defn}[Extensionalidade]
+  Ampliamos a relação de equivalência $\equal$ com a regra~(\ext):
   \begin{center}
-  If $Mx \equal Nx$ then $M \equal N$, provided $x \notin FV(MN)$.
+  Se $Mx \equal Nx$, então $M \equal N$, desde que $x \notin FV(MN)$.
   \end{center}
-  and denote the extended relation as $\equal[\ext]$.
+  e denotamos a relação ampliada por $\equal[\ext]$.
 \end{defn}
 
-Roughly speaking, the rule states that two terms, viewed as functions,
-should be considered equal if they behave the same for the same
-argument.
+Em linhas gerais, a regra afirma que dois termos, considerados como funções,
+devem ser considerados iguais se se comportam da mesma maneira para o mesmo
+argumento.
 
-We now prove that the $\eta$ rule provides exactly the extensionality,
-and nothing else.
+Mostraremos agora que a regra~$\eta$ fornece exatamente a extensionalidade, e
+nada mais.
 
 \begin{thm}
-  $M \equal[\ext] N$ if and only if $M \equal[\eta] N$.
+  $M \equal[\ext] N$ se e somente se $M \equal[\eta] N$.
 \end{thm}
 
 \begin{proof}
-  First we prove that $\equal[\eta]$ is closed under the
-  extensionality rule. That is, $ext$ rule doesn't add anything to
-  $\equal[\eta]$. We then have $\equal[\eta]$ contains $\equal[\ext]$,
-  and if $M \equal[\ext] N$, then $M \equal[\eta] N$.
+  Primeiro mostramos que $\equal[\eta]$ é fechada sob a regra de
+  extensionalidade. Isto é, a regra $ext$ não acrescenta nada a
+  $\equal[\eta]$. Temos, então, que $\equal[\eta]$ contém $\equal[\ext]$ e,
+  se $M \equal[\ext] N$, então $M \equal[\eta] N$.
 
-  To prove $\equal[\eta]$ is closed under \ext, note that for any $M
-  \equal N$ derived by the \ext{} rule, we have $Mx
-  \equal[\eta] Nx$ as premise. Then we have $\lambd[x][Mx]
-  \equal[\eta] \lambd[x][Nx]$ by a rule of $\equal$, applying $\eta$
-  on both side gives us $M \equal[\eta] N$.
+  Para mostrar que $\equal[\eta]$ é fechada sob~\ext, observe que, para todo
+  $M \equal N$ derivado pela regra~\ext{}, temos $Mx \equal[\eta] Nx$ como
+  premissa. Então temos $\lambd[x][Mx] \equal[\eta] \lambd[x][Nx]$ por uma
+  regra de~$\equal$; aplicando~$\eta$ aos dois
+  lados, obtemos $M \equal[\eta] N$.
 
-  Similarly we prove that the $\eta$ rule is contained in
-  $\equal[ext]$. For any $\lambd[x][Mx]$ and $M$ with $x \notin
-  FV(M)$, we have that $(\lambd[x][Mx])x \equal[\ext] Mx$,
-  giving us $\lambd[x][Mx] \equal[\ext] M$ by the \ext{} rule.
+  De modo análogo, mostramos que a regra~$\eta$ está contida em
+  $\equal[ext]$. Para quaisquer $\lambd[x][Mx]$ e $M$ com $x \notin FV(M)$,
+  temos $(\lambd[x][Mx])x \equal[\ext] Mx$, o que nos dá
+  $\lambd[x][Mx] \equal[\ext] M$ pela regra~\ext{}.
 \end{proof}
 
 \end{document}

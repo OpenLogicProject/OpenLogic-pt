@@ -6,65 +6,65 @@
 
 \begin{document}
 
-\olfileid{mvl}{syn}{con}
+\olfileid[pt]{mvl}{syn}{con}
 
-\olsection{Languages and Connectives}
+\olsection{Linguagens e conectivos}
 
-Classical propositional logic, and many other logics, use a set supply
-of \emph{propositional constants} and \emph{connectives}. For
-instance, we use the following as primitives:
+A lógica proposicional clássica, e muitas outras lógicas, usam uma coleção fixa
+de \emph{constantes proposicionais} e \emph{conectivos}. Por
+exemplo, usamos os seguintes elementos como primitivos:
 \begin{enumerate}
-\tagitem{prvFalse}{The propositional constant for !!{falsity}~$\lfalse$.}{}
-\tagitem{prvTrue}{The propositional constant for !!{truth}~$\ltrue$.}{}
-\item The logical connectives:
+\tagitem{prvFalse}{A constante proposicional para a !!{falsity}~$\lfalse$.}{}
+\tagitem{prvTrue}{A constante proposicional para a !!{truth}~$\ltrue$.}{}
+\item Os conectivos lógicos:
   \startycommalist
-  \iftag{prvNot}{\ycomma $\lnot$ (negation)}{}%
-  \iftag{prvAnd}{\ycomma $\land$ (conjunction)}{}%
-  \iftag{prvOr}{\ycomma $\lor$ (disjunction)}{}%
+  \iftag{prvNot}{\ycomma $\lnot$ (negação)}{}%
+  \iftag{prvAnd}{\ycomma $\land$ (conjunção)}{}%
+  \iftag{prvOr}{\ycomma $\lor$ (disjunção)}{}%
   \iftag{prvIf}{\ycomma $\lif$ (!!{conditional})}{}%
   \iftag{prvIff}{\ycomma $\liff$ (!!{biconditional})}{}%
 \end{enumerate}
 \iftag{defNot,defOr,defAnd,defIf,defIff,defTrue,defFalse,defEx,defAll}{%
-In addition to the primitive connectives above, we also use symbols
-defined as abbreviations, such as
+Além dos conectivos primitivos acima, também usamos símbolos
+definidos como abreviações, tais como
 \startycommalist
-  \iftag{defNot}{\ycomma $\lnot$ (negation)}{}%
-  \iftag{defAnd}{\ycomma $\land$ (conjunction)}{}%
-  \iftag{defOr}{\ycomma $\lor$ (disjunction)}{}%
+  \iftag{defNot}{\ycomma $\lnot$ (negação)}{}%
+  \iftag{defAnd}{\ycomma $\land$ (conjunção)}{}%
+  \iftag{defOr}{\ycomma $\lor$ (disjunção)}{}%
   \iftag{defIf}{\ycomma $\lif$ (!!{conditional})}{}%
   \iftag{defIff}{\ycomma $\liff$ (!!{biconditional})}{}%
   \iftag{defFalse}{\ycomma $\lfalse$ (!!{falsity})}{}%
   \iftag{defTrue}{\ycomma $\ltrue$ (!!{truth})}.}{}
 
-The same connectives are used in many-valued logics as well. However,
-it is often useful to include different versions of, say, conjunction,
-in the same logic, and that would require different symbols to keep
-the versions separate. Some many-valued logics also include
-connectives that have no equivalent in classical logic. So, we'll be a
-bit more general than usual.
+Os mesmos conectivos também são usados em lógicas multivaloradas. Contudo,
+muitas vezes é útil incluir, por exemplo, diferentes versões da conjunção
+na mesma lógica, o que exige símbolos distintos para manter as
+versões separadas. Algumas lógicas multivaloradas também incluem
+conectivos sem equivalente na lógica clássica. Portanto, seremos um
+pouco mais gerais que o habitual.
 
 \begin{defn}
-  A \emph{propositional language} consists of a set $\Lang L$ of
-  \emph{connectives}. Each connective $\star$ has an \emph{arity}; a
-  connective of arity~$n$ is said to be \emph{$n$-place.}
-  Connectives of arity~$0$ are also called \emph{constants};
-  connectives of arity~$1$ are called \emph{unary}, and connectives of
-  arity~$2$, \emph{binary}.
+  Uma \emph{linguagem proposicional} consiste em um conjunto $\Lang L$ de
+  \emph{conectivos}. Cada conectivo $\star$ tem uma \emph{aridade}; um
+  conectivo de aridade~$n$ é dito \emph{$n$-ário}.
+  Conectivos de aridade~$0$ também são chamados \emph{constantes};
+  conectivos de aridade~$1$ são chamados \emph{unários}, e conectivos de
+  aridade~$2$, \emph{binários}.
 \end{defn}
 
 \begin{ex}
-  The standard language of propositional logic $\Lang L_0$ consists of
-  the following connectives (with associated arities): 
+  A linguagem padrão da lógica proposicional $\Lang L_0$ consiste nos
+  seguintes conectivos (com as aridades correspondentes): 
   $\lfalse$~($0$)
   $\lnot$~($1$),
   $\land$~($2$),
   $\lor$~($2$),
-  $\lif$~($2$). Most logics we consider will use this language. Some
-  logics by tradition an convention use different symbols for some
-  connectives. For instance, in product logic, the conjunction symbol
-  is often $\odot$ instead of~$\land$. Sometimes it is convenient to
-  add a new operator, p.ex., the determinateness operator $\triangle$
-  ($1$-place).
+  $\lif$~($2$). A maioria das lógicas que consideraremos usará essa linguagem. Algumas
+  lógicas, por tradição e convenção, usam símbolos diferentes para certos
+  conectivos. Por exemplo, na lógica do produto, o símbolo da conjunção
+  costuma ser $\odot$ em vez de~$\land$. Às vezes é conveniente
+  acrescentar um operador novo, por exemplo, o operador de determinação $\triangle$
+  ($1$-ário).
 \end{ex}
 
 \end{document}

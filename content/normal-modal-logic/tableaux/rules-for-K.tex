@@ -6,18 +6,18 @@
 
 \begin{document}
 
-\olfileid{nml}{tab}{rul}
+\olfileid[pt]{nml}{tab}{rul}
 
-\olsection{Rules for \Ax{K}}
+\olsection{Regras para \Ax{K}}
 
-The rules for the regular propositional connectives are the same as
-for regular propositional signed !!{tableau}s, just with prefixes
-added. In each case, the rule applied to a signed !!{formula}
-$\sFmla{S}{!A}[\sigma]$ produces new !!{formula}s that are also
-prefixed by~$\sigma$. This should be intuitively clear: p.ex., if $!A
-\land !B$ is true at (a world named by)~$\sigma$, then $!A$ and $!B$
-are true at~$\sigma$ (and not at any other world). We collect the
-propositional rules in \olref{tab:prop-rules}.
+As regras para os conectivos proposicionais usuais são as mesmas dos
+!!{tableau}s proposicionais assinalados usuais, apenas com o acréscimo
+de prefixos. Em cada caso, a regra aplicada a uma !!{formula} assinalada
+$\sFmla{S}{!A}[\sigma]$ produz novas !!{formula}s, também prefixadas
+por~$\sigma$. Isso deve ser intuitivamente claro: por exemplo, se
+$!A \land !B$ é verdadeira em (um mundo nomeado por)~$\sigma$, então
+$!A$ e $!B$ são verdadeiras em~$\sigma$ (e não em algum outro mundo).
+Reunimos as regras proposicionais em \olref{tab:prop-rules}.
 
 \begin{table}
   \[\def\arraystretch{3}\begin{array}{|c|c|}
@@ -76,60 +76,60 @@ propositional rules in \olref{tab:prop-rules}.
     \\[2ex]
     \hline
   \end{array}\]
-  \caption{Prefixed !!{tableau} rules for the propositional
-    connectives}
+  \caption{Regras de !!{tableau} prefixado para os conectivos
+    proposicionais}
   \ollabel{tab:prop-rules}
 \end{table}
 
-The closure condition is the same as for ordinary !!{tableau}s,
-although we require that not just the !!{formula}s but also the
-prefixes must match. So a branch is closed if it contains both
+A condição de fechamento é a mesma dos !!{tableau}s comuns, embora
+exijamos que coincidam não apenas as !!{formula}s, mas também os
+prefixos. Assim, um ramo é fechado se contém tanto
 \[
-\sFmla{\True}{!A}[\sigma] \quad\text{and}\quad \sFmla{\False}{!A}[\sigma]
+\sFmla{\True}{!A}[\sigma] \quad\text{quanto}\quad \sFmla{\False}{!A}[\sigma]
 \]
-for some prefix $\sigma$ and !!{formula}~$!A$.
+para algum prefixo $\sigma$ e alguma !!{formula}~$!A$.
 
-The rules for setting up assumptions is also as for ordinary
-!!{tableau}s, except that for assumptions we always use the
-prefix~$1$. (It does not matter which prefix we use, as long as it's
-the same for all assumptions.) So, p.ex., we say that
+As regras para estabelecer hipóteses também são as mesmas dos
+!!{tableau}s comuns, exceto que, para hipóteses, usamos sempre o
+prefixo~$1$. (Não importa qual prefixo usamos, desde que seja o mesmo
+para todas as hipóteses.) Assim, por exemplo, dizemos que
 \[
 !B_1, \dots, !B_n \Proves !A
 \]
-iff there is a closed tableau for the assumptions
+sse há um tableau fechado para as hipóteses
 \[
 \sFmla{\True}{!B_1}[1], \dots, \sFmla{\True}{!B_n}[1],
 \sFmla{\False}{!A}[1].
 \]
 
-For the modal operator\iftag{prvBox}{\iftag{prvDiamond}{s~$\Box$
-    and}{~$\Box$}}{}\iftag{prvDiamond}{~$\Diamond$}{}, the prefix of
-the conclusion of the rule applied to !!a{formula} with
-prefix~$\sigma$ is $\sigma.n$. However, which $n$ is allowed depends
-on whether the sign is~$\True$ or~$\False$.
+Para os operadores modais\iftag{prvBox}{\iftag{prvDiamond}{~$\Box$
+    e}{~$\Box$}}{}\iftag{prvDiamond}{~$\Diamond$}{}, o prefixo da
+conclusão da regra aplicada a !!a{formula} com prefixo~$\sigma$ é
+$\sigma.n$. Contudo, o valor permitido de $n$ depende de o sinal ser
+~$\True$ ou~$\False$.
 
-\iftag{prvBox}{The $\TRule{\True}{\Box}$ rule extends a branch
-  containing $\sFmla{\True}{\Box !A}[\sigma]$ by
-  $\sFmla{\True}{!A}[\sigma.n]$.\iftag{prvDiamond}{ Similarly,
-    t}{}}{T}\iftag{prvDiamond}{he $\TRule{\False}{\Diamond}$ rule
-  extends a branch containing $\sFmla{\False}{\Diamond !A}[\sigma]$ by
+\iftag{prvBox}{A regra $\TRule{\True}{\Box}$ estende um ramo que contém
+  $\sFmla{\True}{\Box !A}[\sigma]$ com
+  $\sFmla{\True}{!A}[\sigma.n]$.\iftag{prvDiamond}{ De modo semelhante,
+    }{}}{}\iftag{prvDiamond}{a regra $\TRule{\False}{\Diamond}$ estende
+  um ramo que contém $\sFmla{\False}{\Diamond !A}[\sigma]$ com
   $\sFmla{\False}{!A}[\sigma.n]$.}{}
-\iftag{notprvBox,notprvDiamond}{It}{They} can only be applied for a
-prefix~$\sigma.n$ which \emph{already} occurs on the branch in which
-it is applied. Let's call such a prefix ``used'' (on the branch).
+\iftag{notprvBox,notprvDiamond}{Ela só pode ser aplicada}{Elas só podem
+ser aplicadas} a um prefixo~$\sigma.n$ que \emph{já} ocorra no ramo em que a regra é
+aplicada. Chamemos tal prefixo de ``usado'' (no ramo).
 
-\iftag{prvBox}{The $\TRule{\False}{\Box}$ rule extends a branch
-  containing $\sFmla{\False}{\Box !A}[\sigma]$ by
-  $\sFmla{\False}{!A}[\sigma.n]$.\iftag{prvDiamond}{ Similarly,
-    t}{}}{T}\iftag{prvDiamond}{he $\TRule{\True}{\Diamond}$ rule extends
-  a branch containing $\sFmla{\True}{\Diamond !A}[\sigma]$ by
+\iftag{prvBox}{A regra $\TRule{\False}{\Box}$ estende um ramo que contém
+  $\sFmla{\False}{\Box !A}[\sigma]$ com
+  $\sFmla{\False}{!A}[\sigma.n]$.\iftag{prvDiamond}{ De modo semelhante,
+    }{}}{}\iftag{prvDiamond}{a regra $\TRule{\True}{\Diamond}$ estende
+  um ramo que contém $\sFmla{\True}{\Diamond !A}[\sigma]$ com
   $\sFmla{\True}{!A}[\sigma.n]$.}{}
-\iftag{notprvBox,notprvDiamond}{This rule}{These rules}, however, can
-only be applied for a prefix~$\sigma.n$ which \emph{does not} already
-occur on the branch in which it is applied. We call such prefixes
-``new'' (to the branch).
+\iftag{notprvBox,notprvDiamond}{Essa regra, contudo, só pode ser aplicada}{Essas regras,
+contudo, só podem ser aplicadas} a um prefixo~$\sigma.n$ que \emph{ainda não} ocorra
+no ramo em que a regra é aplicada. Chamamos tais prefixos de ``novos''
+(para o ramo).
 
-The rules are given in \olref{tab:rules-K}.
+As regras são apresentadas em \olref{tab:rules-K}.
 
 \begin{table}
   \begin{center}
@@ -146,7 +146,7 @@ The rules are given in \olref{tab:rules-K}.
       \RightLabel{\TRule{\False}{\Box}}
       \UnaryInfC{\sFmla{\False}{!A}[\sigma.n]}
       \DisplayProof\\
-      $\sigma.n$ is used & $\sigma.n$ is new
+      $\sigma.n$ é usado & $\sigma.n$ é novo
       \\[1ex]
       \hline}{}
     \iftag{prvDiamond}{
@@ -159,19 +159,19 @@ The rules are given in \olref{tab:rules-K}.
       \RightLabel{\TRule{\False}{\Diamond}}
       \UnaryInfC{\sFmla{\False}{!A}[\sigma.n]}
       \DisplayProof\\
-      $\sigma.n$ is new & $\sigma.n$ is used
+      $\sigma.n$ é novo & $\sigma.n$ é usado
       \\[1ex]
       \hline}{}
     \end{tabular}
   \end{center}
-  \caption{The modal rules for \Ax{K}.}
+  \caption{As regras modais para \Ax{K}.}
   \ollabel{tab:rules-K}
 \end{table}
 
-The requirement that the restriction that the prefix for
-\iftag{prvBox}{\TRule{\True}{\Box}}{\TRule{\False}{\Diamond}} must be
-used is necessary as otherwise we would count the following as a
-closed !!{tableau}:
+A exigência de que o prefixo para
+\iftag{prvBox}{\TRule{\True}{\Box}}{\TRule{\False}{\Diamond}} seja usado
+é necessária, pois, do contrário, contaríamos o seguinte como um
+!!{tableau} fechado:
 \iftag{notprvBox,notprvDiamond}{%
   \iftag{prvBox}{%
   \begin{oltableau}
@@ -219,11 +219,12 @@ closed !!{tableau}:
     ]
 \end{oltableau}}
 
-But $\Box \formula{A} \Entails/ \Diamond \formula{A}$, so our proof
-system would be unsound. Likewise, $\Diamond \formula{A} \Entails/
-\Box \formula{A}$, but without the restriction that the prefix for
-\iftag{prvBox}{\TRule{\False}{\Box}}{\TRule{\True}{\Diamond}} must be
-new, this would be a closed tableau: \iftag{notprvBox,notprvDiamond}{%
+Mas $\Box \formula{A} \Entails/ \Diamond \formula{A}$; portanto, nosso
+sistema de demonstração seria incorreto. Analogamente,
+$\Diamond \formula{A} \Entails/ \Box \formula{A}$, mas, sem a restrição
+de que o prefixo para
+\iftag{prvBox}{\TRule{\False}{\Box}}{\TRule{\True}{\Diamond}} seja novo,
+este seria um tableau fechado: \iftag{notprvBox,notprvDiamond}{%
   \iftag{prvBox}{%
   \begin{oltableau}
     [\pFmla{\True}{\lnot\Box\lnot \formula{A}}{1}, just = \TAss

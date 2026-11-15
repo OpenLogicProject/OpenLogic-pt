@@ -7,61 +7,61 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{tab}{der}}
-      {\olfileid{pl}{tab}{der}}
+      {\olfileid[pt]{fol}{tab}{der}}
+      {\olfileid[pt]{pl}{tab}{der}}
 
 \olsection{\usetoken{P}{tableau}}
 
 \begin{explain}
-We've said what an assumption is, and we've given the rules of
-inference.  !!^{tableau}s are inductively generated from these: each
-!!{tableau} either is a single branch consisting of one or more
-assumptions, or it results from !!a{tableau} by applying one of the
-rules of inference on a branch.
+Já dissemos o que é uma hipótese e apresentamos as regras de
+inferência.  !!^{tableau}s são gerados indutivamente a partir delas:
+cada !!{tableau} ou é um único ramo composto por uma ou mais
+hipóteses, ou resulta de !!a{tableau} pela aplicação de uma das regras
+de inferência a um ramo.
 \end{explain}
 
 \begin{defn}[!!^{tableau}]
-!!^a{tableau} for assumptions $\sFmla{S_1}{!A_1}$, \dots,
-$\sFmla{S_n}{!A_n}$ (where each $S_i$ is either $\True$ or~$\False$) is
-a finite tree of !!{signed formula}s satisfying the following conditions:
+!!^a{tableau} para as hipóteses $\sFmla{S_1}{!A_1}$, \dots,
+$\sFmla{S_n}{!A_n}$ (em que cada $S_i$ é $\True$ ou~$\False$) é
+uma árvore finita de !!{signed formula}s que satisfaz as seguintes condições:
 \begin{enumerate}
-\item The $n$ topmost !!{signed formula}s of the tree are
-  $\sFmla{S_i}{!A_i}$, one below the other.
-\item Every !!{signed formula} in the tree that is not one of the
-  assumptions results from a correct application of an inference rule
-  to !!a{signed formula} in the branch above it.
+\item As $n$ !!{signed formula}s no topo da árvore são
+  $\sFmla{S_i}{!A_i}$, uma abaixo da outra.
+\item Toda !!{signed formula} na árvore que não seja uma das
+  hipóteses resulta da aplicação correta de uma regra de inferência
+  a !!a{signed formula} no ramo acima dela.
 \end{enumerate}
-A branch of !!a{tableau} is \emph{closed} iff it contains both
-$\sFmla{\True}{!A}$ and~$\sFmla{\False}{!A}$, and \emph{open}
-otherwise. !!^a{tableau} in which every branch is closed is a
-\emph{closed !!{tableau}} (for its set of assumptions). If !!a{tableau} is
-not closed, O.s.\@, if it contains at least one open branch, it is
-\emph{open}.
+Um ramo de !!a{tableau} é \emph{fechado} sse contém tanto
+$\sFmla{\True}{!A}$ quanto~$\sFmla{\False}{!A}$, e é \emph{aberto}
+caso contrário. !!^a{tableau} em que todo ramo é fechado é um
+\emph{!!{tableau} fechado} (para seu conjunto de hipóteses). Se !!a{tableau} não
+é fechado, isto é, se contém pelo menos um ramo aberto, ele é
+\emph{aberto}.
 \end{defn}
 
 \begin{ex}
-  Every set of assumptions on its own is !!a{tableau}, but it will
-  generally not be closed. (Obviously, it is closed only if the
-  assumptions already contain a pair of !!{signed formula}s
-  $\sFmla{\True}{!A}$ and~$\sFmla{\False}{!A}$.)
+  Todo conjunto de hipóteses, por si só, é !!a{tableau}, mas em geral
+  não será fechado. (Evidentemente, ele só é fechado se as hipóteses
+  já contêm um par de !!{signed formula}s
+  $\sFmla{\True}{!A}$ e~$\sFmla{\False}{!A}$.)
 
-  From !!a{tableau} (open or closed) we can obtain a new, larger one by
-  applying one of the rules of inference to !!a{signed formula}~$!A$
-  in it. The rule will append one or more !!{signed formula}s to the end of
-  any branch containing the occurrence of~$!A$ to which we apply the
-  rule.
+  A partir de !!a{tableau} (aberto ou fechado), podemos obter outro,
+  novo e maior, aplicando uma das regras de inferência a
+  !!a{signed formula}~$!A$ nele. A regra acrescentará uma ou mais
+  !!{signed formula}s ao final de todo ramo que contenha a ocorrência
+  de~$!A$ à qual aplicamos a regra.
 
-  For instance, consider the assumption $\sFmla{\True}{!A \land \lnot
-    !A}$. Here is the (open) !!{tableau} consisting of just that
-  assumption:
+  Por exemplo, considere a hipótese $\sFmla{\True}{!A \land \lnot
+    !A}$. Este é o !!{tableau} (aberto) composto apenas por essa
+  hipótese:
   \begin{center}
     \begin{tableau}{}
       [\sFmla{\True}{\formula{A} \land \lnot \formula{A}}, just=\TAss]
     \end{tableau}{}
   \end{center}
-  We obtain a new !!{tableau} from it by applying the $\TRule{\True}{\land}$
-  rule to the assumption. That rule allows us to add two new lines to
-  the !!{tableau}, $\sFmla{\True}{!A}$ and $\sFmla{\True}{\lnot !A}$:
+  Obtemos dele um novo !!{tableau} aplicando a regra $\TRule{\True}{\land}$
+  à hipótese. Essa regra permite acrescentar duas novas linhas ao
+  !!{tableau}, $\sFmla{\True}{!A}$ e $\sFmla{\True}{\lnot !A}$:
   \begin{center}
     \begin{tableau}{}
       [\sFmla{\True}{\formula{A} \land \lnot \formula{A}}, just=\TAss
@@ -72,14 +72,14 @@ not closed, O.s.\@, if it contains at least one open branch, it is
       ]
     \end{tableau}{}
   \end{center}
-  When we write down !!{tableau}s, we record the rules we've applied
-  on the right (p.ex., $\TRule{\True}{\land} 1$ means that the
-  !!{signed formula} on that line is the result of applying the
-  $\TRule{\True}{\land}$ rule to the !!{signed formula} on line~$1$).
-  This new !!{tableau} now contains additional !!{signed formula}s,
-  but to only one ($\sFmla{\True}{\lnot !A}$) can we apply a rule (in
-  this case, the $\TRule{\True}{\lnot}$ rule). This results in the closed
-  !!{tableau}
+  Ao escrever !!{tableau}s, registramos à direita as regras que
+  aplicamos (por exemplo, $\TRule{\True}{\land} 1$ significa que a
+  !!{signed formula} nessa linha resulta da aplicação da regra
+  $\TRule{\True}{\land}$ à !!{signed formula} da linha~$1$).
+  Esse novo !!{tableau} contém agora !!{signed formula}s adicionais,
+  mas só podemos aplicar uma regra a uma delas
+  ($\sFmla{\True}{\lnot !A}$), neste caso, a regra
+  $\TRule{\True}{\lnot}$. Isso resulta no !!{tableau} fechado
   \begin{center}
     \begin{tableau}{}
       [\sFmla{\True}{\formula{A} \land \lnot \formula{A}}, just=\TAss

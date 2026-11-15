@@ -6,56 +6,55 @@
 
 \begin{document}
 
-\olfileid{cmp}{thy}{tot}
-\olsection{Totality is Undecidable}
+\olfileid[pt]{cmp}{thy}{tot}
+\olsection{A totalidade é indecidível}
 
-Let us consider one more example of using the $s$-$m$-$n$ theorem to show
-that something is noncomputable. Let $\fn{Tot}$ be the set of indices
-of total computable functions, O.s.\@,
+Consideremos mais um exemplo do uso do teorema $s$-$m$-$n$ para
+mostrar que algo não é computável. Seja $\fn{Tot}$ o conjunto dos
+índices das funções computáveis totais, isto é,
 \[
-\fn{Tot} = \Setabs{x}{\text{for every $y$, $\cfind{x}(y)\fdefined$}}.
+\fn{Tot} = \Setabs{x}{\text{para todo $y$, $\cfind{x}(y)\fdefined$}}.
 \]
 
 \begin{prop}
 \ollabel{prop:total}
-$\fn{Tot}$ is not computable.
+$\fn{Tot}$ não é computável.
 \end{prop}
 
 \begin{proof}
-To see that $\fn{Tot}$ is not computable, it suffices to show that $K$
-is reducible to it. Let $h(x,y)$ be defined by
+Para ver que $\fn{Tot}$ não é computável, basta mostrar que $K$ é
+redutível a ele. Seja $h(x,y)$ definida por
 \[
 h(x,y) \simeq
 \begin{cases}
-0 & \text{if $x \in K$} \\
-\fundefined & \text{otherwise}
+0 & \text{se $x \in K$} \\
+\fundefined & \text{caso contrário}
 \end{cases}
 \]
-Note that $h(x,y)$ does not depend on $y$ at all. It should
-not be hard to see that $h$~is partial computable: on input $x, y$, the
-we compute~$h$ by first simulating the function~$\cfind{x}$ on input~$x$; if
-this computation halts, $h(x,y)$ outputs $0$ and halts. So
-$h(x,y)$ is just $\Zero(\umin{s}{T(x,x,s)})$, where $\Zero$ is the constant zero
-function.
+Observe que $h(x,y)$ não depende de modo algum de $y$. Não deve ser
+difícil ver que $h$~é parcialmente computável: nas entradas $x, y$,
+calculamos~$h$ simulando primeiro a função~$\cfind{x}$ na entrada~$x$;
+se essa computação parar, $h(x,y)$ produzirá $0$ como saída e parará.
+Assim, $h(x,y)$ é simplesmente $\Zero(\umin{s}{T(x,x,s)})$, em que
+$\Zero$ é a função constante zero.
 
-Using the $s$-$m$-$n$ theorem, there is a primitive recursive
-function~$k(x)$ such that for every $x$ and~$y$,
+Usando o teorema $s$-$m$-$n$, existe uma função recursiva
+primitiva~$k(x)$ tal que, para todos $x$ e~$y$,
 \[
 \cfind{k(x)}(y) =
 \begin{cases}
-0 & \text{if $x \in K$} \\
-\fundefined & \text{otherwise}
+0 & \text{se $x \in K$} \\
+\fundefined & \text{caso contrário}
 \end{cases}
 \]
-So $\cfind{k(x)}$ is total if $x \in K$, and undefined otherwise. Thus,
-$k$ is a reduction of $K$ to~$\fn{Tot}$.
+Logo, $\cfind{k(x)}$ é total se $x \in K$ e é indefinida caso
+contrário. Portanto, $k$ é uma redução de $K$ a~$\fn{Tot}$.
 \end{proof}
 
 \begin{digress}
-It turns out that $\fn{Tot}$ is not even computably enumerable---its
-complexity lies further up on the ``arithmetical hierarchy.''  But we
-will not worry about this strengthening here.
+Verifica-se que $\fn{Tot}$ nem sequer é computavelmente enumerável---sua
+complexidade está mais acima na ``hierarquia aritmética''. Mas não
+nos ocuparemos aqui desse fortalecimento.
 \end{digress}
 
 \end{document}
-

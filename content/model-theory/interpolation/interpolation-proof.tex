@@ -6,187 +6,202 @@
 
 \begin{document}
 
-\olfileid{mod}{int}{prf}
+\olfileid[pt]{mod}{int}{prf}
 
-\olsection{Craig's Interpolation Theorem}
+\olsection{Teorema da Interpolação de Craig}
 
-\begin{thm}[Craig's Interpolation Theorem]
+\begin{thm}[Teorema da Interpolação de Craig]
 \ollabel{thm:interpol} 
-If $\Entails !A \lif !B$, then there is !!a{sentence} $!C$ such that
-$\Entails !A \lif !C$ and $\Entails !C \lif !B$, and every
-!!{constant}, !!{function}, and !!{predicate} (other than $\eq$) in
-$!C$ occurs both in $!A$ and~$!B$. The !!{sentence} $!C$ is called an
-\emph{interpolant} of $!A$ and~$!B$.
+Se $\Entails !A \lif !B$, então existe !!a{sentence} $!C$ tal que
+$\Entails !A \lif !C$ e $\Entails !C \lif !B$, e toda !!{constant},
+!!{function} e !!{predicate} (exceto $\eq$) em $!C$ ocorre tanto em
+$!A$ quanto em~$!B$. A !!{sentence} $!C$ é chamada de
+\emph{interpolante} de $!A$ e~$!B$.
 \end{thm}
 
 \begin{proof}
-Suppose $\Lang{L}_1$ is the language of $!A$ and $\Lang{L}_2$ is the
-language of $!B$. Let $\Lang{L}_0 = \Lang{L}_1 \cap \Lang{L}_2$. For
-each $i \in \{0, 1, 2 \}$, let $\Lang{L}'_i$ be obtained from
-$\Lang{L}_i$ by adding the infinitely many new !!{constant}s $\Obj c_0,
-\Obj c_1, \Obj c_2, \dots$. 
+Suponha que $\Lang{L}_1$ seja a linguagem de $!A$ e $\Lang{L}_2$, a
+linguagem de $!B$. Seja
+$\Lang{L}_0 = \Lang{L}_1 \cap \Lang{L}_2$. Para cada
+$i \in \{0, 1, 2 \}$, obtenha $\Lang{L}'_i$ de $\Lang{L}_i$
+acrescentando as infinitas novas !!{constant}s $\Obj c_0, \Obj c_1,
+\Obj c_2, \dots$.
 
-If $!A$ is unsatisfiable, $\lexists[x][\eq/[x][x]]$ is an
-interpolant. If $\lnot !B$ is unsatisfiable (and hence $!B$ is valid),
-$\lexists[x][\eq[x][x]]$ is an interpolant. So we may assume also that
-both $!A$ and $\lnot !B$ are satisfiable.
+Se $!A$ é insatisfatível, $\lexists[x][\eq/[x][x]]$ é um
+interpolante. Se $\lnot !B$ é insatisfatível (e, portanto, $!B$ é
+válida), $\lexists[x][\eq[x][x]]$ é um interpolante. Assim, também
+podemos supor que tanto $!A$ quanto $\lnot !B$ sejam satisfatíveis.
 
-In order to prove the contrapositive of the Interpolation Theorem,
-assume that there is no interpolant for $!A$ and $!B$. In other words,
-assume that $\{!A\}$ and $\{\lnot !B\}$ are inseparable in
+Para demonstrar a contrapositiva do Teorema da Interpolação, suponha
+que não haja interpolante para $!A$ e $!B$. Em outras palavras,
+suponha que $\{!A\}$ e $\{\lnot !B\}$ sejam inseparáveis em
 $\Lang{L}_0$.
 
-Our goal is to extend the pair $(\{ !A \}, \{\lnot!B\})$ to a
-maximally inseparable pair $(\Gamma^*, \Delta^*)$.  Let $!A_0$,
-$!A_1$, $!A_2$, \dots enumerate the !!{sentence}s of $\Lang{L}_1$, and
-$!B_0$, $!B_1$, $!B_2$, \dots enumerate the !!{sentence}s
-of~$\Lang{L}_2$. We define two increasing sequences of sets of
-!!{sentence}s $(\Gamma_n, \Delta_n)$, for $n \ge 0$, as follows. Put
-$\Gamma_0 = \{ !A\}$ and $\Delta_0 = \{\lnot !B \}$. Assuming
-$(\Gamma_n, \Delta_n)$ are already defined, define $\Gamma_{n+1}$ and
-$\Delta_{n+1}$ by:
+Nosso objetivo é estender o par $(\{ !A \}, \{\lnot!B\})$ a um par
+maximalmente inseparável $(\Gamma^*, \Delta^*)$. Sejam $!A_0$, $!A_1$,
+$!A_2$, \dots uma enumeração das !!{sentence}s de $\Lang{L}_1$, e
+$!B_0$, $!B_1$, $!B_2$, \dots uma enumeração das !!{sentence}s
+de~$\Lang{L}_2$. Definimos duas sequências crescentes de conjuntos de
+!!{sentence}s $(\Gamma_n, \Delta_n)$, para $n \ge 0$, como segue.
+Tome $\Gamma_0 = \{ !A\}$ e $\Delta_0 = \{\lnot !B \}$. Supondo que
+$(\Gamma_n, \Delta_n)$ já estejam definidos, defina $\Gamma_{n+1}$ e
+$\Delta_{n+1}$ por:
 \begin{enumerate}
-\item If $\Gamma_n \cup \{!A_n \}$ and $\Delta_n$ are inseparable in
-  $\Lang{L}'_0$, put $!A_n$ in $\Gamma_{n+1}$. Moreover, if $!A_n$ is
-  an existential !!{formula} $\lexists[x][!S]$ then pick a new
-  !!{constant} $c$ not occurring in $\Gamma_n$, $\Delta_n$, $!A_n$ or
-  $!B_n$, and put $\Subst{!S}{c}{x}$ in $\Gamma_{n+1}$.
-\item If $\Gamma_{n+1}$ and $\Delta_n \cup \{!B_n \}$ are inseparable
-  in $\Lang{L}'_0$, put $!B_n$ in $\Delta_{n+1}$. Moreover, if $!B_n$
-  is an existential !!{formula} $\lexists[x][!S]$, then pick a new
-  !!{constant} $c$ not occurring in $\Gamma_{n+1}$, $\Delta_n$, $!A_n$
-  or $!B_n$, and put $\Subst{!S}{c}{x}$ in $\Delta_{n+1}$.
+\item Se $\Gamma_n \cup \{!A_n \}$ e $\Delta_n$ são inseparáveis em
+  $\Lang{L}'_0$, coloque $!A_n$ em $\Gamma_{n+1}$. Além disso, se
+  $!A_n$ é uma !!{formula} existencial $\lexists[x][!S]$, escolha uma
+  nova !!{constant} $c$ que não ocorra em $\Gamma_n$, $\Delta_n$,
+  $!A_n$ nem em $!B_n$, e coloque $\Subst{!S}{c}{x}$ em
+  $\Gamma_{n+1}$.
+\item Se $\Gamma_{n+1}$ e $\Delta_n \cup \{!B_n \}$ são inseparáveis
+  em $\Lang{L}'_0$, coloque $!B_n$ em $\Delta_{n+1}$. Além disso, se
+  $!B_n$ é uma !!{formula} existencial $\lexists[x][!S]$, escolha uma
+  nova !!{constant} $c$ que não ocorra em $\Gamma_{n+1}$, $\Delta_n$,
+  $!A_n$ nem em $!B_n$, e coloque $\Subst{!S}{c}{x}$ em
+  $\Delta_{n+1}$.
 \end{enumerate}
-Finally, define:
+Por fim, defina:
 \begin{align*}
   \Gamma^* & = \bigcup_{n\ge 0} \Gamma_n, & 
   \Delta^* & = \bigcup_{n\ge 0} \Delta_n.
 \end{align*}
-By simultaneous induction on $n$ we can now prove:
+Por indução simultânea em $n$, podemos agora demonstrar:
 \begin{enumerate}
-\item\ollabel{part-a} $\Gamma_n$ and $\Delta_n$ are inseparable in
+\item\ollabel{part-a} $\Gamma_n$ e $\Delta_n$ são inseparáveis em
   $\Lang{L}'_0$;
-\item\ollabel{part-b} $\Gamma_{n+1}$ and $\Delta_n$ are inseparable in
+\item\ollabel{part-b} $\Gamma_{n+1}$ e $\Delta_n$ são inseparáveis em
     $\Lang{L}'_0$.
 \end{enumerate}
-The basis for \olref{part-a} is given by \olref[sep]{lem:sep1}. For
-part \olref{part-b}, we need to distinguish three cases:
+A base de \olref{part-a} é dada por \olref[sep]{lem:sep1}. Para a parte
+\olref{part-b}, precisamos distinguir três casos:
 \begin{enumerate}
-\item If $\Gamma_0 \cup \{!A_0 \}$ and $\Delta_0$ are separable, then
-  $\Gamma_1 = \Gamma_0$ and \olref{part-b} is just \olref{part-a};
-\item If $\Gamma_1 = \Gamma_0 \cup\{ !A_0\}$, then $\Gamma_1$ and
-  $\Delta_0$ are inseparable by construction.
-\item It remains to consider the case where $!A_0$ is existential, so
-  that $\Gamma_1 = \Gamma_0 \cup \{ \lexists[x][!S], \Subst{!S}{c}{x}
-  \}$. By construction, $\Gamma_0 \cup \{ \lexists[x][!S]\}$ and
-  $\Delta_0$ are inseparable, so that by \olref[sep]{lem:sep2} also
-  $\Gamma_0 \cup \{ \lexists[x][!S], \Subst{!S}{c}{x} \}$ and
-  $\Delta_0$ are inseparable.
+\item Se $\Gamma_0 \cup \{!A_0 \}$ e $\Delta_0$ são separáveis, então
+  $\Gamma_1 = \Gamma_0$, e \olref{part-b} é simplesmente
+  \olref{part-a};
+\item Se $\Gamma_1 = \Gamma_0 \cup\{ !A_0\}$, então $\Gamma_1$ e
+  $\Delta_0$ são inseparáveis por construção.
+\item Resta considerar o caso em que $!A_0$ é existencial, de modo que
+  $\Gamma_1 = \Gamma_0 \cup \{ \lexists[x][!S], \Subst{!S}{c}{x}
+  \}$. Por construção, $\Gamma_0 \cup \{ \lexists[x][!S]\}$ e
+  $\Delta_0$ são inseparáveis; por \olref[sep]{lem:sep2}, portanto,
+  $\Gamma_0 \cup \{ \lexists[x][!S], \Subst{!S}{c}{x} \}$ e
+  $\Delta_0$ também são inseparáveis.
 \end{enumerate}
-This completes the basis of the induction for \olref{part-a} and
-\olref{part-b} above. Now for the inductive step. For \olref{part-a}, if
-$\Delta_{n+1} = \Delta_n \cup \{ !B_n \}$ then $\Gamma_{n+1}$ and
-$\Delta_{n+1}$ are inseparable by construction (even when $!B_n$ is
-existential, by \olref[sep]{lem:sep2}); if $\Delta_{n+1} = \Delta_n$
-(because $\Gamma_{n+1}$ and $\Delta_n \cup \{!B_n\}$ are separable),
-then we use the induction hypothesis on \olref{part-b}. For the
-inductive step for \olref{part-b}, if $\Gamma_{n+2} = \Gamma_{n+1} \cup
-\{!A_{n+1} \}$ then $\Gamma_{n+2}$ and $\Delta_{n+1}$ are
-inseparable by construction (even when $!A_{n+1}$ is existential,
-by \olref[sep]{lem:sep2}); and if  $\Gamma_{n+2} = \Gamma_{n+1}$ then
-we use the inductive case for \olref{part-a} just proved. This
-concludes the induction on \olref{part-a} and \olref{part-b}. 
+Isso completa a base da indução para \olref{part-a} e
+\olref{part-b}. Passemos ao passo indutivo. Para \olref{part-a}, se
+$\Delta_{n+1} = \Delta_n \cup \{ !B_n \}$, então $\Gamma_{n+1}$ e
+$\Delta_{n+1}$ são inseparáveis por construção (mesmo quando $!B_n$ é
+existencial, por \olref[sep]{lem:sep2}); se
+$\Delta_{n+1} = \Delta_n$ (porque $\Gamma_{n+1}$ e
+$\Delta_n \cup \{!B_n\}$ são separáveis), usamos a hipótese de indução
+em \olref{part-b}. Para o passo indutivo de \olref{part-b}, se
+$\Gamma_{n+2} = \Gamma_{n+1} \cup \{!A_{n+1} \}$, então
+$\Gamma_{n+2}$ e $\Delta_{n+1}$ são inseparáveis por construção (mesmo
+quando $!A_{n+1}$ é existencial, por \olref[sep]{lem:sep2}); se
+$\Gamma_{n+2} = \Gamma_{n+1}$, usamos o caso indutivo de
+\olref{part-a} que acabamos de demonstrar. Isso conclui a indução em
+\olref{part-a} e \olref{part-b}.
 
-It follows that $\Gamma^*$ and $\Delta^*$ are inseparable; if not, by
-compactness, there is $n \ge 0$ that separates $\Gamma_n$ and
-$\Delta_n$, against \olref{part-a}. In particular, $\Gamma^*$ and
-$\Delta^*$ are consistent: for if the former or the latter is
-inconsistent, then they are separated by $\lexists[x][\eq/[x][x]]$ or
-  $\lforall[x][\eq[x][x]]$, respectively.
+Segue-se que $\Gamma^*$ e $\Delta^*$ são inseparáveis; caso contrário,
+pela compacidade, existe $n \ge 0$ que separa $\Gamma_n$ e $\Delta_n$,
+contra \olref{part-a}. Em particular, $\Gamma^*$ e $\Delta^*$ são
+consistentes: pois, se o primeiro ou o segundo fosse inconsistente,
+eles seriam separados, respectivamente, por
+$\lexists[x][\eq/[x][x]]$ ou $\lforall[x][\eq[x][x]]$.
 
-We now show that $\Gamma^*$ is maximally consistent in
-$\Lang{L}'_1$ and likewise $\Delta^*$ in $\Lang{L}'_2$. For the
-former, suppose that $!A_n \notin \Gamma^*$ and $\lnot !A_n
-\notin \Gamma^*$, for some $n \ge 0$. If $!A_n \notin \Gamma^*$
-then $\Gamma_n \cup \{!A_n \}$ is separable from $\Delta_n$, and
-so there is $!C \in \Lang{L}'_0$ such that both:
+Mostremos agora que $\Gamma^*$ é maximalmente consistente em
+$\Lang{L}'_1$ e, de modo análogo, $\Delta^*$ em $\Lang{L}'_2$. Para o
+primeiro, suponha que $!A_n \notin \Gamma^*$ e
+$\lnot !A_n \notin \Gamma^*$ para algum $n \ge 0$. Se
+$!A_n \notin \Gamma^*$, então $\Gamma_n \cup \{!A_n \}$ é separável de
+$\Delta_n$, e portanto existe $!C \in \Lang{L}'_0$ tal que:
 \begin{align*}
   \Gamma^* & \Entails !A_n \lif !C, & 
   \Delta^* & \Entails \lnot !C.
 \end{align*}
-Likewise, if $\lnot !A_n \notin \Gamma^*$, there is $!C' \in
-\Lang{L}'_0$ such that both:
+Do mesmo modo, se $\lnot !A_n \notin \Gamma^*$, existe
+$!C' \in \Lang{L}'_0$ tal que:
 \begin{align*}
   \Gamma^* & \Entails \lnot !A_n \lif !C', & 
   \Delta^* & \Entails \lnot !C'.
 \end{align*}
-By propositional logic, $\Gamma^* \Entails !C \lor !C'$ and
-$\Delta^* \Entails \lnot (!C \lor !C')$, so $!C \lor
-!C'$ separates $\Gamma^*$and $\Delta^*$. A similar argument
-establishes that $\Delta^*$ is maximal. 
+Pela lógica proposicional, $\Gamma^* \Entails !C \lor !C'$ e
+$\Delta^* \Entails \lnot (!C \lor !C')$; logo, $!C \lor !C'$ separa
+$\Gamma^*$ e $\Delta^*$. Um argumento semelhante estabelece que
+$\Delta^*$ é maximal.
 
-Finally, we show that $\Gamma^* \cap \Delta^*$ is maximally consistent
-in $\Lang{L}'_0$. It is obviously consistent, since it is the
-intersection of consistent sets. To show maximality, let $!S \in
-\Lang{L}'_0$. Now, $\Gamma^*$ is maximal in $\Lang{L'_1}
-\supseteq \Lang{L'_0}$, and similarly $\Delta^*$ is maximal in
-$\Lang{L'_2} \supseteq \Lang{L'_0}$. It follows that either
-$!S \in \Gamma^*$ or $\lnot !S \in \Gamma^*$, and either
-$!S \in \Delta^*$ or $\lnot !S \in \Delta^*$. If $!S \in
-\Gamma^*$ and $\lnot !S \in \Delta^*$ then $!S$ would
-separate $\Gamma^*$ and $\Delta^*$; and if $\lnot !S \in
-\Gamma^*$ and $!S \in \Delta^*$ then $\Gamma^*$ and $\Delta^*$
-would be separated by $\lnot !S$. Hence, either $!S \in
-\Gamma^* \cap \Delta^*$ or $\lnot !S \in \Gamma^* \cap \Delta^*$,
-and $\Gamma^* \cap \Delta^*$ is maximal. 
+Por fim, mostramos que $\Gamma^* \cap \Delta^*$ é maximalmente
+consistente em $\Lang{L}'_0$. É evidentemente consistente, pois é a
+interseção de conjuntos consistentes. Para mostrar a maximalidade, seja
+$!S \in \Lang{L}'_0$. $\Gamma^*$ é maximal em
+$\Lang{L'_1} \supseteq \Lang{L'_0}$, e, de modo análogo, $\Delta^*$ é
+maximal em $\Lang{L'_2} \supseteq \Lang{L'_0}$. Segue-se que ou
+$!S \in \Gamma^*$ ou $\lnot !S \in \Gamma^*$, e ou
+$!S \in \Delta^*$ ou $\lnot !S \in \Delta^*$. Se $!S \in \Gamma^*$ e
+$\lnot !S \in \Delta^*$, então $!S$ separaria $\Gamma^*$ e $\Delta^*$;
+se $\lnot !S \in \Gamma^*$ e $!S \in \Delta^*$, então $\Gamma^*$ e
+$\Delta^*$ seriam separados por $\lnot !S$. Portanto, ou
+$!S \in \Gamma^* \cap \Delta^*$ ou
+$\lnot !S \in \Gamma^* \cap \Delta^*$, e
+$\Gamma^* \cap \Delta^*$ é maximal.
 
-Since $\Gamma^*$ is maximally consistent, it has a model
-$\Struct{M}'_1$ whose !!{domain} $\Domain{M'_1}$ comprises all and
-only the elements $\Assign{c}{M'_1}$ interpreting the
-!!{constant}s---just like in the proof of the completeness theorem
-(\olref[fol][com][cth]{thm:completeness}). Similarly, $\Delta^*$ has a
-model $\Struct{M}'_2$ whose !!{domain} $\Domain{M'_2}$ is given by the
-interpretations $\Assign{c}{M'_2}$ of the !!{constant}s.
+Como $\Gamma^*$ é maximalmente consistente, ele tem um modelo
+$\Struct{M}'_1$ cujo !!{domain} $\Domain{M'_1}$ compreende todos e
+somente os elementos $\Assign{c}{M'_1}$ que interpretam as
+!!{constant}s---exatamente como na demonstração do teorema da
+completude (\olref[fol][com][cth]{thm:completeness}). Do mesmo modo,
+$\Delta^*$ tem um modelo $\Struct{M}'_2$ cujo !!{domain}
+$\Domain{M'_2}$ é dado pelas interpretações $\Assign{c}{M'_2}$ das
+!!{constant}s.
 
-Let $\Struct{M_1}$ be obtained from $\Struct{M'_1}$ by dropping
-interpretations for !!{constant}s, !!{function}s, and !!{predicate}s in
-$\Lang{L'_1} \setminus \Lang{L'_0}$, and similarly for
-$\Struct{M_2}$. Then the map $h \colon M_1 \to M_2$ defined by
-$h(\Assign{c}{M'_1}) = \Assign{c}{M'_2}$ is an
-isomorphism in $\Lang{L}'_0$, because $\Gamma^* \cap \Delta^*$ is
-maximally consistent in $\Lang{L}'_0$, as shown. This follows
-because any $\Lang{L}'_0$-!!{sentence} either belongs to both
-$\Gamma^*$ and $\Delta^*$, or to neither: so $\Assign{c}{M'_1} \in
-\Assign{P}{M'_1}$ if and only if $\Atom{P}{c} \in \Gamma^*$ if and only if
-$\Atom{P}{c} \in \Delta^*$ if and only if $\Assign{c}{M'_2} \in
-\Assign{P}{M'_2}$. The other conditions satisfied by isomorphisms
-can be established similarly.
+Obtenha $\Struct{M_1}$ de $\Struct{M'_1}$ descartando as interpretações
+das !!{constant}s, !!{function}s e !!{predicate}s em
+$\Lang{L'_1} \setminus \Lang{L'_0}$, e proceda de modo análogo para
+$\Struct{M_2}$. Então a aplicação $h \colon M_1 \to M_2$ definida por
+$h(\Assign{c}{M'_1}) = \Assign{c}{M'_2}$ é um isomorfismo em
+$\Lang{L}'_0$, pois, como mostramos, $\Gamma^* \cap \Delta^*$ é
+maximalmente consistente em $\Lang{L}'_0$. Isso se segue porque toda
+$\Lang{L}'_0$-!!{sentence} ou pertence a ambos $\Gamma^*$ e
+$\Delta^*$, ou não pertence a nenhum deles: assim,
+$\Assign{c}{M'_1} \in \Assign{P}{M'_1}$ se, e somente se,
+$\Atom{P}{c} \in \Gamma^*$ se, e somente se,
+$\Atom{P}{c} \in \Delta^*$ se, e somente se,
+$\Assign{c}{M'_2} \in \Assign{P}{M'_2}$. As demais condições
+satisfeitas por isomorfismos podem ser estabelecidas de modo análogo.
 
-Let us now define a model $\Struct{M}$ for the !!{language}
-$\Lang{L_1} \cup \Lang{L_2}$ as follows:
+Definamos agora um modelo $\Struct{M}$ para a !!{language}
+$\Lang{L_1} \cup \Lang{L_2}$ como segue:
 \begin{enumerate}
-\item The !!{domain} $\Domain{M}$ is just $\Domain{M_2}$, O.s.\@, the
-  set of all elements $\Assign{c}{M'_2}$; 
-\item If !!a{predicate}~$P$ is in $\Lang{L_2} \setminus
-  \Lang{L_1}$ then $\Assign{P}{M} = \Assign{P}{M'_2}$;
-\item If a predicate $P$ is in $\Lang{L}_1\setminus \Lang{L}_2$ then
-  $\Assign{P}{M} = h(\Assign{P}{M'_2})$, O.s.\@,
-  $\tuple{\Assign{c_1}{M'_2}, \dots, \Assign{c_n}{M'_2}} \in
-  \Assign{P}{M}$ if and only if $\tuple{\Assign{c_1}{M'_1}, \dots,
-  \Assign{c_n}{M'_1}} \in \Assign{P}{M'_1}$.
-\item If !!a{predicate} $P$ is in $\Lang{L}_0$ then $\Assign{P}{M} =
+\item O !!{domain} $\Domain{M}$ é simplesmente $\Domain{M_2}$, isto
+  é, o conjunto de todos os elementos $\Assign{c}{M'_2}$;
+\item Se !!a{predicate}~$P$ pertence a
+  $\Lang{L_2} \setminus \Lang{L_1}$, então
+  $\Assign{P}{M} = \Assign{P}{M'_2}$;
+\item Se um predicado $P$ pertence a
+  $\Lang{L}_1\setminus \Lang{L}_2$, então
+  $\Assign{P}{M} = h(\Assign{P}{M'_2})$, isto é,
+  \[
+  \tuple{\Assign{c_1}{M'_2}, \dots, \Assign{c_n}{M'_2}} \in
+  \Assign{P}{M}
+  \]
+  se, e somente se,
+  \[
+  \tuple{\Assign{c_1}{M'_1}, \dots, \Assign{c_n}{M'_1}} \in
+  \Assign{P}{M'_1}.
+  \]
+\item Se !!a{predicate} $P$ pertence a $\Lang{L}_0$, então $\Assign{P}{M} =
   \Assign{P}{M'_2} = h(\Assign{P}{M'_1})$. 
-\item !!^{function}s of $\Lang{L}_1 \cup \Lang{L}_2$, including
-  !!{constant}s, are handled similarly.
+\item As !!^{function}s de $\Lang{L}_1 \cup \Lang{L}_2$, inclusive as
+  !!{constant}s, são tratadas de modo análogo.
 \end{enumerate}
 
-Finally, one shows by induction on !!{formula}s that $\Struct{M}$ agrees
-with $\Struct{M'_1}$ on all !!{formula}s of $\Lang{L'_1}$ and with
-$\Struct{M'_2}$ on all !!{formula}s of $\Lang{L'_2}$. In particular,
-$\Struct{M} \Entails \Gamma^* \cup \Delta^*$, whence $\Struct{M}
-\Entails !A$ and $\Struct{M} \Entails \lnot!B$, and
-$\not\Entails !A \lif !B$. This concludes the proof of
-Craig's Interpolation Theorem.
+Por fim, mostra-se por indução nas !!{formula}s que $\Struct{M}$
+concorda com $\Struct{M'_1}$ em todas as !!{formula}s de $\Lang{L'_1}$
+e com $\Struct{M'_2}$ em todas as !!{formula}s de $\Lang{L'_2}$. Em
+particular, $\Struct{M} \Entails \Gamma^* \cup \Delta^*$, donde
+$\Struct{M} \Entails !A$, $\Struct{M} \Entails \lnot!B$ e
+$\not\Entails !A \lif !B$. Isso conclui a demonstração do Teorema da
+Interpolação de Craig.
 \end{proof}
 
 \end{document}

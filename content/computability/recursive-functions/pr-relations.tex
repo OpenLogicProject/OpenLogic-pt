@@ -6,49 +6,49 @@
 
 \begin{document}
 
-\olfileid{cmp}{rec}{prr}
-\olsection{Primitive Recursive Relations}
+\olfileid[pt]{cmp}{rec}{prr}
+\olsection{Relações recursivas primitivas}
 
 
 \begin{defn}
-A relation $R(\vec x)$ is said to be primitive recursive if its characteristic
-function,
+Uma relação $R(\vec x)$ é dita recursiva primitiva se sua função
+característica,
 \[
 \Char{R}(\vec x) = \left\{
   \begin{array}{ll}
-  1 & \mbox{if $R(\vec x)$} \\
-  0 & \mbox{otherwise}
+  1 & \mbox{se $R(\vec x)$} \\
+  0 & \mbox{caso contrário}
   \end{array}
 \right.
 \]
-is primitive recursive.
+é recursiva primitiva.
 \end{defn}
 
-In other words, when one speaks of a primitive recursive relation
-$R(\vec x)$, one is referring to a relation of the form $\Char{R}(\vec
-x) = 1$, where $\Char{R}$ is a primitive recursive function which, on
-any input, returns either 1 or 0. For example, the relation
-$\fn{IsZero}(x)$, which holds if and only if $x = 0$, corresponds to the
-function $\Char{\fn{IsZero}}$, defined using primitive recursion by
+Em outras palavras, quando se fala de uma relação recursiva primitiva
+$R(\vec x)$, faz-se referência a uma relação da forma
+$\Char{R}(\vec x) = 1$, onde $\Char{R}$ é uma função recursiva primitiva que,
+para qualquer entrada, devolve 1 ou 0. Por exemplo, a relação
+$\fn{IsZero}(x)$, que vale se, e somente se, $x = 0$, corresponde à função
+$\Char{\fn{IsZero}}$, definida por recursão primitiva mediante
 \begin{align*}
 \Char{\fn{IsZero}}(0) & = 1,\\
 \Char{\fn{IsZero}}(x+1) & = 0.
 \end{align*}
 
-It should be clear that one can compose relations with other primitive
-recursive functions. So the following are also primitive recursive:
+Deve estar claro que se podem compor relações com outras funções recursivas
+primitivas. Portanto, também são recursivas primitivas:
 \begin{enumerate}
-\item The equality relation, $x = y$, defined by $\fn{IsZero}(\left|x -
-  y\right|)$
-\item The less-than relation, $x \leq y$, defined by $\fn{IsZero}(x
-  \tsub y)$
+\item A relação de igualdade, $x = y$, definida por
+  $\fn{IsZero}(\left|x-y\right|)$.
+\item A relação menor ou igual, $x \leq y$, definida por
+  $\fn{IsZero}(x \tsub y)$.
 \end{enumerate}
 
 
 \begin{prop}
-  The set of primitive recursive relations is closed under Boolean
-  operations, that is, 
-  if $P(\vec x)$ and $Q(\vec x)$ are primitive recursive, so are
+  O conjunto das relações recursivas primitivas é fechado sob operações
+  booleanas; isto é, se $P(\vec x)$ e $Q(\vec x)$ são recursivas primitivas,
+  então também o são
   \begin{enumerate}
   \item $\lnot P(\vec x)$
   \item $P(\vec x) \land Q(\vec x)$
@@ -58,110 +58,110 @@ recursive functions. So the following are also primitive recursive:
 \end{prop}
 
 \begin{proof}
-  Suppose $P(\vec x)$ and $Q(\vec x)$ are primitive recursive, O.s.\@,
-  their characteristic functions $\Char{P}$ and $\Char{Q}$ are.  We
-  have to show that the characteristic functions of $\lnot P(\vec x)$,
-  etc., are also primitive recursive.
+  Suponha que $P(\vec x)$ e $Q(\vec x)$ sejam recursivas primitivas, isto é,
+  que suas funções características $\Char{P}$ e $\Char{Q}$ o sejam. Precisamos
+  mostrar que as funções características de $\lnot P(\vec x)$ etc. também são
+  recursivas primitivas.
   \[
   \Char{\lnot P}(\vec x) = \begin{cases}
-    0 & \text{if $\Char{P}(\vec x) = 1$}\\
-    1 & \text{otherwise}
+    0 & \text{se $\Char{P}(\vec x) = 1$}\\
+    1 & \text{caso contrário}
   \end{cases}
   \]
-  We can define $\Char{\lnot P}(\vec x)$ as $1 \tsub \Char{P}(\vec x)$.
+  Podemos definir $\Char{\lnot P}(\vec x)$ como $1 \tsub \Char{P}(\vec x)$.
   \[
   \Char{P \land Q}(\vec x) = \begin{cases}
-    1 & \text{if $\Char{P}(\vec x) = \Char{Q}(\vec x) = 1$}\\
-    0 & \text{otherwise}
+    1 & \text{se $\Char{P}(\vec x) = \Char{Q}(\vec x) = 1$}\\
+    0 & \text{caso contrário}
   \end{cases}
   \]
-  We can define $\Char{P \land Q}(\vec x)$ as $\Char{P}(\vec x) \cdot
-  \Char{Q}(\vec x)$ or as $\fn{min}(\Char{P}(\vec x), \Char{Q}(\vec
-  x))$. Similarly, 
+  Podemos definir $\Char{P \land Q}(\vec x)$ como $\Char{P}(\vec x) \cdot
+  \Char{Q}(\vec x)$ ou como $\fn{min}(\Char{P}(\vec x), \Char{Q}(\vec
+  x))$. De modo semelhante,
   \begin{align*}
-    \Char{P \lor Q}(\vec x) & = \fn{max}(\Char{P}(\vec x), \Char{Q}(\vec x)) \text{ and}\\
+    \Char{P \lor Q}(\vec x) & = \fn{max}(\Char{P}(\vec x), \Char{Q}(\vec x)) \text{ e}\\
     \Char{P \lif Q}(\vec x) & = \fn{max}(1 \tsub
   \Char{P}(\vec x), \Char{Q}(\vec x)).
   \end{align*}
 \end{proof}
 
 \begin{prop}
-  The set of primitive recursive relations is closed under bounded
-  quantification, O.s.\@, if $R(\vec x, z)$ is a primitive recursive
-  relation, then so are the relations
+  O conjunto das relações recursivas primitivas é fechado sob quantificação
+  limitada; isto é, se $R(\vec x, z)$ é uma relação recursiva primitiva,
+  então também o são as relações
   \begin{align*}
-    & \bforall{z < y}{R(\vec x, z)} \text{ and}\\
+    & \bforall{z < y}{R(\vec x, z)} \text{ e}\\
     & \bexists{z < y}{R(\vec x, z)}.
   \end{align*}
-  $\bforall{z < y}{R(\vec x, z)}$ holds of $\vec x$ and $y$ if and
-  only if $R(\vec x, z)$ holds for every~$z$ less than~$y$, and
-  similarly for $\bexists{z < y}{R(\vec x, z)}$.
+  $\bforall{z < y}{R(\vec x, z)}$ vale para $\vec x$ e $y$ se, e somente se,
+  $R(\vec x, z)$ vale para todo~$z$ menor que~$y$, e analogamente para
+  $\bexists{z < y}{R(\vec x, z)}$.
 \end{prop}
 
 \begin{proof}
-  By convention, we take $\bforall{z < 0}{R(\vec x, z)}$ to be true
-  (for the trivial reason that there are no $z$ less than~$0$) and
-  $\bexists{z < 0}{R(\vec x, z)}$ to be false. A bounded
-  universal quantifier functions just like a finite product or
-  iterated minimum, O.s.\@, if $P(\vec x, y) \defiff \bforall{z <
-  y}{R(\vec x, z)}$ then $\Char{P}(\vec x, y)$ can be defined by
+  Por convenção, tomamos $\bforall{z < 0}{R(\vec x, z)}$ como verdadeiro
+  (pela razão trivial de que não há $z$ menor que~$0$) e
+  $\bexists{z < 0}{R(\vec x, z)}$ como falso. Um quantificador universal
+  limitado funciona como um produto finito ou um mínimo iterado; isto é, se
+  $P(\vec x, y) \defiff \bforall{z < y}{R(\vec x, z)}$, então
+  $\Char{P}(\vec x, y)$ pode ser definida por
   \begin{align*}
     \Char{P}(\vec x, 0) & = 1\\
     \Char{P}(\vec x, y+1) & =
     \fn{min}(\Char{P}(\vec x, y), \Char{R}(\vec x, y)).
   \end{align*}
-  Bounded existential quantification can similarly be defined using
-  $\fn{max}$. Alternatively, it can be defined from bounded universal
-  quantification, using the equivalence $\bexists{z < y}{R(\vec x, z)}
-  \liff \lnot \bforall{z < y}{\lnot R(\vec x, z)}$. Note that, for
-  example, a bounded quantifier of the form $\bexists{x \leq y}{\dots
-  x\dots}$ is equivalent to $\bexists{x < y+1}{\dots x \dots}$.
+  A quantificação existencial limitada pode ser definida analogamente usando
+  $\fn{max}$. Alternativamente, pode ser definida a partir da quantificação
+  universal limitada mediante a equivalência
+  $\bexists{z < y}{R(\vec x, z)} \liff
+  \lnot \bforall{z < y}{\lnot R(\vec x, z)}$. Observe, por exemplo, que um
+  quantificador limitado da forma $\bexists{x \leq y}{\dots x\dots}$ é
+  equivalente a $\bexists{x < y+1}{\dots x \dots}$.
 \end{proof}
 
 \begin{prob}
-  Show that the three place relation $x \equiv y \mod n$ (congruence
-  modulo~$n$) is primitive recursive.
+  Mostre que a relação ternária $x \equiv y \mod n$ (congruência módulo~$n$)
+  é recursiva primitiva.
 \end{prob}
 
-Another useful primitive recursive function is the conditional
-function, $\fn{cond}(x,y,z)$, defined by
+Outra função recursiva primitiva útil é a função condicional
+$\fn{cond}(x,y,z)$, definida por
 \begin{align*}
   \fn{cond}(x,y,z) & = \begin{cases}
-  y & \text{if $x = 0$} \\
-  z & \text{otherwise}.
+  y & \text{se $x = 0$} \\
+  z & \text{caso contrário}.
 \end{cases}
-\intertext{This is defined recursively by}
+\intertext{Ela é definida recursivamente por}
 \fn{cond}(0,y,z) & = y,\\
 \fn{cond}(x+1,y,z) & = z.
 \end{align*}
-One can use this to justify definitions of primitive recursive functions
-by cases from primitive recursive relations:
+Podemos usá-la para justificar definições por casos de funções recursivas
+primitivas a partir de relações recursivas primitivas:
 
 \begin{prop}
-If $g_0(\vec x)$, \dots,~$g_m(\vec x)$ are primitive recursive functions, and $R_0(\vec
-x)$, \dots, $R_{m-1}(\vec x)$ are primitive recursive relations, then
-the function $f$ defined by
+Se $g_0(\vec x)$, \dots,~$g_m(\vec x)$ são funções recursivas primitivas e
+$R_0(\vec x)$, \dots, $R_{m-1}(\vec x)$ são relações recursivas primitivas,
+então a função $f$ definida por
 \[
 f(\vec x) = \begin{cases}
-    g_0(\vec x) & \text{if $R_0(\vec{x})$} \\
-    g_1(\vec x) & \text{if $R_1(\vec{x})$ and not $R_0(\vec{x})$} \\
+    g_0(\vec x) & \text{se $R_0(\vec{x})$} \\
+    g_1(\vec x) & \text{se $R_1(\vec{x})$ e não $R_0(\vec{x})$} \\
     \vdots & \\
-    g_{m-1}(\vec x) & \text{if $R_{m-1}(\vec{x})$ and none of the
-      previous hold}
+    g_{m-1}(\vec x) & \text{se $R_{m-1}(\vec{x})$ e nenhuma das anteriores
+      vale}
     \\
-    g_m(\vec x) & \mbox{otherwise}
+    g_m(\vec x) & \mbox{caso contrário}
 \end{cases}
 \]
-is also primitive recursive.
+também é recursiva primitiva.
 \end{prop}
 
 \begin{proof}
-  When $m = 1$, this is just the function defined by
+  Quando $m = 1$, essa é simplesmente a função definida por
   \[
   f(\vec x) = \fn{cond}(\Char{\lnot R_0}(\vec x),g_0(\vec x),g_1(\vec
   x)).
   \]
-  For $m$ greater than $1$, one can just compose definitions of this
-  form.
+  Para $m$ maior que $1$, basta compor definições dessa forma.
 \end{proof}
 \end{document}

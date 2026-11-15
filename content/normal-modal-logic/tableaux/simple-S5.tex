@@ -6,24 +6,24 @@
 
 \begin{document}
 
-\olfileid{nml}{tab}{s5}
+\olfileid[pt]{nml}{tab}{s5}
 
-\olsection{Simple \usetoken{P}{tableau} for \Log{S5}}
+\olsection{\usetoken{P}{tableau} simples para \Log{S5}}
 
-\Log{S5} is sound and complete with respect to the class of universal
-models, O.s.\@, models where every world is accessible from every
-world. In universal models the accessibility relation doesn't matter:
-``there is a world~$w$ where $\mSat{M}{!A}[w]$'' is true if and only
-if there is such a $w$ that's accessible from~$u$. So in \Log{S5}, we
-can define models as simply a set of worlds and a valuation~$V$. This
-suggests that we should be able to simplify the !!{tableau} rules as
-well. In the general case, we take as prefixes sequences of positive
-integers, so that we can keep track of which such prefixes name worlds
-which are accessible from others: $\sigma.n$ names a world accessible
-from~$\sigma$. But in \Log{S5} any world is accessible from any world,
-so there is no need to so keep track. Instead, we can use positive
-integers as prefixes. The simplified rules are given in
-\olref{tab:rules-S5}.
+\Log{S5} é correta e completa em relação à classe dos modelos universais,
+isto é, modelos nos quais todo mundo é acessível a partir de todo mundo.
+Em modelos universais, a relação de acessibilidade não faz diferença:
+``há um mundo~$w$ em que $\mSat{M}{!A}[w]$'' é verdadeira se, e somente
+se, há um tal $w$ acessível a partir de~$u$. Assim, em \Log{S5}, podemos
+definir modelos simplesmente como um conjunto de mundos e uma valoração
+~$V$. Isso sugere que também devemos poder simplificar as regras de
+!!{tableau}. No caso geral, tomamos como prefixos sequências de inteiros
+positivos, de modo a registrar quais prefixos nomeiam mundos acessíveis a
+partir de outros: $\sigma.n$ nomeia um mundo acessível a partir de
+~$\sigma$. Mas, em \Log{S5}, qualquer mundo é acessível a partir de
+qualquer outro; portanto, não é necessário manter esse registro. Em vez
+disso, podemos usar inteiros positivos como prefixos. As regras
+simplificadas são apresentadas em \olref{tab:rules-S5}.
 
 \begin{table}
   \begin{center}
@@ -40,7 +40,7 @@ integers as prefixes. The simplified rules are given in
       \RightLabel{\TRule{\False}{\Box}}
       \UnaryInfC{\sFmla{\False}{!A}[m]}
       \DisplayProof\\
-      $m$ is used & $m$ is new
+      $m$ é usado & $m$ é novo
       \\[1ex]
       \hline}{}
     \iftag{prvDiamond}{
@@ -53,18 +53,18 @@ integers as prefixes. The simplified rules are given in
       \RightLabel{\TRule{\False}{\Diamond}}
       \UnaryInfC{\sFmla{\False}{!A}[m]}
       \DisplayProof\\
-      $m$ is new & $m$ is used
+      $m$ é novo & $m$ é usado
       \\[1ex]
       \hline}{}
     \end{tabular}
   \end{center}
-  \caption{Simplified rules for \Log{S5}.}
+  \caption{Regras simplificadas para \Log{S5}.}
   \ollabel{tab:rules-S5}
 \end{table}
 
 \begin{ex}
-  We give a simplified closed tableau that shows $\Log{S5} \Proves
-  \Ax{5}$, O.s.\@, $\Diamond!A \lif \Box\Diamond!A$.
+  Apresentamos um tableau fechado simplificado que mostra
+  $\Log{S5} \Proves \Ax{5}$, isto é, $\Diamond!A \lif \Box\Diamond!A$.
   \begin{oltableau}
     [\pFmla{\False}{\Diamond\formula{A} \lif \Box\Diamond \formula{A}}{1},
       just = \TAss

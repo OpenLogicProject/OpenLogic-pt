@@ -6,40 +6,40 @@
 
 \begin{document}
 
-\olfileid{cnt}{min}{agg}
+\olfileid[pt]{cnt}{min}{agg}
 
-\olsection{Antecedent Strengthening}
+\olsection{Fortalecimento do antecedente}
 
-``Strengthening the antecedent'' refers to the
-inference $!A \lif !C \Entails (!A \land !B) \lif !C$.  It is valid
-for the material conditional, but invalid for counterfactuals. Suppose
-it is true that if I were to strike this match, it would light. (That
-means, there is nothing wrong with the match or the matchbook surface,
-I will not break the match, etc.) But it is not true that if I were to
-light this match in outer space, it would light. So the following
-inference is invalid:
+``Fortalecer o antecedente'' refere-se à
+inferência $!A \lif !C \Entails (!A \land !B) \lif !C$. Ela é válida
+para o condicional material, mas inválida para os contrafactuais. Suponha
+que seja verdade que, se eu riscasse este fósforo, ele acenderia. (Isso
+significa que não há nada de errado com o fósforo nem com a superfície da caixa,
+que não quebrarei o fósforo etc.) Mas não é verdade que, se eu
+acendesse este fósforo no espaço sideral, ele acenderia. Portanto, a seguinte
+inferência é inválida:
 \begin{quote}
-  If the match were struck, it would light.
+  Se o fósforo fosse riscado, ele acenderia.
 
-  Therefore, if the match were struck in outer space, it would light.
+  Portanto, se o fósforo fosse riscado no espaço sideral, ele acenderia.
 \end{quote}
 
-The Lewis--Stalnaker account of conditionals explains this: the closest
-world where I light the match and I do so in outer space is much
-further removed from the actual world than the closest world where I
-light the match is. So although it's true that the match lights in the
-latter, it is not in the former. And that is as it should be.
+A explicação de Lewis--Stalnaker para os condicionais esclarece isso: o mundo
+mais próximo em que acendo o fósforo e o faço no espaço sideral está muito
+mais distante do mundo real do que o mundo mais próximo em que
+acendo o fósforo. Assim, embora seja verdade que o fósforo acende no
+último, ele não acende no primeiro. E é assim que deve ser.
 
 \begin{ex}
-  The sphere semantics invalidates the inference, O.s.\@, we have $p
-  \cif r \Entails/ (p \land q) \cif r$. Consider the model $\mModel{M}
-  = \tuple{W, O, V}$ where $W = \{w, w_1, w_2\}$, $O_w = \{\{w\}, \{w,
+  A semântica de esferas invalida a inferência, isto é, temos $p
+  \cif r \Entails/ (p \land q) \cif r$. Considere o modelo $\mModel{M}
+  = \tuple{W, O, V}$, em que $W = \{w, w_1, w_2\}$, $O_w = \{\{w\}, \{w,
   w_1\}, \{w, w_1, w_2\}\}$, $V(p) = \{w_1, w_2\}$, $V(q) = \{w_2\}$,
-  and $V(r) = \{w_1\}$. There is a $p$-admitting sphere $S = \{w,
-  w_1\}$ and $p \lif r$ is true at all worlds in it, so $\mSat{M}{p
-    \cif r}[w]$. There is also a $(p \land q)$-admitting sphere $S' =
-  \{w, w_1, w_2\}$ but $\mSat/{M}{(p \land q) \lif r}[w_2]$, so
-  $\mSat/{M}{(p \land q) \cif r}[w]$ (see \olref{fig:antecedent-strengthening}).
+  e $V(r) = \{w_1\}$. Existe uma esfera que admite $p$, $S = \{w,
+  w_1\}$, e $p \lif r$ é verdadeiro em todos os mundos nela, portanto $\mSat{M}{p
+    \cif r}[w]$. Existe também uma esfera que admite $(p \land q)$, $S' =
+  \{w, w_1, w_2\}$, mas $\mSat/{M}{(p \land q) \lif r}[w_2]$, portanto
+  $\mSat/{M}{(p \land q) \cif r}[w]$ (veja \olref{fig:antecedent-strengthening}).
 
 \begin{figure}
 \begin{center}
@@ -61,7 +61,7 @@ latter, it is not in the former. And that is as it should be.
   \spherepos{30}{4}{node {$r$}}
   \draw (1,4.5) node[below] {$p$};
 \end{tikzpicture}
-\caption{Counterexample to antecedent strengthening}
+\caption{Contraexemplo ao fortalecimento do antecedente}
 \ollabel{fig:antecedent-strengthening}
 \end{center}
 \end{figure}

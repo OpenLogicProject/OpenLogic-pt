@@ -6,118 +6,117 @@
 
 \begin{document}
 
-\olfileid{mod}{mar}{cmp}
-\section{Computable Models of Arithmetic}
+\olfileid[pt]{mod}{mar}{cmp}
+\section{Modelos computáveis da aritmética}
 
 \begin{explain}
-The standard model~$\Struct{N}$ has two nice features. Its domain is
-the natural numbers~$\Nat$, O.s.\@, its elements are just the kinds of
-things we want to talk about using the language of arithmetic, and the
-standard numeral~$\num{n}$ actually picks out~$n$. The other nice
-feature is that the interpretations of the non-logical symbols
-of~$\Lang{L_A}$ are all \emph{computable}. The successor, addition,
-and multiplication functions which serve as $\Assign{\prime}{N}$,
-$\Assign{+}{N}$, and $\Assign{\times}{N}$ are computable functions of
-numbers. (Computable by Turing machines, or definable by primitive
-recursion, say.) And the less-than relation on~$\Struct{N}$, O.s.\@,
-$\Assign{<}{N}$, is decidable.
+O modelo padrão~$\Struct{N}$ tem duas características convenientes.
+Seu domínio é o conjunto dos números naturais~$\Nat$, isto é, seus
+elementos são justamente o tipo de coisa de que queremos falar usando
+a linguagem da aritmética, e o numeral padrão~$\num{n}$ de fato
+designa~$n$. A outra característica conveniente é que as interpretações
+dos símbolos não lógicos de~$\Lang{L_A}$ são todas \emph{computáveis}.
+As funções sucessor, adição e multiplicação que servem como
+$\Assign{\prime}{N}$, $\Assign{+}{N}$ e $\Assign{\times}{N}$ são
+funções computáveis de números. (Computáveis por máquinas de Turing ou
+definíveis por recursão primitiva, por exemplo.) E a relação menor que
+em~$\Struct{N}$, isto é, $\Assign{<}{N}$, é decidível.
 
-Non-standard models of arithmetical theories such as $\Th{Q}$ and
-$\Th{PA}$ must contain non-standard elements. Thus their domains
-typically include !!{element}s in addition to~$\Nat$. However, any
-countable !!{structure} can be built on any !!{denumerable} set,
-including~$\Nat$. So there are also non-standard models with
-domain~$\Nat$. In such models~$\Struct{M}$, of course, at least some
-numbers cannot play the roles they usually play, since some~$k$ must
-be different from~$\Value{\num{n}}{M}$ for all~$n \in \Nat$.
+Modelos não padrão de teorias aritméticas como $\Th{Q}$ e $\Th{PA}$
+devem conter elementos não padrão. Assim, seus domínios em geral
+incluem !!{element}s além de~$\Nat$. No entanto, qualquer !!{structure}
+enumerável pode ser construída sobre qualquer conjunto !!{denumerable},
+inclusive~$\Nat$. Portanto, também existem modelos não padrão com
+domínio~$\Nat$. Nesses modelos~$\Struct{M}$, naturalmente, pelo menos
+alguns números não podem desempenhar seus papéis habituais, pois
+algum~$k$ deve ser diferente de~$\Value{\num{n}}{M}$ para todo
+$n \in \Nat$.
 \end{explain}
 
 \begin{defn}
-!!^a{structure}~$\Struct{M}$ for $\Lang{L_A}$ is \emph{computable} iff
-  $\Domain{M} = \Nat$ and $\Assign{\prime}{M}$, $\Assign{+}{M}$,
-  $\Assign{\times}{M}$ are computable functions and $\Assign{<}{M}$ is
-  a decidable relation.
+!!^a{structure}~$\Struct{M}$ para $\Lang{L_A}$ é \emph{computável} se, e somente se,
+  $\Domain{M} = \Nat$, $\Assign{\prime}{M}$, $\Assign{+}{M}$ e
+  $\Assign{\times}{M}$ são funções computáveis e $\Assign{<}{M}$ é
+  uma relação decidível.
 \end{defn}
 
 \begin{ex}\ollabel{ex:comp-model-q}
-Recall the structure $\Struct{K}$ from \olref[mdq]{ex:model-K-of-Q}.
-Its domain was $\Domain{K} = \Nat
-\cup \{a\}$ and interpretations
+Lembre a estrutura $\Struct{K}$ de \olref[mdq]{ex:model-K-of-Q}.
+Seu domínio era $\Domain{K} = \Nat
+\cup \{a\}$, com interpretações
 \begin{align*}
   \Assign{\Obj{0}}{K} & = 0\\
   \Assign{\prime}{K}(x) & =
   \begin{cases}
-    x+1 & \text{if $x\in \Nat$}\\
-    a & \text{if $x = a$}
+    x+1 & \text{se $x\in \Nat$}\\
+    a & \text{se $x = a$}
   \end{cases}\\
   \Assign{+}{K}(x, y) & =
   \begin{cases}
-    x+y & \text{if $x$, $y \in\Nat$}\\
-    a & \text{otherwise}
+    x+y & \text{se $x$, $y \in\Nat$}\\
+    a & \text{caso contrário}
   \end{cases}\\
   \Assign{\times}{K}(x, y) & =
   \begin{cases}
-    xy & \text{if $x$, $y \in\Nat$}\\
-    0 & \text{if $x=0$ or $y=0$}\\
-    a & \text{otherwise}\\
+    xy & \text{se $x$, $y \in\Nat$}\\
+    0 & \text{se $x=0$ ou $y=0$}\\
+    a & \text{caso contrário}\\
   \end{cases}\\
   \Assign{<}{K} & =
-  \Setabs{\tuple{x,y}}{x, y \in \Nat \text{ and } x<y} \cup
+  \Setabs{\tuple{x,y}}{x, y \in \Nat \text{ e } x<y} \cup
   \Setabs{\tuple{x,a}}{n \in \Domain{K}}
 \end{align*}
-But $\Domain{K}$ is !!{denumerable} and so is equinumerous
-with~$\Nat$. For instance, $g\colon \Nat \to \Domain{K}$ with $g(0) =
-a$ and $g(n) = n+1$ for $n>0$ is !!a{bijection}.  We can turn it into
-an isomorphism between a new model~$\Struct{K'}$ of~$\Th{Q}$ and
-$\Struct{K}$.  In $\Struct{K'}$, we have to assign different functions
-and relations to the symbols of~$\Lang{L_A}$, since different
-!!{element}s of~$\Nat$ play the roles of standard and non-standard
-numbers.
+Mas $\Domain{K}$ é !!{denumerable} e, portanto, tem a mesma cardinalidade
+que~$\Nat$. Por exemplo, $g\colon \Nat \to \Domain{K}$, com $g(0) = a$
+e $g(n) = n+1$ para $n>0$, é !!a{bijection}. Podemos transformá-la em
+um isomorfismo entre um novo modelo~$\Struct{K'}$ de~$\Th{Q}$ e
+$\Struct{K}$. Em $\Struct{K'}$, precisamos atribuir funções e relações
+diferentes aos símbolos de~$\Lang{L_A}$, pois !!{element}s diferentes
+de~$\Nat$ desempenham os papéis de números padrão e não padrão.
 
-Specifically, $0$ now plays the role of~$a$, not of the smallest
-standard number. The smallest standard number is now~$1$. So we assign
-$\Assign{\Obj{0}}{K'} = 1$. The successor function is also different
-now: given a standard number, O.s.\@, an $n > 0$, it still returns
-$n+1$. But $0$ now plays the role of~$a$, which is its own
-successor. So $\Assign{\prime}{K'}(0) = 0$.  For addition and
-multiplication we likewise have
+Especificamente, $0$ agora desempenha o papel de~$a$, e não o do menor
+número padrão. O menor número padrão agora é~$1$. Portanto, atribuímos
+$\Assign{\Obj{0}}{K'} = 1$. A função sucessor também é diferente:
+dado um número padrão, isto é, um $n > 0$, ela ainda devolve $n+1$.
+Mas $0$ agora desempenha o papel de~$a$, que é seu próprio sucessor.
+Logo, $\Assign{\prime}{K'}(0) = 0$. Para a adição e a multiplicação,
+temos, de modo análogo,
 \begin{align*}
 \Assign{+}{K'}(x, y) & =
   \begin{cases}
-    x+y-1 & \text{if $x$, $y >0$}\\
-    0 & \text{otherwise}
+    x+y-1 & \text{se $x$, $y >0$}\\
+    0 & \text{caso contrário}
   \end{cases}\\
   \Assign{\times}{K'}(x, y) & =
   \begin{cases}
-    1 & \text{if $x = 1$ or $y = 1$}\\
-    xy - x - y + 2 & \text{if $x$, $y > 1$}\\
-    0 & \text{otherwise}\\
+    1 & \text{se $x = 1$ ou $y = 1$}\\
+    xy - x - y + 2 & \text{se $x$, $y > 1$}\\
+    0 & \text{caso contrário}\\
   \end{cases}
 \end{align*}
-And we have $\tuple{x, y} \in \Assign{<}{K'}$ iff $x < y$ and $x > 0$
-and $y > 0$, or if $y = 0$.
+E temos $\tuple{x, y} \in \Assign{<}{K'}$ se, e somente se, $x < y$,
+$x > 0$ e $y > 0$, ou se $y = 0$.
 
-All of these functions are computable functions of natural numbers and
-$\Assign{<}{K'}$ is a decidable relation on~$\Nat$---but they are not
-the same functions as successor, addition, and multiplication
-on~$\Nat$, and $\Assign{<}{K'}$ is not the same relation as~$<$
-on~$\Nat$.
+Todas essas funções são funções computáveis de números naturais, e
+$\Assign{<}{K'}$ é uma relação decidível em~$\Nat$---mas elas não são
+as mesmas funções sucessor, adição e multiplicação em~$\Nat$, e
+$\Assign{<}{K'}$ não é a mesma relação que~$<$ em~$\Nat$.
 \end{ex}
 
 \begin{prob}
-Give !!a{structure}~$\Struct{L'}$ with $\Domain{L'} = \Nat$ isomorphic
-to~$\Struct{L}$ of \olref[mod][mar][mdq]{ex:model-L-of-Q}.
+Dê !!a{structure}~$\Struct{L'}$ com $\Domain{L'} = \Nat$ isomorfa
+a~$\Struct{L}$ de \olref[mod][mar][mdq]{ex:model-L-of-Q}.
 \end{prob}
 
 \begin{explain}
-\Olref{ex:comp-model-q} shows that $\Th{Q}$ has computable
-non-standard models with domain~$\Nat$.  However, the following result
-shows that this is not true for models of~$\Th{PA}$ (and thus also for
-models of~$\Th{TA}$).
+\Olref{ex:comp-model-q} mostra que $\Th{Q}$ tem modelos não padrão
+computáveis com domínio~$\Nat$. No entanto, o resultado a seguir
+mostra que isso não vale para modelos de~$\Th{PA}$ (e, portanto,
+tampouco para modelos de~$\Th{TA}$).
 \end{explain}
 
-\begin{thm}[Tennenbaum's Theorem]
-$\Struct{N}$ is the only computable model of~$\Th{PA}$.
+\begin{thm}[Teorema de Tennenbaum]
+$\Struct{N}$ é o único modelo computável de~$\Th{PA}$.
 \end{thm}
   
 \end{document}

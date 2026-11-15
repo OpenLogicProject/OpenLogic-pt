@@ -7,27 +7,28 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{axd}{pro}}
-      {\olfileid{pl}{axd}{pro}}
+      {\olfileid[pt]{fol}{axd}{pro}}
+      {\olfileid[pt]{pl}{axd}{pro}}
 
-\olsection{Examples of \usetoken{P}{derivation}}
+\olsection{Exemplos de \usetoken{P}{derivation}}
 
 
 \begin{ex}
-Suppose we want to prove $(\lnot !D \lor !E) \lif (!D \lif
-!E)$. Clearly, this is not an instance of any of our axioms, so we
-have to use the \MP{} rule to !!{derive} it. Our only rule is~MP, which
-given $!A$ and $!A \lif !B$ allows us to justify~$!B$. One
-strategy would be to use \olref[prp]{ax:lor3} with $!A$ being $\lnot
-!D$, $!B$ being $!E$, and $!C$ being $!D \lif !E$, O.s.\@, the instance
+Suponha que queiramos provar $(\lnot !D \lor !E) \lif (!D \lif
+!E)$. É claro que essa não é uma instância de nenhum de nossos
+axiomas, de modo que precisamos usar a regra \MP{} para !!{derive} essa fórmula.
+Nossa única regra é MP, que, dados $!A$ e $!A \lif !B$, permite
+justificar~$!B$. Uma estratégia seria usar \olref[prp]{ax:lor3} com
+$!A$ igual a $\lnot !D$, $!B$ igual a $!E$ e $!C$ igual a $!D \lif
+!E$, isto é, a instância
 \[
 (\lnot !D \lif (!D \lif !E)) \lif ((!E \lif (!D \lif !E)) \lif ((\lnot
 !D \lor !E) \lif (!D \lif !E))).
 \]
-Why? Two applications of MP yield the last part, which is what we
-want.  And we easily see that $\lnot !D \lif (!D \lif !E)$ is an
-instance of \olref[prp]{ax:lnot2}, and $!E \lif (!D \lif !E)$ is an
-instance of \olref[prp]{ax:lif1}. So our !!{derivation} is:
+Por quê? Duas aplicações de MP produzem a última parte, que é o que
+queremos. E vemos facilmente que $\lnot !D \lif (!D \lif !E)$ é uma
+instância de \olref[prp]{ax:lnot2}, e $!E \lif (!D \lif !E)$ é uma
+instância de \olref[prp]{ax:lif1}. Portanto, nossa !!{derivation} é:
 \begin{derivation}
   1. &  $\lnot !D \lif (!D \lif !E)$ & \olref[prp]{ax:lnot2} \\
   2. & $(\lnot !D \lif (!D \lif !E)) \lif {}$\\
@@ -39,36 +40,36 @@ instance of \olref[prp]{ax:lif1}. So our !!{derivation} is:
 \end{ex}
 
 \begin{ex}\ollabel{ex:identity}
-Let's try to find !!a{derivation} of $!D \lif !D$.  It is not an
-instance of an axiom, so we have to use \MP{} to !!{derive} it.
-\olref[prp]{ax:lif1} is an axiom of the form~$!A \lif !B$ to which we
-could apply~\MP. To be useful, of course, the $!B$ which \MP{} would
-justify as a correct step in this case would have to be~$!D \lif !D$,
-since this is what we want to !!{derive}. That means $!A$ would also
-have to be $!D$, O.s.\@, we might look at this instance of
-\olref[prp]{ax:lif1}:
+Vamos tentar encontrar !!a{derivation} de $!D \lif !D$. Ela não é uma
+instância de um axioma, de modo que precisamos usar \MP{} para
+!!{derive} essa fórmula. \olref[prp]{ax:lif1} é um axioma da forma~$!A \lif !B$
+ao qual poderíamos aplicar~\MP. Para que fosse útil, é claro, o $!B$
+que \MP{} justificaria como um passo correto nesse caso teria de ser
+$!D \lif !D$, pois é isso que queremos !!{derive}. Isso significa que
+$!A$ também teria de ser $!D$, isto é, poderíamos examinar esta
+instância de \olref[prp]{ax:lif1}:
 \[
 !D \lif (!D \lif !D)
 \]
-In order to apply \MP, we would also need to justify the corresponding
-second premise, namely~$!A$. But in our case, that would be~$!D$, and
-we won't be able to !!{derive}~$!D$ by itself. So we need a different
-strategy.
+Para aplicar \MP, também precisaríamos justificar a segunda premissa
+correspondente, isto é,~$!A$. Mas, em nosso caso, ela seria~$!D$, e não
+conseguiremos !!{derive}~$!D$ isoladamente. Portanto, precisamos de uma
+estratégia diferente.
 
-The other axiom involving just~$\lif$ is \olref[prp]{ax:lif2}, O.s.\@,
+O outro axioma que envolve apenas~$\lif$ é \olref[prp]{ax:lif2}, isto é,
 \[
 (!A \lif (!B \lif !C)) \lif ((!A \lif !B) \lif (!A \lif !C))
 \]
-We could get to the last nested conditional by applying \MP{}
-twice. Again, that would mean that we want an instance of
-\olref[prp]{ax:lif2} where $!A \lif !C$ is $!D \lif !D$, the !!{formula} we
-are aiming for. Then of course, $!A$ and $!C$ are both~$!D$. How
-should we pick~$!B$ so that both $!A \lif (!B \lif !C)$ and $!A \lif
-!B$, O.s.\@, in our case $!D \lif (!B \lif !D)$ and $!D \lif !B$, are
-also !!{derivable}? Well, the first of these is already an instance of
-\olref[prp]{ax:lif1}, whatever we decide $!B$ to be. And $!D \lif !B$ would
-be another instance of \olref[prp]{ax:lif1} if $!B$ were $(!D \lif !D)$.
-So, our !!{derivation} is:
+Poderíamos chegar à última condicional encaixada aplicando \MP{} duas
+vezes. Novamente, isso significaria que queremos uma instância de
+\olref[prp]{ax:lif2} na qual $!A \lif !C$ seja $!D \lif !D$, a
+!!{formula} que buscamos. Então, é claro, $!A$ e $!C$ são ambos~$!D$.
+Como devemos escolher~$!B$ para que tanto $!A \lif (!B \lif !C)$ quanto
+$!A \lif !B$, isto é, em nosso caso $!D \lif (!B \lif !D)$ e $!D \lif
+!B$, sejam também !!{derivable}? Bem, a primeira já é uma instância de
+\olref[prp]{ax:lif1}, seja qual for nossa escolha de $!B$. E $!D \lif
+!B$ seria outra instância de \olref[prp]{ax:lif1} se $!B$ fosse $(!D
+\lif !D)$. Portanto, nossa !!{derivation} é:
 \begin{derivation}
   1. & $!D \lif ((!D \lif !D) \lif !D)$ & \olref[prp]{ax:lif1}\\
   2. & $(!D \lif ((!D \lif !D) \lif !D)) \lif {}$\\
@@ -80,10 +81,10 @@ So, our !!{derivation} is:
 \end{ex}
 
 \begin{ex}\ollabel{ex:chain}
-Sometimes we want to show that there is !!a{derivation} of some
-!!{formula} from some other !!{formula}s~$\Gamma$. For instance, let's
-show that we can !!{derive} $!A \lif !C$ from $\Gamma = \{!A \lif !B,
-!B \lif !C\}$.
+Às vezes, queremos mostrar que existe !!a{derivation} de alguma
+!!{formula} a partir de outras !!{formula}s~$\Gamma$. Por exemplo,
+mostremos que podemos !!{derive} $!A \lif !C$ a partir de $\Gamma =
+\{!A \lif !B, !B \lif !C\}$.
 \begin{derivation}
   1. & $!A \lif !B$ & \Hyp\\
   2. & $!B \lif !C$ & \Hyp\\
@@ -94,32 +95,32 @@ show that we can !!{derive} $!A \lif !C$ from $\Gamma = \{!A \lif !B,
   6. & $((!A \lif !B) \lif (!A \lif !C))$ & 4, 5, \MP\\
   7. & $!A \lif !C$ & 1, 6, \MP
 \end{derivation}
-The lines labelled ``\Hyp'' (for ``hypothesis'') indicate that the
-!!{formula} on that line is !!a{element} of~$\Gamma$.
+As linhas rotuladas ``\Hyp'' (de ``hipótese'') indicam que a !!{formula}
+nessa linha é !!a{element} de~$\Gamma$.
 \end{ex}
 
 \begin{prop}
-  \ollabel{prop:chain} If $\Gamma \Proves !A \lif !B$ and $\Gamma
-  \Proves !B \lif !C$, then $\Gamma \Proves !A \lif !C$
+  \ollabel{prop:chain} Se $\Gamma \Proves !A \lif !B$ e $\Gamma
+  \Proves !B \lif !C$, então $\Gamma \Proves !A \lif !C$
 \end{prop}
 
 \begin{proof}
-  Suppose $\Gamma \Proves !A \lif !B$ and $\Gamma \Proves !B \lif
-  !C$. Then there is !!a{derivation} of $!A \lif !B$ from~$\Gamma$;
-  and !!a{derivation} of~$!B \lif !C$ from~$\Gamma$ as well. Combine
-  these into a single !!{derivation} by concatenating them. Now add
-  lines 3--7 of the !!{derivation} in the preceding example. This is
-  !!a{derivation} of $!A \lif !C$---which is the last line of the new
-  !!{derivation}---from~$\Gamma$. Note that the justifications of
-  lines 4 and~7 remain valid if the reference to line number~1 is
-  replaced by reference to the last line of the !!{derivation} of~$!A
-  \lif !B$, and reference to line number~2 by reference to the last
-  line of the !!{derivation} of~$!B \lif !C$.
+  Suponha que $\Gamma \Proves !A \lif !B$ e $\Gamma \Proves !B \lif
+  !C$. Então existe !!a{derivation} de $!A \lif !B$ a partir
+  de~$\Gamma$; e também existe !!a{derivation} de~$!B \lif !C$ a partir
+  de~$\Gamma$. Combine-as em uma única !!{derivation}, concatenando-as.
+  Agora acrescente as linhas 3--7 da !!{derivation} do exemplo anterior.
+  Isso é !!a{derivation} de $!A \lif !C$---que é a última linha da nova
+  !!{derivation}---a partir de~$\Gamma$. Observe que as justificativas
+  das linhas 4 e~7 continuam válidas se a referência à linha número~1
+  for substituída por uma referência à última linha da !!{derivation}
+  de~$!A \lif !B$, e a referência à linha número~2 por uma referência à
+  última linha da !!{derivation} de~$!B \lif !C$.
 \end{proof}
 
 \begin{prob} 
-Show that the following hold by exhibiting !!{derivation}s from the
-axioms:
+Mostre que as afirmações a seguir valem exibindo !!{derivation}s a
+partir dos axiomas:
 \begin{enumerate} 
 \item $(!A \land !B) \lif (!B \land !A)$
 \item $((!A \land !B) \lif !C) \lif (!A \lif (!B \lif !C))$

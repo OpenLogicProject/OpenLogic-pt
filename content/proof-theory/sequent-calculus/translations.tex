@@ -6,57 +6,56 @@
 
 \begin{document}
 
-\olfileid{pt}{seq}{tr}
+\olfileid[pt]{pt}{seq}{tr}
 
-\olsection{Translating between \Log{G1c} and \Log{G3c}}
+\olsection{Traduções entre \Log{G1c} e \Log{G3c}}
 
-We mentioned that both \Log{G1c} and \Log{G3c} are sound and complete
-for classical logic, O.s.\@, they each prove all and only the sequents
-true in every !!{structure}. In particular, they prove the same
-sequents. We are now in a position to prove this fact without the
-detour through the soundness and completeness theorems, but using
-purely proof-theoretically. Such a proof provides
-\emph{transformations} of !!{proof}s in \Log{G1c} into !!{proof}s in
-\Log{G3c} and vice versa.
+Mencionamos que tanto \Log{G1c} quanto \Log{G3c} são corretos e
+completos para a lógica clássica, isto é, cada um demonstra exatamente
+os sequentes verdadeiros em toda !!{structure}. Em particular, eles
+demonstram os mesmos sequentes. Agora podemos demonstrar esse fato sem o
+desvio pelos teoremas da correção e da completude, recorrendo apenas a
+meios teórico-probatórios. Uma demonstração desse tipo fornece
+\emph{transformações} que levam !!{proof}s em \Log{G1c} a !!{proof}s em
+\Log{G3c} e vice-versa.
 
 \begin{prop}
-If $\Log{G1c} \Proves S$ then $\Log{G3c} \Proves S$.
+Se $\Log{G1c} \Proves S$, então $\Log{G3c} \Proves S$.
 \end{prop}
 
 \begin{proof}
-  We show that if $\pi$ is !!a{proof} in \Log{G1c}, then there is
-  !!a{proof}~$\pi'$ of~$S$ in\Log{G3c}. We do this by induction on $n
-  = \pheight{\pi}$.
+  Mostramos que, se $\pi$ é !!a{proof} em \Log{G1c}, então existe
+  !!a{proof}~$\pi'$ de~$S$ em \Log{G3c}. Fazemos isso por indução sobre
+  $n = \pheight{\pi}$.
 
-  If $n = 0$, then $\pi$ is an axiom. The axiom $\lfalse \Sequent
-  \quad$ is also an axiom in~\Log{G3c} (take the context $\Gamma,
-  \Delta$ to be empty). \Log{G3c} allows axioms $!A \Sequent !A$ with
-  arbitrary, not just atomic~$!A$. But we proved in
-  \olref[ex]{prop:G3c-axioms} that all such sequents are !!{provable}
-  in~\Log{G3c}.
+  Se $n = 0$, então $\pi$ é um axioma. O axioma $\lfalse \Sequent
+  \quad$ também é um axioma em~\Log{G3c} (tome os contextos $\Gamma,
+  \Delta$ como vazios). Em \Log{G3c}, são permitidos axiomas
+  $!A \Sequent !A$ com $!A$ arbitrária, não apenas atômica. Mas
+  demonstramos em \olref[ex]{prop:G3c-axioms} que todos esses sequentes
+  são !!{provable} em~\Log{G3c}.
   
-  If $n>0$, $\pi$ ends in a rule~$R$. The inductive hypothesis
-  guarantees that there are !!{proof}s of the premises of that rule
-  in~\Log{G3c}, O.s.\@, that the immediate sub-!!{proof}s have
-  translations in~\Log{G3c}. If the rule~$R$ is also a rule in
-  \Log{G3c}, we apply it to the translated !!{proof}s of the premises.
-  For those rules that are no also rules of~\Log{G3c}, we have already
-  shown that they are at least admissible. So, if rule~$R$ was
-  $\LeftR{\land}$ or $\RightR{\lor}$, apply
-  \olref[adm]{prop:lor-G3-adm}. If it was a weakening rule, apply
-  \olref[adm]{prop:weak-G3c-adm}. If it was a contraction rule, apply
-  \olref[inv]{prop:G3c-cont-adm}.
+  Se $n>0$, $\pi$ termina em uma regra~$R$. A hipótese de indução
+  garante que existem !!{proof}s das premissas dessa regra em~\Log{G3c},
+  isto é, que as sub-!!{proof}s imediatas têm traduções em~\Log{G3c}. Se
+  a regra~$R$ também é uma regra de \Log{G3c}, nós a aplicamos às
+  !!{proof}s traduzidas das premissas. Quanto às regras que não são
+  também regras de~\Log{G3c}, já mostramos que ao menos são admissíveis.
+  Portanto, se a regra~$R$ era $\LeftR{\land}$ ou $\RightR{\lor}$,
+  aplique \olref[adm]{prop:lor-G3-adm}. Se era uma regra de
+  enfraquecimento, aplique \olref[adm]{prop:weak-G3c-adm}. Se era uma
+  regra de contração, aplique \olref[inv]{prop:G3c-cont-adm}.
 \end{proof}
 
 \begin{prop}
-If $\Log{G3c} \Proves S$ then $\Log{G1c} \Proves S$.
+Se $\Log{G3c} \Proves S$, então $\Log{G1c} \Proves S$.
 \end{prop}
 
 \begin{proof}
-  We again proceed by induction on the !!{height} of !!a{proof}~$\pi$
-  of $S$. Every axiom of \Log{G3c} can be !!{prove}d in~\Log{G1c} from
-  an axiom plus several applications of the \LeftR{\Weakening} and
-  \RightR{\Weakening} rules:
+  Novamente, procedemos por indução sobre a !!{height} de
+  !!a{proof}~$\pi$ de $S$. Todo axioma de \Log{G3c} pode ser !!{prove}d
+  em~\Log{G1c} a partir de um axioma e de várias aplicações das regras
+  \LeftR{\Weakening} e \RightR{\Weakening}:
   \[
   \Axiom$!C \fCenter !C$
   \RightLabel{\LeftR{\Weakening}}
@@ -72,10 +71,12 @@ If $\Log{G3c} \Proves S$ then $\Log{G1c} \Proves S$.
   \Deduce$\lfalse, \Gamma \fCenter \Delta$
   \DisplayProof
   \]
-  If $\pi$ ends in a rule~$R$, the inductive hypothesis yields
-  !!{proof}s in \Log{G1c} of the premises, and we can apply the same
-  rule~$R$ to those !!{proof}s. The exceptions are the rules
-  \LeftR{\land} and \RightR{\lor}, which are derivable in \Log{G1c}:
+  Se $\pi$ termina em uma regra~$R$, a hipótese de indução fornece
+  !!{proof}s das premissas em \Log{G1c}, e podemos aplicar a mesma
+  regra~$R$ a essas !!{proof}s. As exceções são as regras
+  \LeftR{\land} e \RightR{\lor}, que diferem entre \Log{G1c}
+  e~\Log{G3c}. As versões de \Log{G3c} são deriváveis em \Log{G1c} da
+  seguinte maneira:
   \[
   \Axiom$!A, !B, \Gamma \fCenter \Delta$
   \RightLabel{\LeftR{\land}}

@@ -6,100 +6,104 @@
 
 \begin{document}
 
-\olfileid{sol}{set}{pow}
+\olfileid[pt]{sol}{set}{pow}
 
-\olsection{The Power of the Continuum}
+\olsection{A potência do contínuo}
 
 \begin{explain}
-In second-order logic we can quantify over subsets of the !!{domain},
-but not over sets of subsets of the !!{domain}. To do this directly,
-we would need \emph{third-order} logic.  For instance, if we wanted to
-state Cantor's Theorem that there is no !!{injective} function from
-the power set of a set to the set itself, we might try to formulate it
-as ``for every set~$X$, and every set~$P$, if $P$ is the power set
-of~$X$, then not $\cardle{P}{X}$''. And to say that $P$ is the power set
-of~$X$ would require formalizing that the !!{element}s of $P$ are all
-and only the subsets of~$X$, so something like $\lforall[Y][(P(Y)
-  \liff Y \subseteq X)]$. The problem lies in $P(Y)$: that is not
-!!a{formula} of second-order logic, since only terms can be arguments
-to one-place relation variables like~$P$.
+Na lógica de segunda ordem, podemos quantificar sobre subconjuntos do
+!!{domain}, mas não sobre conjuntos de subconjuntos do !!{domain}. Para
+fazer isso diretamente, precisaríamos da lógica de \emph{terceira ordem}.
+Por exemplo, se quiséssemos enunciar o teorema de Cantor, segundo o qual não
+existe função !!{injective} do conjunto potência de um conjunto para o
+próprio conjunto, poderíamos tentar formulá-lo como ``para todo conjunto
+~$X$ e todo conjunto~$P$, se $P$ é o conjunto potência de~$X$, então não
+$\cardle{P}{X}$''. Dizer que $P$ é o conjunto potência de~$X$ exigiria
+formalizar que os !!{element}s de $P$ são exatamente todos os subconjuntos
+de~$X$, portanto algo como $\lforall[Y][(P(Y)
+  \liff Y \subseteq X)]$. O problema está em $P(Y)$: isso não é
+!!a{formula} da lógica de segunda ordem, pois apenas termos podem ser
+argumentos de variáveis de relação unária como~$P$.
 
-We can, however, \emph{simulate} quantification over sets of sets, if
-the domain is large enough.  The idea is to make use of the fact that
-two-place relations~$R$ relates !!{element}s of the !!{domain} to
-!!{element}s of the !!{domain}. Given such an~$R$, we can collect all
-the !!{element}s to which some~$x$ is $R$-related: $\Setabs{y \in
-  \Domain{M}}{R(x,y)}$ is the set ``coded by''~$x$.  Conversely, if
-$Z \subseteq \Pow{\Domain{M}}$ is some collection of subsets
-of~$\Domain{M}$, and there are at least as many !!{element}s
-of~$\Domain{M}$ as there are sets in~$Z$, then there is also a
-relation~$R \subseteq \Domain{M}^2$ such that every $Y \in Z$ is coded
-by some~$x$ using~$R$.
+Podemos, contudo, \emph{simular} a quantificação sobre conjuntos de
+conjuntos, se o domínio for grande o bastante. A ideia é usar o fato de que
+relações binárias~$R$ relacionam !!{element}s do !!{domain} com
+!!{element}s do !!{domain}. Dada tal~$R$, podemos reunir todos os
+!!{element}s com os quais algum~$x$ se relaciona por $R$:
+$\Setabs{y \in \Domain{M}}{R(x,y)}$ é o conjunto ``codificado por''~$x$.
+Reciprocamente, se $Z \subseteq \Pow{\Domain{M}}$ é alguma coleção de
+subconjuntos de~$\Domain{M}$ e há ao menos tantos !!{element}s de
+~$\Domain{M}$ quantos conjuntos em~$Z$, então também existe uma relação
+~$R \subseteq \Domain{M}^2$ tal que todo $Y \in Z$ é codificado por
+algum~$x$ por meio de~$R$.
 \end{explain}
 
 \begin{defn}
-If $R \subseteq \Domain{M}^2$, then \emph{$x$ $R$-codes} $\Setabs{y
-  \in \Domain{M}}{R(x, y)}$.
+Se $R \subseteq \Domain{M}^2$, então \emph{$x$ $R$-codifica}
+$\Setabs{y \in \Domain{M}}{R(x, y)}$.
 \end{defn}
 
-If !!a{element}~$x \in \Domain{M}$ $R$-codes a set $Z \subseteq
-\Domain{M}$, then a set $Y \subseteq \Domain{M}$ codes a set of sets,
-namely the sets coded by the !!{element}s of~$Y$.  So a set $Y$ can
-$R$-code $\Pow{X}$. It does so iff for every $Z \subseteq X$, some $x
-\in Y$ $R$-codes~$Z$, and every $x \in Y$ $R$-codes a~$Z \subseteq X$.
+Se !!a{element}~$x \in \Domain{M}$ $R$-codifica um conjunto
+$Z \subseteq \Domain{M}$, então um conjunto $Y \subseteq \Domain{M}$
+codifica um conjunto de conjuntos, a saber, os conjuntos codificados pelos
+!!{element}s de~$Y$. Assim, um conjunto $Y$ pode $R$-codificar $\Pow{X}$.
+Ele o faz sse, para todo $Z \subseteq X$, algum $x \in Y$ $R$-codifica
+~$Z$, e todo $x \in Y$ $R$-codifica algum~$Z \subseteq X$.
 
 \begin{prop}
-The !!{formula}
+A !!{formula}
   \[
   \fn{Codes}(x, R, Z) \ident \lforall[y][(Z(y) \liff
     R(x, y))]
   \]
-expresses that $s(x)$ $s(R)$-codes $s(Z)$.  The
-!!{formula} 
+expressa que $s(x)$ $s(R)$-codifica $s(Z)$. A
+!!{formula}
 \begin{multline*}
   \fn{Pow}(Y, R, X) \ident \\
   \lforall[Z][(Z \subseteq X \lif \lexists[x][(Y(x) \land
     \fn{Codes}(x, R, Z))])] \land {} \\ \lforall[x][(Y(x) \lif
   \lforall[Z][(\fn{Codes}(x, R, Z) \lif Z \subseteq X)]]
 \end{multline*}
-expresses that $s(Y)$ $s(R)$-codes the power set of~$s(X)$, O.s.\@, the
-elements of $s(Y)$ $s(R)$-code exactly the subsets of $s(X)$.
+expressa que $s(Y)$ $s(R)$-codifica o conjunto potência de~$s(X)$, isto é,
+os elementos de $s(Y)$ $s(R)$-codificam exatamente os subconjuntos de
+$s(X)$.
 \end{prop}
 
 \begin{explain}
-With this trick, we can express statements about the power set by
-quantifying over the codes of subsets rather than the subsets
-themselves.  For instance, Cantor's Theorem can now be expressed
-by saying that there is no !!{injective} function from the domain
-of any relation that codes the power set of~$X$ to~$X$ itself.
+Com esse artifício, podemos expressar afirmações sobre o conjunto potência
+quantificando sobre os códigos dos subconjuntos, em vez de quantificar sobre
+os próprios subconjuntos. Por exemplo, o teorema de Cantor agora pode ser
+expresso dizendo que não existe função !!{injective} do domínio de qualquer
+relação que codifique o conjunto potência de~$X$ para o próprio~$X$.
 \end{explain}
 
 \begin{prop}
-The sentence
+A sentença
 \begin{multline*}
   \lforall[X][\lforall[Y][\lforall[R][(\fn{Pow}(Y, R, X) \lif \\
       \lnot \lexists[u][(\lforall[x][\lforall[y][(\eq[u(x)][u(y)] \lif
             \eq[x][y])]] \land {}\\
         \lforall[x][(Y(x) \lif X(u(x)))])])]]]
 \end{multline*}
-is valid.
+é válida.
 \end{prop}
 
 \begin{explain}
-The power set of !!a{denumerable} set is !!{nonenumerable}, and so its
-cardinality is larger than that of any !!{denumerable} set (which is
-$\aleph_0$).  The size of $\Pow{\Nat}$ is called the ``power of the
-continuum,'' since it is the same size as the points on the real
-number line,~$\Real$. If the !!{domain} is large enough to code the
-power set of !!a{denumerable} set, we can express that a set is the
-size of the continuum by saying that it is equinumerous with any
-set~$Y$ that codes the power set of set~$X$ of size~$\aleph_0$. (If the
-domain is not large enough, O.s.\@, it contains no subset equinumerous
-with~$\Real$, then there can also be no relation that codes~$\Pow{X}$.)
+O conjunto potência de !!a{denumerable} conjunto é !!{nonenumerable} e,
+portanto, sua cardinalidade é maior que a de qualquer !!{denumerable}
+conjunto (que é $\aleph_0$). O tamanho de $\Pow{\Nat}$ é chamado de
+``potência do contínuo'', pois é igual ao tamanho do conjunto de pontos da
+reta real,~$\Real$. Se o !!{domain} é grande o bastante para codificar o
+conjunto potência de !!a{denumerable} conjunto, podemos expressar que um
+conjunto tem o tamanho do contínuo dizendo que ele é equinumeroso com
+qualquer conjunto~$Y$ que codifique o conjunto potência de um conjunto~$X$
+de tamanho~$\aleph_0$. (Se o domínio não for grande o bastante, isto é, se
+não contiver nenhum subconjunto equinumeroso com~$\Real$, tampouco poderá
+haver uma relação que codifique~$\Pow{X}$.)
 \end{explain}
 
 \begin{prop}
-If $\cardle{\Real}{\Domain{M}}$, then the !!{formula}
+Se $\cardle{\Real}{\Domain{M}}$, então a !!{formula}
 \begin{multline*}
 \fn{Cont}(Y) \ident 
 \lexists[X][\lexists[R][((\fn{Aleph}_0(X) \land
@@ -107,21 +111,21 @@ If $\cardle{\Real}{\Domain{M}}$, then the !!{formula}
       \lforall[x][\lforall[y][((Y(x) \land {} 
       Y(y) \land \lforall[z][R(x,z) \liff R(y,z)]) \lif \eq[x][y])]])]]
 \end{multline*}
-expresses that $\cardeq{s(Y)}{\Real}$.
+expressa que $\cardeq{s(Y)}{\Real}$.
 \end{prop}
 
 \begin{proof}
-  $\fn{Pow}(Y, R, X)$ expresses that $s(Y)$ $s(R)$-codes the power set
-  of~$s(X)$, which $\fn{Aleph}_0(X)$ says is countable. So $s(Y)$ is
-  at least as large as the power of the continuum, although it may be
-  larger (if multiple elements of $s(Y)$ code the same subset of~$X$).
-  This is ruled out be the last conjunct, which requires the
-  association between elements of $s(Y)$ and subsets of $s(Z)$ via
-  $s(R)$ to be !!{injective}.
+  $\fn{Pow}(Y, R, X)$ expressa que $s(Y)$ $s(R)$-codifica o conjunto
+  potência de~$s(X)$, que $\fn{Aleph}_0(X)$ diz ser contável. Portanto,
+  $s(Y)$ é pelo menos tão grande quanto a potência do contínuo, embora possa
+  ser maior (se vários elementos de $s(Y)$ codificarem o mesmo subconjunto
+  de~$X$). Isso é excluído pela última conjunção, que exige que a associação
+  entre elementos de $s(Y)$ e subconjuntos de $s(Z)$ por meio de $s(R)$ seja
+  !!{injective}.
 \end{proof}
 
 \begin{prop}
-$\cardeq{\Domain{M}}{\Real}$ iff
+$\cardeq{\Domain{M}}{\Real}$ sse
 \begin{multline*}
   \Sat{M}{\lexists[X][\lexists[Y][\lexists[R][(\fn{Aleph}_0(X) \land \fn{Pow}(Y, R, X) \land \\
           \lexists[u][(\lforall[x][\lforall[y][(\eq[u(x)][u(y)] \lif \eq[x][y])]] \land {} \\\lforall[y][(Y(y) \lif \lexists[x][\eq[y][u(x)]])])])]]]}.
@@ -129,27 +133,26 @@ $\cardeq{\Domain{M}}{\Real}$ iff
   \end{prop}
 
 \begin{explain}
-The Continuum Hypothesis is the statement that the size of the
-continuum is the first !!{nonenumerable} cardinality, i.e, that
-$\Pow{\Nat}$ has size~$\aleph_1$. 
+A hipótese do contínuo é a afirmação de que o tamanho do contínuo é a
+primeira cardinalidade !!{nonenumerable}, isto é, que $\Pow{\Nat}$ tem
+tamanho~$\aleph_1$.
 \end{explain}
 
 \begin{prop}
-The Continuum Hypothesis is true iff \[\fn{CH} \ident
-\lforall[X][(\fn{Aleph}_1(X) \liff \fn{Cont}(X))]\] is valid.
+A hipótese do contínuo é verdadeira sse \[\fn{CH} \ident
+\lforall[X][(\fn{Aleph}_1(X) \liff \fn{Cont}(X))]\] é válida.
 \end{prop}
 
-Note that it isn't true that $\lnot \fn{CH}$ is valid iff the
-Continuum Hypothesis is false. In !!a{enumerable} domain, there are no
-subsets of size~$\aleph_1$ and also no subsets of the size of the
-continuum, so $\fn{CH}$ is always true in !!a{enumerable}
-domain. However, we can give a different sentence that is valid iff
-the Continuum Hypothesis is false:
+Observe que não é verdade que $\lnot \fn{CH}$ é válida sse a hipótese do
+contínuo é falsa. Em !!a{enumerable} domínio, não há subconjuntos de
+tamanho~$\aleph_1$ e tampouco subconjuntos do tamanho do contínuo; por isso,
+$\fn{CH}$ é sempre verdadeira em !!a{enumerable} domínio. Contudo, podemos
+dar uma sentença diferente que é válida sse a hipótese do contínuo é falsa:
 
 \begin{prop}
-The Continuum Hypothesis is false iff \[\fn{NCH} \ident
+A hipótese do contínuo é falsa sse \[\fn{NCH} \ident
 \lforall[X][(\fn{Cont}(X) \lif \lexists[Y][(Y \subseteq X \land \lnot
-    \fn{Count}(Y) \land \lnot \cardeq{X}{Y})])]\] is valid.
+    \fn{Count}(Y) \land \lnot \cardeq{X}{Y})])]\] é válida.
 \end{prop}
 
 \end{document}

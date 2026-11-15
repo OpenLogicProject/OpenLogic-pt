@@ -6,46 +6,45 @@
 
 \begin{document}
 
-\olfileid{lam}{syn}{trm}
-\olsection{Terms}
+\olfileid[pt]{lam}{syn}{trm}
+\olsection{Termos}
 
-The terms of the lambda calculus are built up inductively from an
-infinite supply of variables $\Obj{v_0}$, $\Obj{v_1}$, \dots, the
-symbol~``$\lambd$'', and parentheses. We will use $x$, $y$, $z$, \dots{}
-to designate variables, and $M$, $N$, $P$, \dots{} to desginate terms.
+Os termos do cálculo lambda são construídos indutivamente a partir de um
+suprimento infinito de variáveis $\Obj{v_0}$, $\Obj{v_1}$, \dots, do símbolo
+~``$\lambd$'' e de parênteses. Usaremos $x$, $y$, $z$, \dots{} para
+designar variáveis, e $M$, $N$, $P$, \dots{} para designar termos.
 
-\begin{defn}[Terms] \ollabel{defn:term}
-The set of \emph{terms} of the lambda calculus is defined inductively by:
+\begin{defn}[Termos] \ollabel{defn:term}
+O conjunto de \emph{termos} do cálculo lambda é definido indutivamente por:
 \begin{enumerate}
-  \item \ollabel{defn:term-var} If $x$ is a variable, then $x$ is a
-    term.
-  \item \ollabel{defn:term-abs} If $x$ is a variable and $M$ is a
-    term, then $(\lambd[x][M])$ is a term.
-  \item \ollabel{defn:term-app} If both $M$ and $N$ are terms, then
-    $(MN)$ is a term.
+  \item \ollabel{defn:term-var} Se $x$ é uma variável, então $x$ é um
+    termo.
+  \item \ollabel{defn:term-abs} Se $x$ é uma variável e $M$ é um
+    termo, então $(\lambd[x][M])$ é um termo.
+  \item \ollabel{defn:term-app} Se $M$ e $N$ são termos, então
+    $(MN)$ é um termo.
 \end{enumerate}
 \end{defn}
 
-If a term $(\lambd[x][M])$ is formed according to
-\olref{defn:term-abs} we say it is the result of an
-\emph{abstraction}, and the $x$ in $\lambd[x]$ is called a
-\emph{!!{parameter}}.  A term $(MN)$ formed according to
-\olref{defn:term-app} is the result of an \emph{application}.
+Se um termo $(\lambd[x][M])$ é formado de acordo com
+\olref{defn:term-abs}, dizemos que ele é resultado de uma
+\emph{abstração}, e o $x$ em $\lambd[x]$ é chamado de
+\emph{!!{parameter}}. Um termo $(MN)$ formado de acordo com
+\olref{defn:term-app} é resultado de uma \emph{aplicação}.
 
-The terms defined above are fully parenthesized. This can get rather
-cumbersome, as the term
-$(\lambd[x][((\lambd[x][x])(\lambd[x][(xx)]))])$ demnostrates. We will
-introduce conventions for avoiding parentheses.  However, the official
-definition makes it easy to determine how a term is constructed
-according to \olref{defn:term}. For example, the last step of forming
-the term $(\lambd[x][((\lambd[x][x])(\lambd[x][(xx)]))])$ must be
-abstraction where the !!{parameter} is~$x$. It results by abstraction
-from the term $((\lambd[x][x])(\lambd[x][(xx)]))$, which is an
-application of two terms. Each of these two terms is the result of an
-abstraction, and so on.
+Os termos definidos acima têm todos os parênteses explicitados. Isso pode se
+tornar bastante incômodo, como demonstra o termo
+$(\lambd[x][((\lambd[x][x])(\lambd[x][(xx)]))])$. Introduziremos convenções
+para evitar parênteses. A definição oficial, porém, facilita determinar como
+um termo é construído segundo \olref{defn:term}. Por exemplo, o último passo
+na formação do termo
+$(\lambd[x][((\lambd[x][x])(\lambd[x][(xx)]))])$ deve ser uma abstração
+cujo !!{parameter} é~$x$. Ele resulta da abstração aplicada ao termo
+$((\lambd[x][x])(\lambd[x][(xx)]))$, que é uma aplicação de dois termos.
+Cada um desses dois termos é resultado de uma abstração, e assim por diante.
 
 \begin{prob}
-Describe the formation of $(\lambd[g][(\lambd[x][(g (x x))])
+Descreva a formação de $(\lambd[g][(\lambd[x][(g (x x))])
   (\lambd[x][(g (x x))])])$.
 \end{prob}
 

@@ -6,131 +6,136 @@
 
 \begin{document}
 
-\olfileid{mod}{lin}{alg}
-\olsection{Abstract Logics}
+\olfileid[pt]{mod}{lin}{alg}
+\olsection{Lógicas abstratas}
 
 \begin{defn}
-An \emph{abstract logic} is a pair $\tuple{L, \models_L}$, where $L$
-is a function that assigns to each !!{language}~$\Lang{L}$ a set
-$L(\Lang{L})$ of !!{sentence}s, and $\models_L$ is a relation between
-!!{structure}s for the !!{language}~$\Lang{L}$ and !!{element}s of
-$L(\Lang{L})$. In particular, $\tuple{F, \models}$ is ordinary
-first-order logic, O.s.\@, $F$ is the function assigning to the
-!!{language}~$\Lang{L}$ the set of first-order !!{sentence}s built from
-the constants in $\Lang{L}$, and $\models$ is the satisfaction relation
-of first-order logic.
+Uma \emph{lógica abstrata} é um par $\tuple{L, \models_L}$, onde $L$ é
+uma função que atribui a cada !!{language}~$\Lang{L}$ um conjunto
+$L(\Lang{L})$ de !!{sentence}s, e $\models_L$ é uma relação entre
+!!{structure}s para a !!{language}~$\Lang{L}$ e !!{element}s de
+$L(\Lang{L})$. Em particular, $\tuple{F, \models}$ é a lógica usual de
+primeira ordem, isto é, $F$ é a função que atribui à
+!!{language}~$\Lang{L}$ o conjunto das !!{sentence}s de primeira ordem
+construídas a partir das constantes em $\Lang{L}$, e $\models$ é a
+relação de satisfação da lógica de primeira ordem.
 \end{defn}
 
-Notice that we are still employing the same notion of !!{structure}
-for a given !!{language} as for first-order logic, but we do not
-presuppose that !!{sentence}s are build up from the basic symbols in
-$\Lang{L}$ in the usual way, nor that the relation $\models_L$ is
-recursively defined in the same way as for first-order logic. So for
-instance the definition, being completely general, is intended to
-capture the case where !!{sentence}s in $\tuple{L,\models_L}$ contain
-infinitely long conjunctions or disjunction, or quantifiers other than
-$\lexists$ and $\lforall$ (p.ex., ``there are infinitely many~$x$ such
-that \dots''), or perhaps infinitely long quantifier prefixes. To
-emphasize that ``!!{sentence}s'' in $L(\Lang{L})$ need not be ordinary
-!!{sentence}s of first-order logic, in this chapter we use !!{variable}s $!E$,
-$!F$,~\dots to range over them, and reserve $!A$, $!B$,~\dots for
-ordinary first-order !!{formula}s.
+Observe que ainda empregamos a mesma noção de !!{structure} para uma
+!!{language} dada que na lógica de primeira ordem, mas não pressupomos
+que as !!{sentence}s sejam construídas da maneira usual a partir dos
+símbolos básicos em $\Lang{L}$, nem que a relação $\models_L$ seja
+definida recursivamente como na lógica de primeira ordem. Assim, por
+exemplo, por ser inteiramente geral, a definição pretende abranger o
+caso em que as !!{sentence}s em $\tuple{L,\models_L}$ contêm conjunções
+ou disjunções infinitamente longas, quantificadores diferentes de
+$\lexists$ e $\lforall$ (por exemplo, ``existem infinitos~$x$ tais
+que \dots''), ou talvez prefixos de quantificadores infinitamente
+longos. Para enfatizar que as ``!!{sentence}s'' em $L(\Lang{L})$ não
+precisam ser !!{sentence}s usuais da lógica de primeira ordem, neste
+capítulo usamos as !!{variable}s $!E$, $!F$,~\dots para percorrê-las e
+reservamos $!A$, $!B$,~\dots para !!{formula}s usuais de primeira ordem.
 
 \begin{defn}
-Let $\Mod(L){!E}$ denote the class $\Setabs{\Struct{M}}{\Struct{M}
-  \models_L !E}$. If the !!{language} needs to be made explicit, we
-write $\Mod[L](L){!E}$. Two !!{structure}s $\Struct{M}$ and
-$\Struct{N}$ for $\Lang{L}$ are \emph{elementarily equivalent in}
-$\tuple{L, \models_L}$, written $\Struct{M} \elemequiv[L] \Struct{N}$, if
-the same !!{sentence}s from $L(\Lang{L})$ are true in each.
+Seja $\Mod(L){!E}$ a classe $\Setabs{\Struct{M}}{\Struct{M}
+  \models_L !E}$. Se for preciso explicitar a !!{language}, escrevemos
+$\Mod[L](L){!E}$. Duas !!{structure}s $\Struct{M}$ e $\Struct{N}$ para
+$\Lang{L}$ são \emph{elementarmente equivalentes em}
+$\tuple{L, \models_L}$, o que escrevemos
+$\Struct{M} \elemequiv[L] \Struct{N}$, se as mesmas !!{sentence}s de
+$L(\Lang{L})$ são verdadeiras em ambas.
 \end{defn}
 
 \begin{defn}
-An abstract logic $\tuple{L,\models_L}$ for the !!{language} $\Lang{L}$
-is \emph{normal} if it satisfies the following properties:
+Uma lógica abstrata $\tuple{L,\models_L}$ para a !!{language}
+$\Lang{L}$ é \emph{normal} se satisfaz as seguintes propriedades:
 \begin{enumerate}
-\item (\emph{$L$-Monotonicity}) For !!{language}s $\Lang{L}$ and
-  $\Lang{L'}$, if $\Lang{L} \subseteq \Lang{L'}$, then
+\item (\emph{Monotonicidade de $L$}) Para as !!{language}s $\Lang{L}$
+  e $\Lang{L'}$, se $\Lang{L} \subseteq \Lang{L'}$, então
   $L(\Lang{L}) \subseteq L(\Lang{L'})$.
-\item (\emph{Expansion Property}) For each $!E \in L(\Lang{L})$
-  there is a \emph{finite} subset $\Lang{L'}$ of $\Lang{L}$ such that
-  the relation $\Struct{M} \models_L !E$ depends only on the
-  reduct of $\Struct{M}$ to $\Lang{L'}$; O.s.\@, if $\Struct{M}$ and
-  $\Struct{N}$ have the same reduct to $\Lang{L'}$ then $\Struct{M}
-  \models_L !E$ if and only if $\Struct{N} \models_L !E$.
-\item (\emph{Isomorphism Property}) If $\Struct{M} \models_L !E$
-  and $\Struct{M} \simeq \Struct{N}$ then also $\Struct{N} \models_L
-  !E$.
-\item (\emph{Renaming Property}) The relation $\models_L$ is preserved
-  under renaming: if the !!{language} $\Lang{L}'$ is obtained from
-  $\Lang{L}$ by replacing each symbol $P$ by a symbol $P'$ of the same
-  arity and each constant $c$ by a distinct constant $c'$, then for
-  each !!{structure}~$\Struct{M}$ and !!{sentence}~$!E$, $\Struct{M}
-  \models_L !E$ if and only if $\Struct{M}' \models_L !E'$,
-  where $\Struct{M}'$ is the $\Lang{L}'$-!!{structure} corresponding
-  to $\Lang{L}$ and $!E' \in L(\Lang{L}')$.
-\item (\emph{Boolean Property}) The abstract logic $\tuple{L,
-  \models_L}$ is closed under the Boolean connectives in the sense
-  that for each $!E \in L(\Lang{L})$ there is a~$!F \in
-  L(\Lang{L})$ such that $\Struct{M} \models_L !F$ if and only if
-  $\Struct{M} \not\models_L !E$, and for each $!E$ and $!F$
-  there is a $!G$ such that $\Mod(L){!G} = \Mod(L){!E} \cap
-  \Mod(L){!F}$.  Similarly for atomic !!{formula}s and the other
-  connectives.
-\item (\emph{Quantifier Property}) For each constant $c$ in $\Lang{L}$
-  and $!E \in L(\Lang{L})$ there is a $!F \in L(\Lang{L})$ such
-  that
+\item (\emph{Propriedade da expansão}) Para cada $!E \in L(\Lang{L})$,
+  existe um subconjunto \emph{finito} $\Lang{L'}$ de $\Lang{L}$ tal
+  que a relação $\Struct{M} \models_L !E$ depende apenas do reduto de
+  $\Struct{M}$ a $\Lang{L'}$; isto é, se $\Struct{M}$ e $\Struct{N}$
+  têm o mesmo reduto a $\Lang{L'}$, então
+  $\Struct{M} \models_L !E$ se, e somente se,
+  $\Struct{N} \models_L !E$.
+\item (\emph{Propriedade do isomorfismo}) Se
+  $\Struct{M} \models_L !E$ e $\Struct{M} \simeq \Struct{N}$, então
+  também $\Struct{N} \models_L !E$.
+\item (\emph{Propriedade da renomeação}) A relação $\models_L$ é
+  preservada sob renomeação: se a !!{language} $\Lang{L}'$ é obtida de
+  $\Lang{L}$ substituindo cada símbolo $P$ por um símbolo $P'$ da mesma
+  aridade e cada constante $c$ por uma constante distinta $c'$, então,
+  para cada !!{structure}~$\Struct{M}$ e !!{sentence}~$!E$,
+  $\Struct{M} \models_L !E$ se, e somente se,
+  $\Struct{M}' \models_L !E'$, onde $\Struct{M}'$ é a
+  $\Lang{L}'$-!!{structure} correspondente a $\Lang{L}$ e
+  $!E' \in L(\Lang{L}')$.
+\item (\emph{Propriedade booleana}) A lógica abstrata
+  $\tuple{L, \models_L}$ é fechada sob os conectivos booleanos no
+  seguinte sentido: para cada $!E \in L(\Lang{L})$ existe
+  $!F \in L(\Lang{L})$ tal que $\Struct{M} \models_L !F$ se, e somente
+  se, $\Struct{M} \not\models_L !E$; e, para cada $!E$ e $!F$, existe
+  $!G$ tal que $\Mod(L){!G} = \Mod(L){!E} \cap \Mod(L){!F}$. O mesmo
+  vale para !!{formula}s atômicas e para os demais conectivos.
+\item (\emph{Propriedade dos quantificadores}) Para cada constante $c$
+  em $\Lang{L}$ e cada $!E \in L(\Lang{L})$, existe
+  $!F \in L(\Lang{L})$ tal que
   \[
   \Mod[L'](L){!F} = \Setabs{\Struct{M}}{\Expan{M}{a} \in
-  \Mod[L](L){!E} \text{ for some } a \in \Domain{M}},
+  \Mod[L](L){!E} \text{ para algum } a \in \Domain{M}},
   \]
-  where $\Lang{L'} = \Lang{L} \setminus \{c\}$ and $\Expan{M}{a}$
-  is the expansion of $\Struct{M}$ to $\Lang{L}$ assigning $a$
-  to~$c$.
-\item (\emph{Relativization Property}) Given !!a{sentence} $!E \in
-  L(\Lang{L})$ and symbols $R$, $c_1$, \dots, $c_n$ not in $\Lang{L}$,
-  there is !!a{sentence} $!F \in L(\Lang{L} \cup \{R,c_1,\ldots,c_n\})$
-  called the \emph{relativization} of $!E$ to $\Atom{R}{x, c_1, \dots c_n}$,
-  such that for each !!{structure}~$\Struct{M}$:
+  onde $\Lang{L'} = \Lang{L} \setminus \{c\}$ e $\Expan{M}{a}$ é a
+  expansão de $\Struct{M}$ a $\Lang{L}$ que atribui $a$ a~$c$.
+\item (\emph{Propriedade da relativização}) Dada !!a{sentence}
+  $!E \in L(\Lang{L})$ e símbolos $R$, $c_1$, \dots, $c_n$ que não
+  pertencem a $\Lang{L}$, existe !!a{sentence}
+  $!F \in L(\Lang{L} \cup \{R,c_1,\ldots,c_n\})$, chamada
+  \emph{relativização} de $!E$ a $\Atom{R}{x, c_1, \dots c_n}$, tal
+  que, para cada !!{structure}~$\Struct{M}$:
   \[
-  \Expan{M}{X, b_1, \ldots, b_n} \models_L !F \text{ if and
-    only if } \Struct{N} \models_L !E,
+  \Expan{M}{X, b_1, \ldots, b_n} \models_L !F \text{ se, e
+    somente se, } \Struct{N} \models_L !E,
   \]
-  where $\Struct{N}$ is the substructure of $\Struct{M}$ with !!{domain}
+  onde $\Struct{N}$ é a subestrutura de $\Struct{M}$ com !!{domain}
   $\Domain{N} = \Setabs{a\in \Domain{M}}{\Assign{R}{M}(a, b_1, \dots, b_n)}$
-  (see \olref[bas][sub]{rem:substructure}), and $\Expan{M}{X, b_1, \ldots,
-    b_n}$ is the expansion of $\Struct{M}$ interpreting $R$, $c_1$,
-  \dots, $c_n$ by $X$, $b_1,$ \dots, $b_n$, respectively (with $X
-  \subseteq M^{n+1}$).
+  (veja \olref[bas][sub]{rem:substructure}), e
+  $\Expan{M}{X, b_1, \ldots, b_n}$ é a expansão de $\Struct{M}$ que
+  interpreta $R$, $c_1$, \dots, $c_n$ por $X$, $b_1,$ \dots, $b_n$,
+  respectivamente (com $X \subseteq M^{n+1}$).
 \end{enumerate}
 \end{defn}
  
 \begin{defn}
-Given two abstract logics $\tuple{L_1, \models_{L_1}}$ and
-$\tuple{L_2, \models_{L_2}}$ we say that the latter is \emph{at least
-  as expressive} as the former, written $\tuple{L_1, \models_{L_1}}
-\leq \tuple{L_2, \models_{L_2}}$, if for each !!{language} $\Lang{L}$
-and !!{sentence} $!E \in L_1(\Lang{L})$ there is !!a{sentence} $!F
-\in L_2(\Lang{L})$ such that $\Mod[L](L_1){!E} =
-\Mod[L](L_2){!F}$. The logics $\tuple{L_1, \models_{L_1}}$ and
-$\tuple{L_2, \models_{L_2}}$ are \emph{equivalent} if $\tuple{L_1,
-  \models_{L_1}} \leq \tuple{L_2, \models_{L_2}}$ and $\tuple{L_2,
-  \models_{L_2}} \leq \tuple{L_1, \models_{L_1}}$.
+Dadas duas lógicas abstratas $\tuple{L_1, \models_{L_1}}$ e
+$\tuple{L_2, \models_{L_2}}$, dizemos que a segunda é \emph{ao menos
+  tão expressiva} quanto a primeira, o que escrevemos
+$\tuple{L_1, \models_{L_1}} \leq \tuple{L_2, \models_{L_2}}$, se, para
+cada !!{language} $\Lang{L}$ e cada !!{sentence}
+$!E \in L_1(\Lang{L})$, existe !!a{sentence}
+$!F \in L_2(\Lang{L})$ tal que
+$\Mod[L](L_1){!E} = \Mod[L](L_2){!F}$. As lógicas
+$\tuple{L_1, \models_{L_1}}$ e $\tuple{L_2, \models_{L_2}}$ são
+\emph{equivalentes} se
+$\tuple{L_1, \models_{L_1}} \leq \tuple{L_2, \models_{L_2}}$ e
+$\tuple{L_2, \models_{L_2}} \leq \tuple{L_1, \models_{L_1}}$.
 \end{defn}
 
 \begin{rem}
-  First-order logic, O.s.\@, the abstract logic $\tuple{F, \models}$, is
-  normal. In fact, the above properties are mostly straightforward for
-  first-order logic. We just remark that the expansion property comes
-  down to extensionality, and that the relativization of
-  !!a{sentence} $!E$ to $\Atom{R}{x, c_1, \dots, c_n}$ is obtained by
-  replacing each !!{subformula} $\lforall[x][!F]$ by
-  $\lforall[x][(\Atom{R}{x, c_1, \dots, c_n} \lif \ !F)]$. Moreover,
-  if $\tuple{L, \models_L}$ is normal, then
-  $\tuple{F, \models} \leq \tuple{L, \models_{L}}$, as can be can
-  shown by induction on first-order !!{formula}s. Accordingly, with no
-  loss in generality, we can assume that every first-order
-  !!{sentence} belongs to every normal logic.
+  A lógica de primeira ordem, isto é, a lógica abstrata
+  $\tuple{F, \models}$, é normal. De fato, as propriedades acima são,
+  em sua maioria, imediatas para a lógica de primeira ordem. Observamos
+  apenas que a propriedade da expansão se reduz à extensionalidade e
+  que a relativização de !!a{sentence} $!E$ a
+  $\Atom{R}{x, c_1, \dots, c_n}$ é obtida substituindo cada
+  !!{subformula} $\lforall[x][!F]$ por
+  $\lforall[x][(\Atom{R}{x, c_1, \dots, c_n} \lif \ !F)]$. Além disso,
+  se $\tuple{L, \models_L}$ é normal, então
+  $\tuple{F, \models} \leq \tuple{L, \models_{L}}$, como se pode
+  demonstrar por indução nas !!{formula}s de primeira ordem. Assim, sem
+  perda de generalidade, podemos supor que toda !!{sentence} de
+  primeira ordem pertence a toda lógica normal.
 \end{rem}
 
 \end{document}

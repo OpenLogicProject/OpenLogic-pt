@@ -6,25 +6,25 @@
 
 \begin{document}
 
-\olfileid{nml}{frd}{st}
+\olfileid[pt]{nml}{frd}{st}
 
-\olsection{Second-order Definability}
+\olsection{Definibilidade de segunda ordem}
 
-Not every frame property definable by modal formulas is first-order
-definable. However, if we allow quantification over one-place
-predicates (O.s.\@, monadic second-order quantification), we define all
-modally definable frame properties. The trick is to exploit a
-systematic way in which the conditions under which a modal !!{formula}
-is true at a world are related to first-order !!{formula}s. This is
-the so-called standard translation of modal formulas into first-order
-formulas in a language containing not just a two-place
-!!{predicate}~$Q$ for the accessibility relation, but also a one-place
-!!{predicate}~$P_i$ for the !!{propositional variable}s~$\Obj p_i$
-occurring in~$!A$.
+Nem toda propriedade de frames definível por fórmulas modais é definível em
+primeira ordem. Contudo, se permitirmos a quantificação sobre predicados de um
+lugar (isto é, a quantificação monádica de segunda ordem), definiremos todas
+as propriedades de frames modalmente definíveis. O recurso consiste em
+explorar uma maneira sistemática pela qual as condições em que uma
+!!{formula} modal é verdadeira em um mundo se relacionam com !!{formula}s de
+primeira ordem. Trata-se da chamada tradução padrão de fórmulas modais para
+fórmulas de primeira ordem em uma linguagem que contém não apenas um
+!!{predicate}~$Q$ de dois lugares para a relação de acessibilidade, mas também
+um !!{predicate}~$P_i$ de um lugar para as !!{propositional variable}s
+~$\Obj p_i$ que aparecem em~$!A$.
 
 \begin{defn}
-  The \emph{standard translation}~$\ST_x(!A)$ is inductively defined
-  as follows:
+  A \emph{tradução padrão}~$\ST_x(!A)$ é definida indutivamente da seguinte
+  maneira:
   \begin{enumerate}
   \tagitem{prvFalse}{\indcase{!A}{\lfalse}{$\ST_x(\indfrm) = \lfalse$.}}{}
   \tagitem{prvTrue}{\indcase{!A}{\lfalse}{$\ST_x(\indfrm) = \ltrue$.}}{}
@@ -45,111 +45,113 @@ occurring in~$!A$.
   \end{enumerate}
 \end{defn}
 
-For instance, $\ST_x(\Box p \lif p)$ is $\lforall[y][(\Atom{Q}{x,y}
-  \lif \Atom{P}{y})] \lif \Atom{P}{x}$. Any !!{structure} for the
-language of~$\ST_x(!A)$ requires a domain, a two-place relation
-assigned to~$Q$, and subsets of the domain assigned to the one-place
-!!{predicate}s~$P_i$. In other words, the components of such
-!!a{structure} are exactly those of a model for~$!A$: the domain is
-the set of worlds, the two-place relation assigned to~$Q$ is the
-accessibility relation, and the subsets assigned to~$P_i$ are just the
-assignments~$V(\Obj p_i)$. It won't surprise that satisfaction of $!A$
-in a modal model and of $\ST_x(!A)$ in the corresponding !!{structure}
-agree:
+Por exemplo, $\ST_x(\Box p \lif p)$ é
+$\lforall[y][(\Atom{Q}{x,y} \lif \Atom{P}{y})] \lif \Atom{P}{x}$. Toda
+!!{structure} para a linguagem de~$\ST_x(!A)$ requer um domínio, uma relação
+de dois lugares atribuída a~$Q$, e subconjuntos do domínio atribuídos aos
+!!{predicate}s~$P_i$ de um lugar. Em outras palavras, os componentes de tal
+!!a{structure} são exatamente os de um modelo para~$!A$: o domínio é o
+conjunto de mundos, a relação de dois lugares atribuída a~$Q$ é a relação de
+acessibilidade, e os subconjuntos atribuídos a~$P_i$ são precisamente as
+atribuições~$V(\Obj p_i)$. Não será surpreendente que a satisfação de $!A$ em
+um modelo modal coincida com a de $\ST_x(!A)$ na !!{structure}
+correspondente:
 
 \begin{prop}\ollabel{prop:st}
-  Let $\mModel{M} = \tuple{W, R, V}$, $\Struct{M'}$ be the first-order
-  !!{structure} with $\Domain{M'} = W$, $\Assign{Q}{M'} = R$, and
-  $\Assign{P_i}{M'} = V(\Obj p_i)$, and $s(x) = w$. Then
+  Seja $\mModel{M} = \tuple{W, R, V}$, seja $\Struct{M'}$ a !!{structure} de
+  primeira ordem com $\Domain{M'} = W$, $\Assign{Q}{M'} = R$ e
+  $\Assign{P_i}{M'} = V(\Obj p_i)$, e seja $s(x) = w$. Então
   \[
-  \mSat{M}{!A}[w] \text{ iff } \Sat{M'}{\ST_x(!A)}[s]
+  \mSat{M}{!A}[w] \text{ se e somente se } \Sat{M'}{\ST_x(!A)}[s]
   \]
 \end{prop}
 
 \begin{proof}
-  By induction on~$!A$.
+  Por indução sobre~$!A$.
 \end{proof}
 
 \begin{prop}
-  Suppose $!A$ is a modal !!{formula} and $\mModel{F} = \tuple{W, R}$
-  is a frame. Let $\Struct{F'}$ be the first-order !!{structure} with
-  $\Domain{F'} = W$ and $\Assign{Q}{F'} = R$, and let $!A'$ be the
-  second-order formula
+  Suponha que $!A$ seja uma !!{formula} modal e que
+  $\mModel{F} = \tuple{W, R}$ seja um frame. Seja $\Struct{F'}$ a
+  !!{structure} de primeira ordem com $\Domain{F'} = W$ e
+  $\Assign{Q}{F'} = R$, e seja $!A'$ a fórmula de segunda ordem
   \[
   \lforall[X_1][\dots\lforall[X_n][\lforall[x][
         \SSubst{\ST_x(!A)}{\subst{X_1}{P_1}, \dots,
           \subst{X_n}{P_n}}]]],
   \]
-  where $P_1$, \dots, $P_n$ are all one-place !!{predicate}s
-  in~$\ST_x(!A)$. Then
+  onde $P_1$, \dots, $P_n$ são todos os !!{predicate}s de um lugar
+  em~$\ST_x(!A)$. Então
   \[
-  \mModel{F} \Entails !A \text{ iff } \Sat{F'}{!A'}
+  \mModel{F} \Entails !A \text{ se e somente se } \Sat{F'}{!A'}
   \]
 \end{prop}
 
 \begin{proof}
-  $\Sat{F'}{!A'}$ iff for every !!{structure}~$\mModel{M'}$ where
-  $\Assign{P_i}{M'} \subseteq W$ for $i = 1$, \dots,~$n$, and for
-  every $s$ with $s(x) \in W$, $\Sat{M'}{\ST_x(!A)}[s]$. By
-  \olref{prop:st}, that is the case iff for all models~$\mModel{M}$
-  based on~$\mModel{F}$ and every world~$w \in W$, $\mSat{M}{!A}[w]$,
-  O.s.\@, $\mModel{F} \Entails !A$.
+  $\Sat{F'}{!A'}$ se e somente se, para toda !!{structure}~$\mModel{M'}$ na
+  qual $\Assign{P_i}{M'} \subseteq W$ para $i = 1$, \dots,~$n$, e para todo
+  $s$ com $s(x) \in W$, $\Sat{M'}{\ST_x(!A)}[s]$. Por \olref{prop:st}, isso
+  ocorre se e somente se, para todos os modelos~$\mModel{M}$ baseados
+  em~$\mModel{F}$ e todo mundo~$w \in W$, $\mSat{M}{!A}[w]$; isto é,
+  $\mModel{F} \Entails !A$.
 \end{proof}
 
 \begin{defn}
-  A class~$\mClass{F}$ of frames is \emph{second-order definable} if
-  there is !!a{sentence}~$!A$ in the second-order language with a
-  single two-place !!{predicate}~$P$ and quantifiers only over monadic
-  set variables such that $\mModel{F} = \tuple{W, R} \in \mClass{F}$
-  iff $\Sat{M}{!A}$ in the !!{structure}~$\Struct{M}$ with
-  $\Domain{M} = W$ and $\Assign{P}{M} = R$.
+  Uma classe~$\mClass{F}$ de frames é \emph{definível em segunda ordem} se
+  existe !!a{sentence}~$!A$ na linguagem de segunda ordem com um único
+  !!{predicate}~$P$ de dois lugares e quantificadores apenas sobre variáveis
+  monádicas de conjuntos, tal que
+  $\mModel{F} = \tuple{W, R} \in \mClass{F}$ se e somente se $\Sat{M}{!A}$
+  na !!{structure}~$\Struct{M}$ com $\Domain{M} = W$ e
+  $\Assign{P}{M} = R$.
 \end{defn}
 
 \begin{cor}
-  If a class of frames is definable by !!a{formula}~$!A$, the
-  corresponding class of accessibility relations is definable by a
-  monadic second-order sentence.
+  Se uma classe de frames é definível por !!a{formula}~$!A$, a classe
+  correspondente de relações de acessibilidade é definível por um enunciado
+  monádico de segunda ordem.
 \end{cor}
 
 \begin{proof}
-  The monadic second-order sentence~$!A'$ of the preceding proof has
-  the required property.
+  O enunciado monádico de segunda ordem~$!A'$ da demonstração anterior possui
+  a propriedade exigida.
 \end{proof}
 
-As an example, consider again the !!{formula}~$\Box p \lif p$. It
-defines reflexivity. Reflexivity is of course first-order definable by
-the !!{sentence}~$\lforall[x][\Atom{Q}{x,x}]$. But it is also definable by the
-monadic second-order !!{sentence}
+Como exemplo, considere novamente a !!{formula}~$\Box p \lif p$. Ela define a
+reflexividade. Naturalmente, a reflexividade é definível em primeira ordem
+pelo !!{sentence}~$\lforall[x][\Atom{Q}{x,x}]$. Mas ela também é definível
+pelo !!{sentence} monádico de segunda ordem
 \[
 \lforall[X][\lforall[x][(\lforall[y][(\Atom{Q}{x,y} \lif \Atom{X}{y})]
     \lif \Atom{X}{x})]].
 \]
-This means, of course, that the two sentences are equivalent. Here's
-how you might convince yourself of this directly: First suppose the
-second-order sentence is true in !!a{structure}~$\Struct{M}$. Since $x$ and $X$
-are universally quantified, the remainder must hold for any $x \in W$
-and set~$X \subseteq W$, p.ex., the set $\Setabs{z}{Rxz}$ where $R =
-\Assign{Q}{M}$. So, for any~$s$ with $s(x) \in W$ and $s(X) =
-\Setabs{z}{Rxz}$ we have $\Sat{M}{\lforall[y][(\Atom{Q}{x,y} \lif
-    \Atom{X}{y})] \lif \Atom{X}{x}}$. But by the way we've picked
-$s(X)$ that means $\Sat{M}{\lforall[y][(\Atom{Q}{x,y} \lif
-    \Atom{Q}{x,y})] \lif \Atom{Q}{x,x}}[s]$, which is equivalent to
-$\Atom{Q}{x,x}$ since the antecedent is valid. Since $s(x)$ is
-arbitrary, we have $\Sat{M}{\lforall[x][\Atom{Q}{x,x}]}$.
+Isso significa, naturalmente, que os dois enunciados são equivalentes. Eis
+como você pode se convencer disso diretamente: suponha primeiro que o
+enunciado de segunda ordem seja verdadeiro em !!a{structure}~$\Struct{M}$.
+Como $x$ e $X$ são universalmente quantificados, o restante deve valer para
+qualquer $x \in W$ e qualquer conjunto~$X \subseteq W$, por exemplo, o
+conjunto $\Setabs{z}{Rxz}$, onde $R = \Assign{Q}{M}$. Assim, para todo~$s$ com
+$s(x) \in W$ e $s(X) = \Setabs{z}{Rxz}$, temos
+$\Sat{M}{\lforall[y][(\Atom{Q}{x,y} \lif \Atom{X}{y})] \lif
+    \Atom{X}{x}}$. Mas, pela maneira como escolhemos $s(X)$, isso significa
+$\Sat{M}{\lforall[y][(\Atom{Q}{x,y} \lif \Atom{Q}{x,y})] \lif
+    \Atom{Q}{x,x}}[s]$, que é equivalente a $\Atom{Q}{x,x}$, pois o
+antecedente é válido. Como $s(x)$ é arbitrário, temos
+$\Sat{M}{\lforall[x][\Atom{Q}{x,x}]}$.
 
-Now suppose that $\Sat{M}{\lforall[x][\Atom{Q}{x,x}]}$ and show that
+Suponha agora que $\Sat{M}{\lforall[x][\Atom{Q}{x,x}]}$ e mostre que
 $\Sat{M}{\lforall[X][\lforall[x][(\lforall[y][(\Atom{Q}{x,y} \lif
-        \Atom{X}{y})] \lif \Atom{X}{x})]]}$. Pick any assignment~$s$,
-and assume $\Sat{M}{\lforall[y][(\Atom{Q}{x,y} \lif
-    \Atom{X}{y})]}[s]$. Let $s'$ be the $y$-variant of~$s$ with $s'(y)
-= s(x)$; we have $\Sat{M}{\Atom{Q}{x,y} \lif \Atom{X}{y}}[s']$, O.s.\@,
-$\Sat{M}{\Atom{Q}{x,x} \lif \Atom{X}{x}}[s]$. Since
-$\Sat{M}{\lforall[x][\Atom{Q}{x,x}]}$, the antecedent is true, and we
-have $\Sat{M}{\Atom{X}{x}}[s]$, which is what we needed to show.
+        \Atom{X}{y})] \lif \Atom{X}{x})]]}$. Escolha uma atribuição~$s$
+qualquer e suponha $\Sat{M}{\lforall[y][(\Atom{Q}{x,y} \lif
+    \Atom{X}{y})]}[s]$. Seja $s'$ a variante em~$y$ de~$s$ com
+$s'(y) = s(x)$; temos $\Sat{M}{\Atom{Q}{x,y} \lif \Atom{X}{y}}[s']$, isto é,
+$\Sat{M}{\Atom{Q}{x,x} \lif \Atom{X}{x}}[s]$. Como
+$\Sat{M}{\lforall[x][\Atom{Q}{x,x}]}$, o antecedente é verdadeiro, e temos
+$\Sat{M}{\Atom{X}{x}}[s]$, que é o que precisávamos mostrar.
 
-Since some definable classes of frames are not first-order definable,
-not every monadic second-order !!{sentence} of the form~$!A'$ is
-equivalent to a first-order !!{sentence}. There is no effective method
-to decide which ones are.
+Como algumas classes de frames definíveis não são definíveis em primeira
+ordem, nem todo !!{sentence} monádico de segunda ordem da forma~$!A'$ é
+equivalente a um !!{sentence} de primeira ordem. Não existe um método efetivo
+para decidir quais são.
 
 \end{document}

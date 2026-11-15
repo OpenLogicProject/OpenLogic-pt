@@ -6,71 +6,69 @@
 
 \begin{document}
 
-\olfileid{sol}{syn}{siz}
+\olfileid[pt]{sol}{syn}{siz}
 
-\olsection{Describing Infinite and \usetoken{S}{enumerable}
+\olsection{Infinitude e \usetoken{S}{enumerable}
   \usetoken{P}{domain}}
 
-A set~$M$ is (Dedekind) infinite iff there is !!a{injective} function~$f\colon M
-\to M$ which is not !!{surjective}, O.s.\@, with $\ran{f} \neq M$. In
-first-order logic, we can consider a one-place !!{function}~$f$ and
-say that the function~$\Assign{f}{M}$ assigned to it in
-!!a{structure}~$\Struct{M}$ is !!{injective} and $\ran{f} \neq
-\Domain{M}$:
+Um conjunto~$M$ é infinito (no sentido de Dedekind) sse existe
+!!a{injective} função~$f\colon M \to M$ que não é !!{surjective}, isto é,
+com $\ran{f} \neq M$. Na lógica de primeira ordem, podemos considerar uma
+!!{function} unária~$f$ e dizer que a função~$\Assign{f}{M}$ atribuída a ela
+em !!a{structure}~$\Struct{M}$ é !!{injective} e
+$\ran{f} \neq \Domain{M}$:
 \[
 \lforall[x][\lforall[y][(\eq[f(x)][f(y)] \to \eq[x][y])]] \land
 \lexists[y][\lforall[x][\eq/[y][f(x)]]].
 \]
-If $\Struct{M}$ satisfies this !!{sentence}, $\Assign{f}{M}:
-\Domain{M} \to \Domain{M}$ is !!{injective}, and so $\Domain{M}$ must
-be infinite. If $\Domain{M}$ is infinite, and hence such a function
-exists, we can let $\Assign{f}{M}$ be that function and $\Struct{M}$
-will satisfy the !!{sentence}.  However, this requires that our language
-contains the non-logical symbol~$f$ which we use for this purpose. In
-second-order logic, we can simply say that such a function
-\emph{exists}. This no-longer requires~$f$, and we obtain the
-!!{sentence} in pure second-order logic
+Se $\Struct{M}$ satisfaz essa !!{sentence}, então
+$\Assign{f}{M}: \Domain{M} \to \Domain{M}$ é !!{injective}, e portanto
+$\Domain{M}$ deve ser infinito. Se $\Domain{M}$ é infinito e, assim, existe
+tal função, podemos tomar $\Assign{f}{M}$ como essa função, e $\Struct{M}$
+satisfará a !!{sentence}. Contudo, isso exige que nossa linguagem contenha o
+símbolo não lógico~$f$ usado para esse fim. Na lógica de segunda ordem,
+podemos simplesmente dizer que tal função \emph{existe}. Isso já não exige
+~$f$, e obtemos, na lógica pura de segunda ordem, a !!{sentence}
 \[
 \fn{Inf} \ident \lexists[u][(\lforall[x][\lforall[y][(\eq[u(x)][u(y)]
       \lif \eq[x][y])]] \land \lexists[y][\lforall[x][\eq/[y][u(x)]]])].
 \]
-$\Sat{M}{\fn{Inf}}$ iff $\Domain{M}$ is infinite.  We can then define
-$\fn{Fin} \ident \lnot \fn{Inf}$; $\Sat{M}{\fn{Fin}}$ iff $\Domain{M}$
-is finite. No single !!{sentence} of pure first-order logic can
-express that the !!{domain} is infinite although an infinite set of
-them can. There is no set of !!{sentence}s of pure first-order logic
-that is satisfied in !!a{structure} iff its domain is finite.
+$\Sat{M}{\fn{Inf}}$ sse $\Domain{M}$ é infinito. Podemos então definir
+$\fn{Fin} \ident \lnot \fn{Inf}$; $\Sat{M}{\fn{Fin}}$ sse $\Domain{M}$ é
+finito. Nenhuma !!{sentence} isolada da lógica pura de primeira ordem pode
+expressar que o !!{domain} é infinito, embora um conjunto infinito delas
+possa. Não existe conjunto de !!{sentence}s da lógica pura de primeira
+ordem que seja satisfeito em !!a{structure} sse seu domínio é finito.
 
 \begin{prop}
-$\Sat{M}{\fn{Inf}}$ iff $\Domain{M}$ is infinite.
+$\Sat{M}{\fn{Inf}}$ sse $\Domain{M}$ é infinito.
 \end{prop}
 
 \begin{proof}
-$\Sat{M}{\fn{Inf}}$ iff
+$\Sat{M}{\fn{Inf}}$ sse
   $\Sat{M}{\lforall[x][\lforall[y][(\eq[u(x)][u(y)] \lif \eq[x][y])]]
-    \land \lexists[y][\lforall[x][\eq/[y][u(x)]]]}[s]$ for
-  some~$s$. If it does, $s(u)$ is !!a{injective} function, and some $y
-  \in \Domain{M}$ is not in the range of~$s(u)$. Conversely, if there
-  is !!a{injective} $f\colon \Domain{M} \to \Domain{M}$ with $\ran{f}
-  \neq \Domain{M}$, then $s(u) = f$ is such a variable
-  assignment.
+    \land \lexists[y][\lforall[x][\eq/[y][u(x)]]]}[s]$ para algum~$s$.
+  Se isso vale, $s(u)$ é !!a{injective} função, e algum
+  $y \in \Domain{M}$ não pertence à imagem de~$s(u)$. Reciprocamente, se
+  existe !!a{injective} $f\colon \Domain{M} \to \Domain{M}$ com
+  $\ran{f} \neq \Domain{M}$, então $s(u) = f$ é uma atribuição de variáveis
+  desse tipo.
 \end{proof}
 
-A set $M$ is !!{enumerable} if there is an enumeration
+Um conjunto $M$ é !!{enumerable} se existe uma enumeração
 \[
 m_0, m_1, m_2, \dots
 \]
-of its !!{element}s (without repetitions but possibly finite).  Such an enumeration exists
-iff there is !!a{element} $z \in M$ and a function $f\colon M \to M$
-such that $z$, $f(z)$, $f(f(z))$, \dots, are all the !!{element}s of~$M$. For
-if the enumeration exists, $z = m_0$ and $f(m_k) = m_{k+1}$ (or
-$f(m_k) = m_k$ if $m_k$ is the last !!{element} of the enumeration)
-are the requisite !!{element} and function. On the other hand, if such
-a $z$ and $f$ exist, then $z$, $f(z)$, $f(f(z))$, \dots, is an
-enumeration of~$M$, and $M$ is !!{enumerable}.  We can express the
-existence of $z$ and~$f$ in second-order logic to produce a
-!!{sentence} true in !!a{structure} iff the !!{structure} is
-!!{enumerable}:
+de seus !!{element}s (sem repetições, mas possivelmente finita). Tal
+enumeração existe sse há !!a{element} $z \in M$ e uma função
+$f\colon M \to M$ tais que $z$, $f(z)$, $f(f(z))$, \dots, são todos os
+!!{element}s de~$M$. Pois, se existe a enumeração, $z = m_0$ e
+$f(m_k) = m_{k+1}$ (ou $f(m_k) = m_k$ se $m_k$ é o último !!{element} da
+enumeração) são o !!{element} e a função requeridos. Por outro lado, se
+existem tais $z$ e $f$, então $z$, $f(z)$, $f(f(z))$, \dots, é uma
+enumeração de~$M$, e $M$ é !!{enumerable}. Podemos expressar a existência de
+$z$ e~$f$ na lógica de segunda ordem para produzir uma !!{sentence}
+verdadeira em !!a{structure} sse a !!{structure} é !!{enumerable}:
 \[
 \fn{Count} \ident
 \lexists[z][\lexists[u][\lforall[X][((X(z) \land
@@ -78,56 +76,56 @@ existence of $z$ and~$f$ in second-order logic to produce a
 \]
 
 \begin{prop}
-$\Sat{M}{\fn{Count}}$ iff $\Domain{M}$ is !!{enumerable}.
+$\Sat{M}{\fn{Count}}$ sse $\Domain{M}$ é !!{enumerable}.
 \end{prop}
 
 \begin{proof}
-Suppose $\Domain{M}$ is !!{enumerable}, and let $m_0$, $m_1$, \dots, be an
-enumeration. By removing repetitions we can guarantee that no $m_k$
-appears twice. Define $f(m_k) = m_{k+1}$ and let $s(z) = m_0$ and
-$s(u) = f$. We show that
+Suponha que $\Domain{M}$ seja !!{enumerable}, e sejam $m_0$, $m_1$, \dots,
+uma enumeração. Removendo repetições, podemos garantir que nenhum $m_k$
+apareça duas vezes. Defina $f(m_k) = m_{k+1}$ e tome $s(z) = m_0$ e
+$s(u) = f$. Mostramos que
 \[
 \Sat{M}{\lforall[X][((X(z) \land \lforall[x][(X(x) \lif X(u(x)))])
     \lif \lforall[x][X(x)])]}[s]
 \]
-Suppose $M \subseteq \Domain{M}$ is arbitrary. Suppose further that
+Suponha que $M \subseteq \Domain{M}$ seja arbitrário. Suponha ainda que
 $\Sat{M}{(X(z) \land \lforall[x][(X(x) \lif
-X(u(x)))])}[\Subst{s}{M}{X}]$. Then $\Subst{s}{M}{X}(z) \in M$ and
-whenever $x \in M$, also $(\Subst{s}{M}{X}(u))(x) \in M$. In other
-words, since $\varAssign{\Subst{s}{M}{X}}{s}{X}$, $m_0 \in M$ and if
-$x \in M$ then $f(x) \in M$, so $m_0 \in M$, $m_1 = f(m_0) \in M$,
-$m_2 = f(f(m_0)) \in M$, etc. Thus, $M = \Domain{M}$, and so
-$\Sat{M}{\lforall[x][X(x)]}[\Subst{s}{M}{X}]$. Since $M \subseteq
-\Domain{M}$ was arbitrary, we are done:
+X(u(x)))])}[\Subst{s}{M}{X}]$. Então $\Subst{s}{M}{X}(z) \in M$, e sempre
+que $x \in M$, também $(\Subst{s}{M}{X}(u))(x) \in M$. Em outras palavras,
+como $\varAssign{\Subst{s}{M}{X}}{s}{X}$, $m_0 \in M$ e, se $x \in M$,
+então $f(x) \in M$; portanto, $m_0 \in M$, $m_1 = f(m_0) \in M$,
+$m_2 = f(f(m_0)) \in M$ etc. Assim, $M = \Domain{M}$ e, portanto,
+$\Sat{M}{\lforall[x][X(x)]}[\Subst{s}{M}{X}]$. Como
+$M \subseteq \Domain{M}$ era arbitrário, concluímos:
 $\Sat{M}{\fn{Count}}$.
 
-Now assume that $\Sat{M}{\fn{Count}}$, O.s.\@, 
+Suponha agora que $\Sat{M}{\fn{Count}}$, isto é,
 \[
 \Sat{M}{\lforall[X][((X(z) \land \lforall[x][(X(x) \lif X(u(x)))])
     \lif \lforall[x][X(x)])]}[s]
 \]
-for some~$s$. Let $m = s(z)$ and $f = s(u)$ and consider $M = \{m,
-f(m), f(f(m)), \dots\}$. $M$ so defined is clearly !!{enumerable}.
-Then
+para algum~$s$. Sejam $m = s(z)$ e $f = s(u)$, e considere
+$M = \{m, f(m), f(f(m)), \dots\}$. O conjunto $M$ assim definido é
+claramente !!{enumerable}. Então
 \[
 \Sat{M}{(X(z) \land \lforall[x][(X(x) \lif X(u(x)))])
     \lif \lforall[x][X(x)]}[\Subst{s}{M}{X}]
 \]
-by assumption. Also, $\Sat{M}{X(z)}[\Subst{s}{M}{X}]$ since $M \ni m =
-\Subst{s}{M}{X}(z)$, and also $\Sat{M}{\lforall[x][(X(x) \lif
-X(u(x)))]}[\Subst{s}{M}{X}]$ since whenever $x \in M$ also $f(x) \in
-M$. So, since both antecedent and conditional are satisfied, the
-consequent must also be: $\Sat{M}{\lforall[x][X(x)]}[\Subst{s}{M}{X}]$. But that
-means that $M = \Domain{M}$, and so $\Domain{M}$ is !!{enumerable}
-since $M$ is, by definition.
+por hipótese. Além disso, $\Sat{M}{X(z)}[\Subst{s}{M}{X}]$, pois $M \ni m =
+\Subst{s}{M}{X}(z)$, e também
+$\Sat{M}{\lforall[x][(X(x) \lif X(u(x)))]}[\Subst{s}{M}{X}]$, pois, sempre
+que $x \in M$, também $f(x) \in M$. Portanto, como tanto o antecedente
+quanto a condicional são satisfeitos, o consequente também deve ser:
+$\Sat{M}{\lforall[x][X(x)]}[\Subst{s}{M}{X}]$. Mas isso significa que
+$M = \Domain{M}$ e, assim, $\Domain{M}$ é !!{enumerable}, pois $M$ o é por
+definição.
 \end{proof}
 
 \begin{prob}
-The !!{sentence} $\fn{Inf} \land \fn{Count}$ is true in all and only
-!!{denumerable} domains.  Adjust the definition of $\fn{Count}$ so
-that it becomes a different !!{sentence} that directly expresses that
-the domain is !!{denumerable}, and prove that it does.
+A !!{sentence} $\fn{Inf} \land \fn{Count}$ é verdadeira precisamente nos
+!!{denumerable} domínios. Ajuste a definição de $\fn{Count}$ para que ela se
+torne uma !!{sentence} diferente que expresse diretamente que o domínio é
+!!{denumerable}, e prove que o faz.
 \end{prob}
 
 \end{document}
-

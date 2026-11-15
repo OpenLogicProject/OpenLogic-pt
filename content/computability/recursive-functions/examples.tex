@@ -6,109 +6,106 @@
 
 \begin{document}
 
-\olfileid{cmp}{rec}{exa}
-\olsection{Examples of Primitive Recursive Functions}
+\olfileid[pt]{cmp}{rec}{exa}
+\olsection{Exemplos de funções recursivas primitivas}
 
 
-We already have some examples of primitive recursive functions: the
-addition and multiplication functions~$\Add$ and $\Mult$.  The
-identity function $\fn{id}(x) = x$ is primitive recursive, since it is
-just~$\Proj{1}{0}$. The constant functions $\fn{const}_n(x) = n$ are
-primitive recursive since they can be defined from $\Zero$ and $\Succ$
-by successive composition. This is useful when we want to use
-constants in primitive recursive definitions, p.ex., if we want to
-define the function $f(x) = 2 \cdot x$ can obtain it by composition
-from $\fn{const}_n(x)$ and multiplication as $f(x) =
-\Mult(\fn{const}_2(x), \Proj{1}{0}(x))$. We'll make use of this trick
-from now on.
+Já temos alguns exemplos de funções recursivas primitivas: as funções adição
+e multiplicação~$\Add$ e $\Mult$. A função identidade $\fn{id}(x) = x$ é
+recursiva primitiva, pois é simplesmente~$\Proj{1}{0}$. As funções constantes
+$\fn{const}_n(x) = n$ são recursivas primitivas, pois podem ser definidas a
+partir de $\Zero$ e $\Succ$ por composições sucessivas. Isso é útil quando
+queremos usar constantes em definições recursivas primitivas; por exemplo, se
+queremos definir a função $f(x) = 2 \cdot x$, podemos obtê-la por composição a
+partir de $\fn{const}_n(x)$ e da multiplicação, tomando
+$f(x) = \Mult(\fn{const}_2(x), \Proj{1}{0}(x))$. Daqui em diante, usaremos
+esse recurso.
 
 \begin{prop}
-  The exponentiation function $\fn{exp}(x, y) = x^y$ is primitive recursive.
+  A função exponenciação $\fn{exp}(x, y) = x^y$ é recursiva primitiva.
 \end{prop}
 
 \begin{proof}
-  We can define $\fn{exp}$ primitive recursively as
+  Podemos definir $\fn{exp}$ por recursão primitiva como
   \begin{align*}
     \fn{exp}(x, 0) & = 1\\
     \fn{exp}(x, y+1) & = \Mult(x, \fn{exp}(x,y)).
-    \intertext{Strictly speaking, this is not a recursive definition
-      from primitive recursive functions. Officially, though, we
-      have:}
+    \intertext{Estritamente falando, essa não é uma definição recursiva a
+      partir de funções recursivas primitivas. Formalmente, porém, temos:}
     \fn{exp}(x, 0) & = f(x)\\
     \fn{exp}(x, y+1) & = g(x, y, \fn{exp}(x,y)).
-    \intertext{where}
+    \intertext{onde}
     f(x) & = \Succ(\Zero(x)) = 1\\
     g(x, y, z) & = \Mult(\Proj{3}{0}(x, y, z), \Proj{3}{2}(x, y, z)) = x \cdot z
   \end{align*}
-  and so $f$ and $g$ are defined from primitive recursive functions by
-  composition.
+  e, portanto, $f$ e $g$ são definidas por composição a partir de funções
+  recursivas primitivas.
 \end{proof}
 
 \begin{prop}
-  The predecessor function $\fn{pred}(y)$ defined by
+  A função predecessor $\fn{pred}(y)$ definida por
   \[
   \fn{pred}(y) = \begin{cases}
-    0 & \text{if $y=0$}\\
-    y-1 & \text{otherwise}
+    0 & \text{se $y=0$}\\
+    y-1 & \text{caso contrário}
   \end{cases}
   \]
-  is primitive recursive.
+  é recursiva primitiva.
 \end{prop}
 
 \begin{proof}
- Note that 
+ Observe que
  \begin{align*}
-   \fn{pred}(0) & = 0 \text{ and}\\
+   \fn{pred}(0) & = 0 \text{ e}\\
    \fn{pred}(y+1) & = y.
  \end{align*}
- This is almost a primitive recursive definition.  It does not,
- strictly speaking, fit into the pattern of definition by primitive
- recursion, since that pattern requires at least one extra
- argument~$x$. It is also odd in that it does not actually use
- $\fn{pred}(y)$ in the definition of $\fn{pred}(y+1)$. But we can
- first define $\fn{pred}'(x, y)$ by
+ Isso é quase uma definição por recursão primitiva. Estritamente falando, não
+ se ajusta ao padrão de definição por recursão primitiva, pois esse padrão
+ exige pelo menos um argumento adicional~$x$. Também é peculiar porque não
+ usa de fato $\fn{pred}(y)$ na definição de $\fn{pred}(y+1)$. Mas podemos
+ definir primeiro $\fn{pred}'(x, y)$ por
  \begin{align*}
    \fn{pred}'(x, 0) & = \Zero(x) = 0,\\
    \fn{pred}'(x, y+1) & = \Proj{3}{1}(x, y, \fn{pred'}(x, y)) = y.
  \end{align*}
-and then define $\fn{pred}$ from it by composition, p.ex., as
+e então definir $\fn{pred}$ a partir dela por composição, por exemplo, como
 $\fn{pred}(x) = \fn{pred}'(\Zero(x), \Proj{1}{0}(x))$.
 \end{proof}
 
 \begin{prop}
-  The factorial function $\fn{fac}(x) = \fact{x} = 1 \cdot 2 \cdot 3
-  \cdot \dots \cdot x$ is primitive recursive.
+  A função fatorial $\fn{fac}(x) = \fact{x} = 1 \cdot 2 \cdot 3
+  \cdot \dots \cdot x$ é recursiva primitiva.
 \end{prop}
 
 \begin{proof}
-  The obvious primitive recursive definition is
+  A definição recursiva primitiva evidente é
   \begin{align*}
     \fn{fac}(0) &= 1\\
     \fn{fac}(y+1) & = \fn{fac}(y) \cdot (y+1).
-    \intertext{Officially, we have to first define a two-place function $h$}
+    \intertext{Formalmente, temos primeiro de definir uma função $h$ de dois argumentos}
     h(x, 0) & = \fn{const}_1(x)\\
     h(x, y+1) & = g(x, y, h(x, y))
-    \intertext{where $g(x, y, z) = \Mult(\Proj{3}{2}(x, y, z),
-      \Succ(\Proj{3}{1}(x, y, z)))$ and then let}
+    \intertext{onde $g(x, y, z) = \Mult(\Proj{3}{2}(x, y, z),
+      \Succ(\Proj{3}{1}(x, y, z)))$; depois, tomamos}
     \fn{fac}(y) & = h(\Proj{1}{0}(y), \Proj{1}{0}(y)) = h(y,y).
   \end{align*}
-  From now on we'll be a bit more laissez-faire and not give the official
-  definitions by composition and primitive recursion.
+  Daqui em diante, seremos um pouco menos formais e não forneceremos as
+  definições completas por composição e recursão primitiva.
 \end{proof}
 
 \begin{prop}
-  Truncated subtraction, $x \tsub y$, defined by
+  A subtração truncada, $x \tsub y$, definida por
   \[
   x \tsub y = \begin{cases}
-    0 & \text{if $x < y$}\\
-    x-y & \text{otherwise}
+    0 & \text{se $x < y$}\\
+    x-y & \text{caso contrário}
   \end{cases}
   \]
-  is primitive recursive.
+  é recursiva primitiva.
 \end{prop}
 
 \begin{proof}
-  We have:
+  Temos:
   \begin{align*}
     x \tsub 0 & = x\\
     x \tsub (y+1) & = \fn{pred}(x \tsub y) 
@@ -116,68 +113,68 @@ $\fn{pred}(x) = \fn{pred}'(\Zero(x), \Proj{1}{0}(x))$.
 \end{proof}
 
 \begin{prop}
- The distance between $x$ and $y$, $\left|x-y\right|$, is primitive recursive.
+ A distância entre $x$ e $y$, $\left|x-y\right|$, é recursiva primitiva.
 \end{prop}
 
 \begin{proof}
-  We have $\left| x-y \right| = (x \tsub y) + (y \tsub x)$, so
-  the distance can be defined by composition from $+$ and $\tsub$,
-  which are primitive recursive.
+  Temos $\left| x-y \right| = (x \tsub y) + (y \tsub x)$; portanto, a
+  distância pode ser definida por composição a partir de $+$ e $\tsub$, que
+  são recursivas primitivas.
 \end{proof}
 
 \begin{prop}
-  The maximum of $x$ and $y$, $\fn{max}(x,y)$, is primitive recursive.
+  O máximo de $x$ e $y$, $\fn{max}(x,y)$, é recursivo primitivo.
 \end{prop}
 
 \begin{proof}
-  We can define $\fn{max}(x,y)$ by composition from $+$ and $\tsub$ by
+  Podemos definir $\fn{max}(x,y)$ por composição a partir de $+$ e $\tsub$:
   \[
   \fn{max}(x,y) \defis x + (y \tsub x).
   \]
-  If $x$ is the maximum, O.s.\@, $x \ge y$, then $y \tsub x = 0$, so $x
-  + (y \tsub x) = x + 0 = x$. If $y$ is the maximum, then $y \tsub x =
-  y - x$, and so $x + (y \tsub x) = x + (y - x) = y$.
+  Se $x$ é o máximo, isto é, $x \ge y$, então $y \tsub x = 0$, de modo que
+  $x + (y \tsub x) = x + 0 = x$. Se $y$ é o máximo, então
+  $y \tsub x = y - x$ e, portanto,
+  $x + (y \tsub x) = x + (y - x) = y$.
 \end{proof}
 
 \begin{prop}
   \ollabel{prop:min-pr}
-  The minimum of $x$ and $y$, $\fn{min}(x,y)$, is primitive recursive.
+  O mínimo de $x$ e $y$, $\fn{min}(x,y)$, é recursivo primitivo.
 \end{prop}
 
 \begin{proof}
-  Exercise.
+  Exercício.
 \end{proof}
 
 \begin{prob}
-  Prove \olref[cmp][rec][exa]{prop:min-pr}.
+  Demonstre \olref[cmp][rec][exa]{prop:min-pr}.
 \end{prob}
 
 \begin{prob}
-Show that \[
+Mostre que \[
 f(x, y) =
 2^{(2^{\iddots^{2^{x}}})}\raisebox{1ex}{\bigg\rbrace}
-\raisebox{1ex}{\text {$y$ $2$'s}}\] is primitive recursive.
+\raisebox{1ex}{\text {$y$ ocorrências de $2$}}\] é recursiva primitiva.
 \end{prob}
 
 \begin{prob}
-Show that integer division $d(x, y) = \lfloor x/y \rfloor$ (O.s.\@,
-division, where you disregard everything after the decimal point) is
-primitive recursive. When $y = 0$, we stipulate $d(x, y) = 0$. Give an
-explicit definition of~$d$ using primitive recursion and
-composition.
+Mostre que a divisão inteira $d(x, y) = \lfloor x/y \rfloor$ (isto é, a
+divisão na qual se despreza tudo o que vem depois da vírgula decimal) é
+recursiva primitiva. Quando $y = 0$, estipulamos $d(x, y) = 0$. Dê uma
+definição explícita de~$d$ usando recursão primitiva e composição.
 \end{prob}
 
 \begin{prop}
-The set of primitive recursive functions is closed under the
-following two operations:
+O conjunto das funções recursivas primitivas é fechado sob as duas operações
+seguintes:
 \begin{enumerate}
-\item Finite sums: if $f(\vec x, z)$ is primitive recursive, then so
-is the function
+\item Somas finitas: se $f(\vec x, z)$ é recursiva primitiva, então também é
+a função
 \[
 g(\vec x, y) \defis \sum_{z = 0}^y f(\vec x, z).
 \]
-\item Finite products: if $f(\vec x, z)$ is primitive recursive, then
-so is the function
+\item Produtos finitos: se $f(\vec x, z)$ é recursiva primitiva, então também
+é a função
 \[
 h(\vec x, y) \defis \prod_{z = 0}^y f(\vec x, z).
 \]
@@ -185,7 +182,7 @@ h(\vec x, y) \defis \prod_{z = 0}^y f(\vec x, z).
 \end{prop}
 
 \begin{proof}
-For example, finite sums are defined recursively by the equations
+Por exemplo, as somas finitas são definidas recursivamente pelas equações
 \begin{align*}
   g(\vec x, 0) & = f(\vec x, 0)\\
   g(\vec x, y+1) & = g(\vec x, y) + f(\vec x, y+1).

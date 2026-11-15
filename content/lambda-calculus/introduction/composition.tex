@@ -6,25 +6,25 @@
 
 \begin{document}
 
-\olfileid{lam}{int}{com}
-\olsection{The \usetoken{S}{lambda definable} Functions are Closed under Composition}
+\olfileid[pt]{lam}{int}{com}
+\olsection{As funções \usetoken{S}{lambda definable} são fechadas sob composição}
 
 \begin{lem}
-The !!{lambda definable} functions are closed under composition.
+As funções !!{lambda definable} são fechadas sob composição.
 \end{lem}
 
 \begin{proof}
-Suppose $f$ is defined by composition from $h$, $g_0,$
-\dots,~$g_{k-1}$. Assuming $h$, $g_0$, \dots,~$g_{k-1}$ are
-!!{lambda defined} by $H$, $G_0$, \dots,~$G_{k-1}$,
-respectively, we need to find a term~$F$ that !!{lambda define}s~$f$. But we
-can simply define~$F$ by
+Suponha que $f$ seja definida por composição a partir de $h$, $g_0,$
+\dots,~$g_{k-1}$. Supondo que $h$, $g_0$, \dots,~$g_{k-1}$ sejam
+!!{lambda defined} por $H$, $G_0$, \dots,~$G_{k-1}$, respectivamente,
+precisamos encontrar um termo~$F$ que !!{lambda define}s~$f$. Mas podemos
+simplesmente definir~$F$ por
 \[
 F(x_0, \dots, x_{l-1}) = H(G_0(x_0, \dots, x_{l-1}),
 \dots, G_{k-1}(x_0, \dots, x_{l-1})).
 \]
-In other words, the language of the lambda calculus is well suited to
-represent composition.
+Em outras palavras, a linguagem do cálculo lambda é bem adequada para
+representar a composição.
 \end{proof}
 
 \end{document}

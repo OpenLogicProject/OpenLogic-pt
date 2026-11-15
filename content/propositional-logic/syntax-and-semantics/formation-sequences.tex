@@ -6,24 +6,22 @@
 
 \begin{document}
 
-\olfileid{pl}{syn}{fseq}
+\olfileid[pt]{pl}{syn}{fseq}
 
-\olsection{Formation Sequences}
+\olsection{Sequências de Formação}
 
-Defining !!{formula}s via an inductive definition, and the
-complementary technique of proving properties of !!{formula}s via
-induction, is an elegant and efficient approach. However, it can
-also be useful to consider a more bottom-up, step-by-step approach
-to the construction of !!{formula}s, which we do here using the
-notion of a \emph{formation sequence}.
+Definir !!{formula}s por meio de uma definição indutiva, juntamente com a
+técnica complementar de demonstrar propriedades de !!{formula}s por indução,
+é uma abordagem elegante e eficiente. Contudo, também pode ser útil considerar
+uma abordagem mais ascendente e passo a passo para a construção de
+!!{formula}s, como fazemos aqui usando a noção de \emph{sequência de formação}.
 
-\begin{defn}[Formation sequences for formulas]
+\begin{defn}[Sequências de formação para fórmulas]
 \ollabel{defn:fseq-frm}
-A finite sequence $\tuple{!A_0,\dotsc,!A_n}$ of strings of
-symbols from the language~$\Lang L_0$ is a \emph{formation
-sequence} for $!A$ if $!A \ident !A_n$ and for all $i \leq n$,
-either $!A_i$ is an atomic formula or there exist $j,k < i$
-such that one of the following holds:
+Uma sequência finita $\tuple{!A_0,\dotsc,!A_n}$ de cadeias de símbolos da
+linguagem~$\Lang L_0$ é uma \emph{sequência de formação} para $!A$ se
+$!A \ident !A_n$ e, para todo $i \leq n$, ou $!A_i$ é uma fórmula atômica,
+ou existem $j,k < i$ tais que vale uma das seguintes condições:
 \begin{enumerate}
     \tagitem{prvNot}{$!A_i \ident \lnot !A_j$.}{}%
     \tagitem{prvAnd}{$!A_i \ident (!A_j \land !A_k)$.}{}%
@@ -42,8 +40,8 @@ such that one of the following holds:
     \lnot (\Obj p_1 \land \Obj p_0)
 }
 \]
-is a formation sequence of
-$\lnot (\Obj p_1 \land \Obj p_0)$, as is
+é uma sequência de formação de
+$\lnot (\Obj p_1 \land \Obj p_0)$, assim como
 \[
 \tuple{
     \Obj p_0,
@@ -55,81 +53,78 @@ $\lnot (\Obj p_1 \land \Obj p_0)$, as is
 }.
 \]
 %
-As can be seen from the second example, formation sequences
-may contain `junk': formulas which are redundant or do not
-contribute to the construction.
+Como se pode ver no segundo exemplo, sequências de formação podem conter
+`lixo': fórmulas redundantes ou que não contribuem para a construção.
 \end{ex}
 
 \begin{prop}
 \ollabel{prop:formed}
-Every !!{formula}~$!A$ in~$\Frm[L_0]$ has a formation sequence.
+Toda !!{formula}~$!A$ em~$\Frm[L_0]$ tem uma sequência de formação.
 \end{prop}
 
 \begin{proof}
-Suppose $!A$ is atomic. Then the sequence~$\tuple{!A}$ is a
-formation sequence for~$!A$.
+Suponha que $!A$ seja atômica. Então a sequência~$\tuple{!A}$ é uma
+sequência de formação para~$!A$.
 %
-Now suppose that $!B$ and~$!C$ have formation sequences
-$\tuple{!B_0,\dotsc,!B_n}$ and $\tuple{!C_0,\dotsc,!C_m}$
-respectively.
+Agora suponha que $!B$ e~$!C$ tenham, respectivamente, as sequências de
+formação $\tuple{!B_0,\dotsc,!B_n}$ e $\tuple{!C_0,\dotsc,!C_m}$.
 %
 \begin{enumerate}
-  \tagitem{prvNot}{If $!A \ident \lnot !B$,
-      then $\tuple{!B_0,\dotsc,!B_n,\lnot !B_n}$
-      is a formation sequence for~$!A$.}{}
-  \tagitem{prvAnd}{If $!A \ident (!B \land !C)$,
-      then $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \land !C_m)}$
-      is a formation sequence for~$!A$.}{}
-  \tagitem{prvOr}{If $!A \ident (!B \lor !C)$,
-      then $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \lor !C_m)}$
-      is a formation sequence for~$!A$.}{}
-  \tagitem{prvIf}{If $!A \ident (!B \lif !C)$,
-      then $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \lif !C_m)}$
-      is a formation sequence for~$!A$.}{}
-  \tagitem{prvIff}{If $!A \ident (!B \liff !C)$,
-      then $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \liff !C_m)}$
-      is a formation sequence for~$!A$.}{}
+  \tagitem{prvNot}{Se $!A \ident \lnot !B$,
+      então $\tuple{!B_0,\dotsc,!B_n,\lnot !B_n}$
+      é uma sequência de formação para~$!A$.}{}
+  \tagitem{prvAnd}{Se $!A \ident (!B \land !C)$,
+      então $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \land !C_m)}$
+      é uma sequência de formação para~$!A$.}{}
+  \tagitem{prvOr}{Se $!A \ident (!B \lor !C)$,
+      então $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \lor !C_m)}$
+      é uma sequência de formação para~$!A$.}{}
+  \tagitem{prvIf}{Se $!A \ident (!B \lif !C)$,
+      então $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \lif !C_m)}$
+      é uma sequência de formação para~$!A$.}{}
+  \tagitem{prvIff}{Se $!A \ident (!B \liff !C)$,
+      então $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \liff !C_m)}$
+      é uma sequência de formação para~$!A$.}{}
 \end{enumerate}
-By the principle of induction on !!{formula}s,
-every !!{formula} has a formation sequence.
+Pelo princípio de indução sobre !!{formula}s, toda !!{formula} tem uma
+sequência de formação.
 \end{proof}
 
-We can also prove the converse. This is important because it shows
-that our two ways of defining formulas are equivalent: they give
-the same results. It also means that we can prove theorems about
-formulas by using ordinary induction on the length of formation
-sequences.
+Também podemos demonstrar a recíproca. Isso é importante porque mostra que
+nossas duas maneiras de definir fórmulas são equivalentes: elas produzem os
+mesmos resultados. Também significa que podemos demonstrar teoremas sobre
+fórmulas usando indução ordinária sobre o comprimento das sequências de
+formação.
 
 \begin{lem}
 \ollabel{lem:fseq-init}
-Suppose that $\tuple{!A_0,\dotsc,!A_n}$ is a formation sequence
-for~$!A_n$, and that $k \leq n$. Then $\tuple{!A_0,\dotsc,!A_k}$
-is a formation sequence for~$!A_k$.
+Suponha que $\tuple{!A_0,\dotsc,!A_n}$ seja uma sequência de formação
+para~$!A_n$ e que $k \leq n$. Então $\tuple{!A_0,\dotsc,!A_k}$ é uma
+sequência de formação para~$!A_k$.
 \end{lem}
 
 \begin{proof}
-Exercise.
+Exercício.
 \end{proof}
 
 \begin{thm}
 \ollabel{thm:fseq-frm-equiv}
-$\Frm[L_0]$ is the set of all strings of symbols
-in the language~$\Lang L_0$ with a formation sequence.
+$\Frm[L_0]$ é o conjunto de todas as cadeias de símbolos da
+linguagem~$\Lang L_0$ que têm uma sequência de formação.
 \end{thm}
 
 \begin{proof}
-Let $F$ be the set of all strings of symbols in the
-language~$\Lang L_0$ that have a formation sequence.
-We have seen in \olref[pl][syn][fseq]{prop:formed} that
-$\Frm[L_0] \subseteq F$, so now we prove the converse.
+Seja $F$ o conjunto de todas as cadeias de símbolos da
+linguagem~$\Lang L_0$ que têm uma sequência de formação.
+Vimos em \olref[pl][syn][fseq]{prop:formed} que
+$\Frm[L_0] \subseteq F$; agora demonstramos a recíproca.
 
-Suppose $!A$ has a formation sequence $\tuple{!A_0,\dotsc,!A_n}$.
-We prove that $!A \in \Frm[L_0]$ by strong induction on~$n$.
-Our induction hypothesis is that every string of symbols with a
-formation sequence of length $m < n$ is in~$\Frm[L_0]$.
-By the definition of a formation sequence, either $!A_n$ is
-atomic or there must exist $j,k < n$ such that one of the
-following is the case:
+Suponha que $!A$ tenha uma sequência de formação
+$\tuple{!A_0,\dotsc,!A_n}$. Demonstramos que $!A \in \Frm[L_0]$ por
+indução forte sobre~$n$. Nossa hipótese de indução é que toda cadeia de
+símbolos com uma sequência de formação de comprimento $m < n$ pertence
+a~$\Frm[L_0]$. Pela definição de sequência de formação, ou $!A_n$ é
+atômica, ou devem existir $j,k < n$ tais que vale um dos seguintes casos:
 \begin{enumerate}
     \tagitem{prvNot}{$!A_n \ident \lnot !A_j$.}{}%
     \tagitem{prvAnd}{$!A_n \ident (!A_j \land !A_k)$.}{}%
@@ -137,17 +132,16 @@ following is the case:
     \tagitem{prvIf}{$!A_n \ident (!A_j \lif !A_k)$.}{}%
     \tagitem{prvIff}{$!A_n \ident (!A_j \liff !A_k)$.}{}%
 \end{enumerate}
-Now we reason by cases. If $!A_n$ is atomic then
-$!A_n \in \Frm[L_0]$. Suppose instead that $!A \equiv
-(!A_j \land !A_k)$. By \olref[pl][syn][fseq]{lem:fseq-init},
-$\tuple{!A_0,\dotsc,!A_j}$ and $\tuple{!A_0,\dotsc,!A_k}$ are
-formation sequences for $!A_j$ and~$!A_k$ respectively. Since
-these are proper initial subsequences of the formation sequence
-for~$!A$, they both have length less than~$n$. Therefore by
-the induction hypothesis, $!A_j$ and~$!A_k$ are in~$\Frm[L_0]$,
-and so by the definition of !!a{formula}, so is
-$(!A_j \land !A_k)$. The other cases follow by parallel
-reasoning.
+Agora raciocinamos por casos. Se $!A_n$ é atômica, então
+$!A_n \in \Frm[L_0]$. Suponha, em vez disso, que $!A \equiv
+(!A_j \land !A_k)$. Por \olref[pl][syn][fseq]{lem:fseq-init},
+$\tuple{!A_0,\dotsc,!A_j}$ e $\tuple{!A_0,\dotsc,!A_k}$ são,
+respectivamente, sequências de formação para $!A_j$ e~$!A_k$. Como são
+subsequências iniciais próprias da sequência de formação para~$!A$, ambas
+têm comprimento menor que~$n$. Portanto, pela hipótese de indução, $!A_j$
+e~$!A_k$ pertencem a~$\Frm[L_0]$; assim, pela definição de !!a{formula},
+$(!A_j \land !A_k)$ também pertence. Os outros casos decorrem de raciocínios
+paralelos.
 \end{proof}
 
 \end{document}

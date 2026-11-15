@@ -6,48 +6,50 @@
 
 \begin{document}
 
-\olfileid{mvl}{inf}{god}
+\olfileid[pt]{mvl}{inf}{god}
 
-\olsection{G\"odel logics}
+\olsection{Lógicas de G\"odel}
 
 \begin{editorial}
-  This is a short ``stub'' of a section on infinite-valued G\"odel logic.
+  Este é um breve ``esboço'' de uma seção sobre a lógica de infinitos
+  valores de G\"odel.
 \end{editorial}
 
-\begin{defn}\ollabel{def:goedel} Infinite-valued G\"odel
-logic~$\LogGod[\infty]$ is defined using the matrix:
+\begin{defn}\ollabel{def:goedel} A lógica de infinitos valores de
+G\"odel~$\LogGod[\infty]$ é definida pela matriz:
 \begin{enumerate}
-  \item The standard propositional language $\Lang L_0$ with
+  \item A linguagem proposicional padrão $\Lang L_0$ com
   $\lfalse$, $\lnot$, $\land$, $\lor$, $\lif$.
-  \item The set of truth values $V_\infty$.
-  \item $1$ is the only designated value, O.s.\@, $V^+ = \{1\}$.
-  \item Truth functions are given by the following functions:
+  \item O conjunto de valores de verdade $V_\infty$.
+  \item $1$ é o único valor designado, isto é, $V^+ = \{1\}$.
+  \item As funções de verdade são dadas pelas seguintes funções:
   \begin{align*}
     \tf{\lfalse} & = 0\\
     \tf{\lnot}[\LogGod](x) & = \begin{cases}
-      $1$ & \text{if } x =0\\
-      $0$ & \text{otherwise}
+      $1$ & \text{se } x =0\\
+      $0$ & \text{caso contrário}
     \end{cases}\\
     \tf{\land}[\LogGod](x,y) & = \min(x,y)\\
     \tf{\lor}[\LogGod](x,y) & = \max(x,y)\\
     \tf{\lif}[\LogGod](x,y) & = \begin{cases}
-      1 & \text{if } x \le y\\
-      y & \text{otherwise.}
+      1 & \text{se } x \le y\\
+      y & \text{caso contrário.}
     \end{cases}
     \end{align*}
 \end{enumerate}
-$m$-valued G\"odel logic is defined the same, except $V = V_m$.
+A lógica $m$-valorada de G\"odel é definida da mesma maneira, exceto
+que $V = V_m$.
 \end{defn}
 
 \begin{prop}
-  The logic $\LogGod[3]$ defined by \olref[thr][god]{defn:goedel}
-  is the same as $\LogGod[3]$ defined by \olref{def:goedel}.
+  A lógica $\LogGod[3]$ definida por \olref[thr][god]{defn:goedel}
+  é a mesma que $\LogGod[3]$ definida por \olref{def:goedel}.
 \end{prop}
 
 \begin{proof}
-  This can be seen by comparing the truth tables for the connectives
-  given in \olref[thr][god]{defn:goedel} with the truth tables
-  determined by the equations in \olref{def:goedel}:
+  Isso pode ser visto comparando as tabelas de verdade dos conectivos
+  dadas em \olref[thr][god]{defn:goedel} com as tabelas de verdade
+  determinadas pelas equações em \olref{def:goedel}:
   \begin{center}
     \begin{tabular}{c|c} 
       $\tf{\lnot}[\LogGod[3]]$ & \\ 
@@ -84,44 +86,46 @@ $m$-valued G\"odel logic is defined the same, except $V = V_m$.
 \end{proof}
 
 \begin{prop}\ollabel{prop:god-infty-m}
-  If $\Gamma \Entails[\LogGod[\infty]] !B$ then $\Gamma
-  \Entails[\LogGod[m]] !B$ for all~$m \ge 2$.
+  Se $\Gamma \Entails[\LogGod[\infty]] !B$, então $\Gamma
+  \Entails[\LogGod[m]] !B$ para todo~$m \ge 2$.
 \end{prop}
 
 \begin{proof}
-  Exercise.
+  Exercício.
 \end{proof}
 
 \begin{prob}
-  Prove \olref[mvl][inf][god]{prop:god-infty-m}.
+  Demonstre \olref[mvl][inf][god]{prop:god-infty-m}.
 \end{prob}
 
-In fact, the converse holds as well.
+Na verdade, a recíproca também vale.
 
-Like $\LogGod[3]$, $\LogGod[\infty]$ has all intuitionistically valid
-!!{formula}s as tautologies, and the same examples of non-tautologies
-are non-tautologies of~$\LogGod[\infty]$:
+Assim como $\LogGod[3]$, $\LogGod[\infty]$ tem como tautologias todas
+as !!{formula}s válidas intuicionisticamente, e os mesmos exemplos de
+não tautologias são não tautologias de~$\LogGod[\infty]$:
 \begin{align*}
   & p \lor \lnot p && (p \lif q) \lif (\lnot p \lor q) \\
   & \lnot\lnot p \lif p && \lnot(\lnot p \land \lnot q) \lif (p \lor q) \\
   & ((p \lif q) \lif p) \lif p && \lnot(p \lif q) \lif (p \land \lnot q)
 \end{align*}
-The example of an intuitionistically invalid !!{formula} that is
-nevertheless a tautology of~$\LogGod[3]$, $(p \lif q) \lor (q \lif
-p)$, is also a tautology in~$\LogGod[\infty]$. In fact,
-$\LogGod[\infty]$ can be characterized as intuitionistic logic to
-which the schema $(!A \lif !B) \lor (!B \lif !A)$ is added. This was
-shown by Michael Dummett, and so $\LogGod[\infty]$ is often referred to
-as G\"odel--Dummett logic~$\Log{LC}$.
+O exemplo de uma !!{formula} inválida intuicionisticamente que, não
+obstante, é uma tautologia de~$\LogGod[3]$,
+$(p \lif q) \lor (q \lif p)$, também é uma tautologia em
+$\LogGod[\infty]$. Na verdade, $\LogGod[\infty]$ pode ser
+caracterizada como a lógica intuicionista à qual se acrescenta o
+esquema $(!A \lif !B) \lor (!B \lif !A)$. Isso foi demonstrado por
+Michael Dummett e, por isso, $\LogGod[\infty]$ é frequentemente chamada
+lógica de G\"odel--Dummett~$\Log{LC}$.
 
 \begin{prob}
-  Show that $(p \lif q) \lor (q \lif p)$ is a
-  tautology of~$\LogGod[\infty]$.
+  Mostre que $(p \lif q) \lor (q \lif p)$ é uma
+  tautologia de~$\LogGod[\infty]$.
 \end{prob}
 
 \begin{prob}
-  Show that $(p \lif q) \lor (q \lif r) \lor (r \lif s)$, which is 
-  a tautology of $\LogGod[3]$, is not a tautology of~$\LogGod[\infty]$.
+  Mostre que $(p \lif q) \lor (q \lif r) \lor (r \lif s)$, que é
+  uma tautologia de $\LogGod[3]$, não é uma tautologia
+  de~$\LogGod[\infty]$.
 \end{prob}
 
 \end{document}

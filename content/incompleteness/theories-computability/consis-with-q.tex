@@ -6,57 +6,61 @@
 
 \begin{document}
 
-\olfileid{inc}{tcp}{con}
+\olfileid[pt]{inc}{tcp}{con}
 
-\olsection{Theories Consistent with $\Th{Q}$ are Undecidable}
+\olsection{Teorias consistentes com $\Th{Q}$ são indecidíveis}
 
-The following theorem says that not only is $\Th{Q}$ undecidable, but, in
-fact, any theory that does not disagree with $\Th{Q}$ is undecidable.
+O teorema a seguir afirma não apenas que $\Th{Q}$ é indecidível, mas
+que, na verdade, toda teoria que não esteja em desacordo com $\Th{Q}$
+é indecidível.
 
 \begin{thm}
-Let $\Th{T}$ be any theory in the language of arithmetic that is
-consistent with $\Th{Q}$ (O.s.\@, $\Th{T} \cup \Th{Q}$ is
-consistent). Then $\Th{T}$ is undecidable.
+Seja $\Th{T}$ uma teoria qualquer na linguagem da aritmética que seja
+consistente com $\Th{Q}$ (isto é, $\Th{T} \cup \Th{Q}$ é consistente).
+Então $\Th{T}$ é indecidível.
 \end{thm}
 
 \begin{proof}
-Remember that $\Th{Q}$ has a finite set of axioms, $!Q_1$, \dots,
-$!Q_8$. We can even replace these by a single axiom, $!E = !Q_1 \land
-\dots \land !Q_8$.
+Lembre-se de que $\Th{Q}$ tem um conjunto finito de axiomas, $!Q_1$,
+\dots, $!Q_8$. Podemos até substituí-los por um único axioma,
+$!E = !Q_1 \land \dots \land !Q_8$.
 
-Suppose $\Th{T}$ is a decidable theory consistent with~$\Th{Q}$. Let
+Suponha que $\Th{T}$ seja uma teoria decidível consistente
+com~$\Th{Q}$. Seja
 \[
 C = \Setabs{!A}{\Th{T} \Proves !E \lif !A}.
 \]
-We show that $C$ would be a computable separation of $\Th{Q}$ and
-$\Th{\bar Q}$, a contradiction. First, if $!A$ is in $\Th{Q}$, then
-$!A$ is provable from the axioms of $\Th{Q}$; by the deduction
-theorem, there is !!a{derivation} of $!E \lif !A$ in first-order logic. So
-$!A$ is in~$C$.
+Mostramos que $C$ seria uma separação computável de $\Th{Q}$ e
+$\Th{\bar Q}$, uma contradição. Primeiro, se $!A$ pertence a $\Th{Q}$,
+então $!A$ é demonstrável a partir dos axiomas de $\Th{Q}$; pelo
+teorema da dedução, existe !!a{derivation} de $!E \lif !A$ na lógica de
+primeira ordem. Logo, $!A$ pertence a~$C$.
 
-On the other hand, if $!A$ is in $\Th{\bar Q}$, then there is a proof
-of $!E \lif \lnot !A$ in first-order logic. If $\Th{T}$ also proves
-$!E \lif !A$, then $\Th{T}$ proves $\lnot !E$, in which case $\Th{T}
-\cup \Th{Q}$ is inconsistent. But we are assuming $\Th{T} \cup \Th{Q}$
-is consistent, so $\Th{T}$ does not prove $!E \lif !A$, and so $!A$
-is not in~$C$.
+Por outro lado, se $!A$ pertence a $\Th{\bar Q}$, então existe uma
+prova de $!E \lif \lnot !A$ na lógica de primeira ordem. Se $\Th{T}$
+também prova $!E \lif !A$, então $\Th{T}$ prova $\lnot !E$; nesse caso,
+$\Th{T} \cup \Th{Q}$ é inconsistente. Mas estamos supondo que
+$\Th{T} \cup \Th{Q}$ é consistente; portanto, $\Th{T}$ não prova
+$!E \lif !A$ e, assim, $!A$ não pertence a~$C$.
 
-We've shown that if $!A$ is in $\Th{Q}$, then it is in $C$, and if
-$!A$ is in $\Th{\bar Q}$, then it is in $\Complement{C}$. So $C$ is a
-computable separation, which is the contradiction we were looking for.
+Mostramos que, se $!A$ pertence a $\Th{Q}$, então pertence a $C$ e,
+se $!A$ pertence a $\Th{\bar Q}$, então pertence a $\Complement{C}$.
+Logo, $C$ é uma separação computável, que é a contradição procurada.
 \end{proof}
 
-This theorem is very powerful. For example, it implies:
+Este teorema é muito poderoso. Por exemplo, implica:
 
 \begin{cor}
-  First-order logic for the language of arithmetic (that is, the set
-  $\Setabs{!A}{\text{$!A$ is provable in first-order logic}}$) is
-  undecidable.
+  A lógica de primeira ordem para a linguagem da aritmética, isto é, o conjunto
+  \[
+    \Setabs{!A}{\text{$!A$ é demonstrável na lógica de primeira ordem}},
+  \]
+  é indecidível.
 \end{cor}
 
 \begin{proof}
-First-order logic is the set of consequences of $\emptyset$,
-which is consistent with~$\Th{Q}$.
+A lógica de primeira ordem é o conjunto das consequências de
+$\emptyset$, que é consistente com~$\Th{Q}$.
 \end{proof}
 
 \end{document}

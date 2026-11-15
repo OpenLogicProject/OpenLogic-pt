@@ -6,155 +6,154 @@
 
 \begin{document}
 
-\olfileid{nml}{syn}{tau}
+\olfileid[pt]{nml}{syn}{tau}
 
-\olsection{Tautological Instances}
+\olsection{Instâncias tautológicas}
 
 \begin{explain}
-A modal-free formula is a tautology if it is true under every
-truth-value assignment. Clearly, every tautology is true at every
-world in every model. But for !!{formula}s involving $\Box$
-and~$\Diamond$, the notion of tautology is not defined. Is it the
-case, p.ex., that $\Box p \lor \lnot \Box p$---an instance of the
-principle of excluded middle---is valid? The notion of a
-\emph{tautological instance} helps: !!a{formula} that is a
-substitution instance of a (non-modal) tautology. It is not
-surprising, but still requires proof, that every tautological instance
-is valid.
+Uma fórmula livre de operadores modais é uma tautologia se é verdadeira
+sob toda atribuição de valores de verdade. Evidentemente, toda tautologia
+é verdadeira em todo mundo de todo modelo. Para !!{formula}s que envolvem
+$\Box$ e~$\Diamond$, porém, a noção de tautologia não está definida. Será,
+por exemplo, que $\Box p \lor \lnot \Box p$---uma instância do princípio
+do terceiro excluído---é válida? A noção de \emph{instância tautológica}
+ajuda: trata-se de !!a{formula} que é uma instância de substituição de uma
+tautologia (não modal). Não surpreende, mas ainda requer demonstração, que
+toda instância tautológica seja válida.
 \end{explain}
 
 \begin{defn}
-  A modal !!{formula}~$!B$ is a \emph{tautological instance} if and
-  only if there is a modal-free tautology~$!A$ with !!{propositional
-    variable}s $p_1$, \dots,~$p_n$ and !!{formula}s $!D_1$,
-  \dots,~$!D_n$ such that $!B \ident \SSubst{!A}{\subst{!D_1}{p_1},
+  Uma !!{formula} modal~$!B$ é uma \emph{instância tautológica} se, e
+  somente se, há uma tautologia livre de operadores modais~$!A$ com
+  !!{propositional variable}s $p_1$, \dots,~$p_n$ e !!{formula}s $!D_1$,
+  \dots,~$!D_n$, tal que $!B \ident \SSubst{!A}{\subst{!D_1}{p_1},
     \dots, \subst{!D_n}{p_n}}$.
 \end{defn}
 
 \begin{lem}\ollabel{lem:valid-taut}
-  Suppose $!A$ is a modal-free !!{formula} whose !!{propositional
-  variable}s are $p_1$, \dots, $p_n$, and let $!D_1$, \dots,
-  $!D_n$ be modal !!{formula}s. Then for any assignment $\pAssign{v}$,
-  any model $\mModel{M} = \tuple{W, R, V}$, and any $w \in W$ such
-  that $\pAssign{v}(p_i) = \True$ if and only if $\mSat{M}{!D_i}[w]$ we have
-  that $\pSat{v}{!A}$ if and only if
+  Suponha que $!A$ seja uma !!{formula} livre de operadores modais cujas
+  !!{propositional variable}s são $p_1$, \dots, $p_n$, e sejam $!D_1$,
+  \dots, $!D_n$ !!{formula}s modais. Então, para qualquer atribuição
+  $\pAssign{v}$, qualquer modelo $\mModel{M} = \tuple{W, R, V}$ e qualquer
+  $w \in W$ tais que $\pAssign{v}(p_i) = \True$ se, e somente se,
+  $\mSat{M}{!D_i}[w]$, temos $\pSat{v}{!A}$ se, e somente se,
   $\mSat{M}{\SSubst{!A}{\subst{!D_1}{p_1}, \dots,
       \subst{!D_n}{p_n}}}[w]$.
 \end{lem}
 
 \begin{proof}
-  By induction on $!A$.
+  Por indução sobre $!A$.
   \begin{enumerate}
-  \tagitem{prvFalse}{\indcase{!A}{\lfalse}{Both $\pSat/{v}{\lfalse}$
-      and $\mSat/{M}{\lfalse}[w]$}.}{}
-  \tagitem{prvTrue}{\indcase{!A}{\ltrue}{Both $\pSat{v}{\ltrue}$
-      and $\mSat{M}{\ltrue}[w]$}.}{}
+  \tagitem{prvFalse}{\indcase{!A}{\lfalse}{Valem tanto $\pSat/{v}{\lfalse}$
+      quanto $\mSat/{M}{\lfalse}[w]$}.}{}
+  \tagitem{prvTrue}{\indcase{!A}{\ltrue}{Valem tanto $\pSat{v}{\ltrue}$
+      quanto $\mSat{M}{\ltrue}[w]$}.}{}
   \item \indcase{!A}{p_i}{%
     \begin{align*}
       \pSat{v}{p_i} \Leftrightarrow {} & \pAssign{v}(p_i) = \True \\
-      & \qquad \text{by definition of $\pSat{v}{p_i}$}\\
+      & \qquad \text{pela definição de $\pSat{v}{p_i}$}\\
       \Leftrightarrow {} & \mSat{M}{!D_i}[w] \\
-      &\qquad \text{by assumption}\\
+      &\qquad \text{por hipótese}\\
       \Leftrightarrow {} & \mSat{M}{\SSubst{p_i}{\subst{!D_1}{p_1}, \dots,
           \subst{!D_n}{p_n}}}[w]\\
-      &\qquad \text{since $\SSubst{p_i}{\subst{!D_1}{p_1}, \dots,
+      &\qquad \text{pois $\SSubst{p_i}{\subst{!D_1}{p_1}, \dots,
           \subst{!D_n}{p_n}} \ident !D_i$}.
       \end{align*}}
   \tagitem{prvFalse}{\indcase{!A}{\lnot !B}{%
       \begin{align*}
         \pSat{v}{\lnot !B} \Leftrightarrow {} & \pSat/{v}{!B}\\
-        &\qquad \text{by definition of $\pSat{v}{}$};\\
+        &\qquad \text{pela definição de $\pSat{v}{}$};\\
         \Leftrightarrow {} & \mSat/{M}{\SSubst{!B}{\subst{!D_1}{p_1}, \dots,
           \subst{!D_n}{p_n}}}[w]\\
-        &\qquad \text{by induction hypothesis}\\
+        &\qquad \text{pela hipótese de indução}\\
         \Leftrightarrow {} &
         \mSat{M}{\SSubst{\lnot !B}{\subst{!D_1}{p_1}, \dots,
           \subst{!D_n}{p_n}}}[w]\\
-        &\qquad \text{by definition of $\pSat{v}{}$}.
+        &\qquad \text{pela definição de $\pSat{v}{}$}.
       \end{align*}}}{}
   \tagitem{prvAnd}{\indcase{!A}{(!B \land !C)}{%
       \begin{align*}
         \pSat{v}{!B \land !C} \Leftrightarrow {} &
-        \pSat{v}{!B} \text{ and } \pSat{v}{!C}\\
-        &\qquad \text{by definition of $\pSat{v}{}$}\\
+        \pSat{v}{!B} \text{ e } \pSat{v}{!C}\\
+        &\qquad \text{pela definição de $\pSat{v}{}$}\\
         \Leftrightarrow {} &
         \mSat{M}{\SSubst{!B}{\subst{!D_1}{p_1}, \dots,
-            \subst{!D_n}{p_n}}}[w] \text{ and } \\
+            \subst{!D_n}{p_n}}}[w] \text{ e } \\
         & \mSat{M}{\SSubst{!C}{\subst{!D_1}{p_1}, \dots,
           \subst{!D_n}{p_n}}}[w]\\
-        &\qquad \text{by induction hypothesis}\\
+        &\qquad \text{pela hipótese de indução}\\
         \Leftrightarrow{} &
         \mSat{M}{\SSubst{(!B \land !C)}{\subst{!D_1}{p_1}, \dots,
           \subst{!D_n}{p_n}}}[w]\\
-        &\qquad \text{by definition of $\mSat{M}{}[w]$}.
+        &\qquad \text{pela definição de $\mSat{M}{}[w]$}.
       \end{align*}}}{}
   \tagitem{prvOr}{\indcase{!A}{(!B \lor !C)}{%
       \begin{align*}
         \pSat{v}{!B \lor !C} \Leftrightarrow{} &
-        \pSat{v}{!B} \text{ or } \pSat{v}{!C}\\
-        &\qquad \text{by definition of $\pSat{v}{}$};\\
+        \pSat{v}{!B} \text{ ou } \pSat{v}{!C}\\
+        &\qquad \text{pela definição de $\pSat{v}{}$};\\
         \Leftrightarrow{} & \mSat{M}{\SSubst{!B}{\subst{!D_1}{p_1}, \dots,
-            \subst{!D_n}{p_n}}}[w] \text{ or }\\
+            \subst{!D_n}{p_n}}}[w] \text{ ou }\\
         & \mSat{M}{\SSubst{!C}{\subst{!D_1}{p_1}, \dots,
           \subst{!D_n}{p_n}}}[w]\\
-        &\qquad \text{by induction hypothesis}\\
+        &\qquad \text{pela hipótese de indução}\\
         \Leftrightarrow{} &
         \mSat{M}{\SSubst{(!B \lor !C)}{\subst{!D_1}{p_1}, \dots,
           \subst{!D_n}{p_n}}}[w]\\
-        &\qquad \text{by definition of $\mSat{M}{}[w]$}.
+        &\qquad \text{pela definição de $\mSat{M}{}[w]$}.
       \end{align*}}}{}
   \tagitem{prvIf}{\indcase{!A}{(!B \lif !C)}{%
       \begin{align*}
         \pSat{v}{!B \lif !C} \Leftrightarrow{} &
-        \pSat/{v}{!B} \text{ or } \pSat{v}{!C}\\
-        &\qquad \text{by definition of $\pSat{v}{}$}\\
+        \pSat/{v}{!B} \text{ ou } \pSat{v}{!C}\\
+        &\qquad \text{pela definição de $\pSat{v}{}$}\\
         \Leftrightarrow{} &
         \mSat/{M}{\SSubst{!B}{\subst{!D_1}{p_1}, \dots,
-            \subst{!D_n}{p_n}}}[w] \text{ or }\\
+            \subst{!D_n}{p_n}}}[w] \text{ ou }\\
         & \mSat{M}{\SSubst{!C}{\subst{!D_1}{p_1}, \dots,
           \subst{!D_n}{p_n}}}[w]\\
-        &\qquad \text{by induction hypothesis}\\
+        &\qquad \text{pela hipótese de indução}\\
         \Leftrightarrow{} &
         \mSat{M}{\SSubst{(!B \lif !C)}{\subst{!D_1}{p_1}, \dots,
           \subst{!D_n}{p_n}}}[w]\\
-        &\qquad \text{by definition of $\mSat{M}{}[w]$}.
+        &\qquad \text{pela definição de $\mSat{M}{}[w]$}.
       \end{align*}}}{}
   \tagitem{prvIff}{\indcase{!A}{(!B \liff !C)}{%
       \begin{align*}
         \pSat{v}{!B \lif !C} \Leftrightarrow {} &
-        \text{either } \pSat{v}{!B} \text{ and } \pSat{v}{!C}\\
-        & \text{or } \pSat/{v}{!B} \text{ and } \pSat/{v}{!C}\\
-        &\qquad \text{by definition of $\pSat{v}{}$}\\
+        \text{ou } \pSat{v}{!B} \text{ e } \pSat{v}{!C}\\
+        & \text{ou } \pSat/{v}{!B} \text{ e } \pSat/{v}{!C}\\
+        &\qquad \text{pela definição de $\pSat{v}{}$}\\
         \Leftrightarrow {} &
-        \text{either } \mSat{M}{\SSubst{!B}{\subst{!D_1}{p_1}, \dots,
-            \subst{!D_n}{p_n}}}[w] \text{ and }\\
+        \text{ou } \mSat{M}{\SSubst{!B}{\subst{!D_1}{p_1}, \dots,
+            \subst{!D_n}{p_n}}}[w] \text{ e }\\
         & \qquad \mSat{M}{\SSubst{!C}{\subst{!D_1}{p_1}, \dots,
           \subst{!D_n}{p_n}}}[w]\\ 
-        &  \text{ or } \mSat/{M}{\SSubst{!B}{\subst{!D_1}{p_1}, \dots,
-            \subst{!D_n}{p_n}}}[w] \text{ and }\\
+        &  \text{ ou } \mSat/{M}{\SSubst{!B}{\subst{!D_1}{p_1}, \dots,
+            \subst{!D_n}{p_n}}}[w] \text{ e }\\
         & \qquad \mSat/{M}{\SSubst{!C}{\subst{!D_1}{p_1}, \dots,
           \subst{!D_n}{p_n}}}[w]\\
-        &\qquad\text{by induction hypothesis}\\
+        &\qquad\text{pela hipótese de indução}\\
         \Leftrightarrow {} &
         \mSat{M}{\SSubst{(!B \liff !C)}{\subst{!D_1}{p_1}, \dots,
           \subst{!D_n}{p_n}}}[w]\\
-        &\qquad \text{by definition of $\mSat{M}{}[w]$}.
+        &\qquad \text{pela definição de $\mSat{M}{}[w]$}.
       \end{align*}}}{}
   \end{enumerate}
   \end{proof}
 
 \begin{prop}\ollabel{prop:valid-taut}
-  All tautological instances are valid.
+  Todas as instâncias tautológicas são válidas.
 \end{prop}
 
 \begin{proof}
-  Contrapositively, suppose $!A$ is such that
+  Por contraposição, suponha que $!A$ seja tal que
   $\mSat/{M}{\SSubst{!A}{\subst{!D_1}{p_1}, \dots,
-  \subst{!D_n}{p_n}}}[w]$, for some model $\mModel{M}$ and world~$w$.
-  Define an assignment $\pAssign{v}$ such that $\pAssign{v}(p_i) =
-  \True$ if and only if $\mSat{M}{!D_i}[w]$ (and $\pAssign{v}$ assigns
-  arbitrary values to $q \notin \{p_1, \dots, p_n \}$).  Then by
-  \olref{lem:valid-taut}, $\pSat/{v}{!A}$, so $!A$ is not a tautology.
+  \subst{!D_n}{p_n}}}[w]$, para algum modelo $\mModel{M}$ e mundo~$w$.
+  Defina uma atribuição $\pAssign{v}$ tal que $\pAssign{v}(p_i) = \True$
+  se, e somente se, $\mSat{M}{!D_i}[w]$ (e $\pAssign{v}$ atribui valores
+  arbitrários a $q \notin \{p_1, \dots, p_n \}$). Então, por
+  \olref{lem:valid-taut}, $\pSat/{v}{!A}$; logo, $!A$ não é uma tautologia.
 \end{proof}
 
 \end{document}

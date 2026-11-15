@@ -7,38 +7,38 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{tab}{ptn}}
-      {\olfileid{pl}{tab}{ptn}}
+      {\olfileid[pt]{fol}{tab}{ptn}}
+      {\olfileid[pt]{pl}{tab}{ptn}}
       
-\olsection{Proof-Theoretic Notions}
+\olsection{Noções da teoria da prova}
 
 \begin{editorial}
-This section collects the definitions of the provability relation
-and consistency for tableaux.
+Esta seção reúne as definições da relação de demonstrabilidade e de
+consistência para tableaux.
 \end{editorial}
 
 \begin{explain}
-Just as we've defined a number of important semantic notions
-(validity, entailment, satisfiability), we now define corresponding
-\emph{proof-theoretic notions}.  These are not defined by appeal to
-satisfaction of !!{sentence}s in !!{structure}s, but by appeal to the
-existence of certain closed !!{tableau}x.  It was an important
-discovery that these notions coincide.  That they do is the content of
-the \emph{soundness} and \emph{completeness theorems}.
+Assim como definimos várias noções semânticas importantes (validade,
+consequência, satisfatibilidade), agora definimos as \emph{noções da
+teoria da prova} correspondentes. Elas não são definidas recorrendo à
+satisfação de !!{sentence}s em !!{structure}s, mas recorrendo à
+existência de certos !!{tableau}x fechados. Foi uma descoberta
+importante que essas noções coincidem. O fato de coincidirem é o
+conteúdo do \emph{teorema de correção} e do \emph{teorema de completude}.
 \end{explain}
 
 
-\begin{defn}[Theorems]
-A !!{sentence}~$!A$ is a \emph{theorem} if there is a closed
-!!{tableau} for~$\sFmla{\False}{!A}$.  We write $\Proves !A$ if $!A$
-is a theorem and $\Proves/ !A$ if it is not.
+\begin{defn}[Teoremas]
+Uma !!{sentence}~$!A$ é um \emph{teorema} se existe um !!{tableau}
+fechado para~$\sFmla{\False}{!A}$. Escrevemos $\Proves !A$ se $!A$ for
+um teorema, e $\Proves/ !A$ se não for.
 \end{defn}
 
 \begin{defn}[!!^{derivability}]
-!!^a{sentence} $!A$ is \emph{!!{derivable} from} a set of
-!!{sentence}s~$\Gamma$, $\Gamma \Proves !A$ iff there is a
-finite set $\{!B_1, \dots, !B_n\} \subseteq \Gamma$
-and a closed !!{tableau} for the set
+!!^a{sentence} $!A$ é \emph{!!{derivable} de} um conjunto de
+!!{sentence}s~$\Gamma$, $\Gamma \Proves !A$ sse existe um conjunto
+finito $\{!B_1, \dots, !B_n\} \subseteq \Gamma$ e um !!{tableau}
+fechado para o conjunto
 \[
 \{
   \sFmla{\False}{!A},
@@ -46,144 +46,148 @@ and a closed !!{tableau} for the set
   \sFmla{\True}{!B_n}
   \}.
 \]
-If $!A$ is not !!{derivable} from $\Gamma$ we write $\Gamma \Proves/
+Se $!A$ não for !!{derivable} de $\Gamma$, escrevemos $\Gamma \Proves/
 !A$.
 \end{defn}
 
-\begin{defn}[Consistency]
-A set of !!{sentence}s~$\Gamma$ is \emph{inconsistent} iff there is a
-finite set $\{!B_1, \dots, !B_n\} \subseteq \Gamma$ and a closed
-!!{tableau} for the set
+\begin{defn}[Consistência]
+Um conjunto de !!{sentence}s~$\Gamma$ é \emph{inconsistente} sse
+existe um conjunto finito $\{!B_1, \dots, !B_n\} \subseteq \Gamma$ e
+um !!{tableau} fechado para o conjunto
 \[
 \{
   \sFmla{\True}{!B_1}, \dots,
   \sFmla{\True}{!B_n}  
   \}.
 \]
-If $\Gamma$ is not inconsistent, we say it is \emph{consistent}.
+Se $\Gamma$ não for inconsistente, dizemos que ele é
+\emph{consistente}.
 \end{defn}
 
-\begin{prop}[Reflexivity]
+\begin{prop}[Reflexividade]
 \ollabel{prop:reflexivity}
-If $!A \in \Gamma$, then $\Gamma \Proves !A$.
+Se $!A \in \Gamma$, então $\Gamma \Proves !A$.
 \end{prop}
 
 \begin{proof}
-If $!A \in \Gamma$, $\{!A\}$ is a finite subset of~$\Gamma$ and the !!{tableau}
+Se $!A \in \Gamma$, $\{!A\}$ é um subconjunto finito de~$\Gamma$, e o
+!!{tableau}
 \begin{oltableau}
   [\sFmla{\False}{\formula{A}}, just = \TAss
     [\sFmla{\True}{\formula{A}}, just = \TAss,close]
   ]
 \end{oltableau}
-is closed.
+é fechado.
 \end{proof}
   
 
-\begin{prop}[Monotonicity]
+\begin{prop}[Monotonicidade]
 \ollabel{prop:monotonicity}
-If $\Gamma \subseteq \Delta$ and $\Gamma \Proves !A$, then $\Delta
+Se $\Gamma \subseteq \Delta$ e $\Gamma \Proves !A$, então $\Delta
 \Proves !A$.
 \end{prop}
 
 \begin{proof}
-Any finite subset of~$\Gamma$ is also a finite subset of~$\Delta$.
+Todo subconjunto finito de~$\Gamma$ também é um subconjunto finito
+de~$\Delta$.
 \end{proof}
 
-\begin{prop}[Transitivity]
+\begin{prop}[Transitividade]
 \ollabel{prop:transitivity}
-If $\Gamma \Proves !A$ and $\{!A\} \cup
-\Delta \Proves !B$, then $\Gamma \cup \Delta \Proves !B$.
+Se $\Gamma \Proves !A$ e $\{!A\} \cup
+\Delta \Proves !B$, então $\Gamma \cup \Delta \Proves !B$.
 \end{prop}
 
 \begin{proof}
-If $\{!A\} \cup \Delta \Proves !B$, then there is a finite subset $\Delta_0 =
-\{!C_1, \dots, !C_n\} \subseteq \Delta$ such that
+Se $\{!A\} \cup \Delta \Proves !B$, então existe um subconjunto finito
+$\Delta_0 = \{!C_1, \dots, !C_n\} \subseteq \Delta$ tal que
 \begin{align*}
 \{\sFmla{\False}{!B}, & \sFmla{\True}{!A}, \sFmla{\True}{!C_1},
 \dots, \sFmla{\True}{!C_n}\}
-\intertext{has a closed !!{tableau}. If $\Gamma \Proves !A$ then there
-  are $!D_1$, \dots, $!D_m$ such that}
+\intertext{tem um !!{tableau} fechado. Se $\Gamma \Proves !A$, então
+  existem $!D_1$, \dots, $!D_m \subseteq \Gamma$ tais que}
 \{\sFmla{\False}{!A}, & \sFmla{\True}{!D_1},
 \dots, \sFmla{\True}{!D_m}\}
 \end{align*}
-has a closed !!{tableau}.
+tem um !!{tableau} fechado.
 
-Now consider the !!{tableau} with assumptions
+Agora considere o !!{tableau} com as premissas
 \[
 \sFmla{\False}{!B},
 \sFmla{\True}{!C_1}, \dots, \sFmla{\True}{!C_n},
 \sFmla{\True}{!D_1}, \dots, \sFmla{\True}{!D_m}.
 \]
-Apply the \Cut{} rule on~$!A$. This generates two branches, one has
-$\sFmla{\True}{!A}$ in it, the other $\sFmla{\False}{!A}$. Thus,
-on the one branch, all of
+Aplique a regra \Cut{} a~$!A$. Isso gera dois ramos: um contém
+$\sFmla{\True}{!A}$ e o outro contém $\sFmla{\False}{!A}$. Assim, no
+primeiro ramo, todas as premissas
 \[
 \{\sFmla{\False}{!B}, \sFmla{\True}{!A},
 \sFmla{\True}{!C_1}, \dots, \sFmla{\True}{!C_n}\}
 \]
-are available. Since there is a closed !!{tableau} for these
-assumptions, we can attach it to that branch; every branch through
-$\sFmla{\True}{!A}$ closes. On the other branch, all of
+estão disponíveis. Como existe um !!{tableau} fechado para essas
+premissas, podemos anexá-lo a esse ramo; todo ramo que passa por
+$\sFmla{\True}{!A}$ se fecha. No outro ramo, todas as premissas
 \[
 \{\sFmla{\False}{!A}, \sFmla{\True}{!D_1}, \dots,
 \sFmla{\True}{!D_m}\}
 \]
-are available, so we can also complete the other side to obtain a
-closed !!{tableau}.  This shows $\Gamma \cup \Delta \Proves !B$.
+estão disponíveis, de modo que também podemos completar o outro lado e
+obter um !!{tableau} fechado. Isso mostra que $\Gamma \cup \Delta
+\Proves !B$.
 \end{proof}
 
-Note that this means that in particular if $\Gamma \Proves !A$ and $!A
-\Proves !B$, then $\Gamma \Proves !B$. It follows also that if $!A_1,
-\dots, !A_n \Proves !B$ and $\Gamma \Proves !A_i$ for each~$i$, then
-$\Gamma \Proves !B$.
+Observe que isso significa, em particular, que, se $\Gamma \Proves !A$
+e $!A \Proves !B$, então $\Gamma \Proves !B$. Também se segue que, se
+$!A_1, \dots, !A_n \Proves !B$ e $\Gamma \Proves !A_i$ para cada~$i$,
+então $\Gamma \Proves !B$.
 
 \begin{prop}
 \ollabel{prop:incons}
-$\Gamma$ is inconsistent iff $\Gamma \Proves !A$ for every
-  !!{sentence}~$!A$.
+$\Gamma$ é inconsistente sse $\Gamma \Proves !A$ para toda
+!!{sentence}~$!A$.
 \end{prop}
 
 \begin{proof}
-Exercise.
+Exercício.
 \end{proof}
 
 \tagprob{FOL}
 \begin{prob}
-Prove \olref[fol][tab][ptn]{prop:incons}
+Demonstre \olref[fol][tab][ptn]{prop:incons}
 \end{prob}
 \tagendprob
 
 \tagprob{notFOL}
 \begin{prob}
-Prove \olref[pl][tab][ptn]{prop:incons}
+Demonstre \olref[pl][tab][ptn]{prop:incons}
 \end{prob}
 \tagendprob
 
-\begin{prop}[Compactness]
+\begin{prop}[Compacidade]
   \ollabel{prop:proves-compact}
   \begin{enumerate}
-  \item If $\Gamma \Proves !A$ then there is a finite subset $\Gamma_0
-    \subseteq \Gamma$ such that $\Gamma_0 \Proves !A$.
-  \item If every finite subset of~$\Gamma$ is
-    consistent, then $\Gamma$ is consistent.
+  \item Se $\Gamma \Proves !A$, então existe um subconjunto finito
+    $\Gamma_0 \subseteq \Gamma$ tal que $\Gamma_0 \Proves !A$.
+  \item Se todo subconjunto finito de~$\Gamma$ for consistente, então
+    $\Gamma$ será consistente.
   \end{enumerate}
 \end{prop}
 
 \begin{proof}
   \begin{enumerate}
-    \item If $\Gamma \Proves !A$, then there is a finite subset
-      $\Gamma_0 = \{!B_1, \dots, !B_n\}$ and a closed !!{tableau} for
+    \item Se $\Gamma \Proves !A$, então existe um subconjunto finito
+      $\Gamma_0 = \{!B_1, \dots, !B_n\}$ e um !!{tableau} fechado para
       \[
       \{\sFmla{\False}{!A}, \sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}
       \]
-      This !!{tableau} also shows $\Gamma_0 \Proves !A$.
-    \item If $\Gamma$ is inconsistent, then for some finite subset
-      $\Gamma_0 = \{!B_1, \dots, !B_n\}$ there is a closed !!{tableau}
-      for
+      Esse !!{tableau} também mostra que $\Gamma_0 \Proves !A$.
+    \item Se $\Gamma$ for inconsistente, então, para algum subconjunto
+      finito $\Gamma_0 = \{!B_1, \dots, !B_n\}$, existe um !!{tableau}
+      fechado para
       \[
       \{\sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}
       \]
-      This closed !!{tableau} shows that $\Gamma_0$ is inconsistent.
+      Esse !!{tableau} fechado mostra que $\Gamma_0$ é inconsistente.
   \end{enumerate}
 \end{proof}
 

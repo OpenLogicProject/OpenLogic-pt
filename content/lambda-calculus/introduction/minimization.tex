@@ -6,64 +6,65 @@
 
 \begin{document}
 
-\olfileid{lam}{int}{min}
-\olsection{The \usetoken{S}{lambda definable} Functions are Closed under Minimization}
+\olfileid[pt]{lam}{int}{min}
+\olsection{As funções \usetoken{S}{lambda definable} são fechadas sob minimização}
 
 \begin{lem}
-Suppose $f(x,y)$ is !!{lambda definable}. Let $g$ be defined by
+Suponha que $f(x,y)$ seja !!{lambda definable}. Seja $g$ definida por
 \[
 g(x) \simeq \umin{y}{f(x,y)}.
 \]
-Then $g$ is !!{lambda definable}.
+Então $g$ é !!{lambda definable}.
 \end{lem}
 
 \begin{proof}
-The idea is roughly as follows. Given $x$, we will use the fixed-point
-lambda term $Y$ to define a function $h_x(n)$ which searches for a~$y$
-starting at~$n$; then $g(x)$ is just $h_x(0)$. The function~$h_x$ can
-be expressed as the solution of a fixed-point equation:
+A ideia, em linhas gerais, é a seguinte. Dado $x$, usaremos o termo lambda
+de ponto fixo $Y$ para definir uma função $h_x(n)$ que procura um~$y$ a
+partir de~$n$; então $g(x)$ é simplesmente $h_x(0)$. A função~$h_x$ pode
+ser expressa como solução de uma equação de ponto fixo:
 \[
 h_x(n) \simeq
 \begin{cases}
-n & \text{if $f(x,n) = 0$} \\
-h_x(n+1) & \text{otherwise.}
+n & \text{se $f(x,n) = 0$} \\
+h_x(n+1) & \text{caso contrário.}
 \end{cases}
 \]
 
-Here are the details. Since $f$ is primitive recursive, it is
-!!{lambda defined} by some term $F$. Remember that we also have a lambda
-term~$D$, such that $D(M, N, \bar{0}) \red M$ and $D(M, N, \bar{1})
-\red N$. Fixing $x$ for the moment, to !!{lambda define} $h_x$ we want to
-find a term~$H$ (depending on~$x$) satisfying
+Eis os detalhes. Como $f$ é recursiva primitiva, ela é !!{lambda defined}
+por algum termo $F$. Lembre-se de que também temos um termo lambda~$D$ tal
+que $D(M, N, \bar{0}) \red M$ e $D(M, N, \bar{1}) \red N$. Fixando $x$
+por enquanto, para !!{lambda define} $h_x$ queremos encontrar um termo~$H$
+(dependente de~$x$) que satisfaça
 \[
 H(\num{n}) \equiv D(\num{n}, H(S(\num{n})), F(x, \num{n})).
 \]
-We can do this using the fixed-point term~$Y$. First, let $U$ be the
-term
+Podemos fazer isso usando o termo de ponto fixo~$Y$. Primeiro, seja $U$ o
+termo
 \[
 \lambd[h][\lambd[z][D(z,(h(Sz)),F(x,z))]],
 \]
-and then let $H$ be the term~$YU$. Notice that the only free variable
-in~$H$ is~$x$. Let us show that $H$ satisfies the equation above.
+e então seja $H$ o termo~$YU$. Observe que a única variável livre em~$H$ é
+~$x$. Mostremos que $H$ satisfaz a equação acima.
 
-By the definition of $Y$, we have
+Pela definição de $Y$, temos
 \[
 H = YU \equiv U(YU) = U(H).
 \]
-In particular, for each natural number~$n$, we have
+Em particular, para cada número natural~$n$, temos
 \begin{align*}
 H(\num{n}) & \equiv U(H, \num{n}) \\
 & \red D(\num{n}, H(S(\num{n})), F(x, \num{n})),
 \end{align*}
-as required. Notice that if you substitute a numeral $\num{m}$ for~$x$
-in the last line, the expression reduces to $\num{n}$ if $F(\num{m},
-\num{n})$ reduces to $\num{0}$, and it reduces to $H(S(\num{n}))$ if
-$F(\num{m}, \num{n})$ reduces to any other numeral.
+como requerido. Observe que, se você tomar um numeral $\num{m}$ como substituto de~$x$
+na última linha, a expressão se reduz a $\num{n}$ se
+$F(\num{m}, \num{n})$ se reduz a $\num{0}$, e se reduz a
+$H(S(\num{n}))$ se $F(\num{m}, \num{n})$ se reduz a qualquer outro
+numeral.
 
-To finish off the proof, let $G$ be $\lambd[x][H(\num 0)]$. Then $G$
-!!{lambda define}s~$g$; in other words, for every~$m$, $G(\num m)$
-reduces to~$\overline {g(m)}$, if $g(m)$ is defined, and has no normal
-form otherwise.
+Para concluir a prova, seja $G$ o termo $\lambd[x][H(\num 0)]$. Então $G$
+!!{lambda define}s~$g$; em outras palavras, para todo~$m$, $G(\num m)$ se
+reduz a~$\overline {g(m)}$, se $g(m)$ está definida, e não tem forma normal
+caso contrário.
 \end{proof}
 
 \end{document}

@@ -6,112 +6,113 @@
 
 \begin{document}
 
-\olfileid{pt}{seq}{int}
+\olfileid[pt]{pt}{seq}{int}
 
-\olsection{Introduction}
+\olsection{Introdução}
 
-Sequent calculi are !!{proof} systems that were introduced in the
-1930s by Gerhard Gentzen. They were intended less as a practical
-method for !!{proving} things. Rather, Gentzen used them in order to
-be able to prove certain results about the possible structure of
-!!{proof}s and their property. These kinds of questions are
-exactly the questions with which proof theory is concerned.
+Os cálculos de sequentes são sistemas de !!{proof} introduzidos na década
+de 1930 por Gerhard Gentzen. Eles não foram concebidos propriamente como um
+método prático para !!{proving} coisas. Gentzen os usou, antes, para poder
+demonstrar certos resultados sobre a possível estrutura dos !!{proof}s e
+suas propriedades. Questões desse tipo são precisamente aquelas de que se
+ocupa a teoria da prova.
 
-Sequent calculi operate on \emph{sequents}, as the name suggests, and
-not on !!{formula}s. A sequent is a pair of sequences or multisets of
-!!{formula}s. Gentzen's original systems (\Log{LK} and \Log{LJ}) used
-sequences; proof theorists now prefer to use multisets. A multiset is
-like a set, except that a multiset can contain an !!{element} more
-than once. Just as in sets, the order of !!{element}s does not matter,
-however. So the expressions $\{!A, !A, !B\}$ and $\{!A, !B, !A\}$
-describe the same multiset, but that multiset is different from $\{!A,
-!B\}$ and from $\{!A, !A, !B, !B\}$, since the latter contain
-different numbers of $!A$ and $!B$ than the former.
+Os cálculos de sequentes operam sobre \emph{sequentes}, como sugere o nome,
+e não sobre !!{formula}s. Um sequente é um par de sequências ou
+multiconjuntos de !!{formula}s. Os sistemas originais de Gentzen (\Log{LK}
+e \Log{LJ}) usavam sequências; hoje, os teóricos da prova preferem usar
+multiconjuntos. Um multiconjunto é semelhante a um conjunto, exceto por
+poder conter um !!{element} mais de uma vez. Contudo, assim como nos
+conjuntos, a ordem dos !!{element}s não importa. Portanto, as expressões
+$\{!A, !A, !B\}$ e $\{!A, !B, !A\}$ descrevem o mesmo multiconjunto, mas
+esse multiconjunto é diferente de $\{!A, !B\}$ e de $\{!A, !A, !B, !B\}$,
+pois os últimos contêm números de $!A$ e $!B$ diferentes dos do primeiro.
 
-Traditionally, multisets of !!{formula}s in proof theory are written
-using uppercase Greek letters. So when we write $\Gamma$, $\Delta$,
-$\Pi$, $\Lambda$, or $\Theta$, we intend these to be multisets of
-!!{formula}s of whatever logic we are working with. Traditionally
-also, instead of writing $\tuple{\Gamma, \Delta}$ proof theorists
-separate the two components by a sequent symbol; we use~$\Sequent$. 
+Tradicionalmente, multiconjuntos de !!{formula}s na teoria da prova são
+representados por letras gregas maiúsculas. Assim, quando escrevemos
+$\Gamma$, $\Delta$, $\Pi$, $\Lambda$ ou $\Theta$, pretendemos que sejam
+multiconjuntos de !!{formula}s da lógica com a qual estivermos trabalhando.
+Também por tradição, em vez de escrever $\tuple{\Gamma, \Delta}$, os
+teóricos da prova separam os dois componentes por um símbolo de sequente;
+nós usamos~$\Sequent$. 
 
 \begin{defn}[Sequent]
-A \emph{sequent} is an expression of the form
+Um \emph{sequente} é uma expressão da forma
 \[
 \Gamma \Sequent \Delta
 \]
-where $\Gamma$ and $\Delta$ are finite (possibly empty) multisets of
-!!{formula}s. $\Gamma$ is called the \emph{antecedent}, while
-$\Delta$ is the \emph{succedent}.
+onde $\Gamma$ e $\Delta$ são multiconjuntos finitos (possivelmente vazios)
+de !!{formula}s. $\Gamma$ é chamado de \emph{antecedente}, enquanto
+$\Delta$ é chamado de \emph{sucedente}.
 \end{defn}
 
-Let $!G$~be the conjunction of the !!{formula}s in~$\Gamma$ (taking
-the empty conjunction to be~$\ltrue$) and $!D$~be the disjunction of
-the !!{formula}s in~$\Delta$ (taking the empty disjunction to
-be~$\lfalse$). Then the sequent $\Gamma \Sequent \Delta$ is true (in
-some structure~$\Struct{M}$) iff $!G \lif !D$ is true. In classical
-logic, this amounts to the same as saying that either one of the
-!!{formula}s in~$\Gamma$ is false, or one of the !!{formula}s
-in~$\Delta$ is true.
+Seja $!G$ a conjunção das !!{formula}s em~$\Gamma$ (tomando a conjunção
+vazia como~$\ltrue$), e seja $!D$ a disjunção das !!{formula}s em~$\Delta$
+(tomando a disjunção vazia como~$\lfalse$). Então, o sequente
+$\Gamma \Sequent \Delta$ é verdadeiro (em alguma estrutura~$\Struct{M}$)
+se, e somente se, $!G \lif !D$ é verdadeiro. Na lógica clássica, isso
+equivale a dizer que alguma das !!{formula}s em~$\Gamma$ é falsa ou alguma
+das !!{formula}s em~$\Delta$ é verdadeira.
 
-If $\Gamma$ is a multiset of !!{formula}s, we write $\Gamma, !A$ (or
-$!A, \Gamma$) for the result of adding $!A$ to~$\Gamma$. If $\Delta$
-is also a multiset of !!{formula}s, then $\Gamma, \Delta$ is the
-multiset union of the two sequences---if $\Gamma$ contains $!A$ with
-\emph{multiplicity}~n (O.s.\@, it contains $n$ copies of~$!A$) and
-$\Delta$ with multiplicity~$m$, then $\Gamma, \Delta$ contains $!A$
-with multiplicity~$n+m$. If the multiset on one side of a sequent is
-empty, we usually just leave a blank. For instance, $\Sequent !A$ is
-the sequent with an empty antecendent and the succedent contains $!A$
-with multiplicity~$1$.
+Se $\Gamma$ é um multiconjunto de !!{formula}s, escrevemos $\Gamma, !A$
+(ou $!A, \Gamma$) para o resultado de acrescentar $!A$ a~$\Gamma$. Se
+$\Delta$ também é um multiconjunto de !!{formula}s, então $\Gamma, \Delta$
+é a união multiconjuntista das duas sequências---se $\Gamma$ contém $!A$
+com \emph{multiplicidade}~n (isto é, contém $n$ cópias de~$!A$) e $\Delta$
+com multiplicidade~$m$, então $\Gamma, \Delta$ contém $!A$ com
+multiplicidade~$n+m$. Se o multiconjunto em um dos lados de um sequente é
+vazio, em geral simplesmente deixamos um espaço em branco. Por exemplo,
+$\Sequent !A$ é o sequente com antecedente vazio e cujo sucedente contém
+$!A$ com multiplicidade~$1$.
 
-!!^a{proof} in the sequent calculus is a tree of sequents, where
-the topmost (or initial) sequents are axioms in the system considered,
-and if a sequent stands below one or two other sequents, it must
-follow correctly by a rule of inference in the system. We will first
-consider two different sequent systems for classical logic,
-$\Log{G1c}$ and~$\Log{G3c}$. Their axioms and rules are given in
-\cref{pt:seq:int:tab:G1c,pt:seq:int:tab:G3c}. \oliflabeldef{fol:seq::chap}{ (Gentzen's
-original system \Log{LK} is described in \olref[fol][seq][]{chap}.)}{}
+!!^a{proof} no cálculo de sequentes é uma árvore de sequentes, na qual os
+sequentes no topo (ou iniciais) são axiomas do sistema considerado e, se um
+sequente aparece abaixo de um ou dois outros sequentes, deve decorrer deles
+corretamente por uma regra de inferência do sistema. Consideraremos primeiro
+dois sistemas de sequentes diferentes para a lógica clássica, $\Log{G1c}$
+e~$\Log{G3c}$. Seus axiomas e regras são apresentados em
+\cref{pt:seq:int:tab:G1c,pt:seq:int:tab:G3c}. \oliflabeldef{fol:seq::chap}{ (O
+sistema original de Gentzen \Log{LK} é descrito em \olref[fol][seq][]{chap}.)}{}
 
 \subfile{rules-G1c}
 \subfile{rules-G3c}
 
-The systems are subtly different, and these differences mean that they
-have different proof theoretic properties. \Log{G1c} has axioms $!A
-\Sequent !A$ with no other !!{formula}s allowed. \Log{G3c} has axioms
-of the form $!C, \Gamma \Sequent \Delta, !C$ with arbitrary ``side''
-!!{formula}s in $\Gamma$ and~$\Delta$, but the !!{formula}~$!C$
-appearing on both sides must be \emph{atomic}. \Log{G1c} has two versions
-each of the $\LeftR{\land}$ and $\RightR{\lor}$ rules whereas \Log{G3c}
-has just one each. And \Log{G1c} has additional ``structural rules''
-called ``contraction'' (\LeftR{\Contraction}, \RightR{\Contraction})
-and ``weakening'' (\LeftR{\Weakening}, \RightR{\Weakening}).
+Os sistemas diferem de maneiras sutis, e essas diferenças fazem com que
+tenham propriedades distintas do ponto de vista da teoria da prova.
+\Log{G1c} tem axiomas $!A \Sequent !A$ nos quais nenhuma outra das
+!!{formula}s é permitida. \Log{G3c} tem axiomas da forma
+$!C, \Gamma \Sequent \Delta, !C$, com !!{formula}s ``laterais'' arbitrárias
+em $\Gamma$ e~$\Delta$, mas a !!{formula}~$!C$ que aparece dos dois lados
+deve ser \emph{atômica}. \Log{G1c} tem duas versões de cada uma das regras
+$\LeftR{\land}$ e $\RightR{\lor}$, enquanto \Log{G3c} tem apenas uma de
+cada. Além disso, \Log{G1c} tem ``regras estruturais'' adicionais chamadas
+de ``contração'' (\LeftR{\Contraction}, \RightR{\Contraction}) e
+``enfraquecimento'' (\LeftR{\Weakening}, \RightR{\Weakening}).
 
-The systems \Log{G1c} and \Log{G3c} happen to be sound and complete
-for classical logic. In other words, every sequent !!{provable} in
-these systems is true in every !!{structure}, and every sequent that
-is true in every !!{structure} has !!a{proof}. So the question
-\emph{whether} a sequent has !!a{proof} can also be answered by other
-methods of logic (p.ex., those of model theory). And since both systems
-!!{prove} exactly the sequents true in every !!{structure}, they in
-particular prove the same sequents.
+Os sistemas \Log{G1c} e \Log{G3c} são corretos e completos para a lógica
+clássica. Em outras palavras, todo sequente !!{provable} nesses sistemas é
+verdadeiro em toda !!{structure}, e todo sequente verdadeiro em toda
+!!{structure} tem !!a{proof}. Assim, a questão de \emph{se} um sequente tem
+!!a{proof} também pode ser respondida por outros métodos da lógica (por
+exemplo, os da teoria de modelos). E, como ambos os sistemas !!{prove}
+exatamente os sequentes verdadeiros em toda !!{structure}, em particular
+eles demonstram os mesmos sequentes.
 
-Proof theory, however, is not just concerned with \emph{whether}
-something is provable, but \emph{how}. Proof theorists consider
-questions such as ``Can a certain rule always be avoided?,'' ``Can
-this rule be added to the system without resulting in new sequents
-becoming provable?,'' or ``Can !!{proof}s in one system be turned into
-!!{proof}s in another?'' If the answer is ``yes'' to such a question,
-the proof of this fact is often proved by induction on the complexity
-of !!{proof}s, or, equivalently, by induction on the structure of
-!!{proof}s. This yields not just a proof of the fact (p.ex., if
-\Log{G1c} proves a sequent then \Log{G3c} proves the same sequent),
-but a procedure (p.ex., of turning !!{proof}s in~\Log{G1c} into
-!!{proof}s in~\Log{G3c}).
+Contudo, a teoria da prova não se ocupa apenas de \emph{se} algo é
+demonstrável, mas de \emph{como} o é. Os teóricos da prova consideram
+questões como ``É sempre possível evitar certa regra?'', ``Essa regra pode
+ser acrescentada ao sistema sem tornar demonstráveis novos sequentes?'' ou
+``É possível transformar !!{proof}s de um sistema em !!{proof}s de outro?''
+Se a resposta a uma pergunta desse tipo for ``sim'', esse fato costuma ser
+demonstrado por indução sobre a complexidade dos !!{proof}s ou,
+equivalentemente, por indução sobre a estrutura dos !!{proof}s. Isso fornece
+não apenas uma demonstração do fato (por exemplo, se \Log{G1c} demonstra um
+sequente, então \Log{G3c} demonstra o mesmo sequente), mas também um
+procedimento (por exemplo, para transformar !!{proof}s em~\Log{G1c} em
+!!{proof}s em~\Log{G3c}).
 
-A central result in proof theory is the \emph{cut-elimination
-theorem}. It shows that we can add the cut rule
+Um resultado central da teoria da prova é o \emph{teorema da eliminação do
+corte}. Ele mostra que podemos acrescentar a regra do corte
 \[
 \Axiom$\Gamma \fCenter \Delta, !A$
 \Axiom$!A, \Pi \fCenter \Lambda$
@@ -119,11 +120,11 @@ theorem}. It shows that we can add the cut rule
 \BinaryInf$\Gamma, \Pi \fCenter \Delta, \Lambda$
 \DisplayProof
 \]
-to the sequent systems without changing which sequents are
-!!{provable}. Moreover, the proof provides a method that transforms
-any !!{proof} using the rules of \Log{G1c} (or \Log{G3c}) together with
-\Cut{} into one that only uses the rules of \Log{G1c} (or \Log{G3c}).
-In other words, this procedure ``eliminates'' the \Cut{} rule from
-!!{proof}s using it; hence the name.
+aos sistemas de sequentes sem alterar quais sequentes são !!{provable}.
+Além disso, a demonstração fornece um método que transforma qualquer
+!!{proof} que use as regras de \Log{G1c} (ou \Log{G3c}) juntamente com
+\Cut{} em outro que usa somente as regras de \Log{G1c} (ou \Log{G3c}).
+Em outras palavras, esse procedimento ``elimina'' a regra \Cut{} dos
+!!{proof}s que a usam; daí o nome.
 
 \end{document}

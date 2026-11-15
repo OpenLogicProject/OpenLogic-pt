@@ -7,32 +7,32 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{axd}{ppr}}
-      {\olfileid{pl}{axd}{ppr}}
+      {\olfileid[pt]{fol}{axd}{ppr}}
+      {\olfileid[pt]{pl}{axd}{ppr}}
 
-\olsection{\usetoken{S}{derivability} and the Propositional Connectives}
+\olsection{\usetoken{S}{derivability} e os conectivos proposicionais}
 
 \begin{explain}
-  We establish that the !!{derivability} relation~$\Proves$ of
-  axiomatic deduction is strong enough to establish some basic facts
-  involving the propositional connectives, such as that $!A \land !B
-  \Proves !A$ and $!A, !A \lif !B \Proves !B$ (modus ponens). These
-  facts are needed for the proof of the completeness theorem.
+  Estabelecemos que a relação de !!{derivability}~$\Proves$ da dedução
+  axiomática é forte o bastante para estabelecer alguns fatos básicos
+  que envolvem os conectivos proposicionais, como $!A \land !B \Proves
+  !A$ e $!A, !A \lif !B \Proves !B$ (modus ponens). Esses fatos são
+  necessários para a demonstração do teorema da completude.
 \end{explain}
 
 \begin{prop}\ollabel{prop:provability-land}
   \begin{enumerate}
-  \item \ollabel{prop:provability-land-left} Both $!A \land !B \Proves
-    !A$ and $!A \land !B \Proves !B$
+  \item \ollabel{prop:provability-land-left} Tanto $!A \land !B \Proves
+    !A$ quanto $!A \land !B \Proves !B$
   \item \ollabel{prop:provability-land-right} $!A, !B \Proves !A \land !B$.
   \end{enumerate}
 \end{prop}
 
 \begin{proof}
   \begin{enumerate}
-    \item From \olref[prp]{ax:land1} and \olref[prp]{ax:land1} by
+    \item De \olref[prp]{ax:land1} e \olref[prp]{ax:land1}, por
       modus ponens.
-  \item From \olref[prp]{ax:land3} by two applications of
+  \item De \olref[prp]{ax:land3}, por duas aplicações de
     modus ponens.
   \end{enumerate}
 \end{proof}
@@ -40,22 +40,22 @@
 
 \begin{prop}\ollabel{prop:provability-lor}
   \begin{enumerate}
-  \item $!A \lor !B, \lnot !A, \lnot !B$ is inconsistent.
-  \item Both $!A \Proves !A \lor !B$ and $!B \Proves !A \lor !B$.
+  \item $!A \lor !B, \lnot !A, \lnot !B$ é inconsistente.
+  \item Tanto $!A \Proves !A \lor !B$ quanto $!B \Proves !A \lor !B$.
   \end{enumerate}
 \end{prop}
 
 \begin{proof}
   \begin{enumerate}
-  \item From \olref[prp]{ax:lnot1} we get $\Proves \lnot !A \lif (!A
-    \lif \lfalse)$ and $\Proves \lnot !B \lif (!B \lif \lfalse)$. So
-    by the deduction theorem, we have $\{\lnot !A\} \Proves !A \lif
-    \lfalse$ and $\{\lnot !B\} \Proves !B \lif \lfalse$. From
-    \olref[prp]{ax:lor3} we get $\{\lnot !A, \lnot !B\} \Proves (!A
-    \lor !B) \lif \lfalse$. By the deduction theorem, $\{!A \lor !B,
+  \item De \olref[prp]{ax:lnot1}, obtemos $\Proves \lnot !A \lif (!A
+    \lif \lfalse)$ e $\Proves \lnot !B \lif (!B \lif \lfalse)$. Assim,
+    pelo teorema da dedução, temos $\{\lnot !A\} \Proves !A \lif
+    \lfalse$ e $\{\lnot !B\} \Proves !B \lif \lfalse$. De
+    \olref[prp]{ax:lor3}, obtemos $\{\lnot !A, \lnot !B\} \Proves (!A
+    \lor !B) \lif \lfalse$. Pelo teorema da dedução, $\{!A \lor !B,
     \lnot !A, \lnot !B\} \Proves \lfalse$.
-  \item From \olref[prp]{ax:lor1} and \olref[prp]{ax:lor2} by modus
-    ponsens.
+  \item De \olref[prp]{ax:lor1} e \olref[prp]{ax:lor2}, por modus
+    ponens.
   \end{enumerate}
 \end{proof}
 
@@ -63,21 +63,21 @@
   \begin{enumerate}
   \item \ollabel{prop:provability-lif-left}  $!A, !A \lif !B \Proves !B$.
   \item \ollabel{prop:provability-lif-right}
-    Both $\lnot !A \Proves !A \lif !B$ and $!B \Proves !A \lif !B$.
+    Tanto $\lnot !A \Proves !A \lif !B$ quanto $!B \Proves !A \lif !B$.
   \end{enumerate}
 \end{prop}
 
 \begin{proof}
   \begin{enumerate}
-  \item We can !!{derive}:
+  \item Podemos !!{derive}:
     \begin{derivation}
       1. & $!A$ & \Hyp\\
       2. & $!A \lif !B$ & \Hyp\\
       3. & $!B$ & 1, 2, \MP
     \end{derivation}
     
-  \item By \olref[prp]{ax:lnot2} and \olref[prp]{ax:lif1} and the
-    deduction theorem, respectively.
+  \item Por \olref[prp]{ax:lnot2}, \olref[prp]{ax:lif1} e o teorema da
+    dedução, respectivamente.
   \end{enumerate}
 \end{proof}
 

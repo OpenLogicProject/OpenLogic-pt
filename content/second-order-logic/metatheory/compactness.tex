@@ -6,65 +6,65 @@
 
 \begin{document}
 
-\olfileid{sol}{met}{com}
+\olfileid[pt]{sol}{met}{com}
 
-\olsection{Second-order Logic is not Compact}
+\olsection{A lógica de segunda ordem não é compacta}
 
 \begin{explain}
-Call a set of sentences~$\Gamma$ \emph{finitely satisfiable} if every
-one of its finite subsets is satisfiable.  First-order logic has the
-property that if a set of !!{sentence}s~$\Gamma$ is finitely
-satisfiable, it is satisfiable.  This property is called
-\emph{compactness}.  It has an equivalent version involving
-entailment: if $\Gamma \Entails !A$, then already $\Gamma_0 \Entails
-!A$ for some finite subset~$\Gamma_0 \subseteq \Gamma$. In this
-version it is an immediate corollary of the completeness theorem: for
-if $\Gamma \Entails !A$, by completeness $\Gamma \Proves !A$. But a
-!!{derivation} can only make use of finitely many !!{sentence}s
-of~$\Gamma$.
+Chamamos um conjunto de sentenças~$\Gamma$ de \emph{finitamente
+satisfatível} se cada um de seus subconjuntos finitos é satisfatível. A
+lógica de primeira ordem tem a propriedade de que, se um conjunto de
+!!{sentence}s~$\Gamma$ é finitamente satisfatível, então é satisfatível.
+Essa propriedade se chama \emph{compacidade}. Ela tem uma versão equivalente
+que envolve consequência: se $\Gamma \Entails !A$, então já temos
+$\Gamma_0 \Entails !A$ para algum subconjunto finito
+~$\Gamma_0 \subseteq \Gamma$. Nessa versão, ela é um corolário imediato do
+teorema da completude: pois, se $\Gamma \Entails !A$, pela completude
+$\Gamma \Proves !A$. Mas !!{derivation} só pode usar um número finito de
+!!{sentence}s de~$\Gamma$.
 
-Compactness is not true for second-order logic. There are sets of
-second-order !!{sentence}s that are finitely satisfiable but not
-satisfiable, and that entail some~$!A$ without a finite subset
-entailing~$!A$.  
+A compacidade não vale para a lógica de segunda ordem. Há conjuntos de
+!!{sentence}s de segunda ordem que são finitamente satisfatíveis, mas não
+satisfatíveis, e que acarretam algum~$!A$ sem que um subconjunto finito
+acarrete~$!A$.
 \end{explain}
 
 
 \begin{thm}
 \ollabel{thm:sol-undecidable}
-Second-order logic is not compact.
+A lógica de segunda ordem não é compacta.
 \end{thm}
 
 \begin{proof}
-Recall that 
+Lembre-se de que
 \[
 \fn{Inf} \ident \lexists[u][(\lforall[x][\lforall[y][(\eq[u(x)][u(y)]
       \lif \eq[x][y])]] \land \lexists[y][\lforall[x][\eq/[y][u(x)]]])]
 \]
-is satisfied in !!a{structure} iff its domain is infinite. Let
-$!A^{\ge n}$ be a sentence that asserts that the domain has at least
-$n$ !!{element}s, p.ex.,
+é satisfeita em !!a{structure} sse seu domínio é infinito. Seja
+$!A^{\ge n}$ uma sentença que afirma que o domínio tem ao menos
+$n$ !!{element}s, por exemplo,
 \[
 !A^{\ge n} \ident \lexists[x_1][\dots\lexists[x_n][(\eq/[x_1][x_2]
     \land \eq/[x_1][x_3] \land \dots \land \eq/[x_{n-1}][x_n])]].
 \]
-Consider the set of !!{sentence}s
+Considere o conjunto de !!{sentence}s
 \[
 \Gamma = \{\lnot \fn{Inf}, !A^{\ge 1}, !A^{\ge 2}, !A^{\ge 3}, \dots\}.
 \]
-It is finitely satisfiable, since for any finite subset~$\Gamma_0
-\subseteq \Gamma$
-there is some $k$ so that $!A^{\ge k} \in \Gamma$ but no $!A^{\ge n}
-\in \Gamma$ for $n>k$. If $\Domain{M}$ has $k$ !!{element}s,
-$\Sat{M}{\Gamma_0}$. But, $\Gamma$ is not satisfiable: if
-$\Sat{M}{\lnot \fn{Inf}}$, $\Domain{M}$ must be finite, say, of
-size~$k$. Then $\Sat/{M}{!A^{\ge k+1}}$.
+Ele é finitamente satisfatível, pois, para qualquer subconjunto finito
+~$\Gamma_0 \subseteq \Gamma$, existe algum $k$ tal que
+$!A^{\ge k} \in \Gamma$, mas nenhum $!A^{\ge n} \in \Gamma$ para $n>k$.
+Se $\Domain{M}$ tem $k$ !!{element}s, então $\Sat{M}{\Gamma_0}$. Mas
+$\Gamma$ não é satisfatível: se $\Sat{M}{\lnot \fn{Inf}}$, então
+$\Domain{M}$ deve ser finito, digamos, de tamanho~$k$. Nesse caso,
+$\Sat/{M}{!A^{\ge k+1}}$.
 \end{proof}
 
 \begin{prob}
-Give an example of a set~$\Gamma$ and !!a{sentence}~$!A$ so that
-$\Gamma \Entails !A$ but for every finite subset~$\Gamma_0 \subseteq
-\Gamma$, $\Gamma_0 \Entails/ !A$.
+Dê um exemplo de um conjunto~$\Gamma$ e de !!a{sentence}~$!A$ tais que
+$\Gamma \Entails !A$, mas, para todo subconjunto finito
+~$\Gamma_0 \subseteq \Gamma$, $\Gamma_0 \Entails/ !A$.
 \end{prob}
 
 

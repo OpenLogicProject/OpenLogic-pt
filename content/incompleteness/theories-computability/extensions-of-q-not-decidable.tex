@@ -6,82 +6,83 @@
 
 \begin{document}
 
-\olfileid{inc}{tcp}{cqn}
+\olfileid[pt]{inc}{tcp}{cqn}
 
-\olsection{Consistent Extensions of $\Th{Q}$ are Undecidable}
+\olsection{Extensões consistentes de $\Th{Q}$ são indecidíveis}
 
 \begin{explain}
-Remember that a theory is \emph{consistent} if it does not prove both
-$!A$ and $\lnot !A$ for any formula~$!A$. Since anything follows from
-a contradiction, an inconsistent theory is trivial: every sentence is
-provable. Clearly, if a theory if $\omega$-consistent, then it is
-consistent. But being consistent is a weaker requirement (O.s.\@, there
-are theories that are consistent but not $\omega$-consistent.). We can
-weaken the assumption in \olref[oqn]{thm:oconsis-q} to simple
-consistency to obtain a stronger theorem.
+Lembre-se de que uma teoria é \emph{consistente} se não prova tanto
+$!A$ quanto $\lnot !A$ para nenhuma fórmula~$!A$. Como qualquer coisa
+decorre de uma contradição, uma teoria inconsistente é trivial: toda
+sentença é demonstrável. É claro que, se uma teoria é
+$\omega$-consistente, então é consistente. Mas a consistência é uma
+exigência mais fraca (isto é, há teorias consistentes que não são
+$\omega$-consistentes). Podemos enfraquecer a hipótese de
+\olref[oqn]{thm:oconsis-q} para a simples consistência e obter um
+teorema mais forte.
 \end{explain}
 
 \begin{lem}
-There is no ``universal computable relation.'' That is, there is no
-binary computable relation $R(x,y)$, with the following property:
-whenever $S(y)$ is a unary computable relation, there is some $k$ such
-that for every $y$, $S(y)$ is true if and only if $R(k,y)$ is true.
+Não existe uma ``relação computável universal''. Isto é, não existe
+relação computável binária $R(x,y)$ com a seguinte propriedade: sempre
+que $S(y)$ é uma relação computável unária, existe algum $k$ tal que,
+para todo $y$, $S(y)$ é verdadeira se, e somente se, $R(k,y)$ é
+verdadeira.
 \end{lem}
 
 \begin{proof}
-Suppose $R(x,y)$ is a universal computable relation. Let $S(y)$
-be the relation $\lnot R(y,y)$. Since $S(y)$ is computable, for some
-$k$, $S(y)$ is equivalent to $R(k,y)$. But then we have that $S(k)$ is
-equivalent to both $R(k,k)$ and $\lnot R(k,k)$, which is a
-contradiction.
+Suponha que $R(x,y)$ seja uma relação computável universal. Seja $S(y)$
+a relação $\lnot R(y,y)$. Como $S(y)$ é computável, para algum $k$,
+$S(y)$ é equivalente a $R(k,y)$. Mas então $S(k)$ é equivalente tanto
+a $R(k,k)$ quanto a $\lnot R(k,k)$, o que é uma contradição.
 \end{proof}
 
 
 \begin{thm}
-Let $\Th{T}$ be any consistent theory that includes $\Th{Q}$. Then
-$\Th{T}$ is not decidable.
+Seja $\Th{T}$ uma teoria consistente qualquer que inclua $\Th{Q}$.
+Então $\Th{T}$ não é decidível.
 \end{thm}
 
 
 \begin{proof}
-Suppose $\Th{T}$ is a consistent, decidable
-extension of $\Th{Q}$. We will obtain a contradiction by using $\Th{T}$ to
-define a universal computable relation.
+Suponha que $\Th{T}$ seja uma extensão consistente e decidível de
+$\Th{Q}$. Obteremos uma contradição usando $\Th{T}$ para definir uma
+relação computável universal.
 
-Let $R(x,y)$ hold if and only if
+Faça $R(x,y)$ valer se, e somente se,
 \begin{quote}
-$x$ codes a formula $!D(u)$, and $\Th{T}$ proves $!D(\num y)$.
+$x$ codifica uma fórmula $!D(u)$ e $\Th{T}$ prova $!D(\num y)$.
 \end{quote}
-Since we are assuming that $\Th{T}$ is decidable, $R$ is computable. Let us
-show that $R$ is universal. If $S(y)$ is any computable relation, then
-it is representable in $\Th{Q}$ (and hence $\Th{T}$) by a formula
-$!D_S(u)$. Then for every $n$, we have
+Como estamos supondo que $\Th{T}$ é decidível, $R$ é computável.
+Mostremos que $R$ é universal. Se $S(y)$ é uma relação computável
+qualquer, então é representável em $\Th{Q}$ (e, portanto, em $\Th{T}$)
+por uma fórmula $!D_S(u)$. Então, para todo $n$, temos
 \begin{eqnarray*}
 S(\num n) & \lif & T \vdash !D_S(\num n) \\
 & \lif & R(\Gn{!D_S(u)}, n)
 \end{eqnarray*}
-and
+e
 \begin{eqnarray*}
 \lnot S(\num n) & \lif & T \vdash \lnot !D_S(\num n) \\
-& \lif & T \not\vdash !D_S(\num n) \quad \text{(since $\Th{T}$ is
-  consistent)} \\
+& \lif & T \not\vdash !D_S(\num n) \quad \text{(pois $\Th{T}$ é
+  consistente)} \\
 & \lif & \lnot R(\Gn{!D_S(u)}, n).
 \end{eqnarray*}
-That is, for every $y$, $S(y)$ is true if and only if
-$R(\Gn{!D_S(u)}, y)$ is. So $R$ is universal, and we have the
-contradiction we were looking for.
+Isto é, para todo $y$, $S(y)$ é verdadeira se, e somente se,
+$R(\Gn{!D_S(u)}, y)$ é verdadeira. Logo, $R$ é universal, e temos a
+contradição que procurávamos.
 \end{proof}
 
-Let ``true arithmetic'' be the theory $\Setabs{!A}{ \Sat{\Nat}{!A}}$,
-that is, the set of sentences in the language of arithmetic that are
-true in the standard interpretation.
+Seja a ``aritmética verdadeira'' a teoria
+$\Setabs{!A}{ \Sat{\Nat}{!A}}$, isto é, o conjunto das sentenças na
+linguagem da aritmética que são verdadeiras na interpretação padrão.
 
 \begin{cor}
-True arithmetic is not decidable.
+A aritmética verdadeira não é decidível.
 \end{cor}
 
-%In Section~\olref{undefinability:truth:section} we will state a stronger
-%result, due to Tarski.
+%Na Seção~\olref{undefinability:truth:section}, enunciaremos um resultado
+%mais forte, devido a Tarski.
 
 \end{document}
 

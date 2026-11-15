@@ -6,57 +6,62 @@
 
 \begin{document}
 
-\olfileid{cmp}{thy}{cmp}
-\olsection{Computably Enumerable Sets not Closed under Complement}
+\olfileid[pt]{cmp}{thy}{cmp}
+\olsection{Conjuntos computavelmente enumeráveis não são fechados sob
+complementação}
 
-Suppose $A$ is computably enumerable. Is the complement of~$A$,
-$\Complement{A} = \Nat \setminus A$, always computably enumerable
-as well? The following theorem and corollary show that the answer is
-``no.''
+Suponha que $A$ seja computavelmente enumerável. O complemento de~$A$,
+$\Complement{A} = \Nat \setminus A$, também é sempre computavelmente
+enumerável? O teorema e o corolário a seguir mostram que a resposta é
+``não''.
 
 \begin{thm}
 \ollabel{thm:ce-comp}
-Let $A$ be any set of natural numbers. Then $A$ is computable if and
-only if both $A$ and $\Complement{A}$ are computably enumerable.
+Seja $A$ um conjunto qualquer de números naturais. Então $A$ é
+computável se, e somente se, tanto $A$ quanto $\Complement{A}$ são
+computavelmente enumeráveis.
 \end{thm}
 
 \begin{proof}
-The forwards direction is easy: if $A$ is computable, then
-$\Complement{A}$ is computable as well ($\Char{A} = 1 \tsub
-\Char{\Complement{A}}$), and so both are computably enumerable.
+O sentido direto é fácil: se $A$ é computável, então
+$\Complement{A}$ também é computável ($\Char{A} = 1 \tsub
+\Char{\Complement{A}}$) e, portanto, ambos são computavelmente
+enumeráveis.
 
-In the other direction, suppose $A$ and~$\Complement{A}$ are both
-computably enumerable. Let $A$ be the domain of~$\cfind{d}$, and let
-$\Complement{A}$ be the domain of~$\cfind{e}$. Define $h$ by
+No outro sentido, suponha que $A$ e~$\Complement{A}$ sejam ambos
+computavelmente enumeráveis. Seja $A$ o domínio de~$\cfind{d}$, e seja
+$\Complement{A}$ o domínio de~$\cfind{e}$. Defina $h$ por
 \[
 h(x) = \umin{s}{(T(d,x,s) \lor T(e,x,s))}.
 \]
-In other words, on input~$x$, $h$~searches for either a halting
-computation of~$\cfind{d}$ or a halting computation of~$\cfind{e}$.
-Now, if $x \in A$, it will succeed in the first case, and if $x \in
-\Complement{A}$, it will succeed in the second case. So, $h$~is a
-total computable function. But now we have that for every~$x$, $x \in
-A$ if and only if $T(e, x, h(x))$, O.s.\@, if $\cfind{e}$ is the one
-that is defined. Since $T(e, x, h(x))$ is a computable relation,
-$A$~is computable.
+Em outras palavras, na entrada~$x$, $h$~procura uma computação que pare
+de~$\cfind{d}$ ou uma computação que pare de~$\cfind{e}$. Se
+$x \in A$, ela terá êxito no primeiro caso; se
+$x \in \Complement{A}$, terá êxito no segundo. Logo, $h$~é uma função
+computável total. Mas agora temos que, para todo~$x$, $x \in A$ se, e
+somente se, $T(e, x, h(x))$, isto é, se $\cfind{e}$ é a função que
+está definida. Como $T(e, x, h(x))$ é uma relação computável,
+$A$~é computável.
 \end{proof}
 
 \begin{explain}
-It is easier to understand what is going on in informal computational
-terms: to decide $A$, on input $x$ search for halting computations of
-$\cfind{e}$ and $\cfind{f}$. One of them is bound to halt; if it is $\cfind{e}$,
-then $x$ is in~$A$, and otherwise, $x$ is in~$\Complement{A}$.
+É mais fácil entender o que ocorre em termos computacionais informais:
+para decidir $A$, na entrada $x$, procure computações que parem de
+$\cfind{e}$ e $\cfind{f}$. Uma delas necessariamente parará; se for
+$\cfind{e}$, então $x$ pertence a~$A$; caso contrário, $x$ pertence
+a~$\Complement{A}$.
 \end{explain}
 
 \begin{cor}
 \ollabel{cor:comp-k}
-$\Complement{K_0}$ is not computably enumerable.
+$\Complement{K_0}$ não é computavelmente enumerável.
 \end{cor}
 
 \begin{proof}
-We know that $K_0$ is computably enumerable, but not computable. If
-$\Complement{K_0}$ were computably enumerable, then $K_0$ would be
-computable by \olref{thm:ce-comp}, contradicting \olref[ncp]{thm:K-0}.
+Sabemos que $K_0$ é computavelmente enumerável, mas não é computável.
+Se $\Complement{K_0}$ fosse computavelmente enumerável, então $K_0$
+seria computável por \olref{thm:ce-comp}, contradizendo
+\olref[ncp]{thm:K-0}.
 \end{proof}
 
 \end{document}

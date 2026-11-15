@@ -6,110 +6,109 @@
 
 \begin{document}
 
-\olfileid{mod}{mar}{nst}
-\section{Non-Standard Models}
+\olfileid[pt]{mod}{mar}{nst}
+\section{Modelos não padrão}
 
 \begin{explain}
-We call !!a{structure} for $\Lang{L_A}$ standard if it is isomorphic
-to~$\Struct{N}$. If !!a{structure} isn't isomorphic to~$\Struct{N}$,
-it is called non-standard.
+Chamamos uma !!{structure} para $\Lang{L_A}$ de padrão se ela for
+isomorfa a~$\Struct{N}$. Se uma !!{structure} não for isomorfa
+a~$\Struct{N}$, ela é chamada de não padrão.
 \end{explain}
 
 \begin{defn}
-A !!{structure}~$\Struct{M}$ for $\Lang{L_A}$ is \emph{non-standard}
-if it is not isomorphic to~$\Struct{N}$. The !!{element}s $x \in
-\Domain{M}$ which are equal to $\Value{\num{n}}{M}$ for some $n \in
-\Nat$ are called \emph{standard numbers} (of $\Struct{M}$), and those
-not, \emph{non-standard numbers}.
+Uma !!{structure}~$\Struct{M}$ para $\Lang{L_A}$ é \emph{não padrão}
+se não for isomorfa a~$\Struct{N}$. Os !!{element}s $x \in
+\Domain{M}$ que são iguais a $\Value{\num{n}}{M}$ para algum $n \in
+\Nat$ são chamados de \emph{números padrão} (de $\Struct{M}$); os
+demais são chamados de \emph{números não padrão}.
 \end{defn}
 
 \begin{explain}
-By \olref[stm]{prop:standard-domain}, any standard !!{structure}
-for~$\Lang{L_A}$ contains only standard !!{element}s. Consequently, a
-non-standard !!{structure} must contain at least one non-standard
-element. In fact, the existence of a non-standard !!{element}
-guarantees that the !!{structure} is non-standard.
+Por \olref[stm]{prop:standard-domain}, toda !!{structure} padrão
+para~$\Lang{L_A}$ contém apenas !!{element}s padrão. Consequentemente,
+uma !!{structure} não padrão deve conter pelo menos um elemento não
+padrão. Na verdade, a existência de um !!{element} não padrão garante
+que a !!{structure} seja não padrão.
 \end{explain}
 
 \begin{prop}
-If !!a{structure}~$\Struct{M}$ for $\Lang{L_A}$ contains a
-non-standard number, $\Struct{M}$ is non-standard.
+Se uma !!{structure}~$\Struct{M}$ para $\Lang{L_A}$ contém um número
+não padrão, então $\Struct{M}$ é não padrão.
 \end{prop}
 
 \begin{proof}
-Suppose not, O.s.\@, suppose $\Struct{M}$ standard but contains a
-non-standard number~$x$. Let $g\colon \Nat \to \Domain{M}$ be an
-isomorphism. It is easy to see (by induction on~$n$) that
-$g(\Value{\num{n}}{N}) = \Value{\num{n}}{M}$. In other words, $g$ maps
-standard numbers of~$\Struct{N}$ to standard numbers
-of~$\Struct{M}$. If $\Struct{M}$ contains a non-standard number, $g$
-cannot be !!{surjective}, contrary to hypothesis.
+Suponha que não, isto é, suponha que $\Struct{M}$ seja padrão, mas
+contenha um número não padrão~$x$. Seja $g\colon \Nat \to \Domain{M}$
+um isomorfismo. É fácil ver (por indução em~$n$) que
+$g(\Value{\num{n}}{N}) = \Value{\num{n}}{M}$. Em outras palavras, $g$
+leva números padrão de~$\Struct{N}$ a números padrão
+de~$\Struct{M}$. Se $\Struct{M}$ contém um número não padrão, $g$ não
+pode ser !!{surjective}, contrariando a hipótese.
 \end{proof}
 
 \begin{prob}
-Recall that $\Th{Q}$ contains the axioms
+Lembre que $\Th{Q}$ contém os axiomas
 \begin{align*}
 & \lforall[x][\lforall[y][(\eq[x'][y'] \lif \eq[x][y])]] \tag{$!Q_1$}\\
 & \lforall[x][\eq/[\Obj 0][x']] \tag{$!Q_2$}\\
 & \lforall[x][(\eq[x][\Obj 0] \lor \lexists[y][\eq[x][y']])] \tag{$!Q_3$}
 \end{align*}
-Give !!{structure}s~$\Struct{M_1}$, $\Struct{M_2}$, $\Struct{M_3}$ such that
+Dê !!{structure}s~$\Struct{M_1}$, $\Struct{M_2}$, $\Struct{M_3}$ tais que
 \begin{enumerate}
 \item $\Sat{M_1}{!Q_1}$, $\Sat{M_1}{!Q_2}$, $\Sat/{M_1}{!Q_3}$;
-\item $\Sat{M_2}{!Q_1}$, $\Sat/{M_2}{!Q_2}$, $\Sat{M_2}{!Q_3}$; and
+\item $\Sat{M_2}{!Q_1}$, $\Sat/{M_2}{!Q_2}$, $\Sat{M_2}{!Q_3}$; e
 \item $\Sat/{M_3}{!Q_1}$, $\Sat{M_3}{!Q_2}$, $\Sat{M_3}{!Q_3}$;
 \end{enumerate}
-Obviously, you just have to specify~$\Assign{\Obj{0}}{M_i}$ and
-$\Assign{\prime}{M_i}$ for each.
+Evidentemente, basta especificar~$\Assign{\Obj{0}}{M_i}$ e
+$\Assign{\prime}{M_i}$ para cada uma.
 \end{prob}
 
 \begin{explain}
-It is easy enough to specify non-standard !!{structure}s for
-$\Lang{L_A}$. For instance, take the structure with !!{domain}~$\Int$
-and interpret all non-logical symbols as usual. Since negative numbers
-are not values of $\num{n}$ for any~$n$, this structure is
-non-standard. Of course, it will not be a \emph{model} of arithmetic
-in the sense that it makes the same sentences true
-as~$\Struct{N}$. For instance, $\lforall[x][\eq/[x'][\Obj{0}]]$ is
-false.  However, we can prove that non-standard models of arithmetic
-exist easily enough, using the compactness theorem.
+É bastante fácil especificar !!{structure}s não padrão para
+$\Lang{L_A}$. Por exemplo, tome a estrutura com !!{domain}~$\Int$ e
+interprete todos os símbolos não lógicos da maneira usual. Como os
+números negativos não são valores de $\num{n}$ para nenhum~$n$, essa
+estrutura é não padrão. Naturalmente, ela não será um \emph{modelo} da
+aritmética no sentido de tornar verdadeiras as mesmas sentenças que
+$\Struct{N}$. Por exemplo, $\lforall[x][\eq/[x'][\Obj{0}]]$ é falsa.
+Ainda assim, podemos demonstrar com facilidade, usando o teorema da
+compacidade, que existem modelos não padrão da aritmética.
 \end{explain}
 
 \begin{prop}
-Let $\Th{TA} = \Setabs{!A}{\Sat{N}{!A}}$ be the theory
-of~$\Struct{N}$. $\Th{TA}$ has !!a{enumerable} non-standard model.
+Seja $\Th{TA} = \Setabs{!A}{\Sat{N}{!A}}$ a teoria
+de~$\Struct{N}$. $\Th{TA}$ tem um modelo não padrão !!{enumerable}.
 \end{prop}
 
 \begin{proof}
-Expand $\Lang{L_A}$ by a new !!{constant}~$c$ and consider the set of
-!!{sentence}s
+Expanda $\Lang{L_A}$ com uma nova !!{constant}~$c$ e considere o
+conjunto de !!{sentence}s
 \[
 \Gamma = \Th{TA} \cup \{\eq/[c][\num{0}], \eq/[c][\num{1}],
 \eq/[c][\num{2}], \dots\}
 \]
-Any model~$\Struct{M^c}$ of~$\Gamma$ would contain !!a{element}~$x =
-\Assign{c}{M}$ which is non-standard, since $x \neq
-\Value{\num{n}}{M}$ for all $n \in \Nat$. Also, obviously,
-$\Sat{M^c}{\Th{TA}}$, since $\Th{TA} \subseteq \Gamma$. If we turn
-$\Struct{M^c}$ into !!a{structure}~$\Struct{M}$ for $\Lang{L_A}$
-simply by forgetting about~$c$, its domain still contains the
-non-standard~$x$, and also~$\Sat{M}{\Th{TA}}$. The latter is
-guaranteed since $c$ does not occur in~$\Th{TA}$. So, it suffices to
-show that $\Gamma$ has a model.
+Qualquer modelo~$\Struct{M^c}$ de~$\Gamma$ conteria !!a{element}~$x =
+\Assign{c}{M}$ não padrão, pois $x \neq \Value{\num{n}}{M}$ para todo
+$n \in \Nat$. Além disso, é claro que $\Sat{M^c}{\Th{TA}}$, pois
+$\Th{TA} \subseteq \Gamma$. Se transformarmos $\Struct{M^c}$ em uma
+!!{structure}~$\Struct{M}$ para $\Lang{L_A}$ simplesmente esquecendo
+$c$, seu domínio ainda conterá o elemento não padrão~$x$, e também
+$\Sat{M}{\Th{TA}}$. Esta última afirmação é garantida porque $c$ não
+ocorre em~$\Th{TA}$. Assim, basta mostrar que $\Gamma$ tem um modelo.
 
-We use the compactness theorem to show that~$\Gamma$ has a model. If
-every finite subset of~$\Gamma$ is satisfiable, so
-is~$\Gamma$. Consider any finite subset $\Gamma_0 \subseteq
-\Gamma$. $\Gamma_0$ includes some !!{sentence}s of~$\Th{TA}$ and some
-of the form~$\eq/[c][\num{n}]$, but only finitely many. Suppose $k$ is
-the largest number so that $\eq/[c][\num{k}] \in \Gamma_0$. Define
-$\Struct{N_k}$ by expanding~$\Struct{N}$ to include the
-interpretation~$\Assign{c}{N_k} = k+1$. $\Sat{N_k}{\Gamma_0}$: if $!A
-\in \Th{TA}$, $\Sat{N_k}{!A}$ since $\Struct{N_k}$ is just
-like~$\Struct{N}$ in all respects except~$c$, and $c$ does not occur
-in~$!A$. And $\Sat{N_k}{\eq/[c][\num{n}]}$, since $n \le k$, and
-$\Value{c}{N_k} = k+1$. Thus, every finite subset of~$\Gamma$ is
-satisfiable.
+Usamos o teorema da compacidade para mostrar que~$\Gamma$ tem um
+modelo. Se todo subconjunto finito de~$\Gamma$ é satisfatível, então
+$\Gamma$ também é. Considere um subconjunto finito qualquer
+$\Gamma_0 \subseteq \Gamma$. $\Gamma_0$ inclui algumas !!{sentence}s
+de~$\Th{TA}$ e algumas da forma~$\eq/[c][\num{n}]$, mas apenas um
+número finito delas. Suponha que $k$ seja o maior número tal que
+$\eq/[c][\num{k}] \in \Gamma_0$. Defina $\Struct{N_k}$ expandindo
+$\Struct{N}$ para incluir a interpretação~$\Assign{c}{N_k} = k+1$.
+$\Sat{N_k}{\Gamma_0}$: se $!A \in \Th{TA}$, então $\Sat{N_k}{!A}$,
+pois $\Struct{N_k}$ é igual a~$\Struct{N}$ em todos os aspectos,
+exceto por~$c$, e $c$ não ocorre em~$!A$. E
+$\Sat{N_k}{\eq/[c][\num{n}]}$, pois $n \le k$ e $\Value{c}{N_k} =
+k+1$. Logo, todo subconjunto finito de~$\Gamma$ é satisfatível.
 \end{proof}
 
 \end{document}

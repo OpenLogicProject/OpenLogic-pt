@@ -6,60 +6,60 @@
 
 \begin{document}
 
-\olfileid{nml}{com}{cmk}
+\olfileid[pt]{nml}{com}{cmk}
 
-\olsection{Determination and Completeness for  \Log{K}}
+\olsection{Determinação e completude para \Log{K}}
 
-We are now prepared to use the canonical model to establish
-completeness. Completeness follows from the fact that the !!{formula}s
-true in the canonical model for~$\Sigma$ are exactly the
-$\Sigma$-!!{derivable} ones. Models with this property are said to
-\emph{determine}~$\Sigma$.
+Estamos agora preparados para usar o modelo canônico a fim de
+estabelecer a completude. A completude decorre do fato de que as
+!!{formula}s verdadeiras no modelo canônico de~$\Sigma$ coincidem
+exatamente com aquelas !!{derivable} em~$\Sigma$. Diz-se que os modelos com essa
+propriedade \emph{determinam}~$\Sigma$.
 
 \begin{defn}
-  A model $\mModel{M}$ \emph{determines} a normal modal
-  logic~$\Sigma$ precisely when $\mSat{M}{!A}$ if and only if $\Sigma
-  \Proves !A$, for all !!{formula}s~$!A$.
+  Um modelo $\mModel{M}$ \emph{determina} uma lógica modal
+  normal~$\Sigma$ precisamente quando $\mSat{M}{!A}$ se e somente se
+  $\Sigma \Proves !A$, para todas as !!{formula}s~$!A$.
 \end{defn}
 
-\begin{thm}[Determination]\ollabel{thm:determination}
-   $\mSat{M^\Sigma}{!A}$ if and only if $\Sigma \Proves !A$.
+\begin{thm}[Determinação]\ollabel{thm:determination}
+   $\mSat{M^\Sigma}{!A}$ se e somente se $\Sigma \Proves !A$.
 \end{thm}
 
 \begin{proof}
-  If $\mSat{M^\Sigma}{!A}$, then for every complete
-  $\Sigma$-consistent $\Delta$, we have
-  $\mSat{M^\Sigma}{!A}[\Delta]$. Hence, by the Truth Lemma, $!A \in
-  \Delta$ for every complete $\Sigma$-consistent $\Delta$, whence by
-  \olref[lin]{cor:provability-characterization} (with $\Gamma =
+  Se $\mSat{M^\Sigma}{!A}$, então, para todo conjunto completo
+  $\Sigma$-consistente $\Delta$, temos
+  $\mSat{M^\Sigma}{!A}[\Delta]$. Logo, pelo lema da verdade, $!A \in
+  \Delta$ para todo conjunto completo $\Sigma$-consistente $\Delta$;
+  daí, por \olref[lin]{cor:provability-characterization} (com $\Gamma =
   \emptyset$), $\Sigma \Proves !A$.
 
-  Conversely, if $\Sigma \Proves !A$ then by
-  \olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-closed}, every
-  complete $\Sigma$-consistent $\Delta$ contains~$!A$, and hence by
-  the Truth Lemma, $\mSat{M^\Sigma}{!A}[\Delta]$ for every~$\Delta \in
-  W^\Sigma$, O.s.\@, $\mSat{M^\Sigma}{!A}$.
+  Reciprocamente, se $\Sigma \Proves !A$, então, por
+  \olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-closed}, todo
+  conjunto completo $\Sigma$-consistente $\Delta$ contém~$!A$ e,
+  portanto, pelo lema da verdade, $\mSat{M^\Sigma}{!A}[\Delta]$ para
+  todo~$\Delta \in W^\Sigma$, isto é, $\mSat{M^\Sigma}{!A}$.
 \end{proof}
 
-Since the canonical model for \Log{K} determines~\Log{K}, we
-immediately have completeness of~\Log{K} as a corollary:
+Como o modelo canônico de \Log{K} determina~\Log{K}, obtemos
+imediatamente a completude de~\Log{K} como corolário:
 
 \begin{cor}\ollabel{cor:Kcomplete}
-  The basic modal logic \Log{K} is complete with respect to the
-  class of all models, O.s.\@, if $\Entails !A$ then $\Log{K}
+  A lógica modal básica \Log{K} é completa com respeito à
+  classe de todos os modelos, isto é, se $\Entails !A$, então $\Log{K}
   \Proves !A$.
 \end{cor}
 
 \begin{proof}
-  Contrapositively, if $\Log{K} \Proves/ !A$ then by Determination
-  $\mSat/{M^{\Log{K}}}{!A}$ and hence $!A$ is not valid.
+  Por contraposição, se $\Log{K} \Proves/ !A$, então, pela determinação,
+  $\mSat/{M^{\Log{K}}}{!A}$ e, portanto, $!A$ não é válida.
 \end{proof}
 
-For the general case of completeness of a system $\Sigma$ with respect
-to a class of models, p.ex., of \Log{KTB4} with respect to the class of
-reflexive, symmetric, transitive models, determination alone is not
-enough.  We must also show that the canonical model for the system
-$\Sigma$ is a member of the class, which does not follow obviously
-from the canonical model construction---nor is it always true!
+Para o caso geral da completude de um sistema $\Sigma$ com respeito a
+uma classe de modelos, por exemplo, de \Log{KTB4} com respeito à classe
+dos modelos reflexivos, simétricos e transitivos, a determinação por si
+só não basta. Devemos mostrar também que o modelo canônico do sistema
+$\Sigma$ é membro da classe, o que não decorre de maneira óbvia da
+construção do modelo canônico---nem é sempre verdade!
 
 \end{document}

@@ -6,46 +6,46 @@
 
 \begin{document}
 
-\olfileid{pt}{cut}{mid}
+\olfileid[pt]{pt}{cut}{mid}
 
-\olsection{The Midsequent Theorem and Herbrand's Theorem}
+\olsection{O Teorema do Sequente Médio e o Teorema de Herbrand}
 
-An important consequence of the cut-elimination theorem is the
-midsequent theorem. It states that if there is !!a{proof}~$\pi$
-of~$\Gamma \Sequent \Delta$ in which every !!{formula} is prenex, then
-there is !!a{proof}~$\pi'$ containing a sequent $S \ident \Pi \Sequent
-\Lambda$ (called the \emph{midsequent}) such that all inferences above
-$S$ in~$\pi'$ are propositional and all inferences below~$S$ are
-quantifier inferences. (!!^a{formula}~$!A$ is \emph{prenex} (or in
-\emph{prenex form}) if it is of the form
-\[\mathsf{Q}_1x_1\dots\mathsf{Q}_nx_n\,!B(x_1,\dots,x_n)\] where each
-$\mathsf{Q}_i$ is either $\lforall$ or~$\lexists$.) An important
-consequence of the midsequent theorem is Herbrand's theorem. Its
-general case is a little hard to describe, but very generally it takes
-the form: for every !!{provable} !!{sentence}~$!A$ of first-order
-logic, there is a propositional tautology~$!A'$ from which $!A$ can be !!{prove}d. Here is the version for
-!!{sentence}s of the form~$\lexists[x][!B(x)]$ where $!B$ is
-quantifier-free:
+Uma consequência importante do teorema da eliminação do corte é o
+teorema do sequente médio. Ele afirma que, se existe !!a{proof}~$\pi$
+de~$\Gamma \Sequent \Delta$ na qual toda !!{formula} é prenexa, então
+existe !!a{proof}~$\pi'$ que contém um sequente $S \ident \Pi \Sequent
+\Lambda$ (chamado de \emph{sequente médio}) tal que todas as inferências acima de
+$S$ em~$\pi'$ são proposicionais e todas as inferências abaixo de~$S$ são
+inferências de quantificadores. (!!^a{formula}~$!A$ é \emph{prenexa} (ou está na
+\emph{forma prenexa}) se tem a forma
+\[\mathsf{Q}_1x_1\dots\mathsf{Q}_nx_n\,!B(x_1,\dots,x_n)\] em que cada
+$\mathsf{Q}_i$ é $\lforall$ ou~$\lexists$.) Uma consequência importante
+do teorema do sequente médio é o Teorema de Herbrand. Seu
+caso geral é um pouco difícil de descrever, mas, em termos muito gerais, tem
+a forma seguinte: para toda !!{provable} !!{sentence}~$!A$ da lógica de primeira
+ordem, existe uma tautologia proposicional~$!A'$ a partir da qual $!A$ pode ser !!{prove}d. Eis a versão para
+!!{sentence}s da forma~$\lexists[x][!B(x)]$, em que $!B$ é
+sem quantificadores:
 
-\begin{thm}[Herbrand's Theorem]
-Suppose that $!B(x)$ is quantifier-free and that $\Proves 
-\lexists[x][!B(x)]$. Then there are terms~$t_1$, \dots, $t_n$
-such that $\Proves !B(t_1) \lor \dots \lor !B(t_n)$.
+\begin{thm}[Teorema de Herbrand]
+Suponha que $!B(x)$ seja sem quantificadores e que $\Proves 
+\lexists[x][!B(x)]$. Então existem termos~$t_1$, \dots, $t_n$
+tais que $\Proves !B(t_1) \lor \dots \lor !B(t_n)$.
 \end{thm}
 
-The !!{formula}~$!B(t_1) \lor \dots \lor !B(t_n)$ is called a
-\emph{Herbrand disjunction} of~$\lexists[x][!B(x)]$. Since $!B$ is
-quantifier-free, this disjunction is also quantifier-free. So if it is
-!!{provable}, it is !!{provable} by a cut-free proof and consequently
-with !!a{proof} that only uses propositional inferences. Hence, it is
-a tautology.
+A !!{formula}~$!B(t_1) \lor \dots \lor !B(t_n)$ é chamada de
+\emph{disjunção de Herbrand} de~$\lexists[x][!B(x)]$. Como $!B$ é
+sem quantificadores, essa disjunção também é sem quantificadores. Assim, se ela é
+!!{provable}, é !!{provable} por uma prova sem corte e, consequentemente,
+por !!a{proof} que usa apenas inferências proposicionais. Logo, é
+uma tautologia.
 
-The difficult part of Herbrand's Theorem is showing that a Herbrand
-disjunction exists for every !!{provable}
-!!{formula}~$\lexists[x][!B(x)]$. The converse, O.s.\@, that if
-$\lexists[x][!B(x)]$ has a Herbrand disjunction, then it is provable,
-is easy. In fact, the Herbrand disjunction entails $\lexists[x][!B(x)]$.
-P.ex., here is !!a{proof} in~$\Log{G3c}$ for the case where $n=2$:
+A parte difícil do Teorema de Herbrand é mostrar que existe uma disjunção de
+Herbrand para toda !!{provable}
+!!{formula}~$\lexists[x][!B(x)]$. A recíproca, isto é, que, se
+$\lexists[x][!B(x)]$ tem uma disjunção de Herbrand, então é demonstrável,
+é fácil. De fato, a disjunção de Herbrand implica $\lexists[x][!B(x)]$.
+Por exemplo, eis !!a{proof} em~$\Log{G3c}$ para o caso em que $n=2$:
 \[
 \Axiom$!B(t_1) \fCenter \lexists[x][!B(x)], !B(t_1), !B(t_2)$
 \Axiom$!B(t_2) \fCenter \lexists[x][!B(x)], !B(t_1), !B(t_2)$
@@ -58,9 +58,9 @@ P.ex., here is !!a{proof} in~$\Log{G3c}$ for the case where $n=2$:
 \DisplayProof
 \]
 
-To extract the Herbrand disjunction from !!a{proof}~$\pi$ of~$\Sequent
-\lexists[x][!B(x)]$, consider the case where all $\RightR{\lexists}$
-inferences in a cut-free !!{proof}~$\pi$ are at the end:
+Para extrair a disjunção de Herbrand de !!a{proof}~$\pi$ de~$\Sequent
+\lexists[x][!B(x)]$, considere o caso em que todas as inferências $\RightR{\lexists}$
+em uma !!{proof}~$\pi$ sem corte estão no final:
 \[
 \AxiomC{}
 \RightLabel{$\pi_1$}
@@ -71,63 +71,63 @@ inferences in a cut-free !!{proof}~$\pi$ are at the end:
 \Deduce$ \fCenter \lexists[x][!B(x)]$
 \DisplayProof
 \]
-If these are all the $\RightR{\lexists}$ inferences in~$\pi$ with
-$\lexists[x][!B(x)]$ active, then there are no other quantifier
-inferences in~$\pi_1'$. That's because $!B(x)$ contains no other
-quantifiers, and the end-sequent doesn't contain any !!{formula}s on
-the left. In other words, $ \fCenter \lexists[x][!B(x)], !B(t_1),
-\dots, !B(t_n)$ is the mid-sequent of~$\pi$. Moreover, since there are
-no quantifier inferences above the mid-sequent, all sequents above it
-contain $\lexists[x][!B(x)]$ and these are neither active nor
-principal. So they can be deleted from the !!{proof}~$\pi_1$, and we
-get !!a{proof} of~$\fCenter !B(t_1), \dots, !B(t_n)$, and using $n-1$
-applications of $\RightR{\lor}$, !!a{proof} of the Herbrand
-disjunction~$\Sequent !B(t_1) \lor \dots \lor !B(t_n)$.
+Se essas são todas as inferências $\RightR{\lexists}$ em~$\pi$ com
+$\lexists[x][!B(x)]$ ativa, então não há outras inferências de quantificadores
+em~$\pi_1'$. Isso porque $!B(x)$ não contém outros
+quantificadores, e o sequente final não contém quaisquer !!{formula}s à
+esquerda. Em outras palavras, $ \fCenter \lexists[x][!B(x)], !B(t_1),
+\dots, !B(t_n)$ é o sequente médio de~$\pi$. Além disso, como não há
+inferências de quantificadores acima do sequente médio, todos os sequentes acima dele
+contêm $\lexists[x][!B(x)]$, e essas ocorrências não são ativas nem
+principais. Portanto, elas podem ser apagadas da !!{proof}~$\pi_1$, e obtemos
+!!a{proof} de~$\fCenter !B(t_1), \dots, !B(t_n)$ e, usando $n-1$
+aplicações de $\RightR{\lor}$, !!a{proof} da disjunção de
+Herbrand~$\Sequent !B(t_1) \lor \dots \lor !B(t_n)$.
 
-The trouble is that we can't assume that even a cut-free !!{proof} of
-$\Sequent \lexists[x][!B(x)]$ has all its \RightR{\lexists} inferences
-in one block at the end. There might be inferences in between these
-\RightR{\lexists} inferences in which some $!B(t_i)$ is principal.
-Hence, the need for the midsequent theorem.
+O problema é que não podemos supor que nem mesmo uma !!{proof} sem corte de
+$\Sequent \lexists[x][!B(x)]$ tenha todas as suas inferências \RightR{\lexists}
+em um único bloco no final. Pode haver inferências entre essas
+inferências \RightR{\lexists} nas quais algum $!B(t_i)$ seja principal.
+Daí a necessidade do teorema do sequente médio.
 
-\begin{thm}[Midsequent Theorem]\ollabel{thm:midsequent} If there is a
-  \Log{G3c}-!!{proof}~$\pi$ of $\Gamma \Sequent \Delta$ where all
-  !!{formula}s in $\Gamma$ and $\Delta$ are prenex, then there is
-  !!a{proof}~$\pi'$ containing a sequent $\Pi \Sequent \Lambda$ such
-  that all inferences below it are quantifier inferences and all
-  inferences above it are propositional inferences.
+\begin{thm}[Teorema do Sequente Médio]\ollabel{thm:midsequent} Se existe uma
+  \Log{G3c}-!!{proof}~$\pi$ de $\Gamma \Sequent \Delta$ em que todas as
+  !!{formula}s de $\Gamma$ e $\Delta$ são prenexas, então existe
+  !!a{proof}~$\pi'$ que contém um sequente $\Pi \Sequent \Lambda$ tal
+  que todas as inferências abaixo dele são inferências de quantificadores e todas
+  as inferências acima dele são inferências proposicionais.
 \end{thm}
 
 \begin{proof}
-  Define the \emph{order} of a quantifier inference in~$\pi$ as the
-  number of propositional inferences below it, and the order~$o(\pi)$
-  of $\pi$ as the sum of the orders of all its quantifier inferences.
-  If $o(\pi) = 0$, then no quantifier inference has a propositional
-  inference below it, and we are done: Since all quantifier inferences
-  have one premise, there is a single topmost quantifier inference.
-  Its premise is the midsequent.
+  Defina a \emph{ordem} de uma inferência de quantificador em~$\pi$ como o
+  número de inferências proposicionais abaixo dela, e a ordem~$o(\pi)$
+  de $\pi$ como a soma das ordens de todas as suas inferências de quantificadores.
+  Se $o(\pi) = 0$, então nenhuma inferência de quantificador tem uma inferência
+  proposicional abaixo dela, e terminamos: como todas as inferências de quantificadores
+  têm uma premissa, existe uma única inferência de quantificador mais alta.
+  Sua premissa é o sequente médio.
 
-  If $o(\pi) > 0$, pick a bottom-most quantifier inference with order
-  $>0$. Since it has order $>0$, there must be a propositional
-  inference below it. Since it is a bottom-most one, its conclusion
-  can't be the premise of a quantifier inference: that second, lower
-  quantifier inference would also have a propositional inference below
-  it otherwise. We distinguish (many!) cases according to what quantifier
-  inference we have, and what the propositional inference below it is.
-  Because the end-sequent consists of prenex formulas only, the
-  principal formula of the quantifier inference can't be active in the
-  following propositional inference. Otherwise the principal formula
-  of that inference would have a quantifier in the scope of a
-  propositional connective. By the sub-!!{formula} property, this would
-  have to be a sub-!!{formula} of !!a{formula} in the end-sequent.
-  So, the principal !!{formula} of the quantifier inference is
-  !!a{element} of the context of the lower propositional inference.
+  Se $o(\pi) > 0$, escolha a inferência de quantificador mais baixa entre as de ordem
+  $>0$. Como sua ordem é $>0$, deve haver uma inferência proposicional
+  abaixo dela. Como ela é a mais baixa, sua conclusão
+  não pode ser a premissa de uma inferência de quantificador: caso contrário, essa segunda
+  inferência de quantificador, mais baixa, também teria uma inferência proposicional abaixo
+  dela. Distinguimos (muitos!) casos segundo qual inferência de quantificador
+  temos e qual é a inferência proposicional abaixo dela.
+  Como o sequente final consiste apenas em fórmulas prenexas, a
+  fórmula principal da inferência de quantificador não pode estar ativa na
+  inferência proposicional seguinte. Caso contrário, a fórmula principal
+  dessa inferência teria um quantificador no escopo de um
+  conectivo proposicional. Pela propriedade da sub-!!{formula}, ela teria
+  de ser uma sub-!!{formula} de !!a{formula} no sequente final.
+  Assim, a !!{formula} principal da inferência de quantificador é
+  !!a{element} do contexto da inferência proposicional inferior.
 
-  Here are two examples:
+  Eis dois exemplos:
 
-First, suppose we have a $\RightR{\lforall}$ which ends in the right
-premise of $\LeftR{\lif}$. Then the relevant sub-!!{proof} of~$\pi$
-ends in the sub-!!{proof}~$\pi_1$.
+Primeiro, suponha que tenhamos uma $\RightR{\lforall}$ que termina na premissa
+direita de $\LeftR{\lif}$. Então a sub-!!{proof} relevante de~$\pi$
+termina na sub-!!{proof}~$\pi_1$.
 \[
 \AxiomC{}
 \RightLabel{$\pi_2$}
@@ -141,9 +141,9 @@ ends in the sub-!!{proof}~$\pi_1$.
 \BinaryInf$!B \lif !C, \Gamma' \fCenter \Delta', \lforall[x][!A(x)]$
 \DisplayProof
 \]
-We can assume that $\pi$ is regular, and so the eigenvariable~$c$ does
-not occur outside~$\pi_3$; in particular, it does not occur in $!B
-\lif !C$ or in~$\pi_2$. Now consider the proof~$\pi_1'$:
+Podemos supor que $\pi$ seja regular; assim, a variável própria~$c$ não
+ocorre fora de~$\pi_3$; em particular, não ocorre em $!B
+\lif !C$ nem em~$\pi_2$. Considere agora a prova~$\pi_1'$:
 \[
 \AxiomC{}
 \RightLabel{$\pi_2'$}
@@ -157,35 +157,35 @@ not occur outside~$\pi_3$; in particular, it does not occur in $!B
 \UnaryInf$!B \lif !C, \Gamma' \fCenter \Delta', \lforall[x][!A(x)], \lforall[x][!A(x)]$
 \DisplayProof
 \]
-where $\pi_2'$ is obtained from~$\pi_2$ by weakening with~$!A(c)$ on
-the right. (This does not add any inferences, in particular, no
-quantifier inferences which might affect the order. It also does not
-violate any eigenvariable conditions in~$\pi_2$, since no constants
-in~$!A(c)$ are used as eigenvariables in~$\pi_2$.) The eigenvariable
-condition on \RightR{\lforall} is still satisfied, since $c$ does not
-occur in~$!B \lif !C$.
+em que $\pi_2'$ é obtida de~$\pi_2$ por enfraquecimento com~$!A(c)$ à
+direita. (Isso não acrescenta nenhuma inferência, em particular nenhuma
+inferência de quantificador que possa afetar a ordem. Também não
+viola nenhuma condição de variável própria em~$\pi_2$, pois nenhuma constante
+de~$!A(c)$ é usada como variável própria em~$\pi_2$.) A condição de variável própria
+de \RightR{\lforall} continua satisfeita, pois $c$ não
+ocorre em~$!B \lif !C$.
 
-We invoke the admissibility of contraction to
-obtain !!a{proof}~$\pi_1''$ of $!B \lif !C, \Gamma' \fCenter \Delta',
-\lforall[x][!A(x)]$. The proof of the admissibility of
-$\RightR{\Contraction}$ for $\lforall[x][!A(x)]$ and the proof of
-invertibility of $\RightR{\lforall}$ used in that proof did not change
-the order of any inference: it, at most, deleted inferences. Thus,
-there are no more quantifier inferences in~$\pi_1''$ than in~$\pi_1$,
-and each quantifier inference in~$\pi_1''$  has the same number of
-proposional inferences below it as its corresponding inference
-in~$\pi_1$---with the exception of the last \RightR{\lforall}: it had
-a \LeftR{\lif} below it in~$\pi$, which we have moved above it
-in~$\pi_1''$. Replace $\pi_1$ in $\pi$ by $\pi_1''$. The resulting
-!!{proof} has a lower order, since at least the order of the
-$\RightR{\lforall}$ inference has been reduced by (at least)~$1$.
-Now apply the inductive hypothesis.
+Invocamos a admissibilidade da contração para
+obter !!a{proof}~$\pi_1''$ de $!B \lif !C, \Gamma' \fCenter \Delta',
+\lforall[x][!A(x)]$. A demonstração da admissibilidade de
+$\RightR{\Contraction}$ para $\lforall[x][!A(x)]$ e a demonstração da
+invertibilidade de $\RightR{\lforall}$ usada nessa demonstração não alteraram
+a ordem de nenhuma inferência: no máximo, apagaram inferências. Assim,
+não há mais inferências de quantificadores em~$\pi_1''$ do que em~$\pi_1$,
+e cada inferência de quantificador em~$\pi_1''$ tem o mesmo número de
+inferências proposicionais abaixo dela que sua inferência correspondente
+em~$\pi_1$---com exceção da última \RightR{\lforall}: ela tinha
+uma \LeftR{\lif} abaixo dela em~$\pi$, que movemos para acima dela
+em~$\pi_1''$. Substitua $\pi_1$ em $\pi$ por $\pi_1''$. A
+!!{proof} resultante tem ordem menor, pois ao menos a ordem da inferência
+$\RightR{\lforall}$ foi reduzida em (pelo menos)~$1$.
+Agora aplique a hipótese de indução.
 
-The cases where the quantifier inference is \RightR{\lexists} is even
-easier, since contraction is not needed and no eigenvariable condition
-needs to be worried about. P.ex., suppose $\RightR{\lexists}$ is
-followed by $\RightR{\land}$ (this time as the left premise). The
-relevant sub-!!{proof} is $\pi_1$:
+Os casos em que a inferência de quantificador é \RightR{\lexists} são ainda
+mais fáceis, pois a contração não é necessária e não há condição de variável própria
+com que se preocupar. Por exemplo, suponha que $\RightR{\lexists}$ seja
+seguida por $\RightR{\land}$ (desta vez como premissa esquerda). A
+sub-!!{proof} relevante é $\pi_1$:
 \[
 \AxiomC{}
 \RightLabel{$\pi_2$}
@@ -199,7 +199,7 @@ relevant sub-!!{proof} is $\pi_1$:
 \BinaryInf$\Gamma' \fCenter \Delta', \lexists[x][!A(x)], !B \land !C$
 \DisplayProof
 \]
-Replace $\pi_1$ in~$\pi$ by $\pi_1'$:
+Substitua $\pi_1$ em~$\pi$ por $\pi_1'$:
 \[
 \AxiomC{}
 \RightLabel{$\pi_2$}
@@ -213,35 +213,35 @@ Replace $\pi_1$ in~$\pi$ by $\pi_1'$:
 \UnaryInf$\Gamma' \fCenter \Delta', \lexists[x][!A(x)], !B \land !C$
 \DisplayProof
 \]
-where $\pi_3'$ is obtained from $\pi_3$ by weakening with~$!A(t)$ on
-the right. This weakening involves merely adding $!A(t)$ to the right
-side of every sequent in~$\pi_3$, so does not change the order of any
-quantifier inference. The order of quantifier inferences is the same
-in~$\pi'$ as in~$\pi$, except the order of the \RightR{\lexists}
-inference permuted with~\RightR{\land} has decreased by~$1$. The
-inductive hypothesis applies.
+em que $\pi_3'$ é obtida de $\pi_3$ por enfraquecimento com~$!A(t)$ à
+direita. Esse enfraquecimento consiste apenas em acrescentar $!A(t)$ ao lado direito
+de todo sequente em~$\pi_3$ e, portanto, não altera a ordem de nenhuma
+inferência de quantificador. A ordem das inferências de quantificadores é a mesma
+em~$\pi'$ que em~$\pi$, exceto pela ordem da inferência \RightR{\lexists}
+permutada com~\RightR{\land}, que diminuiu em~$1$. Aplica-se a
+hipótese de indução.
 \end{proof}
 
 \begin{prob}
-Describe the cases in the proof of \olref{thm:midsequent} where
-\LeftR{\lexists} ends in the premise of~\RightR{\lif}, and where
-\LeftR{\lforall} ends in the left premise of~\LeftR{\lor}.
+Descreva os casos da demonstração de \olref{thm:midsequent} em que
+\LeftR{\lexists} termina na premissa de~\RightR{\lif}, e em que
+\LeftR{\lforall} termina na premissa esquerda de~\LeftR{\lor}.
 \end{prob}
 
-\begin{proof}[Prova do teorema de Herbrand]
-Suppose $\pi$ ends in $\Sequent \lexists[x][!A(x)]$. By
-\olref{thm:midsequent}, we can transform $\pi$ into !!a{proof}~$\pi'$
-with a midsequent~$S$, which must be of the form \[\Sequent
-\lexists[x][!A(x)], !A(t_1), \dots, !A(t_n).\] Since all inferences
-above $S$ are propositional, $\lexists[x][!A(x)]$ cannot be principal
-in an inference above~$S$. Since it is not atomic, it cannot be
-principal in an axiom. Since $\lexists[x][!A(x)]$ cannot be a proper
-subformula of $!A(t_1)$ (remember that $!A(x)$ is quantifier-free), it
-can also not be active above~$S$. Deleting $\lexists[x][!A(x)]$ from
-the sub-!!{proof} ending in~$S$ therefore yields a correct !!{proof}
-of $\Sequent !A(t_1), \dots, !A(t_n)$, from which !!a{proof} of
-$\Sequent !A(t_1) \lor \dots \lor !A(t_n)$ can be obtained by $n-1$
-$\RightR{\lor}$ inferences.
+\begin{proof}[Demonstração do Teorema de Herbrand]
+Suponha que $\pi$ termine em $\Sequent \lexists[x][!A(x)]$. Por
+\olref{thm:midsequent}, podemos transformar $\pi$ em !!a{proof}~$\pi'$
+com um sequente médio~$S$, que deve ter a forma \[\Sequent
+\lexists[x][!A(x)], !A(t_1), \dots, !A(t_n).\] Como todas as inferências
+acima de $S$ são proposicionais, $\lexists[x][!A(x)]$ não pode ser principal
+em uma inferência acima de~$S$. Como não é atômica, não pode ser
+principal em um axioma. Como $\lexists[x][!A(x)]$ não pode ser uma subfórmula
+própria de $!A(t_1)$ (lembre que $!A(x)$ é sem quantificadores), também
+não pode estar ativa acima de~$S$. Portanto, apagar $\lexists[x][!A(x)]$ da
+sub-!!{proof} que termina em~$S$ produz uma !!{proof} correta
+de $\Sequent !A(t_1), \dots, !A(t_n)$, da qual se pode obter !!a{proof} de
+$\Sequent !A(t_1) \lor \dots \lor !A(t_n)$ por meio de $n-1$
+inferências $\RightR{\lor}$.
 \end{proof}
 
 % \begin{prob}

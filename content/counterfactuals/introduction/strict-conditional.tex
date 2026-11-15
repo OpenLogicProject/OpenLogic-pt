@@ -6,50 +6,50 @@
 
 \begin{document}
 
-\olfileid{cnt}{int}{str}
+\olfileid[pt]{cnt}{int}{str}
 
-\olsection{The Strict Conditional}
+\olsection{O condicional estrito}
 
-Lewis introduced the \emph{strict conditional}~$\strictif$ and argued
-that it, not the material conditional, corresponds to implication.  In
-alethic modal logic, $!A \strictif !B$ can be defined as $\Box(!A \lif
-!B)$. A strict conditional is thus true (at a world) iff the
-corresponding material conditional is necessary.
+Lewis introduziu o \emph{condicional estrito}~$\strictif$ e defendeu
+que ele, e não o condicional material, corresponde à implicação. Na
+lógica modal alética, $!A \strictif !B$ pode ser definido como $\Box(!A \lif
+!B)$. Assim, um condicional estrito é verdadeiro em um mundo se, e somente se, o
+condicional material correspondente é necessário.
 
-How does the strict conditional fare vis-a-vis the paradoxes of the
-material conditional?  A strict conditional with a false antecedent
-and one with a true consequent, may be true, or it may be
-false. Moreover, $(!A \strictif !B) \lor (!B \strictif !A)$ is not
-valid. The strict conditional $!A \strictif !B$ is also not equivalent
-to $\lnot !A \lor !B$, so it is not truth functional.
+Como se sai o condicional estrito diante dos paradoxos do
+condicional material? Um condicional estrito com antecedente falso,
+assim como um com consequente verdadeiro, pode ser verdadeiro ou
+falso. Além disso, $(!A \strictif !B) \lor (!B \strictif !A)$ não é
+válido. O condicional estrito $!A \strictif !B$ tampouco equivale
+a $\lnot !A \lor !B$, portanto não é verofuncional.
 
-We have:
+Temos:
 \begin{align}
   !A \strictif !B & \Entails \lnot !A \lor !B
-  \text{ but:}\\
+  \text{, mas:}\\
   \lnot !A \lor !B & \Entails/ !A \strictif !B\\
   !B & \Entails/ !A \strictif !B\\
   \lnot !A & \Entails/ !A \strictif !B\\
   \lnot(!A \lif !B) & \Entails/ !A \land \lnot !B
-  \text{ but:}\\
+  \text{, mas:}\\
   !A \land \lnot !B & \Entails \lnot(!A \strictif !B)
-  \intertext{However, the strict conditional still supports modus ponens:}
+  \intertext{Contudo, o condicional estrito ainda admite o modus ponens:}
   !A, !A \strictif !B & \Entails !B
-  \intertext{The strict conditional agglomerates:}
+  \intertext{O condicional estrito aglomera:}
   !A \strictif !B,  !A \strictif !C & \Entails !A \strictif (!B \land !C)
-  \intertext{Antecedent strengthening holds for the strict conditional:}
+  \intertext{O fortalecimento do antecedente vale para o condicional estrito:}
   !A \strictif !B & \Entails (!A \land !C) \strictif !B
-  \intertext{The strict conditional is also transitive:}
+  \intertext{O condicional estrito também é transitivo:}
   !A \strictif !B, !B \strictif !C & \Entails !A \strictif !C
-  \intertext{Finally, the strict conditional is equivalent to its
-    contrapositive:}
+  \intertext{Por fim, o condicional estrito equivale à sua
+    contrapositiva:}
   !A \strictif !B & \Entails \lnot !B \strictif \lnot !A\\
   \lnot !B \strictif \lnot !A & \Entails !A \strictif !B
 \end{align}
 
 \begin{prob}
-  Give \Log{S5}-counterexamples to the entailment relations which do not hold
-  for the strict conditional, O.s.\@, for:
+  Dê contraexemplos em \Log{S5} para as relações de consequência que não valem
+  para o condicional estrito, isto é, para:
   \begin{enumerate}
   \item $\lnot p \Entails/ \Box(p \lif q)$
   \item $q \Entails/ \Box(p \lif q)$
@@ -59,8 +59,8 @@ We have:
 \end{prob}
 
 \begin{prob}
-  Show that the valid entailment relations hold for the strict
-  conditional by giving \Log{S5}-proofs of:
+  Mostre que as relações de consequência válidas valem para o condicional
+  estrito, fornecendo provas em \Log{S5} de:
   \begin{enumerate}
   \item  $\Box(!A \lif !B) \Entails \lnot !A \lor !B$
   \item $!A \land \lnot !B \Entails \lnot\Box(!A \lif !B)$
@@ -75,35 +75,35 @@ We have:
   \end{enumerate}
   \end{prob}
 
-However, the strict conditional still has its own ``paradoxes.'' Just
-as a material conditional with a false antecedent or a true consequent
-is true, a strict conditional with a \emph{necessarily} false
-antecedent or a necessarily true consequent is true. Moreover, any
-true strict conditional is necessarily true, and any false strict
-conditional is necessarily false. In other words, we have
+Contudo, o condicional estrito ainda tem seus próprios ``paradoxos''.
+Assim como um condicional material com antecedente falso ou consequente verdadeiro
+é verdadeiro, um condicional estrito com antecedente \emph{necessariamente}
+falso ou consequente necessariamente verdadeiro é verdadeiro. Além disso, todo
+condicional estrito verdadeiro é necessariamente verdadeiro, e todo condicional estrito
+falso é necessariamente falso. Em outras palavras, temos
 \begin{align}
   \Box \lnot !A & \Entails !A \strictif !B\\
   \Box !B & \Entails !A \strictif !B\\
   !A \strictif !B& \Entails \Box(!A \strictif !B)\\
   \lnot(!A \strictif !B) & \Entails \Box\lnot(!A \strictif !B)
 \end{align}
-These are not problems if you think of $\strictif$ as ``implies.''
-Logical entailment relationships are, after all, mathematical facts and so
-can't be contingent. But they do raise issues if you want to use
-$\strictif$ as a logical connective that is supposed to capture ``if
-\dots then \dots,'' especially the last two. For surely there are ``if
-\dots then \dots'' statements that are contingently true or
-contingently false---in fact, they generally are neither necessary nor
-impossible.
+Esses fatos não são problemas se interpretarmos $\strictif$ como ``implica''.
+Afinal, relações de consequência lógica são fatos matemáticos e, portanto,
+não podem ser contingentes. Mas eles levantam dificuldades se quisermos usar
+$\strictif$ como um conectivo lógico destinado a representar ``se
+\dots, então \dots'', especialmente nos dois últimos casos. Certamente há enunciados
+da forma ``se \dots, então \dots'' que são contingentemente verdadeiros ou
+contingentemente falsos---na verdade, em geral não são nem necessários nem
+impossíveis.
 
 \begin{prob}
-  Give proofs in \Log{S5} of:
+  Dê provas em \Log{S5} de:
   \begin{enumerate}
     \item  $\Box \lnot !A \Entails !A \strictif !B$
     \item $!A \strictif !B \Entails \Box(!A \strictif !B)$
     \item $\lnot(!A \strictif !B)  \Entails \Box\lnot(!A \strictif !B)$
   \end{enumerate}
-  Use the definition of $\strictif$ to do so.
+  Use a definição de $\strictif$ para isso.
 \end{prob}
 
 \end{document}

@@ -1,0 +1,329 @@
+% Part: proof-theory
+% Chapter: normalization
+% Section: translations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{pt}{nor}{tr}
+
+\olsection{Tradução entre \Log{N2i}-\usetoken{P}{proof} normais e \Log{G2i}}
+
+!!^{proof}s em \Log{N2i} podem ser traduzidas em !!{proof}s em \Log{G2i}
+e vice-versa. Antes de mais nada, a tradução de !!{proof}s sem corte
+de \Log{2i} resulta em !!{proof}s normais de \Log{N2i}.
+
+Para enunciar o resultado, precisamos de um pouco de terminologia que nos
+permita relacionar mais facilmente os antecedentes de sequentes em~\Log{N2i}
+e em~\Log{G2i}: um conjunto~$\Gamma'$ de !!{formula}s rotuladas
+\emph{corresponde ao} multiconjunto~$\Gamma$ de !!{formula}s não rotuladas
+se, para toda !!{formula}~$!A$, o número de !!{element}s de~$\Gamma'$ da
+forma $x : !A$ é menor ou igual à multiplicidade de~$!A$
+em~$\Gamma$.
+
+\begin{cor}
+Se $\Log{G2i} \Proves \Gamma \Sequent \Delta$, então existe uma
+\Log{N2c}-!!{proof} normal~$\delta$ de $\Gamma' \Sequent !C$, em que o
+conjunto~$\Gamma'$ de !!{formula}s rotuladas corresponde ao
+multiconjunto~$\Gamma$, isto é, para toda !!{formula}~$!A$, o número de
+!!{element}s de~$\Gamma'$ da forma $x : !A$ é menor ou igual à
+multiplicidade de~$!A$ (isto é, ao número de cópias de~$!A$)
+em~$\Gamma$.
+\end{cor}
+
+\begin{proof}
+Por inspeção da demonstração de \olref[nat][tgi]{prop:G2i-to-N2i}:
+acrescentamos regras de !!{introduction} ao final das !!{proof}s e regras
+de !!{elimination} somente no topo das !!{proof}s; portanto, nunca
+introduzimos uma regra de !!{introduction} acima de !!a{elimination}.
+\end{proof}
+
+A tradução da regra \Cut{} dada em
+\olref[nat][tgi]{prop:G2i-to-N2i}, contudo, pode introduzir cortes na
+\Log{N2i}-!!{proof}~$\delta$. Se uma !!{proof} de \Log{G2i} termina em~\Cut{}
+com sub-!!{proof}s imediatas $\pi_1$ e $\pi_2$ de $\Gamma_1
+\Sequent !A$ e $!A, \Gamma_2 \Sequent \Delta_2$, respectivamente,
+enxertamos a tradução $\delta_1$ de~$\pi_1$ nos axiomas $x:!A
+\Sequent !A$ que ocorrem na tradução~$\delta_2$ de~$\pi_2$. Se
+$\delta_1$ termina em !!a{introduction} com !!{formula}
+principal~$!A$, e o axioma $x:!A \Sequent !A$ em~$\delta_2$ é a
+premissa maior de !!a{elimination}, isso produziria um corte
+em~$\delta$.
+
+Também é possível traduzir !!{proof}s em \Log{N2i} em !!{proof}s
+em~\Log{G2i}. Na demonstração de \olref[nat][tni]{prop:N2-to-G2}, a
+tradução de \Elim{\land}, \Elim{\lif}, \Elim{\lnot} e
+\Elim{\lforall} produz inferências~\Cut{} na !!{proof} de \Log{G2i}
+resultante. Se a \Log{N2i}-!!{proof} da qual partimos, isso, contudo,
+pode ser evitado.
+
+Chamemos uma lista $S_1$, \dots,~$S_n$ de ocorrências de sequentes em uma
+\Log{N2i}-!!{proof}~$\delta$ de \emph{ramificação} se $S_1$ é um axioma e,
+sempre que $S_i$ é premissa maior de uma inferência, $S_{i+1}$ é sua
+conclusão. Em outras palavras, uma ramificação acompanha os sequentes para
+baixo em~$\delta$, a partir de axiomas, mas para nas premissas menores de
+regras de !!{elimination}. Uma \emph{ramificação principal} de~$\delta$ é uma
+ramificação em que $S_n$ é o sequente final. Toda !!{proof}~$\delta$ deve ter
+ao menos uma ramificação principal, pois toda regra tem ao menos uma premissa
+maior (somente \Intro{\land} tem duas).
+
+
+\begin{prop}\ollabel{prop:normal-N2i-to-G2i} Se $\delta$ é uma
+$\Log{N2c}$- ou $\Log{N2i}$-!!{proof} normal de~$\Gamma \Sequent !A$,
+então existe uma $\Log{G2c}$-!!{proof} (sem corte)
+($\Log{G2i}$-!!{proof})~$\pi$ de $\Gamma' \Sequent \Delta$, em que
+$\Gamma'$ é o multiconjunto de !!{formula}s que resulta da remoção dos
+rótulos de $\Gamma$, e $\Delta = \{!A\}$ se $!A$ não é~$\lfalse$, e
+$\Delta = \emptyset$ caso seja.
+\end{prop}
+
+\begin{proof}
+Desta vez, a indução é sobre o número de inferências na
+!!{proof}~$\delta$ de $\Gamma \Sequent !A$. Se não há inferência
+em~$\delta$, ela é um axioma $x:!A \Sequent !A$, e $\pi$ é o axioma
+correspondente $!A \Sequent !A$ ou $\lfalse \Sequent \ $ se $!A
+\ident \lfalse$.
+
+Se $\delta$ termina em uma regra de inferência, distinguimos casos:
+\begin{enumerate}
+  \item Se $R$ é !!a{introduction} ou~\FalseInt, a
+  tradução procede exatamente como na demonstração de
+  \olref[nat][tni]{prop:N2-to-G2} e não requer~\Cut.
+
+  Se a última regra~$R$ de~$\delta$ é !!a{elimination}, observe o
+  seguinte:
+  \begin{enumerate}
+    \item Uma ramificação principal de~$\delta$ não passa por nenhuma
+    regra de !!{introduction}, pois, caso contrário, haveria uma
+    regra de !!a{introduction} ou~\FalseInt{} seguida de !!a{elimination}
+    ao longo da ramificação principal, e $\delta$ não seria normal.
+    \item Como não há regras de !!{introduction} ao longo das ramificações
+    principais de~$\delta$, há somente uma ramificação principal. (Somente
+    \Intro{\land} tem duas premissas maiores; portanto, múltiplas ramificações
+    principais teriam de passar pelas premissas de uma regra \Intro{\land}.)
+    \item Se a ramificação principal inclui a premissa maior de \Elim{\lor}
+    ou \Elim{\lexists}, há somente uma regra desse tipo, e ela é a última,
+    isto é,~$R$. (Caso contrário, a ramificação principal conteria uma regra
+    \Elim{\lor} ou \Elim{\lexists} cuja conclusão seria a premissa maior de
+    !!a{elimination}, e a demonstração não seria normal, pois poderíamos aplicar
+    uma conversão por permutação.)
+  \item Nenhuma regra de !!{elimination}, salvo \Elim{\lor} e
+  \Elim{\lexists}, descarrega hipóteses, isto é, altera o contexto esquerdo
+  dos sequentes. \Elim{\lor} e \Elim{\lexists} só descarregam
+  hipóteses acima de uma premissa menor, isto é, alteram o contexto esquerdo
+  somente de suas premissas menores. Em outras palavras, se um sequente $S_i$
+  na ramificação principal de~$\delta$ tem contexto~$\Gamma_1$, a
+  conclusão~$S_{i+1}$ da inferência da qual $S_i$ é a premissa maior tem
+  contexto $\Gamma_1' \supseteq \Gamma_1$.
+  \item Consequentemente, se $x: !C \Sequent !C$ é o sequente
+  mais alto~$S_1$ na ramificação principal, $x:!C \in \Gamma$. 
+  \end{enumerate}
+  Distinguimos agora casos de acordo com a forma de~$!C$. Como todo
+  $S_i$ na ramificação principal é premissa maior de !!a{elimination},
+  isso também se aplica a $x:!C \Sequent !C$.
+
+  \item $!C \ident !D \land !E$. Então $\delta$ tem a forma
+  \[
+  \Axiom$x:!D \land !E \fCenter !D \land !E$
+  \RightLabel{\Elim{\land}[1]}
+  \UnaryInf$x:!D \land !E \fCenter !D$
+  \Deduce$x:!D \land !E, \Gamma_1 \fCenter !A$
+  \DisplayProof
+  \]
+  A ramificação principal inclui $x:!D \land !E \Sequent !D$ e não contém
+  premissa maior de \Intro{\lif} ou \Intro{\lnot}, nem premissa menor de
+  \Elim{\lor} ou \Elim{\lexists}; as !!{formula}s do contexto em $x:!D
+  \land !E$ permanecem inalteradas ao longo da ramificação principal. Isso
+  explica por que o contexto do sequente final deve conter~$x:!D \land !E$.
+  Além disso, podemos transformar a !!{proof} $\delta$ em uma
+  !!{proof}~$\delta_1$ substituindo a sub-!!{proof} que termina em
+  \Elim{\land} por $x:!D \Sequent !D$ e substituindo $x:!D \land !E$ por
+  $x:!D$ no contexto de cada sequente ao longo da ramificação principal,
+  isto é, transformar
+  \[
+  \bottomAlignProof
+  \Axiom$x:!D \land !E \fCenter !D \land !E$
+  \RightLabel{\Elim{\land}[1]}
+  \UnaryInf$x:!D \land !E \fCenter !D$
+  \Deduce$x:!D \land !E, \Gamma_1 \fCenter !A$
+  \DisplayProof
+  \quad\text{ em }\quad
+  \bottomAlignProof
+  \Axiom$x:!D \fCenter !D$
+  \Deduce$x:!D, \Gamma_1 \fCenter !A$
+  \DisplayProof
+  \]
+  A hipótese de indução se aplica a $\delta_1$,
+  pois o número de inferências em $\delta$ é o número
+  de inferências em $\delta'$ mais~$1$.
+
+  Pela hipótese de indução, existe uma \Log{G2i}-!!{proof} $\pi_1$ de
+  $x:!D, \Gamma_1 \Sequent !A$. 
+  Obtemos a !!{proof}~$\pi$ aplicando \LeftR{\land}:
+  \[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$!D, \Gamma_1' \fCenter !A$
+  \RightLabel{\LeftR{\land}}
+  \UnaryInf$!D \land !E, \Gamma_1' \fCenter !A$
+  \DisplayProof
+  \]
+  Se $!A \ident \lfalse$, inserimos uma
+  \RightR{\Weakening}, por exemplo,
+  \[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$!D, \Gamma_1' \fCenter $
+  \RightLabel{\LeftR{\land}}
+  \UnaryInf$!D \land !E, \Gamma_1' \fCenter $
+  \RightLabel{\RightR{\Weakening}}
+  \UnaryInf$!D \land !E, \Gamma_1' \fCenter !A$
+  \DisplayProof
+  \]
+  \item Se $!C \ident !D \lor !E$, ela deve ser a premissa maior de
+  \Elim{\lor}, e essa inferência deve ser a última inferência~$R$ na
+  ramificação principal. Em outras palavras, $\delta$ tem a forma:
+  \[
+  \Axiom$x:!D \lor !E \fCenter !D \lor !E$
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \Deduce$y:!D, \Gamma_1 \fCenter!A$
+  \AxiomC{}
+  \RightLabel{$\delta_2$}
+  \Deduce$z:!E, \Gamma_2 \fCenter !A$
+  \RightLabel{\Elim{\lor}}
+  \TrinaryInf$x:!D \lor !E, \Gamma_1, \Gamma_2 \fCenter !A$
+  \DisplayProof
+  \]
+  A hipótese de indução se aplica às !!{proof}s $\delta_1$ e
+  $\delta_2$; obtemos \Log{G2i}-!!{proof}s $\pi_1$ e $\pi_2$ de
+  $!D, \Gamma_1' \Sequent !A$ e $!E, \Gamma_2' \Sequent !A$. Aplicamos
+  $\LeftR{\lor}$ para obter~$\pi$:
+  \[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$!D, \Gamma_1' \fCenter !A$
+  \AxiomC{}
+  \RightLabel{$\pi_2$}
+  \Deduce$!E, \Gamma_2' \fCenter !A$
+  \RightLabel{\LeftR{\lor}}
+  \BinaryInf$!D \lor !E, \Gamma_1', \Gamma_2' \fCenter !A$
+  \DisplayProof
+  \]
+  Se $\Elim{\lor}$ não descarregar $y: !D$ ou $z: !E$ (isto é, se eles
+  não estiverem presentes no contexto das premissas menores), ou se~$!A$
+  for $\lfalse$, teremos de acrescentar algumas \LeftR{\Weakening} e
+  \RightR{\Weakening}. Por exemplo,
+  \[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$\Gamma_1' \fCenter $
+  \RightLabel{\LeftR{\Weakening}}
+  \UnaryInf$!D, \Gamma_1' \fCenter $
+  \AxiomC{}
+  \RightLabel{$\pi_2$}
+  \Deduce$\Gamma_2' \fCenter $
+  \RightLabel{\LeftR{\Weakening}}
+  \UnaryInf$!E, \Gamma_2' \fCenter $
+  \RightLabel{\LeftR{\lor}}
+  \BinaryInf$!D \lor !E, \Gamma_1', \Gamma_2' \fCenter $
+  \RightLabel{\RightR{\Weakening}}
+  \UnaryInf$!D \lor !E, \Gamma_1', \Gamma_2' \fCenter !A$
+  \DisplayProof
+  \]
+  
+  \item $!C \ident !D \lif !E$. Então $\delta$ tem a forma
+  \[
+  \Axiom$x:!D \lif !E \fCenter !D \lif !E$
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \Deduce$\Gamma_1 \fCenter!D$
+  \RightLabel{\Elim{\lif}}
+  \BinaryInf$x:!D \lif !E, \Gamma_1 \fCenter !E$
+  \RightLabel{$\delta_2$}
+  \Deduce$x:!D \lif !E, \Gamma_1, \Gamma_2 \fCenter !A$
+  \DisplayProof
+  \]
+  Observe aqui que, como a ramificação principal, que inclui $x:!D \lif !E,
+  \Gamma_1 \Sequent !E$, não contém premissa maior de \Intro{\lif} ou
+  \Intro{\lnot}, nem premissa menor de \Elim{\lor} ou \Elim{\lexists},
+  as !!{formula}s do contexto em $x:!D \lif !E, \Gamma_1$ permanecem
+  inalteradas ao longo da ramificação principal. Isso explica por que o
+  contexto do sequente final deve conter~$x:!D \lif !E, \Gamma_1$. Além
+  disso, podemos transformar o fragmento de !!{proof} $\delta_2$ em uma
+  !!{proof} correta~$\delta_2'$ substituindo a sub-!!{proof} que termina em
+  \Elim{\lif} por $x:!E \Sequent !E$ e substituindo $x:!D \lif !E,
+  \Gamma_1$ por $x:!E$ no contexto de cada sequente ao longo da ramificação
+  principal, isto é, transformar
+  \[
+  \bottomAlignProof
+  \Axiom$x:!D \lif !E, \Gamma_1 \fCenter !E$
+  \RightLabel{$\delta_2$}
+  \Deduce$x:!D \lif !E, \Gamma_1, \Gamma_2 \fCenter !A$
+  \DisplayProof
+  \quad\text{ em }\quad
+  \bottomAlignProof
+  \Axiom$x:!E \fCenter !E$
+  \RightLabel{$\delta_2'$}
+  \Deduce$x:!E, \Gamma_2 \fCenter !A$
+  \DisplayProof
+  \]
+  A hipótese de indução se aplica a $\delta_1$ e $\delta_2'$,
+  pois o número de inferências em $\delta$ é a soma dos números
+  de inferências em $\delta_1$ e~$\delta_2$, mais~$1$ correspondente à
+  inferência \Elim{\lif} no início da ramificação principal. (Se essa
+  inferência também for a última inferência~$R$ em $\delta$, então $\delta_1$
+  contém $0$ inferências.)
+
+  Pela hipótese de indução, existem \Log{G2i}-!!{proof}s $\pi_1$ de
+  $\Gamma_1 \Sequent !D$ e $\pi_2$ de $!E, \Gamma_1' \Sequent !A$.
+  Obtemos a !!{proof}~$\pi$ aplicando \LeftR{\lif}:
+  \[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$\Gamma_1' \fCenter !D$
+  \AxiomC{}
+  \RightLabel{$\pi_2$}
+  \Deduce$!E, \Gamma_2' \fCenter !A$
+  \RightLabel{\LeftR{\lif}}
+  \BinaryInf$!D \lif !E, \Gamma_1', \Gamma_2' \fCenter !A$
+  \DisplayProof
+  \]
+  Se $!D$ e/ou $!A \ident \lfalse$, inserimos uma ou duas
+  \RightR{\Weakening}, por exemplo,
+  \[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$\Gamma_1' \fCenter $
+  \RightLabel{\RightR{\Weakening}}
+  \UnaryInf$\Gamma_1' \fCenter !D$
+  \AxiomC{}
+  \RightLabel{$\pi_2$}
+  \Deduce$!E, \Gamma_2' \fCenter $
+  \RightLabel{\RightR{\Weakening}}
+  \UnaryInf$!E, \Gamma_2' \fCenter !A$
+  \RightLabel{\LeftR{\lif}}
+  \BinaryInf$!D \lif !E, \Gamma_1', \Gamma_2' \fCenter !A$
+  \DisplayProof
+  \]
+
+\end{enumerate}
+Os casos restantes são tratados de modo semelhante e ficam como exercícios.
+\end{proof}
+
+\begin{cor}
+Toda !!{formula} que ocorre em uma \Log{N1i}- ou
+\Log{N2i}-!!{proof} normal é uma sub-!!{formula} da !!{formula} final ou
+do sequente final.
+\end{cor}
+
+\begin{proof}
+  Por \olref{prop:normal-N2i-to-G2i}, toda \Log{N2i}-!!{proof} normal
+  pode ser traduzida em uma \Log{G2i}-!!{proof}. Uma inspeção da demonstração
+  mostra que toda !!{formula} que ocorre na \Log{N2i}-!!{proof}
+  também ocorre na \Log{G2i}-!!{proof}. \Log{G2i}, por não ter a regra
+  \Cut{}, possui a propriedade da sub-!!{formula}.
+\end{proof}
+
+\end{document}

@@ -6,123 +6,123 @@
 
 \begin{document}
 
-\olfileid{lam}{int}{bet}
-\olsection{$\beta$-reduction}
+\olfileid[pt]{lam}{int}{bet}
+\olsection{Redução~$\beta$}
 
-When we see $(\lambd[m][(\lambd[y][y]) m])$, it is natural to
-conjecture that it has some connection with $\lambd[m][m]$, namely the
-second term should be the result of ``simplifying'' the first.  The
-notion of \emph{$\beta$-reduction} captures this intuition formally.
+Quando vemos $(\lambd[m][(\lambd[y][y]) m])$, é natural conjecturar que ele
+tem alguma relação com $\lambd[m][m]$, a saber, que o segundo termo deve ser o
+resultado de «simplificar» o primeiro. A noção de \emph{redução~$\beta$}
+captura formalmente essa intuição.
 
-\begin{defn}[$\beta$-contraction, $\bredone$] \ollabel{defn:betacontr}
-  \emph{The $\beta$-contraction} ($\bredone$) is the smallest compatible
-  relation on terms satisfying the following condition:
+\begin{defn}[Contração~$\beta$, $\bredone$] \ollabel{defn:betacontr}
+  A \emph{contração~$\beta$} ($\bredone$) é a menor relação compatível sobre
+  termos que satisfaz a seguinte condição:
   \[
     (\lambd[x][N])Q \bredone \Subst{N}{Q}{x} 
   \]
-  We say $P$ is \emph{$\beta$-contracted} to $Q$ if $P \bredone Q$.  A
-  term of the form $(\lambd[x][N])Q$ is called a \emph{redex}.
+  Dizemos que $P$ é \emph{contraído por~$\beta$} a $Q$ se $P \bredone Q$. Um
+  termo da forma $(\lambd[x][N])Q$ é chamado de \emph{redex}.
 \end{defn}
 
 \begin{prob} \ollabel{prob:def}
-  Spell out the equivalent inductive definitions of $\beta$-contraction as we
-  did for change of bound variable in \olref[lam][syn][alp]{defn:aconvone}.
+  Explicite as definições indutivas equivalentes de contração~$\beta$, como
+  fizemos para a mudança de variável ligada em
+  \olref[lam][syn][alp]{defn:aconvone}.
 \end{prob}
   
-\begin{defn}[$\beta$-reduction, $\bred$] \ollabel{defn:betared}
-  \emph{$\beta$-reduction} ($\bred$) is the smallest reflexive,
-  transitive relation on terms containing $\bredone$.  We say $P$ is
-  $\beta$-reduced to $Q$ if $P \bred Q$.
+\begin{defn}[Redução~$\beta$, $\bred$] \ollabel{defn:betared}
+  A \emph{redução~$\beta$} ($\bred$) é a menor relação reflexiva e transitiva
+  sobre termos que contém~$\bredone$. Dizemos que $P$ é reduzido por~$\beta$
+  a $Q$ se $P \bred Q$.
 \end{defn}
 
-We will write $\redone$ instead of $\bredone$, and $\red$ instead of
-$\bred$ when context is clear.
+Escreveremos $\redone$ em vez de $\bredone$, e $\red$ em vez de $\bred$,
+quando o contexto for claro.
 
-Informally speaking, $M \bred N$  if and only if $M$ can be changed to
-$N$ by zero or several steps of $\beta$-contraction.
+Em termos informais, $M \bred N$ se e somente se $M$ pode ser transformado em
+$N$ por zero ou vários passos de contração~$\beta$.
 
-\begin{defn}[$\beta$-normal]
-A term that cannot be $\beta$-contracted any further is said to be
-\emph{$\beta$-normal}. 
+\begin{defn}[Normal por~$\beta$]
+Um termo que não pode mais ser contraído por~$\beta$ é dito
+\emph{normal por~$\beta$}.
 \end{defn}
 
-If $M \bred N$ and $N$ is $\beta$-normal, then we say $N$ is a
-\emph{normal form} of~$M$. One may ask if the normal form of a term is
-unique, and the answer is yes, as we will see later.
+Se $M \bred N$ e $N$ é normal por~$\beta$, dizemos que $N$ é uma
+\emph{forma normal} de~$M$. Pode-se perguntar se a forma normal de um termo é
+única, e a resposta é afirmativa, como veremos mais adiante.
 
-Let us consider some examples.
+Consideremos alguns exemplos.
 \begin{enumerate}
-\item We have
+\item Temos
 \begin{align*}
 (\lambd[x][xxy]) \lambd[z][z] & \redone (\lambd[z][z])(\lambd[z][z]) y \\
 & \redone (\lambd[z][z]) y \\
 & \redone y
 \end{align*}
-\item ``Simplifying'' a term can actually make it more complex:
+\item «Simplificar» um termo pode, na verdade, torná-lo mais complexo:
 \begin{align*}
 (\lambd[x][xxy])(\lambd[x][xxy]) & \redone (\lambd[x][xxy])(\lambd[x][xxy])y \\
 & \redone (\lambd[x][xxy])(\lambd[x][xxy])yy \\
 & \redone \dots
 \end{align*}
-\item It can also leave a term unchanged:
+\item Também pode deixar um termo inalterado:
 \[
 (\lambd[x][xx])(\lambd[x][xx]) \redone (\lambd[x][xx])(\lambd[x][xx])
 \]
-\item Also, some terms can be reduced in more than one way; for
-  example,
+\item Além disso, alguns termos podem ser reduzidos de mais de uma maneira;
+  por exemplo,
 \[
 (\lambd[x][(\lambd[y][yx]) z]) v \redone (\lambd[y][yv]) z
 \]
-by contracting the outermost application; and
+pela contração da aplicação mais externa; e
 \[
 (\lambd[x][(\lambd[y][yx]) z]) v \redone (\lambd[x][zx]) v
 \]
-by contracting the innermost one. Note, in this case, however, that
-both terms further reduce to the same term, $zv$.
+pela contração da aplicação mais interna. Observe, contudo, que, nesse caso,
+ambos os termos se reduzem posteriormente ao mesmo termo, $zv$.
 \end{enumerate}
 
-The final outcome in the last example is not a coincidence, but rather
-illustrates a deep and important property of the lambda calculus, known as the
-Church--Rosser property.
+O resultado final do último exemplo não é uma coincidência, mas ilustra uma
+propriedade profunda e importante do cálculo lambda, conhecida como
+propriedade de Church--Rosser.
 
 \begin{digress}
-  In general, there is more than one way to $\beta$-reduce a term,
-  thus many reduction strategies have been invented, among which the
-  most common is the \emph{natural strategy}.  The natural strategy
-  always contracts the \emph{left-most} redex, where the position of a
-  redex is defined as its starting point in the term.  The natural
-  strategy has the useful property that a term can be reduced to a
-  normal form by some strategy iff it can be reduced to normal form
-  using the natural strategy. In what follows we will use the natural
-  stratuegy unless otherwise specified.
+  Em geral, há mais de uma maneira de reduzir um termo por~$\beta$; por isso,
+  foram inventadas muitas estratégias de redução, entre as quais a mais comum
+  é a \emph{estratégia natural}. A estratégia natural sempre contrai o redex
+  \emph{mais à esquerda}, sendo a posição de um redex definida como seu ponto
+  inicial no termo. A estratégia natural tem a propriedade útil de que um
+  termo pode ser reduzido a uma forma normal por alguma estratégia se e
+  somente se pode ser reduzido à forma normal mediante a estratégia natural.
+  No que segue, usaremos a estratégia natural, salvo indicação em contrário.
 \end{digress}
 
-\begin{defn}[$\beta$-equivalence, $\equal$]
-  \emph{$\beta$-Equivalence} ($\equal$) is the relation inductively
-  defined as follows:
+\begin{defn}[Equivalência~$\beta$, $\equal$]
+  A \emph{equivalência~$\beta$} ($\equal$) é a relação definida
+  indutivamente da seguinte maneira:
   \begin{enumerate}
   \item $M \equal M$.
-  \item If $M \equal N$, then $N \equal M$.
-  \item If $M \equal N$, $N \equal O$, then $M \equal O$.
-  \item If $M \equal N$, then $PM \equal PN$.
-  \item If $M \equal N$, then $MQ \equal NQ$.
-  \item If $M \equal N$, then $\lambd[x][M] \equal \lambd[x][N]$.
+  \item Se $M \equal N$, então $N \equal M$.
+  \item Se $M \equal N$, $N \equal O$, então $M \equal O$.
+  \item Se $M \equal N$, então $PM \equal PN$.
+  \item Se $M \equal N$, então $MQ \equal NQ$.
+  \item Se $M \equal N$, então $\lambd[x][M] \equal \lambd[x][N]$.
   \item $(\lambd[x][N])Q \equal \Subst{N}{Q}{x}$.
   \end{enumerate}
 \end{defn}
 
-The first three rules make the relation an equivalence relation; the
-next three make it compatible; the last ensures that it contains
-$\beta$-contraction.
+As três primeiras regras tornam a relação uma relação de equivalência; as
+três seguintes a tornam compatível; a última garante que ela contém a
+contração~$\beta$.
 
-Informally speaking, two terms are $\beta$-equivalent if and only if
-one of them can be changed to the other in zero or more steps of
-$\beta$-contraction, or ``inverse'' of $\beta$-contraction. The inverse of
-$\beta$-contraction is defined so that $M$ inverse-$\beta$-contracts to $N$
-iff $N$ $\beta$-contracts to $M$.
+Em termos informais, dois termos são $\beta$-equivalentes se e somente se um
+deles pode ser transformado no outro por zero ou mais passos de
+contração~$\beta$, ou pela «inversa» da contração~$\beta$. A inversa da
+contração~$\beta$ é definida de modo que $M$ se contrai inversamente por
+$\beta$ a $N$ se e somente se $N$ se contrai por~$\beta$ a $M$.
 
-Besides the above rules, we will extend the relation with more
-rules, and denote the extended equivalence relation as $\equal[X]$,
-where $X$ is the extending rule.
+Além das regras acima, ampliaremos a relação com outras regras e denotaremos a
+relação de equivalência ampliada por $\equal[X]$, onde $X$ é a regra de
+extensão.
 
 \end{document}

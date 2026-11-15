@@ -6,18 +6,18 @@
 
 \begin{document}
 
-\olfileid{int}{tab}{rul}
+\olfileid[pt]{int}{tab}{rul}
 
-\olsection{Rules for Intuitionistic Logic}
+\olsection{Regras para a lógica intuicionista}
 
-The rules for the connectives $\land$ and $\lor$ are the same as for
-regular propositional signed !!{tableau}s, just with prefixes added.
-In each case, the rule applied to a signed !!{formula}
-$\sFmla{S}{!A}[\sigma]$ produces new !!{formula}s that are also
-prefixed by~$\sigma$. This should be intuitively clear: p.ex., if $!A
-\land !B$ is true at (a world named by)~$\sigma$, then $!A$ and $!B$
-are true at~$\sigma$ (and not at any other world). We collect the
-rules for $\land$ and $\lor$ in \olref{tab:prop-rules}.
+As regras para os conectivos $\land$ e $\lor$ são as mesmas que para
+!!{tableau}s proposicionais sinalizados usuais, apenas com o acréscimo de prefixos.
+Em cada caso, a regra aplicada a uma !!{formula} sinalizada
+$\sFmla{S}{!A}[\sigma]$ produz novas !!{formula}s que também têm
+o prefixo~$\sigma$. Isso deve ser intuitivamente claro: por exemplo, se $!A
+\land !B$ é verdadeira em um mundo nomeado por~$\sigma$, então $!A$ e $!B$
+são verdadeiras em~$\sigma$ (e não em algum outro mundo). Reunimos as
+regras para $\land$ e $\lor$ em \olref{tab:prop-rules}.
 
 \begin{table}
   \[\def\arraystretch{3}\begin{array}{|c|c|}
@@ -51,61 +51,61 @@ rules for $\land$ and $\lor$ in \olref{tab:prop-rules}.
     \\[2ex]
     \hline
   \end{array}\]
-  \caption{Prefixed !!{tableau} rules for $\land$ and $\lor$}
+  \caption{Regras prefixadas de !!{tableau} para $\land$ e $\lor$}
   \ollabel{tab:prop-rules}
 \end{table}
 
-The closure condition is similar to that for ordinary !!{tableau}s,
-although we require that not just the !!{formula}s, but also that the
-prefixes must match. In fact, we can be somewhat more liberal: Since
-in intuitionistic models, !!{formula}s, once true, remain true, it is
-impossible that $!A$ is true at~$\sigma$ but false at any accessible
-prefix~$\sigma.{*}$. So a branch is closed if it contains both
+A condição de fechamento é semelhante à dos !!{tableau}s usuais,
+embora exijamos que não apenas as !!{formula}s, mas também os
+prefixos coincidam. Na verdade, podemos ser um pouco mais permissivos: como,
+nos modelos intuicionistas, as !!{formula}s permanecem verdadeiras uma vez que se tornam verdadeiras, é
+impossível que $!A$ seja verdadeira em~$\sigma$, mas falsa em algum
+prefixo acessível~$\sigma.{*}$. Portanto, um ramo é fechado se contém ambos
 \[
-\sFmla{\True}{!A}[\sigma] \quad\text{and}\quad \sFmla{\False}{!A}[\sigma.{*}]
+\sFmla{\True}{!A}[\sigma] \quad\text{e}\quad \sFmla{\False}{!A}[\sigma.{*}]
 \]
-for some prefix $\sigma$ and !!{formula}~$!A$. Note that if the signs
-are reversed, O.s.\@, if it contains
+para algum prefixo $\sigma$ e alguma !!{formula}~$!A$. Observe que, se os sinais
+estiverem invertidos, isto é, se o ramo contiver
 \[
-\sFmla{\False}{!A}[\sigma] \quad\text{and}\quad \sFmla{\True}{!A}[\sigma.{*}]
+\sFmla{\False}{!A}[\sigma] \quad\text{e}\quad \sFmla{\True}{!A}[\sigma.{*}]
 \]
-the branch is closed only if $*$ is the empty sequence.
+o ramo será fechado apenas se $*$ for a sequência vazia.
 
-In addition, a branch is closed if it contains~$\sFmla{\True}{\bot}[\sigma]$.
+Além disso, um ramo é fechado se contém~$\sFmla{\True}{\bot}[\sigma]$.
 
-The rules for setting up assumptions is also as for ordinary
-!!{tableau}s, except that for assumptions we always use the
-prefix~$1$. (It does not matter which prefix we use, as long as it's
-the same for all assumptions.) So, p.ex., we say that
+As regras para estabelecer as premissas também são as mesmas que para
+!!{tableau}s usuais, exceto que sempre usamos o
+prefixo~$1$ para as premissas. (Não importa qual prefixo usamos, desde que seja
+o mesmo para todas as premissas.) Assim, por exemplo, dizemos que
 \[
 !B_1, \dots, !B_n \Proves !A
 \]
-iff there is a closed tableau for the assumptions
+se, e somente se, existe um tableau fechado para as premissas
 \[
 \sFmla{\True}{!B_1}[1], \dots, \sFmla{\True}{!B_n}[1],
 \sFmla{\False}{!A}[1].
 \]
 
-For the conditional~$\lif$, the rules differ from the classical and
-modal cases. The $\TRule{\lif}{\True}$ rule extends a branch
-containing $\sFmla{\True}{!A \lif !B}[\sigma]$ by
-$\sFmla{\True}{!A}[\sigma.{*}]$ and $\sFmla{\False}{!B}[\sigma.{*}]$ on two
-different branches. It can only be applied for a prefix~$\sigma.{*}$
-which \emph{already} occurs on the branch in which it is applied.
-Let's call such a prefix ``used'' (on the branch). (Since $\sigma.{*}$
-includes $\sigma$ itself, the rule can always be applied by adding the
-prefixed signed formulas $\sFmla{\True}{!A}[\sigma]$ and
-$\sFmla{\False}{!B}[\sigma]$ on separate branches.)
+Para o condicional~$\lif$, as regras diferem dos casos clássico e
+modal. A regra $\TRule{\lif}{\True}$ estende um ramo
+que contém $\sFmla{\True}{!A \lif !B}[\sigma]$ com
+$\sFmla{\True}{!A}[\sigma.{*}]$ e $\sFmla{\False}{!B}[\sigma.{*}]$ em dois
+ramos diferentes. Ela só pode ser aplicada a um prefixo~$\sigma.{*}$
+que \emph{já} ocorra no ramo ao qual é aplicada.
+Chamemos tal prefixo de ``usado'' no ramo. (Como $\sigma.{*}$
+inclui o próprio $\sigma$, a regra sempre pode ser aplicada acrescentando as
+fórmulas sinalizadas prefixadas $\sFmla{\True}{!A}[\sigma]$ e
+$\sFmla{\False}{!B}[\sigma]$ em ramos separados.)
 
-The $\TRule{\lif}{\False}$ rule extends a branch containing
-$\sFmla{\False}{!A \lif !B}[\sigma]$ by both
-$\sFmla{\True}{!A}[\sigma.n]$ and $\sFmla{\False}{!B}[\sigma.n]$ on
-the same branch, with $\sigma.n$ a prefix new to the branch. 
+A regra $\TRule{\lif}{\False}$ estende um ramo que contém
+$\sFmla{\False}{!A \lif !B}[\sigma]$ com
+$\sFmla{\True}{!A}[\sigma.n]$ e $\sFmla{\False}{!B}[\sigma.n]$ no
+mesmo ramo, sendo $\sigma.n$ um prefixo novo no ramo. 
 
-The rules for $\lnot$ are defined analogously (using the definition of
-$\lnot !A$ as $!A \lif \lfalse$).
+As regras para $\lnot$ são definidas de modo análogo (usando a definição de
+$\lnot !A$ como $!A \lif \lfalse$).
 
-The rules are given in \olref{tab:rules-lif-lnot}.
+As regras são apresentadas em \olref{tab:rules-lif-lnot}.
 
 \begin{table}
   \[\def\arraystretch{3}\begin{array}{|c|c|}
@@ -120,7 +120,7 @@ The rules are given in \olref{tab:rules-lif-lnot}.
     \UnaryInfC{\sFmla{\True}{!A}[\sigma.n]}
     \DisplayProof
     \\[1ex]
-    \text{$\sigma.{*}$ is used} & \text{$\sigma.n$ is new}\\
+    \text{$\sigma.{*}$ é usado} & \text{$\sigma.n$ é novo}\\
     \hline
     \AxiomC{\sFmla{\True}{!A \lif !B}[\sigma]}
     \RightLabel{\TRule{\True}{\lif}}
@@ -135,10 +135,10 @@ The rules are given in \olref{tab:rules-lif-lnot}.
     \UnaryInfC{\sFmla{\False}{!B}[\sigma.n]}
     \DisplayProof
     \\[1ex]
-    \text{$\sigma.{*}$ is used} & \text{$\sigma.n$ is new}\\
+    \text{$\sigma.{*}$ é usado} & \text{$\sigma.n$ é novo}\\
     \hline
   \end{array}\]
-  \caption{Prefixed !!{tableau} rules for $\lnot$ and $\lif$}
+  \caption{Regras prefixadas de !!{tableau} para $\lnot$ e $\lif$}
   \ollabel{tab:rules-lif-lnot}
 \end{table}
 

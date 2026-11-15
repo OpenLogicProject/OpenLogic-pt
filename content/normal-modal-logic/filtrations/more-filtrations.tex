@@ -6,26 +6,25 @@
 
 \begin{document}
 
-\olfileid{nml}{fil}{acc}
+\olfileid[pt]{nml}{fil}{acc}
 
-\olsection{Filtrations and Properties of Accessibility}
+\olsection{Filtrações e propriedades de acessibilidade}
 
-As noted, filtrations of universal, serial, and reflexive models are
-always also universal, serial, or reflexive. But not every filtration
-of a symmetric or transitive model is symmetric or transitive,
-respectively. In some cases, however, it is possible to define
-filtrations so that this does hold. In order to do so, we proceed as
-in the definition of the coarsest filtration, but add additional
-conditions to the definition of~$R^*$.  Let $\Gamma$ be closed under
-sub-!!{formula}s. Consider the relations~$C_i(u,v)$ in
-\olref{tab:Cn-filtrations} between worlds $u$, $v$ in a model
-$\mModel{M} =\tuple{W, R, V}$. We can define $R^*[u][v]$ on the basis
-of combinations of these conditions. For instance, if we stipulate
-that $R^*[u][v]$ iff the condition $C_1(u,v)$ holds, we get exactly
-the coarsest filtration. If we stipulate $R^*[u][v]$ iff both
-$C_1(u,v)$ and $C_2(u, v)$ hold, we get a different filtration. It is
-``finer'' than the coarsest since fewer pairs of worlds satisfy
-$C_1(u,v)$ and $C_2(u,v)$ than $C_1(u,v)$ alone.
+Como observamos, filtrações de modelos universais, seriais e reflexivos
+são sempre também universais, seriais ou reflexivas. Mas nem toda
+filtração de um modelo simétrico ou transitivo é, respectivamente,
+simétrica ou transitiva. Em alguns casos, porém, é possível definir
+filtrações de modo que isso valha. Para fazê-lo, procedemos como na
+definição da filtração mais grossa, mas acrescentamos condições à
+definição de~$R^*$. Seja $\Gamma$ fechado sob sub-!!{formula}s. Considere
+as relações~$C_i(u,v)$ de \olref{tab:Cn-filtrations} entre mundos $u$,
+$v$ em um modelo $\mModel{M} =\tuple{W, R, V}$. Podemos definir
+$R^*[u][v]$ com base em combinações dessas condições. Por exemplo, se
+estipulamos que $R^*[u][v]$ sse vale a condição $C_1(u,v)$, obtemos
+exatamente a filtração mais grossa. Se estipulamos $R^*[u][v]$ sse valem
+tanto $C_1(u,v)$ quanto $C_2(u, v)$, obtemos uma filtração diferente.
+Ela é ``mais fina'' que a mais grossa, pois menos pares de mundos
+satisfazem $C_1(u,v)$ e $C_2(u,v)$ do que apenas $C_1(u,v)$.
 
 \begin{table}[ht]
   \centering
@@ -33,103 +32,104 @@ $C_1(u,v)$ and $C_2(u,v)$ than $C_1(u,v)$ alone.
     \hline
     \multirow{2}{*}{$C_1(u,v)$:}
     \iftag{prvBox}{&
-      if $\Box!A \in \Gamma$ and $\mSat{M}{\Box!A}[u]$
-      then $\mSat{M}{!A}[v]$;\iftag{prvDiamond}{ and}{}\\}{}
+      se $\Box!A \in \Gamma$ e $\mSat{M}{\Box!A}[u]$,
+      então $\mSat{M}{!A}[v]$;\iftag{prvDiamond}{ e}{}\\}{}
     \iftag{prvDiamond}{&
-      if $\Diamond!A \in \Gamma$  and $\mSat{M}{!A}[v]$
-      then $\mSat{M}{\Diamond!A}[u]$; \\}{}
+      se $\Diamond!A \in \Gamma$ e $\mSat{M}{!A}[v]$,
+      então $\mSat{M}{\Diamond!A}[u]$; \\}{}
     \hline
     \multirow{2}{*}{$C_2(u,v)$:} 
     \iftag{prvBox}{&
-      if $\Box!A \in \Gamma$ and $\mSat{M}{\Box!A}[v]$
-      then $\mSat{M}{!A}[u]$;\iftag{prvDiamond}{ and}{}\\}{}
+      se $\Box!A \in \Gamma$ e $\mSat{M}{\Box!A}[v]$,
+      então $\mSat{M}{!A}[u]$;\iftag{prvDiamond}{ e}{}\\}{}
     \iftag{prvDiamond}{&
-      if $\Diamond!A \in \Gamma$ and $\mSat{M}{!A}[u]$
-      then $\mSat{M}{\Diamond!A}[v]$; \\}{}
+      se $\Diamond!A \in \Gamma$ e $\mSat{M}{!A}[u]$,
+      então $\mSat{M}{\Diamond!A}[v]$; \\}{}
     \hline
     \multirow{2}{*}{$C_3(u,v)$:}
     \iftag{prvBox}{&
-      if $\Box!A \in \Gamma$ and $\mSat{M}{\Box!A}[u]$
-      then $\mSat{M}{\Box!A}[v]$;\iftag{prvDiamond}{ and}{}\\}{}
+      se $\Box!A \in \Gamma$ e $\mSat{M}{\Box!A}[u]$,
+      então $\mSat{M}{\Box!A}[v]$;\iftag{prvDiamond}{ e}{}\\}{}
     \iftag{prvDiamond}{&
-      if $\Diamond!A \in \Gamma$ and $\mSat{M}{\Diamond!A}[v]$
-      then $\mSat{M}{\Diamond!A}[u]$; \\}{}
+      se $\Diamond!A \in \Gamma$ e $\mSat{M}{\Diamond!A}[v]$,
+      então $\mSat{M}{\Diamond!A}[u]$; \\}{}
     \hline
     \multirow{2}{*}{$C_4(u,v)$:}
     \iftag{prvBox}{&
-      if $\Box!A \in \Gamma$ and $\mSat{M}{\Box!A}[v]$
-      then $\mSat{M}{\Box!A}[u]$;\iftag{prvDiamond}{ and}{}\\}{}
+      se $\Box!A \in \Gamma$ e $\mSat{M}{\Box!A}[v]$,
+      então $\mSat{M}{\Box!A}[u]$;\iftag{prvDiamond}{ e}{}\\}{}
     \iftag{prvDiamond}{&
-      if $\Diamond!A \in \Gamma$ and $\mSat{M}{\Diamond!A}[u]$
-      then $\mSat{M}{\Diamond!A}[v]$; \\}{}
+      se $\Diamond!A \in \Gamma$ e $\mSat{M}{\Diamond!A}[u]$,
+      então $\mSat{M}{\Diamond!A}[v]$; \\}{}
     \hline
     \end{tabular}
-  \caption{Conditions on possible worlds for defining
-    filtrations.}
+  \caption{Condições sobre mundos possíveis para definir
+    filtrações.}
   \ollabel{tab:Cn-filtrations}
 \end{table}
 
 \begin{thm}\ollabel{thm:more-filtrations}
-  Let $\mModel{M} =\tuple{W,R,V}$ be a model, $\Gamma$ closed under
-  sub-!!{formula}s. Let $W^*$ and $V^*$ be defined as in
-  \olref[fil]{defn:filtration}. Then:
+  Seja $\mModel{M} =\tuple{W,R,V}$ um modelo e seja $\Gamma$ fechado sob
+  sub-!!{formula}s. Sejam $W^*$ e $V^*$ definidos como em
+  \olref[fil]{defn:filtration}. Então:
   \begin{enumerate}
-  \item Suppose $R^*[u][v]$ if and only if $C_1(u, v) \land
-    C_2(u,v)$. Then $R^*$ is symmetric, and $\mModel{M^*} =
-    \tuple{W^*,R^*,V^*}$ is a filtration if $\mModel{M}$ is symmetric.
-  \item Suppose $R^*[u][v]$ if and only if $C_1(u, v)
-    \land C_3(u,v)$. Then $R^*$ is transitive, and
-    $\mModel{M^*}=\tuple{W^*,R^*,V^*}$ is a filtration if $\mModel{M}$
-    is transitive.
-  \item Suppose $R^*[u][v]$ if and only if $C_1(u, v) \land C_2(u,v)
-    \land C_3(u,v) \land C_4(u,v)$. Then $R^*$ is symmetric and
-    transitive, and $\mModel{M^*}=\tuple{W^*,R^*,V^*}$ is a filtration
-    if $\mModel{M}$ is symmetric and transitive.
-  \item Suppose $R^*$ is defined as $R^*[u][v]$ if and only if $C_1(u,
-    v) \land C_3(u,v) \land C_4(u,v)$. Then $R^*$ is transitive and
-    euclidean, and $\mModel{M^*}=\tuple{W^*,R^*,V^*}$ is a filtration
-    if $\mModel{M}$ is transitive and euclidean.
+  \item Suponha $R^*[u][v]$ se, e somente se, $C_1(u, v) \land
+    C_2(u,v)$. Então $R^*$ é simétrica e $\mModel{M^*} =
+    \tuple{W^*,R^*,V^*}$ é uma filtração se $\mModel{M}$ é simétrico.
+  \item Suponha $R^*[u][v]$ se, e somente se, $C_1(u, v)
+    \land C_3(u,v)$. Então $R^*$ é transitiva e
+    $\mModel{M^*}=\tuple{W^*,R^*,V^*}$ é uma filtração se $\mModel{M}$
+    é transitivo.
+  \item Suponha $R^*[u][v]$ se, e somente se, $C_1(u, v) \land C_2(u,v)
+    \land C_3(u,v) \land C_4(u,v)$. Então $R^*$ é simétrica e
+    transitiva, e $\mModel{M^*}=\tuple{W^*,R^*,V^*}$ é uma filtração
+    se $\mModel{M}$ é simétrico e transitivo.
+  \item Suponha que $R^*$ seja definida por $R^*[u][v]$ se, e somente
+    se, $C_1(u, v) \land C_3(u,v) \land C_4(u,v)$. Então $R^*$ é
+    transitiva e euclidiana, e $\mModel{M^*}=\tuple{W^*,R^*,V^*}$ é uma
+    filtração se $\mModel{M}$ é transitivo e euclidiano.
   \end{enumerate}
 \end{thm}
 
 \begin{proof}
   \begin{enumerate}
-    \item It's immediate that $R^*$ is symmetric, since $C_1(u,v)
-      \Leftrightarrow C_2(v,u)$ and $C_2(u,v) \Leftrightarrow
-      C_1(v,u)$. So it's left to show that if $\mModel{M}$ is
-      symmetric then $\mModel{M^*}$ is a filtration
-      through~$\Gamma$. Condition $C_1(u,v)$ guarantees that
+    \item É imediato que $R^*$ é simétrica, pois $C_1(u,v)
+      \Leftrightarrow C_2(v,u)$ e $C_2(u,v) \Leftrightarrow
+      C_1(v,u)$. Resta mostrar que, se $\mModel{M}$ é simétrico, então
+      $\mModel{M^*}$ é uma filtração por meio de~$\Gamma$. A condição
+      $C_1(u,v)$ garante o cumprimento de
       \iftag{prvBox}{%
         \iftag{prvDiamond}{%
-          \olref[fil]{defn:filtration-R2} and
-          \olref[fil]{defn:filtration-R3} of
-          \olref[fil]{defn:filtration} are}{%
-          \olref[fil]{defn:filtration}\olref[fil]{defn:filtration-R2} is}}{%
-        \olref[fil]{defn:filtration}\olref[fil]{defn:filtration-R3} is}
-      satisfied. So we just have to verify
+          \olref[fil]{defn:filtration-R2} e
+          \olref[fil]{defn:filtration-R3} de
+          \olref[fil]{defn:filtration}}{%
+          \olref[fil]{defn:filtration}\olref[fil]{defn:filtration-R2}}}{%
+        \olref[fil]{defn:filtration}\olref[fil]{defn:filtration-R3}}.
+      Assim, precisamos apenas verificar
       \olref[fil]{defn:filtration}\olref[fil]{defn:filtration-R1},
-      O.s.\@, that $Ruv$ implies $R^*[u][v]$.
+      isto é, que $Ruv$ implica $R^*[u][v]$.
 
-      So suppose $Ruv$. To show $R^*[u][v]$ we need to establish that
-      $C_1(u,v)$ and $C_2(u,v)$. For $C_1$: \iftag{prvBox}{if $\Box!A
-        \in\Gamma$ and $\mSat{M}{\Box!A}[u]$ then also
-        $\mSat{M}{!A}[v]$ (since $Ruv$).\iftag{prvDiamond}{ Similarly,
-        }{}}{}\iftag{prvDiamond}{if $\Diamond!A \in \Gamma$ and
-        $\mSat{M}{!A}[v]$ then $\mSat{M}{\Diamond!A}[u]$ since
-        $Ruv$.}{} For $C_2$: \iftag{prvBox}{if $\Box!A \in \Gamma$ and
-        $\mSat{M}{\Box!A}[v]$ then $Ruv$ implies $Rvu$ by symmetry, so
-        that $\mSat{M}{!A}[u]$.\iftag{prvDiamond}{ Similarly,
-        }{}}{}\iftag{prvDiamond}{if $\Diamond!A \in\Gamma$ and
-        $\mSat{M}{!A}[u]$ then $\mSat{M}{\Diamond!A}[v]$ (since $Rvu$
-        by symmetry).}{}
-    \item Exercise.
-    \item Exercise.
-    \item Exercise.
+      Suponha, portanto, $Ruv$. Para mostrar $R^*[u][v]$, precisamos
+      estabelecer $C_1(u,v)$ e $C_2(u,v)$. Para $C_1$:
+      \iftag{prvBox}{se $\Box!A \in\Gamma$ e $\mSat{M}{\Box!A}[u]$,
+        então também $\mSat{M}{!A}[v]$ (pois $Ruv$).
+        \iftag{prvDiamond}{ De modo semelhante, }{}}{}
+      \iftag{prvDiamond}{se $\Diamond!A \in \Gamma$ e
+        $\mSat{M}{!A}[v]$, então $\mSat{M}{\Diamond!A}[u]$, pois
+        $Ruv$.}{} Para $C_2$: \iftag{prvBox}{se $\Box!A \in \Gamma$ e
+        $\mSat{M}{\Box!A}[v]$, então $Ruv$ implica $Rvu$ por simetria;
+        logo, $\mSat{M}{!A}[u]$.\iftag{prvDiamond}{ De modo semelhante,
+        }{}}{}\iftag{prvDiamond}{se $\Diamond!A \in\Gamma$ e
+        $\mSat{M}{!A}[u]$, então $\mSat{M}{\Diamond!A}[v]$ (pois $Rvu$
+        por simetria).}{}
+    \item Exercício.
+    \item Exercício.
+    \item Exercício.
   \end{enumerate}
 \end{proof}
 
 \begin{prob}
-  Complete the proof of \olref[nml][fil][acc]{thm:more-filtrations}.
+  Complete a demonstração de \olref[nml][fil][acc]{thm:more-filtrations}.
 \end{prob}
 
 \end{document}

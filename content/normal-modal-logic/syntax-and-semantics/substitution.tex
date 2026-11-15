@@ -6,92 +6,92 @@
 
 \begin{document}
 
-\olfileid{nml}{syn}{sub}
+\olfileid[pt]{nml}{syn}{sub}
 
-\olsection{Simultaneous Substitution}
+\olsection{Substituição simultânea}
 
-An \emph{instance} of !!a{formula}~$!A$ is the result of replacing all
-occurrences of !!a{propositional variable} in~$!A$ by some other
-!!{formula}. We will refer to instances of !!{formula}s often, both
-when discussing validity and when discussing !!{derivability}. It
-therefore is useful to define the notion precisely.
+Uma \emph{instância} de !!a{formula}~$!A$ é o resultado de substituir
+todas as ocorrências de !!a{propositional variable} em~$!A$ por alguma
+outra !!{formula}. Faremos referência frequente a instâncias de
+!!{formula}s, tanto ao discutir a validade quanto ao discutir
+!!{derivability}. Por isso, é útil definir a noção com precisão.
 
 \begin{defn}\ollabel{def:subst-inst}
-  Where $!A$ is a modal !!{formula} all of whose !!{propositional
-    variable}s are among $p_1$, \dots, $p_n$, and $!D_1$, \dots,
-  $!D_n$ are also modal !!{formula}s, we define
-  $\SSubst{!A}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}$ as the
-  result of simultaneously substituting each $!D_i$ for $p_i$
-  in~$!A$. Formally, this is a definition by induction on~$!A$:
+  Se $!A$ é uma !!{formula} modal cujas !!{propositional variable}s
+  estão todas entre $p_1$, \dots, $p_n$, e $!D_1$, \dots, $!D_n$
+  também são !!{formula}s modais, definimos
+  $\SSubst{!A}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}$ como o
+  resultado de substituir simultaneamente cada $!D_i$ no lugar de $p_i$
+  em~$!A$. Formalmente, trata-se de uma definição por indução sobre~$!A$:
   \begin{enumerate}
     \tagitem{prvFalse}{\indcase{!A}{\lfalse}{%
         $\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots,
-          \subst{!D_n}{p_n}}$ is $\lfalse$.}}{}
+          \subst{!D_n}{p_n}}$ é $\lfalse$.}}{}
     \tagitem{prvTrue}{\indcase{!A}{\ltrue}{%
         $\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots,
-          \subst{!D_n}{p_n}}$ is $\ltrue$.}}{}
+          \subst{!D_n}{p_n}}$ é $\ltrue$.}}{}
     \item \indcase{!A}{q}{$\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots,
-        \subst{!D_n}{p_n}}$ is $q$, provided $q \not\ident p_i$ for $i
+        \subst{!D_n}{p_n}}$ é $q$, desde que $q \not\ident p_i$ para $i
       = 1$, \dots,~$n$.}
     \item \indcase{!A}{p_i}{$\SSubst{\indfrm}{\subst{!D_1}{p_1},
-        \dots, \subst{!D_n}{p_n}}$ is $!D_i$.}
+        \dots, \subst{!D_n}{p_n}}$ é $!D_i$.}
     \tagitem{prvNot}{\indcase{!A}{\lnot !B}{%
-        $\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}$ is
+        $\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}$ é
         $\lnot \SSubst{!B}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}$.}}{}
     \tagitem{prvAnd}{\indcase{!A}{(!B \land
         !C)}{$\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots,
-          \subst{!D_n}{p_n}}$ is
+          \subst{!D_n}{p_n}}$ é
         \[(\SSubst{!B}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}} \land
           \SSubst{!C}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}).\]}}{}
     \tagitem{prvOr}{\indcase{!A}{(!B \lor
           !C)}{$\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots,
-          \subst{!D_n}{p_n}}$ is
+          \subst{!D_n}{p_n}}$ é
         \[(\SSubst{!B}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}} \lor
           \SSubst{!C}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}).\]}}{}
     \tagitem{prvIf}{\indcase{!A}{(!B \lif
           !C)}{$\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots,
-          \subst{!D_n}{p_n}}$ is
+          \subst{!D_n}{p_n}}$ é
         \[(\SSubst{!B}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}} \lif
           \SSubst{!C}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}).\]}}{}
     \tagitem{prvIf}{\indcase{!A}{(!B \liff
           !C)}{$\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots,
-          \subst{!D_n}{p_n}}$ is
+          \subst{!D_n}{p_n}}$ é
         \[(\SSubst{!B}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}} \liff
           \SSubst{!C}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}).\]}}{}
     \item \indcase{!A}{\Box !B}{%
-        $\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}$ is
+        $\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}$ é
         $\Box
         \SSubst{!B}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}.$}
     \tagitem{prvDiamond}{\indcase{!A}{\Diamond !B}{%
-        $\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}$ is
+        $\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}$ é
         $\Diamond
         \SSubst{!B}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}.$}}{}
   \end{enumerate}
-  The !!{formula} $\SSubst{!A}{\subst{!D_1}{p_1}, \dots,
-    \subst{!D_n}{p_n}}$ is called a \emph{substitution instance}
-  of~$!A$.
+  A !!{formula} $\SSubst{!A}{\subst{!D_1}{p_1}, \dots,
+    \subst{!D_n}{p_n}}$ é chamada \emph{instância de substituição}
+  de~$!A$.
 \end{defn}
 
 \begin{ex}
-  Suppose $!A$ is $p_1 \lif \Box(p_1 \land p_2)$, $!D_1$ is
-  $\Diamond(p_2 \lif p_3)$ and $!D_2$ is $\lnot\Box p_1$. Then
-  $\SSubst{!A}{\subst{!D_1}{p_1}, \subst{!D_2}{p_2}}$ is
+  Suponha que $!A$ seja $p_1 \lif \Box(p_1 \land p_2)$, que $!D_1$
+  seja $\Diamond(p_2 \lif p_3)$ e que $!D_2$ seja $\lnot\Box p_1$.
+  Então $\SSubst{!A}{\subst{!D_1}{p_1}, \subst{!D_2}{p_2}}$ é
   \begin{align*}
     \Diamond(p_2 \lif p_3) &
     \lif \Box(\Diamond(p_2 \lif p_3) \land \lnot\Box p_1)
-    \intertext{while $\SSubst{!A}{\subst{!D_2}{p_1}, \subst{!D_1}{p_2}}$ is}
+    \intertext{enquanto $\SSubst{!A}{\subst{!D_2}{p_1}, \subst{!D_1}{p_2}}$ é}
     \lnot\Box p_1 &
     \lif \Box(\lnot\Box p_1 \land \Diamond(p_2 \lif p_3))
-    \intertext{Note that simultaneous substitution is in general not
-      the same as iterated substitution, p.ex., compare
-      $\SSubst{!A}{\subst{!D_1}{p_1}, \subst{!D_2}{p_2}}$ above with
-      $\Subst{(\Subst{!A}{!D_1}{p_1})}{!D_2}{p_2}$, which is:}
-    \Diamond(p_2 \lif p_3) & \Subst{\lif \Box(\Diamond(p_2 \lif p_3) \land p_2)}{\lnot\Box p_1}{p_2}, \text{ O.s.\@,}\\
+    \intertext{Observe que a substituição simultânea, em geral, não é
+      igual à substituição iterada. Por exemplo, compare
+      $\SSubst{!A}{\subst{!D_1}{p_1}, \subst{!D_2}{p_2}}$ acima com
+      $\Subst{(\Subst{!A}{!D_1}{p_1})}{!D_2}{p_2}$, que é:}
+    \Diamond(p_2 \lif p_3) & \Subst{\lif \Box(\Diamond(p_2 \lif p_3) \land p_2)}{\lnot\Box p_1}{p_2}, \text{ isto é,}\\
     \Diamond(\lnot\Box p_1 \lif p_3) &
     \lif \Box(\Diamond(\lnot\Box p_1
     \lif p_3) \land \lnot\Box p_1)\\
-    \intertext{and with $\Subst{(\Subst{!A}{!D_2}{p_2})}{!D_1}{p_1}$:}
-    p_1 & \lif \Subst{\Box(p_1 \land \lnot\Box p_1)}{\Diamond(p_2 \lif p_3)}{p_1}, \text{ O.s.\@,}\\
+    \intertext{e com $\Subst{(\Subst{!A}{!D_2}{p_2})}{!D_1}{p_1}$:}
+    p_1 & \lif \Subst{\Box(p_1 \land \lnot\Box p_1)}{\Diamond(p_2 \lif p_3)}{p_1}, \text{ isto é,}\\
     \Diamond(p_2 \lif p_3) &
     \lif \Box(\Diamond(p_2
     \lif p_3) \land \lnot\Box\Diamond(p_2 \lif p_3)).

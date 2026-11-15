@@ -6,57 +6,55 @@
 
 \begin{document}
 
-\olfileid{lam}{syn}{deb}
+\olfileid[pt]{lam}{syn}{deb}
 
-\olsection{The De Bruijn Index}
+\olsection{O índice de De Bruijn}
 
-$\alpha$-Equivalence is very natural, as terms that are
-$\alpha$-equivalent ``mean the same.'' In fact, it is possible to give
-a syntax for lambda terms which does not distinguish terms that can be
-$\alpha$-converted to each other. The best known replaces variables by
-their \emph{De Bruijn index}.
+A equivalência~$\alpha$ é muito natural, pois termos
+$\alpha$-equivalentes «significam a mesma coisa». De fato, é possível dar
+uma sintaxe para termos lambda que não distingue termos que podem ser
+convertidos um no outro por~$\alpha$. A mais conhecida substitui as variáveis
+por seu \emph{índice de De Bruijn}.
 
-When we write $\lambd[x][M]$, we explicitly state that $x$ is the
-parameter of the function, so that we can use $x$ in $M$ to refer to
-this parameter. In the de Bruijn index, however, parameters have no
-name and reference to them in the function body is denoted by a number
-denoting the levels of abstraction between them. For example, consider
-the example of $\lambd[x][\lambd[y][y x]]$: the outer abstraction is on
-binds the variable~$x$; the inner abstraction binds the variable
-is~$y$; the sub-term $y x$ lies in the scope of the inner abstraction:
-there is no abstraction between $y$ and its abstract~$\lambd[y]$, but
-one abstract between $x$ and its abstract~$\lambd[x]$. Thus we write
-$0\, 1$ for $y x$, and $\lambd[][\lambd[][01]]$ for the entire term.
+Quando escrevemos $\lambd[x][M]$, declaramos explicitamente que $x$ é o
+parâmetro da função, de modo que possamos usar $x$ em $M$ para nos referirmos
+a esse parâmetro. No índice de De Bruijn, contudo, os parâmetros não têm nome,
+e a referência a eles no corpo da função é denotada por um número que indica
+os níveis de abstração entre ambos. Por exemplo, considere
+$\lambd[x][\lambd[y][y x]]$: a abstração externa liga a variável~$x$; a
+abstração interna liga a variável~$y$; o subtermo $y x$ está no escopo da
+abstração interna: não há abstração entre $y$ e sua abstração~$\lambd[y]$,
+mas há uma abstração entre $x$ e sua abstração~$\lambd[x]$. Assim, escrevemos
+$0\, 1$ para $y x$, e $\lambd[][\lambd[][01]]$ para o termo inteiro.
 
 \begin{defn}
-  De Bruijn terms are inductively defines as follows:
+  Os termos de De Bruijn são definidos indutivamente da seguinte maneira:
   \begin{enumerate}
-  \item $n$, where $n$ is any natural number.
-  \item $PQ$, where $P$ and $Q$ are both De Bruijn terms.
-  \item $\lambd[][N]$, where $N$ is a De Bruijn term.
+  \item $n$, onde $n$ é qualquer número natural.
+  \item $PQ$, onde $P$ e $Q$ são ambos termos de De Bruijn.
+  \item $\lambd[][N]$, onde $N$ é um termo de De Bruijn.
   \end{enumerate}
 \end{defn}
 
-A formalized translation from ordinary lambda terms to De Bruijn
-indexed terms is as follows:
+Uma tradução formal de termos lambda ordinários para termos indexados de De
+Bruijn é dada a seguir:
 \begin{defn}
   \begin{align*}
     F_\Gamma(x) &= \Gamma(x) \\
     F_\Gamma(PQ) &= F_\Gamma(P)F_\Gamma(Q) \\
     F_\Gamma(\lambd[x][N]) &= \lambd[][F_{x,\Gamma}(N)]
   \end{align*}
-  where $\Gamma$ is a list of variables indexed from zero, and
-  $\Gamma(x)$ denotes the position of the variable $x$ in $\Gamma$.
-  For example, if $\Gamma$ is $x,y,z$, then $\Gamma(x)$ is $0$ and
-  $\Gamma(z)$ is $2$.
+  onde $\Gamma$ é uma lista de variáveis indexada a partir de zero, e
+  $\Gamma(x)$ denota a posição da variável $x$ em $\Gamma$. Por exemplo, se
+  $\Gamma$ é $x,y,z$, então $\Gamma(x)$ é $0$ e $\Gamma(z)$ é $2$.
   
-  $x,\Gamma$ denotes the list resulted from pushing $x$ to the head of
-  $\Gamma$; for instance, continuing the $\Gamma$ in last example,
-  $w,\Gamma$ is $w,x,y,z$.
+  $x,\Gamma$ denota a lista resultante da inserção de $x$ no início de
+  $\Gamma$; por exemplo, continuando com o $\Gamma$ do último exemplo,
+  $w,\Gamma$ é $w,x,y,z$.
 \end{defn}
 
-Recovering a standard lambda term from a de Bruijn term is done as
-follows:
+A recuperação de um termo lambda padrão a partir de um termo de De Bruijn é
+feita da seguinte maneira:
 
 \begin{defn}
   \begin{align*}
@@ -64,19 +62,19 @@ follows:
     G_\Gamma(PQ) &= G_\Gamma(P) G_\Gamma(Q) \\
     G_\Gamma(\lambd[][N]) &= \lambd[x][G_{x,\Gamma}(N)]
   \end{align*}
-  where $\Gamma$ is again a list of variables indexed from zero, and
-  $\Gamma[n]$ denotes the variable in position~$n$. For example,
-  if $\Gamma$ is $x,y,z$, then $\Gamma[1]$ is $y$.
+  onde $\Gamma$ é novamente uma lista de variáveis indexada a partir de zero,
+  e $\Gamma[n]$ denota a variável na posição~$n$. Por exemplo, se $\Gamma$ é
+  $x,y,z$, então $\Gamma[1]$ é $y$.
 
-  The variable $x$ in last equation is chosen to be any variable that
-  not in $\Gamma$.
+  Na última equação, escolhe-se para $x$ qualquer variável que não pertença a
+  $\Gamma$.
 \end{defn}
 
-Here we give some results without proving them:
+Apresentamos aqui alguns resultados sem demonstrá-los:
 
 \begin{prop}
-  If $M \aconvone M'$, and $\Gamma$ is any list containing $\FV{M}$, then
-  $F_\Gamma(M) \eqs F_\Gamma(M')$.
+  Se $M \aconvone M'$ e $\Gamma$ é qualquer lista que contenha $\FV{M}$,
+  então $F_\Gamma(M) \eqs F_\Gamma(M')$.
 \end{prop}
 
 \end{document}

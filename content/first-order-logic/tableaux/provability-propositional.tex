@@ -10,23 +10,23 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{tab}{ppr}}
-      {\olfileid{pl}{tab}{ppr}}
+      {\olfileid[pt]{fol}{tab}{ppr}}
+      {\olfileid[pt]{pl}{tab}{ppr}}
 
-\olsection{\usetoken{S}{derivability} and the Propositional Connectives}
+\olsection{\usetoken{S}{derivability} e os conectivos proposicionais}
 
 \begin{explain}
-  We establish that the !!{derivability} relation~$\Proves$ of
-  tableaux is strong enough to establish some basic facts involving
-  the propositional connectives, such as that $!A \land !B \Proves !A$
-  and $!A, !A \lif !B \Proves !B$ (modus ponens). These facts are
-  needed for the proof of the completeness theorem.
+  Estabelecemos que a relação de !!{derivability}~$\Proves$ dos
+  tableaux é forte o bastante para estabelecer alguns fatos básicos
+  que envolvem os conectivos proposicionais, como $!A \land !B \Proves
+  !A$ e $!A, !A \lif !B \Proves !B$ (modus ponens). Esses fatos são
+  necessários para a prova do teorema da completude.
 \end{explain}
 
 \begin{prop}\ollabel{prop:provability-land}
   \begin{enumerate}
-  \item \ollabel{prop:provability-land-left} Both $!A \land !B \Proves
-    !A$ and $!A \land !B \Proves !B$.
+  \item \ollabel{prop:provability-land-left} Valem tanto $!A \land !B
+    \Proves !A$ quanto $!A \land !B \Proves !B$.
   \item \ollabel{prop:provability-land-right} $!A, !B \Proves !A \land
     !B$.
   \end{enumerate}
@@ -34,9 +34,9 @@
 
 \begin{proof}
   \begin{enumerate}
-  \item Both $\{\sFmla{\False}{!A}, \sFmla{\True}{!A \land !B}\}$ and
-    $\{\sFmla{\False}{!B}, \sFmla{\True}{!A \land !B}\}$ have closed
-    !!{tableau}s
+  \item Tanto $\{\sFmla{\False}{!A}, \sFmla{\True}{!A \land !B}\}$
+    quanto $\{\sFmla{\False}{!B}, \sFmla{\True}{!A \land !B}\}$ têm
+    !!{tableau}s fechados
     \begin{oltableau}{}
       [\sFmla{\False}{\formula{A}}, just=\TAss
         [\sFmla{\True}{\formula{A} \land \formula{B}}, just=\TAss
@@ -57,7 +57,7 @@
         ]
       ]
     \end{oltableau}
-    \item Here is a closed !!{tableau} for $\{\sFmla{\True}{!A},
+    \item Eis um !!{tableau} fechado para $\{\sFmla{\True}{!A},
       \sFmla{\True}{!B}, \sFmla{\False}{!A \land !B}\}$:
       \begin{oltableau}
         [\sFmla{\False}{\formula{A} \land \formula{B}}, just = \TAss
@@ -74,15 +74,16 @@
 
 \begin{prop}\ollabel{prop:provability-lor}
   \begin{enumerate}
-  \item $\{!A \lor !B, \lnot !A, \lnot !B\}$ is inconsistent.
-  \item Both $!A \Proves !A \lor !B$ and $!B \Proves !A \lor !B$.
+  \item $\{!A \lor !B, \lnot !A, \lnot !B\}$ é inconsistente.
+  \item Valem tanto $!A \Proves !A \lor !B$ quanto $!B \Proves !A \lor !B$.
   \end{enumerate}
 \end{prop}
 
 \begin{proof}
   \begin{enumerate}
-  \item We give a closed !!{tableau} of $\{\sFmla{\True}{!A \lor !B},
-    \sFmla{\True}{\lnot !A}, \sFmla{\True}{\lnot !B}\}$:
+  \item Apresentamos um !!{tableau} fechado de
+    $\{\sFmla{\True}{!A \lor !B}, \sFmla{\True}{\lnot !A},
+    \sFmla{\True}{\lnot !B}\}$:
     \begin{oltableau}
       [\sFmla{\True}{\formula{A} \lor \formula{B}}, just = \TAss
         [\sFmla{\True}{\lnot \formula{A}}, just = \TAss
@@ -97,9 +98,9 @@
         ]
       ]
     \end{oltableau}
-  \item Both $\{\sFmla{\False}{!A \lor !B}, \sFmla{\True}{!A}\}$ and
-    $\{\sFmla{\False}{!A \lor !B}, \sFmla{\True}{!B}\}$ have closed
-    !!{tableau}s:
+  \item Tanto $\{\sFmla{\False}{!A \lor !B}, \sFmla{\True}{!A}\}$
+    quanto $\{\sFmla{\False}{!A \lor !B}, \sFmla{\True}{!B}\}$ têm
+    !!{tableau}s fechados:
     \begin{oltableau}{}
       [\sFmla{\False}{\formula{A} \lor \formula{B}}, just=\TAss
         [\sFmla{\True}{\formula{A}}, just=\TAss
@@ -127,14 +128,14 @@
   \begin{enumerate}
   \item \ollabel{prop:provability-lif-left}  $!A, !A \lif !B \Proves !B$.
   \item \ollabel{prop:provability-lif-right}
-    Both $\lnot !A \Proves !A \lif !B$ and $!B \Proves !A \lif !B$.
+    Valem tanto $\lnot !A \Proves !A \lif !B$ quanto $!B \Proves !A \lif !B$.
   \end{enumerate}
 \end{prop}
 
 \begin{proof}
   \begin{enumerate}
     \item $\{\sFmla{\False}{!B}, \sFmla{\True}{!A \lif !B},
-      \sFmla{\True}{!A}\}$ has a closed !!{tableau}:
+      \sFmla{\True}{!A}\}$ tem um !!{tableau} fechado:
       \begin{oltableau}
         [\sFmla{\False}{\formula{B}}, just=\TAss
           [\sFmla{\True}{\formula{A} \lif \formula{B}}, just=\TAss
@@ -145,9 +146,9 @@
           ]
         ]
       \end{oltableau}
-    \item Both $\{\sFmla{\False}{!A \lif !B},
-      \sFmla{\True}{\lnot !A}\}$ and $\{\sFmla{\False}{!A \lif !B},
-      \sFmla{\True}{!B}\}$ have closed !!{tableau}s:
+    \item Tanto $\{\sFmla{\False}{!A \lif !B},
+      \sFmla{\True}{\lnot !A}\}$ quanto $\{\sFmla{\False}{!A \lif !B},
+      \sFmla{\True}{!B}\}$ têm !!{tableau}s fechados:
       \begin{oltableau}
         [\sFmla{\False}{\formula{A} \lif \formula{B}}, just = \TAss
           [\sFmla{\True}{\lnot \formula{A}}, just = \TAss

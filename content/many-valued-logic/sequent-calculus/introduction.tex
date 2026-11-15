@@ -6,33 +6,34 @@
 
 \begin{document}
 
-\olfileid{mvl}{seq}{int}
+\olfileid[pt]{mvl}{seq}{int}
 
-\olsection{Introduction}
+\olsection{Introdução}
 
-The sequent calculus for classical logic is an efficient and simple
-!!{derivation} system. If a many-valued logic is defined by a matrix with
-finitely many truth values, O.s.\@, $V$ is finite, it is possible to
-provide a sequent calculus for it.  The idea for how to do this comes
-from considering the meanings of sequents and the form of inference
-rules in the classical case. 
+O cálculo de sequentes para a lógica clássica é um sistema de
+!!{derivation} simples e eficiente. Se uma lógica multivalorada é
+definida por uma matriz com um número finito de valores de verdade,
+isto é, se $V$ é finito, é possível fornecer um cálculo de sequentes
+para ela. A ideia de como fazê-lo vem da consideração dos significados
+dos sequentes e da forma das regras de inferência no caso clássico.
 
-Now recall that a sequent 
+Recorde agora que um sequente
 \begin{align*}
     !A_1, \dots, !A_n & \Sequent !B_1, \dots, !B_n
-\intertext{can be interpreted as the !!{formula}}
+\intertext{pode ser interpretado como a !!{formula}}
     (!A_1 \land \cdots \land !A_m) & \lif (!B_1 \lor \cdots \lor
 !B_n)
 \end{align*}
-In other words, !!^a{valuation}~$\pAssign{v}$ \emph{satisfies} a
-sequent $\Gamma \Sequent \Delta$ iff either $\pValue{v}(!A) = \False$
-for some $!A \in \Gamma$ or $\pValue{v}(!A) = \True$ for some $!A \in
-\Delta$. On this interpretation, initial sequents $!A \Sequent !A$ are
-always satisfied, because either $\pValue v(!A) = \True$ or $\pValue(!A) =
-\False$.
+Em outras palavras, !!^a{valuation}~$\pAssign{v}$ \emph{satisfaz} um
+sequente $\Gamma \Sequent \Delta$ se e somente se ou
+$\pValue{v}(!A) = \False$ para algum $!A \in \Gamma$, ou
+$\pValue{v}(!A) = \True$ para algum $!A \in \Delta$. Nessa
+interpretação, os sequentes iniciais $!A \Sequent !A$ são sempre
+satisfeitos, pois ou $\pValue v(!A) = \True$, ou
+$\pValue(!A) = \False$.
 
-Here are the inference rules for the conditional in~$\Log{LK}$, with
-side formulas $\Gamma$, $\Delta$ left out:
+Eis as regras de inferência para o condicional em~$\Log{LK}$, com as
+fórmulas laterais $\Gamma$, $\Delta$ omitidas:
 
 \begin{defish}
     \Axiom$ \fCenter !A$
@@ -47,16 +48,16 @@ side formulas $\Gamma$, $\Delta$ left out:
     \DisplayProof
 \end{defish}
 
-If we apply the above semantic interpretation of a sequent, we can
-read the $\LeftR{\lif}$ rule as saying that if $\pValue v(!A) = \True$
-and $\pValue v(!B) = \False$, then $\pValue v(!A \lif !B) = \False$.
-Similarly, the $\RightR{\lif}$ rule says that if either $\pValue v(!A)
-= \False$ or $\pValue v(!B) = \True$, then $\pValue v(!A \lif !B) =
-\True$. And in fact, these conditionals are actually biconditionals.
-In the case of the $\LeftR{\land}$ and $\RightR{\lor}$ rules in their
-standard formulation, the corresponding conditionals would not be
-biconditionals. But there are alternative versions of these rules
-where they are:
+Se aplicarmos a interpretação semântica acima a um sequente, podemos
+ler a regra $\LeftR{\lif}$ como dizendo que, se
+$\pValue v(!A) = \True$ e $\pValue v(!B) = \False$, então
+$\pValue v(!A \lif !B) = \False$. De modo semelhante, a regra
+$\RightR{\lif}$ diz que, se ou $\pValue v(!A) = \False$, ou
+$\pValue v(!B) = \True$, então $\pValue v(!A \lif !B) = \True$. E, de
+fato, esses condicionais são bicondicionais. No caso das regras
+$\LeftR{\land}$ e $\RightR{\lor}$ em sua formulação padrão, os
+condicionais correspondentes não seriam bicondicionais. Mas há versões
+alternativas dessas regras nas quais eles o são:
 
 \begin{defish}
     \Axiom$!A, !B, \Gamma \fCenter \Delta$
@@ -70,14 +71,15 @@ where they are:
     \DisplayProof
 \end{defish}
 
-This basic idea, applied to an $n$-valued logic, then results in a
-sequent calculus with $n$ instead of two places, one for each truth
-value. For a three-valued logic with $V = \{\False, \Undef, \True\}$,
-a sequent is an expression $\Gamma \mid \Pi \mid \Delta$. It is
-satisfied in !!a{valuation}~$\pAssign v$ iff either $\pValue{v}(!A) =
-\False$ for some $!A \in \Gamma$ or $\pValue{v}(!A) = \True$ for some
-$!A \in \Delta$ or $\pValue{v}(!A) = \Undef$ for some $!A \in \Pi$.
-Consequently, initial sequents $!A \mid !A \mid !A$ are always
-satisfied.
+Essa ideia básica, aplicada a uma lógica $n$-valorada, resulta em um
+cálculo de sequentes com $n$ lugares em vez de dois, um para cada valor
+de verdade. Para uma lógica trivalorada com
+$V = \{\False, \Undef, \True\}$, um sequente é uma expressão
+$\Gamma \mid \Pi \mid \Delta$. Ele é satisfeito em !!a{valuation}
+$\pAssign v$ se e somente se ou $\pValue{v}(!A) = \False$ para algum
+$!A \in \Gamma$, ou $\pValue{v}(!A) = \True$ para algum
+$!A \in \Delta$, ou $\pValue{v}(!A) = \Undef$ para algum
+$!A \in \Pi$. Consequentemente, os sequentes iniciais
+$!A \mid !A \mid !A$ são sempre satisfeitos.
 
 \end{document}

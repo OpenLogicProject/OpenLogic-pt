@@ -6,61 +6,61 @@
 
 \begin{document}
 
-\olfileid{nml}{prf}{nor}
+\olfileid[pt]{nml}{prf}{nor}
 
-\olsection{Normal Modal Logics}
+\olsection{Lógicas modais normais}
 
-Not every set of modal !!{formula}s can easily be characterized as
-those !!{formula}s derivable from a set of axioms. We want modal
-logics to be well-behaved. First of all, everything we can !!{derive}
-in classical propositional logic should still be !!{derivable}, of
-course taking into account that the !!{formula}s may now contain also
-\iftag{prvBox}{$\Box$\iftag{prvDiamond}{
-    and~}{}}{}\iftag{prvDiamond}{$\Diamond$}{}. To this end, we
-require that a modal logic contain all tautological instances and be
-closed under modus ponens.
+Nem todo conjunto de !!{formula}s modais pode ser facilmente caracterizado
+como o conjunto das !!{formula}s deriváveis de um conjunto de axiomas.
+Queremos que as lógicas modais se comportem bem. Em primeiro lugar, tudo o que
+podemos !!{derive} na lógica proposicional clássica deve continuar sendo
+!!{derivable}, levando naturalmente em conta que as !!{formula}s agora também
+podem conter \iftag{prvBox}{$\Box$\iftag{prvDiamond}{
+    e~}{}}{}\iftag{prvDiamond}{$\Diamond$}{}. Para isso, exigimos que uma
+lógica modal contenha todas as instâncias tautológicas e seja fechada sob
+modus ponens.
 
 \begin{defn}
-  A \emph{modal logic} is a set~$\Sigma$ of modal !!{formula}s which
+  Uma \emph{lógica modal} é um conjunto~$\Sigma$ de !!{formula}s modais que
   \begin{enumerate}
-  \item contains all tautologies, and
-  \item is closed under substitution, O.s.\@, if $!A \in \Sigma$, and
-    $!D_1$, \dots, $!D_n$ are !!{formula}s, then
+  \item contém todas as tautologias, e
+  \item é fechado sob substituição, isto é, se $!A \in \Sigma$, e
+    $!D_1$, \dots, $!D_n$ são !!{formula}s, então
     \[
     \SSubst{!A}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}} \in \Sigma,
     \]
-    \item is closed under \emph{modus ponens}, O.s.\@, if $!A$ and $!A
-      \lif !B \in \Sigma$, then $!B \in \Sigma$.
+    \item é fechado sob \emph{modus ponens}, isto é, se $!A$ e
+      $!A \lif !B \in \Sigma$, então $!B \in \Sigma$.
   \end{enumerate}
 \end{defn}
 
-In order to use the relational semantics for modal logics, we also
-have to require that all !!{formula}s valid in all modal models are
-included. It turns out that this requirement is met as soon as all
-instances of \Ax{K}\iftag{prvDiamond}{ and~\Dual{}}{} are
-!!{derivable}, and whenever !!a{formula}~$!A$ is !!{derivable}, so
-is~$\Box !A$. A modal logic that satisfies these conditions is called
-\emph{normal}. (Of course, there are also non-normal modal logics, but
-the usual relational models are not adequate for them.)
+Para usar a semântica relacional das lógicas modais, também precisamos exigir
+que todas as !!{formula}s válidas em todos os modelos modais estejam
+incluídas. Ocorre que essa exigência é satisfeita assim que todas as instâncias
+de \Ax{K}\iftag{prvDiamond}{ e de~\Dual{}}{} são !!{derivable}, e sempre que
+!!a{formula}~$!A$ é !!{derivable}, também o é~$\Box !A$. Uma lógica modal que
+satisfaz essas condições é chamada de \emph{normal}. (Naturalmente, também
+existem lógicas modais não normais, mas os modelos relacionais usuais não são
+adequados para elas.)
 
 \begin{defn}
-  A modal logic $\Sigma$ is \emph{normal} if it contains
+  Uma lógica modal $\Sigma$ é \emph{normal} se contém
   \begin{align*}
     \tag{\Ax{K}} & \Box(p \lif q) \lif (\Box p \lif \Box q),
     \iftag{prvDiamond}{\\
       \tag{\Dual} & \Diamond p \liff \lnot\Box\lnot p}{}
   \end{align*}
-  and is closed under \emph{necessitation}, O.s.\@, if $!A \in
-  \Sigma$, then $\Box !A \in \Sigma$.
+  e é fechada sob \emph{necessitação}, isto é, se $!A \in \Sigma$, então
+  $\Box !A \in \Sigma$.
 \end{defn}
 
-Observe that while tautological implication is ``fine-grained'' enough
-to preserve \emph{truth at a world}, the rule \Nec{} only preserves
-\emph{truth in a model} (and hence also validity in a frame or in a
-class of frames).
+Observe que, enquanto a implicação tautológica tem uma granularidade
+suficientemente fina para preservar a \emph{verdade em um mundo}, a regra
+\Nec{} preserva apenas a \emph{verdade em um modelo} (e, portanto, também a
+validade em um frame ou em uma classe de frames).
 
 \begin{prop}\ollabel{prop:rk}
-  Every normal modal logic is closed under rule \RK,
+  Toda lógica modal normal é fechada sob a regra \RK,
   \begin{prooftree}
     \AxiomC{$!A_1 \lif (!A_2 \lif \cdots (!A_{n-1} \lif !A_n)\cdots)$}
     \RightLabel{\RK}
@@ -70,52 +70,50 @@ class of frames).
 \end{prop}
 
 \begin{proof}
-  By induction on~$n$: If $n = 1$, then the rule is just \Nec, and
-  every normal modal logic is closed under \Nec.
+  Por indução sobre~$n$: se $n = 1$, então a regra é simplesmente \Nec, e
+  toda lógica modal normal é fechada sob \Nec.
 
-  Now suppose the result holds for $n-1$; we show it holds for~$n$.
+  Suponha agora que o resultado valha para $n-1$; mostramos que vale para~$n$.
 
-  Assume
+  Suponha
   \begin{align*}
   & !A_1 \lif (!A_2 \lif \cdots (!A_{n-1} \lif !A_n)\cdots) \in \Sigma
-  \intertext{By the induction hypothesis, we have}
+  \intertext{Pela hipótese de indução, temos}
   & \Box!A_1 \lif (\Box!A_2 \lif \cdots \Box(!A_{n-1} \lif !A_n)\cdots)
   \in \Sigma
-  \intertext{Since $\Sigma$ is a normal modal logic, it contains all
-    instances of~$\Ax{K}$, in particular}
+  \intertext{Como $\Sigma$ é uma lógica modal normal, ela contém todas as
+    instâncias de~$\Ax{K}$, em particular}
   & \Box(!A_{n-1} \lif !A_n) \lif (\Box!A_{n-1} \lif \Box!A_n) \in \Sigma
-  \intertext{Using modus ponens and suitable tautological instances we get}
+  \intertext{Usando modus ponens e instâncias tautológicas adequadas, obtemos}
   & \Box!A_1 \lif (\Box!A_2 \lif \cdots (\Box!A_{n-1}
   \lif \Box!A_n)\cdots) \in \Sigma. 
   \end{align*}
 \end{proof}
 
 \begin{prop}\ollabel{prop:notDiamondBot}
-  Every normal modal logic $\Sigma$ contains~$\lnot\Diamond\lfalse$.
+  Toda lógica modal normal $\Sigma$ contém~$\lnot\Diamond\lfalse$.
 \end{prop}
 
 \begin{prob}
-  Prove \olref[nml][prf][nor]{prop:notDiamondBot}.
+  Demonstre \olref[nml][prf][nor]{prop:notDiamondBot}.
 \end{prob}
 
 \begin{prop}
-  Let $!A_1$, \dots, $!A_n$ be !!{formula}s. Then there is a
-  smallest modal logic $\Sigma$ containing all instances of
-  $!A_1$, \dots, $!A_n$.
+  Sejam $!A_1$, \dots, $!A_n$ !!{formula}s. Então existe uma menor lógica
+  modal $\Sigma$ que contém todas as instâncias de $!A_1$, \dots, $!A_n$.
 \end{prop}
 
 \begin{proof}
-  Given $!A_1$, \dots, $!A_n$, define $\Sigma$ as the
-  intersection of all normal modal logics containing all instances of
-  $!A_1$, \dots, $!A_n$. The intersection is non-empty as
-  $\Frm[L]$, the set of all !!{formula}s, is such a modal
-  logic.
+  Dados $!A_1$, \dots, $!A_n$, defina $\Sigma$ como a interseção de todas as
+  lógicas modais normais que contêm todas as instâncias de $!A_1$, \dots,
+  $!A_n$. A interseção é não vazia, pois $\Frm[L]$, o conjunto de todas as
+  !!{formula}s, é uma lógica modal desse tipo.
 \end{proof}
 
 \begin{defn}
-The smallest normal modal logic containing $!A_1$, \dots, $!A_n$ is
-called a \emph{modal system} and denoted by $\Log{K} !A_1 \dots
-!A_n$. The smallest normal modal logic is denoted by~\Log{K}.
+A menor lógica modal normal que contém $!A_1$, \dots, $!A_n$ é chamada de
+\emph{sistema modal} e denotada por $\Log{K} !A_1 \dots !A_n$. A menor lógica
+modal normal é denotada por~\Log{K}.
 \end{defn}
 
 \end{document}

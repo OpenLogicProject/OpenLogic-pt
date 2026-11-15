@@ -6,30 +6,30 @@
 
 \begin{document}
 
-\olfileid{nml}{prf}{dis}
+\olfileid[pt]{nml}{prf}{dis}
 
-\olsection{Showing Systems are Distinct}
+\olsection{Como mostrar que sistemas são distintos}
 
-In \olref[prs]{sec} we saw how to prove that two systems of modal
-logic are in fact the same system. \olref[snd]{thm:soundness} allows
-us to show that two modal systems $\Sigma$ and $\Sigma'$ are distinct,
-by finding !!a{formula}~$!A$ such that $\Sigma' \Proves !A$ that fails in
-a model of~$\Sigma$.
+Em \olref[prs]{sec}, vimos como demonstrar que dois sistemas de lógica
+modal são, na verdade, o mesmo sistema. \olref[snd]{thm:soundness} nos
+permite mostrar que dois sistemas modais $\Sigma$ e $\Sigma'$ são
+distintos encontrando !!a{formula}~$!A$ tal que $\Sigma' \Proves !A$,
+mas que falha em um modelo de~$\Sigma$.
 
 \begin{prop}
   $\Log{KD} \subsetneq \Log{KT}$
 \end{prop}
 
-\begin{proof} This is the syntactic counterpart to the semantic fact
-  that all reflexive relations are serial. To show $\Log{KD} \subseteq
-  \Log{KT}$ we need to see that $\Log{KD} \Proves !B$ implies
-  $\Log{KT} \Proves !B$, which follows from $\Log{KT} \Proves
-  \Log{D}$, as shown in
-  \olref[prs]{prop:S5facts}\olref[prs]{prop:S5facts-KT-D}.  To show
-  that the inclusion is proper, by Soundness
-  (\olref[snd]{thm:soundness}), it suffices to exhibit a model of
-  \Log{KD} where \Ax{T}, O.s.\@, $\Box p \lif p$, fails (an
-  easy task left as an exercise), for then by Soundness $\Log{KD}
+\begin{proof} Esta é a contraparte sintática do fato semântico de que
+  toda relação reflexiva é serial. Para mostrar $\Log{KD} \subseteq
+  \Log{KT}$, precisamos ver que $\Log{KD} \Proves !B$ implica
+  $\Log{KT} \Proves !B$, o que decorre de $\Log{KT} \Proves
+  \Log{D}$, como mostrado em
+  \olref[prs]{prop:S5facts}\olref[prs]{prop:S5facts-KT-D}. Para mostrar
+  que a inclusão é própria, pela correção
+  (\olref[snd]{thm:soundness}), basta exibir um modelo de \Log{KD} no
+  qual \Ax{T}, isto é, $\Box p \lif p$, falha (uma tarefa fácil deixada
+  como exercício), pois então, pela correção, $\Log{KD}
   \Proves/ \Box p \lif p$.
 \end{proof}
 
@@ -38,13 +38,13 @@ a model of~$\Sigma$.
 \end{prop}
 
 \begin{proof}
-  We construct a symmetric model where some instance of \Ax{4} fails;
-  since obviously the instance is !!{derivable} for \Log{K4} but not
-  in \Log{KB}, it will follow $\Log{K4} \nsubseteq \Log{KB}$.
-  Consider the symmetric model $\mModel{M}$ of \olref{fig:Bnot4}. Since
-  the model is symmetric, \Ax{K} and~\Ax{B} are true in~$\mModel{M}$
-  (by \olref[syn][sch]{prop:Kvalid} and
-  \olref[frd][acc]{thm:soundschemas}, respectively). However,
+  Construímos um modelo simétrico no qual alguma instância de \Ax{4}
+  falha; como a instância é obviamente !!{derivable} para \Log{K4},
+  mas não em \Log{KB}, seguirá que $\Log{K4} \nsubseteq \Log{KB}$.
+  Considere o modelo simétrico $\mModel{M}$ de \olref{fig:Bnot4}. Como
+  o modelo é simétrico, \Ax{K} e~\Ax{B} são verdadeiros em~$\mModel{M}$
+  (por \olref[syn][sch]{prop:Kvalid} e
+  \olref[frd][acc]{thm:soundschemas}, respectivamente). Contudo,
   $\mSat/{M}{\Box p \lif \Box\Box p}[w_1]$.
 \end{proof}
 
@@ -58,25 +58,26 @@ a model of~$\Sigma$.
     \draw[->, bend left] (w1) to (w2); 
     \draw[->, bend left] (w2) to (w1); 
   \end{tikzpicture}
-  \caption{A symmetric model falsifying an instance of \Ax{4}.}
+  \caption{Um modelo simétrico que falsifica uma instância de \Ax{4}.}
   \ollabel{fig:Bnot4}
 \end{figure}
  
 \begin{thm}\ollabel{thm:KTBnot45}
-  $\Log{KTB} \Proves/ \Log{4}$ and $\Log{KTB} \Proves/ \Log{5}$.
+  $\Log{KTB} \Proves/ \Log{4}$ e $\Log{KTB} \Proves/ \Log{5}$.
 \end{thm}
 
 \begin{proof}
-  By \olref[frd][acc]{thm:soundschemas} we know that all instances of
-  \Ax{T} and \Ax{B} are true in every reflexive symmetric model
-  (respectively). So by soundness, it suffices to find a reflexive
-  symmetric model containing a world at which some instance of~\Ax{4}
-  fails, and similarly for~\Ax{5}.  We use the same model for both
-  claims. Consider the symmetric, reflexive model in
-  \olref{fig:KTBnot45}.  Then $\mSat/{M}{\Box p \to \Box \Box
-    p}[w_1]$, so \Ax{4} fails at $w_1$. Similarly, $\mSat/{M}{\Diamond
-    \lnot p \lif \Box \Diamond \lnot p}[w_2]$, so the instance
-  of~\Ax{5} with $!A = \lnot p$ fails at~$w_2$.
+  Por \olref[frd][acc]{thm:soundschemas}, sabemos que todas as
+  instâncias de \Ax{T} e \Ax{B} são verdadeiras em todo modelo
+  reflexivo e simétrico, respectivamente. Portanto, pela correção,
+  basta encontrar um modelo reflexivo e simétrico que contenha um
+  mundo no qual alguma instância de~\Ax{4} falhe, e fazer o mesmo
+  para~\Ax{5}. Usamos o mesmo modelo para ambas as afirmações.
+  Considere o modelo simétrico e reflexivo em \olref{fig:KTBnot45}.
+  Então $\mSat/{M}{\Box p \to \Box \Box p}[w_1]$, logo \Ax{4} falha em
+  $w_1$. De modo semelhante, $\mSat/{M}{\Diamond \lnot p \lif \Box
+    \Diamond \lnot p}[w_2]$, logo a instância de~\Ax{5} com
+  $!A = \lnot p$ falha em~$w_2$.
 \end{proof}
 
 \begin{figure}[htpb]
@@ -98,7 +99,7 @@ a model of~$\Sigma$.
     \draw[->, bend left] (w3) to (w2);  
     \draw[->, bend left] (w2) to (w1);  
   \end{tikzpicture}
-  \caption{The model for \olref{thm:KTBnot45}.}
+  \caption{O modelo de \olref{thm:KTBnot45}.}
   \ollabel{fig:KTBnot45}
 \end{figure}
 
@@ -107,12 +108,12 @@ a model of~$\Sigma$.
 \end{thm}
 
 \begin{proof}
-  By \olref[frd][acc]{thm:soundschemas} we know that all instances of
-  \Ax{D} and~\Ax{5} are true in all serial euclidean models.
-  So  it suffices to find a serial euclidean model containing a world
-  at which some instance of~\Ax{4} fails.  Consider the model of
-  \olref{fig:KD5not4}, and notice that $\mSat/{M}{\Box p
-  \lif \Box\Box p}[w_1]$. 
+  Por \olref[frd][acc]{thm:soundschemas}, sabemos que todas as
+  instâncias de \Ax{D} e~\Ax{5} são verdadeiras em todos os modelos
+  seriais e euclidianos. Portanto, basta encontrar um modelo serial e
+  euclidiano que contenha um mundo no qual alguma instância de~\Ax{4}
+  falhe. Considere o modelo de \olref{fig:KD5not4} e observe que
+  $\mSat/{M}{\Box p \lif \Box\Box p}[w_1]$.
 \end{proof}
 
 \begin{figure}[t]
@@ -136,18 +137,18 @@ a model of~$\Sigma$.
     \draw[->, bend left=15] (w3) to (w4);
     \draw[->, bend left=15] (w4) to (w3);  
   \end{tikzpicture}
-  \caption{The model for \olref{thm:KD5not4}.}
+  \caption{O modelo de \olref{thm:KD5not4}.}
   \ollabel{fig:KD5not4}
 \end{figure}
 
 \begin{prob}
-  Give an alternative proof of \olref[nml][prf][dis]{thm:KD5not4} using a model
-  with $3$ worlds.
+  Dê uma demonstração alternativa de
+  \olref[nml][prf][dis]{thm:KD5not4} usando um modelo com $3$ mundos.
 \end{prob}
 
 \begin{prob}
-  Provide a single reflexive transitive model showing that both
-  $\Log{KT4} \Proves/ \Ax{B}$ and $\Log{KT4} \Proves/ \Ax{5}$.
+  Forneça um único modelo reflexivo e transitivo que mostre simultaneamente que
+  $\Log{KT4} \Proves/ \Ax{B}$ e $\Log{KT4} \Proves/ \Ax{5}$.
 \end{prob}
 
 \end{document}

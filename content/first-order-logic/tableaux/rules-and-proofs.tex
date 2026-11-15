@@ -7,53 +7,56 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{tab}{rul}}
-      {\olfileid{pl}{tab}{rul}}
+      {\olfileid[pt]{fol}{tab}{rul}}
+      {\olfileid[pt]{pl}{tab}{rul}}
 
-\olsection{Rules and \usetoken{P}{tableau}}
+\olsection{Regras e \usetoken{P}{tableau}}
 
-!!^a{tableau} is a systematic survey of the possible ways
-!!a{sentence} can be true or false in !!a{structure}. The building
-blocks of a tableau are !!{signed formula}s: !!{sentence}s plus a
-truth value ``sign,'' either $\True$ or~$\False$. These signed
-!!{formula}s are arranged in a (downward growing) tree.
+!!^a{tableau} é um exame sistemático das maneiras possíveis de
+!!a{sentence} ser verdadeira ou falsa em !!a{structure}. Os elementos
+constitutivos de um tableau são !!{signed formula}s: !!{sentence}s
+acrescidas de um valor de verdade usado como ``sinal'', $\True$ ou
+então~$\False$. Essas !!{formula}s com sinal são dispostas em uma árvore
+(que cresce para baixo).
 
 \begin{defn}
-  A \emph{!!{signed formula}} is a pair consisting of a truth value
-  and !!a{sentence}, O.s.\@, either:
+  Uma \emph{!!{signed formula}} é um par constituído por um valor de
+  verdade e !!a{sentence}, isto é, uma das duas formas:
   \[
-  \sFmla{\True}{!A} \text{ or } \sFmla{\False}{!A}.
+  \sFmla{\True}{!A} \text{ ou } \sFmla{\False}{!A}.
   \]
 \end{defn}
 
-Intuitively, we might read $\sFmla{\True}{!A}$ as ``$!A$ might be
-true'' and $\sFmla{\False}{!A}$ as ``$!A$ might be false'' (in some
-!!{structure}).
+Intuitivamente, podemos ler $\sFmla{\True}{!A}$ como ``$!A$ poderia ser
+verdadeira'' e $\sFmla{\False}{!A}$ como ``$!A$ poderia ser falsa'' (em
+alguma !!{structure}).
 
-Each !!{signed formula} in the tree is either an \emph{assumption}
-(which are listed at the very top of the tree), or it is obtained from
-!!a{signed formula} above it by one of a number of rules of
-inference. There are two rules for each possible !!{main operator} of
-the preceding !!{formula}, one for the case where the sign is~$\True$,
-and one for the case where the sign is~$\False$. Some rules allow the
-tree to branch, and some only add !!{signed formula}s to the branch.
-A rule may be (and often must be) applied not to the immediately
-preceding !!{signed formula}, but to any !!{signed formula} in the
-branch from the root to the place the rule is applied.
+Cada !!{signed formula} na árvore ou é uma \emph{hipótese} (as hipóteses
+são listadas bem no alto da árvore), ou é obtida a partir de
+!!a{signed formula} acima dela por uma de várias regras de inferência.
+Há duas regras para cada possível !!{main operator} da !!{formula}
+anterior: uma para o caso em que o sinal é~$\True$ e outra para o caso em
+que o sinal é~$\False$. Algumas regras permitem que a árvore se
+ramifique, enquanto outras apenas acrescentam !!{signed formula}s ao
+ramo. Uma regra pode ser (e muitas vezes precisa ser) aplicada não à
+!!{signed formula} imediatamente anterior, mas a qualquer
+!!{signed formula} no ramo que vai da raiz até o local em que a regra é
+aplicada.
 
-A branch is \emph{closed} when it contains both $\sFmla{\True}{!A}$
-and $\sFmla{\False}{!A}$. A closed !!{tableau} is one where every branch
-is closed.  Under the intuitive interpretation, any branch describes a
-joint possibility, but $\sFmla{\True}{!A}$ and $\sFmla{\False}{!A}$
-are not jointly possible. In other words, if a branch is closed, the
-possibility it describes has been ruled out. In particular, that means
-that a closed !!{tableau} rules out all possibilities of simultaneously
-making every assumption of the form $\sFmla{\True}{!A}$ true and every
-assumption of the form~$\sFmla{\False}{!A}$ false.
+Um ramo é \emph{fechado} quando contém tanto $\sFmla{\True}{!A}$ quanto
+$\sFmla{\False}{!A}$. Um !!{tableau} fechado é aquele em que todo ramo
+está fechado. Segundo a interpretação intuitiva, qualquer ramo descreve
+uma possibilidade conjunta, mas $\sFmla{\True}{!A}$ e
+$\sFmla{\False}{!A}$ não são conjuntamente possíveis. Em outras palavras,
+se um ramo está fechado, a possibilidade que ele descreve foi excluída.
+Em particular, isso significa que um !!{tableau} fechado exclui todas as
+possibilidades de tornar simultaneamente verdadeira toda hipótese da
+forma $\sFmla{\True}{!A}$ e falsa toda hipótese da
+forma~$\sFmla{\False}{!A}$.
 
-A closed !!{tableau} \emph{for $!A$} is a closed !!{tableau} with
-root~$\sFmla{\False}{!A}$. If such a closed !!{tableau} exists, all
-possibilities for~$!A$ being false have been ruled out; O.s.\@, $!A$
-must be true in every !!{structure}.
+Um !!{tableau} fechado \emph{para $!A$} é um !!{tableau} fechado com
+raiz~$\sFmla{\False}{!A}$. Se existe um !!{tableau} fechado desse tipo,
+todas as possibilidades de~$!A$ ser falsa foram excluídas; isto é, $!A$
+deve ser verdadeira em toda !!{structure}.
 
 \end{document}

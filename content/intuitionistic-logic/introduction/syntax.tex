@@ -6,71 +6,71 @@
 
 \begin{document}
 
-\olfileid{int}{int}{syn}
+\olfileid[pt]{int}{int}{syn}
 
-\olsection{Syntax of Intuitionistic Logic}
+\olsection{Sintaxe da lógica intuicionista}
 
-The syntax of intuitionistic logic is the same as that for
-propositional logic. In classical propositional logic it is possible
-to define connectives by others, p.ex., one can define $!A \lif !B$ by
-$\lnot !A \lor !B$, or $!A \lor !B$ by $\lnot(\lnot !A \land \lnot
-!B)$. Thus, presentations of classical logic often introduce some
-connectives as abbreviations for these definitions. This is not so in
-intuitionistic logic, with two exceptions: $\lnot !A$ can be---and
-often is---defined as an abbreviation for $!A \lif \lfalse$. Then, of
-course, $\lfalse$ must not itself be defined!{} Also, $!A \liff !B$
-can be defined, as in classical logic, as $(!A \lif !B) \land (!B \lif
-!A)$.
+A sintaxe da lógica intuicionista é a mesma da lógica proposicional.
+Na lógica proposicional clássica, é possível definir conectivos por
+meio de outros: por exemplo, pode-se definir $!A \lif !B$ por
+$\lnot !A \lor !B$, ou $!A \lor !B$ por $\lnot(\lnot !A \land \lnot
+!B)$. Por isso, apresentações da lógica clássica frequentemente
+introduzem alguns conectivos como abreviações dessas definições. Isso
+não ocorre na lógica intuicionista, com duas exceções: $\lnot !A$ pode
+ser---e muitas vezes é---definida como abreviação de $!A \lif \lfalse$.
+Nesse caso, é claro, $\lfalse$ não pode ser ela própria definida!{}
+Além disso, $!A \liff !B$ pode ser definida, como na lógica clássica,
+por $(!A \lif !B) \land (!B \lif !A)$.
 
-!!^{formula}s of propositional intuitionistic logic are built up from
-\emph{!!{propositional variable}s} and the propositional
-constant~$\lfalse$ using \emph{logical connectives}. We have:
+As !!^{formula}s da lógica proposicional intuicionista são construídas
+a partir de \emph{!!{propositional variable}s} e da constante
+proposicional~$\lfalse$, mediante \emph{conectivos lógicos}. Temos:
 
 \begin{enumerate}
-\item !!^a{denumerable} set~$\PVar$ of !!{propositional variable}s $\Obj p_0$,
+\item Um conjunto~$\PVar$ !!^a{denumerable} de !!{propositional variable}s $\Obj p_0$,
   $\Obj p_1$, \dots
-  \item The propositional constant for !!{falsity}~$\lfalse$.
-\item The logical connectives: $\land$
-  (conjunction), $\lor$ (disjunction), $\lif$ (conditional)
-\item Punctuation marks: (, ), and the comma.
+  \item A constante proposicional de !!{falsity}~$\lfalse$.
+\item Os conectivos lógicos: $\land$
+  (conjunção), $\lor$ (disjunção), $\lif$ (condicional)
+\item Os sinais de pontuação: (, ) e a vírgula.
 \end{enumerate}
 
-\begin{defn}[Formula]
-\ollabel{defn:formulas} The set~$\Frm[L_0]$ of \emph{!!{formula}s} of
-propositional intuitionistic logic is defined inductively as follows:
+\begin{defn}[Fórmula]
+\ollabel{defn:formulas} O conjunto~$\Frm[L_0]$ das \emph{!!{formula}s} da
+lógica proposicional intuicionista é definido indutivamente da seguinte maneira:
 \begin{enumerate}
-\item $\lfalse$ is an atomic !!{formula}.
+\item $\lfalse$ é uma !!{formula} atômica.
 
-\item Every !!{propositional variable}~$\Obj p_i$ is an atomic
+\item Toda !!{propositional variable}~$\Obj p_i$ é uma
   !!{formula}.
 
-\item If $!A$ and $!B$ are !!{formula}s, then $(!A \land
-  !B)$ is !!a{formula}.
+\item Se $!A$ e $!B$ são !!{formula}s, então $(!A \land
+  !B)$ é !!a{formula}.
 
-\item If $!A$ and $!B$ are !!{formula}s, then $(!A \lor !B)$
-  is !!a{formula}.
+\item Se $!A$ e $!B$ são !!{formula}s, então $(!A \lor !B)$
+  é !!a{formula}.
 
-\item If $!A$ and $!B$ are !!{formula}s, then $(!A \lif !B)$
-  is !!a{formula}.
+\item Se $!A$ e $!B$ são !!{formula}s, então $(!A \lif !B)$
+  é !!a{formula}.
 
-\tagitem{limitClause}{Nothing else is !!a{formula}.}{}
+\tagitem{limitClause}{Nada mais é !!a{formula}.}{}
 \end{enumerate}
 \end{defn}
 
-In addition to the primitive connectives introduced above, we also use
-the following \emph{defined} symbols: $\lnot$ (negation) and $\liff$
-(!!{biconditional}).  Formulas constructed using the defined operators
-are to be understood as follows:
+Além dos conectivos primitivos introduzidos acima, também usamos os
+seguintes símbolos \emph{definidos}: $\lnot$ (negação) e $\liff$
+(!!{biconditional}). As fórmulas construídas com os operadores definidos
+devem ser entendidas da seguinte maneira:
 \begin{enumerate}
-\item $\lnot !A$ abbreviates $!A \lif \lfalse$.
+\item $\lnot !A$ abrevia $!A \lif \lfalse$.
 
-\item $!A \liff !B$ abbreviates $(!A \lif !B) \land (!B
+\item $!A \liff !B$ abrevia $(!A \lif !B) \land (!B
   \lif !A)$.
 \end{enumerate}
 
-Although $\lnot$ is officially treated as an abbreviation, we will
-sometimes give explicit rules and clauses in definitions for~$\lnot$
-as if it were primitive. This is mostly so we can state practice
-problems.
+Embora $\lnot$ seja oficialmente tratada como abreviação, às vezes
+apresentaremos regras explícitas e cláusulas de definições para~$\lnot$
+como se fosse primitiva. Isso serve principalmente para podermos
+formular exercícios.
 
 \end{document}

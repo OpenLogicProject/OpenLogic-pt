@@ -6,38 +6,40 @@
 
 \begin{document}
 
-\olfileid{nml}{fil}{fin}
+\olfileid[pt]{nml}{fil}{fin}
 
-\olsection{Filtrations are Finite}
+\olsection{As filtrações são finitas}
 
-We've defined filtrations for any set~$\Gamma$ that is closed under
-sub-!!{formula}s. Nothing in the definition itself guarantees that
-filtrations are finite. In fact, when $\Gamma$ is infinite (p.ex., is
-the set of all !!{formula}s), it may well be infinite. However, if
-$\Gamma$ is finite (p.ex., when it is the set of sub-!!{formula}s of a
-given !!{formula}~$!A$), so is any filtration through~$\Gamma$.
+Definimos filtrações para qualquer conjunto~$\Gamma$ fechado sob
+sub-!!{formula}s. Nada na própria definição garante que as filtrações
+sejam finitas. De fato, quando $\Gamma$ é infinito (por exemplo, quando é
+o conjunto de todas as !!{formula}s), a filtração pode muito bem ser
+infinita. Contudo, se $\Gamma$ é finito (por exemplo, quando é o conjunto
+das sub-!!{formula}s de uma dada !!{formula}~$!A$), então toda filtração
+por meio de~$\Gamma$ também é finita.
 
 \begin{prop}\ollabel{prop:filt-are-finite}
-  If $\Gamma$ is finite then any filtration $\mModel{M^*}$ of a model
-  $\mModel{M}$ through $\Gamma$ is also finite.
+  Se $\Gamma$ é finito, então toda filtração $\mModel{M^*}$ de um modelo
+  $\mModel{M}$ por meio de $\Gamma$ também é finita.
 \end{prop}
 
 \begin{proof}
-  The size of $W^*$ is the number of different classes~$[w]$ under the
-  equivalence relation~$\equiv$. Any two worlds $u$, $v$ in such
-  class---that is, any $u$ and $v$ such that~$u \equiv v$---agree on
-  all !!{formula}s~$!A$ in~$\Gamma$, $!A \in \Gamma$ either $!A$ is
-  true at both $u$ and $v$, or at neither. So each class~$[w]$
-  corresponds to subset of~$\Gamma$, namely the set of all $!A \in
-  \Gamma$ such that $!A$ is true at the worlds in~$[w]$. No two
-  different classes $[u]$ and $[v]$ correspond to the same subset
-  of~$\Gamma$. For if the set of !!{formula}s true at $u$ and that of
-  !!{formula}s true at $v$ are the same, then $u$ and $v$ agree on all
-  formulas in~$\Gamma$, O.s.\@, $u \equiv v$. But then $[u] = [v]$.  So,
-  there is !!a{injective} function from $W^*$ to $\Pow{\Gamma}$, and
-  hence $\card{W^*} \le \card{\Pow{\Gamma}}$.  Hence if $\Gamma$
-  contains $n$ sentences, the cardinality of $W^*$ is no greater
-  than~$2^n$.
+  O tamanho de $W^*$ é o número de classes distintas~$[w]$ sob a relação
+  de equivalência~$\equiv$. Quaisquer dois mundos $u$, $v$ em uma mesma
+  classe---isto é, quaisquer $u$ e $v$ tais que~$u \equiv v$---concordam
+  sobre todas as !!{formula}s~$!A$ em~$\Gamma$: para $!A \in \Gamma$,
+  ou $!A$ é verdadeira tanto em $u$ quanto em $v$, ou não é verdadeira
+  em nenhum deles. Assim, cada classe~$[w]$ corresponde a um subconjunto
+  de~$\Gamma$, a saber, o conjunto de todos os $!A \in \Gamma$ tais que
+  $!A$ é verdadeira nos mundos de~$[w]$. Duas classes diferentes $[u]$
+  e $[v]$ não correspondem ao mesmo subconjunto de~$\Gamma$. Com efeito,
+  se o conjunto das !!{formula}s verdadeiras em $u$ é o mesmo que o das
+  !!{formula}s verdadeiras em $v$, então $u$ e $v$ concordam sobre todas
+  as fórmulas em~$\Gamma$, isto é, $u \equiv v$. Mas, nesse caso,
+  $[u] = [v]$. Logo, há uma função !!a{injective} de $W^*$ em
+  $\Pow{\Gamma}$ e, portanto, $\card{W^*} \le \card{\Pow{\Gamma}}$.
+  Assim, se $\Gamma$ contém $n$ sentenças, a cardinalidade de $W^*$ não
+  é maior que~$2^n$.
 \end{proof}
 
 \end{document}

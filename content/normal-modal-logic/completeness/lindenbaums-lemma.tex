@@ -6,102 +6,106 @@
 
 \begin{document}
 
-\olfileid{nml}{com}{lin}
+\olfileid[pt]{nml}{com}{lin}
 
-\olsection{Lindenbaum's Lemma}
+\olsection{Lema de Lindenbaum}
 
-Lindenbaum's Lemma establishes that every $\Sigma$-consistent set of
-!!{formula}s is contained in at least one \emph{complete}
-$\Sigma$-consistent set. Our construction of the canonical model will
-show that for each complete $\Sigma$-consistent set~$\Delta$, there is
-a world in the canonical model where all and only the !!{formula}s
-in~$\Delta$ are true. So Lindenbaum's Lemma guarantees that every
-$\Sigma$-consistent set is true at some world in the canonical model.
+O lema de Lindenbaum estabelece que todo conjunto $\Sigma$-consistente
+de !!{formula}s está contido em pelo menos um conjunto \emph{completo}
+$\Sigma$-consistente. Nossa construção do modelo canônico mostrará que,
+para cada conjunto $\Sigma$-consistente completo~$\Delta$, existe um
+mundo no modelo canônico no qual são verdadeiras todas e somente as
+!!{formula}s em~$\Delta$. Assim, o lema de Lindenbaum garante que todo
+conjunto $\Sigma$-consistente é verdadeiro em algum mundo do modelo
+canônico.
 
-\begin{thm}[Lindenbaum's Lemma]\ollabel{thm:lindenbaum}
-  If $\Gamma$ is $\Sigma$-consistent then there is a complete
-  $\Sigma$-consistent set $\Delta$ extending~$\Gamma$.
+\begin{thm}[Lema de Lindenbaum]\ollabel{thm:lindenbaum}
+  Se $\Gamma$ é $\Sigma$-consistente, então existe um conjunto
+  $\Sigma$-consistente completo $\Delta$ que estende~$\Gamma$.
 \end{thm}
 
 \begin{proof}
-Let $!A_0$, $!A_1$, \dots{} be an exhaustive listing of all formulas
-of the language (repetitions are allowed). For instance, start by
-listing $\Obj p_0$, and at each stage $n \ge 1$ list the finitely many
-formulas of length~$n$ using only variables among $\Obj p_0$,
-\dots,~$\Obj p_n$. We define sets of !!{formula}s $\Delta_n$ by
-induction on~$n$, and we then set $\Delta = \bigcup_n \Delta_n$. We
-first put $\Delta_0 = \Gamma$. Supposing that $\Delta_n$ has been
-defined, we define $\Delta_{n+1}$ by:
+Seja $!A_0$, $!A_1$, \dots{} uma enumeração exaustiva de todas as
+fórmulas da linguagem (repetições são permitidas). Por exemplo,
+comece enumerando $\Obj p_0$ e, em cada etapa $n \ge 1$, enumere as
+finitas fórmulas de comprimento~$n$ que usam somente variáveis entre
+$\Obj p_0$, \dots,~$\Obj p_n$. Definimos conjuntos de !!{formula}s
+$\Delta_n$ por indução em~$n$ e, em seguida, fazemos
+$\Delta = \bigcup_n \Delta_n$. Primeiro, pomos $\Delta_0 = \Gamma$.
+Supondo definido $\Delta_n$, definimos $\Delta_{n+1}$ por:
 \[
 \Delta_{n+1} =
 \begin{cases}
-  \Delta_n \cup \{!A_n\}, & \text{if $\Delta_n \cup \{ !A_n\}$
-    is $\Sigma$-consistent;} \\
-  \Delta_n \cup \{ \lnot !A_n\}, & \text{otherwise.}
+  \Delta_n \cup \{!A_n\}, & \text{se $\Delta_n \cup \{ !A_n\}$
+    é $\Sigma$-consistente;} \\
+  \Delta_n \cup \{ \lnot !A_n\}, & \text{caso contrário.}
 \end{cases}
 \]
-Now let $\Delta = \bigcup_{n=0}^\infty \Delta_n$.
+Agora, seja $\Delta = \bigcup_{n=0}^\infty \Delta_n$.
 
-We have to show that this definition actually yields a set $\Delta$
-with the required properties, O.s.\@, $\Gamma \subseteq \Delta$ and
-$\Delta$ is complete $\Sigma$-consistent.
+Devemos mostrar que essa definição realmente produz um conjunto
+$\Delta$ com as propriedades exigidas, isto é,
+$\Gamma \subseteq \Delta$ e $\Delta$ é $\Sigma$-consistente completo.
 
-It's obvious that $\Gamma \subseteq \Delta$, since $\Delta_0 \subseteq
-\Delta$ by construction, and $\Delta_0 = \Gamma$. In fact, $\Delta_n
-\subseteq \Delta$ for all~$n$, since $\Delta$ is the union of
-all~$\Delta_n$. (Since in each step of the construction, we add
-!!a{formula} to the set already constructed, $\Delta_n \subseteq
-\Delta_{n+1}$, so since $\subseteq$ is transitive, $\Delta_n \subseteq
-\Delta_{m}$ whenever $n \le m$.)  At each stage of the construction, we
-either add $!A_n$ or $\lnot !A_n$, and every !!{formula} appears (at
-least once) in the list of all~$!A_n$. So, for every $!A$ either $!A
-\in \Delta$ or $\lnot !A \in \Delta$, so $\Delta$ is complete by
-definition.
+É evidente que $\Gamma \subseteq \Delta$, pois $\Delta_0 \subseteq
+\Delta$ por construção, e $\Delta_0 = \Gamma$. Na verdade, $\Delta_n
+\subseteq \Delta$ para todo~$n$, pois $\Delta$ é a união de
+todos os~$\Delta_n$. (Como, em cada etapa da construção, acrescentamos
+!!a{formula} ao conjunto já construído, $\Delta_n \subseteq
+\Delta_{n+1}$; como $\subseteq$ é transitiva, $\Delta_n \subseteq
+\Delta_{m}$ sempre que $n \le m$.) Em cada etapa da construção,
+acrescentamos ou $!A_n$, ou $\lnot !A_n$, e toda !!{formula} aparece
+(pelo menos uma vez) na lista de todos os~$!A_n$. Portanto, para todo
+$!A$, ou $!A \in \Delta$, ou $\lnot !A \in \Delta$; logo $\Delta$ é
+completo por definição.
 
-Finally, we have to show, that $\Delta$ is $\Sigma$-consistent.  To do
-this, we show that (a) if $\Delta$ were $\Sigma$-inconsistent, then
-some $\Delta_n$ would be $\Sigma$-inconsistent, and (b) all $\Delta_n$
-are $\Sigma$-consistent.
+Finalmente, devemos mostrar que $\Delta$ é $\Sigma$-consistente. Para
+isso, mostramos que (a), se $\Delta$ fosse $\Sigma$-inconsistente,
+algum $\Delta_n$ seria $\Sigma$-inconsistente, e (b) todos os $\Delta_n$
+são $\Sigma$-consistentes.
 
-So suppose $\Delta$ were $\Sigma$-inconsistent. Then $\Delta
-\Proves[\Sigma] \lfalse$, O.s.\@, there are $!A_1$, \dots,~$!A_k \in
-\Delta$ such that $\Sigma \Proves !A_1 \lif (!A_2 \lif \cdots (!A_k
-\lif \lfalse)\dots)$. Since $\Delta = \bigcup_{n=0}^\infty \Delta_n$, each
-$!A_i \in \Delta_{n_i}$ for some~$n_i$. Let $n$ be the largest of
-these. Since $n_i \le n$, $\Delta_{n_i} \subseteq \Delta_n$. So, all
-$!A_i$ are in some~$\Delta_n$. This would mean $\Delta_n
-\Proves[\Sigma] \lfalse$, O.s.\@, $\Delta_n$ is $\Sigma$-inconsistent.
+Suponha, portanto, que $\Delta$ seja $\Sigma$-inconsistente. Então
+$\Delta \Proves[\Sigma] \lfalse$, isto é, existem $!A_1$,
+\dots,~$!A_k \in \Delta$ tais que $\Sigma \Proves !A_1 \lif (!A_2
+\lif \cdots (!A_k \lif \lfalse)\dots)$. Como
+$\Delta = \bigcup_{n=0}^\infty \Delta_n$, cada
+$!A_i \in \Delta_{n_i}$ para algum~$n_i$. Seja $n$ o maior desses
+índices. Como $n_i \le n$, $\Delta_{n_i} \subseteq \Delta_n$.
+Portanto, todos os $!A_i$ estão em algum~$\Delta_n$. Isso significaria
+que $\Delta_n \Proves[\Sigma] \lfalse$, isto é, que $\Delta_n$ é
+$\Sigma$-inconsistente.
 
-To show that each $\Delta_n$ is $\Sigma$-consistent, we use a simple
-induction on~$n$. $\Delta_0 = \Gamma$, and we assumed $\Gamma$ was
-$\Sigma$-consistent. So the claim holds for $n = 0$. Now suppose it
-holds for $n$, O.s.\@, $\Delta_n$ is $\Sigma$-consistent. $\Delta_{n+1}$
-is either $\Delta_n \cup \{!A_n\}$ if that is $\Sigma$-consistent,
-otherwise it is $\Delta_n \cup \{\lnot!A_n\}$. In the first case,
-$\Delta_{n+1}$ is clearly $\Sigma$-consistent. However, by
+Para mostrar que cada $\Delta_n$ é $\Sigma$-consistente, usamos uma
+indução simples em~$n$. Temos $\Delta_0 = \Gamma$, e supusemos que
+$\Gamma$ era $\Sigma$-consistente. Portanto, a afirmação vale para
+$n = 0$. Suponha agora que ela valha para $n$, isto é, que $\Delta_n$
+seja $\Sigma$-consistente. $\Delta_{n+1}$ é
+$\Delta_n \cup \{!A_n\}$ se esse conjunto é $\Sigma$-consistente; caso
+contrário, é $\Delta_n \cup \{\lnot!A_n\}$. No primeiro caso,
+$\Delta_{n+1}$ é claramente $\Sigma$-consistente. Contudo, por
 \olref[prf][con]{prop:consistencyfacts}\olref[prf][con]{prop:consistencyfacts-c},
-either $\Delta_n \cup \{!A_n\}$ or $\Delta_n \cup \{\lnot!A_n\}$ is
-consistent, so $\Delta_{n+1}$ is consistent in the other case as well.
+ou $\Delta_n \cup \{!A_n\}$, ou $\Delta_n \cup \{\lnot!A_n\}$ é
+consistente, de modo que $\Delta_{n+1}$ também é consistente no outro caso.
 \end{proof}
 
 \begin{cor}\ollabel{cor:provability-characterization}
-  $\Gamma \Proves[\Sigma] !A$ if and only if $!A \in \Delta$ for
-  each  complete $\Sigma$-consistent set $\Delta$ extending $\Gamma$
-  (including when $\Gamma = \emptyset$, in which case we get another
-  characterization of the modal system $\Sigma$.)
+  $\Gamma \Proves[\Sigma] !A$ se e somente se $!A \in \Delta$ para
+  cada conjunto $\Sigma$-consistente completo $\Delta$ que estende
+  $\Gamma$ (inclusive quando $\Gamma = \emptyset$, caso em que obtemos
+  outra caracterização do sistema modal $\Sigma$.)
 \end{cor}
 
 \begin{proof}
-  Suppose $\Gamma \Proves[\Sigma] !A$, and let $\Delta$ be any
-  complete $\Sigma$-consistent set extending $\Gamma$. If $!A
-  \notin \Delta$ then by maximality $\lnot!A \in \Delta$ and so
-  $\Delta \Proves[\Sigma] !A$ (by monotonicity) and $\Delta
-  \Proves[\Sigma] \lnot!A$ (by reflexivity), and so $\Delta$ is
-  inconsistent. Conversely if $\Gamma \Proves/[\Sigma] !A$, then
-  $\Gamma \cup \{ \lnot!A\}$ is $\Sigma$-consistent, and by
-  Lindenbaum's Lemma there is a complete consistent set $\Delta$
-  extending $\Gamma \cup \{ \lnot!A \}$. By consistency, $!A
-  \notin \Delta$.
+  Suponha que $\Gamma \Proves[\Sigma] !A$ e seja $\Delta$ qualquer
+  conjunto $\Sigma$-consistente completo que estenda $\Gamma$. Se
+  $!A \notin \Delta$, então, pela maximalidade, $\lnot!A \in \Delta$;
+  assim, $\Delta \Proves[\Sigma] !A$ (pela monotonicidade) e $\Delta
+  \Proves[\Sigma] \lnot!A$ (pela reflexividade), e portanto $\Delta$ é
+  inconsistente. Reciprocamente, se $\Gamma \Proves/[\Sigma] !A$,
+  então $\Gamma \cup \{ \lnot!A\}$ é $\Sigma$-consistente e, pelo
+  lema de Lindenbaum, existe um conjunto completo e consistente
+  $\Delta$ que estende $\Gamma \cup \{ \lnot!A \}$. Pela consistência,
+  $!A \notin \Delta$.
 \end{proof}
 
 \end{document}

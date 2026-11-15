@@ -6,225 +6,214 @@
 
 \begin{document}
 
-\olfileid{nml}{tab}{cpl}
+\olfileid[pt]{nml}{tab}{cpl}
 
-\olsection{Completeness for \Log{K}}
+\olsection{Completude para \Log{K}}
 
 \begin{explain}
-  To show that the method of !!{tableau}s is complete, we have to show
-  that whenever there is no closed !!{tableau} to show $\Gamma \Proves
-  !A$, then $\Gamma \Entails/ !A$, O.s.\@, there is a countermodel. But
-  ``there is no closed !!{tableau}'' means that every way we could try
-  to construct one has to fail to close. The trick is to see that if
-  every such way fails to close, then a specific, \emph{systematic and
-    exhaustive} way also fails to close. And this systematic and
-  exhaustive way would close if a closed !!{tableau} exists. The
-  single tableau will contain, among its open branches, all the
-  information required to define a countermodel. The countermodel
-  given by an open branch in this tableau will contain the all the
-  prefixes used on that branch as the worlds, and !!a{propositional
-    variable}~$p$ is true at $\sigma$ iff $\sFmla{\True}{p}[\sigma]$
-  occurs on the branch.
+  Para mostrar que o método dos !!{tableau}s é completo, precisamos
+  mostrar que, sempre que não há um !!{tableau} fechado que mostre
+  $\Gamma \Proves !A$, então $\Gamma \Entails/ !A$, isto é, há um
+  contramodelo. Mas ``não há um !!{tableau} fechado'' significa que toda
+  maneira pela qual poderíamos tentar construir um deve deixar de fechar.
+  O truque consiste em perceber que, se toda maneira desse tipo deixa de
+  fechar, então uma maneira específica, \emph{sistemática e exaustiva},
+  também deixa de fechar. E essa maneira sistemática e exaustiva fecharia
+  se existisse um !!{tableau} fechado. O único tableau conterá, entre seus
+  ramos abertos, toda a informação necessária para definir um contramodelo.
+  O contramodelo fornecido por um ramo aberto desse tableau conterá como
+  mundos todos os prefixos usados nesse ramo, e !!a{propositional
+    variable}~$p$ será verdadeira em $\sigma$ sse
+  $\sFmla{\True}{p}[\sigma]$ ocorrer no ramo.
 \end{explain}
 
 \begin{defn}
-  A branch in !!a{tableau} is called complete if, whenever it contains
-  a prefixed !!{formula} $\sFmla{S}{!A}[\sigma]$ to which a rule can
-  be applied, it also contains
+  Um ramo de !!a{tableau} é chamado completo se, sempre que contém uma
+  !!{formula} prefixada $\sFmla{S}{!A}[\sigma]$ à qual uma regra pode
+  ser aplicada, também contém:
   \begin{enumerate}
-    \item the prefixed !!{formula}s that are the corresponding
-      conclusions of the rule, in the case of propositional stacking
-      rules;
-    \item one of the corresponding conclusion !!{formula}s in the case
-      of propositional branching rules;
-    \item at least one possible conclusion in the case of modal rules
-      that require a new prefix;
-    \item the corresponding conclusion for every prefix occurring on
-      the branch in the case of modal rules that require a used
-      prefix.
+    \item as !!{formula}s prefixadas que são as conclusões correspondentes
+      da regra, no caso das regras proposicionais de empilhamento;
+    \item uma das !!{formula}s de conclusão correspondentes, no caso das
+      regras proposicionais de ramificação;
+    \item ao menos uma conclusão possível, no caso das regras modais que
+      exigem um prefixo novo;
+    \item a conclusão correspondente para todo prefixo que ocorre no ramo,
+      no caso das regras modais que exigem um prefixo usado.
   \end{enumerate}
 \end{defn}
 
 \begin{explain}
-For instance, a complete branch contains $\sFmla{\True}{!B}[\sigma]$
-and $\sFmla{\True}{!C}[\sigma]$ whenever it contains $\sFmla{\True}{!B
-  \land !C}$. If it contains $\sFmla{\True}{!B \lor !C}[\sigma]$ it
-contains at least one of $\sFmla{\False}{!B}[\sigma]$ and
-$\sFmla{\True}{!C}[\sigma]$. If it contains \iftag{prvBox}
+Por exemplo, um ramo completo contém $\sFmla{\True}{!B}[\sigma]$ e
+$\sFmla{\True}{!C}[\sigma]$ sempre que contém $\sFmla{\True}{!B
+  \land !C}$. Se contém $\sFmla{\True}{!B \lor !C}[\sigma]$, contém
+ao menos uma entre $\sFmla{\False}{!B}[\sigma]$ e
+$\sFmla{\True}{!C}[\sigma]$. Se contém \iftag{prvBox}
 {$\sFmla{\False}{\Box}[\sigma]$} {$\sFmla{\True}{\Diamond}[\sigma]$}
-it also contains \iftag{prvBox} {$\sFmla{\False}{\Box}[\sigma.n]$}
-{$\sFmla{\True}{\Diamond}[\sigma.n]$} for at least one~$n$.  And
-whenever it contains \iftag{prvBox} {$\sFmla{\True}{\Box}[\sigma]$}
-{$\sFmla{\False}{\Diamond}[\sigma]$} it also contains \iftag{prvBox}
+também contém \iftag{prvBox} {$\sFmla{\False}{\Box}[\sigma.n]$}
+{$\sFmla{\True}{\Diamond}[\sigma.n]$} para ao menos um~$n$. E, sempre
+que contém \iftag{prvBox} {$\sFmla{\True}{\Box}[\sigma]$}
+{$\sFmla{\False}{\Diamond}[\sigma]$}, também contém \iftag{prvBox}
 {$\sFmla{\True}{\Box}[\sigma.n]$}
-{$\sFmla{\False}{\Diamond}[\sigma.n]$} for every~$n$ such that
-$\sigma.n$ is used on the branch.
+{$\sFmla{\False}{\Diamond}[\sigma.n]$} para todo~$n$ tal que
+$\sigma.n$ seja usado no ramo.
 \end{explain}
 
 \begin{prop}\ollabel{prop:complete-tableau}
-  Every finite $\Gamma$ has !!a{tableau} in which every branch is complete.
+  Todo $\Gamma$ finito tem !!a{tableau} no qual todo ramo é completo.
 \end{prop}
 
 \begin{proof}
-  Consider an open branch in !!a{tableau} for~$\Gamma$. There are
-  finitely many prefixed !!{formula}s in the branch to which a rule
-  could be applied. In some fixed order (say, top to bottom), for each
-  of these prefixed !!{formula}s for which the conditions (1)--(4) do
-  not already hold, apply the rules that can be applied to it to
-  extend the branch. In some cases this will result in branching;
-  apply the rule at the tip of each resulting branch for all remaining
-  prefixed !!{formula}s. Since the number of prefixed !!{formula}s is
-  finite, and the number of used prefixes on the branch is finite,
-  this procedure eventually results in (possibly many) branches
-  extending the original branch. Apply the procedure to each, and
-  repeat. But by construction, every branch is closed.
+  Considere um ramo aberto de !!a{tableau} para~$\Gamma$. Há um número
+  finito de !!{formula}s prefixadas no ramo às quais uma regra poderia
+  ser aplicada. Em alguma ordem fixa (digamos, de cima para baixo), para
+  cada uma dessas !!{formula}s prefixadas para a qual as condições
+  (1)--(4) ainda não valem, aplique as regras aplicáveis a ela para
+  estender o ramo. Em alguns casos, isso produzirá ramificações; aplique
+  a regra na extremidade de cada ramo resultante para todas as !!{formula}s
+  prefixadas restantes. Como o número de !!{formula}s prefixadas é finito
+  e o número de prefixos usados no ramo é finito, esse procedimento acaba
+  produzindo (possivelmente muitos) ramos que estendem o ramo original.
+  Aplique o procedimento a cada um e repita. Mas, por construção, todo
+  ramo é fechado.
 \end{proof}
 
-\begin{thm}[Completeness]
+\begin{thm}[Completude]
   \ollabel{thm:tableau-completeness}
-  If $\Gamma$ has no closed !!{tableau}, $\Gamma$ is satisfiable.
+  Se $\Gamma$ não tem !!{tableau} fechado, $\Gamma$ é satisfatível.
 \end{thm}
 
 \begin{proof}
-By the proposition, $\Gamma$ has !!a{tableau} in which every branch is
-complete. Since it has no closed !!{tableau}, it thas has !!a{tableau} in
-which at least one branch is open and complete. Let $\Delta$ be the
-set of prefixed !!{formula}s on the branch, and $P(\Delta)$ the set of
-prefixes occurring in it.
+Pela proposição, $\Gamma$ tem !!a{tableau} no qual todo ramo é completo.
+Como não tem !!{tableau} fechado, tem !!a{tableau} no qual ao menos um
+ramo é aberto e completo. Seja $\Delta$ o conjunto das !!{formula}s
+prefixadas no ramo e seja $P(\Delta)$ o conjunto dos prefixos que nele
+ocorrem.
 
-We define a model~$\mModel{M(\Delta)} = \tuple{P(\Delta), R, V}$ where
-the worlds are the prefixes occurring in~$\Delta$, the accessibility
-relation is given by:
+Definimos um modelo~$\mModel{M(\Delta)} = \tuple{P(\Delta), R, V}$ no
+qual os mundos são os prefixos que ocorrem em~$\Delta$, e a relação de
+acessibilidade é dada por:
 \[
-R\sigma\sigma' \quad \text{iff} \quad
-\sigma'=\sigma.n \quad \text{for some~$n$}
+R\sigma\sigma' \quad \text{sse} \quad
+\sigma'=\sigma.n \quad \text{para algum~$n$}
 \]
-and
+e
 \[
 V(p) = \Setabs{\sigma}{\sFmla{\True}{p}[\sigma] \in \Delta}.
 \]
-We show by induction on~$!A$ that if $\sFmla{\True}{!A}[\sigma] \in
-\Delta$ then $\mSat{M(\Delta)}{!A}[\sigma]$, and if
-$\sFmla{\False}{!A}[\sigma] \in \Delta$ then
+Mostramos por indução sobre~$!A$ que, se
+$\sFmla{\True}{!A}[\sigma] \in \Delta$, então
+$\mSat{M(\Delta)}{!A}[\sigma]$ e, se
+$\sFmla{\False}{!A}[\sigma] \in \Delta$, então
 $\mSat/{M(\Delta)}{!A}[\sigma]$.
 
 \begin{enumerate}
-  \item \indcase{!A}{p}{If $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$
-    then $\sigma \in V(p)$ (by definition of~$V$) and so
+  \item \indcase{!A}{p}{Se $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$,
+    então $\sigma \in V(p)$ (pela definição de~$V$) e, portanto,
     $\mSat{M(\Delta)}{\indfrm}[\sigma]$.
 
-    If $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$ then
-    $\sFmla{\True}{\indfrm}[\sigma] \notin \Delta$, since the branch
-    would otherwise be closed. So $\sigma \notin V(p)$ and thus
+    Se $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, então
+    $\sFmla{\True}{\indfrm}[\sigma] \notin \Delta$, pois, do contrário,
+    o ramo seria fechado. Logo, $\sigma \notin V(p)$ e
     $\mSat/{M(\Delta)}{\indfrm}[\sigma]$.}
-  \item \indcase{!A}{\lnot !B}{\iftag{probNot}{Exercise.}{If
-      $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$, then
-      $\sFmla{\False}{!B}[\sigma] \in \Delta$ since the branch is
-      complete. By induction hypothesis,
-      $\mSat/{M(\Delta)}{!B}[\sigma]$ and thus
+  \item \indcase{!A}{\lnot !B}{\iftag{probNot}{Exercício.}{Se
+      $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$, então
+      $\sFmla{\False}{!B}[\sigma] \in \Delta$, pois o ramo é completo.
+      Pela hipótese de indução, $\mSat/{M(\Delta)}{!B}[\sigma]$ e, portanto,
       $\mSat{M(\Delta)}{\indfrm}[\sigma]$.
 
-      If $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, then
-      $\sFmla{\True}{!B}[\sigma] \in \Delta$ since the branch is
-      complete. By induction hypothesis,
-      $\mSat{M(\Delta)}{!B}[\sigma]$ and thus
+      Se $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, então
+      $\sFmla{\True}{!B}[\sigma] \in \Delta$, pois o ramo é completo.
+      Pela hipótese de indução, $\mSat{M(\Delta)}{!B}[\sigma]$ e, portanto,
       $\mSat/{M(\Delta)}{\indfrm}[\sigma]$.}}
-  \item \indcase{!A}{!B \land !C}{\iftag{probAnd}{Exercise.}{If
-      $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$, then both
-      $\sFmla{\True}{!B}[\sigma] \in \Delta$ and
-      $\sFmla{\True}{!C}[\sigma] \in \Delta$ since the branch is
-      complete. By induction hypothesis,
-      $\mSat{M(\Delta)}{!B}[\sigma]$ and
-      $\mSat{M(\Delta)}{!C}[\sigma]$. Thus
+  \item \indcase{!A}{!B \land !C}{\iftag{probAnd}{Exercício.}{Se
+      $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$, então tanto
+      $\sFmla{\True}{!B}[\sigma] \in \Delta$ quanto
+      $\sFmla{\True}{!C}[\sigma] \in \Delta$, pois o ramo é completo.
+      Pela hipótese de indução, $\mSat{M(\Delta)}{!B}[\sigma]$ e
+      $\mSat{M(\Delta)}{!C}[\sigma]$. Portanto,
       $\mSat{M(\Delta)}{\indfrm}[\sigma]$.
 
-      If $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, then either
-      $\sFmla{\False}{!B}[\sigma] \in \Delta$ or
-      $\sFmla{\False}{!C}[\sigma] \in \Delta$ since the branch is
-      complete. By induction hypothesis, either
-      $\mSat/{M(\Delta)}{!B}[\sigma]$ or
-      $\mSat/{M(\Delta)}{!B}[\sigma]$. Thus
+      Se $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, então ou
+      $\sFmla{\False}{!B}[\sigma] \in \Delta$, ou
+      $\sFmla{\False}{!C}[\sigma] \in \Delta$, pois o ramo é completo.
+      Pela hipótese de indução, ou $\mSat/{M(\Delta)}{!B}[\sigma]$, ou
+      $\mSat/{M(\Delta)}{!B}[\sigma]$. Portanto,
       $\mSat/{M(\Delta)}{\indfrm}[\sigma]$.}}
-  \item \indcase{!A}{!B \lor !C}{\iftag{probOr}{Exercise.}{If
-      $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$, then either
-      $\sFmla{\True}{!B}[\sigma] \in \Delta$ or
-      $\sFmla{\True}{!C}[\sigma] \in \Delta$ since the branch is
-      complete. By induction hypothesis, either
-      $\mSat{M(\Delta)}{!B}[\sigma]$ or
-      $\mSat{M(\Delta)}{!C}[\sigma]$. Thus
+  \item \indcase{!A}{!B \lor !C}{\iftag{probOr}{Exercício.}{Se
+      $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$, então ou
+      $\sFmla{\True}{!B}[\sigma] \in \Delta$, ou
+      $\sFmla{\True}{!C}[\sigma] \in \Delta$, pois o ramo é completo.
+      Pela hipótese de indução, ou $\mSat{M(\Delta)}{!B}[\sigma]$, ou
+      $\mSat{M(\Delta)}{!C}[\sigma]$. Portanto,
       $\mSat{M(\Delta)}{\indfrm}[\sigma]$.
 
-      If $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, then both
-      $\sFmla{\False}{!B}[\sigma] \in \Delta$ and
-      $\sFmla{\False}{!C}[\sigma] \in \Delta$ since the branch is
-      complete. By induction hypothesis, both
-      $\mSat/{M(\Delta)}{!B}[\sigma]$ and
-      $\mSat/{M(\Delta)}{!B}[\sigma]$. Thus
+      Se $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, então tanto
+      $\sFmla{\False}{!B}[\sigma] \in \Delta$ quanto
+      $\sFmla{\False}{!C}[\sigma] \in \Delta$, pois o ramo é completo.
+      Pela hipótese de indução, tanto $\mSat/{M(\Delta)}{!B}[\sigma]$
+      quanto $\mSat/{M(\Delta)}{!B}[\sigma]$. Portanto,
       $\mSat/{M(\Delta)}{\indfrm}[\sigma]$.}}
-  \item \indcase{!A}{!B \lif !C}{\iftag{probIf}{Exercise.}{If
-      $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$, then either
-      $\sFmla{\False}{!B}[\sigma] \in \Delta$ or
-      $\sFmla{\True}{!C}[\sigma] \in \Delta$ since the branch is
-      complete. By induction hypothesis, either
-      $\mSat/{M(\Delta)}{!B}[\sigma]$ or
-      $\mSat{M(\Delta)}{!C}[\sigma]$. Thus
+  \item \indcase{!A}{!B \lif !C}{\iftag{probIf}{Exercício.}{Se
+      $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$, então ou
+      $\sFmla{\False}{!B}[\sigma] \in \Delta$, ou
+      $\sFmla{\True}{!C}[\sigma] \in \Delta$, pois o ramo é completo.
+      Pela hipótese de indução, ou $\mSat/{M(\Delta)}{!B}[\sigma]$, ou
+      $\mSat{M(\Delta)}{!C}[\sigma]$. Portanto,
       $\mSat{M(\Delta)}{\indfrm}[\sigma]$.
 
-      If $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, then both
-      $\sFmla{\True}{!B}[\sigma] \in \Delta$ and
-      $\sFmla{\False}{!C}[\sigma] \in \Delta$ since the branch is
-      complete. By induction hypothesis, both
-      $\mSat{M(\Delta)}{!B}[\sigma]$ and
-      $\mSat/{M(\Delta)}{!B}[\sigma]$. Thus
+      Se $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, então tanto
+      $\sFmla{\True}{!B}[\sigma] \in \Delta$ quanto
+      $\sFmla{\False}{!C}[\sigma] \in \Delta$, pois o ramo é completo.
+      Pela hipótese de indução, tanto $\mSat{M(\Delta)}{!B}[\sigma]$
+      quanto $\mSat/{M(\Delta)}{!B}[\sigma]$. Portanto,
       $\mSat/{M(\Delta)}{\indfrm}[\sigma]$.}}
-  \item \indcase{!A}{\Box !B}{\iftag{probBox}{Exercise.}{If
-      $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$, then, since the
-      branch is complete, $\sFmla{\True}{!B}[\sigma.n] \in \Delta$ for
-      every $\sigma.n$ used on the branch, O.s.\@, for every $\sigma'
-      \in P(\Delta)$ such that $R\sigma\sigma'$.  By induction
-      hypothesis, $\mSat{M(\Delta)}{!B}[\sigma']$ for every $\sigma'$
-      such that $R\sigma\sigma'$. Therefore,
+  \item \indcase{!A}{\Box !B}{\iftag{probBox}{Exercício.}{Se
+      $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$, então, como o ramo é
+      completo, $\sFmla{\True}{!B}[\sigma.n] \in \Delta$ para todo
+      $\sigma.n$ usado no ramo, isto é, para todo $\sigma' \in P(\Delta)$
+      tal que $R\sigma\sigma'$. Pela hipótese de indução,
+      $\mSat{M(\Delta)}{!B}[\sigma']$ para todo $\sigma'$ tal que
+      $R\sigma\sigma'$. Portanto,
       $\mSat{M(\Delta)}{\indfrm}[\sigma]$.
 
-      If $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, then for some
-      $\sigma.n$, $\sFmla{\False}{!B}[\sigma.n] \in \Delta$ since the
-      branch is complete.  By induction hypothesis,
-      $\mSat/{M(\Delta)}{!B}[\sigma.n]$.  Since $R\sigma(\sigma.n)$,
-      there is a~$\sigma'$ such that
-      $\mSat/{M(\Delta)}{!B}[\sigma']$. Thus
+      Se $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, então, para algum
+      $\sigma.n$, $\sFmla{\False}{!B}[\sigma.n] \in \Delta$, pois o ramo
+      é completo. Pela hipótese de indução,
+      $\mSat/{M(\Delta)}{!B}[\sigma.n]$. Como $R\sigma(\sigma.n)$, há um
+      ~$\sigma'$ tal que $\mSat/{M(\Delta)}{!B}[\sigma']$. Portanto,
       $\mSat/{M(\Delta)}{\indfrm}[\sigma]$.}}
-  \item \indcase{!A}{\Diamond !B}{\iftag{probDiamond}{Exercise.}{If
-      $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$, then for some
-      $\sigma.n$, $\sFmla{\True}{!B}[\sigma.n] \in \Delta$ since the
-      branch is complete. By induction hypothesis,
-      $\mSat{M(\Delta)}{!B}[\sigma.n]$.  Since $R\sigma(\sigma.n)$,
-      there is a~$\sigma'$ such that
-      $\mSat{M(\Delta)}{!B}[\sigma']$. Thus
+  \item \indcase{!A}{\Diamond !B}{\iftag{probDiamond}{Exercício.}{Se
+      $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$, então, para algum
+      $\sigma.n$, $\sFmla{\True}{!B}[\sigma.n] \in \Delta$, pois o ramo
+      é completo. Pela hipótese de indução,
+      $\mSat{M(\Delta)}{!B}[\sigma.n]$. Como $R\sigma(\sigma.n)$, há um
+      ~$\sigma'$ tal que $\mSat{M(\Delta)}{!B}[\sigma']$. Portanto,
       $\mSat{M(\Delta)}{\indfrm}[\sigma]$.
 
-      If $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, then, since the
-      branch is complete, $\sFmla{\False}{!B}[\sigma.n] \in \Delta$
-      for every $\sigma.n$ used on the branch, O.s.\@, for every
-      $\sigma' \in P(\Delta)$ such that $R\sigma\sigma'$.  By
-      induction hypothesis, $\mSat/{M(\Delta)}{!B}[\sigma']$ for every
-      $\sigma'$ such that $R\sigma\sigma'$. Therefore,
+      Se $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, então, como o
+      ramo é completo, $\sFmla{\False}{!B}[\sigma.n] \in \Delta$ para
+      todo $\sigma.n$ usado no ramo, isto é, para todo
+      $\sigma' \in P(\Delta)$ tal que $R\sigma\sigma'$. Pela hipótese de
+      indução, $\mSat/{M(\Delta)}{!B}[\sigma']$ para todo $\sigma'$ tal
+      que $R\sigma\sigma'$. Portanto,
       $\mSat/{M(\Delta)}{\indfrm}[\sigma]$.}}
 \end{enumerate}
-Since $\Gamma \subseteq \Delta$, $\mSat{M(\Delta)}{\Gamma}$.
+Como $\Gamma \subseteq \Delta$, $\mSat{M(\Delta)}{\Gamma}$.
 \end{proof}
 
 \begin{prob}
-Complete the proof of \olref[nml][tab][cpl]{thm:tableau-completeness}.
+Complete a demonstração de \olref[nml][tab][cpl]{thm:tableau-completeness}.
 \end{prob}
 
 \begin{cor}
 \ollabel{cor:entailment-completeness}
-If $\Gamma \Entails !A$ then $\Gamma \Proves !A$.
+Se $\Gamma \Entails !A$, então $\Gamma \Proves !A$.
 \end{cor}
 
 \begin{cor}
 \ollabel{cor:weak-completeness}
-If $!A$ is true in all models, then $\Proves !A$.
+Se $!A$ é verdadeira em todos os modelos, então $\Proves !A$.
 \end{cor}
 
 \end{document}

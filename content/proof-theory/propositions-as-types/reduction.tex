@@ -1,0 +1,199 @@
+% part: intuitionistic-logic
+% chapter: propositions-as-types
+% section: reduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{int}{pty}{red}
+
+\olsection{Redução}
+
+Em !!{derivation}s de dedução natural, !!a{introduction} seguida por
+!!a{elimination} constitui um desvio que pode ser ``reduzido''. Por
+exemplo, uma $\Intro{\land}$ seguida por uma $\Elim{\land}$ se
+``cancelam'', pois a conclusão da $\Elim{\land}$ é sempre um dos
+conjuntos da conjunção produzida por \Intro{\land}, e as premissas da
+$\Intro{\land}$ são ambos os conjuntos. Assim, se precisamos de
+!!a{derivation} de qualquer um dos conjuntos, podemos simplesmente usar
+essa !!{derivation}, sem introduzir a conjunção para depois eliminá-la.
+Temos
+\begin{gather*}
+  \bottomAlignProof
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!A_1$}
+  \AxiomC{}
+  \RightLabel{$\delta_2$}
+  \DeduceC{$!A_2$}
+  \RightLabel{$\Intro{\land}$}
+  \BinaryInfC{$!A_1 \land !A_2$}
+  \RightLabel{$\Elim{\land}_i$}
+  \UnaryInfC{$!A_i$}
+  \DisplayProof\bottomAlignProof
+  \quad
+  \redone
+  \quad
+  \AxiomC{}
+  \RightLabel{$\delta_i$}
+  \DeduceC{$!A_i$}
+  \DisplayProof
+\end{gather*}
+
+Essa simplificação sugere uma relação de redução semelhante nos termos
+de prova associados. Se $N_1$ é o termo de prova de~$\delta_1$ e $N_2$
+o termo de prova de~$\delta_2$, podemos dizer que o termo de prova da
+prova à esquerda se reduz (em um passo) ao termo de prova da prova à
+direita:
+\[
+  \proj{i}{\pair{N_1, N_2}} \redone N_i
+\]
+No cálculo lambda tipado, essa é a regra de \emph{redução beta} para o
+tipo produto.
+
+Na dedução natural, um par de inferências como uma \Intro{\land}
+seguida por uma \Elim{\land}, isto é, um par sujeito a redução, é
+chamado de \emph{corte}. No cálculo lambda tipado, o termo à esquerda de
+$\redone$ é chamado de \emph{redex}, e o termo à direita, de
+\emph{reduto}. Ao contrário do cálculo lambda não tipado, no qual apenas
+$(\lambd[x][N])Q$ é considerado um redex, no cálculo lambda tipado a
+sintaxe é estendida aos termos que envolvem $\pair{N}{M}$,
+$\proj{i}{N}$, $\inj{i}{!A}{N}$, $\dcase{N}{x_1}{M_1}{x_2}{M_2}$ e
+$\abort{!A}{N}$, com os redexes correspondentes.
+
+De modo semelhante, temos a redução para a disjunção:
+\begin{gather*}
+  \bottomAlignProof
+  \AxiomC{}
+  \RightLabel{$\delta$}
+  \DeduceC{$!A_i$}
+  \RightLabel{$\Intro{\lor}$}
+  \UnaryInfC{$!A_1 \lor !A_2$}
+  \AxiomC{$\Discharge{!A_1}{x_1}$}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!C$}
+  \AxiomC{$\Discharge{!A_2}{x_2}$}
+  \RightLabel{$\delta_2$}
+  \DeduceC{$!C$}
+  \DischargeRule{$\Elim{\lor}$}{x_1,x_2}
+  \TrinaryInfC{$!C$}
+  \DisplayProof\bottomAlignProof
+  \quad
+  \redone
+  \quad
+  \AxiomC{}
+  \RightLabel{$\delta$}
+  \DeduceC{$!A_i$}
+  \RightLabel{$\delta_i$}
+  \DeduceC{$!C$}
+  \DisplayProof
+\end{gather*}
+Isso corresponde a uma redução nos termos de prova:
+\begin{gather*}
+  \dcase{\inj[!A_i]{i}{M}}{x_1}{N_1}{x_2}{N_2} \redone \Subst{N_i}{M}{x_i}
+\end{gather*}
+onde $M$ é o termo de prova de~$\delta$ e $N_i$ é o termo de prova
+de~$\delta_i$. Essa é a regra de redução beta para os tipos soma.
+Aqui, $\Subst{M}{N_i}{x}$ significa substituir todas as ocorrências
+livres da variável~$x$ em $M$ por~$N_i$.
+
+A redução do tipo função corresponde à remoção de um desvio formado por
+uma $\Intro\lif$ seguida por uma $\Elim\lif$.
+\begin{gather*}
+  \bottomAlignProof
+  \AxiomC{$\Discharge{!A}{x}$}
+  \RightLabel{$\delta$}
+  \DeduceC{$!B$}
+  \DischargeRule{$\Intro{\lif}$}{x}
+  \UnaryInfC{$!A \lif !B$}
+  \AxiomC{}
+  \RightLabel{$\delta'$}
+  \DeduceC{$!A$}
+  \RightLabel{$\Elim{\lif}$}
+  \BinaryInfC{$!B$}
+  \DisplayProof\bottomAlignProof
+  \quad
+  \redone
+  \quad
+  \AxiomC{}
+  \RightLabel{$\delta'$}
+  \DeduceC{$!A$}
+  \RightLabel{$\delta$}
+  \DeduceC{$!B$}
+  \DisplayProof
+\end{gather*}
+Para termos de prova, isso equivale à redução beta usual:
+\begin{gather*}
+  (\lambd[\typeof{x}{!A}][N]M)
+  \redone \Subst{N}{M}{x}
+\end{gather*}
+
+Além das conversões de redução em !!{proof}s, podemos considerar as
+conversões de permutação. Elas se aplicam a (sub)!!{proof}s que terminam
+em uma \Elim{\lor} seguida por outra !!{elimination}, por exemplo:
+\begin{multline*}
+  \bottomAlignProof
+  \AxiomC{}
+  \RightLabel{$\delta$}
+  \DeduceC{$!A_i$}
+  \RightLabel{$\Intro{\lor}$}
+  \UnaryInfC{$!A_1 \lor !A_2$}
+  \AxiomC{$\Discharge{!A_1}{x_1}$}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!C_1 \land !C_2$}
+  \AxiomC{$\Discharge{!A_2}{x_2}$}
+  \RightLabel{$\delta_2$}
+  \DeduceC{$!C_1 \land !C_2$}
+  \DischargeRule{$\Elim{\lor}$}{x_1,x_2}
+  \TrinaryInfC{$!C_1 \land !C_2$}
+  \RightLabel{\Elim{\land}[i]}
+  \UnaryInfC{$!C_i$}
+  \DisplayProof\bottomAlignProof
+  \quad
+  \redone
+  \\
+  \AxiomC{}
+  \RightLabel{$\delta$}
+  \DeduceC{$!A_i$}
+  \RightLabel{$\Intro{\lor}$}
+  \UnaryInfC{$!A_1 \lor !A_2$}
+  \AxiomC{$\Discharge{!A_1}{x_1}$}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!C_1 \land !C_2$}
+  \RightLabel{\Elim{\land}[i]}
+  \UnaryInfC{$!C_i$}
+  \AxiomC{$\Discharge{!A_2}{x_2}$}
+  \RightLabel{$\delta_2$}
+  \DeduceC{$!C_1 \land !C_2$}
+  \RightLabel{\Elim{\land}[i]}
+  \UnaryInfC{$!C_i$}
+  \DischargeRule{$\Elim{\lor}$}{x_1,x_2}
+  \TrinaryInfC{$!C_i$}
+  \DisplayProof
+\end{multline*}
+Se os termos de prova de $\delta$, $\delta_1$ e $\delta_2$ são $M$,
+$N_1$ e $N_2$, respectivamente, a regra de redução correspondente para
+os termos de prova, isto é, os termos~$\lambd$, é:
+\[
+  \proj{i}{\dcase{M}{x_1}{N_1}{x_2}{N_2}} \redone 
+\dcase{M}{x_1}{\proj{i}{N_1}}{x_2}{\proj{i}{N_2}}
+\]
+
+Naturalmente, podemos eliminar desvios não apenas no final de
+!!{proof}s, mas também no interior de !!{proof}s, aplicando a conversão
+de redução a uma sub-!!{proof} que termina em um desvio. De modo
+semelhante, a redução~$\beta$ aplica-se aos subtermos dos termos~$\lambd$.
+Se $N$ é um subtermo de $M$, $N \redone N'$, podemos substituir o
+subtermo $N$ em~$M$ por $N'$ para obter $M'$. Nesse caso, também
+escrevemos $M \redone M'$. Se existe uma sequência $M = M_1 \redone M_2
+\redone M_2 \redone \dots \redone M_k = M'$ (incluindo o caso em que
+$k=1$, isto é, $M = M'$), escrevemos $M \red M'$.
+
+Uma !!{proof} à qual nenhuma conversão pode ser aplicada em nenhuma
+sub-!!{proof} é chamada de \emph{normal}. De modo semelhante, um
+termo~$\lambd$ ao qual nenhuma conversão pode ser aplicada (a nenhum
+subtermo) é chamado de \emph{normal}. Um termo~$\lambd$ normal também é
+chamado de \emph{forma normal}.
+
+\end{document}

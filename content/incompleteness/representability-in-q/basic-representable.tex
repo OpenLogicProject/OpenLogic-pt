@@ -6,142 +6,144 @@
 
 \begin{document}
 
-\olfileid{inc}{req}{bre}
-\olsection{Basic Functions are Representable in~$\Th{Q}$}
+\olfileid[pt]{inc}{req}{bre}
+\olsection{As funções básicas são representáveis em~$\Th{Q}$}
 
-First we have to show that all the basic functions are representable
-in~$\Th{Q}$. In the end, we need to show how to assign to each $k$-ary
-basic function $f(x_0,\dots,x_{k-1})$ !!a{formula}
-$!A_f(x_0,\dots,x_{k-1},y)$ that represents it.
+Primeiro, precisamos mostrar que todas as funções básicas são
+representáveis em~$\Th{Q}$. Ao final, precisamos mostrar como atribuir
+a cada função básica $k$-ária $f(x_0,\dots,x_{k-1})$ !!a{formula}
+$!A_f(x_0,\dots,x_{k-1},y)$ que a represente.
 
-We will be able to represent zero, successor, plus, times, the
-characteristic function for equality, and projections. In each case,
-the appropriate representing function is entirely straightforward; for
-example, zero is represented by the formula $y = \Obj 0$, successor is
-represented by the !!{formula} $x_0' = y$, and addition is represented
-by the !!{formula} $(x_0 + x_1) = y$. The work involves showing that
-$\Th{Q}$ can prove the relevant !!{sentence}s; for example, saying
-that addition is represented by the !!{formula} above involves showing
-that for every pair of natural numbers $m$ and $n$, $\Th{Q}$ proves
+Poderemos representar zero, sucessor, adição, multiplicação, a função
+característica da igualdade e as projeções. Em cada caso, a fórmula
+representante adequada é inteiramente direta; por exemplo, zero é
+representada pela fórmula $y = \Obj 0$, sucessor é representada pela
+!!{formula} $x_0' = y$ e adição é representada pela !!{formula}
+$(x_0 + x_1) = y$. O trabalho consiste em mostrar que $\Th{Q}$ pode
+provar as !!{sentence}s pertinentes; por exemplo, dizer que a adição é
+representada pela !!{formula} acima envolve mostrar que, para todo par
+de números naturais $m$ e $n$, $\Th{Q}$ prova
 \begin{align*}
-& \eq[\num n + \num m][\num {n+m}] \text{ and}\\
+& \eq[\num n + \num m][\num {n+m}] \text{ e}\\
 & \lforall[y][(\eq[(\num n + \num m)][y] \lif \eq[y][\num{n+m}])].
 \end{align*}
 
 \begin{prop}
 \ollabel{prop:rep-zero}
-The zero function $\Zero(x) = 0$ is represented in~$\Th{Q}$ by
+ A função zero $\Zero(x) = 0$ é representada em~$\Th{Q}$ por
 $!A_{\Zero}(x,y) \ident \eq[y][\Obj 0]$.
 \end{prop}
 
 \begin{prop}
 \ollabel{prop:rep-succ}
-The successor function $\Succ(x) = x+1$ is represented in~$\Th{Q}$ by
+A função sucessor $\Succ(x) = x+1$ é representada em~$\Th{Q}$ por
 $!A_{\Succ}(x,y) \ident \eq[y][x']$.  
 \end{prop}
 
 \begin{prop}
 \ollabel{prop:rep-proj}
-The projection function $\Proj{n}{i}(x_0, \dots, x_{n-1}) = x_i$ is
-represented in~$\Th{Q}$ by \[!A_{\Proj{n}{i}}(x_0, \dots, x_{n-1}, y) \ident \eq[y][x_i].\]
+A função de projeção $\Proj{n}{i}(x_0, \dots, x_{n-1}) = x_i$ é
+representada em~$\Th{Q}$ por \[!A_{\Proj{n}{i}}(x_0, \dots, x_{n-1}, y) \ident \eq[y][x_i].\]
 \end{prop}
 
 \begin{prob}
-Prove that $\eq[y][\Obj 0]$, $\eq[y][x']$, and $\eq[y][x_i]$ represent
-$\Zero$, $\Succ$, and $\Proj{n}{i}$, respectively.
+Prove que $\eq[y][\Obj 0]$, $\eq[y][x']$ e $\eq[y][x_i]$ representam,
+respectivamente, $\Zero$, $\Succ$ e $\Proj{n}{i}$.
 \end{prob}
 
 \begin{prop}
 \ollabel{prop:rep-id}
-The characteristic function of~$=$,
+A função característica de~$=$,
 \[
 \Char{=}(x_0, x_1) =
 \begin{cases}
-  1 & \text{if } x_0 =x_1\\
-  0 & otherwise
+  1 & \text{se } x_0 =x_1\\
+  0 & \text{caso contrário}
 \end{cases}
 \]
-is represented in~$\Th{Q}$ by
+é representada em~$\Th{Q}$ por
 \[
   !A_{\Char{=}}(x_0, x_1, y) \ident (\eq[x_0][x_1] \land \eq[y][\num{1}]) \lor (\eq/[x_0][x_1] \land
 \eq[y][\num{0}]).
 \]
 \end{prop}
 
-The proof requires the following lemma.
+A prova exige o lema a seguir.
 
 \begin{lem}
-\ollabel{lem:q-proves-neq} Given natural numbers $n$ and $m$, if $n
-\neq m$, then $\Th{Q} \Proves \eq/[\num n][\num m]$.
+\ollabel{lem:q-proves-neq} Dados números naturais $n$ e $m$, se
+$n \neq m$, então $\Th{Q} \Proves \eq/[\num n][\num m]$.
 \end{lem}
 
 \begin{proof}
-Use induction on $n$ to show that for every $m$, if $n \neq m$, then
-$Q \Proves \eq/[\num n][\num m]$.
+Use indução sobre $n$ para mostrar que, para todo $m$, se $n \neq m$,
+então $Q \Proves \eq/[\num n][\num m]$.
 
-In the base case, $n = 0$. If $m$ is not equal to $0$, then $m = k +
-1$ for some natural number $k$. We have an axiom that says
-$\lforall[x][\eq/[0][x']]$. By a quantifier axiom, replacing $x$ by
-  $\num k$, we can conclude $\eq/[0][\num k']$. But $\num k'$ is just
-  $\num m$.
+No caso base, $n = 0$. Se $m$ não é igual a $0$, então $m = k + 1$
+para algum número natural $k$. Temos um axioma que diz
+$\lforall[x][\eq/[0][x']]$. Por um axioma dos quantificadores,
+substituindo $x$ por $\num k$, podemos concluir
+$\eq/[0][\num k']$. Mas $\num k'$ é simplesmente $\num m$.
 
-In the induction step, we can assume the claim is true for $n$, and
-consider $n+1$. Let $m$ be any natural number. There are two
-possibilities: either $m = 0$ or for some $k$ we have $m = k+1$. The
-first case is handled as above. In the second case, suppose $n+1 \neq
-k+1$. Then $n \neq k$. By the induction hypothesis for $n$ we have
-$\Th{Q} \Proves \eq/[\num n][\num k]$. We have an axiom that says
-$\lforall[x][\lforall[y][\eq[x'][y'] \lif \eq[x][y]]]$. Using a
-quantifier axiom, we have $\eq[\num n'][\num k'] \lif \eq[\num n][\num
-  k]$. Using propositional logic, we can conclude, in $\Th{Q}$,
-$\eq/[\num n][\num k] \lif \eq/[\num n'][\num k']$. Using modus
-ponens, we can conclude $\eq/[\num n'][\num k']$, which is what we want,
-since $\num k'$ is $\num m$.
+No passo de indução, podemos supor que a afirmação é verdadeira para
+$n$ e considerar $n+1$. Seja $m$ um número natural qualquer. Há duas
+possibilidades: ou $m = 0$, ou, para algum $k$, temos $m = k+1$. O
+primeiro caso é tratado como acima. No segundo, suponha que
+$n+1 \neq k+1$. Então $n \neq k$. Pela hipótese de indução para $n$,
+temos $\Th{Q} \Proves \eq/[\num n][\num k]$. Temos um axioma que diz
+$\lforall[x][\lforall[y][\eq[x'][y'] \lif \eq[x][y]]]$. Usando um
+axioma dos quantificadores, temos
+$\eq[\num n'][\num k'] \lif \eq[\num n][\num k]$. Usando lógica
+proposicional, podemos concluir, em $\Th{Q}$,
+$\eq/[\num n][\num k] \lif \eq/[\num n'][\num k']$. Por modus ponens,
+podemos concluir $\eq/[\num n'][\num k']$, que é o que queremos, pois
+$\num k'$ é $\num m$.
 \end{proof}
 
 \begin{explain}
-Note that the lemma does not say much: in essence it says that $\Th{Q}$ can
-prove that different numerals denote different objects. For example,
-$\Th{Q}$ proves $0'' \neq 0'''$. But showing that this holds in general
-requires some care. Note also that although we are using induction, it
-is induction \emph{outside} of $\Th{Q}$.
+Observe que o lema não diz muito: em essência, afirma que $\Th{Q}$
+pode provar que numerais diferentes denotam objetos diferentes. Por
+exemplo, $\Th{Q}$ prova $0'' \neq 0'''$. Mas mostrar que isso vale em
+geral exige algum cuidado. Observe também que, embora estejamos usando
+indução, trata-se de indução \emph{fora} de $\Th{Q}$.
 \end{explain}
 
 \begin{proof}[Prova de \olref{prop:rep-id}]
-If $n = m$, then $\num{n}$ and $\num{m}$ are the same term, and
-$\Char{=}(n, m) = 1$. But $\Th{Q} \Proves (\eq[\num{n}][\num{m}] \land
-\eq[\num{1}][\num{1}])$, so it proves $!A_=(\num{n}, \num{m},
-\num{1})$.  If $n \neq m$, then $\Char=(n, m) = 0$. By
-\olref{lem:q-proves-neq}, $\Th{Q} \Proves \eq/[\num{n}][\num{m}]$ and
-so also $(\eq/[\num{n}][\num{m}] \land \Obj 0 = \Obj 0)$. Thus $\Th{Q}
+Se $n = m$, então $\num{n}$ e $\num{m}$ são o mesmo termo, e
+$\Char{=}(n, m) = 1$. Mas $\Th{Q} \Proves (\eq[\num{n}][\num{m}] \land
+\eq[\num{1}][\num{1}])$; portanto, ela prova $!A_=(\num{n}, \num{m},
+\num{1})$. Se $n \neq m$, então $\Char=(n, m) = 0$. Por
+\olref{lem:q-proves-neq}, $\Th{Q} \Proves \eq/[\num{n}][\num{m}]$
+e também $(\eq/[\num{n}][\num{m}] \land \Obj 0 = \Obj 0)$. Logo, $\Th{Q}
 \Proves !A_=(\num{n}, \num{m}, \num{0})$.
 
-For the second part, we also have two cases. If $n = m$, we have to
-show that $\Th{Q} \Proves \lforall[y][(!A_=(\num{n}, \num{m}, y)
-  \lif \eq[y][\num{1}])]$.  Arguing informally, suppose $!A_=(\num{n},
-\num{m}, y)$, O.s.\@,
+Para a segunda parte, também temos dois casos. Se $n = m$, precisamos
+mostrar que $\Th{Q} \Proves \lforall[y][(!A_=(\num{n}, \num{m}, y)
+  \lif \eq[y][\num{1}])]$. Argumentando informalmente, suponha
+$!A_=(\num{n}, \num{m}, y)$, isto é,
 \[
 (\eq[\num{n}][\num{n}] \land \eq[y][\num{1}]) \lor
 (\eq/[\num{n}][\num{n}] \land \eq[y][\num{0}])
 \]
-The left disjunct implies $\eq[y][\num{1}]$ by logic; the right
-contradicts $\eq[\num{n}][\num{n}]$ which is provable by logic.
+A disjunção à esquerda implica $\eq[y][\num{1}]$ pela lógica; a da
+direita contradiz $\eq[\num{n}][\num{n}]$, que é demonstrável pela
+lógica.
 
-Suppose, on the other hand, that $n \neq m$. Then $!A_=(\num{n},
-\num{m}, y)$ is
+Suponha, por outro lado, que $n \neq m$. Então $!A_=(\num{n},
+\num{m}, y)$ é
 \[
 (\eq[\num{n}][\num{m}] \land \eq[y][\num{1}]) \lor
 (\eq/[\num{n}][\num{m}] \land \eq[y][\num{0}])
 \]
-Here, the left disjunct contradicts $\eq/[\num{n}][\num{m}]$, which is
-provable in $\Th{Q}$ by \olref{lem:q-proves-neq}; the right disjunct
-entails $\eq[y][\num{0}]$.
+Aqui, a disjunção à esquerda contradiz $\eq/[\num{n}][\num{m}]$, que é
+demonstrável em $\Th{Q}$ por \olref{lem:q-proves-neq}; a disjunção à
+direita acarreta $\eq[y][\num{0}]$.
 \end{proof}
 
 \begin{prop}
 \ollabel{prop:rep-add}
-The addition function $\Add(x_0, x_1) = x_0+x_1$ is represented
-in~$\Th{Q}$ by
+A função de adição $\Add(x_0, x_1) = x_0+x_1$ é representada
+em~$\Th{Q}$ por
 \[
   !A_{\Add}(x_0, x_1, y) \ident \eq[y][(x_0 + x_1)].
 \]
@@ -153,79 +155,81 @@ $\Th{Q} \Proves \eq[(\num{n} + \num{m})][\num{n+m}]$
 \end{lem}
 
 \begin{proof}
-We prove this by induction on~$m$. If $m = 0$, the claim is that
-$\Th{Q} \Proves \eq[(\num{n} + \Obj 0)][\num{n}]$. This follows by
-axiom~$!Q_4$.  Now suppose the claim for $m$; let's prove the claim
-for $m+1$, O.s.\@, prove that $\Th{Q} \Proves \eq[(\num{n} +
-  \num{m+1})][\num{n+m+1}]$. Note that $\num{m+1}$ is just $\num{m}'$,
-and $\num{n+m+1}$ is just $\num{n+m}'$.  By axiom $!Q_5$, $\Th{Q}
-\Proves \eq[(\num{n} + \num{m}')][(\num{n}+\num{m})']$. By induction
-hypothesis, $\Th{Q} \Proves \eq[(\num{n} + \num{m})][\num{n+m}]$. So
-$\Th{Q} \Proves \eq[(\num{n} + \num{m}')][\num{n+m}']$.
+Provamos isso por indução sobre~$m$. Se $m = 0$, a afirmação é
+$\Th{Q} \Proves \eq[(\num{n} + \Obj 0)][\num{n}]$. Isso decorre do
+axioma~$!Q_4$. Suponha agora a afirmação para $m$; provemos a afirmação
+para $m+1$, isto é, provemos que $\Th{Q} \Proves \eq[(\num{n} +
+  \num{m+1})][\num{n+m+1}]$. Observe que $\num{m+1}$ é simplesmente
+$\num{m}'$, e $\num{n+m+1}$ é simplesmente $\num{n+m}'$. Pelo axioma
+$!Q_5$, $\Th{Q} \Proves
+\eq[(\num{n} + \num{m}')][(\num{n}+\num{m})']$. Pela hipótese de
+indução, $\Th{Q} \Proves
+\eq[(\num{n} + \num{m})][\num{n+m}]$. Logo, $\Th{Q} \Proves
+\eq[(\num{n} + \num{m}')][\num{n+m}']$.
 \end{proof}
 
 \begin{proof}[Prova de \olref{prop:rep-add}]
-The !!{formula}~$!A_\Add(x_0, x_1, y)$ representing $\Add$ is
-$\eq[y][(x_0 + x_1)]$. First we show that if $\Add(n, m) = k$, then
-$\Th{Q} \Proves !A_\Add(\num{n}, \num{m}, \num{k})$, O.s.\@, $\Th{Q}
-\Proves \eq[\num{k}][(\num{n} + \num{m})]$. But since $k = n + m$,
-$\num{k}$ just is $\num{n+m}$, and we've shown in
-\olref{lem:q-proves-add} that $\Th{Q} \Proves \eq[(\num{n} +
+A !!{formula}~$!A_\Add(x_0, x_1, y)$ que representa $\Add$ é
+$\eq[y][(x_0 + x_1)]$. Primeiro mostramos que, se $\Add(n, m) = k$, então
+$\Th{Q} \Proves !A_\Add(\num{n}, \num{m}, \num{k})$, isto é, $\Th{Q}
+\Proves \eq[\num{k}][(\num{n} + \num{m})]$. Mas, como $k = n + m$,
+$\num{k}$ é simplesmente $\num{n+m}$, e mostramos em
+\olref{lem:q-proves-add} que $\Th{Q} \Proves \eq[(\num{n} +
   \num{m})][\num{n+m}]$.
 
-We also have to show that if $\Add(n, m) = k$, then
+Também precisamos mostrar que, se $\Add(n, m) = k$, então
 \[
 \Th{Q} \Proves \lforall[y][(!A_\Add(\num{n}, \num{m}, y) \lif
   \eq[y][\num{k}])].
 \]
-Suppose we have $\eq[(\num{n} + \num{m})][y]$. Since
+Suponha que tenhamos $\eq[(\num{n} + \num{m})][y]$. Como
 \[
 \Th{Q} \Proves \eq[(\num{n}+\num{m})][\num{n+m}],
 \]
-we can replace the left side with $\num{n+m}$ and get
-$\eq[\num{n+m}][y]$, for arbitrary~$y$.
+podemos substituir o lado esquerdo por $\num{n+m}$ e obter
+$\eq[\num{n+m}][y]$, para~$y$ arbitrário.
 \end{proof}
 
 \begin{prop}
 \ollabel{prop:rep-mult}
-The multiplication function $\Mult(x_0, x_1) = x_0 \cdot x_1$ is represented
-in~$\Th{Q}$ by
+A função de multiplicação $\Mult(x_0, x_1) = x_0 \cdot x_1$ é
+representada em~$\Th{Q}$ por
 \[
   !A_{\Mult}(x_0, x_1, y) \ident y = (x_0 \times x_1).
 \]
 \end{prop}
 
-\begin{proof} Exercise. \end{proof}
+\begin{proof} Exercício. \end{proof}
 
 \begin{lem}
 \ollabel{lem:q-proves-mult}
 $\Th{Q} \Proves \eq[(\num{n} \times \num{m})][\num{n \cdot m}]$
 \end{lem}
 
-\begin{proof} Exercise. \end{proof}
+\begin{proof} Exercício. \end{proof}
 
 \begin{prob}
 Prove \olref[inc][req][bre]{lem:q-proves-mult}.
 \end{prob}
 
 \begin{prob}
-Use \olref[inc][req][bre]{lem:q-proves-mult} to prove
+Use \olref[inc][req][bre]{lem:q-proves-mult} para provar
 \olref[inc][req][bre]{prop:rep-mult}.
 \end{prob}
 
 \begin{explain}
-  Recall that we use $\times$ for the function symbol of the language
-  of arithmetic, and $\cdot$ for the ordinary multiplication operation
-  on numbers. So $\cdot$ can appear between expressions for numbers
-  (such as in $m \cdot n$) while $\times$ appears only between terms
-  of the language of arithmetic (such as in $(\num{m} \times
-  \num{n})$).  Even more confusingly, $+$ is used for both the
-  !!{function} and the addition operation. When it appears between
-  terms---p.ex., in $(\num{n} + \num{m})$---it is the $2$-place
-  !!{function} of the language of arithmetic, and when it appears
-  between numbers---p.ex., in $n+m$---it is the addition operation.
-  This includes the case $\num{n+m}$: this is the standard numeral
-  corresponding to the number~$n+m$.
+  Lembre-se de que usamos $\times$ para o símbolo de função da
+  linguagem da aritmética e $\cdot$ para a operação usual de
+  multiplicação sobre números. Assim, $\cdot$ pode aparecer entre
+  expressões de números (como em $m \cdot n$), enquanto $\times$
+  aparece apenas entre termos da linguagem da aritmética (como em
+  $(\num{m} \times \num{n})$). Para tornar as coisas ainda mais
+  confusas, $+$ é usado tanto para a !!{function} quanto para a
+  operação de adição. Quando aparece entre termos---por exemplo, em
+  $(\num{n} + \num{m})$---, é a !!{function} de $2$ lugares da
+  linguagem da aritmética; quando aparece entre números---por exemplo,
+  em $n+m$---, é a operação de adição. Isso inclui o caso
+  $\num{n+m}$: este é o numeral padrão correspondente ao número~$n+m$.
 \end{explain}
 
 \end{document}

@@ -6,115 +6,122 @@
 
 \begin{document}
 
-\olfileid{inc}{inp}{ros}
+\olfileid[pt]{inc}{inp}{ros}
 
-\olsection{Rosser's Theorem}
+\olsection{O teorema de Rosser}
 
-Can we modify G\"odel's proof to get a stronger result, replacing
-``$\omega$-consistent'' with simply ``consistent''? The answer is
-``yes,'' using a trick discovered by Rosser.  Rosser's trick is to use
-a ``modified'' !!{derivability} predicate $\ORProv_T(y)$ instead of
-$\OProv[\Th{T}](y)$.
+Podemos modificar a prova de G\"odel para obter um resultado mais forte,
+substituindo ``$\omega$-consistente'' simplesmente por ``consistente''? A
+resposta é ``sim'', graças a um artifício descoberto por Rosser. O artifício
+de Rosser consiste em usar um predicado de !!{derivability} ``modificado''
+$\ORProv_T(y)$ em vez de $\OProv[\Th{T}](y)$.
 
 \begin{thm}
 \ollabel{thm:rosser}
-Let $\Th{T}$ be any consistent, !!{axiomatizable} theory
-extending $\Th{Q}$. Then $\Th{T}$ is not complete.
+Seja $\Th{T}$ qualquer teoria consistente e !!{axiomatizable} que
+estenda $\Th{Q}$. Então $\Th{T}$ não é completa.
 \end{thm}
 
 \begin{proof}
-Recall that $\OProv[\Th{T}](y)$ is defined as $\lexists[x][\OPrf[\Th{T}](x,
-  y)]$, where $\OPrf[\Th{T}](x, y)$ represents the decidable relation which
-holds iff $x$ is the G\"odel number of !!a{derivation} of the
-!!{sentence} with G\"odel number~$y$. The relation that holds between
-$x$ and~$y$ if $x$~is the G\"odel number of a \emph{refutation} of the
-sentence with G\"odel number~$y$ is also decidable. Let $\fn{not}(x)$
-be the primitive recursive function which does the following: if $x$
-is the code of a formula $!A$, $\fn{not}(x)$ is a code of $\lnot
-!A$. Then $\Refut[\Th{T}](x, y)$ holds iff $\Prf[\Th{T}](x, \fn{not}(y))$.  Let
-$\ORefut[\Th{T}](x, y)$ represent it.  Then, if $\Th{T} \Proves \lnot !A$
-and $\delta$ is a corresponding !!{derivation}, $\Th{Q} \Proves
-\ORefut[\Th{T}](\gn{\delta}, \gn{!A})$.  We define $\ORProv[\Th{T}](y)$ as
+Lembre-se de que $\OProv[\Th{T}](y)$ é definido como
+$\lexists[x][\OPrf[\Th{T}](x, y)]$, onde $\OPrf[\Th{T}](x, y)$ representa
+a relação decidível que vale sse $x$ é o número de G\"odel de
+!!a{derivation} da !!{sentence} com número de G\"odel~$y$. A relação que
+vale entre $x$ e~$y$ quando $x$~é o número de G\"odel de uma
+\emph{refutação} da sentença com número de G\"odel~$y$ também é decidível.
+Seja $\fn{not}(x)$ a função recursiva primitiva que faz o seguinte: se $x$
+é o código de uma fórmula $!A$, $\fn{not}(x)$ é um código de $\lnot !A$.
+Então $\Refut[\Th{T}](x, y)$ vale sse
+$\Prf[\Th{T}](x, \fn{not}(y))$. Seja $\ORefut[\Th{T}](x, y)$ uma fórmula
+que a represente. Assim, se $\Th{T} \Proves \lnot !A$ e $\delta$ é uma
+!!{derivation} correspondente, $\Th{Q} \Proves
+\ORefut[\Th{T}](\gn{\delta}, \gn{!A})$. Definimos $\ORProv[\Th{T}](y)$ como
 \[
 \lexists[x][(\OPrf[\Th{T}](x,y) \land \lforall[z][(z < x \lif \lnot
   \ORefut[\Th{T}](z,y))])].
 \]
-Roughly, $\ORProv[\Th{T}](y)$ says ``there is a proof of $y$ in $\Th{T}$,
-and there is no shorter refutation of~$y$.''  Assuming $\Th{T}$ is
-consistent, $\ORProv[\Th{T}](y)$ is true of the same numbers as
-$\OProv[\Th{T}](y)$; but from the point of view of \emph{provability}
-in~$\Th{T}$ (and we now know that there is a difference between truth
-and provability!) the two have different properties. If $\Th{T}$ is
-\emph{in}consistent, then the two do \emph{not} hold of the same
-numbers!{} ($\ORProv[\Th{T}](y)$ is often read as ``$y$ is Rosser
-provable.'' Since, as just discussed, Rosser provability is not some
-special kind of provability---in inconsistent theories, there are
-!!{sentence}s that are provable but not Rosser provable---this may be
-confusing. To avoid the confusion, you could instead read it as
-``$y$ is shmovable.'')
+Em linhas gerais, $\ORProv[\Th{T}](y)$ diz ``há uma prova de $y$ em
+$\Th{T}$ e não há refutação mais curta de~$y$''. Supondo que $\Th{T}$ seja
+consistente, $\ORProv[\Th{T}](y)$ é verdadeira para os mesmos números que
+$\OProv[\Th{T}](y)$; mas, do ponto de vista da \emph{demonstrabilidade}
+em~$\Th{T}$ (e agora sabemos que há uma diferença entre verdade e
+demonstrabilidade!), as duas têm propriedades distintas. Se $\Th{T}$ é
+\emph{in}consistente, elas \emph{não} valem para os mesmos números!{}
+($\ORProv[\Th{T}](y)$ é frequentemente lida como ``$y$ é demonstrável à
+Rosser''. Como, conforme acabamos de discutir, a demonstrabilidade à Rosser
+não é um tipo especial de demonstrabilidade---em teorias inconsistentes há
+!!{sentence}s demonstráveis, mas não demonstráveis à Rosser---isso pode ser
+confuso. Para evitar a confusão, poderíamos lê-la como ``$y$ é
+shmovível''.)
 
-By the fixed-point lemma, there is a formula $!R_\Th{T}$ such that
+Pelo lema do ponto fixo, existe uma fórmula $!R_\Th{T}$ tal que
 \begin{equation}
   \Th{Q} \Proves !R_\Th{T} \liff \lnot \ORProv[\Th{T}](\gn{!R_\Th{T}}).
   \ollabel{RT}
 \end{equation}
-In contrast to the proof of \olref[1in]{thm:first-incompleteness},
-here we claim that if $\Th{T}$ is consistent, $\Th{T}$ doesn't !!{derive}
-$!R_\Th{T}$, and $\Th{T}$ also doesn't !!{derive} $\lnot !R_\Th{T}$. (In
-other words, we don't need the assumption of $\omega$-consistency.)
+Em contraste com a prova de \olref[1in]{thm:first-incompleteness}, afirmamos
+aqui que, se $\Th{T}$ é consistente, $\Th{T}$ não !!{derive}
+$!R_\Th{T}$, e $\Th{T}$ tampouco !!{derive} $\lnot !R_\Th{T}$. (Em outras palavras,
+não precisamos da hipótese de $\omega$-consistência.)
 
-First, let's show that $\Th{T} \Proves/ !R_{\Th{T}}$.  Suppose it did, so
-there is !!a{derivation} of~$!R_{\Th{T}}$ from~$T$; let $n$ be its G\"odel
-number. Then $\Th{Q} \Proves \OPrf[\Th{T}](\num{n}, \gn{!R_{\Th{T}}})$, since
-$\OPrf[\Th{T}]$ represents $\Prf[\Th{T}]$ in~$\Th{Q}$. Also, for each $k < n$,
-$k$ is not the G\"odel number of !!a{derivation} of $\lnot !R_{\Th{T}}$, since $\Th{T}$ is
-consistent. So for each $k < n$, $\Th{Q} \Proves \lnot
-\ORefut[\Th{T}](\num{k}, \gn{!R_{\Th{T}}})$. By \olref[req][min]{lem:less-nsucc},
+Primeiro, mostremos que $\Th{T} \Proves/ !R_{\Th{T}}$. Suponha que ela o
+provasse, de modo que exista !!a{derivation} de~$!R_{\Th{T}}$ a partir
+de~$T$; seja $n$ seu número de G\"odel. Então
+$\Th{Q} \Proves \OPrf[\Th{T}](\num{n}, \gn{!R_{\Th{T}}})$, pois
+$\OPrf[\Th{T}]$ representa $\Prf[\Th{T}]$ em~$\Th{Q}$. Além disso, para
+cada $k < n$, $k$ não é o número de G\"odel de !!a{derivation} de
+$\lnot !R_{\Th{T}}$, pois $\Th{T}$ é consistente. Logo, para cada $k < n$,
+$\Th{Q} \Proves \lnot
+\ORefut[\Th{T}](\num{k}, \gn{!R_{\Th{T}}})$. Por
+\olref[req][min]{lem:less-nsucc},
 $\Th{Q} \Proves \lforall[z][(z < \num{n} \lif \lnot \ORefut[\Th{T}](z,
-  \gn{!R_{\Th{T}}}))]$. Thus,
+  \gn{!R_{\Th{T}}}))]$. Portanto,
 \[
 \Th{Q} \Proves \lexists[x][(\OPrf[\Th{T}](x,\gn{!R_{\Th{T}}}) \land \lforall[z][(z
     < x \lif \lnot \ORefut[\Th{T}](z,\gn{!R_{\Th{T}}}))])],
 \]
-but that's just $\ORProv[\Th{T}](\gn{!R_{\Th{T}}})$. By \olref{RT}, $\Th{Q}
-\Proves \lnot !R_{\Th{T}}$. Since $\Th{T}$ extends $\Th{Q}$, also $\Th{T}
-\Proves \lnot !R_{\Th{T}}$. We've assumed that $\Th{T} \Proves !R_{\Th{T}}$, so
-$\Th{T}$ would be inconsistent, contrary to the assumption of the
-theorem.
+mas isso é precisamente $\ORProv[\Th{T}](\gn{!R_{\Th{T}}})$. Por
+\olref{RT}, $\Th{Q} \Proves \lnot !R_{\Th{T}}$. Como $\Th{T}$ estende
+$\Th{Q}$, também $\Th{T} \Proves \lnot !R_{\Th{T}}$. Supusemos que
+$\Th{T} \Proves !R_{\Th{T}}$; portanto, $\Th{T}$ seria inconsistente,
+contrariando a hipótese do teorema.
 
-Now, let's show that $\Th{T} \Proves/ \lnot !R_{\Th{T}}$. Again, suppose it
-did, and suppose $n$ is the G\"odel number of !!a{derivation}
-of~$\lnot !R_{\Th{T}}$. Then $\Refut[\Th{T}](n, \Gn{!R_{\Th{T}}})$ holds, and since
-$\ORefut[\Th{T}]$ represents $\Refut[\Th{T}]$ in $\Th{Q}$, $\Th{Q} \Proves
-\ORefut[\Th{T}](\num{n}, \gn{!R_{\Th{T}}})$. We'll again show that $\Th{T}$ would
-then be inconsistent because it would also !!{derive}~$!R_{\Th{T}}$.  Since
+Agora mostremos que $\Th{T} \Proves/ \lnot !R_{\Th{T}}$. Suponha novamente
+o contrário, e suponha que $n$ seja o número de G\"odel de
+!!a{derivation} de~$\lnot !R_{\Th{T}}$. Então
+$\Refut[\Th{T}](n, \Gn{!R_{\Th{T}}})$ vale e, como $\ORefut[\Th{T}]$
+representa $\Refut[\Th{T}]$ em $\Th{Q}$, $\Th{Q} \Proves
+\ORefut[\Th{T}](\num{n}, \gn{!R_{\Th{T}}})$. Mostraremos outra vez que
+$\Th{T}$ seria então inconsistente, pois também !!{derive}ria
+~$!R_{\Th{T}}$. Como
 \begin{align*}
 \Th{Q} & \Proves !R_{\Th{T}} \liff \lnot \ORProv[\Th{T}](\gn{!R_{\Th{T}}}), 
-\intertext{and since $\Th{T}$ extends~$\Th{Q}$, it suffices to show that}
+\intertext{e como $\Th{T}$ estende~$\Th{Q}$, basta mostrar que}
 \Th{Q} & \Proves \lnot \ORProv[\Th{T}](\gn{!R_{\Th{T}}}).
 \end{align*}
-The !!{sentence} $\lnot
-\ORProv[\Th{T}](\gn{!R_{\Th{T}}})$, O.s.\@,
+A !!{sentence} $\lnot
+\ORProv[\Th{T}](\gn{!R_{\Th{T}}})$, isto é,
 \begin{align*}
   \lnot & \lexists[x][(\OPrf[\Th{T}](x,\gn{!R_{\Th{T}}}) \land
     \lforall[z][(z < x \lif \lnot \ORefut[\Th{T}](z,\gn{!R_{\Th{T}}}))])],
-  \intertext{is logically equivalent to}
+  \intertext{é logicamente equivalente a}
   & \lforall[x][(\OPrf[\Th{T}](x,\gn{!R_{\Th{T}}}) \lif
     \lexists[z][(z < x \land \ORefut[\Th{T}](z,\gn{!R_{\Th{T}}}))])].
 \end{align*}
-We argue informally using logic, making use of facts about what
-$\Th{Q}$ !!{derive}s. Suppose $x$ is arbitrary and $\OPrf[\Th{T}](x,
-\gn{!R_{\Th{T}}})$. We already know that $\Th{T} \Proves/ !R_{\Th{T}}$, and so for
-every $k$, $\Th{Q} \Proves \lnot \OPrf[\Th{T}](\num{k}, \gn{!R_{\Th{T}}})$. Thus,
-for every $k$ it follows that $\eq/[x][\num{k}]$. In particular, we
-have (a) that $\eq/[x][\num{n}]$.  We also have $\lnot(\eq[x][\num{0}]
-\lor \eq[x][\num{1}] \lor \dots \lor \eq[x][\num{n-1}])$ and so by
-\olref[req][min]{lem:less-nsucc}, (b) $\lnot(x < \num{n})$. By
-\olref[req][min]{lem:trichotomy}, $\num{n} < x$. Since $\Th{Q} \Proves
-\ORefut[\Th{T}](\num{n}, \gn{!R_{\Th{T}}})$, we have $\num{n} < x \land
-\ORefut[\Th{T}](\num{n}, \gn{!R_{\Th{T}}})$, and from that $\lexists[z][(z < x
-\land \ORefut[\Th{T}](z,\gn{!R_{\Th{T}}}))]$. Since $x$ was arbitrary we get, as
-required, that
+Argumentamos informalmente, usando a lógica e fatos sobre o que $\Th{Q}$
+!!{derive}s. Suponha que $x$ seja arbitrário e que
+$\OPrf[\Th{T}](x, \gn{!R_{\Th{T}}})$. Já sabemos que
+$\Th{T} \Proves/ !R_{\Th{T}}$ e, portanto, para todo $k$,
+$\Th{Q} \Proves \lnot \OPrf[\Th{T}](\num{k}, \gn{!R_{\Th{T}}})$. Logo,
+para todo $k$, segue-se que $\eq/[x][\num{k}]$. Em particular, temos (a)
+$\eq/[x][\num{n}]$. Também temos $\lnot(\eq[x][\num{0}]
+\lor \eq[x][\num{1}] \lor \dots \lor \eq[x][\num{n-1}])$ e, por
+\olref[req][min]{lem:less-nsucc}, (b) $\lnot(x < \num{n})$. Por
+\olref[req][min]{lem:trichotomy}, $\num{n} < x$. Como $\Th{Q} \Proves
+\ORefut[\Th{T}](\num{n}, \gn{!R_{\Th{T}}})$, temos $\num{n} < x \land
+\ORefut[\Th{T}](\num{n}, \gn{!R_{\Th{T}}})$ e, daí, $\lexists[z][(z < x
+\land \ORefut[\Th{T}](z,\gn{!R_{\Th{T}}}))]$. Como $x$ era arbitrário,
+obtemos, como exigido,
 \[
 \lforall[x][(\OPrf[\Th{T}](x,\gn{!R_{\Th{T}}}) \lif
   \lexists[z][(z < x \land \ORefut[\Th{T}](z,\gn{!R_{\Th{T}}}))])].
@@ -122,15 +129,15 @@ required, that
 \end{proof}
 
 \begin{prob}
-Two sets $A$ and $B$ of natural numbers are said to be
-\emph{computably inseparable} if there is no !!{decidable} set~$X$
-such that $A \subseteq X$ and $B \subseteq \Complement{X}$
-($\Complement{X}$ is the complement, $\Nat \setminus X$, of~$X$). Let
-$\Th{T}$ be a consistent !!{axiomatizable} extension of $\Th{Q}$.
-Suppose $A$ is the set of G\"odel numbers of !!{sentence}s provable
-in~$\Th{T}$ and $B$ the set of G\"odel numbers of sentences
-refutable in~$\Th{T}$. Prove that $A$ and~$B$ are computably
-inseparable.
+Dois conjuntos $A$ e $B$ de números naturais são chamados
+\emph{computavelmente inseparáveis} se não existe conjunto
+!!{decidable}~$X$ tal que $A \subseteq X$ e
+$B \subseteq \Complement{X}$ ($\Complement{X}$ é o complemento,
+$\Nat \setminus X$, de~$X$). Seja $\Th{T}$ uma extensão consistente e
+!!{axiomatizable} de $\Th{Q}$. Suponha que $A$ seja o conjunto dos números
+de G\"odel das !!{sentence}s demonstráveis em~$\Th{T}$ e $B$ o conjunto
+dos números de G\"odel das sentenças refutáveis em~$\Th{T}$. Prove que $A$
+e~$B$ são computavelmente inseparáveis.
 \end{prob}
 
 \end{document}

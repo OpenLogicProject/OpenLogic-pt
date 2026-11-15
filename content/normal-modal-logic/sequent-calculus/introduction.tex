@@ -6,15 +6,15 @@
 
 \begin{document}
 
-\olfileid{nml}{seq}{int}
+\olfileid[pt]{nml}{seq}{int}
 
-\olsection{Introduction}
+\olsection{Introdução}
 
-The sequent calculus for propositional logic can be extended by
-additional rules that deal
-with~\iftag{prvBox}{$\Box$\iftag{prvDiamond}{ and~}{}}{}%
-\iftag{prvDiamond}{$\Diamond$}{}. For instance, for~$\Log{K}$, we
-have \Log{LK} plus:
+O cálculo de sequentes para a lógica proposicional pode ser estendido
+por regras adicionais que tratam
+de~\iftag{prvBox}{$\Box$\iftag{prvDiamond}{ e~}{}}{}%
+\iftag{prvDiamond}{$\Diamond$}{}. Por exemplo, para~$\Log{K}$, temos
+\Log{LK} acrescido de:
 \[
   \iftag{prvBox}{\iftag{prvDiamond}{% <> and [] primitive
     \Axiom$\Gamma \fCenter \Delta, !A$
@@ -38,14 +38,14 @@ have \Log{LK} plus:
   \DisplayProof
 }
 \]
-For extensions of~$\Log{K}$, additional rules have to be added as
-well.
+Para extensões de~$\Log{K}$, também é preciso acrescentar regras
+adicionais.
 
-Not every modal logic has such a sequent calculus.  Even $\Log{S5}$,
-which is semantically simple (it can be defined without using
-accessibility relations at all) is not known to have a sequent
-calculus that results from~$\Log{LK}$ which is complete without the
-rule~\Cut. However, it has a cut-free complete \emph{hypersequent}
-calculus.
+Nem toda lógica modal possui um cálculo de sequentes desse tipo. Até
+mesmo $\Log{S5}$, que é semanticamente simples (pode ser definida sem
+usar relações de acessibilidade), não é conhecida por possuir um
+cálculo de sequentes que resulte de~$\Log{LK}$ e seja completo sem a
+regra~\Cut. Contudo, ela possui um cálculo de \emph{hipersequentes}
+completo e livre de corte.
 
 \end{document}

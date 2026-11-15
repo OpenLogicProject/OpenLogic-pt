@@ -6,113 +6,114 @@
 
 \begin{document}
 
-\olfileid{cmp}{rec}{par}
-\olsection{Partial Recursive Functions}
+\olfileid[pt]{cmp}{rec}{par}
+\olsection{Funções recursivas parciais}
 
 
-To motivate the definition of the recursive functions, note that our
-proof that there are computable functions that are not primitive
-recursive actually establishes much more. The argument was
-simple: all we used was the fact that it is possible to enumerate
-functions $f_0,f_1,\dots$ such that, as a function of $x$ and $y$,
-$f_x(y)$ is computable. So the argument applies to \emph{any class of
-  functions that can be enumerated in such a way}. This puts us in a
-bind: we would like to describe the computable functions explicitly;
-but any explicit description of a collection of computable functions
-cannot be exhaustive!
+Para motivar a definição das funções recursivas, observe que nossa
+demonstração de que existem funções computáveis que não são recursivas
+primitivas estabelece, na verdade, muito mais. O argumento foi simples:
+tudo o que usamos foi o fato de ser possível enumerar funções
+$f_0,f_1,\dots$ de tal modo que, como função de $x$ e $y$, $f_x(y)$
+seja computável. Portanto, o argumento se aplica a \emph{qualquer classe
+  de funções que possa ser enumerada dessa maneira}. Isso nos deixa em
+um impasse: gostaríamos de descrever explicitamente as funções
+computáveis; mas nenhuma descrição explícita de uma coleção de funções
+computáveis pode ser exaustiva!
 
-The way out is to allow \emph{partial} functions to come into play. We
-will see that it \emph{is} possible to enumerate the partial
-computable functions.\iftag{TMs}{ In fact, we already pretty much know
-  that this is the case, since it is possible to enumerate Turing
-  machines in a systematic way.}{} We will come back to our diagonal
-argument later, and explore why it does not go through when partial
-functions are included.
+A saída é permitir que funções \emph{parciais} entrem em cena. Veremos
+que \emph{é} possível enumerar as funções computáveis
+parciais.\iftag{TMs}{ Na verdade, praticamente já sabemos que esse é o
+  caso, pois é possível enumerar máquinas de Turing de maneira
+  sistemática.}{} Voltaremos mais tarde a nosso argumento diagonal e
+investigaremos por que ele não funciona quando funções parciais são
+incluídas.
 
-The question is now this: what do we need to add to the primitive
-recursive functions to obtain all the partial recursive functions? We
-need to do two things:
+A pergunta agora é a seguinte: o que precisamos acrescentar às funções
+recursivas primitivas para obter todas as funções recursivas parciais?
+Precisamos fazer duas coisas:
 \begin{enumerate}
-\item Modify our definition of the primitive recursive functions to
-  allow for partial functions as well.
-\item \emph{Add} something to the definition, so that some new partial
-  functions are included.
+\item Modificar nossa definição das funções recursivas primitivas para
+  permitir também funções parciais.
+\item \emph{Acrescentar} algo à definição, para que algumas novas funções
+  parciais sejam incluídas.
 \end{enumerate}
 
-The first is easy. As before, we will start with zero, successor, and
-projections, and close under composition and primitive recursion. The
-only difference is that we have to modify the definitions of
-composition and primitive recursion to allow for the possibility that
-some of the terms in the definition are not defined. If $f$ and $g$
-are partial functions, we will write $f(x) \fdefined$ to mean that $f$
-is defined at $x$, O.s.\@, $x$ is in the domain of $f$; and $f(x)
-\fundefined$ to mean the opposite, O.s.\@, that $f$ is not defined at~$x$.
-We will use $f(x) \simeq g(x)$ to mean that either $f(x)$ and $g(x)$
-are both undefined, or they are both defined and equal. We will use these
-notations for more complicated terms as well. We will adopt the
-convention that if $h$ and $g_0$, \dots,~$g_k$ all are partial functions,
-then
+A primeira tarefa é fácil. Como antes, começaremos com zero, sucessor e
+projeções, e fecharemos o conjunto sob composição e recursão primitiva.
+A única diferença é que temos de modificar as definições de composição
+e recursão primitiva para admitir a possibilidade de que alguns dos
+termos na definição não estejam definidos. Se $f$ e $g$ são funções
+parciais, escreveremos $f(x) \fdefined$ para indicar que $f$ está
+definida em $x$, isto é, que $x$ pertence ao domínio de $f$; e
+$f(x) \fundefined$ para indicar o contrário, isto é, que $f$ não está
+definida em~$x$. Usaremos $f(x) \simeq g(x)$ para indicar que ou
+$f(x)$ e $g(x)$ são ambas indefinidas, ou ambas estão definidas e são
+iguais. Usaremos essas notações também para termos mais complicados.
+Adotaremos a convenção de que, se $h$ e $g_0$, \dots,~$g_k$ são todas
+funções parciais, então
 \[
 h(g_0(\vec x),\dots,g_k(\vec x))
 \]
-is defined if and only if each $g_i$ is defined at $\vec x$, and $h$
-is defined at $g_0(\vec x)$, \dots,~$g_k(\vec x)$. With this
-understanding, the definitions of composition and primitive recursion
-for partial functions is just as above, except that we have to replace
-``$=$'' by ``$\simeq$''.
+está definida se, e somente se, cada $g_i$ está definida em $\vec x$ e
+$h$ está definida em $g_0(\vec x)$, \dots,~$g_k(\vec x)$. Com esse
+entendimento, as definições de composição e recursão primitiva para
+funções parciais são exatamente as anteriores, exceto por termos de
+substituir ``$=$'' por ``$\simeq$''.
 
-What we will add to the definition of the primitive recursive
-functions to obtain partial functions is the \emph{unbounded search
-  operator}. If $f(x,\vec z)$ is any partial function on the natural
-numbers, define $\mu x \; f(x,\vec z)$ to be
+O que acrescentaremos à definição das funções recursivas primitivas
+para obter funções parciais é o \emph{operador de busca ilimitada}. Se
+$f(x,\vec z)$ é uma função parcial qualquer sobre os números naturais,
+defina $\mu x \; f(x,\vec z)$ como
 \begin{quote}
-  the least $x$ such that $f(0,\vec z), f(1,\vec z), \dots, f(x,\vec
-  z)$ are all defined, and $f(x,\vec z) = 0$, if such an $x$ exists
+  o menor $x$ tal que $f(0,\vec z), f(1,\vec z), \dots, f(x,\vec
+  z)$ estejam todos definidos e $f(x,\vec z) = 0$, se tal $x$ existir
 \end{quote}
-with the understanding that $\mu x \; f(x,\vec z)$ is undefined
-otherwise. This defines $\mu x \; f(x,\vec z)$ uniquely.
+entendendo-se que $\mu x \; f(x,\vec z)$ é indefinido caso contrário.
+Isso define $\mu x \; f(x,\vec z)$ de maneira única.
 
 \begin{explain}
-Note that our definition makes no reference to\iftag{TMs}{ Turing
-  machines, or}{} algorithms, or any specific computational model. But
-like composition and primitive recursion, there is an operational,
-computational intuition behind unbounded search. When it
-comes to the computability of a partial function, arguments
-where the function is undefined correspond to inputs for which the
-computation does not halt. The procedure for computing $\mu x \;
-f(x,\vec z)$ will amount to this: compute $f(0,\vec z), f(1,\vec z),
-f(2,\vec z)$ until a value of 0 is returned. If any of the
-intermediate computations do not halt, however, neither does the
-computation of $\mu x \; f(x,\vec z)$.
+Observe que nossa definição não faz referência a\iftag{TMs}{ máquinas
+  de Turing, nem a}{} algoritmos ou a qualquer modelo computacional
+específico. Mas, assim como ocorre com a composição e a recursão
+primitiva, existe uma intuição operacional e computacional por trás da
+busca ilimitada. Quando se trata da computabilidade de uma função
+parcial, os argumentos nos quais a função é indefinida correspondem a
+entradas para as quais a computação não para. O procedimento para
+calcular $\mu x \; f(x,\vec z)$ será o seguinte: calcule
+$f(0,\vec z), f(1,\vec z), f(2,\vec z)$ até que seja devolvido o valor
+0. Se, porém, algum dos cálculos intermediários não parar, o cálculo de
+$\mu x \; f(x,\vec z)$ tampouco parará.
 \end{explain}
 
-If $R(x,\vec z)$ is any relation, $\mu x \; R(x,\vec z)$ is defined to
-be $\mu x \; (1 \tsub \Char{R}(x,\vec z))$. In other words, $\mu x \;
-R(x,\vec z)$ returns the least value of $x$ such that $R(x,\vec z)$
-holds. So, if $f(x,\vec z)$ is a total function, $\mu x \; f(x,\vec
-z)$ is the same as $\mu x \; (f(x,\vec z) = 0)$. But note that our
-original definition is more general, since it allows for the
-possibility that $f(x,\vec z)$ is not everywhere defined (whereas, in
-contrast, the characteristic function of a relation is always total).
+Se $R(x,\vec z)$ é uma relação qualquer, define-se
+$\mu x \; R(x,\vec z)$ como $\mu x \; (1 \tsub \Char{R}(x,\vec z))$.
+Em outras palavras, $\mu x \; R(x,\vec z)$ devolve o menor valor de $x$
+tal que $R(x,\vec z)$ vale. Assim, se $f(x,\vec z)$ é uma função total,
+$\mu x \; f(x,\vec z)$ é o mesmo que $\mu x \; (f(x,\vec z) = 0)$.
+Observe, contudo, que nossa definição original é mais geral, pois
+admite a possibilidade de que $f(x,\vec z)$ não esteja definida em
+todos os pontos (ao passo que, em contraste, a função característica
+de uma relação é sempre total).
 
 \begin{defn}
-The set of \emph{partial recursive functions} is the smallest set of
-partial functions from the natural numbers to the natural numbers (of
-various arities) containing zero, successor, and projections, and
-closed under composition, primitive recursion, and unbounded search.
+O conjunto das \emph{funções recursivas parciais} é o menor conjunto
+de funções parciais dos números naturais nos números naturais (de
+diversas aridades) que contém zero, sucessor e projeções e é fechado sob
+composição, recursão primitiva e busca ilimitada.
 \end{defn}
 
-Of course, some of the partial recursive functions will happen to be
-total, O.s.\@, defined for every argument.
+Naturalmente, algumas das funções recursivas parciais serão totais,
+isto é, definidas para todo argumento.
 
 \begin{defn}
 \ollabel{defn:recursive-fn}
-The set of \emph{recursive functions} is
-the set of partial recursive functions that are total.
+O conjunto das \emph{funções recursivas} é
+o conjunto das funções recursivas parciais que são totais.
 \end{defn}
 
-A recursive function is sometimes called ``total recursive'' to
-emphasize that it is defined everywhere.
+Uma função recursiva é às vezes chamada de ``recursiva total'' para
+enfatizar que está definida em toda parte.
 
 \end{document}
 

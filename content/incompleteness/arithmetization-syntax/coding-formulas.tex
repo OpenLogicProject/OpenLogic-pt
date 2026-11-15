@@ -6,29 +6,29 @@
 
 \begin{document}
 
-\olfileid{inc}{art}{frm}
-\olsection{Coding \printtoken{P}{formula}}
+\olfileid[pt]{inc}{art}{frm}
+\olsection{Codificação de \printtoken{P}{formula}}
 
-Once we have defined the relation $\fn{Term}(x)$ primitive
-recursively, we can use it to define the corresponding relation for
-!!{formula}s, $\fn{Frm}(x)$ primitive recursively.
+Depois de definir recursivamente de modo primitivo a relação
+$\fn{Term}(x)$, podemos usá-la para definir da mesma maneira a relação
+correspondente para !!{formula}s, $\fn{Frm}(x)$.
 
 \begin{prop}
-The relation $\fn{Atom}(x)$ which holds iff $x$ is the G\"odel number
-of an atomic !!{formula}, is primitive recursive.
+A relação $\fn{Atom}(x)$, que vale sse $x$ é o número de G\"odel de
+!!a{formula} atômica, é recursiva primitiva.
 \end{prop}
 
 \begin{proof}
-The number $x$ is the G\"odel number of an atomic !!{formula} iff
-one of the following holds:
+O número $x$ é o número de G\"odel de !!a{formula} atômica sse uma das
+condições a seguir vale:
 \begin{enumerate}
-\item There are $n$, $j < x$, and $z < x$ such that for each $i < n$,
-  $\fn{Term}((z)_i)$ and $x = $
+\item Existem $n$, $j < x$ e $z < x$ tais que, para cada $i < n$,
+  $\fn{Term}((z)_i)$ e $x = $
 \[
 \Gn{\Obj P^n_j(} \concat \fn{flatten}(z) \concat \Gn{)}.
 \]
-\item There are $z_1, z_2 < x$ such that $\fn{Term}(z_1)$,
-  $\fn{Term}(z_2)$, and $x = $
+\item Existem $z_1, z_2 < x$ tais que $\fn{Term}(z_1)$,
+  $\fn{Term}(z_2)$ e $x = $
 \[
 \Gn{{\eq}(} \concat z_1 \concat \Gn{,} \concat z_2 \concat{\Gn{)}}.
 \]
@@ -39,50 +39,50 @@ one of the following holds:
 
 \begin{prop}
 \ollabel{prop:frm-primrec}
-The relation $\fn{Frm}(x)$ which holds iff $x$ is the G\"odel number
-of !!a{formula} is primitive recursive.
+A relação $\fn{Frm}(x)$, que vale sse $x$ é o número de G\"odel de
+!!a{formula}, é recursiva primitiva.
 \end{prop}
 
 \begin{proof}
-A sequence of symbols~$s$ is !!a{formula} iff there is formation
-sequence~$s_0$, \dots, $s_{k-1} = s$ of !!{formula} which records
-how~$s$ was formed from atomic !!{formula}s according to the
-formation rules.  The code for each $s_i$ (and indeed of the code of
-the sequence $\tuple{s_0, \dots, s_{k-1}}$) is less than the code~$x$
-of~$s$.
+Uma sequência de símbolos~$s$ é !!a{formula} sse existe uma sequência
+de formação de !!{formula}~$s_0$, \dots, $s_{k-1} = s$ que registra
+como~$s$ foi formada a partir de !!{formula}s atômicas segundo as
+regras de formação. O código de cada $s_i$ (e, na verdade, o código da
+sequência $\tuple{s_0, \dots, s_{k-1}}$) é menor que o código~$x$
+de~$s$.
 \end{proof}
 
 \begin{prob}
-Give a detailed proof of \olref[inc][art][frm]{prop:frm-primrec} along
-the lines of the first proof of
-\olref[inc][art][trm]{prop:term-primrec}.
+Apresente uma prova detalhada de
+\olref[inc][art][frm]{prop:frm-primrec} seguindo as linhas da primeira
+prova de \olref[inc][art][trm]{prop:term-primrec}.
 \end{prob}
 
 \begin{prop}
 \ollabel{prop:freeocc-primrec}
-The relation $\fn{FreeOcc}(x, z, i)$, which holds iff the $i$-th
-symbol of the formula with G\"odel number~$x$ is a free occurrence of
-the variable with G\"odel number~$z$, is primitive recursive.
+A relação $\fn{FreeOcc}(x, z, i)$, que vale sse o $i$-ésimo símbolo da
+fórmula com número de G\"odel~$x$ é uma ocorrência livre da variável
+com número de G\"odel~$z$, é recursiva primitiva.
 \end{prop}
 
 \begin{proof}
-Exercise.
+Exercício.
 \end{proof}
 
 \begin{prob}
-Prove \olref[inc][art][frm]{prop:freeocc-primrec}.  You may make use
-of the fact that any substring of !!a{formula} which is !!a{formula}
-is a sub-!!{formula} of it.
+Prove \olref[inc][art][frm]{prop:freeocc-primrec}. Você pode usar o
+fato de que toda subsequência de !!a{formula} que seja !!a{formula} é
+uma sub-!!{formula} dela.
 \end{prob}
 
 \begin{prop}
-The property $\fn{Sent}(x)$ which holds iff $x$~is the G\"odel
-number of !!a{sentence} is primitive recursive.
+A propriedade $\fn{Sent}(x)$, que vale sse $x$~é o número de G\"odel
+de !!a{sentence}, é recursiva primitiva.
 \end{prop}
 
 \begin{proof}
-A !!{sentence} is !!a{formula} without free occurrences of
-!!{variable}s. So $\fn{Sent}(x)$ holds iff
+Uma !!{sentence} é !!a{formula} sem ocorrências livres de
+!!{variable}s. Portanto, $\fn{Sent}(x)$ vale sse
 \begin{multline*}
 \bforall{i<\len{x}}{\bforall{z<x}{}}\\
 (\bexists{j<z}{z=\Gn{\Obj v_j}} \lif \lnot\fn{FreeOcc}(x,z,i)).

@@ -6,29 +6,29 @@
 
 \begin{document}
 
-\olfileid{pt}{seq}{adm}
+\olfileid[pt]{pt}{seq}{adm}
 
-\olsection{Admissible and Derivable Rules}
+\olsection{Regras admissíveis e deriváveis}
 
-Many results of proof theory concern---or use---results about whether
-everything that can be !!{prove}d using a specific rule can also be
-!!{prove}d without that rule. The cut-elimination theorem is the most
-well-known example. It shows that any sequent that can be !!{prove}d
-using the rules of a sequent system with~\Cut{} can also be !!{prove}d
-without~\Cut. Because this kind of property is so important, it has a
-name.
+Muitos resultados da teoria da prova dizem respeito a---ou usam---resultados
+sobre a questão de tudo o que pode ser !!{prove}d com uma regra específica
+também poder ser !!{prove}d sem essa regra. O teorema de eliminação de cortes
+é o exemplo mais conhecido. Ele mostra que todo sequente que pode ser !!{prove}d
+usando as regras de um sistema de sequentes com~\Cut{} também pode ser !!{prove}d
+sem~\Cut. Como esse tipo de propriedade é muito importante, ele tem um
+nome.
 
 \begin{defn}
-A rule~$R$ is \emph{admissible} in a sequent system if any sequent
-that can be proved in that system together with the rule~$R$ can also
-be proved without~$R$.
+Uma regra~$R$ é \emph{admissível} em um sistema de sequentes se todo sequente
+que puder ser demonstrado nesse sistema juntamente com a regra~$R$ também
+puder ser demonstrado sem~$R$.
 \end{defn}
 
 \begin{ex}\ollabel{ex:land-deriv}
-The rule $\LeftR{\land}$ takes different forms in \Log{G1c} and
-\Log{G3c}. In \Log{G1c} there are two versions of the rule, one with
-the left conjunct $!A$ of the principal !!{formula}~$!A \land !B$ in
-the premise, and one with the right conjunct~$!B$:
+A regra $\LeftR{\land}$ apresenta formas diferentes em \Log{G1c} e
+\Log{G3c}. Em \Log{G1c}, há duas versões da regra: uma com o
+conjuntivo esquerdo $!A$ da !!{formula} principal~$!A \land !B$ na
+premissa e outra com o conjuntivo direito~$!B$:
 \[
 \Axiom$ !A, \Gamma \fCenter \Delta$
 \RightLabel{$\LeftR{\land}_1$}
@@ -40,18 +40,18 @@ the premise, and one with the right conjunct~$!B$:
 \UnaryInf$!A \land !B, \Gamma \fCenter \Delta$
 \DisplayProof
 \]
-By contrast, \Log{G3c} has only one rule:
+Em contraste, \Log{G3c} tem apenas uma regra:
 \[
 \Axiom$ !A, !B, \Gamma \fCenter \Delta$
 \RightLabel{$\LeftR{\land}_3$}
 \UnaryInf$ !A \land !B, \Gamma \fCenter \Delta$
 \DisplayProof
 \]
-We might now ask, ``Is \Log{G3c}'s rule $\LeftR{\land}_3$ admissible
-in \Log{G1c}?'' It is: we can directly simulate any inference using
-$\LeftR{\land}_3$ using only the rules of~\Log{G1c}. In addition to
-$\LeftR{\land}_1$ and $\LeftR{\land}_2$ we'll also need the structural
-rule~$\LeftR{\Contraction}$:
+Poderíamos agora perguntar: ``A regra de \Log{G3c} $\LeftR{\land}_3$ é
+admissível em \Log{G1c}?'' É: podemos simular diretamente toda inferência
+que use $\LeftR{\land}_3$ usando somente as regras de~\Log{G1c}. Além de
+$\LeftR{\land}_1$ e $\LeftR{\land}_2$, precisaremos também da regra
+estrutural~$\LeftR{\Contraction}$:
 \[
 \Axiom$!A, !B, \Gamma \fCenter \Delta$
 \RightLabel{$\LeftR{\land}_1$}
@@ -64,13 +64,13 @@ rule~$\LeftR{\Contraction}$:
 \]
 \end{ex}
 
-Simulating a inferences using one rule using other rules is one way to
-show that a rule is admissible. But it is not the only way, and some
-rules are admissible but can't be so simulated. Rules that can be are
-called \emph{derivable}.
+Simular uma inferências que usa uma regra por meio de outras regras é uma
+maneira de mostrar que uma regra é admissível. Mas não é a única maneira,
+e algumas regras são admissíveis, porém não podem ser simuladas assim. As
+regras que podem são chamadas \emph{deriváveis}.
 
 \begin{defn}
-A rule~$R$,
+Uma regra~$R$,
 \[
 \AxiomC{$S_1$}
 \AxiomC{$\dots$}
@@ -79,35 +79,35 @@ A rule~$R$,
 \TrinaryInfC{$S$}
 \DisplayProof
 \]
-is called \emph{derivable} in a system if there is a schematic
-!!{proof} of the sequent~$S$ using the rules and axioms of the system
-together with additional initial sequents of the forms of~$S_1$, \dots,~$S_n$.
+é chamada \emph{derivável} em um sistema se houver uma !!{proof}
+esquemática do sequente~$S$ que use as regras e os axiomas do sistema
+juntamente com sequentes iniciais adicionais das formas de~$S_1$, \dots,~$S_n$.
 \end{defn}
 
-The !!{proof} given in \olref{ex:land-deriv} shows that
-$\LeftR{\land}_3$ is a derivable rule in~\Log{G1c}, as that !!{proof}
-is a schematic !!{proof} of the conclusion of $\LeftR{\land}_3$ from
-the premises of $\LeftR{\land}_3$ as initial sequents using only rules
-of \Log{G1c}. (It didn't use any of the axioms of \Log{G1c}.)
+A !!{proof} apresentada em \olref{ex:land-deriv} mostra que
+$\LeftR{\land}_3$ é uma regra derivável em~\Log{G1c}, pois essa !!{proof}
+é uma !!{proof} esquemática da conclusão de $\LeftR{\land}_3$ a partir
+das premissas de $\LeftR{\land}_3$ como sequentes iniciais, usando apenas
+regras de \Log{G1c}. (Ela não usou nenhum dos axiomas de \Log{G1c}.)
 
 \begin{prop}\ollabel{prop:lor-G3-adm}
-The rules $\LeftR{\land}$ and $\RightR{\lor}$ of~\Log{G3c} are
-derivable in~\Log{G1c}.
+As regras $\LeftR{\land}$ e $\RightR{\lor}$ de~\Log{G3c} são
+deriváveis em~\Log{G1c}.
 \end{prop}
 
 \begin{proof}
-  The proof for $\LeftR{\land}$ is given in \olref{ex:land-deriv}. The
-  proof for $\RightR{\lor}$ is left as an exercise.
+  A demonstração para $\LeftR{\land}$ é dada em \olref{ex:land-deriv}. A
+  demonstração para $\RightR{\lor}$ fica como exercício.
 \end{proof}
 
 \begin{prob}
-Show that the rule $\RightR{\lor}$ of \Log{G3c} is derivable
-in~\Log{G1c}.
+Mostre que a regra $\RightR{\lor}$ de \Log{G3c} é derivável
+em~\Log{G1c}.
 \end{prob}
 
 \begin{prob}
-Suppose $\liff$ is a defined !!{operator}: $!A \liff !B$ is short for
-$(!A \lif !B) \land (!B \lif !A)$. Show that the rules
+Suponha que $\liff$ seja um !!{operator} definido: $!A \liff !B$ é uma
+abreviação de $(!A \lif !B) \land (!B \lif !A)$. Mostre que as regras
 \begin{enumerate}
 \item \Axiom$\Gamma, !A, !B \fCenter \Delta$
 \Axiom$\Gamma \fCenter \Delta, !A, !B$
@@ -121,59 +121,59 @@ $(!A \lif !B) \land (!B \lif !A)$. Show that the rules
 \BinaryInf$\Gamma \fCenter \Delta, !A \liff !B$
 \DisplayProof
 \end{enumerate}
-are derivable in (a)~\Log{G1c} and (b)~\Log{G3c}.
+são deriváveis em (a)~\Log{G1c} e (b)~\Log{G3c}.
 \end{prob}
 
 
 \begin{ex}\ollabel{ex:weak-adm}
-The rule $\RightR{\Weakening}$ of \Log{G1c},
+A regra $\RightR{\Weakening}$ de \Log{G1c},
 \[
 \Axiom$ \Gamma \fCenter \Delta$
 \RightLabel{\RightR{\Weakening}}
 \UnaryInf$ \Gamma \fCenter \Delta, !A$
 \DisplayProof
 \]
-is admissible
-in~\Log{G3c}. The idea of the proof is simple: suppose there is
-!!a{proof}~$\pi$ of the premise $\Gamma \Sequent \Delta$ in~\Log{G3c}.
-Add the !!{formula}~$!A$ to the succedent of every sequent
-in~$\pi$. Axioms remain axioms; correct inferences are still correct
-inferences. The end-!!{formula} of the new !!{proof} is $\Gamma \Sequent
+é admissível
+em~\Log{G3c}. A ideia da demonstração é simples: suponha que haja
+!!a{proof}~$\pi$ da premissa $\Gamma \Sequent \Delta$ em~\Log{G3c}.
+Acrescente a !!{formula}~$!A$ ao sucedente de cada sequente
+em~$\pi$. Axiomas continuam sendo axiomas; inferências corretas continuam
+sendo inferências corretas. A !!{formula} final da nova !!{proof} é $\Gamma \Sequent
 \Delta, !A$.
 
-The rule $\RightR{\Weakening}$ is, however, not derivable
-in~\Log{G3c}. For suppose it were, O.s.\@, suppose one could find
-!!a{proof} of $\Gamma \Sequent
-\Delta, !A$ using only the axioms and rules of~\Log{G3c} plus possibly
-the additional initial sequent~$\Gamma \Sequent \Delta$. If this
-!!{proof} is, as would be required for $\RightR{\Weakening}$ to be
-derivable, purely schematic, we could turn it into !!a{proof}
-of~$\Sequent !A$ by deleting $\Gamma$ and~$\Delta$. This would turn
-the additional initial sequents~$\Gamma \Sequent \Delta$ into the
-empty sequent~$\quad \Sequent \quad$. Since the empty sequent contains
-no !!{formula}s at all, but all rules of~\Log{G3c} require at least
-one active !!{formula} in their premises, the empty sequent can't be a
-premise of any inference in this schematic !!{proof}. Consequently, the
-!!{proof} can only be schematic if it doesn't actually use the additional
-sequent $\Gamma \Sequent \Delta$ as an initial sequent. In other
-words, it would be a schematic derivation of $\Gamma \Sequent
-\Delta, !A$ using only the axioms and rules of~\Log{G3c} and we would
-have shown that any sequent of this form has !!a{proof} in~\Log{G3c}.
-But this is impossible, since \Log{G3c} is sound and so can only !!{prove}
-sequents that are true in every !!{structure}. Taking $\Gamma = \Delta
-= \emptyset$ and $!A \ident \lfalse$, \Log{G3c} would have to !!{prove},
-p.ex., the sequent $\quad \Sequent \lfalse$, which it does not.
+A regra $\RightR{\Weakening}$, contudo, não é derivável
+em~\Log{G3c}. Pois suponha que fosse, isto é, suponha que se pudesse encontrar
+!!a{proof} de $\Gamma \Sequent
+\Delta, !A$ usando somente os axiomas e as regras de~\Log{G3c}, além,
+possivelmente, do sequente inicial adicional~$\Gamma \Sequent \Delta$. Se essa
+!!{proof} fosse puramente esquemática, como seria necessário para que
+$\RightR{\Weakening}$ fosse derivável, poderíamos transformá-la em !!a{proof}
+de~$\Sequent !A$ eliminando $\Gamma$ e~$\Delta$. Isso transformaria
+os sequentes iniciais adicionais~$\Gamma \Sequent \Delta$ no sequente
+vazio~$\quad \Sequent \quad$. Como o sequente vazio não contém
+quaisquer !!{formula}s, mas todas as regras de~\Log{G3c} exigem pelo menos
+uma !!{formula} ativa em suas premissas, o sequente vazio não pode ser uma
+premissa de nenhuma inferência nessa !!{proof} esquemática. Consequentemente, a
+!!{proof} só pode ser esquemática se, de fato, não usar o sequente adicional
+$\Gamma \Sequent \Delta$ como sequente inicial. Em outras palavras,
+ela seria uma derivação esquemática de $\Gamma \Sequent
+\Delta, !A$ usando somente os axiomas e as regras de~\Log{G3c}, e teríamos
+mostrado que todo sequente dessa forma tem !!a{proof} em~\Log{G3c}.
+Mas isso é impossível, pois \Log{G3c} é correto e, portanto, só pode !!{prove}
+sequentes que sejam verdadeiros em toda !!{structure}. Tomando $\Gamma = \Delta
+= \emptyset$ e $!A \ident \lfalse$, \Log{G3c} teria de !!{prove},
+por exemplo, o sequente $\quad \Sequent \lfalse$, o que não ocorre.
 \end{ex}
 
-Let's give a nice inductive proof of the result that weakening is an
-admissible rule in~\Log{G3c}. In fact, a slightly stronger result
-holds, as the intuitive argument shows: by adding $!A$ to the right side
-of every sequent of~$\pi$, we do not change the structure of the
-!!{proof}, in particular, we do not increase the height. Since this is
-important, it deserves its own definition.
+Apresentemos uma boa demonstração indutiva do resultado de que o
+enfraquecimento é uma regra admissível em~\Log{G3c}. Na verdade, vale um
+resultado ligeiramente mais forte, como mostra o argumento intuitivo: ao
+acrescentar $!A$ ao lado direito de cada sequente de~$\pi$, não alteramos a
+estrutura da !!{proof}; em particular, não aumentamos a altura. Como isso é
+importante, merece uma definição própria.
 
 \begin{defn}
-A rule~$R$,
+Uma regra~$R$,
 \[
 \AxiomC{$S_1$}
 \AxiomC{$\dots$}
@@ -182,41 +182,41 @@ A rule~$R$,
 \TrinaryInfC{$S$}
 \DisplayProof
 \]
-is \emph{!!{height}-preserving admissible} (or
-\emph{!!{hp}-admissible}) in a system if, whenever $\Proves[h_i] S_i$
-for $i = 1$, \dots,~$n$, then $\Proves_m S$ with $m = \max(h_1, \dots,
+é \emph{admissível com preservação de !!{height}} (ou
+\emph{!!{hp}-admissível}) em um sistema se, sempre que $\Proves[h_i] S_i$
+para $i = 1$, \dots,~$n$, então $\Proves_m S$ com $m = \max(h_1, \dots,
 h_n)$.
 \end{defn}
 
-Note that it is enough for a rule to be !!{height}-preserving
-admissable that, whenever the premises~$S_i$ have !!{proof}s~$\pi_i$
-with !!{height}~$h_i = \pheight{\pi_i}$, there is !!a{proof}~$\pi$ of
-the conclusion of !!{height}~$\pheight{\pi}$ no greater than the
-maximum of the~$h_i$. In particular, if there is only one
-premise~$S_1$, it is enough that $\pheight{\pi} \le \pheight{\pi_1}$.
-In the case of $\RightR{\Weakening}$ and $\LeftR{\Weakening}$ we
-actually have $\pheight{\pi} = \pheight{\pi_1}$, but that is not
-necessary.
+Observe que, para uma regra ser admissivel com preservação de
+!!{height}, basta que, sempre que as premissas~$S_i$ tiverem !!{proof}s~$\pi_i$
+com !!{height}~$h_i = \pheight{\pi_i}$, haja !!a{proof}~$\pi$ da
+conclusão cuja !!{height}~$\pheight{\pi}$ não seja maior que o
+máximo dos~$h_i$. Em particular, se houver somente uma
+premissa~$S_1$, basta que $\pheight{\pi} \le \pheight{\pi_1}$.
+No caso de $\RightR{\Weakening}$ e $\LeftR{\Weakening}$, temos, de fato,
+$\pheight{\pi} = \pheight{\pi_1}$, mas isso não é
+necessário.
 
 \begin{prop}\ollabel{prop:weak-G3c-adm}
-The rules $\RightR{\Weakening}$ and $\LeftR{\Weakening}$ of \Log{G1c} are
-!!{height}-preserving admissible in~\Log{G3c}.
+As regras $\RightR{\Weakening}$ e $\LeftR{\Weakening}$ de \Log{G1c} são
+admissíveis com preservação de !!{height} em~\Log{G3c}.
 \end{prop}
 
 \begin{proof}
-  We have to show that if $\Log{G3c} \Proves \Gamma \Sequent \Delta$
-  with a !!{proof}~$\pi$ of !!{height}~$\pheight{\pi} = n$ then there
-  is a \Log{G3c}-!!{proof} $\pi'$ of $\Gamma \Sequent \Delta, !A$ with
-  $\pheight{\pi'} = n$. We prove this by induction on~$n$. If $n=0$,
-  then $\pi$ is just the axiom $\Gamma \Sequent \Delta$ (O.s.\@, some
-  atomic $!C$ occurs in both $\Gamma$ and~$\Delta$), and so is $\Gamma
-  \Sequent \Delta, !A$. If $n = \pheight{\pi} >0$, the !!{proof}~$\pi$
-  has a last inference. We distinguish cases according to which rule
-  was used. We give just one example: suppose the last inference was
-  $\RightR{\land}$. Then $\Delta = \Delta', !B \land !C$ and the
-  immediate sub-!!{proof}s $\pi_1$ and~$\pi_2$ of the last inference
-  have end-sequents $\Gamma \Sequent \Delta', !B$ and $\Gamma \Sequent
-  \Delta', !C$, respectively. In other words, $\pi$ looks like this:
+  Temos de mostrar que, se $\Log{G3c} \Proves \Gamma \Sequent \Delta$
+  com uma !!{proof}~$\pi$ de !!{height}~$\pheight{\pi} = n$, então há
+  uma \Log{G3c}-!!{proof} $\pi'$ de $\Gamma \Sequent \Delta, !A$ com
+  $\pheight{\pi'} = n$. Demonstramos isso por indução em~$n$. Se $n=0$,
+  então $\pi$ é apenas o axioma $\Gamma \Sequent \Delta$ (isto é, alguma
+  $!C$ atômica ocorre tanto em $\Gamma$ quanto em~$\Delta$), e o mesmo vale
+  para $\Gamma \Sequent \Delta, !A$. Se $n = \pheight{\pi} >0$, a
+  !!{proof}~$\pi$ tem uma última inferência. Distinguimos casos segundo a
+  regra utilizada. Damos apenas um exemplo: suponha que a última inferência
+  tenha sido $\RightR{\land}$. Então $\Delta = \Delta', !B \land !C$, e as
+  sub-!!{proof}s imediatas $\pi_1$ e~$\pi_2$ da última inferência
+  têm sequentes finais $\Gamma \Sequent \Delta', !B$ e $\Gamma \Sequent
+  \Delta', !C$, respectivamente. Em outras palavras, $\pi$ tem a seguinte forma:
   \[
   \AxiomC{}
   \RightLabel{$\pi_1$}
@@ -228,12 +228,12 @@ The rules $\RightR{\Weakening}$ and $\LeftR{\Weakening}$ of \Log{G1c} are
   \BinaryInf$\Gamma \fCenter \Delta', !B \land !C$
   \DisplayProof
   \]
-  We also have that $n =
-  \max(\pheight{\pi_1}, \pheight{\pi_2}) + 1$. So $\pheight{\pi_1} <
-  n$ and $\pheight{\pi_2} < n$, and the inductive hypothesis applies:
-  there are !!{proof}s $\pi_1'$ and~$\pi_2'$ of $\Gamma \Sequent
-  \Delta', !B, !A$ and $\Gamma \Sequent \Delta', !C, !A$. Using the
-  $\RightR{\land}$ rule, we obtain !!a{proof}~$\pi'$ of $\Gamma
+  Também temos que $n =
+  \max(\pheight{\pi_1}, \pheight{\pi_2}) + 1$. Logo, $\pheight{\pi_1} <
+  n$ e $\pheight{\pi_2} < n$, e a hipótese de indução se aplica:
+  há !!{proof}s $\pi_1'$ e~$\pi_2'$ de $\Gamma \Sequent
+  \Delta', !B, !A$ e $\Gamma \Sequent \Delta', !C, !A$. Usando a regra
+  $\RightR{\land}$, obtemos !!a{proof}~$\pi'$ de $\Gamma
   \Sequent \Delta', !B \land !C, !A$:
   \[
   \AxiomC{}
@@ -246,17 +246,17 @@ The rules $\RightR{\Weakening}$ and $\LeftR{\Weakening}$ of \Log{G1c} are
   \BinaryInf$\Gamma \fCenter \Delta', !B \land !C, !A$
   \DisplayProof
   \]
-  We have $\pheight{\pi'} =
+  Temos $\pheight{\pi'} =
   \max(\pheight{\pi_1'}, \pheight{\pi_2'}) + 1 = \max(\pheight{\pi_1},
   \pheight{\pi_2}) + 1 = \pheight{\pi}$.
 \end{proof}
 
-\olref{prop:weak-G3c-adm} is extremely useful. We'll introduce a
-notation for repeated application of it: if $\pi$ is !!a{proof}
-of~$\Gamma \Sequent \Delta$ then $\pi[\Pi \Sequent \Lambda]$ is the
-result of applying admissibility of weakening on the left with all the
-!!{formula}s in~$\Pi$ and admissibility of weakening on the right with
-all !!{formula}s in~$\Lambda$. It is !!a{proof} of $\Gamma, \Pi
+\olref{prop:weak-G3c-adm} é extremamente útil. Introduziremos uma
+notação para sua aplicação repetida: se $\pi$ for !!a{proof}
+de~$\Gamma \Sequent \Delta$, então $\pi[\Pi \Sequent \Lambda]$ será o
+resultado da aplicação da admissibilidade do enfraquecimento à esquerda com
+todas as !!{formula}s em~$\Pi$ e da admissibilidade do enfraquecimento à direita
+com todas as !!{formula}s em~$\Lambda$. Trata-se de !!a{proof} de $\Gamma, \Pi
 \Sequent \Delta, \Lambda$.
 
 \end{document}

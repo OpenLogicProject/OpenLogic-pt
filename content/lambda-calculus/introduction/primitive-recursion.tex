@@ -6,119 +6,118 @@
 
 \begin{document}
 
-\olfileid{lam}{int}{pr}
-\olsection{\usetoken{S}{lambda definable} Functions are Closed under Primitive Recursion}
+\olfileid[pt]{lam}{int}{pr}
+\olsection{As funções \usetoken{S}{lambda definable} são fechadas sob recursão primitiva}
 
-When it comes to primitive recursion, we finally need to do some
-work. We will have to proceed in stages. As before, on the assumption
-that we already have terms $G$ and $H$ that !!{lambda define} functions
-$g$ and~$h$, respectively, we want a term $H$ that !!{lambda define}s the
-function~$f$ defined by
+Quando chegamos à recursão primitiva, finalmente precisamos trabalhar um
+pouco. Teremos de avançar por etapas. Como antes, supondo que já tenhamos
+termos $G$ e $H$ que !!{lambda define}m as funções $g$ e~$h$,
+respectivamente, queremos um termo $H$ que !!{lambda define}s a função~$f$
+definida por
 \begin{align*}
 f(0, \vec z) & = g(\vec z) \\
 f(x+1, \vec z) & = h(z, f(x,\vec z), \vec z).
 \end{align*}
-So, in general, given lambda terms $G'$ and~$H'$, it suffices to find
-a term~$F$ such that
+Assim, em geral, dados os termos lambda $G'$ e~$H'$, basta encontrar um
+termo~$F$ tal que
 \begin{align*}
 F(\num{0}, \vec z) & \equiv G(\vec z) \\
 F(\overline{n+1}, \vec z) & \equiv H(\num{n}, F(\num{n}, \vec z), \vec z)
 \end{align*}
-for every natural number~$n$; the fact that $G'$ and~$H'$ !!{lambda define}
-$g$ and~$h$ means that whenever we plug in numerals $\num{\vec m}$
-for $\vec z$, $F(\num{n+1}, \num{\vec m})$ will normalize to the
-right answer.
+para todo número natural~$n$; o fato de $G'$ e~$H'$ !!{lambda define}rem
+$g$ e~$h$ significa que, sempre que inserirmos numerais $\num{\vec m}$ no
+lugar de $\vec z$, $F(\num{n+1}, \num{\vec m})$ se normalizará para a
+resposta correta.
 
-But for this, it suffices to find a term~$F$ satisfying
+Para isso, porém, basta encontrar um termo~$F$ que satisfaça
 \begin{align*}
 F(\num 0) & \equiv G \\
 F(\overline {n+1}) & \equiv H(\num{n},F(\num{n}))
-\intertext{for every natural number $n$,  where}
-G & = \lambd[\vec z][G'(\vec z)] \text{ and}\\
+\intertext{para todo número natural $n$, onde}
+G & = \lambd[\vec z][G'(\vec z)] \text{ e}\\
 H(u,v) & = \lambd[\vec z][H'(u,v(u,\vec z),\vec z)].
 \end{align*}
-In other words, with lambda trickery, we can avoid having to worry
-about the extra parameters $\vec z$---they just get absorbed in the
-lambda notation.
+Em outras palavras, com artifícios lambda podemos evitar a preocupação com
+os parâmetros adicionais $\vec z$---eles são simplesmente absorvidos pela
+notação lambda.
 
-Before we define the term $F$, we need a mechanism for handling
-ordered pairs. This is provided by the next lemma.
+Antes de definir o termo $F$, precisamos de um mecanismo para lidar com
+pares ordenados. Ele é fornecido pelo próximo lema.
 
 \begin{lem}
-There is a lambda term $D$ such that for each pair of lambda terms $M$
-and~$N$, $D(M,N)(\num{0}) \red M$ and $D(M,N)(\num{1}) \red N$.
+Existe um termo lambda $D$ tal que, para cada par de termos lambda $M$ e~$N$,
+$D(M,N)(\num{0}) \red M$ e $D(M,N)(\num{1}) \red N$.
 \end{lem}
 
 \begin{proof}
-First, define the lambda term $K$ by
+Primeiro, defina o termo lambda $K$ por
 \[
 K(y) = \lambd[x][y].
 \]
-In other words, $K$ is the term $\lambd[y][\lambd[x][y]]$. Looking at it
-differently, for every $M$, $K(M)$ is a constant function that
-returns~$M$ on any input.
+Em outras palavras, $K$ é o termo $\lambd[y][\lambd[x][y]]$. Vendo de outra
+maneira, para todo $M$, $K(M)$ é uma função constante que devolve~$M$ para
+qualquer entrada.
 
-Now define $D(x,y,z)$ by $D(x,y,z) = z (K(y))x$. Then we have
+Agora defina $D(x,y,z)$ por $D(x,y,z) = z (K(y))x$. Então temos
 \begin{align*}
-D(M,N,\num 0) & \red \num 0 (K(N)) M \red M \text{ and}\\
+D(M,N,\num 0) & \red \num 0 (K(N)) M \red M \text{ e}\\
 D(M,N,\num 1) & \red \num 1 (K(N)) M \red K(N) M \red N,
 \end{align*}
-as required.
+como requerido.
 \end{proof}
 
-The idea is that $D(M,N)$ represents the pair $\tuple{M, N}$, and if
-$P$ is assumed to represent such a pair, $P(\num 0)$ and $P(\num 1)$
-represent the left and right projections, $(P)_0$ and $(P)_1$. We will
-use the latter notations.
+A ideia é que $D(M,N)$ representa o par $\tuple{M, N}$ e, se supomos que
+$P$ representa tal par, $P(\num 0)$ e $P(\num 1)$ representam as projeções
+esquerda e direita, $(P)_0$ e $(P)_1$. Usaremos estas últimas notações.
 
 \begin{lem}
-The !!{lambda definable} functions are closed under primitive recursion.
+As funções !!{lambda definable} são fechadas sob recursão primitiva.
 \end{lem}
 
 \begin{proof}
-We need to show that given any terms, $G$ and $H$, we can find a term
-$F$ such that
+Precisamos mostrar que, dados termos quaisquer $G$ e $H$, podemos encontrar
+um termo $F$ tal que
 \begin{align*}
 F(\num{0}) & \equiv G \\
 F(\num{n+1}) & \equiv H(\num{n}, F(\num{n}))
 \end{align*}
-for every natural number~$n$. The idea is roughly to compute sequences
-of \emph{pairs}
+para todo número natural~$n$. A ideia, em linhas gerais, é calcular
+sequências de \emph{pares}
 \[
 \tuple{\num 0, F(\num 0)}, \tuple{\num 1, F(\num 1)}, \dots,
 \]
-using numerals as iterators. Notice that the first pair is just
-$\tuple{\num 0, G}$. Given a pair $\tuple{\num{n}, F(\num{n})}$, the
-next pair, $\tuple{\num{n+1}, F(\num{n+1})}$ is supposed to
-be equivalent to $\tuple{\num{n+1}, H(\num{n}, F(\num{n}))}$. We
-will design a lambda term~$T$ that makes this one-step transition.
+usando numerais como iteradores. Observe que o primeiro par é simplesmente
+$\tuple{\num 0, G}$. Dado um par $\tuple{\num{n}, F(\num{n})}$, o par
+seguinte, $\tuple{\num{n+1}, F(\num{n+1})}$, deve ser equivalente a
+$\tuple{\num{n+1}, H(\num{n}, F(\num{n}))}$. Projetaremos um termo
+lambda~$T$ que realiza essa transição em um passo.
 
-The details are as follows. Define $T(u)$ by
+Os detalhes são os seguintes. Defina $T(u)$ por
 \[
 T(u) = \tuple{S((u)_0), H((u)_0,(u)_1)}.
 \]
-Now it is easy to verify that for any number~$n$,
+Agora é fácil verificar que, para qualquer número~$n$,
 \[
 T(\tuple{\num{n}, M}) \red \tuple{\num{n+1}, H(\num{n}, M)}.
 \]
-As suggested above, given $G$ and $H$, define~$F(u)$ by
+Como sugerido acima, dados $G$ e $H$, defina~$F(u)$ por
 \[
 F(u) = (u(T,\tuple{\num 0, G}))_1.
 \]
-In other words, on input~$\num{n}$, $F$ iterates $T$ $n$ times on
-$\tuple{\num 0, G}$, and then returns the second component. To start
-with, we have
+Em outras palavras, com entrada~$\num{n}$, $F$ itera $T$ $n$ vezes sobre
+$\tuple{\num 0, G}$ e depois devolve a segunda componente. Para começar,
+temos
 \begin{enumerate}
 \item $\num{0} (T, \tuple{\num 0, G}) \equiv \tuple{\num{0}, G}$
 \item $F(\num{0}) \equiv G$
 \end{enumerate}
-By induction on~$n$, we can show that for each natural number one has
-the following:
+Por indução em~$n$, podemos mostrar que, para cada número natural, vale o
+seguinte:
 \begin{enumerate}
 \item $\num{n+1}(T, \tuple{\num{0}, G}) \equiv \tuple{\num{n+1}, F(\num{n+1})}$
 \item $F(\num{n+1}) \equiv H(\num{n}, F(\num{n}))$
 \end{enumerate}
-For the second clause, we have
+Para a segunda cláusula, temos
 \begin{align*}
 F(\num{n+1}) & \red (\num{n+1}(T, \tuple{\num 0, G}))_1 \\
 & \equiv (T(\num{n} (T, \tuple{\num 0, G})))_1 \\
@@ -126,8 +125,8 @@ F(\num{n+1}) & \red (\num{n+1}(T, \tuple{\num 0, G}))_1 \\
 & \equiv (\tuple{\num{n+1}, H(\num{n}, F(\num{n}))})_1 \\
 & \equiv H(\num{n}, F(\num{n})).
 \end{align*}
-Here we have used the induction hypothesis on the second-to-last
-line. For the first clause, we have
+Aqui usamos a hipótese de indução na penúltima linha. Para a primeira
+cláusula, temos
 \begin{align*}
 \num{n+1} (T, \tuple{\num 0, G}) &
 \equiv T(\num{n} (T, \tuple{\num 0, G})) \\
@@ -135,10 +134,11 @@ line. For the first clause, we have
 & \equiv \tuple{\num{n+1}, H(\num{n}, F(\num{n}))} \\
 & \equiv \tuple{\num{n+1}, F(\num{n+1})}.
 \end{align*}
-Here we have used the second clause in the last line. So we have shown
-$F(\num 0) \equiv G$ and, for every $n$, $F(\num {n+1}) \equiv H(\num
-n, F(\num{n}))$, which is exactly what we needed.
+Aqui usamos a segunda cláusula na última linha. Portanto, mostramos
+$F(\num 0) \equiv G$ e, para todo $n$, $F(\num {n+1}) \equiv H(\num
+n, F(\num{n}))$, exatamente o que precisávamos.
 \end{proof}
 
 \end{document}
+
 

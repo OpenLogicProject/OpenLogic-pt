@@ -6,37 +6,41 @@
 
 \begin{document}
 
-\olfileid{cmp}{thy}{cps}
-\olsection{Computable Sets}
+\olfileid[pt]{cmp}{thy}{cps}
+\olsection{Conjuntos computáveis}
 
-We can extend the notion of computability from computable functions to
-computable sets:
+Podemos estender a noção de computabilidade das funções computáveis
+aos conjuntos computáveis:
 
 \begin{defn}
-  Let $S$ be a set of natural numbers. Then $S$ is \emph{computable}
-  iff its characteristic function~$\Char{S}$ is. In other words,
-  $S$~is computable iff the function
+  Seja $S$ um conjunto de números naturais. Então $S$ é
+  \emph{computável} se, e somente se, sua função
+  característica~$\Char{S}$ o é. Em outras palavras, $S$~é computável
+  se, e somente se, a função
 \[
 \Char{S}(x) =
 \begin{cases}
-1 & \text{if $x \in S$} \\
-0 & \text{otherwise}
+1 & \text{se $x \in S$} \\
+0 & \text{caso contrário}
 \end{cases}
 \]
-is computable. Similarly, a relation $R(x_0, \dots, x_{k-1})$ is
-computable if and only if its characteristic function is.
+é computável. De modo semelhante, uma relação
+$R(x_0, \dots, x_{k-1})$ é computável se, e somente se, sua função
+característica é computável.
 
-Computable sets and relations are also called \emph{decidable}.
+Conjuntos e relações computáveis também são chamados de
+\emph{decidíveis}.
 \end{defn}
 
 \begin{explain}
-Notice that we now have a number of notions of computability: for
-partial functions, for functions, and for sets. Do not get them
-confused!{} \iftag{TMs}{The Turing machine computing a partial function
-  returns the output of the function, for input values at which the
-  function is defined; the Turing machine computing a set returns
-  either $1$ or~$0$, after deciding whether or not the input value is in
-  the set or not.}{}
+Observe que agora temos várias noções de computabilidade: para funções
+parciais, para funções e para conjuntos. Não as confunda!{}
+\iftag{TMs}{A máquina de Turing que calcula uma função parcial devolve
+  a saída da função para os valores de entrada nos quais a função está
+  definida; a máquina de Turing que calcula um conjunto devolve $1$
+  ou~$0$, depois de decidir se o valor de entrada pertence ou não ao
+  conjunto.}{}
 \end{explain}
 
 \end{document}
+

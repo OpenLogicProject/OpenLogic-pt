@@ -6,35 +6,37 @@
 
 \begin{document}
 
-\olfileid{sol}{met}{int}
+\olfileid[pt]{sol}{met}{int}
 
-\olsection{Introduction}
+\olsection{Introdução}
 
-First-order logic has a number of nice properties. We know it is not
-decidable, but at least it is axiomatizable. That is, there are proof
-systems for first-order logic which are sound and complete, O.s.\@, they
-give rise to !!a{derivability} relation~$\Proves$ with the property
-that for any set of !!{sentence}s~$\Gamma$ and !!{sentence}~$!A$,
-$\Gamma \Entails !A$ iff $\Gamma \Proves !A$.  This means in
-particular that the validities of first-order logic are !!{computably
-  enumerable}. There is a computable function~$f\colon \Nat \to
-\Sent[L]$ such that the values of~$f$ are all and only the valid
-!!{sentence}s of~$\Lang{L}$. This is so because !!{derivation}s can be
-enumerated, and those that !!{derive} a single~!!{sentence} are then
-mapped to that !!{sentence}.  Second-order logic is more expressive
-than first-order logic, and so it is in general more complicated to
-capture its validities.  In fact, we'll show that second-order logic
-is not only undecidable, but its validities are not even !!{computably
-  enumerable}. This means there can be no sound and complete proof
-system for second-order logic (although sound, but incomplete proof
-systems are available and in fact are important objects of research).
+A lógica de primeira ordem tem várias propriedades agradáveis. Sabemos que
+ela não é decidível, mas ao menos é axiomatizável. Isto é, há sistemas de
+prova corretos e completos para a lógica de primeira ordem, ou seja, eles
+dão origem a !!a{derivability} relação~$\Proves$ com a propriedade de que,
+para qualquer conjunto de !!{sentence}s~$\Gamma$ e qualquer
+!!{sentence}~$!A$, $\Gamma \Entails !A$ sse $\Gamma \Proves !A$. Isso
+significa, em particular, que as validades da lógica de primeira ordem são
+!!{computably enumerable}. Existe uma função computável~$f\colon \Nat \to
+\Sent[L]$ cujos valores de~$f$ são exatamente todas as !!{sentence}s válidas de
+~$\Lang{L}$. Isso ocorre porque as !!{derivation}s podem ser enumeradas e
+aquelas que !!{derive}m uma única~!!{sentence} são então associadas a essa
+!!{sentence}. A lógica de segunda ordem é mais expressiva que a lógica de
+primeira ordem e, portanto, em geral é mais complicado caracterizar suas
+validades. De fato, mostraremos não apenas que a lógica de segunda ordem é
+indecidível, mas também que suas validades nem sequer são !!{computably
+  enumerable}. Isso significa que não pode haver um sistema de prova
+correto e completo para a lógica de segunda ordem (embora existam sistemas
+de prova corretos, porém incompletos, que de fato são importantes objetos
+de pesquisa).
 
-First-order logic also has two more properties: it is compact (if
-every finite subset of a set~$\Gamma$ of !!{sentence}s is satisfiable,
-$\Gamma$ itself is satisfiable) and the L\"owenheim--Skolem Theorem
-holds for it (if $\Gamma$ has an infinite model it has
-!!a{denumerable} model). Both of these results fail for second-order
-logic. Again, the reason is that second-order logic can express facts
-about the size of !!{domain}s that first-order logic cannot.
+A lógica de primeira ordem também tem duas outras propriedades: ela é
+compacta (se todo subconjunto finito de um conjunto~$\Gamma$ de
+!!{sentence}s é satisfatível, então o próprio $\Gamma$ é satisfatível) e o
+teorema de L\"owenheim--Skolem vale para ela (se $\Gamma$ tem um modelo
+infinito, então tem !!a{denumerable} modelo). Ambos os resultados falham na
+lógica de segunda ordem. Novamente, a razão é que a lógica de segunda ordem
+pode expressar fatos sobre o tamanho de !!{domain}s que a lógica de primeira
+ordem não pode expressar.
 
 \end{document}

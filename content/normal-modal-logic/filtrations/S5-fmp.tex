@@ -6,84 +6,84 @@
 
 \begin{document}
 
-\olfileid{nml}{fil}{fmp}
+\olfileid[pt]{nml}{fil}{fmp}
 
-\olsection{\Log{K} and \Log{S5} have the Finite Model Property}
+\olsection{\Log{K} e \Log{S5} têm a propriedade do modelo finito}
 
 \begin{defn}
-  A system $\Sigma$ of modal logic is said to have the \emph{finite
-    model property} if whenever !!a{formula}~$!A$ is true at a world
-  in a model of $\Sigma$ then $!A$ is true at a world in a
-  \emph{finite} model of~$\Sigma$.
+  Diz-se que um sistema $\Sigma$ de lógica modal tem a \emph{propriedade
+    do modelo finito} se, sempre que !!a{formula}~$!A$ é verdadeira em um
+  mundo de um modelo de $\Sigma$, $!A$ é verdadeira em um mundo de algum
+  modelo \emph{finito} de~$\Sigma$.
 \end{defn}
 
 \begin{prop}\ollabel{prop:K-fmp}
-  \Log{K} has the finite model property.
+  \Log{K} tem a propriedade do modelo finito.
 \end{prop}
 
 \begin{proof}
-  \Log{K} is the set of valid !!{formula}s, O.s.\@, any model is a model
-  of~\Log{K}.  By \olref[fil]{thm:filtrations}, if
-  $\mSat{M}{!A}[w]$, then $\mSat{M^*}{!A}[w]$ for any filtration
-  of~$\mModel{M}$ through the set $\Gamma$ of sub-!!{formula}s
-  of~$!A$. Any !!{formula} only has finitely many sub-!!{formula}s, so
-  $\Gamma$ is finite. By \olref[fin]{prop:filt-are-finite},
-  $\card{W^*} \le 2^n$, where $n$ is the number of !!{formula}s
-  in~$\Gamma$. And since \Log{K} imposes no restriction on models,
-  $\mModel{M^*}$ is a \Log{K}-model.
+  \Log{K} é o conjunto das !!{formula}s válidas, isto é, todo modelo é
+  um modelo de~\Log{K}. Por \olref[fil]{thm:filtrations}, se
+  $\mSat{M}{!A}[w]$, então $\mSat{M^*}{!A}[w]$ para toda filtração
+  de~$\mModel{M}$ por meio do conjunto $\Gamma$ das sub-!!{formula}s
+  de~$!A$. Toda !!{formula} tem apenas um número finito de
+  sub-!!{formula}s; logo, $\Gamma$ é finito. Por
+  \olref[fin]{prop:filt-are-finite}, $\card{W^*} \le 2^n$, em que $n$
+  é o número de !!{formula}s em~$\Gamma$. E, como \Log{K} não impõe
+  restrição alguma aos modelos, $\mModel{M^*}$ é um modelo de \Log{K}.
 \end{proof}
 
-To show that a logic~\Log{L} has the finite model property via
-filtrations it is essential that the filtration of an \Log{L}-model is
-itself a \Log{L}-model. Often this requires a fair bit of work, and
-not any filtration yields a \Log{L}-model. However, for universal
-models, this still holds.
+Para mostrar por meio de filtrações que uma lógica~\Log{L} tem a
+propriedade do modelo finito, é essencial que a filtração de um modelo
+de \Log{L} seja ela própria um modelo de \Log{L}. Isso frequentemente
+exige bastante trabalho, e nem toda filtração produz um modelo de
+\Log{L}. Contudo, para modelos universais, isso ainda vale.
 
 \begin{prop}\ollabel{prop:univ-fin}
-  Let $\mClass{U}$ be the class of universal models (see
-  \olref[frd][es5]{prop:S5=univ}) and $\mClass{U}_\mathrm{Fin}$ the
-  class of all finite universal models. Then any !!{formula}~$!A$ is
-  valid in $\mClass{U}$ if and only if it is valid in
+  Seja $\mClass{U}$ a classe dos modelos universais (veja
+  \olref[frd][es5]{prop:S5=univ}) e seja $\mClass{U}_\mathrm{Fin}$ a
+  classe de todos os modelos universais finitos. Então, toda
+  !!{formula}~$!A$ é válida em $\mClass{U}$ se, e somente se, é válida em
   $\mClass{U}_\mathrm{Fin}$.
 \end{prop}
 
 \begin{proof}
-  Finite universal models are universal models, so the left-to-right
-  direction is trivial. For the right-to left direction, suppose
-  that~$!A$ is false at some world $w$ in a universal model
-  $\mModel{M}$. Let $\Gamma$ contain $!A$ as well as all of its
-  subformulas; clearly $\Gamma$ is finite. Take a filtration
-  $\mModel{M^*}$ of $\mModel{M}$; then $\mModel{M^*}$ is finite by
-  \olref[fin]{prop:filt-are-finite}, and by
-  \olref[fil]{thm:filtrations}, $!A$ is false at $[w]$ in
-  $\mModel{M^*}$. It remains to observe that $\mModel{M^*}$ is also
-  universal: given $u$ and $v$, by hypothesis $Ruv$ and by
-  \olref[fil]{defn:filtration}\olref[fil]{defn:filtration-R},
-  also $R^*[u][v]$.
+  Modelos universais finitos são modelos universais; portanto, a direção
+  da esquerda para a direita é trivial. Para a direção da direita para a
+  esquerda, suponha que~$!A$ seja falsa em algum mundo $w$ de um modelo
+  universal $\mModel{M}$. Seja $\Gamma$ um conjunto que contenha $!A$ e
+  todas as suas subfórmulas; evidentemente, $\Gamma$ é finito. Tome uma
+  filtração $\mModel{M^*}$ de $\mModel{M}$; então $\mModel{M^*}$ é finito
+  por \olref[fin]{prop:filt-are-finite} e, por
+  \olref[fil]{thm:filtrations}, $!A$ é falsa em $[w]$ em
+  $\mModel{M^*}$. Resta observar que $\mModel{M^*}$ também é universal:
+  dados $u$ e $v$, por hipótese $Ruv$ e, por
+  \olref[fil]{defn:filtration}\olref[fil]{defn:filtration-R}, também
+  $R^*[u][v]$.
 \end{proof}
 
 \begin{cor}\ollabel{cor:S5fmp}
-  \Log{S5} has the finite model property.
+  \Log{S5} tem a propriedade do modelo finito.
 \end{cor}
 
 \begin{proof}
-  By \olref[frd][es5]{prop:S5=univ}, if $!A$ is true at a world in
-  some reflexive and euclidean model then it is true at a world in a
-  universal model. By \olref{prop:univ-fin}, it is true at a world in
-  a finite universal model (namely the filtration of the model through
-  the set of sub-!!{formula}s of~$!A$). Every universal model is also
-  reflexive and euclidean; so $!A$ is true at a world in a finite
-  reflexive euclidean model.
+  Por \olref[frd][es5]{prop:S5=univ}, se $!A$ é verdadeira em um mundo
+  de algum modelo reflexivo e euclidiano, então é verdadeira em um mundo
+  de um modelo universal. Por \olref{prop:univ-fin}, ela é verdadeira em
+  um mundo de um modelo universal finito (a saber, a filtração do modelo
+  por meio do conjunto das sub-!!{formula}s de~$!A$). Todo modelo
+  universal também é reflexivo e euclidiano; logo, $!A$ é verdadeira em
+  um mundo de um modelo reflexivo e euclidiano finito.
 \end{proof}
 
 \begin{prob}
-  Show that any filtration of a serial or reflexive model is also
-  serial or reflexive (respectively).
+  Mostre que toda filtração de um modelo serial ou reflexivo também é,
+  respectivamente, serial ou reflexiva.
 \end{prob}
 
 \begin{prob}
-  Find a non-symmetric (non-transitive, non-euclidean) filtration of a
-  symmetric (transitive, euclidean) model.
+  Encontre uma filtração não simétrica (não transitiva, não euclidiana)
+  de um modelo simétrico (transitivo, euclidiano).
 \end{prob}
 
 \end{document}

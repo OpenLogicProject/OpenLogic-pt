@@ -6,85 +6,86 @@
 
 \begin{document}
 
-\olfileid{nml}{axs}{int}
+\olfileid[pt]{nml}{axs}{int}
 
-\olsection{Introduction}
+\olsection{Introdução}
 
-We have a semantics for the basic modal language in terms of modal
-models, and a notion of !!a{formula} being valid---true at all worlds
-in all models---or valid with respect to some class of models or
-frames---true at all worlds in all models in the class, or based on
-the frame. Logic usually connects such semantic characterizations of
-validity with a proof-theoretic notion of !!{derivability}. The aim is
-to define a notion of !!{derivability} in some system such that
-!!a{formula} is !!{derivable} iff it is valid.
+Temos uma semântica para a linguagem modal básica em termos de modelos
+modais, e uma noção de !!a{formula} ser válida---verdadeira em todos os mundos
+de todos os modelos---ou válida com respeito a alguma classe de modelos ou
+frames---verdadeira em todos os mundos de todos os modelos da classe, ou
+baseados no frame. A lógica normalmente conecta essas caracterizações
+semânticas da validade a uma noção teórica da prova de !!{derivability}. O
+objetivo é definir uma noção de !!{derivability} em algum sistema tal que
+!!a{formula} seja !!{derivable} se e somente se for válida.
 
-The simplest and historically oldest !!{derivation} systems are
-so-called Hilbert-type or axiomatic !!{derivation} systems.
-Hilbert-type !!{derivation} systems for many modal logics are
-relatively easy to construct: they are simple as objects of
-metatheoretical study (p.ex., to prove soundness and
-completeness). However, they are much harder to use to prove
-!!{formula}s in than, say, natural deduction systems.
+Os sistemas de !!{derivation} mais simples e historicamente mais antigos são
+os chamados sistemas de !!{derivation} de tipo Hilbert ou axiomáticos. Os
+sistemas de !!{derivation} de tipo Hilbert para muitas lógicas modais são
+relativamente fáceis de construir: são simples como objetos de estudo
+metateórico (por exemplo, para demonstrar correção e completude). Contudo, é
+muito mais difícil usá-los para demonstrar !!{formula}s do que, por exemplo,
+usar sistemas de dedução natural.
 
-In Hilbert-type !!{derivation} systems, !!a{derivation} of !!a{formula}
-is a sequence of !!{formula}s leading from certain axioms, via a
-handful of inference rules, to the !!{formula} in question.  Since we
-want the !!{derivation} system to match the semantics, we have to
-guarantee that the set of !!{derivable} formulas are true in all
-models (or true in all models in which all axioms are true). We'll
-first isolate some properties of modal logics that are necessary for
-this to work: the ``normal'' modal logics. For normal modal logics,
-there are only two inference rules that need to be assumed: modus
-ponens and necessitation.  As axioms we take all (substitution
-instances) of tautologies, and, depending on the modal logic we deal
-with, a number of modal axioms. Even if we are just interested in the
-class of all models, we must also count all substitution instances
-of~$\Ax{K}$\iftag{notprvDiamond}{}{ and~$\Ax{Dual}$} as axioms. This
-alone generates the minimal normal modal logic~$\Log K$.
+Nos sistemas de !!{derivation} de tipo Hilbert, !!a{derivation} de
+!!a{formula} é uma sequência de !!{formula}s que parte de certos axiomas e,
+por meio de algumas regras de inferência, chega à !!{formula} em questão. Como
+queremos que o sistema de !!{derivation} corresponda à semântica, precisamos
+garantir que o conjunto de fórmulas !!{derivable} seja verdadeiro em todos os
+modelos (ou verdadeiro em todos os modelos nos quais todos os axiomas são
+verdadeiros). Primeiro isolaremos algumas propriedades das lógicas modais
+necessárias para que isso funcione: as lógicas modais «normais». Para lógicas
+modais normais, só é preciso supor duas regras de inferência: modus ponens e
+necessitação. Como axiomas, tomamos todas as instâncias de substituição de
+tautologias e, dependendo da lógica modal de que tratamos, vários axiomas
+modais. Mesmo que estejamos interessados apenas na classe de todos os modelos,
+também devemos contar como axiomas todas as instâncias de substituição
+de~$\Ax{K}$\iftag{notprvDiamond}{}{ e de~$\Ax{Dual}$}. Isso, por si só, gera
+a lógica modal normal mínima~$\Log K$.
 
 \begin{defn}
-The rule of \emph{modus ponens} is the inference schema
+A regra de \emph{modus ponens} é o esquema de inferência
 \begin{prooftree}
 \AxiomC{$!A$}
 \AxiomC{$!A \lif !B$}
 \RightLabel{\MP}
 \BinaryInfC{$!B$}
 \end{prooftree}
-We say !!a{formula}~$!B$ \emph{follows from}~!!{formula}s $!A$, $!C$
-by modus ponens iff $!C \ident !A \lif !B$.
+Dizemos que !!a{formula}~$!B$ \emph{segue de}~!!{formula}s $!A$, $!C$ por
+modus ponens se e somente se $!C \ident !A \lif !B$.
 \end{defn}
 
 \begin{defn}
-The rule of \emph{necessitation} is the inference schema
+A regra de \emph{necessitação} é o esquema de inferência
 \begin{prooftree}
 \AxiomC{$!A$}
 \RightLabel{\Nec}
 \UnaryInfC{$\Box !A$}
 \end{prooftree}
-We say the !!{formula}~$!B$ follows from the !!{formula}s $!A$ by
-necessitation iff $!B \ident \Box !A$.
+Dizemos que a !!{formula}~$!B$ segue das !!{formula}s $!A$ por necessitação se
+e somente se $!B \ident \Box !A$.
 \end{defn}
 
 \begin{defn}
-A \emph{!!{derivation}} from a set of axioms~$\Sigma$ is a sequence of
-!!{formula}s $!B_1$, $!B_2$, \dots, $!B_n$, where each $!B_i$ is
-either
+Uma \emph{!!{derivation}} a partir de um conjunto de axiomas~$\Sigma$ é uma
+sequência de !!{formula}s $!B_1$, $!B_2$, \dots, $!B_n$, na qual cada $!B_i$
+é
 \begin{enumerate}
-\item a substitution instance of a tautology, or
-\item a substitution instance of !!a{formula} in~$\Sigma$, or
-\item follows from two !!{formula}s $!B_j$, $!B_k$ with $j$, $k < i$
-  by modus ponens, or
-\item follows from !!a{formula}~$!B_j$ with $j < i$ by necessitation.
+\item uma instância de substituição de uma tautologia, ou
+\item uma instância de substituição de !!a{formula} em~$\Sigma$, ou
+\item segue de duas !!{formula}s $!B_j$, $!B_k$, com $j$, $k < i$, por modus
+  ponens, ou
+\item segue de !!a{formula}~$!B_j$, com $j < i$, por necessitação.
 \end{enumerate}
-If there is such !!a{derivation} with $!B_n \ident !A$, we say that
-$!A$ is \emph{!!{derivable} from $\Sigma$}, in symbols $\Sigma \Proves !A$.
+Se existe tal !!a{derivation} com $!B_n \ident !A$, dizemos que $!A$ é
+\emph{!!{derivable} de $\Sigma$}, em símbolos, $\Sigma \Proves !A$.
 \end{defn}
 
-With this definition, it will turn out that the set of !!{derivable}
-formulas forms a normal modal logic, and that any !!{derivable}
-!!{formula} is true in every model in which every axiom is true. This
-property of !!{derivation}s is called \emph{soundness}. The converse,
-\emph{completeness}, is harder to prove.
+Com essa definição, veremos que o conjunto de fórmulas !!{derivable} forma uma
+lógica modal normal, e que toda expressão !!{derivable} que seja uma
+!!{formula} é verdadeira em todo
+modelo no qual cada axioma é verdadeiro. Essa propriedade das
+!!{derivation}s é chamada de \emph{correção}. A recíproca, a
+\emph{completude}, é mais difícil de demonstrar.
 
 \end{document}

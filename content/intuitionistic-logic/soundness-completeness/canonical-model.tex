@@ -6,60 +6,63 @@
 
 \begin{document}
 
-\olfileid{int}{sc}{mod}
+\olfileid[pt]{int}{sc}{mod}
 
-\olsection{The Canonical Model}
+\olsection{O modelo canônico}
 
-The worlds in our model will be finite sequences~$\sigma$ of natural
-numbers, O.s.\@, $\sigma \in \Nat^*$. Note that $\Nat^*$ is inductively
-defined by:
+Os mundos de nosso modelo serão sequências finitas~$\sigma$ de números
+naturais, isto é, $\sigma \in \Nat^*$. Observe que $\Nat^*$ é definido
+indutivamente por:
 \begin{enumerate}
 \item $\emptyseq \in \Nat^*$.
-\item If $\sigma \in \Nat^*$ and $n \in \Nat$, then $\sigma.n \in
-  \Nat^*$ (where $\sigma.n$ is $\sigma \concat \tuple{n}$ and $\sigma \concat \sigma'$ is the concatenation if $\sigma$ and $\sigma'$).
-\item Nothing else is in $\Nat^*$.
+\item Se $\sigma \in \Nat^*$ e $n \in \Nat$, então $\sigma.n \in
+  \Nat^*$ (em que $\sigma.n$ é $\sigma \concat \tuple{n}$ e
+  $\sigma \concat \sigma'$ é a concatenação de $\sigma$ e $\sigma'$).
+\item Nada mais pertence a $\Nat^*$.
 \end{enumerate}
-So we can use $\Nat^*$ to give inductive definitions.
+Assim, podemos usar $\Nat^*$ para formular definições indutivas.
 
-Let $\tuple{!B_1, !C_1}$, $\tuple{!B_2, !C_2}$, \dots, be an
-enumeration of all pairs of !!{formula}s. Given a set of
-!!{formula}s~$\Delta$, define $\Delta(\sigma)$ by induction as
-follows:
+Seja $\tuple{!B_1, !C_1}$, $\tuple{!B_2, !C_2}$, \dots, uma
+enumeração de todos os pares de !!{formula}s. Dado um conjunto de
+!!{formula}s~$\Delta$, defina $\Delta(\sigma)$ por indução da seguinte
+maneira:
 \begin{enumerate}
 \item $\Delta(\emptyseq) = \Delta$
 \item $\Delta(\sigma.n) = {}$
   \[
   \begin{cases}
     (\Delta(\sigma) \cup \{!B_n\})^* &
-    \text{if $\Delta(\sigma) \cup \{!B_n\} \Proves/ !C_n$} \\
-    \Delta(\sigma) & \text{otherwise}
+    \text{se $\Delta(\sigma) \cup \{!B_n\} \Proves/ !C_n$} \\
+    \Delta(\sigma) & \text{caso contrário}
   \end{cases}
   \]
 \end{enumerate}
-Here by $(\Delta(\sigma) \cup \{!B_n\})^*$ we mean the prime set of
-!!{formula}s which exists by \olref[lin]{lem:lindenbaum} applied to the
-set $\Delta(\sigma) \cup \{!B_n\}$ and the !!{formula}~$!C_n$. Note that by this definition, if
-$\Delta(\sigma) \cup \{!B_n\} \Proves/ !C_n$, then $\Delta(\sigma.n)
-\Proves !B_n$ and $\Delta(\sigma.n) \Proves/ !C_n$.  Note also that
-$\Delta(\sigma) \subseteq \Delta(\sigma.n)$ for any~$n$. If $\Delta$
-is prime, then $\Delta(\sigma)$ is prime for all~$\sigma$.
+Por $(\Delta(\sigma) \cup \{!B_n\})^*$ entendemos aqui o conjunto
+primo de !!{formula}s cuja existência é garantida por
+\olref[lin]{lem:lindenbaum}, aplicada ao conjunto
+$\Delta(\sigma) \cup \{!B_n\}$ e à !!{formula}~$!C_n$. Observe que, por
+essa definição, se $\Delta(\sigma) \cup \{!B_n\} \Proves/ !C_n$,
+então $\Delta(\sigma.n) \Proves !B_n$ e
+$\Delta(\sigma.n) \Proves/ !C_n$. Observe também que
+$\Delta(\sigma) \subseteq \Delta(\sigma.n)$ para todo~$n$. Se
+$\Delta$ é primo, então $\Delta(\sigma)$ é primo para todo~$\sigma$.
 
 \begin{defn}\ollabel{defn:canonical-model}
-  Suppose $\Delta$ is prime.  Then the \emph{canonical model} $\mModel{M(\Delta)}$ for
-  $\Delta$ is defined by:
+  Suponha que $\Delta$ seja primo. Então o \emph{modelo canônico}
+  $\mModel{M(\Delta)}$ para $\Delta$ é definido por:
   \begin{enumerate}
-  \item $W = \Nat^*$, the set of finite sequences of natural numbers.
-  \item $R$ is the partial order according to which $R\sigma\sigma'$
-    iff $\sigma$ is an initial segment of~$\sigma'$ (O.s.\@, $\sigma' =
-    \sigma \concat \sigma''$ for some sequence~$\sigma''$).
+  \item $W = \Nat^*$, o conjunto das sequências finitas de números naturais.
+  \item $R$ é a ordem parcial segundo a qual $R\sigma\sigma'$ sse
+    $\sigma$ é um segmento inicial de~$\sigma'$ (isto é,
+    $\sigma' = \sigma \concat \sigma''$ para alguma sequência~$\sigma''$).
   \item $V(p) = \Setabs{\sigma}{p \in \Delta(\sigma)}$.
   \end{enumerate}
 \end{defn}
 
-It is easy to verify that $R$ is indeed a partial order. Also, the
-monotonicity condition on~$V$ is satisfied.  Since $\Delta(\sigma)
-\subseteq \Delta(\sigma.n)$ we get $\Delta(\sigma)
-\subseteq \Delta(\sigma')$ whenever $R\sigma\sigma'$ by induction
-on~$\sigma$.
+É fácil verificar que $R$ é de fato uma ordem parcial. Além disso, a
+condição de monotonicidade sobre~$V$ é satisfeita. Como
+$\Delta(\sigma) \subseteq \Delta(\sigma.n)$, obtemos
+$\Delta(\sigma) \subseteq \Delta(\sigma')$ sempre que
+$R\sigma\sigma'$, por indução sobre~$\sigma$.
 
 \end{document}

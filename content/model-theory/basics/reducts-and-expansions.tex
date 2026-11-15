@@ -6,62 +6,62 @@
 
 \begin{document}
 
-\olfileid{mod}{bas}{red}
-\section{Reducts and Expansions}
+\olfileid[pt]{mod}{bas}{red}
+\section{Redutos e Expansões}
 
-Often it is useful or necessary to compare languages which have
-symbols in common, as well as !!{structure}s for these languages.  The
-most common case is when all the symbols in !!a{language}~$\Lang{L}$
-are also part of !!a{language}~$\Lang{L'}$, O.s.\@, $\Lang{L} \subseteq
-\Lang{L'}$. An $\Lang{L}$-!!{structure}~$\Struct{M}$ can then always
-be expanded to an $\Lang{L'}$-!!{structure} by adding interpretations
-of the additional symbols while leaving the interpretations of the
-common symbols the same.  On the other hand, from an
-$\Lang{L'}$-structure~$\Struct{M'}$ we can obtain an
-$\Lang{L}$-structure simply by ``forgetting'' the interpretations of
-the symbols that do not occur in~$\Lang{L}$.
+Frequentemente, é útil ou necessário comparar linguagens que têm
+símbolos em comum, bem como !!{structure}s para essas linguagens. O
+caso mais comum ocorre quando todos os símbolos de !!a{language}~$\Lang{L}$
+também fazem parte de !!a{language}~$\Lang{L'}$, isto é, $\Lang{L} \subseteq
+\Lang{L'}$. Uma $\Lang{L}$-!!{structure}~$\Struct{M}$ pode sempre
+ser expandida a uma $\Lang{L'}$-!!{structure}, acrescentando-se interpretações
+dos símbolos adicionais e mantendo-se inalteradas as interpretações dos
+símbolos comuns. Por outro lado, de uma
+$\Lang{L'}$-estrutura~$\Struct{M'}$ podemos obter uma
+$\Lang{L}$-estrutura simplesmente ``esquecendo'' as interpretações dos
+símbolos que não ocorrem em~$\Lang{L}$.
 
 \begin{defn}
 \ollabel{defn:reduct}
-Suppose $\Lang L \subseteq \Lang L'$, $\Struct M$ is an
-$\Lang L$-!!{structure} and $\Struct M'$ is an $\Lang L'$-!!{structure}.
-$\Struct M$ is the \emph{reduct} of $\Struct M'$ to $\Lang L$, and
-$\Struct M'$ is an \emph{expansion} of $\Struct M$ to $\Lang L'$ iff
+Suponha que $\Lang L \subseteq \Lang L'$, que $\Struct M$ seja uma
+$\Lang L$-!!{structure} e que $\Struct M'$ seja uma $\Lang L'$-!!{structure}.
+$\Struct M$ é o \emph{reduto} de $\Struct M'$ a $\Lang L$, e
+$\Struct M'$ é uma \emph{expansão} de $\Struct M$ a $\Lang L'$ se, e somente se,
 \begin{enumerate}
 \item $\Domain{M} = \Domain{M'}$
-\item For every !!{constant}~$c \in \Lang L$, $\Assign{c}{M} =
+\item Para toda !!{constant}~$c \in \Lang L$, $\Assign{c}{M} =
   \Assign{c}{M'}$.
-\item For every !!{function}~$f \in \Lang L$, $\Assign{f}{M} =
+\item Para toda !!{function}~$f \in \Lang L$, $\Assign{f}{M} =
   \Assign{f}{M'}$.
-\item For every !!{predicate}~$P \in \Lang L$, $\Assign{P}{M} =
+\item Para todo !!{predicate}~$P \in \Lang L$, $\Assign{P}{M} =
   \Assign{P}{M'}$.
 \end{enumerate}
 \end{defn}
 
 \begin{prop}
 \ollabel{prop:reduct}
-If an $\Lang{L}$-!!{structure}~$\Struct{M}$ is a reduct of an
-$\Lang{L'}$-!!{structure}~$\Struct{M'}$, then for all
+Se uma $\Lang{L}$-!!{structure}~$\Struct{M}$ for um reduto de uma
+$\Lang{L'}$-!!{structure}~$\Struct{M'}$, então, para todas as
 $\Lang{L}$-!!{sentence}s~$!A$,
 \[
-\Sat{M}{!A} \text{ iff } \Sat{M'}{!A}.
+\Sat{M}{!A} \text{ se, e somente se, } \Sat{M'}{!A}.
 \]
 \end{prop}
 
 \begin{proof}
-  Exercise.
+  Exercício.
 \end{proof}
 
 \begin{prob}
-Prove \olref[mod][bas][red]{prop:reduct}.
+Demonstre \olref[mod][bas][red]{prop:reduct}.
 \end{prob}
 
 \begin{defn}
-When we have an $\Lang{L}$-structure $\Struct{M}$, and $\Lang{L'} =
-\Lang{L} \cup \{P\}$ is the expansion of $\Lang{L}$ obtained by adding
-a single $n$-place !!{predicate}~$P$, and $R \subseteq \Domain{M}^n$
-is an $n$-place relation, then we write $\Expan{M}{R}$ for the
-expansion~$\Struct{M'}$ of~$\Struct{M}$ with $\Assign{P}{M'} = R$.
+Quando temos uma $\Lang{L}$-estrutura $\Struct{M}$, e $\Lang{L'} =
+\Lang{L} \cup \{P\}$ é a expansão de $\Lang{L}$ obtida acrescentando
+um único $n$-ário !!{predicate}~$P$, e $R \subseteq \Domain{M}^n$
+é uma relação de $n$ lugares, escrevemos $\Expan{M}{R}$ para a
+expansão~$\Struct{M'}$ de~$\Struct{M}$ tal que $\Assign{P}{M'} = R$.
 \end{defn}
 
 \end{document}

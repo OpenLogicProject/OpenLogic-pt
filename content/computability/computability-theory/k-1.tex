@@ -6,78 +6,80 @@
 
 \begin{document}
 
-\olfileid{cmp}{thy}{k1}
-\olsection{An Example of Reducibility}
+\olfileid[pt]{cmp}{thy}{k1}
+\olsection{Um exemplo de redutibilidade}
 
-Let us consider an application of \olref[ppr]{prop:reduce}.
+Consideremos uma aplicação da \olref[ppr]{prop:reduce}.
 
 \begin{prop}
 \ollabel{prop:k1}
-Let
+Seja
 \[
 K_1 = \Setabs{e}{\cfind{e}(0) \fdefined}.
 \]
-Then $K_1$ is computably enumerable but not computable.
+Então $K_1$ é computavelmente enumerável, mas não é computável.
 \end{prop}
 
 \begin{proof}
-Since $K_1 = \Setabs{e}{\lexists[s][T(e,0,s)]}$, $K_1$ is computably
-enumerable by \olref[eqc]{thm:exists-char}.
+Como $K_1 = \Setabs{e}{\lexists[s][T(e,0,s)]}$, $K_1$ é computavelmente
+enumerável por \olref[eqc]{thm:exists-char}.
 
-To show that $K_1$ is not computable, let us show that $K_0$ is
-reducible to it.
+Para mostrar que $K_1$ não é computável, mostraremos que $K_0$ é
+redutível a ele.
 
 \begin{explain}
-This is a little bit tricky, since using $K_1$ we can
-only ask questions about computations that start with a particular
-input, $0$. Suppose you have a smart friend who can answer questions
-of this type (friends like this are known as ``oracles''). Then
-suppose someone comes up to you and asks you whether or not $\tuple{e,
-  x}$ is in $K_0$, that is, whether or not machine $e$ halts on input
-$x$. One thing you can do is build another machine, $e_x$, that, for
-\emph{any} input, ignores that input and instead runs~$e$ on input
-$x$. Then clearly the question as to whether machine $e$ halts on
-input $x$ is equivalent to the question as to whether machine $e_x$
-halts on input $0$ (or any other input). So, then you ask your friend
-whether this new machine, $e_x$, halts on input $0$; your friend's
-answer to the modified question provides the answer to the original
-one. This provides the desired reduction of $K_0$ to~$K_1$.
+Isso é um pouco complicado, pois, usando $K_1$, só podemos fazer
+perguntas sobre computações que começam com uma entrada específica,
+$0$. Suponha que você tenha um amigo inteligente capaz de responder
+a perguntas desse tipo (amigos assim são conhecidos como
+``oráculos''). Suponha, então, que alguém se aproxime e lhe pergunte
+se $\tuple{e, x}$ pertence ou não a $K_0$, isto é, se a máquina $e$
+para ou não na entrada $x$. Uma coisa que você pode fazer é construir
+outra máquina, $e_x$, que, para \emph{qualquer} entrada, ignore essa
+entrada e, em vez disso, execute~$e$ na entrada $x$. Então, é claro,
+a pergunta sobre se a máquina $e$ para na entrada $x$ equivale à
+pergunta sobre se a máquina $e_x$ para na entrada $0$ (ou em qualquer
+outra entrada). Você pergunta então a seu amigo se essa nova máquina,
+$e_x$, para na entrada $0$; a resposta de seu amigo à pergunta
+modificada fornece a resposta à pergunta original. Isso fornece a
+redução desejada de $K_0$ a~$K_1$.
 \end{explain}
 
-Using the universal partial computable function, let $f$
-be the 3-ary function defined by
+Usando a função parcialmente computável universal, seja $f$
+a função ternária definida por
 \[
 f(x,y,z) \simeq \cfind{x}(y).
 \]
-Note that $f$ ignores its third input entirely. Pick an index $e$ such
-that $f = \cfind{e}[3]$; so we have
+Observe que $f$ ignora completamente sua terceira entrada. Escolha um
+índice $e$ tal que $f = \cfind{e}[3]$; assim, temos
 \[
 \cfind{e}[3](x,y,z) \simeq \cfind{x}(y).
 \]
-By the $s$-$m$-$n$ theorem, there is a function $s(e,x,y)$ such that, for
-every $z$,
+Pelo teorema $s$-$m$-$n$, existe uma função $s(e,x,y)$ tal que, para
+todo $z$,
 \begin{align*}
 \cfind{s(e,x,y)}(z) & \simeq \cfind{e}[3](x,y,z) \\
 & \simeq \cfind{x}(y).
 \end{align*}
 
 \begin{explain}
-In terms of the informal argument above, $s(e,x,y)$ is an index for
-the machine that, for any input $z$, ignores that input and computes
+Em termos do argumento informal acima, $s(e,x,y)$ é um índice da
+máquina que, para qualquer entrada $z$, ignora essa entrada e calcula
 $\cfind{x}(y)$.
 \end{explain}
 
-In particular, we have
+Em particular, temos
 \[
-\cfind{s(e,x,y)}(0) \fdefined \quad \text{if and only if} \quad
+\cfind{s(e,x,y)}(0) \fdefined \quad \text{se, e somente se,} \quad
 \cfind{x}(y) \fdefined.
 \]
-In other words, $\tuple{x, y} \in K_0$ if and only if $s(e,x,y) \in
-K_1$. So the function $g$ defined by
+Em outras palavras, $\tuple{x, y} \in K_0$ se, e somente se,
+$s(e,x,y) \in K_1$. Logo, a função $g$ definida por
 \[
 g(w) = s(e,(w)_0,(w)_1)
 \]
-is a reduction of $K_0$ to~$K_1$.
+é uma redução de $K_0$ a~$K_1$.
 \end{proof}
 
 \end{document}
+

@@ -6,137 +6,145 @@
 
 \begin{document}
 
-\olfileid{int}{sc}{lin}
+\olfileid[pt]{int}{sc}{lin}
 
-\olsection{Lindenbaum's Lemma}
+\olsection{Lema de Lindenbaum}
 
-The completeness theorem for intuitionistic logic is proved by assuming
-$\Gamma \Proves/ !A$ and constructing a model $\mSat{M}{\Gamma}$ and~$\mSat/{M}{!A}$.
+O teorema da completude para a lógica intuicionista é provado supondo
+$\Gamma \Proves/ !A$ e construindo um modelo tal que
+$\mSat{M}{\Gamma}$ e~$\mSat/{M}{!A}$.
 
-In classical logic the relation of !!{derivability} can be reduced to
-the notion of consistency since !!a{formula}~$!A$ is !!{derivable}
-from a set of !!{formula}s iff the set together with the negation
-of~$!A$ is inconsistent. This is not possible in intuitionistic logic.
-In intuitionistic logic, if $\lnot!A$ is inconsistent, we only get
-that $\Proves \lnot\lnot !A$. Since $\lnot\lnot!A \lif !A$ does not
-hold intuitionistically in general, we cannot conclude that~$\Proves
-!A$.
+Na lógica clássica, a relação de !!{derivability} pode ser reduzida à
+noção de consistência, pois !!a{formula}~$!A$ é !!{derivable} a partir
+de um conjunto de !!{formula}s sse esse conjunto, juntamente com a
+negação de~$!A$, é inconsistente. Isso não é possível na lógica
+intuicionista. Na lógica intuicionista, se $\lnot!A$ é inconsistente,
+obtemos apenas $\Proves \lnot\lnot !A$. Como
+$\lnot\lnot!A \lif !A$ não vale intuicionisticamente em geral, não
+podemos concluir~$\Proves !A$.
 
-Thus, when constructing the model~$\mModel{M}$, we will need to keep track 
-of the non-!!{derivability} of the !!{formula}~$!A$ and thus we will not be 
-able to use a complete set $\Gamma^* \supseteq \Gamma$ to build the model
-$\mModel{M}$, as in every complete set $\Gamma^*$, we have
+Assim, ao construir o modelo~$\mModel{M}$, precisaremos acompanhar a
+não !!{derivability} da !!{formula}~$!A$ e, portanto, não poderemos
+usar um conjunto completo $\Gamma^* \supseteq \Gamma$ para construir o
+modelo $\mModel{M}$, pois, em todo conjunto completo $\Gamma^*$, temos
 $\Gamma^* \Proves !A \lor \lnot !A$.
 
-Instead of using a complete set~$\Gamma^*$, we will us the notion of
-a prime set of formulas:
+Em vez de usar um conjunto completo~$\Gamma^*$, empregaremos a noção
+de conjunto primo de fórmulas:
 
 \begin{defn}\ollabel{defn:prime}
-  A set of !!{formula}s~$\Gamma$ is \emph{prime} iff 
+  Um conjunto de !!{formula}s~$\Gamma$ é \emph{primo} sse
   \begin{enumerate}
-  \item\ollabel{defn:prime1} $\Gamma$ is consistent, O.s.\@, $\Gamma \Proves/ \lfalse$;
-  \item\ollabel{defn:prime2} if $\Gamma \Proves !A$ then $!A \in \Gamma$; and
-  \item\ollabel{defn:prime3} if $!A \lor !B \in \Gamma$ then $!A \in
-    \Gamma$ or $!B \in \Gamma$.
+  \item\ollabel{defn:prime1} $\Gamma$ é consistente, isto é,
+    $\Gamma \Proves/ \lfalse$;
+  \item\ollabel{defn:prime2} se $\Gamma \Proves !A$, então
+    $!A \in \Gamma$; e
+  \item\ollabel{defn:prime3} se $!A \lor !B \in \Gamma$, então
+    $!A \in \Gamma$ ou $!B \in \Gamma$.
   \end{enumerate}
 \end{defn}
 
-\begin{lem}[Lindenbaum's Lemma]
-  \ollabel{lem:lindenbaum} If $\Gamma \Proves/ !A$, there is a
-  $\Gamma^* \supseteq \Gamma$ such that $\Gamma^*$ is prime and
+\begin{lem}[Lema de Lindenbaum]
+  \ollabel{lem:lindenbaum} Se $\Gamma \Proves/ !A$, existe
+  $\Gamma^* \supseteq \Gamma$ tal que $\Gamma^*$ é primo e
   $\Gamma^* \Proves/ !A$.
 \end{lem}
 
 \begin{proof}
-  Let $!B_1 \lor !C_1$, $!B_2 \lor !C_2$, \dots, be an enumeration of
-  all !!{formula}s of the form~$!B \lor !C$.  We'll define an
-  increasing sequence of sets of !!{formula}s~$\Gamma_n$, where each
-  $\Gamma_{n+1}$ is defined as $\Gamma_n$ together with one new
-  !!{formula}. $\Gamma^*$ will be the union of all~$\Gamma_n$. The new
-  !!{formula}s are selected so as to ensure that $\Gamma^*$ is prime
-  and still $\Gamma^* \Proves/ !A$. This means that at each step we
-  should find the first disjunction~$!B_i \lor !C_i$ such that:
+  Seja $!B_1 \lor !C_1$, $!B_2 \lor !C_2$, \dots, uma enumeração de
+  todas as !!{formula}s da forma~$!B \lor !C$. Definiremos uma
+  sequência crescente de conjuntos de !!{formula}s~$\Gamma_n$, na
+  qual cada $\Gamma_{n+1}$ é definido como $\Gamma_n$ juntamente com
+  uma nova !!{formula}. $\Gamma^*$ será a união de todos os
+  $\Gamma_n$. As novas !!{formula}s são escolhidas de modo a garantir
+  que $\Gamma^*$ seja primo e que ainda $\Gamma^* \Proves/ !A$. Isso
+  significa que, em cada etapa, devemos encontrar a primeira
+  disjunção~$!B_i \lor !C_i$ tal que:
   \begin{enumerate}
   \item\ollabel{gamma-1} $\Gamma_n \Proves !B_i \lor !C_i$
-  \item\ollabel{gamma-2} $!B_i \notin \Gamma_n$ and $!C_i \notin \Gamma_n$
+  \item\ollabel{gamma-2} $!B_i \notin \Gamma_n$ e $!C_i \notin \Gamma_n$
   \end{enumerate}
-  We add to $\Gamma_n$ either $!B_i$ if $\Gamma_n \cup \{!B_i\}
-  \Proves/ !A$, or $!C_i$ otherwise. We'll have to show that this
-  works. For now, let's define $i(n)$ as the least $i$ such that
-  \olref{gamma-1} and~\olref{gamma-2} hold.
+  Acrescentamos a $\Gamma_n$ ou $!B_i$, se
+  $\Gamma_n \cup \{!B_i\} \Proves/ !A$, ou $!C_i$, caso contrário.
+  Teremos de mostrar que isso funciona. Por ora, definamos $i(n)$ como
+  o menor $i$ tal que \olref{gamma-1} e~\olref{gamma-2} valham.
   
   Define $\Gamma_0 = \Gamma$ and
   \[
   \Gamma_{n+1} = \begin{cases}
     \Gamma_n \cup \{!B_{i(n)}\} &
-    \text{if $\Gamma_n \cup \{!B_{i(n)}\} \Proves/ !A$} \\
-    \Gamma_n \cup \{!C_{i(n)}\} & \text{otherwise}
+    \text{se $\Gamma_n \cup \{!B_{i(n)}\} \Proves/ !A$} \\
+    \Gamma_n \cup \{!C_{i(n)}\} & \text{caso contrário}
     \end{cases}
   \]
-  If $i(n)$ is undefined, O.s.\@, whenever $\Gamma_n \Proves !B \lor !C$,
-  either $!B \in \Gamma_n$ or $!C \in \Gamma_n$, we let $\Gamma_{n+1}
-  = \Gamma_n$.  Now let $\Gamma^* = \bigcup_{n=0}^\infty \Gamma_n$
+  Se $i(n)$ não está definido, isto é, se, sempre que
+  $\Gamma_n \Proves !B \lor !C$, ou $!B \in \Gamma_n$ ou
+  $!C \in \Gamma_n$, estabelecemos $\Gamma_{n+1} = \Gamma_n$.
+  Agora, seja $\Gamma^* = \bigcup_{n=0}^\infty \Gamma_n$.
 
-  First we show that for all $n$, $\Gamma_n \Proves/ !A$. We proceed
-  by induction on~$n$. For $n = 0$ the claim holds by the hypothesis
-  of the theorem, O.s.\@, $\Gamma \Proves/ !A$. If $n>0$, we have to
-  show that if $\Gamma_n \Proves/ !A$ then $\Gamma_{n+1} \Proves/ !A$. If
-  $i(n)$ is undefined, $\Gamma_{n+1} = \Gamma_n$ and there is nothing
-  to prove. So suppose $i(n)$ is defined. For simplicity, let $i =
-  i(n)$.
+  Primeiro mostramos que, para todo $n$, $\Gamma_n \Proves/ !A$.
+  Procedemos por indução sobre~$n$. Para $n = 0$, a afirmação vale pela
+  hipótese do teorema, isto é, $\Gamma \Proves/ !A$. Se $n>0$,
+  precisamos mostrar que, se $\Gamma_n \Proves/ !A$, então
+  $\Gamma_{n+1} \Proves/ !A$. Se $i(n)$ não está definido,
+  $\Gamma_{n+1} = \Gamma_n$ e nada há a provar. Suponha, então, que
+  $i(n)$ esteja definido. Por simplicidade, seja $i = i(n)$.
   
-  We'll prove the contrapositive of the claim. Suppose $\Gamma_{n+1}
-  \Proves !A$. By construction, $\Gamma_{n+1} = \Gamma_n \cup
-  \{!B_i\}$ if $\Gamma_n \cup \{!B_i\} \Proves/ !A$, or else
-  $\Gamma_{n+1} = \Gamma_n \cup \{!C_i\}$. It clearly can't be the
-  first, since then $\Gamma_{n+1} \Proves/ !A$.  Hence, $\Gamma_n \cup
-  \{!B_i\} \Proves !A$ and $\Gamma_{n+1} = \Gamma_n \cup \{!C_i\}$.
-  By definition of $i(n)$, we have that $\Gamma _n \Proves !B_i \lor
-  !C_i$. We have $\Gamma_n \cup \{!B_i\} \Proves !A$. We also have
-  $\Gamma_{n+1} = \Gamma_n \cup \{!C_i\} \Proves !A$. Hence, $\Gamma_n
-  \Proves !A$, which is what we wanted to show.
+  Provaremos a contrapositiva da afirmação. Suponha
+  $\Gamma_{n+1} \Proves !A$. Por construção,
+  $\Gamma_{n+1} = \Gamma_n \cup \{!B_i\}$ se
+  $\Gamma_n \cup \{!B_i\} \Proves/ !A$; caso contrário,
+  $\Gamma_{n+1} = \Gamma_n \cup \{!C_i\}$. Evidentemente, não pode ser
+  o primeiro caso, pois então $\Gamma_{n+1} \Proves/ !A$. Logo,
+  $\Gamma_n \cup \{!B_i\} \Proves !A$ e
+  $\Gamma_{n+1} = \Gamma_n \cup \{!C_i\}$. Pela definição de $i(n)$,
+  temos $\Gamma _n \Proves !B_i \lor !C_i$. Temos também
+  $\Gamma_n \cup \{!B_i\} \Proves !A$ e
+  $\Gamma_{n+1} = \Gamma_n \cup \{!C_i\} \Proves !A$. Portanto,
+  $\Gamma_n \Proves !A$, que é o que queríamos mostrar.
 
-  If $\Gamma^* \Proves !A$, there would be some finite subset $\Gamma'
-  \subseteq \Gamma^*$ such that $\Gamma' \Proves !A$. Each $!D \in
-  \Gamma'$ must be in $\Gamma_i$ for some~$i$.  Let $n$ be the largest
-  of these. Since $\Gamma_i \subseteq \Gamma_n$ if $i \le n$, $\Gamma'
-  \subseteq \Gamma_n$. But then $\Gamma_n \Proves !A$, contrary to our
-  proof above that $\Gamma_n \Proves/ !A$.
+  Se $\Gamma^* \Proves !A$, existiria algum subconjunto finito
+  $\Gamma' \subseteq \Gamma^*$ tal que $\Gamma' \Proves !A$. Cada
+  $!D \in \Gamma'$ deve pertencer a $\Gamma_i$ para algum~$i$. Seja
+  $n$ o maior desses índices. Como $\Gamma_i \subseteq \Gamma_n$ se
+  $i \le n$, temos $\Gamma' \subseteq \Gamma_n$. Mas então
+  $\Gamma_n \Proves !A$, contrariando nossa prova acima de que
+  $\Gamma_n \Proves/ !A$.
 
-  Lastly, we show that $\Gamma^*$ is prime, O.s.\@, satisfies conditions
-  \olref{defn:prime1}, \olref{defn:prime2}, and~\olref{defn:prime3} of
-  \olref{defn:prime}.
+  Por fim, mostramos que $\Gamma^*$ é primo, isto é, satisfaz as
+  condições \olref{defn:prime1}, \olref{defn:prime2}
+  e~\olref{defn:prime3} de \olref{defn:prime}.
 
-  First, $\Gamma^* \Proves/ !A$, so $\Gamma^*$ is
-  consistent, so \olref{defn:prime1} holds.
+  Primeiro, $\Gamma^* \Proves/ !A$; portanto, $\Gamma^*$ é consistente
+  e \olref{defn:prime1} vale.
 
-  We now show that if $\Gamma^* \Proves !B \lor !C$, then either $!B
-  \in \Gamma^*$ or $!C \in \Gamma^*$. This proves \olref{defn:prime3},
-  since if $!B \lor !C \in \Gamma^*$ then also $\Gamma^* \Proves !B 
-  \lor !C$. So assume $\Gamma^* \Proves !B \lor !C$ but $!B
-  \notin \Gamma^*$ and $!C \notin \Gamma^*$. Since $\Gamma^* \Proves
-  !B \lor !C$, $\Gamma_n \Proves !B \lor !C$ for some~$n$. $!B \lor
-  !C$ appears on the enumeration of all disjunctions, say, as $!B_j
-  \lor !C_j$. $!B_j \lor !C_j$ satisfies the properties in the
-  definition of $i(n)$, namely we have $\Gamma_n \Proves !B_j
-  \lor !C_j$, while $!B_j \notin \Gamma_n$ and $!C_j \notin \Gamma_n$. At
-  each stage, at least one fewer disjunction $!B_i \lor !C_i$
-  satisfies the conditions (since at each stage we add either $!B_i$
-  or $!C_i$), so at some stage~$m$ we will have $j = i(m)$. But
-  then either $!B \in \Gamma_{m+1}$ or $!C \in \Gamma_{m+1}$, contrary
-  to the assumption that $!B \notin \Gamma^*$ and $!C \notin
-  \Gamma^*$.
+  Mostramos agora que, se $\Gamma^* \Proves !B \lor !C$, então ou
+  $!B \in \Gamma^*$ ou $!C \in \Gamma^*$. Isso prova
+  \olref{defn:prime3}, pois, se $!B \lor !C \in \Gamma^*$, então
+  também $\Gamma^* \Proves !B \lor !C$. Suponha, portanto,
+  $\Gamma^* \Proves !B \lor !C$, mas $!B \notin \Gamma^*$ e
+  $!C \notin \Gamma^*$. Como $\Gamma^* \Proves !B \lor !C$,
+  $\Gamma_n \Proves !B \lor !C$ para algum~$n$. $!B \lor !C$ aparece
+  na enumeração de todas as disjunções, digamos como
+  $!B_j \lor !C_j$. $!B_j \lor !C_j$ satisfaz as propriedades da
+  definição de $i(n)$: temos $\Gamma_n \Proves !B_j \lor !C_j$,
+  enquanto $!B_j \notin \Gamma_n$ e $!C_j \notin \Gamma_n$. Em cada
+  etapa, ao menos uma disjunção $!B_i \lor !C_i$ a menos satisfaz as
+  condições (pois, em cada etapa, acrescentamos ou $!B_i$ ou $!C_i$);
+  assim, em alguma etapa~$m$, teremos $j = i(m)$. Mas então ou
+  $!B \in \Gamma_{m+1}$ ou $!C \in \Gamma_{m+1}$, contrariando a
+  hipótese de que $!B \notin \Gamma^*$ e $!C \notin \Gamma^*$.
 
-  Now suppose $\Gamma^* \Proves !B$. Then $\Gamma^* \Proves !B \lor
-  !B$. But we've just proved that if $\Gamma^* \Proves !B \lor !B$
-  then $!B \in \Gamma^*$. Hence, $\Gamma^*$
-  satisfies~\olref{defn:prime2} of~\olref{defn:prime}.
+  Suponha agora $\Gamma^* \Proves !B$. Então
+  $\Gamma^* \Proves !B \lor !B$. Mas acabamos de provar que, se
+  $\Gamma^* \Proves !B \lor !B$, então $!B \in \Gamma^*$. Logo,
+  $\Gamma^*$ satisfaz~\olref{defn:prime2} de~\olref{defn:prime}.
 \end{proof}
 
 \begin{prob}
-Show that if $\Gamma \Proves/ \bot$ then $\Gamma$ is consistent in 
-classical logic, O.s.\@, there is a valuation making all formulas 
-in~$\Gamma$ true.
+Mostre que, se $\Gamma \Proves/ \bot$, então $\Gamma$ é consistente na
+lógica clássica, isto é, existe uma valoração que torna verdadeiras
+todas as fórmulas de~$\Gamma$.
 \end{prob}
 
 \end{document}

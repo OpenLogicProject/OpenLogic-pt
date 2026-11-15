@@ -6,55 +6,55 @@
 
 \begin{document}
 
-\olfileid{nml}{syn}{trw}
+\olfileid[pt]{nml}{syn}{trw}
 
-\olsection{Truth at a World}
+\olsection{Verdade em um mundo}
 
-Every modal model determines which modal !!{formula}s count as true at
-which worlds in it. The relation ``model $\mModel{M}$ makes
-!!{formula}~$!A$ true at world~$w$'' is the basic notion of relational
-semantics. The relation is defined inductively and coincides with the
-usual characterization using truth tables for the non-modal operators.
+Todo modelo modal determina quais !!{formula}s modais contam como
+verdadeiras em quais de seus mundos. A relação ``o modelo $\mModel{M}$
+torna a !!{formula}~$!A$ verdadeira no mundo~$w$'' é a noção fundamental
+da semântica relacional. Essa relação é definida indutivamente e coincide
+com a caracterização usual por tabelas de verdade para os operadores não
+modais.
 
 \begin{defn}\ollabel{defn:mmodels}
-  \emph{Truth of !!a{formula}~$!A$ at~$w$} in a~$\mModel M$, in symbols:
-  $\mSat{M}{!A}[w]$, is defined inductively as follows:
+  A \emph{verdade de !!a{formula}~$!A$ em~$w$} em um~$\mModel M$,
+  simbolicamente $\mSat{M}{!A}[w]$, é definida indutivamente como segue:
   \begin{enumerate}
-  \tagitem{prvFalse}{\indcase{!A}{\lfalse}{Never $\mSat{M}{\lfalse}[w]$}.}{}
-  \tagitem{prvTrue}{\indcase{!A}{\ltrue}{Always $\mSat{M}{\ltrue}[w]$}.}{}
-  \item $\mSat{M}{p}[w]$ iff $w \in V(p)$.
-  \tagitem{prvNot}{\indcase{!A}{\lnot !B}{$\mSat{M}{\indfrm}[w]$ iff
+  \tagitem{prvFalse}{\indcase{!A}{\lfalse}{Nunca $\mSat{M}{\lfalse}[w]$}.}{}
+  \tagitem{prvTrue}{\indcase{!A}{\ltrue}{Sempre $\mSat{M}{\ltrue}[w]$}.}{}
+  \item $\mSat{M}{p}[w]$ sse $w \in V(p)$.
+  \tagitem{prvNot}{\indcase{!A}{\lnot !B}{$\mSat{M}{\indfrm}[w]$ sse
     $\mSat/{M}{!B}[w]$}.}{}
-  \tagitem{prvAnd}{\indcase{!A}{(!B \land !C)}{$\mSat{M}{\indfrm}[w]$ iff
-    $\mSat{M}{!B}[w]$ and $\mSat{M}{!C}[w]$}.}{}
-  \tagitem{prvOr}{\indcase{!A}{(!B \lor !C)}{$\mSat{M}{\indfrm}[w]$ iff
-    $\mSat{M}{!B}[w]$ or $\mSat{M}{!C}[w]$} (or both).}{}
-  \tagitem{prvIf}{\indcase{!A}{(!B \lif !C)}{$\mSat{M}{\indfrm}[w]$ iff
-    $\mSat/{M}{!B}[w]$ or $\mSat{M}{!C}[w]$}.}{}
-  \tagitem{prvIff}{\indcase{!A}{(!B \liff !C)}{$\mSat{M}{\indfrm}[w]$ iff
-    either both $\mSat{M}{!B}[w]$ and $\mSat{M}{!C}[w]$ or
-    neither $\mSat{M}{!B}[w]$ nor $\mSat{M}{!C}[w]$}.}{}
+  \tagitem{prvAnd}{\indcase{!A}{(!B \land !C)}{$\mSat{M}{\indfrm}[w]$ sse
+    $\mSat{M}{!B}[w]$ e $\mSat{M}{!C}[w]$}.}{}
+  \tagitem{prvOr}{\indcase{!A}{(!B \lor !C)}{$\mSat{M}{\indfrm}[w]$ sse
+    $\mSat{M}{!B}[w]$ ou $\mSat{M}{!C}[w]$} (ou ambos).}{}
+  \tagitem{prvIf}{\indcase{!A}{(!B \lif !C)}{$\mSat{M}{\indfrm}[w]$ sse
+    $\mSat/{M}{!B}[w]$ ou $\mSat{M}{!C}[w]$}.}{}
+  \tagitem{prvIff}{\indcase{!A}{(!B \liff !C)}{$\mSat{M}{\indfrm}[w]$ sse
+    ou valem ambos $\mSat{M}{!B}[w]$ e $\mSat{M}{!C}[w]$, ou não vale
+    nenhum dos dois, $\mSat{M}{!B}[w]$ e $\mSat{M}{!C}[w]$}.}{}
   \item\ollabel{defn:sub:mmodels-box}
-    \indcase{!A}{\Box !B}{$\mSat{M}{\indfrm}[w]$ iff
-    $\mSat{M}{!B}[w']$ for all $w' \in W$ with $Rww'$.}
+    \indcase{!A}{\Box !B}{$\mSat{M}{\indfrm}[w]$ sse
+    $\mSat{M}{!B}[w']$ para todo $w' \in W$ tal que $Rww'$.}
   \item\ollabel{defn:sub:mmodels-diamond}
-    \indcase{!A}{\Diamond !B}{$\mSat{M}{\indfrm}[w]$ iff
-    $\mSat{M}{!B}[w']$ for at least one $w' \in W$ with $Rww'$.}
+    \indcase{!A}{\Diamond !B}{$\mSat{M}{\indfrm}[w]$ sse
+    $\mSat{M}{!B}[w']$ para pelo menos um $w' \in W$ tal que $Rww'$.}
   \end{enumerate}
 \end{defn}
 
-Note that by clause~\olref{defn:sub:mmodels-box}, !!a{formula}~$\Box
-!B$ is true at~$w$ whenever there are no~$w'$ with $Rww'$. In
-such a case $\Box !B$ is \emph{vacuously} true at~$w$. Also,
-$\Box !B$ may be satisfied at~$w$ even if $!B$ is not. The truth
-of~$!B$ at~$w$ does not guarantee the truth of~$\Diamond !B$
-at~$w$. This holds, however, if $Rww$, p.ex., if $R$ is reflexive.  If
-there is no $w'$ such that $Rww'$, then $\mSat/{M}{\Diamond !A}[w]$,
-for any~$!A$.
+Observe que, pela cláusula~\olref{defn:sub:mmodels-box}, !!a{formula}
+~$\Box !B$ é verdadeira em~$w$ sempre que não há~$w'$ tal que $Rww'$.
+Nesse caso, $\Box !B$ é verdadeira \emph{vacuamente} em~$w$. Além disso,
+$\Box !B$ pode ser satisfeita em~$w$ mesmo que $!B$ não o seja. A verdade
+de~$!B$ em~$w$ não garante a verdade de~$\Diamond !B$ em~$w$. Isso vale,
+porém, se $Rww$, por exemplo, se $R$ é reflexiva. Se não há $w'$ tal que
+$Rww'$, então $\mSat/{M}{\Diamond !A}[w]$, para qualquer~$!A$.
 
 \begin{prob}
-  Consider the model of \olref[nml][syn][rel]{fig:simple}. Which of the
-  following hold?
+  Considere o modelo de \olref[nml][syn][rel]{fig:simple}. Quais das
+  afirmações a seguir valem?
     \begin{enumerate}
     \item $\mSat{M}{q}[w_1]$;
     \item $\mSat{M}{\lnot q}[w_3]$;
@@ -79,47 +79,47 @@ for any~$!A$.
 
 \begin{proof}
   \begin{enumerate}
-    \item $\mSat{M}{\lnot\Diamond\lnot !A}[w]$ iff $\mSat/{M}{\Diamond\lnot
-      !A}[w]$ by definition of $\mSat{M}{}[w]$. $\mSat{M}{\Diamond\lnot
-      !A}[w]$ iff for some $w'$ with $Rww'$, $\mSat{M}{\lnot
-      !A}[w']$. Hence, $\mSat/{M}{\Diamond\lnot !A}[w]$ iff for all
-    $w'$ with $Rww'$, $\mSat/{M}{\lnot !A}[w']$. We also have
-    $\mSat/{M}{\lnot !A}[w']$ iff $\mSat{M}{!A}[w']$. Together we have
-    $\mSat{M}{\lnot\Diamond\lnot !A}[w]$ iff for all $w'$ with $Rww'$,
-    $\mSat{M}{!A}[w']$. Again by definition of $\mSat{M}{}[w]$, that
-      is the case iff $\mSat{M}{\Box !A}[w]$.
-    \item \iftag{probDiamond}{Exercise.}{$\mSat{M}{\lnot\Box\lnot !A}[w]$ iff
-      $\mSat/{M}{\Box\lnot !A}$. $\mSat{M}{\Box\lnot !A}[w]$ iff for all
-      $w'$ with $Rww'$, $\mSat{M}{\lnot !A}[w']$. Hence,
-      $\mSat/{M}{\Box\lnot !A}[w]$ iff for some $w'$ with $Rww'$,
-      $\mSat/{M}{\lnot !A}[w']$. We also have $\mSat/{M}{\lnot
-        !A}[w']$ iff $\mSat{M}{!A}[w']$. Together we have
-      $\mSat{M}{\lnot\Box\lnot !A}[w]$ iff for some~$w'$ with
-      $Rww'$, $\mSat{M}{!A}[w']$. Again by definition of
-      $\mSat{M}{}[w]$, that is the case iff $\mSat{M}{\Diamond
+    \item $\mSat{M}{\lnot\Diamond\lnot !A}[w]$ sse $\mSat/{M}{\Diamond\lnot
+      !A}[w]$, pela definição de $\mSat{M}{}[w]$. $\mSat{M}{\Diamond\lnot
+      !A}[w]$ sse, para algum $w'$ tal que $Rww'$, $\mSat{M}{\lnot
+      !A}[w']$. Logo, $\mSat/{M}{\Diamond\lnot !A}[w]$ sse, para todo
+    $w'$ tal que $Rww'$, $\mSat/{M}{\lnot !A}[w']$. Também temos
+    $\mSat/{M}{\lnot !A}[w']$ sse $\mSat{M}{!A}[w']$. Em conjunto,
+    obtemos que $\mSat{M}{\lnot\Diamond\lnot !A}[w]$ sse, para todo $w'$
+    tal que $Rww'$, $\mSat{M}{!A}[w']$. Novamente pela definição de
+    $\mSat{M}{}[w]$, isso ocorre sse $\mSat{M}{\Box !A}[w]$.
+    \item \iftag{probDiamond}{Exercício.}{$\mSat{M}{\lnot\Box\lnot !A}[w]$ sse
+      $\mSat/{M}{\Box\lnot !A}$. $\mSat{M}{\Box\lnot !A}[w]$ sse, para todo
+      $w'$ tal que $Rww'$, $\mSat{M}{\lnot !A}[w']$. Logo,
+      $\mSat/{M}{\Box\lnot !A}[w]$ sse, para algum $w'$ tal que $Rww'$,
+      $\mSat/{M}{\lnot !A}[w']$. Também temos $\mSat/{M}{\lnot
+        !A}[w']$ sse $\mSat{M}{!A}[w']$. Em conjunto, obtemos que
+      $\mSat{M}{\lnot\Box\lnot !A}[w]$ sse, para algum~$w'$ tal que
+      $Rww'$, $\mSat{M}{!A}[w']$. Novamente pela definição de
+      $\mSat{M}{}[w]$, isso ocorre sse $\mSat{M}{\Diamond
         !A}[w]$.}
   \end{enumerate}
 \end{proof}
 
 \begin{probtag}{probDiamond}
-  Complete the proof of \olref[nml][syn][trw]{prop:dual}.
+  Complete a demonstração de \olref[nml][syn][trw]{prop:dual}.
 \end{probtag}
 \end{tagblock}
 
 \begin{prob}
-  Let $\mModel{M} = \tuple{W, R, V}$ be a model, and suppose $w_1, w_2 \in
-  W$ are such that:
+  Seja $\mModel{M} = \tuple{W, R, V}$ um modelo e suponha que $w_1, w_2
+  \in W$ sejam tais que:
   \begin{enumerate}
-  \item $w_1 \in V(p)$ if and only if $w_2 \in V(p)$ (for every !!{propositional variable} $p$); and
-  \item for all $w \in W$: $Rw_1w$ if and only if $Rw_2w$.
+  \item $w_1 \in V(p)$ se, e somente se, $w_2 \in V(p)$ (para toda !!{propositional variable} $p$); e
+  \item para todo $w \in W$: $Rw_1w$ se, e somente se, $Rw_2w$.
   \end{enumerate}
-  Using induction on !!{formula}s, show that for all !!{formula}s $!A$:
-  $\mSat{M}{!A}[w_1]$ if and only if $\mSat{M}{!A}[w_2]$.
+  Usando indução sobre !!{formula}s, mostre que, para todas as !!{formula}s $!A$:
+  $\mSat{M}{!A}[w_1]$ se, e somente se, $\mSat{M}{!A}[w_2]$.
 \end{prob}
 
 \begin{probtag}{prvDiamond}
-  Let $\mModel{M} = \tuple{W, R, V}$. Show that
-  $\mSat{M}{\lnot\Diamond !A}[w]$ if and only if
+  Seja $\mModel{M} = \tuple{W, R, V}$. Mostre que
+  $\mSat{M}{\lnot\Diamond !A}[w]$ se, e somente se,
   $\mSat{M}{\Box\lnot!A}[w]$.
 \end{probtag}
 

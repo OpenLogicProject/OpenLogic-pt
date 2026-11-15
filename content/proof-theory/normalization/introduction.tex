@@ -1,0 +1,60 @@
+% Part: proof-theory
+% Chapter: normalization
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{pt}{nor}{int}
+
+\olsection{Introdução}
+
+Se você !!{prove}d uma condicional~$!A \lif !B$, talvez possa usá-la
+em !!a{proof} de~$!B$ mediante~\Elim{\lif}. Isso, naturalmente, também
+exigiria !!a{proof}~$\delta_1$ de~$!A$. É bastante provável que sua
+!!{proof}~$\delta_1$ de~$!A \lif !B$ termine em~\Intro{\lif}, que
+transforma !!a{proof}~$\delta_2$ de~$!B$ a partir da hipótese aberta~$!A$
+em uma demonstração de~$!A \lif !B$. Nesse caso, sua !!{proof} final tem
+a forma
+\[
+\AxiomC{$\Discharge{!A}{x}$}
+\RightLabel{$\delta_2$}
+\DeduceC{$!B$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!A \lif !B$}
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\DeduceC{$!A$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!B$}
+\DisplayProof
+\]
+Embora sua estratégia seja eficiente por reutilizar algo que você já
+tinha (!!a{proof} de~$!A \lif !B$), sua !!{proof} não é. Parece um
+desvio introduzir $!A \lif !B$ apenas para eliminá-la imediatamente.
+Deve haver uma maneira mais direta de !!{prove}~$!B$.
+
+Na verdade, sempre há. ``Desvios'' como o acima---!!a{introduction}
+imediatamente seguida por !!a{elimination}---sempre podem ser removidos
+de !!{proof}s de dedução natural. Esse processo se chama
+\emph{normalização}, e o resultado é uma !!{proof} \emph{normal} (ou
+!!a{proof} \emph{em forma normal}).
+
+A demonstração desse resultado, assim como a do teorema da eliminação do
+corte no cálculo de sequentes, é um tanto trabalhosa e exige considerar
+muitos casos. É mais difícil demonstrá-lo para o sistema clássico
+\Log{N1c} do que para o sistema intuicionista \Log{N1i}. Assim como a
+eliminação do corte mostra que não se pode !!{prove} mais usando a regra
+\Cut{} no cálculo de sequentes, a normalização mostra que não se pode
+demonstrar mais resultados usando desvios do que evitando-os. Há outras
+semelhanças: uma !!{proof} normal pode ser muito mais longa do que a
+!!{proof} mais curta, com desvios, do mesmo resultado, assim como
+!!{proof}s no cálculo de sequentes podem ser muito mais curtas com cortes
+do que a !!{proof} sem cortes mais curta. A propriedade da
+sub-!!{formula}---segundo a qual sempre se pode !!{prove} um resultado
+usando apenas sub-!!{formula}s desse resultado na !!{proof}---decorre da
+normalização para a dedução natural assim como decorre da eliminação do
+corte para o cálculo de sequentes.
+
+\end{document}

@@ -6,168 +6,173 @@
 
 \begin{document}
 
-\olfileid{mod}{mar}{stm}
-\olsection{Standard Models of Arithmetic}
+\olfileid[pt]{mod}{mar}{stm}
+\olsection{Modelos padrão da aritmética}
 
-The language of arithmetic~$\Lang{L_A}$ is obviously intended to be
-about numbers, specifically, about natural numbers. So, ``the''
-standard model~$\Struct{N}$ is special: it is the model we want to
-talk about. But in logic, we are often just interested in structural
-properties, and any two !!{structure}s that are isomorphic share
-those.  So we can be a bit more liberal, and consider any
-!!{structure} that is isomorphic to~$\Struct{N}$ ``standard.''
+A linguagem da aritmética~$\Lang{L_A}$ destina-se, evidentemente, a
+falar de números, em particular dos números naturais. Por isso, ``o''
+modelo padrão~$\Struct{N}$ é especial: é o modelo sobre o qual queremos
+falar. Em lógica, porém, muitas vezes nos interessam apenas as
+propriedades estruturais, e quaisquer duas !!{structure}s isomorfas
+compartilham essas propriedades. Assim, podemos ser um pouco mais
+liberais e chamar de ``padrão'' qualquer !!{structure} isomorfa
+a~$\Struct{N}$.
 
 \begin{defn}
-A !!{structure} for $\Lang{L_A}$ is \emph{standard} if it is
-isomorphic to~$\Struct{N}$.
+Uma !!{structure} para $\Lang{L_A}$ é \emph{padrão} se for isomorfa
+a~$\Struct{N}$.
 \end{defn}
 
 \begin{prop}
-\ollabel{prop:standard-domain} If !!a{structure}~$\Struct{M}$ is standard,
-then its domain is the set of values of the standard numerals, O.s.\@,
+\ollabel{prop:standard-domain} Se !!a{structure}~$\Struct{M}$ é padrão,
+então seu domínio é o conjunto dos valores dos numerais padrão, isto é,
 \[
 \Domain{M} = \Setabs{\Value{\num{n}}{M}}{n \in \Nat}
 \]
 \end{prop}
 
 \begin{proof}
-Clearly, every $\Value{\num{n}}{M} \in \Domain{M}$. We just have to
-show that every $x \in \Domain{M}$ is equal to $\Value{\num{n}}{M}$
-for some~$n$.  Since $\Struct{M}$ is standard, it is isomorphic
-to~$\Struct{N}$. Suppose $g\colon \Nat \to \Domain{M}$ is an
-isomorphism. Then $g(n) = g(\Value{\num{n}}{N}) =
-\Value{\num{n}}{M}$. But for every $x \in \Domain{M}$, there is an~$n
-\in \Nat$ such that $g(n) = x$, since $g$ is !!{surjective}.
+É claro que todo $\Value{\num{n}}{M} \in \Domain{M}$. Basta mostrar
+que todo $x \in \Domain{M}$ é igual a $\Value{\num{n}}{M}$ para
+algum~$n$. Como $\Struct{M}$ é padrão, ela é isomorfa
+a~$\Struct{N}$. Suponha que $g\colon \Nat \to \Domain{M}$ seja um
+isomorfismo. Então $g(n) = g(\Value{\num{n}}{N}) =
+\Value{\num{n}}{M}$. Mas, para todo $x \in \Domain{M}$, existe~$n
+\in \Nat$ tal que $g(n) = x$, pois $g$ é !!{surjective}.
 \end{proof}
 
 \begin{explain}
-If a structure~$\Struct{M}$ for $\Lang{L_A}$ is standard, the elements
-of its !!{domain} can all be named by the standard numerals $\num{0}$,
-$\num{1}$, $\num{2}$, \dots, O.s.\@, the terms $\Obj{0}$, $\Obj{0}'$,
-$\Obj{0}''$, etc. Of course, this does not mean that the !!{element}s
-of $\Domain{M}$ \emph{are} the numbers, just that we can pick them out
-the same way we can pick out the numbers in~$\Domain{N}$.
+Se uma estrutura~$\Struct{M}$ para $\Lang{L_A}$ é padrão, todos os
+elementos de seu !!{domain} podem ser nomeados pelos numerais padrão
+$\num{0}$, $\num{1}$, $\num{2}$, \dots, isto é, pelos termos $\Obj{0}$,
+$\Obj{0}'$, $\Obj{0}''$ etc. Isso, naturalmente, não significa que os
+!!{element}s de $\Domain{M}$ \emph{sejam} os números, mas apenas que
+podemos distingui-los da mesma maneira que distinguimos os números
+em~$\Domain{N}$.
 \end{explain}
 
 \begin{prob}
-Show that the converse of \olref[mod][mar][stm]{prop:standard-domain}
-is false, O.s.\@, give an example of !!a{structure}~$\Struct{M}$ with
-$\Domain{M} = \Setabs{\Value{\num{n}}{M}}{n \in \Nat}$ that is not
-isomorphic to~$\Struct{N}$.
+Mostre que a recíproca de \olref[mod][mar][stm]{prop:standard-domain}
+é falsa, isto é, dê um exemplo de !!a{structure}~$\Struct{M}$ com
+$\Domain{M} = \Setabs{\Value{\num{n}}{M}}{n \in \Nat}$ que não seja
+isomorfa a~$\Struct{N}$.
 \end{prob}
 
 \begin{prop}
 \ollabel{prop:thq-standard}
-If $\Sat{M}{\Th{Q}}$, and $\Domain{M} = \Setabs{\Value{\num{n}}{M}}{n
-  \in \Nat}$, then $\Struct{M}$ is standard.
+Se $\Sat{M}{\Th{Q}}$ e $\Domain{M} = \Setabs{\Value{\num{n}}{M}}{n
+  \in \Nat}$, então $\Struct{M}$ é padrão.
 \end{prop}
 
 \begin{proof}
-We have to show that $\Struct{M}$ is isomorphic
-to~$\Struct{N}$. Consider the function $g\colon \Nat \to \Domain{M}$
-defined by $g(n) = \Value{\num{n}}{M}$. By the hypothesis, $g$ is
-!!{surjective}.  It is also !!{injective}: $\Th{Q} \Proves
-\eq/[\num{n}][\num{m}]$ whenever $n \neq m$. Thus, since
-$\Sat{M}{\Th{Q}}$, $\Sat{M}{\eq/[\num{n}][\num{m}]}$, whenever $n \neq
-m$. Thus, if $n \neq m$, then $\Value{\num{n}}{M} \neq
-\Value{\num{m}}{M}$, O.s.\@, $g(n) \neq g(m)$.
+Devemos mostrar que $\Struct{M}$ é isomorfa
+a~$\Struct{N}$. Considere a função $g\colon \Nat \to \Domain{M}$
+definida por $g(n) = \Value{\num{n}}{M}$. Pela hipótese, $g$ é
+!!{surjective}. Ela também é !!{injective}: $\Th{Q} \Proves
+\eq/[\num{n}][\num{m}]$ sempre que $n \neq m$. Portanto, como
+$\Sat{M}{\Th{Q}}$, temos $\Sat{M}{\eq/[\num{n}][\num{m}]}$ sempre que
+$n \neq m$. Logo, se $n \neq m$, então $\Value{\num{n}}{M} \neq
+\Value{\num{m}}{M}$, isto é, $g(n) \neq g(m)$.
 
-We also have to verify that $g$ is an isomorphism.
+Também precisamos verificar que $g$ é um isomorfismo.
 \begin{enumerate}
-\item We have $g(\Assign{\Obj{0}}{N}) = g(0)$ since,
-  $\Assign{\Obj{0}}{N} = 0$. By definition of~$g$, $g(0) =
-  \Value{\num{0}}{M}$. But $\num{0}$ is just $\Obj{0}$, and the value
-  of a term which happens to be !!a{constant} is given by what the
-  !!{structure} assigns to that !!{constant}, O.s.\@,
-  $\Value{\Obj{0}}{M} = \Assign{\Obj{0}}{M}$. So we have
-  $g(\Assign{\Obj{0}}{N}) = \Assign{\Obj{0}}{M}$ as required.
-\item $g(\Assign{\prime}{N}(n)) = g(n+1)$, since $\prime$ in
-  $\Struct{N}$ is the successor function on~$\Nat$. Then, $g(n+1) =
-  \Value{\num{n+1}}{M}$ by definition of~$g$. But $\num{n+1}$ is the
-  same term as $\num{n}'$, so $\Value{\num{n+1}}{M} =
-  \Value{\num{n}'}{M}$. By the definition of the value function, this
-  is $= \Assign{\prime}{M}(\Value{\num{n}}{M})$. Since
-    $\Value{\num{n}}{M} = g(n)$ we get $g(\Assign{\prime}{N}(n)) =
+\item Temos $g(\Assign{\Obj{0}}{N}) = g(0)$, pois
+  $\Assign{\Obj{0}}{N} = 0$. Pela definição de~$g$, $g(0) =
+  \Value{\num{0}}{M}$. Mas $\num{0}$ é simplesmente $\Obj{0}$, e o
+  valor de um termo que é !!a{constant} é dado pelo que a !!{structure}
+  atribui a essa !!{constant}, isto é,
+  $\Value{\Obj{0}}{M} = \Assign{\Obj{0}}{M}$. Assim, obtemos
+  $g(\Assign{\Obj{0}}{N}) = \Assign{\Obj{0}}{M}$, como exigido.
+\item $g(\Assign{\prime}{N}(n)) = g(n+1)$, pois $\prime$ em
+  $\Struct{N}$ é a função sucessor em~$\Nat$. Então $g(n+1) =
+  \Value{\num{n+1}}{M}$ pela definição de~$g$. Mas $\num{n+1}$ é o
+  mesmo termo que $\num{n}'$, de modo que $\Value{\num{n+1}}{M} =
+  \Value{\num{n}'}{M}$. Pela definição da função valor, isso é
+  $= \Assign{\prime}{M}(\Value{\num{n}}{M})$. Como
+  $\Value{\num{n}}{M} = g(n)$, obtemos $g(\Assign{\prime}{N}(n)) =
   \Assign{\prime}{M}(g(n))$.
-\item $g(\Assign{+}{N}(n,m)) = g(n+m)$, since $+$ in $\Struct{N}$ is
-  the addition function on~$\Nat$. Then, $g(n+m) =
-  \Value{\num{n+m}}{M}$ by definition of~$g$. But $\Th{Q} \Proves
-  \num{n+m} = (\num{n} + \num{m})$, so $\Value{\num{n+m}}{M} =
-  \Value{\num{n}+\num{m}}{M}$. By the definition of the value
-  function, this is $=
-  \Assign{+}{M}(\Value{\num{n}}{M},\Value{\num{m}}{M})$. Since
-    $\Value{\num{n}}{M} = g(n)$ and $\Value{\num{m}}{M} = g(m)$, we
-    get $g(\Assign{+}{N}(n, m)) = \Assign{+}{M}(g(n), g(m))$.
+\item $g(\Assign{+}{N}(n,m)) = g(n+m)$, pois $+$ em $\Struct{N}$ é a
+  função adição em~$\Nat$. Então $g(n+m) = \Value{\num{n+m}}{M}$ pela
+  definição de~$g$. Mas $\Th{Q} \Proves \num{n+m} = (\num{n} +
+  \num{m})$, logo $\Value{\num{n+m}}{M} =
+  \Value{\num{n}+\num{m}}{M}$. Pela definição da função valor, isso é
+  $= \Assign{+}{M}(\Value{\num{n}}{M},\Value{\num{m}}{M})$. Como
+  $\Value{\num{n}}{M} = g(n)$ e $\Value{\num{m}}{M} = g(m)$, obtemos
+  $g(\Assign{+}{N}(n, m)) = \Assign{+}{M}(g(n), g(m))$.
 \item $g(\Assign{\times}{N}(n, m)) = \Assign{\times}{M}(g(n), g(m))$:
-  Exercise.
-\item $\tuple{n,m} \in \Assign{<}{N}$ iff $n < m$. If $n < m$, then
-  $\Th{Q} \Proves \num{n} < \num{m}$, and also $\Sat{M}{\num{n} <
-  \num{m}}$. Thus $\tuple{\Value{\num{n}}{M}, \Value{\num{m}}{M}} \in
-  \Assign{<}{M}$, O.s.\@, $\tuple{g(n), g(m)} \in \Assign{<}{M}$. If $n
-  \not< m$, then $\Th{Q} \Proves \lnot \num{n} < \num{m}$, and
-  consequently $\Sat/{M}{\num{n} < \num{m}}$. Thus, as before,
-  $\tuple{g(n), g(m)} \notin \Assign{<}{M}$. Together, we get:
-  $\tuple{n,m} \in \Assign{<}{N}$ iff $\tuple{g(n), g(m)} \in
-  \Assign{<}{M}$.
+  Exercício.
+\item $\tuple{n,m} \in \Assign{<}{N}$ se, e somente se, $n < m$. Se
+  $n < m$, então $\Th{Q} \Proves \num{n} < \num{m}$ e também
+  $\Sat{M}{\num{n} < \num{m}}$. Portanto,
+  $\tuple{\Value{\num{n}}{M}, \Value{\num{m}}{M}} \in
+  \Assign{<}{M}$, isto é, $\tuple{g(n), g(m)} \in \Assign{<}{M}$. Se
+  $n \not< m$, então $\Th{Q} \Proves \lnot \num{n} < \num{m}$ e,
+  consequentemente, $\Sat/{M}{\num{n} < \num{m}}$. Logo, como antes,
+  $\tuple{g(n), g(m)} \notin \Assign{<}{M}$. Em conjunto, obtemos:
+  $\tuple{n,m} \in \Assign{<}{N}$ se, e somente se,
+  $\tuple{g(n), g(m)} \in \Assign{<}{M}$.
 \end{enumerate}
 \end{proof}
 
 \begin{explain}
-The function~$g$ is the most obvious way of defining a mapping from
-$\Nat$ to the domain of any other !!{structure}~$\Struct{M}$ for
-$\Lang{L_A}$, since every such $\Struct{M}$ contains !!{element}s named
-by $\num{0}$, $\num{1}$, $\num{2}$, etc. So it isn't surprising that
-if $\Struct{M}$ makes at least some basic statements about the
-$\num{n}$'s true in the same way that~$\Struct{N}$ does, and $g$ is
-also bijective, then $g$ will turn into an isomorphism.  In fact, if
-$\Domain{M}$ contains no !!{element}s other than what the $\num{n}$'s
-name, it's the only one.
+A função~$g$ é a maneira mais óbvia de definir uma aplicação de
+$\Nat$ no domínio de qualquer outra !!{structure}~$\Struct{M}$ para
+$\Lang{L_A}$, pois toda $\Struct{M}$ desse tipo contém !!{element}s
+nomeados por $\num{0}$, $\num{1}$, $\num{2}$ etc. Portanto, não
+surpreende que, se $\Struct{M}$ torna verdadeiras ao menos algumas
+afirmações básicas sobre os $\num{n}$ do mesmo modo que~$\Struct{N}$,
+e se $g$ também é bijetiva, então $g$ seja um isomorfismo. De fato, se
+$\Domain{M}$ não contém !!{element}s além dos nomeados pelos
+$\num{n}$, esse é o único isomorfismo.
 \end{explain}
 
 \begin{prop}
-\ollabel{prop:thq-unique-iso} If $\Struct{M}$ is standard, then $g$ from
-the proof of \olref{prop:thq-standard} is the only isomorphism from $\Struct{N}$ to~$\Struct{M}$.
+\ollabel{prop:thq-unique-iso} Se $\Struct{M}$ é padrão, então a função
+$g$ da demonstração de \olref{prop:thq-standard} é o único isomorfismo
+de $\Struct{N}$ para~$\Struct{M}$.
 \end{prop}
 
 \begin{proof}
-Suppose $h\colon \Nat \to \Domain{M}$ is an isomorphism between
-$\Struct{N}$ and~$\Struct{M}$. We show that $g = h$ by induction
-on~$n$. If $n = 0$, then $g(0) = \Assign{\Obj{0}}{M}$ by definition
-of~$g$. But since $h$ is an isomorphism, $h(0) =
-h(\Assign{\Obj{0}}{N}) =\Assign{\Obj{0}}{M}$, so $g(0) = h(0)$.
+Suponha que $h\colon \Nat \to \Domain{M}$ seja um isomorfismo entre
+$\Struct{N}$ e~$\Struct{M}$. Mostramos que $g = h$ por indução
+em~$n$. Se $n = 0$, então $g(0) = \Assign{\Obj{0}}{M}$ pela definição
+de~$g$. Mas, como $h$ é um isomorfismo, $h(0) =
+h(\Assign{\Obj{0}}{N}) =\Assign{\Obj{0}}{M}$, portanto $g(0) = h(0)$.
 
-Now consider the case for $n+1$. We have
+Considere agora o caso $n+1$. Temos
 \begin{align*}
-  g(n+1) & = \Value{\num{n+1}}{M} \text{ by definition of~$g$}\\
-  & = \Value{\num{n}'}{M} \text{ since $\num{n+1}\ident \num{n}'$}\\
+  g(n+1) & = \Value{\num{n+1}}{M} \text{ pela definição de~$g$}\\
+  & = \Value{\num{n}'}{M} \text{ pois $\num{n+1}\ident \num{n}'$}\\
   & = \Assign{\prime}{M}(\Value{\num{n}}{M}) 
-    \text{ by definition of $\Value{t'}{M}$}\\
-  & = \Assign{\prime}{M}(g(n))  \text{ by definition of~$g$}\\
-  & = \Assign{\prime}{M}(h(n)) \text{ by induction hypothesis}\\
-  & = h(\Assign{\prime}{N}(n)) \text{ since $h$ is an isomorphism}\\
+    \text{ pela definição de $\Value{t'}{M}$}\\
+  & = \Assign{\prime}{M}(g(n))  \text{ pela definição de~$g$}\\
+  & = \Assign{\prime}{M}(h(n)) \text{ pela hipótese de indução}\\
+  & = h(\Assign{\prime}{N}(n)) \text{ pois $h$ é um isomorfismo}\\
   & = h(n+1)
 \end{align*}
 \end{proof}
 
 \begin{explain}
-For any !!{denumerable} set~$M$, there's !!a{bijection} between
-$\Nat$ and $M$, so every such set~$M$ is potentially the !!{domain} of
-a standard model~$\Struct{M}$. In fact, once you pick an object $z \in
-M$ and a suitable function $s$ as $\Assign{\Obj{0}}{M}$ and
-$\Assign{\prime}{M}$, the interpretations of $+$, $\times$, and $<$ is
-already fixed.  Only functions~$s\colon M \to M \setminus \{z\}$ that
-are both !!{injective} and !!{surjective} are suitable in a standard
-model as~$\Assign{\prime}{M}$.  The range of $s$ cannot contain~$z$,
-since otherwise $\lforall[x][\eq/[\Obj 0][x']]$ would be false. That
-!!{sentence} is true in~$\Struct{N}$, and so $\Struct{M}$ also has to
-make it true. The function~$s$ has to be !!{injective}, since the
-successor function~$\Assign{\prime}{N}$ in~$\Struct{N}$ is, and that
-$\Assign{\prime}{N}$ is !!{injective} is expressed by !!a{sentence}
-true in~$\Struct{N}$. It has to be !!{surjective} because otherwise
-there would be some $x \in M \setminus \{z\}$ not in the domain
-of~$s$, O.s.\@, the !!{sentence} $\lforall[x][(\eq[x][\Obj 0] \lor
-\lexists[y][\eq[y'][x]])]$ would be false in~$\Struct{M}$---but it is
-true in~$\Struct{N}$.
+Para qualquer conjunto !!{denumerable}~$M$, existe !!a{bijection}
+entre $\Nat$ e $M$, de modo que todo conjunto~$M$ desse tipo pode ser
+o !!{domain} de um modelo padrão~$\Struct{M}$. Na verdade, depois de
+escolher um objeto $z \in M$ e uma função adequada $s$ como
+$\Assign{\Obj{0}}{M}$ e $\Assign{\prime}{M}$, as interpretações de
+$+$, $\times$ e $<$ já ficam determinadas. Apenas funções
+$s\colon M \to M \setminus \{z\}$ que sejam ao mesmo tempo
+!!{injective} e !!{surjective} são adequadas como
+$\Assign{\prime}{M}$ em um modelo padrão. A imagem de $s$ não pode
+conter~$z$, pois, caso contrário, $\lforall[x][\eq/[\Obj 0][x']]$
+seria falsa. Essa !!{sentence} é verdadeira em~$\Struct{N}$, portanto
+$\Struct{M}$ também deve torná-la verdadeira. A função~$s$ deve ser
+!!{injective}, pois a função sucessor~$\Assign{\prime}{N}$ em
+$\Struct{N}$ o é, e o fato de $\Assign{\prime}{N}$ ser !!{injective}
+é expresso por !!a{sentence} verdadeira em~$\Struct{N}$. Ela deve ser
+!!{surjective}, pois, caso contrário, existiria algum $x \in M
+\setminus \{z\}$ que não estaria na imagem de~$s$, isto é, a
+!!{sentence} $\lforall[x][(\eq[x][\Obj 0] \lor
+\lexists[y][\eq[y'][x]])]$ seria falsa em~$\Struct{M}$---mas é
+verdadeira em~$\Struct{N}$.
 \end{explain}
 
 

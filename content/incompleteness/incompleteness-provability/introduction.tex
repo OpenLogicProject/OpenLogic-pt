@@ -6,89 +6,89 @@
 
 \begin{document}
 
-\olfileid{inc}{inp}{int}
+\olfileid[pt]{inc}{inp}{int}
 
-\olsection{Introduction}
+\olsection{Introdução}
 
-Hilbert thought that a system of axioms for a mathematical structure,
-such as the natural numbers, is inadequate unless it allows one to
-derive all true statements about the structure. Combined with his
-later interest in formal systems of deduction, this suggests that he
-thought that we should guarantee that, say, the formal systems we are
-using to reason about the natural numbers is not only consistent, but
-also \emph{complete}, O.s.\@, every statement in its language is either
-!!{derivable} or its negation is. G\"odel's first incompleteness theorem
-shows that no such system of axioms exists: there is no complete,
-consistent, !!{axiomatizable} formal system for arithmetic.  In fact,
-no ``sufficiently strong,'' consistent, !!{axiomatizable} mathematical
-theory is complete.
+Hilbert pensava que um sistema de axiomas para uma estrutura matemática,
+como os números naturais, seria inadequado a menos que permitisse derivar
+todas as afirmações verdadeiras sobre a estrutura. Combinada com seu
+interesse posterior por sistemas formais de dedução, essa ideia sugere que
+ele julgava necessário garantir que, digamos, os sistemas formais usados
+para raciocinar sobre os números naturais fossem não apenas consistentes,
+mas também \emph{completos}, isto é, que toda afirmação em sua linguagem ou
+ela própria ou sua negação fosse !!{derivable}. O primeiro teorema da
+incompletude de G\"odel mostra que não existe tal sistema de axiomas: não há
+sistema formal completo, consistente e !!{axiomatizable} para a aritmética.
+Na verdade, nenhuma teoria matemática ``suficientemente forte'',
+consistente e !!{axiomatizable} é completa.
 
-A more important goal of Hilbert's, the centerpiece of his program for
-the justification of modern (``classical'') mathematics, was to find
-finitary consistency proofs for formal systems representing classical
-reasoning.  With regard to Hilbert's program, then, G\"odel's second
-incompleteness theorem was a much bigger blow. The second
-incompleteness theorem can be stated in vague terms, like the first
-incompleteness theorem. Roughly speaking, it says that no sufficiently
-strong theory of arithmetic can prove its own consistency. We will
-have to take ``sufficiently strong'' to include a little bit more
-than~$\Th{Q}$.
+Um objetivo ainda mais importante de Hilbert, peça central de seu programa
+para justificar a matemática moderna (``clássica''), era encontrar provas
+finitárias de consistência para sistemas formais que representassem o
+raciocínio clássico. No que diz respeito ao programa de Hilbert, portanto,
+o segundo teorema da incompletude de G\"odel foi um golpe muito maior. O
+segundo teorema da incompletude pode ser enunciado em termos vagos, assim
+como o primeiro. Em linhas gerais, ele afirma que nenhuma teoria da
+aritmética suficientemente forte pode provar a própria consistência.
+Teremos de entender ``suficientemente forte'' como algo que inclua um pouco
+mais que~$\Th{Q}$.
 
-The idea behind G\"odel's original proof of the incompleteness theorem
-can be found in the Epimenides paradox. Epimenides, a Cretan, asserted
-that all Cretans are liars; a more direct form of the paradox is the
-assertion ``this sentence is false.'' Essentially, by replacing truth
-with !!{derivability}, G\"odel was able to formalize !!a{sentence}
-which, in a roundabout way, asserts that it itself is not
-!!{derivable}.  If that !!{sentence} were !!{derivable}, the theory
-would then be inconsistent.  G\"odel showed that the negation of that
-!!{sentence} is also not !!{derivable} from the system of axioms he was
-considering. (For this second part, G\"odel had to assume that the
-theory~$\Th{T}$ is what's called ``$\omega$-consistent.''
-$\omega$-Consistency is related to consistency, but is a stronger
-property.\footnote{That is, any $\omega$-consistent theory is
-consistent, but not vice versa.} A few years after G\"odel, Rosser
-showed that assuming simple consistency of~$\Th{T}$ is enough.)
+A ideia por trás da prova original de G\"odel do teorema da incompletude
+pode ser encontrada no paradoxo de Epimênides. Epimênides, um cretense,
+afirmou que todos os cretenses são mentirosos; uma forma mais direta do
+paradoxo é a afirmação ``esta sentença é falsa''. Em essência, substituindo
+verdade por !!{derivability}, G\"odel conseguiu formalizar !!a{sentence}
+que, de maneira indireta, afirma não ser ela própria !!{derivable}. Se essa
+!!{sentence} fosse !!{derivable}, a teoria seria inconsistente. G\"odel
+mostrou que a negação dessa !!{sentence} tampouco é !!{derivable} a partir
+do sistema de axiomas que ele considerava. (Para esta segunda parte, G\"odel
+teve de supor que a teoria~$\Th{T}$ é o que se chama de
+``$\omega$-consistente''. A $\omega$-consistência está relacionada à
+consistência, mas é uma propriedade mais forte.\footnote{Isto é, toda teoria
+$\omega$-consistente é consistente, mas a recíproca não vale.} Alguns anos
+depois de G\"odel, Rosser mostrou que basta supor a consistência simples
+de~$\Th{T}$.)
 
-The first challenge is to understand how one can construct !!a{sentence}
-that refers to itself. For every !!{formula}~$!A$ in the language
-of~$\Th{Q}$, let~$\gn{!A}$ denote the numeral corresponding
-to~$\Gn{!A}$. Think about what this means: $!A$~is !!a{formula} in the
-language of~$\Th{Q}$, $\Gn{!A}$~is a natural number, and $\gn{!A}$~is
-a \emph{term} in the language of~$\Th{Q}$. So every !!{formula}~$!A$
-in the language of~$\Th{Q}$ has a \emph{name},~$\gn{!A}$, which is a
-term in the language of~$\Th{Q}$; this provides us with a conceptual
-framework in which !!{formula}s in the language of~$\Th{Q}$ can ``say''
-things about other !!{formula}s. The following lemma is known as the
-fixed-point lemma.
+O primeiro desafio é compreender como construir !!a{sentence} que se refira
+a si mesma. Para toda !!{formula}~$!A$ na linguagem de~$\Th{Q}$, seja
+~$\gn{!A}$ o numeral correspondente a~$\Gn{!A}$. Pense no que isso
+significa: $!A$~é !!a{formula} na linguagem de~$\Th{Q}$,
+$\Gn{!A}$~é um número natural, e $\gn{!A}$~é um \emph{termo} na linguagem
+de~$\Th{Q}$. Assim, toda !!{formula}~$!A$ na linguagem de~$\Th{Q}$ tem um
+\emph{nome},~$\gn{!A}$, que é um termo na linguagem de~$\Th{Q}$; isso nos
+fornece um quadro conceitual no qual !!{formula}s da linguagem de~$\Th{Q}$
+podem ``dizer'' coisas sobre outras !!{formula}s. O lema seguinte é
+conhecido como lema do ponto fixo.
 
 \begin{lem}
-Let $\Th{T}$ be any theory extending~$\Th{Q}$, and let $!B(x)$ be any
-!!{formula} with only the variable~$x$ free. Then there is
-!!a{sentence}~$!A$ such that $\Th{T} \Proves!A \liff !B(\gn{!A})$.
+Seja $\Th{T}$ qualquer teoria que estenda~$\Th{Q}$, e seja $!B(x)$ qualquer
+!!{formula} cuja única variável livre seja~$x$. Então existe
+!!a{sentence}~$!A$ tal que $\Th{T} \Proves!A \liff !B(\gn{!A})$.
 \end{lem}
 
-The lemma asserts that given any property $!B(x)$, there is
-!!a{sentence}~$!A$ that asserts ``$!B(x)$ is true of me,'' and
-$\Th{T}$ ``knows'' this.
+O lema afirma que, dada qualquer propriedade $!B(x)$, existe
+!!a{sentence}~$!A$ que afirma ``$!B(x)$ vale para mim'', e $\Th{T}$
+``sabe'' disso.
 
-How can we construct such !!a{sentence}? Consider the following version
-of the Epimenides paradox, due to Quine:
+Como podemos construir tal !!a{sentence}? Considere a seguinte versão do
+paradoxo de Epimênides, devida a Quine:
 \begin{quote}
-``Yields falsehood when preceded by its quotation'' yields falsehood
-when preceded by its quotation.
+``Produz falsidade quando precedida por sua citação'' produz falsidade
+quando precedida por sua citação.
 \end{quote}
-This sentence is not directly self-referential. It simply makes an
-assertion about the syntactic objects between quotes, and, in doing
-so, it is on par with sentences like
+Essa sentença não é diretamente autorreferencial. Ela apenas faz uma
+afirmação sobre os objetos sintáticos entre aspas e, ao fazê-lo, está em pé
+de igualdade com sentenças como
 \begin{enumerate}
-\item ``Robert'' is a nice name.
-\item ``I ran.'' is a short sentence.
-\item ``Has three words'' has three words.
+\item ``Roberto'' é um nome bonito.
+\item ``Eu corri.'' é uma sentença curta.
+\item ``Tem três palavras'' tem três palavras.
 \end{enumerate}
-But what happens when one takes the phrase ``yields falsehood when
-preceded by its quotation,'' and precedes it with a quoted version of
-itself? Then one has the original sentence!{} In short, the sentence
-asserts that it is false.
+Mas o que acontece quando tomamos a expressão ``produz falsidade quando
+precedida por sua citação'' e a precedemos por uma versão entre aspas de si
+mesma? Obtemos a sentença original!{} Em suma, a sentença afirma que é
+falsa.
 
 \end{document}
+

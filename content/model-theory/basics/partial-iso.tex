@@ -6,217 +6,217 @@
 
 \begin{document}
 
-\olfileid{mod}{bas}{pis}
-\section{Partial Isomorphisms}
+\olfileid[pt]{mod}{bas}{pis}
+\section{Isomorfismos parciais}
 
 \begin{defn}
-  Given two !!{structure}s $\Struct{M}$ and $\Struct{N}$, a
-  \emph{partial isomorphism} from $\Struct{M}$ to $\Struct{N}$ is a
-  finite partial function $p$ taking arguments in $\Domain M$ and returning
-  values in $\Domain N$, which satisfies the isomorphism conditions from
-  \olref[iso]{defn:isomorphism} on its domain:
+  Dadas duas !!{structure}s $\Struct{M}$ e $\Struct{N}$, um
+  \emph{isomorfismo parcial} de $\Struct{M}$ em $\Struct{N}$ é uma
+  função parcial finita $p$ que recebe argumentos em $\Domain M$ e retorna
+  valores em $\Domain N$, e que satisfaz em seu domínio as condições de
+  isomorfismo de \olref[iso]{defn:isomorphism}:
   \begin{enumerate}
-  \item $p$ is !!{injective};
-  \item for every !!{constant}~$c$: if $p(\Assign{c}{M})$ is defined,
-    then $p(\Assign{c}{M}) = \Assign{c}{N}$;
-  \item for every $n$-place !!{predicate} $P$: if $a_1$, \dots, $a_n$
-    are in the domain of $p$, then $\langle a_1, \dots, a_n\rangle \in
-    \Assign P M$ if and only if $\langle p(a_1), \dots, p(a_n) \rangle
+  \item $p$ é !!{injective};
+  \item para toda !!{constant}~$c$: se $p(\Assign{c}{M})$ estiver definida,
+    então $p(\Assign{c}{M}) = \Assign{c}{N}$;
+  \item para todo !!{predicate} de $n$ lugares $P$: se $a_1$, \dots, $a_n$
+    estiverem no domínio de $p$, então $\langle a_1, \dots, a_n\rangle \in
+    \Assign P M$ se, e somente se, $\langle p(a_1), \dots, p(a_n) \rangle
     \in \Assign P N$;
-  \item for every $n$-place !!{function} $f$: if $a_1$, \dots, $a_n$
-    are in the domain of $p$, then $p(\Assign f M (a_1, \dots,a_n))
+  \item para toda !!{function} de $n$ lugares $f$: se $a_1$, \dots, $a_n$
+    estiverem no domínio de $p$, então $p(\Assign f M (a_1, \dots,a_n))
     = \Assign f N (p(a_1), \dots, p(a_n))$.
   \end{enumerate}
-  That $p$ is finite means that $\dom{p}$ is finite.
+  Dizer que $p$ é finita significa que $\dom{p}$ é finito.
 \end{defn}
 
-Notice that the empty function~$\emptyset$ is always a partial
-isomorphism between any two !!{structure}s.
+Observe que a função vazia~$\emptyset$ é sempre um isomorfismo parcial
+entre quaisquer duas !!{structure}s.
 
 \begin{defn}\ollabel{defn:partialisom}
-  Two !!{structure}s $\Struct{M}$ and $\Struct{N}$, are
-  \emph{partially isomorphic}, written $\Struct{M} \iso[p]
-  \Struct{N}$, if and only if there is a non-empty set $I$
-  of partial isomorphisms between $\Struct{M}$ and $\Struct{N}$
-  satisfying the \emph{back-and-forth} property:
+  Duas !!{structure}s $\Struct{M}$ e $\Struct{N}$ são
+  \emph{parcialmente isomorfas}, o que se escreve $\Struct{M} \iso[p]
+  \Struct{N}$, se, e somente se, houver um conjunto não vazio $I$
+  de isomorfismos parciais entre $\Struct{M}$ e $\Struct{N}$
+  que satisfaça a propriedade de \emph{ida e volta}:
   \begin{enumerate}
-  \item (\emph{Forth}) For every $p \in I$ and $a \in \Domain M$
-    there is $q \in I$ such that $p \subseteq q$ and $a$ is
-    in the domain of $q$;
-  \item (\emph{Back}) For every $p \in I$ and $b \in \Domain N$
-    there is $q \in I$ such that $p \subseteq q$ and $b$ is
-    in the range of $q$.
+  \item (\emph{Ida}) Para todo $p \in I$ e todo $a \in \Domain M$,
+    existe $q \in I$ tal que $p \subseteq q$ e $a$ está
+    no domínio de $q$;
+  \item (\emph{Volta}) Para todo $p \in I$ e todo $b \in \Domain N$,
+    existe $q \in I$ tal que $p \subseteq q$ e $b$ está
+    na imagem de $q$.
   \end{enumerate}
 \end{defn}
 
 \begin{thm}\ollabel{thm:p-isom1}
-  If $\Struct{M} \iso[p] \Struct{N}$ and $\Struct{M}$ and
-  $\Struct{N}$ are !!{enumerable}, then $\Struct{M} \iso
+  Se $\Struct{M} \iso[p] \Struct{N}$ e $\Struct{M}$ e
+  $\Struct{N}$ forem !!{enumerable}, então $\Struct{M} \iso
   \Struct{N}$.
 \end{thm}
 
 \begin{proof}
-  Since $\Struct{M}$ and $\Struct{N}$ are !!{enumerable}, let $\Domain{M} =
-  \{a_0, a_1, \ldots \}$ and $\Domain{N} = \{b_0, b_1, \ldots \}$. Starting
-  with an arbitrary $p_0 \in I$, we define an increasing
-  sequence of partial isomorphisms $p_0 \subseteq p_1 \subseteq p_2
-  \subseteq \cdots$ as follows:
+  Como $\Struct{M}$ e $\Struct{N}$ são !!{enumerable}, sejam $\Domain{M} =
+  \{a_0, a_1, \ldots \}$ e $\Domain{N} = \{b_0, b_1, \ldots \}$. Partindo
+  de um $p_0 \in I$ arbitrário, definimos uma sequência crescente de
+  isomorfismos parciais $p_0 \subseteq p_1 \subseteq p_2
+  \subseteq \cdots$ do seguinte modo:
   \begin{enumerate}
-  \item if $n+1$ is odd, say $n = 2r$, then using the Forth property
-    find a $p_{n+1} \in I$ such that $p_n \subseteq p_{n+1}$
-    and $a_r$ is in the domain of $p_{n+1}$;
-  \item if $n+1$ is even, say $n+1 =2r$, then using the Back property
-    find a $p_{n+1} \in I$ such that $p_n \subseteq p_{n+1}$
-    and $b_r$ is in the range of $p_{n+1}$.
+  \item se $n+1$ for ímpar, digamos $n = 2r$, então, usando a propriedade
+    de ida, encontre um $p_{n+1} \in I$ tal que $p_n \subseteq p_{n+1}$
+    e $a_r$ esteja no domínio de $p_{n+1}$;
+  \item se $n+1$ for par, digamos $n+1 =2r$, então, usando a propriedade
+    de volta, encontre um $p_{n+1} \in I$ tal que $p_n \subseteq p_{n+1}$
+    e $b_r$ esteja na imagem de $p_{n+1}$.
   \end{enumerate}
-If we now put:
+Se agora fizermos:
 \[
 p = \bigcup_{n\ge 0} p_n,
 \]
-we have that $p$ is a an isomorphism between $\Struct{M}$ and
+teremos que $p$ é um um isomorfismo entre $\Struct{M}$ e
 $\Struct{N}$.
 \end{proof}
 
 \begin{prob}
-  Show in detail that $p$ as defined in
-  \olref[mod][bas][pis]{thm:p-isom1} is in fact an isomorphism.
+  Mostre detalhadamente que $p$, tal como definida em
+  \olref[mod][bas][pis]{thm:p-isom1}, é de fato um isomorfismo.
 \end{prob}
 
 \begin{thm}\ollabel{thm:p-isom2}
-  Suppose $\Struct{M}$ and $\Struct{N}$ are !!{structure}s for a
-  purely relational !!{language} (!!a{language} containing only
-  !!{predicate}s, and no !!{function}s or constants). Then if
-  $\Struct{M} \iso[p] \Struct{N}$, also $\Struct{M} \elemequiv
+  Suponha que $\Struct{M}$ e $\Struct{N}$ sejam !!{structure}s para uma
+  !!{language} puramente relacional (!!a{language} que contém somente
+  !!{predicate}s, e sem !!{function}s nem constantes). Então, se
+  $\Struct{M} \iso[p] \Struct{N}$, também $\Struct{M} \elemequiv
   \Struct{N}$.
 \end{thm}
 
 \begin{proof}
-  By induction on !!{formula}s, one shows that if $a_1$, \dots, $a_n$ and
-  $b_1$, \dots, $b_n$ are such that there is a partial isomorphism $p$
-  mapping each $a_i$ to $b_i$ and $s_1(x_i) =a_i$ and $s_2(x_i) =b_i$
-  (for $i =1$, \dots,~$n$), then $\Sat{M}{!A}[s_1]$ if
-  and only if $\Sat{N}{!A}[s_2]$. The case for $n=0$
-  gives $\Struct{M} \elemequiv \Struct{N}$.
+  Por indução nas !!{formula}s, mostra-se que, se $a_1$, \dots, $a_n$ e
+  $b_1$, \dots, $b_n$ forem tais que haja um isomorfismo parcial $p$
+  que leve cada $a_i$ a $b_i$, e $s_1(x_i) =a_i$ e $s_2(x_i) =b_i$
+  (para $i =1$, \dots,~$n$), então $\Sat{M}{!A}[s_1]$ se,
+  e somente se, $\Sat{N}{!A}[s_2]$. O caso $n=0$
+  fornece $\Struct{M} \elemequiv \Struct{N}$.
 \end{proof}
 
 \begin{rem}
-If !!{function}s are present, the previous result is still true, but
-one needs to consider the isomorphism induced by $p$ between the
-sub!!{structure} of $\Struct{M}$ generated by $a_1$, \dots, $a_n$ and the
-sub!!{structure} of $\Struct{N}$ generated by $b_1$, \dots, $b_n$.
+Se houver !!{function}s, o resultado anterior ainda será verdadeiro, mas
+será preciso considerar o isomorfismo induzido por $p$ entre a
+sub!!{structure} de $\Struct{M}$ gerada por $a_1$, \dots, $a_n$ e a
+sub!!{structure} de $\Struct{N}$ gerada por $b_1$, \dots, $b_n$.
 \end{rem}
 
-The previous result can be ``broken down'' into stages by establishing a
-connection between the number of nested quantifiers in !!a{formula} and
-how many times the relevant partial isomorphisms can be extended.
+O resultado anterior pode ser ``decomposto'' em etapas estabelecendo-se uma
+relação entre o número de quantificadores aninhados em !!a{formula} e
+quantas vezes os isomorfismos parciais pertinentes podem ser estendidos.
 
 \begin{defn}
-  For any !!{formula}~$!A$, the \emph{quantifier rank} of $!A$, denoted
-  by $\QuantRank{!A} \in \Nat$, is recursively defined as
-  the highest number of nested quantifiers in $!A$.  Two
-  !!{structure}s $\Struct{M}$ and $\Struct{N}$ are \emph{$n$-equivalent},
-  written $\Struct{M} \elemequiv[n] \Struct{N}$, if they agree on all
-  sentences of quantifier rank less than or equal to~$n$.
+  Para toda !!{formula}~$!A$, o \emph{posto de quantificadores} de $!A$,
+  denotado por $\QuantRank{!A} \in \Nat$, é definido recursivamente como
+  o maior número de quantificadores aninhados em $!A$. Duas
+  !!{structure}s $\Struct{M}$ e $\Struct{N}$ são \emph{$n$-equivalentes},
+  o que se escreve $\Struct{M} \elemequiv[n] \Struct{N}$, se coincidirem
+  em todas as sentenças de posto de quantificadores menor ou igual a~$n$.
 \end{defn}
 
 \begin{prop}\ollabel{prop:qr-finite}
-  Let $\Lang{L}$ be a finite purely relational !!{language}, O.s.\@, a
-  !!{language} containing finitely many !!{predicate}s and !!{constant}s,
-  and no !!{function}s. Then for each $n \in \Nat$ there are
-  only finitely many first-order !!{sentence}s in the !!{language}
-  $\Lang{L}$ that have quantifier rank no greater than $n$, up to
-  logical equivalence.
+  Seja $\Lang{L}$ uma !!{language} puramente relacional finita, isto é, uma
+  !!{language} que contém um número finito de !!{predicate}s e !!{constant}s,
+  e sem !!{function}s. Então, para cada $n \in \Nat$, há apenas um
+  número finito de !!{sentence}s de primeira ordem na !!{language}
+  $\Lang{L}$ que têm posto de quantificadores não maior que $n$, a menos
+  de equivalência lógica.
 \end{prop}
 
 \begin{proof}
-  By induction on $n$.
+  Por indução em $n$.
 \end{proof}
 
 \begin{defn}
-  Given !!a{structure}~$\Struct{M}$, let $\Domain M^{<\omega}$ be the set of
-  all finite sequences over $\Domain{M}$. We use $\mathbf{a},
-  \mathbf{b}, \mathbf{c}, \ldots$ to range over finite sequences of
-  elements. If $\mathbf{a} \in \Domain{M}^{<\omega}$ and $a \in \Domain{M}$, then
-  $\mathbf{a}a$ represents the \emph{concatenation} of $\mathbf{a}$ with $a$.
+  Dada !!a{structure}~$\Struct{M}$, seja $\Domain M^{<\omega}$ o conjunto de
+  todas as sequências finitas sobre $\Domain{M}$. Usamos $\mathbf{a},
+  \mathbf{b}, \mathbf{c}, \ldots$ para percorrer sequências finitas de
+  elementos. Se $\mathbf{a} \in \Domain{M}^{<\omega}$ e $a \in \Domain{M}$, então
+  $\mathbf{a}a$ representa a \emph{concatenação} de $\mathbf{a}$ com $a$.
 \end{defn}
 
 \begin{defn}
-  Given !!{structure}s $\Struct{M}$ and $\Struct{N}$, we define
-  relations $I_n \subseteq \Domain M^{<\omega} \times \Domain N^{<\omega}$ between
-  sequences of equal length, by recursion on $n$ as follows:
+  Dadas !!{structure}s $\Struct{M}$ e $\Struct{N}$, definimos
+  relações $I_n \subseteq \Domain M^{<\omega} \times \Domain N^{<\omega}$ entre
+  sequências de mesmo comprimento, por recursão em $n$, do seguinte modo:
    \begin{enumerate}
-   \item $I_0(\mathbf{a},\mathbf{b})$ if and only if $\mathbf{a}$ and
-     $\mathbf{b}$ satisfy the same atomic !!{formula}s in  $\Struct{M}$
-     and  $\Struct{N}$; O.s.\@, if $s_1(x_i) = a_i$ and $s_2(x_i) =
-     b_i$ and $!A$ is atomic with all !!{variable}s among
-     $x_1$, \dots,~$x_n$, then $\Sat{M}{!A}[s_1]$ if and
-     only if~$\Sat{N}{!A}[s_2]$.
-   \item $I_{n+1} (\mathbf{a},\mathbf{b})$ if and only if for every
-     $a\in \Domain M$ there is a $b\in \Domain N$ such that $I_n
-     (\mathbf{a}a,\mathbf{b}b)$, and vice-versa.
+   \item $I_0(\mathbf{a},\mathbf{b})$ se, e somente se, $\mathbf{a}$ e
+     $\mathbf{b}$ satisfizerem as mesmas !!{formula}s atômicas em $\Struct{M}$
+     e $\Struct{N}$; isto é, se $s_1(x_i) = a_i$ e $s_2(x_i) =
+     b_i$, e $!A$ for atômica com todas as !!{variable}s entre
+     $x_1$, \dots,~$x_n$, então $\Sat{M}{!A}[s_1]$ se,
+     e somente se,~$\Sat{N}{!A}[s_2]$.
+   \item $I_{n+1} (\mathbf{a},\mathbf{b})$ se, e somente se, para todo
+     $a\in \Domain M$ houver um $b\in \Domain N$ tal que $I_n
+     (\mathbf{a}a,\mathbf{b}b)$, e vice-versa.
    \end{enumerate}
 \end{defn}
 
 
 \begin{defn}
-  Write $\Struct{M} \approx_n \Struct{N}$ if
-  $I_n(\emptyseq,\emptyseq)$ holds of $\Struct{M}$ and
-  $\Struct{N}$ (where $\emptyseq$ is the empty sequence).
+  Escrevemos $\Struct{M} \approx_n \Struct{N}$ se
+  $I_n(\emptyseq,\emptyseq)$ valer para $\Struct{M}$ e
+  $\Struct{N}$ (onde $\emptyseq$ é a sequência vazia).
 \end{defn}
 
 \begin{thm}\ollabel{thm:b-n-f}
-  Let $\Lang{L}$ be a purely relational !!{language}. Then $I_n
-  (\mathbf{a},\mathbf{b})$ implies that for every $!A$ such that
-  $\QuantRank{!A} \le n$, we have $\Sat{M}{!A}[\mathbf{a}]$ if and
-  only if $\Sat{N}{!A}[\mathbf{b}]$ (where again $\mathbf{a}$
-  satisfies $!A$ if any $s$ such that $s(x_i) = a_i$ satisfies
-  $!A$). Moreover, if $\Lang{L}$ is finite, the converse also holds.
+  Seja $\Lang{L}$ uma !!{language} puramente relacional. Então $I_n
+  (\mathbf{a},\mathbf{b})$ implica que, para todo $!A$ tal que
+  $\QuantRank{!A} \le n$, temos $\Sat{M}{!A}[\mathbf{a}]$ se, e
+  somente se, $\Sat{N}{!A}[\mathbf{b}]$ (onde, novamente, $\mathbf{a}$
+  satisfaz $!A$ se qualquer $s$ tal que $s(x_i) = a_i$ satisfizer
+  $!A$). Além disso, se $\Lang{L}$ for finita, a recíproca também vale.
 \end{thm}
 
 \begin{proof}
-  The proof that $I_n(\mathbf{a},\mathbf{b})$ implies that
-  $\mathbf{a}$ and $\mathbf{b}$ satisfy the same !!{formula}s of
-  quantifier rank no greater than $n$ is by an easy induction on
-  $!A$. For the converse we proceed by induction on $n$, using
-  \olref{prop:qr-finite}, which ensures that for each $n$
-  there are at most finitely many non-equivalent !!{formula}s of that
-  quantifier rank.
+  A demonstração de que $I_n(\mathbf{a},\mathbf{b})$ implica que
+  $\mathbf{a}$ e $\mathbf{b}$ satisfazem as mesmas !!{formula}s de
+  posto de quantificadores não maior que $n$ é feita por uma indução
+  simples em $!A$. Para a recíproca, procedemos por indução em $n$, usando
+  \olref{prop:qr-finite}, que garante que, para cada $n$,
+  há no máximo finitamente muitas !!{formula}s não equivalentes desse
+  posto de quantificadores.
 
-  For $n=0$ the hypothesis that $\mathbf{a}$ and $\mathbf{b}$ satisfy
-  the same quantifier-free !!{formula}s gives that they satisfy the same
-  atomic ones, so that $I_0(\mathbf{a},\mathbf{b})$.
+  Para $n=0$, a hipótese de que $\mathbf{a}$ e $\mathbf{b}$ satisfazem
+  as mesmas !!{formula}s sem quantificadores implica que elas satisfazem
+  as mesmas atômicas, de modo que $I_0(\mathbf{a},\mathbf{b})$.
 
-  For the $n+1$ case, suppose that $\mathbf{a}$ and $\mathbf{b}$
-  satisfy the same !!{formula}s of quantifier rank no greater than
-  $n+1$; in order to show that $I_{n+1}(\mathbf{a},\mathbf{b})$
-  suffices to show that for each $a \in \Domain M$ there is a $b \in
-  \Domain N$ such that $I_n(\mathbf{a}a,\mathbf{b}b)$, and by the
-  inductive hypothesis again suffices to show that for each $a \in
-  \Domain M$ there is a $b \in \Domain N$ such that $\mathbf{a}a$ and
-  $\mathbf{b}b$ satisfy the same !!{formula}s of quantifier rank no
-  greater than $n$.
+  Para o caso $n+1$, suponha que $\mathbf{a}$ e $\mathbf{b}$
+  satisfaçam as mesmas !!{formula}s de posto de quantificadores não maior
+  que $n+1$; para mostrar que $I_{n+1}(\mathbf{a},\mathbf{b})$, basta
+  mostrar que, para cada $a \in \Domain M$, há um $b \in
+  \Domain N$ tal que $I_n(\mathbf{a}a,\mathbf{b}b)$ e, pela hipótese
+  de indução, basta novamente mostrar que, para cada $a \in
+  \Domain M$, há um $b \in \Domain N$ tal que $\mathbf{a}a$ e
+  $\mathbf{b}b$ satisfazem as mesmas !!{formula}s de posto de
+  quantificadores não maior que $n$.
 
-  Given $a \in \Domain M$, let $!T^a_n$ be set of !!{formula}s
-  $!B(x,\mathbf{y})$ of rank no greater than $n$ satisfied by
-  $\mathbf{a}a$ in $\Struct{M}$; $!T^a_n$ is finite, so we can
-  assume it is a single first-order !!{formula}. It follows that
-  $\mathbf{a}$ satisfies $\lexists[x][!T^a_n(x,\mathbf{y})]$, which
-  has quantifier rank no greater than $n+1$. By hypothesis
-  $\mathbf{b}$ satisfies the same !!{formula} in $\Struct{N}$, so that
-  there is a $b \in \Domain N$ such that $\mathbf{b}b$ satisfies
-  $!T^a_n$; in particular, $\mathbf{b}b$ satisfies the same
-  !!{formula}s of quantifier rank no greater than $n$ as
-  $\mathbf{a}a$. Similarly one shows that for every $b \in \Domain N$
-  there is $a\in \Domain M$ such that $\mathbf{a}a$ and $\mathbf{b}b$
-  satisfy the same !!{formula}s of quantifier rank no greater than $n$,
-  which completes the proof.
+  Dado $a \in \Domain M$, seja $!T^a_n$ conjunto de !!{formula}s
+  $!B(x,\mathbf{y})$ de posto não maior que $n$ satisfeitas por
+  $\mathbf{a}a$ em $\Struct{M}$; $!T^a_n$ é finito, portanto podemos
+  supor que seja uma única !!{formula} de primeira ordem. Segue-se que
+  $\mathbf{a}$ satisfaz $\lexists[x][!T^a_n(x,\mathbf{y})]$, que
+  tem posto de quantificadores não maior que $n+1$. Por hipótese,
+  $\mathbf{b}$ satisfaz a mesma !!{formula} em $\Struct{N}$, de modo que
+  há um $b \in \Domain N$ tal que $\mathbf{b}b$ satisfaz
+  $!T^a_n$; em particular, $\mathbf{b}b$ satisfaz as mesmas
+  !!{formula}s de posto de quantificadores não maior que $n$ que
+  $\mathbf{a}a$. De modo semelhante, mostra-se que, para todo $b \in \Domain N$,
+  há $a\in \Domain M$ tal que $\mathbf{a}a$ e $\mathbf{b}b$
+  satisfazem as mesmas !!{formula}s de posto de quantificadores não maior
+  que $n$, o que conclui a demonstração.
 \end{proof}
 
 \begin{cor}\ollabel{cor:b-n-f}
-  If $\Struct{M}$ and $\Struct{N}$ are purely relational !!{structure}s
-  in a finite !!{language}, then $\Struct{M} \approx_n\Struct{N}$ if and
-  only if $\Struct{M} \elemequiv[n] \Struct{N}$. In particular
-  $\Struct{M} \elemequiv \Struct{N}$ if and only if for each $n$,
+  Se $\Struct{M}$ e $\Struct{N}$ forem !!{structure}s puramente relacionais
+  em uma !!{language} finita, então $\Struct{M} \approx_n\Struct{N}$ se,
+  e somente se, $\Struct{M} \elemequiv[n] \Struct{N}$. Em particular,
+  $\Struct{M} \elemequiv \Struct{N}$ se, e somente se, para cada $n$,
   $\Struct{M} \approx_n \Struct{N}$ .
 \end{cor}
 

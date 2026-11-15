@@ -6,12 +6,12 @@
 
 \begin{document}
 
-\olfileid{nml}{seq}{mru}
+\olfileid[pt]{nml}{seq}{mru}
 
-\olsection{Rules for Other Accessibility Relations}
+\olsection{Regras para outras relações de acessibilidade}
 
-In order to deal with logics determined by special accessibility
-relations, we consider the additional rules in \olref{tab:more-rules}.
+Para tratar de lógicas determinadas por relações de acessibilidade
+especiais, consideramos as regras adicionais de \olref{tab:more-rules}.
 
 \iftag{prvBox}{\iftag{prvDiamond}{% [] and <> primitive
 \begin{table}
@@ -74,7 +74,7 @@ relations, we consider the additional rules in \olref{tab:more-rules}.
     \hline
     \end{tabular}
   \end{center}
-  \caption{More modal rules.}
+  \caption{Mais regras modais.}
   \ollabel{tab:more-rules}
 \end{table}
 }{ % only [] primitive
@@ -115,7 +115,7 @@ relations, we consider the additional rules in \olref{tab:more-rules}.
     \hline
     \end{tabular}
   \end{center}
-  \caption{More modal rules.}
+  \caption{Mais regras modais.}
   \ollabel{tab:more-rules}
 \end{table}
 }}{% only <> primitive
@@ -157,21 +157,21 @@ relations, we consider the additional rules in \olref{tab:more-rules}.
     \hline
     \end{tabular}
   \end{center}
-  \caption{More modal rules.}
+  \caption{Mais regras modais.}
   \ollabel{tab:more-rules}
 \end{table}
 }
 
-Adding these rules results in systems that are sound and complete for
-the logics given in \olref{tab:logics-rules}.
+O acréscimo dessas regras resulta em sistemas corretos e completos para
+as lógicas apresentadas em \olref{tab:logics-rules}.
 
 \begin{table}
   \begin{center}
     \begin{tabular}{lll}
       \hline
-      Logic & $R$ is \dots & Rules\\
+      Lógica & $R$ é \dots & Regras\\
       \hline
-      $\Log{T} = \Log{KT}$ & reflexive & $\Box$,
+      $\Log{T} = \Log{KT}$ & reflexiva & $\Box$,
       \iftag{prvBox}{T$\Box$}{}%
       \iftag{notprvBox,notprvDiamond}{}{, }%
       \iftag{prvDiamond}{T$\Diamond$}{}
@@ -180,48 +180,48 @@ the logics given in \olref{tab:logics-rules}.
       \iftag{prvBox}{%
         \iftag{prvDiamond}{D}{D$\Box$}}{D$\Diamond$}
       \\ \hline
-      $\Log{K4}$ & transitive & $\Box$,
+      $\Log{K4}$ & transitiva & $\Box$,
       \iftag{prvBox}{4$\Box$}{}% 
       \iftag{notprvBox,notprvDiamond}{}{, }%
       \iftag{prvDiamond}{4$\Diamond$}{}
       \\ \hline
-      $\Log{B} = \Log{KTB}$ & reflexive, & $\Box$,
+      $\Log{B} = \Log{KTB}$ & reflexiva, & $\Box$,
       \iftag{prvBox}{T$\Box$}{}%
       \iftag{notprvBox,notprvDiamond}{}{, }%
       \iftag{prvDiamond}{T$\Diamond$}{}\\
-      & symmetric &
+      & simétrica &
       \iftag{prvBox}{B$\Box$}{}%
       \iftag{notprvBox,notprvDiamond}{}{, }%
       \iftag{prvDiamond}{B$\Diamond$}{}
       \\ \hline
-      $\Log{S4} = \Log{KT4}$ & reflexive, & $\Box$,
+      $\Log{S4} = \Log{KT4}$ & reflexiva, & $\Box$,
       \iftag{prvBox}{T$\Box$}{}%
       \iftag{notprvBox,notprvDiamond}{}{, }%
       \iftag{prvDiamond}{T$\Diamond$}{}\\
-      & transitive &
+      & transitiva &
       \iftag{prvBox}{4$\Box$}{}%
       \iftag{notprvBox,notprvDiamond}{}{, }%
       \iftag{prvDiamond}{4$\Diamond$}{}
       \\ \hline
-      $\Log{S5} = \Log{KT5}$ & reflexive, & $\Box$,
+      $\Log{S5} = \Log{KT5}$ & reflexiva, & $\Box$,
       \iftag{prvBox}{T$\Box$}{}%
       \iftag{notprvBox,notprvDiamond}{}{, }%
       \iftag{prvDiamond}{T$\Diamond$}{}\\
-      & transitive, &
+      & transitiva, &
       \iftag{prvBox}{5$\Box$}{}%
       \iftag{notprvBox,notprvDiamond}{}{, }%
       \iftag{prvDiamond}{5$\Diamond$}{}\\
-      &  euclidean &
+      & euclidiana &
       \\ \hline
     \end{tabular}
   \end{center}
-  \caption{Sequent rules for various modal logics.}
+  \caption{Regras de sequentes para várias lógicas modais.}
   \ollabel{tab:logics-rules}
 \end{table}
 
 \iftag{prvBox}{
 \begin{ex}
-  We give a sequent !!{derivation} that shows $\Log{K4} \Proves \Ax{4}$, O.s.\@,
+  Apresentamos uma !!{derivation} por sequentes que mostra $\Log{K4} \Proves \Ax{4}$, isto é,
   $\Box!A \lif \Box\Box!A$.
   \begin{prooftree}
     \Axiom$\Box!A \fCenter \Box!A$
@@ -233,7 +233,7 @@ the logics given in \olref{tab:logics-rules}.
 \end{ex}
 }{\iftag{prvDiamond}{
 \begin{ex}
-  We give a sequent !!{derivation} that shows $\Log{K4} \Proves \Ax{4}$, O.s.\@,
+  Apresentamos uma !!{derivation} por sequentes que mostra $\Log{K4} \Proves \Ax{4}$, isto é,
   $\Diamond\Diamond!A \lif \Diamond!A$.
   \begin{prooftree}
     \Axiom$\Diamond!A \fCenter \Diamond!A$
@@ -247,7 +247,7 @@ the logics given in \olref{tab:logics-rules}.
 
 \iftag{prvBox}{\iftag{prvDiamond}{% <> and [] primitive
 \begin{ex}
-  We give a sequent !!{derivation} that shows $\Log{S5} \Proves \Ax{5}$, O.s.\@,
+  Apresentamos uma !!{derivation} por sequentes que mostra $\Log{S5} \Proves \Ax{5}$, isto é,
   $\Diamond!A \lif \Box\Diamond!A$.
   \begin{prooftree}
     \Axiom$\Diamond!A \fCenter \Diamond!A$
@@ -259,7 +259,7 @@ the logics given in \olref{tab:logics-rules}.
 \end{ex}
 }{% only Box primitive
 \begin{ex}
-  We give a sequent !!{derivation} that shows $\Log{S5} \Proves \Ax{5}$, O.s.\@,
+  Apresentamos uma !!{derivation} por sequentes que mostra $\Log{S5} \Proves \Ax{5}$, isto é,
   $\Diamond!A \lif \Box\Diamond!A$.
   \begin{prooftree}
     \Axiom$\Box\lnot!A \fCenter \Box\lnot!A$
@@ -275,7 +275,7 @@ the logics given in \olref{tab:logics-rules}.
 \end{ex}
 }}{% only <> prmitive
 \begin{ex}
-  We give a sequent !!{derivation} that shows $\Log{S5} \Proves \Ax{5}$, O.s.\@,
+  Apresentamos uma !!{derivation} por sequentes que mostra $\Log{S5} \Proves \Ax{5}$, isto é,
   $\Diamond!A \lif \Box\Diamond!A$.
   \begin{prooftree}
     \Axiom$\Diamond!A \fCenter\Diamond!A$
@@ -291,10 +291,10 @@ the logics given in \olref{tab:logics-rules}.
 \end{ex}
 }
 \begin{ex}
-The sequent calculus for \Log{S5} is not complete without the \Cut{}
-rule; p.ex., \iftag{prvBox}{$\Diamond\Box !A \lif !A$}{$!A \lif
-\Box\Diamond !A$}, which is valid in~$\Log{S5}$, has no proof
-without~\Cut. Here is !!a{derivation} using~\Cut:
+O cálculo de sequentes para \Log{S5} não é completo sem a regra
+\Cut{}; por exemplo, \iftag{prvBox}{$\Diamond\Box !A \lif !A$}{$!A \lif
+\Box\Diamond !A$}, que é válida em~$\Log{S5}$, não possui uma prova
+sem~\Cut. Eis uma !!a{derivation} que usa~\Cut:
 \begin{prooftree}
 \iftag{prvBox}{\iftag{prvDiamond}{% both [] and <> primitive
 \Axiom$\Box !A \fCenter \Box!A$
@@ -350,7 +350,7 @@ without~\Cut. Here is !!a{derivation} using~\Cut:
 \end{ex}
 
 \begin{prob}
-Give sequent !!{derivation}s that show the following:
+Forneça !!{derivation}s por sequentes que mostrem o seguinte:
   \begin{enumerate}
   \item $\Log{KT5} \Proves \Ax{B}$;
   \item $\Log{KT5} \Proves \Ax{4}$;

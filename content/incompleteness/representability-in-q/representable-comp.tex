@@ -6,41 +6,41 @@
 
 \begin{document}
 
-\olfileid{inc}{req}{rpc}
-\olsection{Functions Representable in $\Th{Q}$ are Computable}
+\olfileid[pt]{inc}{req}{rpc}
+\olsection{Funções representáveis em $\Th{Q}$ são computáveis}
 
-We'll prove that every function that is representable in~$\Th{Q}$ is
-computable. We first have to establish a lemma about functions
-representable in~$\Th{Q}$.
+Provaremos que toda função representável em~$\Th{Q}$ é computável.
+Primeiro, precisamos estabelecer um lema sobre funções representáveis
+em~$\Th{Q}$.
 
 \begin{lem}\ollabel{lem:rep-q}
-  If $f(x_0,
-  \dots, x_k)$ is representable in~$\Th{Q}$, there is
-  !!a{formula}~$!A(x_0, \dots, x_k, y)$ such that
+  Se $f(x_0,
+  \dots, x_k)$ é representável em~$\Th{Q}$, existe
+  !!a{formula}~$!A(x_0, \dots, x_k, y)$ tal que
   \[
   \Th{Q} \Proves !A_f(\num{n_0}, \dots, \num{n_k}, \num{m})
-  \quad\text{iff}\quad m = f(n_0, \dots, n_k).
+  \quad\text{sse}\quad m = f(n_0, \dots, n_k).
   \]
 \end{lem}
 
 \begin{proof}
-  The ``if'' part is
-\olref[int]{defn:representable-fn}\olref[int]{defn:rep:a}. The ``only
-if'' part is seen as follows: Suppose $\Th{Q} \Proves !A_f(\num{n_0},
-\dots, \num{n_k}, \num{m})$ but $m \neq f(n_0, \dots, n_k)$. Let $l =
-f(n_0, \dots, n_k)$. By
+  A parte ``se'' é
+\olref[int]{defn:representable-fn}\olref[int]{defn:rep:a}. A parte
+``somente se'' é vista da seguinte maneira: suponha que
+$\Th{Q} \Proves !A_f(\num{n_0}, \dots, \num{n_k}, \num{m})$, mas
+$m \neq f(n_0, \dots, n_k)$. Seja $l = f(n_0, \dots, n_k)$. Por
 \olref[int]{defn:representable-fn}\olref[int]{defn:rep:a}, $\Th{Q}
-\Proves !A_f(\num{n_0}, \dots, \num{n_k}, \num{l})$. By
+\Proves !A_f(\num{n_0}, \dots, \num{n_k}, \num{l})$. Por
 \olref[int]{defn:representable-fn}\olref[int]{defn:rep:b},
 $\lforall[y][(!A_f(\num{n_0}, \dots, \num{n_k}, y) \lif \num{l} =
-y)]$. Using logic and the assumption that $\Th{Q} \Proves
-!A_f(\num{n_0}, \dots, \num{n_k}, \num{m})$, we get that $\Th{Q}
-\Proves \eq[\num{l}][\num{m}]$. On the other hand, by
+y)]$. Usando a lógica e a hipótese de que $\Th{Q} \Proves
+!A_f(\num{n_0}, \dots, \num{n_k}, \num{m})$, obtemos que $\Th{Q}
+\Proves \eq[\num{l}][\num{m}]$. Por outro lado, por
 \olref[bre]{lem:q-proves-neq}, $\Th{Q} \Proves
-\eq/[\num{l}][\num{m}]$. So $\Th{Q}$ is inconsistent. But that is
-impossible, since $\Th{Q}$ is satisfied by the standard model (see
-\olref[int][def]{def:standard-model}), $\Sat{N}{\Th{Q}}$, and
-satisfiable theories are always consistent by the Soundness Theorem
+\eq/[\num{l}][\num{m}]$. Logo, $\Th{Q}$ é inconsistente. Mas isso é
+impossível, pois $\Th{Q}$ é satisfeita pelo modelo padrão (veja
+\olref[int][def]{def:standard-model}), $\Sat{N}{\Th{Q}}$, e
+sistemas satisfazíveis são sempre consistentes pelo Teorema da Correção
 (\tagrefs{prfAX/{fol:axd:sou:cor:consistency-soundness},
 prfSC/{fol:seq:sou:cor:consistency-soundness},
 prfND/{fol:ntd:sou:cor:consistency-soundness},
@@ -48,63 +48,64 @@ prfTab/{fol:tab:sou:cor:consistency-soundness}}).
 \end{proof}
 
 \begin{lem}
-Every function that is representable in $\Th{Q}$ is computable.
+Toda função representável em $\Th{Q}$ é computável.
 \end{lem}
 
 \begin{proof}
-Let's first give the intuitive idea for why this is true. To
-compute~$f$, we do the following.  List all the possible
-!!{derivation}s~$\delta$ in the language of arithmetic. This is
-possible to do mechanically. For each one, check if it is
-!!a{derivation} of !!a{formula} of the form~$!A_f(\num{n_0}, \dots,
-\num{n_k}, \num{m})$ (the !!{formula} representing $f$ in~$\Th{Q}$
-from \olref{lem:rep-q}). If it is, $m = f(n_0, \dots, n_k)$ by
-\olref{lem:rep-q}, and we've found the value of~$f$. The search
-terminates because $\Th{Q} \Proves !A_f(\num{n_0}, \dots, \num{n_k},
-\num{f(n_0, \dots, n_k)})$, so eventually we find a $\delta$ of the
-right sort.
+Comecemos pela ideia intuitiva de por que isso é verdade. Para
+computar~$f$, fazemos o seguinte. Listamos todas as !!{derivation}s
+possíveis~$\delta$ na linguagem da aritmética. Isso pode ser feito
+mecanicamente. Para cada uma, verificamos se é !!a{derivation} de
+!!a{formula} da forma~$!A_f(\num{n_0}, \dots,
+\num{n_k}, \num{m})$ (a !!{formula} que representa $f$ em~$\Th{Q}$,
+de \olref{lem:rep-q}). Se for, $m = f(n_0, \dots, n_k)$ por
+\olref{lem:rep-q}, e encontramos o valor de~$f$. A busca termina porque
+$\Th{Q} \Proves !A_f(\num{n_0}, \dots, \num{n_k},
+\num{f(n_0, \dots, n_k)})$; portanto, acabamos encontrando um $\delta$
+do tipo correto.
 
-This is not quite precise because our procedure operates on
-!!{derivation}s and !!{formula}s instead of just on numbers, and we
-haven't explained exactly why ``listing all possible !!{derivation}s''
-is mechanically possible.  But as we've seen, it is possible to code
-terms, !!{formula}s, and !!{derivation}s by G\"odel numbers. We've
-also introduced a precise model of computation, the general recursive
-functions. And we've seen that the relation $\Prf[\Th{Q}](d,y)$, which
-holds iff $d$ is the G\"odel number of !!a{derivation} of the !!{formula}
-with G\"odel number~$y$ from the axioms of~$\Th{Q}$, is (primitive)
-recursive. Other primitive recursive functions we'll need are
-$\fn{num}$ (\olref[art][trm]{prop:num-primrec}) and $\fn{Subst}$
-(\olref[art][sub]{prop:subst-primrec}).  From these, it is possible to
-define~$f$ by minimization; thus, $f$ is recursive.
+Isso ainda não é totalmente preciso, pois nosso procedimento opera
+sobre !!{derivation}s e !!{formula}s, e não apenas sobre números, e
+não explicamos exatamente por que é mecanicamente possível ``listar
+todas as !!{derivation}s possíveis''. Mas, como vimos, é possível
+codificar termos, !!{formula}s e !!{derivation}s por números de G\"odel.
+Também introduzimos um modelo preciso de computação, as funções
+recursivas gerais. E vimos que a relação $\Prf[\Th{Q}](d,y)$, que vale
+sse $d$ é o número de G\"odel de !!a{derivation} da !!{formula} com
+número de G\"odel~$y$ a partir dos axiomas de~$\Th{Q}$, é recursiva
+(primitiva). Outras funções recursivas primitivas de que precisaremos
+são $\fn{num}$ (\olref[art][trm]{prop:num-primrec}) e $\fn{Subst}$
+(\olref[art][sub]{prop:subst-primrec}). A partir delas, é possível
+definir~$f$ por minimização; portanto, $f$ é recursiva.
 
-First, define
+Primeiro, defina
 \begin{multline*}
   A(n_0, \dots, n_k, m) = \\
   \fn{Subst}(\fn{Subst}(\dots\fn{Subst}(\Gn{!A_f}, \fn{num}(n_0), \Gn{x_0}),\\ \dots),
   \fn{num}(n_k),  \Gn{x_k}), \fn{num}(m), \Gn{y})
 \end{multline*}
-This looks complicated, but it's just the function $A(n_0, \dots, n_k,
+Isso parece complicado, mas é apenas a função $A(n_0, \dots, n_k,
 m) = \Gn{!A_f(\num{n_0}, \dots, \num{n_k}, \num{m})}$.
 
-Now, consider the relation~$R(n_0, \dots, n_k, s)$ which holds if
-$(s)_0$ is the G\"odel number of !!a{derivation} from~$\Th{Q}$ of
+Considere agora a relação~$R(n_0, \dots, n_k, s)$, que vale se
+$(s)_0$ é o número de G\"odel de !!a{derivation} a partir de~$\Th{Q}$ de
 $!A_f(\num{n_0}, \dots, \num{n_k}, \num{(s)_1})$:
 \[
-R(n_0, \dots, n_k, s) \quad\text{iff}\quad \Prf[\Th{Q}]((s)_0, A(n_0,
+R(n_0, \dots, n_k, s) \quad\text{sse}\quad \Prf[\Th{Q}]((s)_0, A(n_0,
 \dots, n_k, (s)_1))
 \]
-If we can find an~$s$ such that $R(n_0, \dots, n_k, s)$ holds, we have
-found a pair of numbers---$(s)_0$ and~$(s)_1$---such that $(s)_0$ is
-the G\"odel number of !!a{derivation} of~$A_f(\num{n_0}, \dots,
-\num{n_k}, (s)_1)$. So looking for~$s$ is like looking for the pair
-$d$ and $m$ in the informal proof. And a computable function that
-``looks for'' such an $s$ can be defined by regular minimization.
-Note that $R$ is regular: for every $n_0$, \dots, $n_k$, there is
-!!a{derivation}~$\delta$ of $\Th{Q} \Proves !A_f(\num{n_0}, \dots,
-\num{n_k}, \num{f(n_0, \dots, n_k)})$, so $R(n_0, \dots, n_k, s)$
-holds for $s = \tuple{\Gn{\delta}, f(n_0, \dots, n_k)}$.  So, we can
-write $f$ as
+Se encontrarmos um~$s$ tal que $R(n_0, \dots, n_k, s)$ vale, teremos
+encontrado um par de números---$(s)_0$ e~$(s)_1$---tal que $(s)_0$ é o
+número de G\"odel de !!a{derivation} de~$A_f(\num{n_0}, \dots,
+\num{n_k}, (s)_1)$. Assim, procurar~$s$ equivale a procurar o par $d$
+e $m$ na prova informal. E uma função computável que ``procure'' tal
+$s$ pode ser definida por minimização regular. Observe que $R$ é
+regular: para todos $n_0$, \dots, $n_k$, existe !!a{derivation}~$\delta$
+de $\Th{Q} \Proves !A_f(\num{n_0}, \dots,
+\num{n_k}, \num{f(n_0, \dots, n_k)})$; logo,
+$R(n_0, \dots, n_k, s)$ vale para
+$s = \tuple{\Gn{\delta}, f(n_0, \dots, n_k)}$. Portanto, podemos
+escrever $f$ como
 \[
 f(n_0,\dots,n_{k}) = (\umin{s}{R(n_0, \dots, n_k, s)})_1.
 \]

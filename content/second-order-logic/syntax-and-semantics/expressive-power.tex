@@ -6,90 +6,87 @@
 
 \begin{document}
 
-\olfileid{sol}{syn}{exp}
-\olsection{Expressive Power}
+\olfileid[pt]{sol}{syn}{exp}
+\olsection{Poder expressivo}
 
 \begin{explain}
-Quantification over second-order variables is responsible for an
-immense increase in the expressive power of the language over that of
-first-order logic.  Second-order existential quantification lets us
-say that functions or relations with certain properties exist. In
-first-order logic, the only way to do that is to specify a non-logical
-symbol (O.s.\@, !!a{function} or !!{predicate}) for this
-purpose. Second-order universal quantification lets us say that all
-subsets of, relations on, or functions from the !!{domain} to the
-!!{domain} have a property.  In first-order logic, we can only say
-that the subsets, relations, or functions assigned to one of the
-non-logical symbols of the language have a property.  And when we say
-that subsets, relations, functions exist that have a property, or that
-all of them have it, we can use second-order quantification in
-specifying this property as well. This lets us define relations not
-definable in first-order logic, and express properties of the domain
-not expressible in first-order logic.
+A quantificação sobre variáveis de segunda ordem é responsável por um
+enorme aumento no poder expressivo da linguagem em relação ao da lógica de
+primeira ordem. A quantificação existencial de segunda ordem nos permite
+dizer que existem funções ou relações com certas propriedades. Na lógica de
+primeira ordem, a única maneira de fazer isso é especificar um símbolo não
+lógico (isto é, !!a{function} ou !!{predicate}) para esse fim. A
+quantificação universal de segunda ordem nos permite dizer que todos os
+subconjuntos e relações no !!{domain}, ou todas as funções do
+!!{domain} para ele, têm uma propriedade. Na lógica de primeira
+ordem, só podemos dizer que têm uma propriedade os subconjuntos, relações
+ou funções atribuídos a um dos símbolos não lógicos da linguagem. E, ao
+dizer que existem subconjuntos, relações ou funções com uma propriedade,
+ou que todos eles a têm, também podemos usar quantificação de segunda ordem
+para especificar essa propriedade. Isso nos permite definir relações não
+definíveis na lógica de primeira ordem e expressar propriedades do domínio
+que nela não são expressáveis.
 \end{explain}
 
 \begin{defn}
-If $\Struct{M}$ is !!a{structure} for a language~$\Lang{L}$, a
-relation~$R \subseteq \Domain{M}^2$ is \emph{definable} in~$\Lang{L}$
-if there is some !!{formula}~$!A_R(x, y)$ with only the variables $x$
-and~$y$ free, such that $R(a, b)$ holds (O.s.\@, $\tuple{a,b} \in R$)
-iff $\Sat{M}{!A_R(x, y)}[s]$ for $s(x) = a$ and $s(y) = b$.
+Se $\Struct{M}$ é !!a{structure} para uma linguagem~$\Lang{L}$, uma
+relação~$R \subseteq \Domain{M}^2$ é \emph{definível} em~$\Lang{L}$ se
+existe alguma !!{formula}~$!A_R(x, y)$ cujas únicas variáveis livres são
+$x$ e~$y$, tal que $R(a, b)$ vale (isto é, $\tuple{a,b} \in R$) sse
+$\Sat{M}{!A_R(x, y)}[s]$ para $s(x) = a$ e $s(y) = b$.
 \end{defn}
 
 \begin{ex}
-In first-order logic we can define the identity
-relation~$\Id{\Domain{M}}$ (O.s.\@, $\Setabs{\tuple{a,a}}{a \in
-  \Domain{M}}$) by the formula $\eq[x][y]$.  In
-second-order logic, we can define this relation
-\emph{without~$\eq$}. For if $a$ and $b$ are the same !!{element}
-of~$\Domain{M}$, then they are !!{element}s of the same subsets
-of~$\Domain{M}$ (since sets are determined by their
-!!{element}s). Conversely, if $a$ and $b$ are different, then they are
-not !!{element}s of the same subsets: p.ex., $a \in \{a\}$ but $b
-\notin \{a\}$ if $a \neq b$.  So ``being !!{element}s of the same
-subsets of~$\Domain{M}$'' is a relation that holds of $a$ and $b$ iff
-$a = b$. It is a relation that can be expressed in second-order logic,
-since we can quantify over all subsets of~$\Domain{M}$. Hence, the
-following !!{formula} defines $\Id{\Domain{M}}$:
+Na lógica de primeira ordem, podemos definir a relação de identidade
+~$\Id{\Domain{M}}$ (isto é, $\Setabs{\tuple{a,a}}{a \in
+  \Domain{M}}$) pela fórmula $\eq[x][y]$. Na lógica de segunda ordem,
+podemos definir essa relação \emph{sem~$\eq$}. Pois, se $a$ e $b$ são o
+mesmo !!{element} de~$\Domain{M}$, então são !!{element}s dos mesmos
+subconjuntos de~$\Domain{M}$ (uma vez que conjuntos são determinados por
+seus !!{element}s). Reciprocamente, se $a$ e $b$ são diferentes, então não
+são !!{element}s dos mesmos subconjuntos: por exemplo, $a \in \{a\}$, mas
+$b \notin \{a\}$ se $a \neq b$. Assim, ``serem !!{element}s dos mesmos
+subconjuntos de~$\Domain{M}$'' é uma relação que vale para $a$ e $b$ sse
+$a = b$. Trata-se de uma relação que pode ser expressa na lógica de segunda
+ordem, pois podemos quantificar sobre todos os subconjuntos de~$\Domain{M}$.
+Logo, a !!{formula} seguinte define $\Id{\Domain{M}}$:
 \[
 \lforall[X][(X(x) \liff X(y))]
 \]
 \end{ex}
 
 \begin{prob}
-Show that $\lforall[X][(X(x) \lif X(y))]$ (note:
-$\lif$ not~$\liff$!) defines $\Id{\Domain{M}}$.
+Mostre que $\lforall[X][(X(x) \lif X(y))]$ (observe:
+$\lif$, não~$\liff$!) define $\Id{\Domain{M}}$.
 \end{prob}
 
 \begin{ex}
-If $R$ is a two-place !!{predicate}, $\Assign{R}{M}$ is a two-place
-relation on~$\Domain{M}$.  Perhaps somewhat confusingly, we'll use $R$
-as the !!{predicate} for~$R$ and for the relation~$\Assign{R}{M}$
-itself.  The \emph{transitive closure}~$R^*$ of~$R$ is the relation
-that holds between $a$ and $b$ iff for some $c_1$, \dots, $c_k$,
-$R(a,c_1)$, $R(c_1, c_2)$, \dots, $R(c_k,b)$ holds. This includes the
-case if $k = 0$, O.s.\@, if $R(a,b)$ holds, so does $R^*(a,b)$. This
-means that $R \subseteq R^*$. In fact, $R^*$ is the smallest relation
-that includes~$R$ and that is transitive.  We can say in second-order
-logic that $X$ is a transitive relation that includes~$R$:
+Se $R$ é um !!{predicate} binário, $\Assign{R}{M}$ é uma relação binária
+em~$\Domain{M}$. De modo talvez um pouco confuso, usaremos $R$ tanto para o
+!!{predicate}~$R$ quanto para a própria relação~$\Assign{R}{M}$. O
+\emph{fecho transitivo}~$R^*$ de~$R$ é a relação que vale entre $a$ e $b$
+sse, para alguns $c_1$, \dots, $c_k$, valem $R(a,c_1)$, $R(c_1, c_2)$,
+\dots, $R(c_k,b)$. Isso inclui o caso $k = 0$, isto é, se $R(a,b)$ vale,
+então $R^*(a,b)$ também vale. Isso significa que $R \subseteq R^*$. De
+fato, $R^*$ é a menor relação que contém~$R$ e é transitiva. Podemos dizer,
+na lógica de segunda ordem, que $X$ é uma relação transitiva que contém~$R$:
 \begin{multline*}
   !B_R(X) \ident \lforall[x][\lforall[y][(R(x,y) \lif X(x, y))]] \land {}\\
 \lforall[x][\lforall[y][\lforall[z][((X(x,y) \land X(y,z)) \lif X(x,
       z))]]].
 \end{multline*}
-The first conjunct says that $R \subseteq X$ and the second
-that $X$ is transitive.
+A primeira conjunção diz que $R \subseteq X$, e a segunda, que $X$ é
+transitiva.
 
-To say that $X$ is the smallest such relation is to say that it is
-itself included in every relation that includes $R$ and is
-transitive. So we can define the transitive closure of~$R$ by the
-!!{formula}
+Dizer que $X$ é a menor relação desse tipo equivale a dizer que ela própria
+está contida em toda relação que contém $R$ e é transitiva. Assim, podemos
+definir o fecho transitivo de~$R$ pela !!{formula}
 \[
 R^*(X) \ident !B_R(X) \land \lforall[Y][(!B_R(Y) \lif
   \lforall[x][\lforall[y][(X(x, y) \lif Y(x,y))]])].
 \]
-We have $\Sat{M}{R^*(X)}[s]$ iff $s(X) = R^*$. The transitive closure
-of~$R$ cannot be expressed in first-order logic.
+Temos $\Sat{M}{R^*(X)}[s]$ sse $s(X) = R^*$. O fecho transitivo de~$R$ não
+pode ser expresso na lógica de primeira ordem.
 \end{ex}
 
 \end{document}

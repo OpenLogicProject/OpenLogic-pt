@@ -7,136 +7,139 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{axd}{sou}}
-      {\olfileid{pl}{axd}{sou}}
+      {\olfileid[pt]{fol}{axd}{sou}}
+      {\olfileid[pt]{pl}{axd}{sou}}
       
-\olsection{Soundness}
+\olsection{Correção}
 
 \begin{explain}
-!!^a{derivation} system, such as axiomatic deduction, is \emph{sound}
-if it cannot !!{derive} things that do not actually hold.  Soundness is
-thus a kind of guaranteed safety property for !!{derivation} systems.
-Depending on which proof theoretic property is in question, we would
-like to know for instance, that
+Um sistema com !!^a{derivation}, como a dedução axiomática, é \emph{correto}
+se não pode !!{derive} coisas que de fato não valem. A correção é,
+portanto, uma espécie de propriedade de segurança garantida para
+sistemas de !!{derivation}. Dependendo da propriedade da teoria da
+prova em questão, gostaríamos de saber, por exemplo, que
 \begin{enumerate}
-\item every !!{derivable}~$!A$ is valid;
-\item if $!A$ is !!{derivable} from some others~$\Gamma$, it is also a
-  consequence of them;
-\item if a set of !!{formula}s~$\Gamma$ is inconsistent, it is
-  unsatisfiable.
+\item todo !!{derivable}~$!A$ é válido;
+\item se $!A$ é !!{derivable} a partir de algumas outras
+  fórmulas~$\Gamma$, também é consequência delas;
+\item se um conjunto de !!{formula}s~$\Gamma$ é inconsistente, ele é
+  insatisfatível.
 \end{enumerate}
-These are important properties of !!a{derivation} system.  If any of them do
-not hold, the !!{derivation} system is deficient---it would !!{derive} too much.
-Consequently, establishing the soundness of !!a{derivation} system is of the
-utmost importance.
+Essas são propriedades importantes de um sistema com !!a{derivation}. Se
+alguma delas não vale, o sistema de !!{derivation} é deficiente---ele
+!!{derive} em excesso. Consequentemente, estabelecer a correção de
+um sistema com !!a{derivation} é de suma importância.
 \end{explain}
 
 \begin{prop}
-  If $!A$ is an axiom, then
+  Se $!A$ é um axioma, então
   \iftag{FOL}
-    {$\Sat{M}{!A}[s]$ for each !!{structure}~$\Struct{M}$ and assignment~$s$.}
-    {$\pSat{v}{!A}$ for each !!{valuation}~$\pAssign{v}$.}
+    {$\Sat{M}{!A}[s]$ para cada !!{structure}~$\Struct{M}$ e atribuição~$s$.}
+    {$\pSat{v}{!A}$ para cada !!{valuation}~$\pAssign{v}$.}
 \end{prop}
 
 \begin{proof}
-\iftag{FOL}{We have to verify that all the axioms are valid. For
-  instance, here is the case for \olref[qua]{ax:q1}: suppose $t$ is
-  !!{free for} $x$ in $!A$, and assume
-  $\Sat{M}{\lforall[x][!A]}[s]$. Then by definition of satisfaction,
-  for each $\varAssign{s'}{s}{x}$, also $\Sat{M}{!A}[s']$, and in particular
-  this holds when $s'(x) = \Value{t}{M}[s]$. By
+\iftag{FOL}{Temos de verificar que todos os axiomas são válidos. Por
+  exemplo, eis o caso de \olref[qua]{ax:q1}: suponha que $t$ seja
+  !!{free for} $x$ em $!A$ e assuma
+  $\Sat{M}{\lforall[x][!A]}[s]$. Então, pela definição de satisfação,
+  para cada $\varAssign{s'}{s}{x}$, também $\Sat{M}{!A}[s']$ e, em
+  particular, isso vale quando $s'(x) = \Value{t}{M}[s]$. Por
   \olref[syn][ext]{prop:ext-formulas},
-  $\Sat{M}{\Subst{!A}{t}{x}}[s]$. This shows that
-  $\Sat{M}{(\lforall[x][!A] \lif \Subst{!A}{t}{x})}[s]$.}{Do truth
-  tables for each axiom to verify that they are tautologies.}
+  $\Sat{M}{\Subst{!A}{t}{x}}[s]$. Isso mostra que
+  $\Sat{M}{(\lforall[x][!A] \lif \Subst{!A}{t}{x})}[s]$.}{Faça
+  tabelas de verdade para cada axioma a fim de verificar que são
+  tautologias.}
 \end{proof}
 
-\begin{thm}[Soundness]
+\begin{thm}[Correção]
 \ollabel{thm:soundness}
-If $\Gamma \Proves !A$ then $\Gamma \Entails !A$.
+Se $\Gamma \Proves !A$, então $\Gamma \Entails !A$.
 \end{thm}
 
 \begin{proof}
-By induction on the length of the !!{derivation} of $!A$ from
-$\Gamma$. If there are no steps justified by inferences, then all
-!!{formula}s in the !!{derivation} are either instances of axioms or are
-in~$\Gamma$. By the previous proposition, all the axioms are
-\iftag{FOL}{valid}{tautologies}, and hence if $!A$ is an axiom then
-$\Gamma \Entails !A$. If $!A \in \Gamma$, then trivially $\Gamma
-\Entails !A$.
+Por indução no comprimento da !!{derivation} de $!A$ a partir de
+$\Gamma$. Se não há passos justificados por inferências, então todas
+as !!{formula}s na !!{derivation} são instâncias de axiomas ou estão
+em~$\Gamma$. Pela proposição anterior, todos os axiomas são
+\iftag{FOL}{válidos}{tautologias}; portanto, se $!A$ é um axioma,
+$\Gamma \Entails !A$. Se $!A \in \Gamma$, então, trivialmente,
+$\Gamma \Entails !A$.
 
-If the last step of the !!{derivation} of~$!A$ is justified by modus
-ponens, then there are !!{formula}s $!B$ and $!B \lif !A$ in the
-!!{derivation}, and the induction hypothesis applies to the part of
-the !!{derivation} ending in those !!{formula}s (since they contain at
-least one fewer step justified by an inference).  So, by induction
-hypothesis, $\Gamma \Entails !B$ and $\Gamma \Entails !B \lif
-!A$. Then $\Gamma \Entails !A$ by
+Se o último passo da !!{derivation} de~$!A$ é justificado por modus
+ponens, então há !!{formula}s $!B$ e $!B \lif !A$ na !!{derivation}, e
+a hipótese de indução se aplica à parte da !!{derivation} que termina
+nessas !!{formula}s (pois essa parte contém pelo menos um passo a menos
+justificado por uma inferência). Assim, pela hipótese de indução,
+$\Gamma \Entails !B$ e $\Gamma \Entails !B \lif !A$. Então, $\Gamma
+\Entails !A$ por
 \iftag{FOL}
       {\olref[syn][sem]{thm:sem-deduction}}
       {\olref[pl][syn][sem]{thm:sem-deduction}}.
 
-\iftag{FOL}{Now suppose the last step is justified by
-\QR. Then that step has the form $!C \lif \lforall[x][B(x)]$ and
-there is a preceding step $!C \lif !B(c)$ with $c$ not in $\Gamma$,
-$!C$, or $\lforall[x][B(x)]$. By induction hypothesis, $\Gamma
-\Entails !C \lif !B(c)$. By
+\iftag{FOL}{Suponha agora que o último passo seja justificado por
+\QR. Então esse passo tem a forma $!C \lif \lforall[x][B(x)]$ e há um
+passo anterior $!C \lif !B(c)$ no qual $c$ não está em $\Gamma$, em
+$!C$ nem em $\lforall[x][B(x)]$. Pela hipótese de indução, $\Gamma
+\Entails !C \lif !B(c)$. Por
 \olref[syn][sem]{thm:sem-deduction}, $\Gamma \cup \{!C\} \Entails
 !B(c)$.
 
-Consider some structure~$\Struct{M}$ such that $\Sat{M}{\Gamma \cup
-  \{!C\}}$.  We need to show that $\Sat{M}{\lforall[x][!B(x)]}$. Since
-$\lforall[x][!B(x)]$ is !!a{sentence}, this means we have to show that
-for every variable assignment~$s$, $\Sat{M}{!B(x)}[s]$
-(\olref[syn][ass]{prop:sat-quant}). Since $\Gamma \cup \{!C\}$
-consists entirely of sentences, $\Sat{M}{!D}[s]$ for all $!D \in
-\Gamma$ by \olref[syn][sat]{defn:satisfaction}.  Let $\Struct{M'}$ be
-like $\Struct{M}$ except that $\Assign{c}{M'} = s(x)$.  Since $c$ does
-not occur in~$\Gamma$ or~$!C$, $\Sat{M'}{\Gamma \cup \{!C\}}$ by
-\olref[syn][ext]{cor:extensionality-sent}. Since $\Gamma \cup \{!C\}
-\Entails !B(c)$, $\Sat{M'}{B(c)}$.  Since $!B(c)$ is !!a{sentence},
-$\Sat{M'}{!B(c)}[s]$ by
-\olref[syn][ass]{prop:sentence-sat-true}. $\Sat{M'}{!B(x)}[s]$ iff
-$\Sat{M'}{!B(c)}[s]$ by \olref[syn][ext]{prop:ext-formulas} (recall that
-$!B(c)$ is just $\Subst{!B(x)}{c}{x}$). So,
-$\Sat{M'}{!B(x)}[s]$. Since $c$ does not occur in~$!B(x)$, by
-\olref[syn][ext]{prop:extensionality}, $\Sat{M}{!B(x)}[s]$. But $s$
-was an arbitrary variable assignment, so
-$\Sat{M}{\lforall[x][!B(x)]}$. Thus $\Gamma \cup \{!C\} \Entails
-\lforall[x][!B(x)]$. By \olref[syn][sem]{thm:sem-deduction}, $\Gamma
+Considere alguma estrutura~$\Struct{M}$ tal que $\Sat{M}{\Gamma \cup
+  \{!C\}}$. Precisamos mostrar que $\Sat{M}{\lforall[x][!B(x)]}$. Como
+$\lforall[x][!B(x)]$ é !!a{sentence}, isso significa que temos de
+mostrar, para toda atribuição de variável~$s$, que
+$\Sat{M}{!B(x)}[s]$ (\olref[syn][ass]{prop:sat-quant}). Como $\Gamma
+\cup \{!C\}$ consiste inteiramente em sentenças, $\Sat{M}{!D}[s]$
+para todo $!D \in \Gamma$ por \olref[syn][sat]{defn:satisfaction}.
+Seja $\Struct{M'}$ como $\Struct{M}$, exceto que $\Assign{c}{M'} =
+s(x)$. Como $c$ não ocorre em~$\Gamma$ nem em~$!C$,
+$\Sat{M'}{\Gamma \cup \{!C\}}$ por
+\olref[syn][ext]{cor:extensionality-sent}. Como $\Gamma \cup \{!C\}
+\Entails !B(c)$, $\Sat{M'}{B(c)}$. Como $!B(c)$ é !!a{sentence},
+$\Sat{M'}{!B(c)}[s]$ por
+\olref[syn][ass]{prop:sentence-sat-true}. $\Sat{M'}{!B(x)}[s]$ sse
+$\Sat{M'}{!B(c)}[s]$ por \olref[syn][ext]{prop:ext-formulas} (recorde
+que $!B(c)$ é simplesmente $\Subst{!B(x)}{c}{x}$). Logo,
+$\Sat{M'}{!B(x)}[s]$. Como $c$ não ocorre em~$!B(x)$, por
+\olref[syn][ext]{prop:extensionality}, $\Sat{M}{!B(x)}[s]$. Mas $s$
+era uma atribuição de variável arbitrária; logo,
+$\Sat{M}{\lforall[x][!B(x)]}$. Assim, $\Gamma \cup \{!C\} \Entails
+\lforall[x][!B(x)]$. Por \olref[syn][sem]{thm:sem-deduction}, $\Gamma
 \Entails !C \lif \lforall[x][!B(x)]$.
 
-The case where $!A$ is justified by \QR{} but is of the form
-$\lexists[x][!B(x)] \lif !C$ is left as an exercise.}{}
+O caso em que $!A$ é justificado por \QR{}, mas tem a forma
+$\lexists[x][!B(x)] \lif !C$, é deixado como exercício.}{}
 \end{proof}
 
 \tagprob{FOL}
 \begin{prob}
-  Complete the proof of \olref[fol][axd][sou]{thm:soundness}.
+  Complete a demonstração de \olref[fol][axd][sou]{thm:soundness}.
 \end{prob}
 \tagendprob
 
 \begin{cor}
 \ollabel{cor:weak-soundness}
-If $\Proves !A$, then $!A$ is \iftag{FOL}{valid}{a tautology}.
+Se $\Proves !A$, então $!A$ é \iftag{FOL}{válido}{uma tautologia}.
 \end{cor}
 
 \begin{cor}
 \ollabel{cor:consistency-soundness}
-If $\Gamma$ is satisfiable, then it is consistent.
+Se $\Gamma$ é satisfatível, então é consistente.
 \end{cor}
 
 \begin{proof}
-We prove the contrapositive.  Suppose that $\Gamma$ is not consistent.
-Then $\Gamma \Proves \lfalse$, O.s.\@, there is !!a{derivation} of
-$\lfalse$ from~$\Gamma$. By \olref{thm:soundness}, any
+Demonstramos a contrapositiva. Suponha que $\Gamma$ não seja
+consistente. Então $\Gamma \Proves \lfalse$, isto é, existe
+!!a{derivation} de $\lfalse$ a partir de~$\Gamma$. Por
+\olref{thm:soundness}, qualquer
 \iftag{FOL}{!!{structure}~$\Struct{M}$}{!!{valuation}~$\pAssign{v}$}
-that satisfies $\Gamma$ must satisfy~$\lfalse$.  Since
-\iftag{FOL}{$\Sat/{M}{\lfalse}$ for every
-  !!{structure}~$\Struct{M}$}{$\pSat/{v}{\lfalse}$ for every
-  !!{valuation}~$\pAssign{v}$}, no
-\iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} can satisfy $\Gamma$, O.s.\@,
-$\Gamma$ is not satisfiable.
+que satisfaça $\Gamma$ deve satisfazer~$\lfalse$. Como
+\iftag{FOL}{$\Sat/{M}{\lfalse}$ para toda
+  !!{structure}~$\Struct{M}$}{$\pSat/{v}{\lfalse}$ para toda
+  !!{valuation}~$\pAssign{v}$}, nenhuma
+\iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} pode satisfazer $\Gamma$, isto
+é, $\Gamma$ não é satisfatível.
 \end{proof}
 
 
