@@ -1,0 +1,426 @@
+% Part: proof-theory
+% Chapter: normalization
+% Section: permutations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{pt}{nor}{per}
+
+\olsection{Conversões por permutação}
+
+Os cortes em \Log{N1i} são segmentos que terminam na premissa maior de
+uma regra correspondente a !!a{elimination}. Um dos casos na demonstração de normalização consiste em
+reduzir o comprimento dos cortes máximos e, com isso, o comprimento de corte da
+!!{proof}. Um corte de comprimento $>1$ pode terminar de várias maneiras, dependendo de
+a última ocorrência da !!{formula}~$!A$ no corte ser a
+conclusão de (\Elim{\lor} ou \Elim{\lexists}) e da inferência de
+!!{elimination} da qual ela é a premissa maior.
+
+Por exemplo, se as inferências envolvidas são \Elim{\lor} e
+\Elim{\land}, $!A \ident !B \lor !C$ e há uma
+sub-!!{proof}~$\delta_1$ que termina em:
+\[
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\DeduceC{$!D \lor !E$}
+\AxiomC{$\Discharge{!D}{x}$}
+\RightLabel{$\delta_3$}
+\DeduceC{$!B \land !C$}
+\AxiomC{$\Discharge{!E}{y}$}
+\RightLabel{$\delta_4$}
+\DeduceC{$!B \land !C$}
+\DischargeRule{\Elim{\lor}}{x\,y}
+\TrinaryInfC{$!B \land !C$}
+\RightLabel{\Elim{\land}[1]}
+\UnaryInfC{$!B$}
+\DisplayProof
+\]
+A última ocorrência da !!{formula}~$!A_n$ no corte é a conclusão
+de~\Elim{\lor}, o $!B \land !C$ inferior. A penúltima
+ocorrência da !!{formula}~$!A_{n-1}$ é uma das premissas menores
+de~\Elim{\lor}.
+
+Para reduzir o comprimento desse corte, podemos trocar a ordem
+(``permutar'') das inferências \Elim{\lor} e \Elim{\land}. Isto é,
+substituímos a subdemonstração~$\delta_1$ em~$\delta$ pela seguinte:
+\[
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\DeduceC{$!D \lor !E$}
+\AxiomC{$\Discharge{!D}{x}$}
+\RightLabel{$\delta_3$}
+\DeduceC{$!B \land !C$}
+\RightLabel{\Elim{\land}[1]}
+\UnaryInfC{$!B$}
+\AxiomC{$\Discharge{!E}{y}$}
+\RightLabel{$\delta_4$}
+\DeduceC{$!B \land !C$}
+\RightLabel{\Elim{\land}[1]}
+\UnaryInfC{$!B$}
+\DischargeRule{\Elim{\lor}}{x\,y}
+\TrinaryInfC{$!B$}
+\DisplayProof
+\]
+Os cortes que terminavam na premissa de \Elim{\land} abaixo de \Elim{\lor}
+agora terminam na premissa de uma das inferências \Elim{\land} acima das
+premissas menores de \Elim{\lor}; isto é, o comprimento de cada um diminuiu
+em~$1$.
+
+Além disso, todo corte que esteja inteiramente em $\delta_2$, $\delta_3$ ou
+$\delta_4$, ou inteiramente fora de~$\delta_1$ em~$\delta$, permanece inalterado:
+ele ainda envolve as mesmas !!{formula}s e atravessa as mesmas
+inferências; em particular, tem a mesma ordem e o mesmo comprimento que o
+corte correspondente em~$\delta$. Portanto, a ordem de corte da nova !!{proof}
+não aumentou, e o comprimento de corte da nova !!{proof} é menor que o
+da !!{proof} anterior.
+
+\begin{prob}
+Após uma conversão por permutação, o comprimento de pelo menos um corte é
+reduzido em~$1$. Se permutarmos \Elim{\land} através de uma~\Elim{\lor},
+há, na verdade, dois segmentos de corte cujo comprimento diminui; portanto,
+nesse caso, o comprimento de corte da !!{proof} diminui em pelo
+menos~$2$. O comprimento de corte de !!a{proof} pode diminuir em mais de~$2$
+por uma única permutação desse tipo? A \emph{ordem} de corte pode diminuir?
+\end{prob}
+
+O processo de mover para cima uma regra correspondente a !!a{elimination},
+fazendo-a passar sobre uma regra \Elim{\lor} ou \Elim{\lexists}, chama-se
+\emph{conversão por permutação}. Os
+esquemas de alguns pares de regras são apresentados em
+\olref{tab:permutation-conversions}. (Os restantes ficam como
+exercícios.) 
+
+% \begin{table}
+% \begin{multline*}
+% \shoveleft{\AxiomC{$!D \lor !E$}
+% \AxiomC{$\Discharge{!D}{x}$}
+% \shortDeduce
+% \DeduceC{$!B \land !C$}
+% \AxiomC{$\Discharge{!E}{y}$}
+% \shortDeduce
+% \DeduceC{$!B \land !C$}
+% \DischargeRule{\Elim{\lor}}{x\,y}
+% \TrinaryInfC{$!B \land !C$}
+% \RightLabel{\Elim{\land}[1]}
+% \UnaryInfC{$!B$}
+% \DisplayProof}\\
+% \shoveright{\longrightarrow\ 
+% \AxiomC{$!D \lor !E$}
+% \AxiomC{$\Discharge{!D}{x}$}
+% \shortDeduce
+% \DeduceC{$!B \land !C$}
+% \RightLabel{\Elim{\land}[1]}
+% \UnaryInfC{$!B$}
+% \AxiomC{$\Discharge{!E}{y}$}
+% \shortDeduce
+% \DeduceC{$!B \land !C$}
+% \RightLabel{\Elim{\land}[1]}
+% \UnaryInfC{$!B$}
+% \DischargeRule{\Elim{\lor}}{x\,y}
+% \TrinaryInfC{$!B$}
+% \DisplayProof}
+% \\
+% \shoveleft{\AxiomC{$!D \lor !E$}
+% \AxiomC{$\Discharge{!D}{x}$}
+% \shortDeduce
+% \DeduceC{$!B \lif !C$}
+% \AxiomC{$\Discharge{!E}{y}$}
+% \shortDeduce
+% \DeduceC{$!B \lif !C$}
+% \DischargeRule{\Elim{\lor}}{x\,y}
+% \TrinaryInfC{$!B \lif !C$}
+% \AxiomC{$!B$}
+% \RightLabel{\Elim{\lif}}
+% \BinaryInfC{$!C$}
+% \DisplayProof}\\
+% \shoveright{\longrightarrow\ 
+% \AxiomC{$!D \lor !E$}
+% \AxiomC{$\Discharge{!D}{x}$}
+% \shortDeduce
+% \DeduceC{$!B \lif !C$}
+% \AxiomC{$!B$}
+% \RightLabel{\Elim{\lif}}
+% \BinaryInfC{$!C$}
+% \AxiomC{$\Discharge{!E}{y}$}
+% \shortDeduce
+% \DeduceC{$!B \lif !C$}
+% \AxiomC{$!B$}
+% \RightLabel{\Elim{\lif}}
+% \BinaryInfC{$!C$}
+% \DischargeRule{\Elim{\lor}}{x\,y}
+% \TrinaryInfC{$!C$}
+% \DisplayProof}
+% \\
+% \shoveleft{\AxiomC{$!D \lor !E$}
+% \AxiomC{$\Discharge{!D}{x}$}
+% \shortDeduce
+% \DeduceC{$!B \lif !C$}
+% \AxiomC{$\Discharge{!E}{y}$}
+% \shortDeduce
+% \DeduceC{$!B \lif !C$}
+% \DischargeRule{\Elim{\lor}}{x\,y}
+% \TrinaryInfC{$!B \lif !C$}
+% \AxiomC{$!B$}
+% \RightLabel{\Elim{\lif}}
+% \BinaryInfC{$!C$}
+% \DisplayProof}\\
+% \shoveright{\longrightarrow\ 
+% \AxiomC{$!D \lor !E$}
+% \AxiomC{$\Discharge{!D}{x}$}
+% \shortDeduce
+% \DeduceC{$!B \lif !C$}
+% \AxiomC{$!B$}
+% \RightLabel{\Elim{\lif}}
+% \BinaryInfC{$!C$}
+% \AxiomC{$\Discharge{!E}{y}$}
+% \shortDeduce
+% \DeduceC{$!B \lif !C$}
+% \AxiomC{$!B$}
+% \RightLabel{\Elim{\lif}}
+% \BinaryInfC{$!C$}
+% \DischargeRule{\Elim{\lor}}{x\,y}
+% \TrinaryInfC{$!C$}
+% \DisplayProof}
+% \\
+% \shoveleft{\AxiomC{$!D \lor !E$}
+% \AxiomC{$\Discharge{!D}{x}$}
+% \shortDeduce
+% \DeduceC{$\lforall[x][!B(x)]$}
+% \AxiomC{$\Discharge{!E}{y}$}
+% \shortDeduce
+% \DeduceC{$\lforall[x][!B(x)]$}
+% \DischargeRule{\Elim{\lor}}{x\,y}
+% \TrinaryInfC{$\lforall[x][!B(x)]$}
+% \RightLabel{\Elim{\lforall}}
+% \UnaryInfC{$!B(t)$}
+% \DisplayProof}\\
+% \shoveright{\longrightarrow\ 
+% \AxiomC{$!D \lor !E$}
+% \AxiomC{$\Discharge{!D}{x}$}
+% \shortDeduce
+% \DeduceC{$\lforall[x][!B(x)]$}
+% \RightLabel{\Elim{\lforall}}
+% \UnaryInfC{$!B(t)$}
+% \AxiomC{$\Discharge{!E}{y}$}
+% \shortDeduce
+% \DeduceC{$\lforall[x][!B(x)]$}
+% \RightLabel{\Elim{\lforall}}
+% \UnaryInfC{$!B(t)$}
+% \DischargeRule{\Elim{\lor}}{x\,y}
+% \TrinaryInfC{$!B(t)$}
+% \DisplayProof}
+% \end{multline*}
+% \caption{Some permutation conversions for \Log{N1i}.}
+% \ollabel{tab:permutation-conversions}
+% \end{table}
+
+{\small
+\begin{longtable}{@{}l@{}}
+\AxiomC{$!D \lor !E$}
+\AxiomC{$\Discharge{!D}{x}$}
+\shortDeduce
+\DeduceC{$!B \land !C$}
+\AxiomC{$\Discharge{!E}{y}$}
+\shortDeduce
+\DeduceC{$!B \land !C$}
+\DischargeRule{\Elim{\lor}}{x\,y}
+\TrinaryInfC{$!B \land !C$}
+\RightLabel{\Elim{\land}[1]}
+\UnaryInfC{$!B$}
+\DisplayProof
+$\longrightarrow$\\[6ex]
+\quad\AxiomC{$!D \lor !E$}
+\AxiomC{$\Discharge{!D}{x}$}
+\shortDeduce
+\DeduceC{$!B \land !C$}
+\RightLabel{\Elim{\land}[1]}
+\UnaryInfC{$!B$}
+\AxiomC{$\Discharge{!E}{y}$}
+\shortDeduce
+\DeduceC{$!B \land !C$}
+\RightLabel{\Elim{\land}[1]}
+\UnaryInfC{$!B$}
+\DischargeRule{\Elim{\lor}}{x\,y}
+\TrinaryInfC{$!B$}
+\DisplayProof
+\\[10ex]
+\AxiomC{$!D \lor !E$}
+\AxiomC{$\Discharge{!D}{x}$}
+\shortDeduce
+\DeduceC{$!B \lif !C$}
+\AxiomC{$\Discharge{!E}{y}$}
+\shortDeduce
+\DeduceC{$!B \lif !C$}
+\DischargeRule{\Elim{\lor}}{x\,y}
+\TrinaryInfC{$!B \lif !C$}
+\AxiomC{$!B$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!C$}
+\DisplayProof
+$\longrightarrow$\\[6ex]
+\AxiomC{$!D \lor !E$}
+\AxiomC{$\Discharge{!D}{x}$}
+\shortDeduce
+\DeduceC{$!B \lif !C$}
+\AxiomC{$!B$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!C$}
+\AxiomC{$\Discharge{!E}{y}$}
+\shortDeduce
+\DeduceC{$!B \lif !C$}
+\AxiomC{$!B$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!C$}
+\DischargeRule{\Elim{\lor}}{x\,y}
+\TrinaryInfC{$!C$}
+\DisplayProof
+\\[10ex]
+\AxiomC{$!D \lor !E$}
+\AxiomC{$\Discharge{!D}{x}$}
+\shortDeduce
+\DeduceC{$!B \lif !C$}
+\AxiomC{$\Discharge{!E}{y}$}
+\shortDeduce
+\DeduceC{$!B \lif !C$}
+\DischargeRule{\Elim{\lor}}{x\,y}
+\TrinaryInfC{$!B \lif !C$}
+\AxiomC{$!B$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!C$}
+\DisplayProof
+$\longrightarrow$\\[6ex]
+\AxiomC{$!D \lor !E$}
+\AxiomC{$\Discharge{!D}{x}$}
+\shortDeduce
+\DeduceC{$!B \lif !C$}
+\AxiomC{$!B$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!C$}
+\AxiomC{$\Discharge{!E}{y}$}
+\shortDeduce
+\DeduceC{$!B \lif !C$}
+\AxiomC{$!B$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!C$}
+\DischargeRule{\Elim{\lor}}{x\,y}
+\TrinaryInfC{$!C$}
+\DisplayProof
+\\[10ex]
+\AxiomC{$!D \lor !E$}
+\AxiomC{$\Discharge{!D}{x}$}
+\shortDeduce
+\DeduceC{$\lforall[x][!B(x)]$}
+\AxiomC{$\Discharge{!E}{y}$}
+\shortDeduce
+\DeduceC{$\lforall[x][!B(x)]$}
+\DischargeRule{\Elim{\lor}}{x\,y}
+\TrinaryInfC{$\lforall[x][!B(x)]$}
+\RightLabel{\Elim{\lforall}}
+\UnaryInfC{$!B(t)$}
+\DisplayProof
+\quad$\longrightarrow$\\[8ex]
+\quad\AxiomC{$!D \lor !E$}
+\AxiomC{$\Discharge{!D}{x}$}
+\shortDeduce
+\DeduceC{$\lforall[x][!B(x)]$}
+\RightLabel{\Elim{\lforall}}
+\UnaryInfC{$!B(t)$}
+\AxiomC{$\Discharge{!E}{y}$}
+\shortDeduce
+\DeduceC{$\lforall[x][!B(x)]$}
+\RightLabel{\Elim{\lforall}}
+\UnaryInfC{$!B(t)$}
+\DischargeRule{\Elim{\lor}}{x\,y}
+\TrinaryInfC{$!B(t)$}
+\DisplayProof
+\\
+\caption{Algumas conversões por permutação para \Log{N1i}.}
+\ollabel{tab:permutation-conversions}
+\end{longtable}
+}
+
+\begin{prob}
+Dê as conversões por permutação para \Elim{\lor} seguida de
+\Elim{\lor} ou \Elim{\lnot}.
+\end{prob}
+
+\begin{prob}
+Dê as conversões por permutação para \Elim{\lexists} seguida de
+\Elim{\exists}. Explique por que nenhuma condição da variável própria é
+violada no segundo caso.
+\end{prob}
+
+Devemos nos convencer de que, ao aplicar uma conversão por permutação,
+não violamos inadvertidamente alguma condição da variável própria.
+Considere
+\[
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\DeduceC{$!D \lor !E$}
+\AxiomC{$\Discharge{!D}{x}$}
+\RightLabel{$\delta_3$}
+\DeduceC{$\lexists[x][!B(x)]$}
+\AxiomC{$\Discharge{!E}{y}$}
+\RightLabel{$\delta_4$}
+\DeduceC{$\lexists[x][!B(x)]$}
+\DischargeRule{\Elim{\lor}}{x\,y}
+\TrinaryInfC{$\lexists[x][!B(x)]$}
+\AxiomC{$\Discharge{!B(c)}{z}$}
+\RightLabel{$\delta_5$}
+\DeduceC{$!C$}
+\DischargeRule{\Elim{\lexists}}{z}
+\BinaryInfC{$!C$}
+\DisplayProof
+\]
+Se substituirmos isso por
+\[
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\DeduceC{$!D \lor !E$}
+\AxiomC{$\Discharge{!D}{x}$}
+\RightLabel{$\delta_3$}
+\DeduceC{$\lexists[x][!B(x)]$}
+\AxiomC{$\Discharge{!B(c)}{z}$}
+\RightLabel{$\delta_5$}
+\DeduceC{$!C$}
+\DischargeRule{\Elim{\lexists}}{z}
+\BinaryInfC{$!C$}
+\AxiomC{$\Discharge{!E}{y}$}
+\RightLabel{$\delta_4$}
+\DeduceC{$\lexists[x][!B(x)]$}
+\AxiomC{$\Discharge{!B(c)}{z}$}
+\RightLabel{$\delta_5$}
+\DeduceC{$!C$}
+\DischargeRule{\Elim{\lexists}}{z}
+\BinaryInfC{$!C$}
+\DischargeRule{\Elim{\lor}}{x\,y}
+\TrinaryInfC{$!C$}
+\DisplayProof
+\]
+poderíamos recear que a variável própria~$c$ ocorresse, digamos, em~$!D$.
+Afinal, a hipótese $!D$ é descarregada acima da
+$\Elim{\lexists}$ original e, portanto, na !!{proof} original ela não
+ocorre em uma hipótese que esteja aberta acima da premissa maior da
+inferência~\Elim{\exists}; assim, ali a condição da variável própria
+é satisfeita. Mas, na nova !!{proof}, $!D$~só é descarregada depois das
+inferências~\Elim{\lexists} e, portanto, a condição da variável própria
+seria violada. Lembre-se, contudo, de que supomos que nossas !!{proof}s são
+regulares: cada variável própria é a variável própria de uma única
+inferência e só ocorre acima da premissa menor de \Elim{\lexists}
+na !!{proof}. Em particular, $c$~não pode ocorrer em $\delta_3$
+nem em~$\delta_4$.
+
+Este exemplo mostra ainda outra coisa: observe que a nova !!{proof} tem duas
+cópias de~$\delta_5$. Isso significa que, se $\delta_5$ contiver um corte
+máximo, \emph{não} teremos reduzido o comprimento de corte! Portanto, devemos
+ter o cuidado de aplicar uma conversão por permutação somente quando soubermos
+que não há corte máximo em $\delta_5$. Garantiremos isso escolhendo sempre um
+corte máximo \emph{mais alto}, isto é, um corte máximo tal que a
+sub-!!{proof} (neste caso,~$\delta_1$) não contenha nenhum corte máximo que
+termine acima da última inferência da sub-!!{proof}. Isso exclui a
+possibilidade de haver outros cortes máximos em~$\delta_5$ (ou, de fato,
+em $\delta_2$, $\delta_3$ ou~$\delta_4$).
+
+\end{document}

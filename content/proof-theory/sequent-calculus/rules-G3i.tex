@@ -1,0 +1,94 @@
+% Part: proof-theory
+% Chapter: sequent-calculus
+% Section: rules-G3c
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\begin{table}
+\begin{tabular}{@{}c@{}c@{}}
+\multicolumn{2}{@{}c@{}}{Axiomas}\\[2ex]
+$!C, \Gamma \Sequent !C$ & $\lfalse, \Gamma \Sequent \Delta$
+\\[2ex]
+\multicolumn{2}{@{}c@{}}{Regras lógicas}\\[2ex]
+\Axiom$\lnot !A, \Gamma \fCenter !A $
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$\lnot !A, \Gamma \fCenter \Delta$
+\DisplayProof
+&
+\Axiom$!A, \Gamma \fCenter$
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$ \Gamma \fCenter \lnot !A $
+\DisplayProof
+\\[4ex]
+\Axiom$ !A, !B, \Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\land}}
+\UnaryInf$ !A \land !B, \Gamma \fCenter \Delta$
+\DisplayProof
+&
+\Axiom$\Gamma \fCenter !A$
+\Axiom$ \Gamma \fCenter !B$
+\RightLabel{\RightR{\land}}
+\BinaryInf$ \Gamma \fCenter !A \land !B $
+\DisplayProof
+\\[4ex]\Axiom$!A, \Gamma \fCenter \Delta$
+\Axiom$!B, \Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$!A \lor !B, \Gamma \fCenter \Delta$
+\DisplayProof
+&
+\begin{tabular}[t]{@{}r@{}}
+\Axiom$\Gamma \fCenter \Delta, !A$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$ \Gamma \fCenter \Delta, !A \lor !B$
+\DisplayProof
+\\[3ex]
+\Axiom$ \Gamma \fCenter \Delta, !B$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$ \Gamma \fCenter \Delta, !A \lor !B$
+\DisplayProof\\[3ex]
+\end{tabular}
+\\[4ex]
+\Axiom$!A \lif !B, \Gamma \fCenter !A$
+\Axiom$!B, \Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\lif}}
+\BinaryInf$!A \lif !B, \Gamma \fCenter \Delta$
+\DisplayProof
+&
+\Axiom$!A, \Gamma \fCenter !B$
+\RightLabel{\RightR{\lif}}
+\UnaryInf$ \Gamma \fCenter !A \lif !B $
+\DisplayProof
+\\[4ex]
+\Axiom$ !A(t), \lforall[x][!A(x)]\Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\lforall}}
+\UnaryInf$ \lforall[x][!A(x)],\Gamma \fCenter \Delta$
+\DisplayProof
+&
+\Axiom$ \Gamma \fCenter !A(a) $
+\RightLabel{\RightR{\lforall}}
+\UnaryInf$ \Gamma \fCenter \lforall[x][!A(x)]$
+\DisplayProof
+\\[4ex]
+\Axiom$ !A(a), \Gamma \fCenter \Delta $
+\RightLabel{\LeftR{\lexists}}
+\UnaryInf$ \lexists[x][!A(x)], \Gamma \fCenter \Delta$
+\DisplayProof
+&
+\Axiom$ \Gamma \fCenter !A(t) $
+\RightLabel{\RightR{\lexists}}
+\UnaryInf$ \Gamma \fCenter \lexists[x][!A(x)]$
+\DisplayProof
+\end{tabular}
+\caption{Regras de \Log{G3i} para a lógica intuicionista. Em
+$\RightR{\forall}$ e $\LeftR{\exists}$, a !!{constant}~$a$ não pode
+ocorrer no sequente de conclusão. $\Gamma$ é um multiconjunto de
+!!{formula}s, e $\Delta$ pode ser vazio ou conter uma única
+!!{formula}. Nos axiomas, a !!{formula}~$!C$ deve ser atômica.
+\Log{G1m} é \Log{G1i} sem os axiomas $\lfalse, \Gamma \Sequent
+\Delta$.}
+\ollabel{tab:G3i}
+\end{table}
+
+\end{document}

@@ -6,99 +6,104 @@
 
 \begin{document}
 
-\olfileid{pt}{seq}{irl}
+\olfileid[pt]{pt}{seq}{irl}
 
-\olsection{Interpretation of Rules}
+\olsection{Interpretação das regras}
 
-Recall the interpretation of a sequent: A sequent $\Gamma \Sequent
-\Delta$ is true in !!a{structure}~$\Struct{M}$ if either at least one
-$!A \in \Gamma$ is false or at least one~$!A \in \Delta$ is true. We
-can read the logical rules of~\Log{G3c} as codifying the truth
-conditions for their principal !!{formula}s. Consider \RightR{\lif}.
-Its principal !!{formula} is $!A \lif !B$. It is true if either $!A$
-is false or~$!B$ is true. Hence the sequent $\ \Sequent !A \lif !B$ is
-true iff $!A \Sequent !B$ is true. If we add the context !!{formula}s
-$\Gamma$, $\Delta$ to the antecedents and succedents of these
-sequents, we get exactly the conclusion and premise of the
-\RightR{\lif} rule. The situation is similar for~\LeftR{\lif}. $!A
-\lif !B$ is false if $!A$~is true and $!B$~is false. So $!A \lif !B
-\Sequent \ $ is true iff both $\ \Sequent !A$ and $!B \Sequent \ $ are
-true. The conclusion of \LeftR{\lif} is equivalent to the
-conjunction of its premises. This pattern ensures that the rules
-of~\Log{G3c} are sound (if all premises are true, the conclusion is
-true). They also ensure completeness.
+Recorde a interpretação de um sequente: um sequente $\Gamma \Sequent
+\Delta$ é verdadeiro em !!a{structure}~$\Struct{M}$ se pelo menos um
+$!A \in \Gamma$ for falso ou pelo menos um~$!A \in \Delta$ for
+verdadeiro. Podemos ler as regras lógicas de~\Log{G3c} como uma
+codificação das condições de verdade de suas !!{formula}s principais.
+Considere \RightR{\lif}. Sua !!{formula} principal é $!A \lif !B$. Ela
+é verdadeira se $!A$ for falso ou~$!B$ for verdadeiro. Portanto, o
+sequente $\ \Sequent !A \lif !B$ é verdadeiro sse $!A \Sequent !B$ for
+verdadeiro. Se acrescentarmos as !!{formula}s de contexto $\Gamma$,
+$\Delta$ aos antecedentes e sucedentes desses sequentes, obteremos
+exatamente a conclusão e a premissa da regra \RightR{\lif}. A situação
+é semelhante para~\LeftR{\lif}. $!A \lif !B$ é falsa se $!A$~for
+verdadeira e $!B$~for falsa. Assim, $!A \lif !B \Sequent \ $ é
+verdadeiro sse tanto $\ \Sequent !A$ quanto $!B \Sequent \ $ forem
+verdadeiros. A conclusão de \LeftR{\lif} é equivalente à conjunção de
+suas premissas. Esse padrão garante que as regras de~\Log{G3c} sejam
+corretas (se todas as premissas forem verdadeiras, a conclusão será
+verdadeira). Elas também garantem a completude.
 
-In fact, the truth conditions for any truth-functional connective can
-be described in this way as a set of sequents. This follows from the
-fact that every truth-function in classical logic can be described by
-!!a{formula} in conjunctive normal form: a conjunction of disjunctions
-of atomic and negated atomic !!{formula}s. For instance, take $!A
-\oplus !B$ to be true iff exactly one of $!A$ and $!B$ is true, O.s.\@,
-``exclusive or.'' Then $!A \oplus !B$ is true iff $(!A \lor !B) \land
-(\lnot !A \lor \lnot !B)$ is, and it is false if $(\lnot !A \lor !B)
-\land (!A \lor \lnot !B)$ is true. Hence, we could introduce sequent
-calculus rules for $\oplus$ as
+De fato, as condições de verdade de qualquer conectivo verofuncional
+podem ser descritas dessa maneira como um conjunto de sequentes. Isso
+decorre do fato de que toda função de verdade da lógica clássica pode
+ser descrita por !!a{formula} na forma normal conjuntiva: uma conjunção
+de disjunções de !!{formula}s atômicas e atômicas negadas. Por exemplo,
+considere que $!A \oplus !B$ seja verdadeira sse exatamente uma entre
+$!A$ e $!B$ for verdadeira, O.s.\@, ``ou exclusivo''. Então $!A
+\oplus !B$ é verdadeira sse $(!A \lor !B) \land (\lnot !A \lor \lnot
+!B)$ for verdadeira, e será falsa se $(\lnot !A \lor !B) \land (!A
+\lor \lnot !B)$ for verdadeira. Portanto, poderíamos introduzir regras
+do cálculo de sequentes para $\oplus$ como
 \begin{align*}
+&
+\Axiom$!A, \Gamma \fCenter \Delta, !B$
+\Axiom$!B, \Gamma \fCenter \Delta, !A$
+\RightLabel{\LeftR{\oplus}}
+\BinaryInf$!A \oplus !B, \Gamma \fCenter \Delta$
+\DisplayProof
+\\
 &
 \Axiom$\Gamma \fCenter \Delta, !A, !B$
 \Axiom$!A, !B, \Gamma \fCenter \Delta$
 \RightLabel{\RightR{\oplus}}
 \BinaryInf$\Gamma \fCenter \Delta, !A \oplus !B$
 \DisplayProof
-\\
-& \Axiom$!A, \Gamma \fCenter \Delta, !B$
-\Axiom$!B, \Gamma \fCenter \Delta, !A$
-\RightLabel{\RightR{\oplus}}
-\BinaryInf$!A \oplus !B, \Gamma \fCenter \Delta$
-\DisplayProof
 \end{align*}
-and these rules would also be sound and complete. Their conclusions
-are true iff all premises are true.
+e essas regras também seriam corretas e completas. Suas conclusões são
+verdadeiras sse todas as premissas forem verdadeiras.
 
 \begin{prob}
-Suppose $!A \downarrow !B$ is true iff neither $!A$ nor~$!B$ is true
-(``NOR''). What would its \Log{G3c} rules be? (Find two sequents which
-are true at the same time iff $!A \downarrow !B$ is true. That gives
-you the \RightR{\downarrow} rule. Then find one sequent that is true
-iff $!A \downarrow !B$ is false. That gives you the \LeftR{\downarrow}
-rule.)
+Suponha que $!A \downarrow !B$ seja verdadeira sse nem $!A$ nem~$!B$
+for verdadeira (``NÃO-OU'', ou ``NOR''). Quais seriam suas regras de \Log{G3c}?
+(Encontre dois sequentes que sejam verdadeiros ao mesmo tempo sse $!A
+\downarrow !B$ for verdadeira. Isso fornece a regra
+\RightR{\downarrow}. Em seguida, encontre um sequente que seja
+verdadeiro sse $!A \downarrow !B$ for falsa. Isso fornece a regra
+\LeftR{\downarrow}.)
 \end{prob}
 
-In \Log{G3c}, each connective and quantifier has exactly two rules: a
-left rule and a right rule. In \Log{G1c}, however, there are two
-\LeftR{\land} and two \RightR{\lor} rules. The reason is that
-Gentzen's original system~\Log{LK}, on which \Log{G1c} is modeled, had
-a variant~\Log{LJ} for an important non-classical logic, viz.,
-intuitionistic logic. To get a system that was sound and complete for
-intuitionistic logic, the succedents of any sequent in~\Log{LJ} is
-restricted to contain at most one !!{formula}. This makes it
-impossible to use the \RightR{\lor} rule of~\Log{G3c}, as its premise
-contains both $!A$ and~$!B$ in the succedent. Gentzen thus used a pair
-of \RightR{\lor} rules for \Log{LJ}, and used the same for~\Log{LK}.
-The intuitionistic version~\Log{G1i} similarly is just~\Log{G1c} with
-all succedents restricted to at most one !!{formula}. (\Log{G3c} also
-has an intuitionistic version, but it some of its rules differ from
-the corresponding rules in~\Log{G3c}. For instance, it, too, uses a
-pair of \RightR{\lor} rules.)
+Em \Log{G3c}, cada conectivo e quantificador tem exatamente duas regras:
+uma regra à esquerda e uma regra à direita. Em \Log{G1c}, porém, há
+duas regras \LeftR{\land} e duas regras \RightR{\lor}. A razão é que o
+sistema original de Gentzen~\Log{LK}, no qual \Log{G1c} é baseado,
+tinha uma variante~\Log{LJ} para uma importante lógica não clássica, a
+saber, a lógica intuicionista. Para obter um sistema correto e completo
+para a lógica intuicionista, restringe-se o sucedente de qualquer
+sequente em~\Log{LJ} a no máximo uma !!{formula}. Isso impossibilita o
+uso da regra \RightR{\lor} de~\Log{G3c}, pois sua premissa contém tanto
+$!A$ quanto~$!B$ no sucedente. Gentzen, portanto, usou um par de regras
+\RightR{\lor} para \Log{LJ} e usou as mesmas regras para~\Log{LK}. De
+modo semelhante, a versão intuicionista~\Log{G1i} é simplesmente
+\Log{G1c} com todos os sucedentes restritos a no máximo uma
+!!{formula}. (\Log{G3c} também tem uma versão intuicionista, mas algumas
+de suas regras diferem das regras correspondentes em~\Log{G3c}. Por
+exemplo, ela também usa um par de regras \RightR{\lor}.)
 
-That the structural rules of~\Log{G1c} are sound is easy to see. For
-instance, if $\Gamma \Sequent \Delta$ contains a false !!{formula} on
-the right or a true !!{formula} on the left, so does $\Gamma \Sequent
-\Delta, !A$: the same one, whether $!A$ is true or false is
-irrelevant. So if the premise of~\RightR{\Weakening} is true, so is
-its conclusion. Note that here the converse is not true. The
-conclusion may be true because $!A$ is true, and then the premise is
-not guaranteed to be true.
+É fácil ver que as regras estruturais de~\Log{G1c} são corretas. Por
+exemplo, se $\Gamma \Sequent \Delta$ contiver uma !!{formula} falsa à
+direita ou uma !!{formula} verdadeira à esquerda, $\Gamma \Sequent
+\Delta, !A$ também conterá: a mesma fórmula, seja $!A$ verdadeira ou
+falsa, é irrelevante. Assim, se a premissa de~\RightR{\Weakening} for
+verdadeira, sua conclusão também será. Observe que, aqui, a recíproca
+não é verdadeira. A conclusão pode ser verdadeira porque $!A$ é
+verdadeira, e então não se garante que a premissa seja verdadeira.
 
-Why have structural rules at all? Contraction (\RightR{\Contraction},
-\LeftR{\Contraction}) is needed for instance to !!{prove} $\ \Sequent !A
-\lor \lnot !A$. If you start with $!A \Sequent !A$ you first get
-$\Sequent !A, \lnot !A$ by~\RightR{\lnot}. Then you can use the two
-versions of \RightR{\lor} in succession, once to get $!A \lor \lnot
-!A$ from $\lnot !A$, and once to get $!A \lor \lnot !A$ from~$!A$.
-What you get is $\ \Sequent !A \lor \lnot !A, !A \lor \lnot !A$. So to
-get $\Sequent !A \lor \lnot !A$ in~\Log{G1c} you need to be able to
-``contract'' two occurrences of the same !!{formula} in !!a{proof}:
+Por que ter regras estruturais? A contração (\RightR{\Contraction},
+\LeftR{\Contraction}) é necessária, por exemplo, para !!{prove} $\ \Sequent
+!A \lor \lnot !A$. Se você começar com $!A \Sequent !A$,
+primeiro obterá $\Sequent !A, \lnot !A$ por~\RightR{\lnot}. Depois,
+poderá usar sucessivamente as duas versões de \RightR{\lor}, uma vez
+para obter $!A \lor \lnot !A$ a partir de $\lnot !A$ e outra vez para
+obter $!A \lor \lnot !A$ a partir de~$!A$. O resultado é $\ \Sequent
+!A \lor \lnot !A, !A \lor \lnot !A$. Assim, para obter $\Sequent !A
+\lor \lnot !A$ em~\Log{G1c}, é preciso poder ``contrair'' duas
+ocorrências da mesma !!{formula} em !!a{proof}:
 \[
 \Axiom$!A \fCenter !A$
 \RightLabel{\RightR{\lnot}}
@@ -111,12 +116,12 @@ get $\Sequent !A \lor \lnot !A$ in~\Log{G1c} you need to be able to
 \UnaryInf$\fCenter !A \lor \lnot !A$
 \DisplayProof
 \]
-There are in fact valid sequents which you could not !!{prove}
-in~\Log{G1c} without weakening or contraction. For instance,
-!!a{proof} of the sequent $!A \Sequent !B \lif !A$ in~\Log{G1c} has to
-end in \RightR{\lif} (since only $!B \lif !A$ can be principal), and
-that requires $!B, !A \Sequent !A$ as a premise. This, in turn,
-requires \LeftR{\Weakening} to get it from the axiom $!A \Sequent !A$:
+De fato, há sequentes válidos que não poderiam ser !!{prove} em
+\Log{G1c} sem enfraquecimento ou contração. Por exemplo, !!a{proof} do
+sequente $!A \Sequent !B \lif !A$ em~\Log{G1c} precisa terminar em
+\RightR{\lif} (pois apenas $!B \lif !A$ pode ser principal), e isso
+exige $!B, !A \Sequent !A$ como premissa. Por sua vez, isso exige
+\LeftR{\Weakening} para obtê-la do axioma $!A \Sequent !A$:
 \[
 \Axiom$!A \fCenter !A$
 \RightLabel{\LeftR{\Weakening}}
@@ -126,17 +131,18 @@ requires \LeftR{\Weakening} to get it from the axiom $!A \Sequent !A$:
 \DisplayProof
 \]
 
-In \Log{G3c} the contraction and weakening rules are not needed at
-all. Weakening is built into the axioms. Contraction can mostly be
-avoided by merging the two copies of the context $\Gamma$, $\Delta$ in
-rules with two premises into one. Both \Log{G1c} and \Log{G3c} have
-such ``context sharing'' rules. In one-premise rules, contraction is
-only needed for \RightR{\lor}, \LeftR{\land}, \RightR{\lexists},
-and~\LeftR{\lforall}. The versions of these rules in~\Log{G3c} make
-contraction entirely superfluous. There is a system \Log{G2c} (see
-\olref{tab:G2c}) in which the two-premise rules have independent
-contexts. In \Log{G2c} contraction is even more important than
-in~\Log{G1c}.
+Em \Log{G3c}, as regras de contração e enfraquecimento não são
+necessárias. O enfraquecimento está incorporado aos axiomas. A contração
+pode, em geral, ser evitada fundindo em uma só as duas cópias do
+contexto $\Gamma$, $\Delta$ nas regras com duas premissas. Tanto
+\Log{G1c} quanto \Log{G3c} têm regras desse tipo, chamadas de regras de
+``compartilhamento de contexto''. Nas regras com uma premissa, a
+contração só é necessária para \RightR{\lor}, \LeftR{\land},
+\RightR{\lexists} e~\LeftR{\lforall}. As versões dessas regras
+em~\Log{G3c} tornam a contração inteiramente supérflua. Há um sistema
+\Log{G2c} (veja \olref{tab:G2c}) no qual as regras com duas premissas
+têm contextos independentes. Em \Log{G2c}, a contração é ainda mais
+importante do que em~\Log{G1c}.
 
 \subfile{rules-G2c}
 

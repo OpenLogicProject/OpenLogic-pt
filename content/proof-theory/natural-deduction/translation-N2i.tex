@@ -1,0 +1,124 @@
+% Part: proof-theory
+% Chapter: natural-deduction
+% Section: translation-N2i
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{pt}{nat}{tni}
+
+\olsection{Tradução de \Log{N2} para \Log{G2}}
+
+\begin{prop}\ollabel{prop:N2-to-G2} Se $\Log{N2c}\ (\Log{N2i}) \Proves
+\Gamma \Sequent !A$, então $\Log{G2c}\ (\Log{N2i}) + \Cut \Proves \Gamma'
+\Sequent \Delta$, em que $\Gamma'$ é o multiconjunto de !!{formula}s
+obtido de $\Gamma$ removendo os rótulos, e $\Delta = \{!A\}$ se $!A$
+não é~$\lfalse$, enquanto $\Delta = \emptyset$ se é.
+\end{prop}
+
+\begin{proof}
+A demonstração é novamente por indução sobre a altura da
+!!{proof}~$\delta$ de $\Gamma \Sequent !A$. Se $\delta$ é o axioma
+$x:!A \Sequent !A$, então $\pi$ é o axioma correspondente $!A \Sequent !A$
+ou $\lfalse \Sequent \ $, caso $!A \ident \lfalse$.
+
+Se $\delta$ termina em uma regra de inferência, distinguimos os casos:
+\begin{enumerate}
+  \item Se $R$ é \Intro{\lif}, com fórmula principal $!B \lif !C$, e
+  $x:!B$ está presente no contexto da premissa, mas não no da
+  conclusão, então $\delta$ termina em
+  \[
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \Deduce$x:!B, \Gamma \fCenter !C$
+  \RightLabel{\Intro{\lif}}
+  \UnaryInf$\Gamma \fCenter !B \lif !C$
+  \DisplayProof
+  \]
+  A hipótese indutiva fornece !!a{proof}~$\pi_1$ de $!B, \Gamma'
+  \Sequent !C$ (ou de $!B, \Gamma' \Sequent \ $, se $!C \ident
+  \lfalse$), da qual obtemos $\pi$ aplicando~\RightR{\lif} (depois de
+  aplicar \RightR{\Weakening}, caso $!C \ident \lfalse$).
+  \item Se $R$ é \Intro{\lif}, mas $x:!B$ não está presente no
+  contexto da premissa, então $\delta$ termina em
+  \[
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \Deduce$\Gamma \fCenter !C$
+  \RightLabel{\Intro{\lif}}
+  \UnaryInf$\Gamma \fCenter !B \lif !C$
+  \DisplayProof
+  \]
+  A hipótese indutiva fornece !!a{proof}~$\pi_1$ de $\Gamma'
+  \Sequent !C$, da qual obtemos $\pi$ aplicando
+  \LeftR{\Weakening} com~$!B$ e, depois,~\RightR{\lif}.
+  \item Se $R$ é \Elim{\lif}, então $\delta$ termina em
+  \[
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \Deduce$\Gamma_1 \fCenter !B \lif !A$
+  \AxiomC{}
+  \RightLabel{$\delta_2$}
+  \Deduce$\Gamma_2 \fCenter !B$
+  \RightLabel{\Elim{\lif}}
+  \BinaryInf$\Gamma_1, \Gamma_2 \fCenter !A$
+  \DisplayProof
+  \]
+  em que $\Gamma = \Gamma_1 \cup \Gamma_2$. A hipótese indutiva
+  fornece !!{proof}s $\pi_1$ de $\Gamma_1' \Sequent !B \lif !A$ e
+  $\pi_2$ de $\Gamma_2' \Sequent !B$. Obtemos a !!{proof}~$\pi$ como
+  \[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$\Gamma_1' \fCenter !B \lif !A$
+  \AxiomC{}
+  \RightLabel{$\pi_2$}
+  \Deduce$\Gamma_2' \fCenter !B$
+  \Axiom$!A \fCenter !A$
+  \RightLabel{\LeftR{\lif}}
+  \BinaryInf$!B \lif !A, \Gamma_2' \fCenter !A$
+  \RightLabel{\Cut}
+  \BinaryInf$\Gamma_1', \Gamma_2' \fCenter !A$
+  \DisplayProof
+  \]
+  O multiconjunto $\Gamma_1' \cup \Gamma_2'$ pode não ser igual a
+  $\Gamma' = (\Gamma_1 \cup \Gamma_2)'$: por exemplo, se tanto
+  $\Gamma_1$ quanto $\Gamma_2$ contêm $x:!C$, então $\Gamma_1' \cup
+  \Gamma_2'$ contém duas cópias de $!C$, mas $(\Gamma_1 \cup
+  \Gamma_2)'$ contém apenas uma. Podemos corrigir isso acrescentando
+  inferências \LeftR{\Contraction} apropriadas.
+
+  No caso em que $!A \ident \lfalse$, a hipótese indutiva aplicada a
+  $\delta_2$ fornece !!a{proof} de $\Gamma_2' \Sequent \ $, da qual
+  podemos obter a !!{proof}~$\pi$ acrescentando inferências
+  \LeftR{\Weakening} apropriadas e uma \RightR{\Weakening} com~$!A$.
+\item Se $R$ é \FalseCl, então $\delta$ termina em
+  \[
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \Deduce$x: \lnot !A, \Gamma \fCenter \lfalse$
+  \RightLabel{\FalseCl}
+  \UnaryInf$\Gamma \fCenter !A$
+  \DisplayProof
+  \]
+  Pela hipótese indutiva, existe !!a{proof} $\pi_1$ de $\lnot !A,
+  \Gamma' \Sequent \ $. Tomamos como !!{proof}~$\pi$
+  \[
+  \Axiom$!A \fCenter !A$
+  \RightLabel{\RightR{\lnot}}
+  \UnaryInf$\fCenter !A, \lnot !A$
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$x: \lnot !A, \Gamma' \fCenter $
+  \RightLabel{\Cut}
+  \BinaryInf$\Gamma' \fCenter !A$
+  \DisplayProof
+  \]
+\end{enumerate}
+Observe que apenas a tradução de \FalseCl{} resulta em
+!!a{proof}~$\pi$ com mais de uma !!{formula} à direita. Isto é, a
+tradução de uma !!{proof} em~\Log{N2i} é uma \Log{G2i}-!!{proof}.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,195 @@
+% Part: proof-theory
+% Chapter: proof-search
+% Section: completeness
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{pt}{ps}{cpl}
+
+\olsection{Completude}
+
+Mostramos agora que o algoritmo de busca de provas é infalível, isto é,
+que, se ele abortar ou nunca parar, não haverá !!{proof} do sequente
+inicial~$\Gamma \Sequent \Delta$. Para isso, definimos
+!!a{structure}~$\Struct M$ tal que, para todo $!A \in \Gamma$,
+$\Sat{M}{!A}$, e, para todo~$! \in \Delta$, $\Sat/{M}{!A}$. Em outras
+palavras, todas as !!{formula}s de~$\Gamma$ são verdadeiras e todas as
+!!{formula}s de~$\Delta$ são falsas em~$\Struct M$, isto é, $\Gamma
+\Sequent \Delta$ não é válido. Como \Log{G3c} é correto, $\Gamma
+\Sequent \Delta$ não tem !!{proof}
+
+Definimos $\Struct{M}$ a partir de um par $\Theta, \Xi$ de
+!!{formula}s e de um conjunto~$C$ de !!{constant}s. Obtemos $\Theta,
+\Xi$ e~$C$ de um \emph{ramo de falha} da execução malsucedida (abortada
+ou não terminante) da busca de provas. Um ramo de falha é uma sequência
+$\Pi_n \Sequent \Lambda_n$ de sequentes e conjuntos de
+!!{constant}s~$C_n$ tal que $\Pi_0 \Sequent \Lambda_0$ é o sequente
+final $\Gamma \Sequent \Delta$, e $\Pi_{n+1} \Sequent \Lambda_{n+1}$
+é uma premissa de $\Pi_n \Sequent \Lambda_n$ gerada no estágio~$n+1$
+para a qual o algoritmo não encontra !!a{proof}. É evidente que uma
+premissa desse tipo deve existir para cada~$n$, pois, do contrário, o
+algoritmo teria encontrado !!a{proof}. Seja $C_n$ o conjunto de
+!!{constant}s associado a~$\Pi_n \Sequent \Delta_n$.
+
+Se o algoritmo abortar em um sequente superior constituído apenas por
+!!{formula}s atômicas, o ramo que termina nesse sequente será um ramo
+de falha. Se se o algoritmo nunca terminar, ele continuará gerando
+árvores cada vez maiores. Podemos considerá-las o crescimento de uma
+árvore infinita (a árvore que teríamos depois que infinitos passos do
+algoritmo fossem executados). Essa seria uma árvore infinita, mas
+finitamente ramificada (cada nó tem apenas um ou dois filhos---os
+sequentes imediatamente acima dele). Pelo Lema de K\H{o}nig, toda
+árvore infinita e finitamente ramificada deve ter um ramo infinito. Um
+ramo infinito desse tipo seria um ramo de falha no caso em que o
+algoritmo de busca fosse executado para sempre.
+
+Se a sequência de $\Pi_n \Sequent \Lambda_n$ e $C_n$ for um ramo de
+falha, sejam $\Theta = \bigcup_n \Pi_n$ e $\Xi = \bigcup_n \Lambda_n$
+(removendo os índices e as ocorrências múltiplas de !!{formula}s), e
+$C = \bigcup_n C_n$.
+
+Estamos prontos para definir~$\Struct{M}$.
+\begin{enumerate}
+\item O domínio $\Domain{M}$ é o conjunto dos termos que podem ser
+formados a partir de~$C$ e das !!{function}s em~$\Gamma \Sequent
+\Delta$, se houver alguma, mas sem !!{variable}s.
+\item Se $c \in \Domain{M}$, $\Assign{c}{M} = c$.
+\item Se $f$ for uma !!{function} de $m$ lugares em $\Gamma \Sequent
+\Delta$, e $t_1$, \dots, $t_m \in \Domain{M}$, então
+$\Assign{f}{M}(t_1, \dots, t_m) = f(t_1, \dots, t_n)$.
+\item Se $R$ for um !!{predicate} de $m$ lugares em $\Gamma \Sequent
+\Delta$, então $\Assign{R}{M} = \Setabs{\tuple{t_1, \dots, t_m} \in
+\Domain{M}^n}{R(t_1, \dots, t_n) \in \Theta}$.
+\end{enumerate}
+$\Struct{M}$ é um \emph{modelo de termos}, pois seu domínio é um
+conjunto de termos, e as !!{constant}s e !!{function}s são interpretadas
+de modo a garantir que $\Value{t}{M} = t$. As !!{formula}s atômicas
+em~$\Theta$ são usadas para definir $\Assign{R}{M}$ de modo a garantir
+que $\Sat{M}{R(t_1, \dots, t_n)}$ sse $R(t_1, \dots, t_n) \in
+\Theta$.
+
+\begin{lem}\ollabel{lem:truth}
+Para todo $!A \in \Theta \cup \Xi$:
+\begin{enumerate}
+  \item Se $!A \in \Theta$, então $\Sat{M}{!A}$.
+  \item Se $!A \in \Xi$, então $\Sat/{M}{!A}$.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+  Por indução sobre $\depth{!A}$.
+
+Primeiro, suponha que $!A$ seja atômica, isto é, que $!A \ident
+\lfalse$ ou $!A \ident R(t_1, \dots, t_m)$.
+
+Como $\Pi_n \Sequent \Lambda_n$ é um ramo de falha, nenhum $\Pi_n$
+pode conter $\lfalse$ (caso contrário, $\Pi_n \Sequent \Lambda_n$
+seria um axioma). $\Sat{M}{R(t_1, \dots, t_m)}$ sse $R(t_1, \dots,
+t_m) \in \Theta$, pela definição de~$\Struct{M}$. Em conjunto, esses
+fatos mostram que, se $!A \in \Theta$, então $\Sat{M}{!A}$.
+
+Se $!A$ for atômica e $!A \in \Pi_n$, então $!A \in \Pi_{n+1}$; e,
+se $!A \in \Lambda_n$, então $!A \in \Lambda_{n+1}$. (Isso decorre
+da maneira como o algoritmo de busca de provas gera os sequentes
+sucessores.) Portanto, se $!A \in \Theta \cap \Xi$, então, para algum
+~$n$, $!A \in \Pi_n \cap \Lambda_n$. Isso significa que $\Pi_n
+\Sequent \Lambda_n$ é um axioma, e o ramo de falha não pode conter
+axiomas. Assim, por construção, $!A \notin \Theta \cap \Xi$ para
+$!A$ atômica e, consequentemente, se $!A \in \Xi$, então $!A \notin
+\Theta$. Isso implica que, se $!A \in \Xi$, então $\Sat/{M}{!A}$,
+pela definição de~$\Struct{M}$.
+
+Para o passo indutivo, suponha que (1) e (2) valham para todas as
+!!{formula}s de !!{depth} menor que a de~$!A$. Provamos (1) e (2) para
+$!A$ distinguindo casos.
+
+Observe primeiro que, quando $!A^i$ ocorre em $\Pi_n \Sequent
+\Lambda_n$, $!A^i$ também ocorre em $\Pi_{n+1} \Sequent
+\Lambda_{n+1}$, a menos que $i$ seja o menor índice em $\Pi_n \Sequent
+\Lambda_n$. Como o menor índice aumenta nos sequentes superiores
+acrescentados em cada estágio, acabamos chegando a $\Pi_n \Sequent
+\Lambda_n$ no qual $!A^i$ ocorre e $i$ é o menor índice. No estágio
+$n+1$, o algoritmo reduz~$!A^i$. Em outras palavras, se $!A \in
+\Theta$, então, para algum $n$, $\Pi_n = \Pi_n', !A^i$ e $i$ é o
+menor índice. E, se $!A \in \Xi$, então, para algum $n$, $\Lambda_n =
+\Lambda_n', !A^i$ e $i$~é o menor índice.
+
+\begin{enumerate}
+  \item $!A \in \Theta$ e $!A \ident !B \land !C$. Então, para algum
+  $n$, $\Pi_n = \Pi_n', (!B \land !C)^i$. $\Pi_{n+1} \Sequent
+  \Lambda_{n+1}$ é a premissa correspondente de~\LeftR{\land}, isto é,
+  $\Pi_{n+1} = \Pi_n', !B^k, !C^{k+1}$. Consequentemente, $!B, !C \in
+  \Theta$. Pela hipótese de indução, $\Sat{M}{!B}$ e $\Sat{M}{!C}$.
+  Pela definição de $\Sat{M}{}$, temos $\Sat{M}{!B \land !C}$.
+
+  \item $!A \in \Xi$ e $!A \ident !B \land !C$. Então, para algum $n$,
+  $\Lambda_n = \Lambda_n', !B \land !C$. $\Pi_{n+1} \Sequent
+  \Lambda_{n+1}$ é uma das duas premissas de~\RightR{\land} com
+  conclusão $\Pi_n \Sequent \Lambda'_n, !B \land !C$, isto é,
+  $\Lambda_{n+1} = \Lambda_n', !B^k$ ou $\Lambda_{n+1} = \Lambda_n',
+  !C^k$. Consequentemente, ou $!B \in \Xi$, ou $!C \in \Xi$. Pela
+  hipótese de indução, ou $\Sat/{M}{!B}$, ou $\Sat/{M}{!C}$. Pela
+  definição de $\Sat{M}{}$, temos $\Sat/{M}{!B \land !C}$.
+  
+  \item Os casos em que $!A \ident \lnot !B$, $!A \ident !B \lor !C$
+  e $!A \ident !B \lif !C$ são semelhantes e ficam como exercícios.
+
+  \item $!A \in \Theta$ e $!A \ident \lexists[x][!B(x)]$. Então, para
+  algum $n$, $\Pi_n = \Pi_n', \lexists[x][!B(x)]^i$. $\Pi_{n+1}
+  \Sequent \Lambda_{n+1}$ é a premissa correspondente
+  de~\LeftR{\lexists}, isto é, $\Pi_{n+1} = \Pi_n', !B(c)^k$ para
+  algum~$c$. Consequentemente, $!B(c) \in \Theta$ e~$c \in C$. Pela
+  hipótese de indução, $\Sat{M}{!B(c)}$. Pela definição de
+  $\Sat{M}{}$, temos $\Sat{M}{\lexists[x][!B(x)]}$.
+
+  \item $!A \in \Xi$ e $!A \ident \lexists[x][!B(x)]$. Então, para algum
+  $n$, $\Lambda_n = \Lambda_n', \lexists[x][!B(x)]^i$. Como, cada vez
+  que $\lexists[x][!B(x)]$ é reduzida, $\lexists[x][!B(x)]$ permanece no
+  lado direito do sequente-premissa com um novo índice,
+  $\lexists[x][!B(x)]$ é reduzida infinitas vezes no lado direito de
+  um ramo de falha se ocorrer ali. Todo termo $t \in \Domain{M}$ acaba
+  sendo ``o primeiro termo que contém apenas constantes em~$C_n$ ainda
+  não usadas em uma redução de $\lexists[x][!B(x)]$ à direita'' em um
+  ramo de falha. Portanto, para todo $t \in \Domain{M}$, $!B(t) \in
+  \Lambda_n$ para algum~$n$ e, consequentemente, $!B(t) \in \Xi$.
+  Pela hipótese de indução, $\Sat/{M}{!B(t)}$ para todo $t \in
+  \Domain{M}$. Pela definição de $\Sat{M}{}$, temos
+  $\Sat/{M}{\lexists[x][!B(x)]}$.
+
+  \item Os casos em que $!A \ident \lforall[x][!B(x)]$ são semelhantes e
+  ficam como exercícios.
+\end{enumerate}
+\end{proof}
+
+\begin{cor}\ollabel{cor:complete} O algoritmo de busca de provas para
+\Log{G3c} é completo: se abortar ou nunca parar, o sequente
+inicial~$\Gamma \Sequent \Delta$ não será válido e, portanto, não terá
+!!{proof}.
+\end{cor}
+
+\begin{proof}
+  Se o algoritmo abortar ou nunca parar, haverá um ramo de falha a
+  partir do qual $\Struct{M}$ poderá ser definida. Por \olref{lem:truth},
+  para todo $!A \in \Gamma$, $\Sat{M}{!A}$ e, para todo $!A \in \Delta$,
+  $\Sat/{M}{!A}$. (Lembre-se de que $\Pi_0 = \Gamma$ e $\Lambda_0 =
+  \Delta$, logo $\Gamma \subseteq \Theta$ e $\Delta \subseteq \Xi$.)
+  Portanto, $\Gamma \Sequent \Delta$ não será válido. Pela correção
+  de~\Log{G3c}, $\Gamma \Sequent \Delta$ não terá !!{proof}.
+\end{proof}
+
+\begin{cor}
+\Log{G3c} é completo: se $\Gamma \Sequent \Delta$ for válido,
+$\Log{G3c} \Proves \Gamma \Sequent \Delta$.
+\end{cor}
+
+\begin{proof}
+  Demonstramos a contrapositiva. Suponha $\Log{G3c} \Proves/ \Gamma
+  \Sequent \Delta$. Então o algoritmo de busca de provas deve abortar
+  ou nunca parar, pois não há !!{proof} a ser encontrada. Por
+  \olref{cor:complete}, $\Gamma \Sequent \Delta$ não é válido.
+\end{proof}
+
+
+\end{document}

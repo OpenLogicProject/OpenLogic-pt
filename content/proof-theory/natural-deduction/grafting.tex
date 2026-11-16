@@ -1,0 +1,84 @@
+% Part: proof-theory
+% Chapter: natural-deduction
+% Section: grafting
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{pt}{nat}{gra}
+
+\olsection{Enxerto de \usetoken{P}{proof}}
+
+!!^{proof}s em \Log{N1c} e~\Log{N1i} são !!{proof}s de !!{formula}s~$!A$ a partir de
+hipóteses~$!B$. Suponha que $!B$ tenha, ela própria, !!a{proof}. Como
+combinamos a !!{proof} de~$!B$ com a !!{proof} de $!A$ a partir de~$!B$ para
+obter !!a{proof} de~$!A$ que não use a hipótese~$!B$?
+
+Uma opção é remover a hipótese~$!B$ da !!{proof} de~$!A$ aplicando
+\Intro{\lif}. Podemos então combinar a !!{proof} resultante de
+$!B \lif !A$ com a !!{proof} de~$!B$ para obter
+\[
+\AxiomC{$\Discharge{!B}{x}$}
+\DeduceC{$!A$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!B \lif !C$}
+\AxiomC{}
+\DeduceC{$!B$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!A$}
+\DisplayProof
+\]
+Isso é direto, mas um tanto deselegante: por que introduzir $\lif$ apenas
+para eliminá-lo imediatamente? Deveria ser possível evitar esse tipo
+de ``desvio'' por meio de $!B \lif !A$. (O fato de que esses desvios
+sempre podem ser evitados é justamente o conteúdo do teorema da normalização.)
+
+Em \Log{N1c} e~\Log{N1i}, podemos de fato evitá-lo com bastante facilidade neste caso:
+basta substituir as hipóteses~$!B^x$ pela !!{proof} inteira
+de~$!B$. Esse ``enxerto'' de !!{proof}s nas hipóteses de outras provas
+é bastante útil, por isso o registramos em uma definição.
+
+\begin{defn}
+Se $\delta_1$ é uma \Log{N1c}-!!{proof} (ou \Log{N1i}-!!{proof})
+de~$!A$ a partir da hipótese aberta~$!B^x$, e $\delta_2$ é uma
+\Log{N1c}-!!{proof} (\Log{N1i}-!!{proof}) de~$!B$, então
+$\Subst{\delta_1}{\delta_2}{!B^x}$ é o resultado de substituir toda
+ocorrência não descarregada de~$!B^x$ em~$\delta_1$ por~$\delta_2$.
+\end{defn}
+
+Desde que $\delta_1$ e $\delta_2$ não tenham !!{formula}s de hipótese
+diferentes marcadas com o mesmo rótulo e nenhuma hipótese aberta
+de~$\delta_2$ contenha uma variável própria de~$\delta_1$, a
+$\Subst{\delta_1}{\delta_2}{!B^x}$ resultante é uma !!{proof} correta,
+e suas hipóteses abertas são as de $\delta_1$ juntamente com as
+de~$\delta_2$. Ao enxertar !!{proof}s, essas condições normalmente
+serão satisfeitas. A primeira é satisfeita sempre que $\delta_1$ e
+$\delta_2$ são subprovas de uma !!{proof} maior. Se a segunda não for
+satisfeita, podemos renomear as variáveis próprias de~$\delta_1$ para
+que ela seja satisfeita.
+
+Uma definição correspondente se aplica a \Log{N2c} e~\Log{N2i}.
+
+\begin{defn}
+Se $\delta_1$ é uma \Log{N2c}-!!{proof} (ou \Log{N2i}-!!{proof})
+de~$x:!B, \Gamma_1 \Sequent !A$, e $\delta_2$ é uma
+\Log{N1c}-!!{proof} (\Log{N1i}-!!{proof}) de~$\Gamma_2 \Sequent !B$,
+então $\Subst{\delta_1}{\delta_2}{x:!B}$ é o resultado de substituir
+todo axioma $x:!B \Sequent !B$ em~$\delta_1$ por~$\delta_2$ e acrescentar
+$\Gamma_2$ ao contexto de todo sequente abaixo de tais axiomas.
+\end{defn}
+
+\begin{prop}
+Se $\delta_1 \Proves x:!B, \Gamma_1 \Sequent
+!A$ e $\delta_2 \Proves \Gamma_2 \Sequent !B$, então
+$\Subst{\delta_1}{\delta_2}{x:!B} \Proves \Gamma_1, \Gamma_2 \Sequent
+!A$, desde que nenhuma variável própria de~$\delta_1$ ocorra em~$\Gamma_2$.
+\end{prop}
+
+
+\begin{proof}
+  Por indução sobre $\pheight{\delta}$.
+\end{proof}
+
+\end{document}

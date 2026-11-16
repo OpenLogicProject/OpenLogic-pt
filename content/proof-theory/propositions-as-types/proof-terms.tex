@@ -1,0 +1,133 @@
+% part: intuitionistic-logic
+% chapter: propositions-as-types
+% section: proof-terms
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{int}{pty}{ter}
+
+\olsection{Termos de prova}
+
+Rotulamos as hipóteses em \Log{N1i} com variáveis (por exemplo, $!A^x$),
+usadas como rótulos de descarga. Em \Log{N2i}, todo sequente $\Gamma
+\Sequent !A$ tem, no contexto~$\Gamma$ à esquerda, uma lista de pares
+variável--!!{formula}. Assim, em \Log{N2i}, todo sequente em !!a{proof}
+contém não apenas a informação sobre o que a !!{proof} até esse ponto
+!!{prove}d (isto é, $!A$), mas também sobre quais hipóteses estão abertas
+em cada ponto (isto é, $\Gamma$). E se incluíssemos ainda, em cada
+sequente, a informação de \emph{como} $!A$ foi !!{prove}d? Para isso,
+podemos definir um sistema \emph{rotulado por termos} \Log{tN2i}, no qual
+os sequentes têm a forma $\Gamma \Sequent N : !A$. $\Gamma$~e $!A$ são
+como antes: um conjunto de pares da forma $x: !B$ e a !!{formula} que a
+sub-!!{proof} terminada no sequente mostrou decorrer das hipóteses
+em~$\Gamma$. $N$~será um termo que codifica a !!{proof} terminada no
+sequente.
+
+Os termos que atribuímos a cada sequente são construídos a partir das
+variáveis $x$, $y$, \dots, usando símbolos de função que codificam as
+inferências realizadas até o momento. Precisamos de um símbolo de função
+distinto para cada regra de inferência. Os símbolos de função
+correspondentes às regras de !!{introduction} são chamados de
+``construtores'', e os correspondentes às regras de !!{elimination}, de
+``destrutores''. Cada símbolo de função recebe tantos argumentos quantas
+forem as premissas da regra. Por exemplo, os símbolos de função para
+\Intro{\land} e \Elim{\land}[1] poderiam ser $c^\land$ (binário) e
+$d^\land_1$ (unário). Em \Log{tN2i}, essas regras tornam-se
+\[
+\Axiom$\Gamma_1 \fCenter N: !A$
+\Axiom$\Gamma_2 \fCenter M: !B$
+\RightLabel{\Intro{\land}}
+\BinaryInf$\Gamma_1, \Gamma_2 \fCenter c^\land(N, m) : !A \land !B $
+\DisplayProof
+\quad
+\Axiom$\Gamma \fCenter N: !A \land !B$
+\RightLabel{\Elim{\land}[1]}
+\UnaryInf$\Gamma \fCenter d^\land_1(N) : !A$
+\DisplayProof
+\]
+Se uma regra de inferência descarrega uma hipótese, isto é, se a regra
+tem uma premissa que indica uma !!{formula} rotulada~$x:!A$ que não está
+no contexto da conclusão, também precisamos indicar isso no termo de
+prova. Os símbolos de função associados a essas regras \emph{ligam} as
+variáveis correspondentes. Por exemplo, a regra \Intro{\lif} passa da
+premissa $x:!A, \Gamma \Sequent !B$ para $\Gamma \Sequent !A \lif !B$.
+O construtor $c^{\lif}$ recebe um argumento, mas também precisa indicar
+que a variável $x$ se torna ligada. Essa é a maneira pela qual o termo de
+prova expressa que a hipótese com rótulo~$x$ foi descarregada. Por
+exemplo, se o termo de prova da premissa é~$N$, poderíamos escrever o
+termo de prova da conclusão como $c^{\lif}([x]N)$ e a regra como
+\[
+\Axiom$x:!A, \Gamma \fCenter N: !B$
+\RightLabel{\Intro{\lif}}
+\UnaryInf$\Gamma \fCenter c^{\lif}([x]N) : !A \lif !B$
+\DisplayProof
+\]
+
+Para poder reconstruir por completo !!a{proof}, precisamos de algumas
+informações adicionais. Se as !!{formula}s das premissas de uma regra
+não determinam completamente qual é a !!{formula} da conclusão,
+precisamos acrescentar essa informação ao termo. Esse é o caso em
+\Intro{\lif}, por isso escreveremos $c^{\lif}([x:!A]N)$. Também é o caso
+em \Intro{\lor} e~\FalseInt, de modo que usamos símbolos de função que
+carregam essa informação, por exemplo,
+\[
+\Axiom$\Gamma \fCenter N:!A$
+\RightLabel{\Intro{\lor}[1]}
+\UnaryInf$\Gamma \fCenter c^{\lor{!B}}_1:!A \lor !B$
+\DisplayProof
+\quad
+\Axiom$\Gamma \fCenter N:\lfalse$
+\RightLabel{\FalseInt}
+\UnaryInf$\Gamma \fCenter d^\lfalse_{!A}(N):!A$
+\DisplayProof
+\]
+
+Com essas ideias, é possível construir um sistema de dedução natural em
+estilo de sequentes no qual todo sequente tem a forma $\Gamma \Sequent N
+: !A$, onde $N$~é um \emph{termo de prova}.
+
+Há uma conexão estreita entre esses termos de prova e os termos do
+chamado \emph{cálculo lambda tipado}. Para respeitar essa conexão,
+usaremos os símbolos empregados na literatura sobre o cálculo lambda,
+em vez dos símbolos genéricos de construtor e destrutor acima. Por
+exemplo, em vez de escrever $c^{\lif}([x:!A]N)$, escrevemos
+$\lambd[\typeof{x}{!A}][N]$; em vez de $d^{\lif}(N,M)$, escrevemos
+$(NM)$; escrevemos $\pair{N}{M}$ em vez de $c^\land(N,M)$ e
+$\proj{i}{N}$ em vez de~$d^\land_i(N)$.
+
+\begin{defn}
+  Os termos de prova são gerados indutivamente pelas seguintes regras:
+  \begin{enumerate}
+  \item Toda variável $x$ é um termo de prova (Axiomas).
+  \item Se $x$ é uma variável, $!A$ é !!a{formula} e $N$ é um termo de
+    prova, então $\lambd[\typeof{x}{!A}][N]$ também é um termo de prova~(\Intro\lif).
+  \item Se $N$ e $M$ são termos de prova, então $(NM)$ também é um termo
+    de prova~(\Elim\lif).
+  \item Se $N$ e $M$ são termos de prova, então $\pair{N}{M}$ é um termo
+    de prova~(\Intro\land).
+  \item Se $N$ é um termo de prova, então $\proj{i}{N}$ também é um termo
+    de prova, onde $i$ é $1$ ou~$2$~(\Elim\land[i]).
+  \item Se $N$ é um termo de prova e $!A$ é uma fórmula, então
+    $\inj[!A]{i}{!M}$ é um termo de prova, onde $i$ é $1$ ou~$2$~(\Intro\lor[i]).
+  \item Se $M$, $N_1$, $N_2$ são termos de prova e $x_1$, $x_2$ são
+    variáveis, então $\dcase{M}{x_1}{N_1}{x_2}{N_2}$ é um termo de
+    prova~(\Elim\lor).
+  \item Se $N$ é um termo de prova e $!A$ é !!a{formula}, então
+    $\abort{!A}{N}$ é um termo de prova~(\FalseInt).
+  \end{enumerate}
+\end{defn}
+
+Nem todo termo de prova é o termo de prova de !!a{proof}. Por exemplo,
+um termo $\pair{N}{M}$ codifica uma prova que termina em uma inferência
+\Intro{\land}; portanto, sua !!{formula} final é uma conjunção~$!A \land
+!B$. Essa não pode ser a premissa maior de uma regra~\Elim{\lif}; logo,
+$(\pair{N}{M}P)$ não pode ser o termo de prova de uma prova correta.
+Somente os termos de prova que seguem as regras de \Log{tN2ip} são
+termos de prova \emph{corretos}. Essas regras são apresentadas em
+\olref{tab:tN2ip}.
+
+\subfile{rules-tN2}
+
+\end{document}

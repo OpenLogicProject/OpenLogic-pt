@@ -1,0 +1,254 @@
+% part: intuitionistic-logic
+% chapter: propositions-as-types
+% section: normalization
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{int}{pty}{nor}
+
+\olsection{Normalização}
+
+Nesta seção, demonstramos que, segundo certa ordem de redução, qualquer
+dedução pode ser reduzida a uma dedução normal; isso é chamado de
+\emph{propriedade de normalização}. Usaremos a correspondência entre
+proposições e tipos: mostramos que todo termo de prova pode ser reduzido
+a uma forma normal; disso segue a normalização para !!{derivation}s de
+dedução natural.
+
+Primeiro, definimos algumas funções que medem a complexidade dos termos.
+O \emph{comprimento}~$\len{!A}$ de !!a{formula}s é definido por
+\begin{align*}
+  \len{p} &= 0\\
+  \len{!A \land !B} &= \len{!A} + \len{!B} + 1\\
+  \len{!A \lor !B} &= \len{!A} + \len{!B} + 1 \\
+  \len{!A \lif !B} &= \len{!A} + \len{!B} + 1.
+\end{align*}
+A complexidade de um redex~$M$ é medida por seu \emph{posto de
+  corte}~$\cutrank{M}$:
+\begin{align*}
+  \cutrank{(\lambd[\typeof{x}{!A}][\typeof{N}{!B}])Q} &=
+  \len{!A} + \len{!B} + 1 \\
+  \cutrank{\ande{i}{\andi{\typeof{M}{!A}}{\typeof{N}{!B}}}} &=
+  \len{!A} + \len{!B} + 1 \\
+  \cutrank{\ore{\ori{i}{!A_{i}}{\typeof{M}{!A_i}}}
+    {\typeof{x_1}{!A_1}}{\typeof{N_1}{!C}}
+    {\typeof{x_2}{!A_2}}{\typeof{N_2}{!C}}} &=
+  \len{!A} + \len{!B} + 1
+\end{align*}
+A complexidade de um termo de prova é medida pelo redex mais complexo
+que ele contém, e é $0$ se ele é normal:
+\[
+  \maxrank{M} = \max \{\cutrank{N} | N \text{ é um subtermo de } M \text{
+    e é um redex}\}
+\]
+
+\begin{lem}\ollabel{lem:subst}
+  Se $\Subst{M}{\typeof{N}{!A}}{\typeof{x}{!A}}$ é um redex e $M
+  \not\ident x$, então vale um dos seguintes casos:
+  \begin{enumerate}
+  \item o próprio $M$ é um redex; ou
+  \item $M$ tem a forma $\ande{i}{x}$, e $N$ tem a forma
+    $\andi{P_1}{P_2}$
+  \item $M$ tem a forma $\ore{i}{x_1}{P_1}{x_2}{P_2}$, e $N$ tem
+    a forma $\ori{i}{}{Q}$
+  \item $M$ tem a forma $x Q$, e $N$ tem a forma
+    $\lambd[x][P]$
+  \end{enumerate}
+  No primeiro caso, $\cutrank{\Subst{M}{N}{x}} = \cutrank{M}$; nos
+  outros casos, $\cutrank{\Subst{M}{N}{x}} = \len{!A})$.
+\end{lem}
+\begin{proof}
+  Demonstração por indução em~$M$.
+  \begin{enumerate}
+  \item Se $M$ é uma única variável $y$ e $y \not\ident x$, então
+    $\Subst{y}{N}{x}$ é $y$ e, portanto, não é um redex.
+  \item Se $M$ tem a forma $\andi{N_1}{N_2}$, $\lambd[x][N]$ ou
+    $\ori{i}{!A}{N}$, então $\Subst{M}{\typeof{N}{!A}}{\typeof{x}{!A}}$
+    também tem essa forma e, portanto, não é um redex.
+  \item Se $M$ tem a forma $\ande{i}{P}$, consideramos dois casos.
+    \begin{enumerate}
+      \item Se $P$ tem a forma $\andi{P_1}{P_2}$, então $M \ident
+        \ande{i}{\andi{P_1}{P_2}}$ é um redex e, claramente,
+        \[
+        \Subst{M}{N}{x} \ident
+        \ande{i}{\andi{\Subst{P_1}{N}{x}}{\Subst{P_2}{N}{x}}}
+        \]
+        também é um redex. Os postos de corte são iguais.
+      \item Se $P$ é uma única variável, ela deve ser $x$ para que a
+        substituição seja um redex, e $N$ deve ter a forma
+        $\andi{P_1}{P_2}$. Considere agora
+        \[
+        \Subst{M}{N}{x} \ident \Subst{\ande{i}{x}}{\andi{P_1}{P_2}}{x},
+        \]
+        que é $\ande{i}{\andi{P_1}{P_2}}$. Seu posto de corte é igual a
+        $\cutrank{x}$, que é $\len{!A}$.
+    \end{enumerate}
+  \end{enumerate}
+  Os casos de $\ore{N}{x_1}{N_1}{x_2}{N_2}$ e $P Q$ são semelhantes.
+\end{proof}
+
+\begin{lem}
+  Se $M$ se contrai a $M'$ e $\cutrank{M} > \cutrank{N}$ para todos os
+  subtermos redex próprios $N$ de $M$, então $\cutrank{M} >
+  \maxrank{M'}$.
+\end{lem}
+
+\begin{proof}
+  Demonstração por casos.
+  \begin{enumerate}
+  \item Se $M$ tem a forma $\ande{i}{\andi{M_1}{M_2}}$, então $M'$ é
+    $M_i$; como todo subtermo de $M_i$ também é um subtermo próprio de
+    $M$, vale a afirmação.
+  \item Se $M$ tem a forma
+    $(\lambd[\typeof{x}{!A}][N])\typeof{Q}{!A}$, então $M'$ é
+    $\Subst{N}{\typeof{Q}{!A}}{\typeof{x}{!A}}$. Considere um redex em
+    $M'$. Ou há um redex correspondente em $N$ com o mesmo posto de
+    corte, que é menor do que $\cutrank{M}$ por hipótese, ou o posto de
+    corte é igual a $\len{!A}$, que, por definição, é menor do que
+    $\cutrank{(\lambd[x^{!A}][N])Q}$.
+  \item Se $M$ tem a forma
+    \[
+    \ore{\ori{i}{}{\typeof{N}{!A_i}}}
+        {\typeof{x_1}{!A_1}}{\typeof{N_1}{!C}}
+        {\typeof{x_2}{!A_2}}{\typeof{N_2}{!C}},
+    \]
+    então $M' \ident \Subst{N_i}{N}{\typeof{x_i}{!A_i}}$. Considere um
+    redex em~$M'$. Ou há um redex correspondente em $N_i$ com o mesmo
+    posto de corte, que é menor do que $\cutrank{M}$ por hipótese, ou o
+    posto de corte é igual a $\len{!A_i}$, que, por definição, é menor do que
+    $\cutrank{\ore{\ori{i}{}{\typeof{N}{!A_i}}}
+      {\typeof{x_1}{!A_1}}{\typeof{N_1}{!C}}
+      {\typeof{x_2}{!A_2}}{\typeof{N_2}{!C}}}$.
+  \end{enumerate}
+\end{proof}
+
+\begin{thm}
+  Todos os termos de prova se reduzem à forma normal; todas as
+  !!{derivation}s se reduzem a !!{derivation}s normais.
+\end{thm}
+
+\begin{proof}
+  A segunda afirmação segue da primeira. Demonstramos a primeira por
+  indução completa em $m=\maxrank{M}$, em que $M$ é um termo de prova.
+  \begin{enumerate}
+
+  \item Se $m=0$, $M$ já é normal.
+  \item
+    Caso contrário, procedemos por indução em~$n$, o número de
+    redexes em $M$ cujo posto de corte é igual a~$m$.
+    \begin{enumerate}
+    \item Se $n=1$, selecione qualquer redex $N$ tal que $m = \cutrank{N} >
+      \cutrank{P}$ para todo subtermo próprio $P$ que também seja, é
+      claro, um redex. Tal redex deve existir, pois todo termo tem
+      apenas um número finito de subtermos.
+
+      Seja $N'$ o reduto de $N$. Pelo lema,
+      $\maxrank{N'} < \maxrank{N}$; vemos, portanto, que $n$, o número
+      de redexes com $\cutrank=m$, diminui. Assim, $m$ diminui (em $1$
+      ou mais), e podemos aplicar a hipótese de indução para~$m$.
+    \item Para o passo de indução, suponha $n>1$. O processo é
+      semelhante, exceto que $n$ diminui apenas até um número positivo
+      e, portanto, $m$ não muda. Aplicamos simplesmente a hipótese de
+      indução para~$n$.
+    \end{enumerate}
+\end{enumerate}
+\end{proof}
+
+O fato de os $\lambd$-termos tipados se normalizarem significa que todo
+termo desse tipo \emph{tem uma forma normal}. Se entendermos a redução
+$\beta$ de $\lambd$-termos à sua forma normal como a execução de uma
+computação e a forma normal como o valor da computação, isso significa
+que toda computação no $\lambd$-cálculo tipado acaba por parar e produzir
+um valor. Além disso, a preservação de tipos garante que o valor tenha
+o tipo correto. Por exemplo, se $N$ tem tipo $!A \lif !B$ (isto é, é uma
+função que deve operar sobre argumentos do tipo~$!A$ e produzir valores
+do tipo~$!B$) e o aplicamos a um termo~$M$ do tipo~$!A$ (a entrada),
+$(NM)$ se reduz a um termo $N'$ (a saída), e essa saída é garantidamente
+do tipo~$!B$.
+
+Na verdade, os termos do $\lambd$-cálculo tipado não apenas se reduzem a
+formas normais segundo uma maneira de aplicar reduções~$\beta$ a
+subtermos: \emph{qualquer} maneira de aplicar reduções~$\beta$ a
+subtermos acaba por terminar em uma forma normal. Essa propriedade é
+chamada de \emph{normalização forte}. Ela significa não apenas que há
+uma maneira de garantir que uma computação acabe por parar e produzir um
+valor, mas que \emph{qualquer} maneira de executar a computação acaba por
+produzir um valor.
+
+Como sabemos que diferentes maneiras de executar uma computação produzem
+o \emph{mesmo} valor? Até agora, sabemos apenas (pela preservação de
+tipos) que todos os valores que ela produz têm o mesmo tipo. O
+$\lambd$-cálculo tipado tem outra propriedade importante: ele é
+\emph{confluente}, ou \emph{Church--Rosser}. Se $N \red N_1$ e $N \red
+N_2$, então existe algum termo~$N'$ tal que $N_1 \red N'$ e $N_2 \red
+N'$. Lembre que $N \red N'$ significa que $N'$ resulta de zero ou mais
+passos de redução~$\redone$. Se $N_1$ está na forma normal, então o único
+termo $N'$ tal que $N_1 \red N'$ é o próprio $N_1$ (por meio de zero
+passos de redução~$\redone$). Segue-se que, se $N_1$ e $N_2$ estão ambos
+na forma normal, então $N_1 = N' = N_2$. Em outras palavras, como
+$\red$ é fortemente normalizante, toda maneira de reduzir um termo acaba
+por resultar em uma forma normal. Como $\red$ é Church--Rosser, quaisquer
+duas formas normais são iguais. Portanto, a computação no
+$\lambd$-cálculo tipado sempre termina, e o valor (a forma normal) é o
+mesmo, independentemente de como a computação procede.
+
+Demonstrar que uma relação é confluente costuma ser difícil. No entanto,
+podemos estabelecer facilmente a seguinte condição mais fraca:
+
+\begin{prop}[Propriedade fraca de Church--Rosser]
+Se $N \redone N_1$ e $N \redone N_2$, então existe um termo $N'$ tal
+que $N_1 \red N'$ e $N_2 \red N'$.
+\end{prop}
+
+\begin{proof}
+  Os dois termos $N_1$ e $N_2$ resultam de $N$ pela substituição,
+  respectivamente, do redex $M_1$ ou $M_2$ por seu reduto. Os redexes
+  $M_1$ e $M_2$ são subtermos de $N$ e, portanto, não podem se
+  sobrepor. Isso significa que ou um é subtermo do outro, ou eles
+  ocorrem em posições diferentes e não sobrepostas de $N$. Considere o
+  segundo caso: $N$ tem a forma $N(M_1,M_2)$. Substituir $M_1$ por seu
+  reduto $M_1'$ resulta em $N_1$, que é $N(M_1',M_2)$, e substituir
+  $M_2$ por seu reduto $M_2'$ resulta em $N_2$, que é $N(M_1,M_2')$.
+  Ambos se reduzem a $N(M_1',M_2')$. No outro caso, suponha que $M_2$
+  seja um subtermo de~$M_1$ (o outro caso é simétrico) e distinga casos
+  segundo o tipo de redex que $M_1$ é. Por exemplo, se $M_1 \ident
+  \proj{1}{\pair{O_1}{O_2}}$, ele se reduz a $O_1$. Se $M_2$ é um
+  subtermo de $O_1$, então converter $M_2$ resulta em $O_1'$. Assim,
+  converter primeiro $M_1$ e depois $M_2$ resulta em $O_1'$. Mas
+  converter primeiro $M_2$ resulta em $\proj{1}{\pair{O_1'}{O_2}}$, e
+  isso também se reduz a~$O_2$.
+\end{proof}
+
+\begin{lem}[Lema de Newman]
+Se $\red$ é fortemente normalizante e tem a propriedade fraca de
+Church--Rosser, então é confluente.
+\end{lem}
+
+\begin{proof}
+  Como $\red$ é fortemente normalizante, toda sequência de redução
+  resulta em uma forma normal. As formas normais são únicas sse $\red$
+  é confluente. Suponha, então, que algum termo $N$ tenha duas formas
+  normais distintas $N'$ e $N''$, resultantes das sequências de redução
+  \begin{align*}
+  N & = N_1' \redone N_2' \redone \dots \redone N_k' = N' \text{ e}\\
+  N & = N_1'' \redone N_2'' \redone \dots \redone N_l'' = N''
+  \end{align*}
+  (A sequência de redução deve ter comprimento $>0$, pois, caso
+  contrário, $N$ já estaria na forma normal.)
+
+  Se $N_1' = N_1''$, então ele tem duas formas normais distintas ($N'$ e
+  $N''$). Se $N_1' \neq N_1''$, então, pela propriedade fraca de
+  Church--Rosser, existe algum $N'''$ tal que $N_1' \red N'''$ e
+  $N_1'' \red N'''$. Como $N' \neq N''$, ou $N''' \neq N'$ ou $N'''
+  \neq N''$. Consequentemente, ou $N_1'$ ou $N_1''$ tem duas formas
+  normais distintas. Mostramos que, se $N$ tem duas formas normais
+  distintas, existe um $N_1$ tal que $N \redone N_1$ e $N_1$ tem duas
+  formas normais distintas. Evidentemente, podemos continuar e produzir
+  $N \redone N_1 \redone N_2 \redone \dots$, mas isso é impossível,
+  pois $\redone$ é fortemente normalizante.
+\end{proof}
+
+
+\end{document}
