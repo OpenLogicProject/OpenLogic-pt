@@ -6,25 +6,25 @@
 
 \begin{document}
 
-\olfileid{nml}{com}{cmd}
+\olfileid[pt]{nml}{com}{cmd}
 
-\olsection{Canonical Models}
+\olsection{Modelos canônicos}
 
-The \emph{canonical model} for a modal system~$\Sigma$ is a specific
-model~$\mModel{M^\Sigma}$ in which the worlds are all complete
-$\Sigma$-consistent sets. Its accessibility relation~$R^\Sigma$ and
-valuation $V^\Sigma$ are defined so as to guarantee that the
-!!{formula}s true at a world~$\Delta$ are exactly the !!{formula}s
-making up~$\Delta$.
+O \emph{modelo canônico} de um sistema modal~$\Sigma$ é um modelo
+específico~$\mModel{M^\Sigma}$ cujos mundos são todos os conjuntos
+$\Sigma$-consistentes completos. Sua relação de
+acessibilidade~$R^\Sigma$ e sua valoração $V^\Sigma$ são definidas de
+modo a garantir que as !!{formula}s verdadeiras em um mundo~$\Delta$
+sejam exatamente as !!{formula}s que constituem~$\Delta$.
 
 \begin{defn}
-  Let $\Sigma$ be a normal modal logic. The \emph{canonical model} for
-  $\Sigma$ is $\mModel{M}^\Sigma = \tuple{W^\Sigma, R^\Sigma,
-    V^\Sigma}$, where:
+  Seja $\Sigma$ uma lógica modal normal. O \emph{modelo canônico} de
+  $\Sigma$ é $\mModel{M}^\Sigma = \tuple{W^\Sigma, R^\Sigma,
+    V^\Sigma}$, onde:
   \begin{enumerate}
   \item $W^\Sigma = \Setabs{ \Delta }{\Delta \text{
-      is complete $\Sigma$-consistent} }$.
-  \item $R^\Sigma \Delta\Delta'$ holds if and only if
+      é $\Sigma$-consistente completo} }$.
+  \item $R^\Sigma \Delta\Delta'$ vale se e somente se
     \iftag{prvBox}{$\Box^{-1}\Delta \subseteq
       \Delta'$}{$\Diamond\Delta' \subseteq \Delta$}.
   \item $V^\Sigma(p) = \Setabs{\Delta}{p \in \Delta}$.

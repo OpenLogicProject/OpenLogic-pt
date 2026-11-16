@@ -6,21 +6,21 @@
 
 \begin{document}
 
-\olfileid{nml}{fil}{euc}
+\olfileid[pt]{nml}{fil}{euc}
 
-\olsection{Filtrations of Euclidean Models}
+\olsection{Filtrações de modelos euclidianos}
 
-The approach of \olref[acc]{sec} does not work in the case of models
-that are euclidean or serial and euclidean. Consider the model at the
-top of \olref{fig:ser-eucl}, which is both euclidean and serial. Let
-$\Gamma = \{p, \Box p \}$. When taking a filtration through $\Gamma$,
-then $[w_1] = [w_3]$ since $w_1$ and $w_3$ are the only worlds that
-agree on~$\Gamma$. Any filtration will also have the arrow inherited
-from $\mModel{M}$, as depicted in \olref{fig:ser-eucl2}. That model
-isn't euclidean. Moreover, we cannot add arrows to that model in order
-to make it euclidean. We would have to add double arrows between
-$[w_2]$ and $[w_4]$, and then also between $w_2$ and~$w_5$. But $\Box
-p$ is supposed to be true at~$w_2$, while $p$ is false at~$w_5$.
+A abordagem de \olref[acc]{sec} não funciona para modelos euclidianos,
+ou seriais e euclidianos. Considere o modelo na parte superior de
+\olref{fig:ser-eucl}, que é tanto euclidiano quanto serial. Seja
+$\Gamma = \{p, \Box p \}$. Ao tomar uma filtração por meio de $\Gamma$,
+temos $[w_1] = [w_3]$, pois $w_1$ e $w_3$ são os únicos mundos que
+concordam em~$\Gamma$. Toda filtração também terá a seta herdada de
+$\mModel{M}$, como mostra \olref{fig:ser-eucl2}. Esse modelo não é
+euclidiano. Além disso, não podemos acrescentar setas ao modelo para
+torná-lo euclidiano. Teríamos de acrescentar setas duplas entre $[w_2]$
+e $[w_4]$ e, depois, também entre $w_2$ e~$w_5$. Mas $\Box p$ deve ser
+verdadeira em~$w_2$, ao passo que $p$ é falsa em~$w_5$.
 
 \begin{figure}[htpb]
   \centering
@@ -33,6 +33,7 @@ p$ is supposed to be true at~$w_2$, while $p$ is false at~$w_5$.
             label = {below: $\mSat{{}}{\Box p}$},
             right=of w1] {$w_2$}; 
     \draw[->] (w1) to (w2);
+    \draw[reflexive above] (w2) to (w2);  
     \node[world] (w3)
           [label={left: \mFalse{p}},
             label={below: $\mSat{{}}{\Box p}$},
@@ -51,7 +52,7 @@ p$ is supposed to be true at~$w_2$, while $p$ is false at~$w_5$.
     \draw[->, bend left] (w5) to (w4);
     \draw[reflexive above] (w5) to (w5);     
   \end{tikzpicture}
-  \caption{A serial and euclidean model.}
+  \caption{Um modelo serial e euclidiano.}
   \ollabel{fig:ser-eucl}
 \end{figure}
 
@@ -81,53 +82,54 @@ p$ is supposed to be true at~$w_2$, while $p$ is false at~$w_5$.
     \draw[->, bend left] (w5) to (w4);
     \draw[reflexive above] (w5) to (w5);     
   \end{tikzpicture}
-  \caption{The filtration of the model in \olref{fig:ser-eucl}.}
+  \caption{A filtração do modelo de \olref{fig:ser-eucl}.}
   \ollabel{fig:ser-eucl2}
 \end{figure}
 
-In particular, to obtain a euclidean filtration it is not enough to
-consider filtrations through arbitrary $\Gamma$'s closed under
-sub-!!{formula}s. Instead we need to consider sets $\Gamma$ that are
-\emph{modally closed} (see \olref[pre]{defn:modallyclosed}). Such sets
-of sentences are infinite, and therefore do not immediately yield a
-finite model property or the decidability of the corresponding system.
+Em particular, para obter uma filtração euclidiana não basta considerar
+filtrações por meio de conjuntos $\Gamma$ arbitrários fechados sob
+sub-!!{formula}s. Precisamos considerar conjuntos $\Gamma$ que sejam
+\emph{modalmente fechados} (veja \olref[pre]{defn:modallyclosed}). Tais
+conjuntos de sentenças são infinitos e, portanto, não produzem de imediato
+uma propriedade do modelo finito nem a decidibilidade do sistema
+correspondente.
 
 \begin{thm}\ollabel{thm:modal-closed-filt}
-  Let $\Gamma$ be modally closed, $\mModel{M}=\tuple{W,R,V}$, and
-  $\mModel{M^*} = \tuple{W^*,R^*,V^*}$ be a coarsest filtration of
+  Seja $\Gamma$ modalmente fechado, seja $\mModel{M}=\tuple{W,R,V}$ e
+  seja $\mModel{M^*} = \tuple{W^*,R^*,V^*}$ uma filtração mais grossa de
   $\mModel{M}$.
   \begin{enumerate}
-  \item If $\mModel{M}$ is symmetric, so is $\mModel{M^*}$.
-  \item If $\mModel{M}$ is transitive, so is $\mModel{M^*}$.
-  \item If $\mModel{M}$ is euclidean, so is $\mModel{M^*}$.
+  \item Se $\mModel{M}$ é simétrico, $\mModel{M^*}$ também é.
+  \item Se $\mModel{M}$ é transitivo, $\mModel{M^*}$ também é.
+  \item Se $\mModel{M}$ é euclidiano, $\mModel{M^*}$ também é.
   \end{enumerate}
 \end{thm}
 
 \begin{proof}
 \begin{enumerate}
-  \item If $\mModel{M^*}$ is a coarsest filtration, then by definition
-    $R^*[u][v]$ holds if and only if $C_1(u,v)$. For transitivity,
-    suppose $C_1(u,v)$ and $C_1(v,w)$; we have to show
-    $C_1(u,w)$. \iftag{prvBox}{Suppose $\mSat{M}{\Box !A}[u]$; then
-      $\mSat{M}{\Box\Box!A}[u]$ since \Ax{4} is valid in all
-      transitive models; since $\Box\Box!A \in \Gamma$ by closure,
-      also by $C_1(u,v)$, $\mSat{M}{\Box!A}[v]$ and by $C_1(v,w)$,
-      also $\mSat{M}{!A}[w]$. }{}\iftag{prvDiamond}{Suppose
-      $\mSat{M}{!A}[w]$; then $\mSat{M}{\Diamond !A}[v]$ by
-      $C_1(v,w)$, since $\Diamond !A \in \Gamma$ by modal closure. By
-      $C_1(u,v)$, we get $\mSat{M}{\Diamond\Diamond !A}[u]$ since
-      $\Diamond\Diamond!A \in \Gamma$ by modal closure. Since
-      $\Ax{4}_\Diamond$ is valid in all transitive models,
+  \item Exercício. Use o fato de que \Ax{B} e $\Ax{B_\Diamond}$ são
+    válidas em todos os modelos simétricos.
+  \item Se $\mModel{M^*}$ é uma filtração mais grossa, então, por
+    definição, $R^*[u][v]$ vale se, e somente se, $C_1(u,v)$. Para a
+    transitividade, suponha $C_1(u,v)$ e $C_1(v,w)$; precisamos mostrar
+    $C_1(u,w)$. \iftag{prvBox}{Suponha $\mSat{M}{\Box !A}[u]$; então
+      $\mSat{M}{\Box\Box!A}[u]$, pois \Ax{4} é válida em todos os
+      modelos transitivos; como $\Box\Box!A \in \Gamma$ pelo fechamento,
+      por $C_1(u,v)$ também $\mSat{M}{\Box!A}[v]$ e, por $C_1(v,w)$,
+      também $\mSat{M}{!A}[w]$. }{}\iftag{prvDiamond}{Suponha
+      $\mSat{M}{!A}[w]$; então $\mSat{M}{\Diamond !A}[v]$ por
+      $C_1(v,w)$, pois $\Diamond !A \in \Gamma$ pelo fechamento modal.
+      Por $C_1(u,v)$, obtemos $\mSat{M}{\Diamond\Diamond !A}[u]$, pois
+      $\Diamond\Diamond!A \in \Gamma$ pelo fechamento modal. Como
+      $\Ax{4}_\Diamond$ é válida em todos os modelos transitivos,
       $\mSat{M}{\Diamond!A}[u]$.}{}
-  \item Exercise. Use the fact that both \Ax{5} and $\Ax{5_\Diamond}$
-    are valid in all euclidean models.
-  \item Exercise. Use the fact that \Ax{B} and $\Ax{B_\Diamond}$ are
-    valid in all symmetric models.
+  \item Exercício. Use o fato de que tanto \Ax{5} quanto $\Ax{5_\Diamond}$
+    são válidas em todos os modelos euclidianos.
 \end{enumerate}
 \end{proof}
 
 \begin{prob}
-  Complete the proof of \olref[nml][fil][euc]{thm:modal-closed-filt}.
+  Complete a demonstração de \olref[nml][fil][euc]{thm:modal-closed-filt}.
 \end{prob}
 
 \end{document}

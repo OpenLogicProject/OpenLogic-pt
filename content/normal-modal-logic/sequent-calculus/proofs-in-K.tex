@@ -6,14 +6,14 @@
 
 \begin{document}
 
-\olfileid{nml}{seq}{prk}
+\olfileid[pt]{nml}{seq}{prk}
 
-\olsection{Sequent \usetoken{P}{derivation} for \Log{K}}
+\olsection{\usetoken{P}{derivation} no cálculo de sequentes para \Log{K}}
 
 \iftag{prvBox}{
 
 \begin{ex}
-  We give a sequent calculus !!{derivation} that shows $\Proves (\Box!A \land \Box!B)
+  Apresentamos uma !!{derivation} no cálculo de sequentes que mostra $\Proves (\Box!A \land \Box!B)
   \lif \Box (!A \land !B)$.
   \begin{prooftree}
     \Axiom$!A \fCenter !A$
@@ -46,7 +46,7 @@
 
 \iftag{prvDiamond}{
   \begin{ex}
-    We give a sequent calculus !!{derivation} that shows $\Proves \Diamond(!A
+    Apresentamos uma !!{derivation} no cálculo de sequentes que mostra $\Proves \Diamond(!A
     \lor !B) \lif (\Diamond !A \lor \Diamond!B)$.
     \begin{prooftree}
       \Axiom$!A \fCenter !A$
@@ -79,7 +79,7 @@
 }{}
 
 \iftag{notprvBox,notprvDiamond}{}{
-  Here is !!a{derivation} of~\Dual.
+  Eis uma !!a{derivation} de~\Dual.
   \begin{prooftree}
     \Axiom$!A \fCenter !A$
     \RightLabel{\RightR{\lnot}}
@@ -115,7 +115,7 @@
 }
 
 \begin{prob}
-  Find sequent calculus proofs in~$\Log{K}$ for the following
+  Encontre provas no cálculo de sequentes em~$\Log{K}$ para as seguintes
   !!{formula}s:
   \begin{enumerate}
     \item $\Box \lnot p \lif \Box(p \lif q)$

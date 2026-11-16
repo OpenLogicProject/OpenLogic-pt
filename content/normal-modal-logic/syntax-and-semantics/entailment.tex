@@ -6,50 +6,50 @@
 
 \begin{document}
 
-\olfileid{nml}{syn}{ent}
+\olfileid[pt]{nml}{syn}{ent}
 
-\olsection{Entailment}
+\olsection{Acarretamento}
 
 \begin{explain}
-  With the definition of truth at a world, we can define an entailment
-  relation between !!{formula}s. !!^a{formula}~$!B$ entails~$!A$ iff,
-  whenever $!B$ is true, $!A$ is true as well. Here, ``whenever''
-  means both ``whichever model we consider'' as well as ``whichever
-  world in that model we consider.''
+  Com a definição de verdade em um mundo, podemos definir uma relação de
+  acarretamento entre !!{formula}s. !!^a{formula}~$!B$ acarreta~$!A$ sse,
+  sempre que $!B$ é verdadeira, $!A$ também é verdadeira. Aqui, ``sempre
+  que'' significa tanto ``qualquer que seja o modelo considerado'' quanto
+  ``qualquer que seja o mundo desse modelo considerado''.
 \end{explain}
 
 \begin{defn}
-  If $\Gamma$ is a set of !!{formula}s and $!A$ !!a{formula}, then
-  $\Gamma$ \emph{entails}~$!A$, in symbols: $\Gamma \Entails !A$, if
-  and only if for every model $\mModel{M} = \tuple{W, R, V}$ and world
-  $w \in W$, if $\mSat{M}{!B}[w]$ for every $!B \in \Gamma$, then
-  $\mSat{M}{!A}[w]$. If $\Gamma$ contains a single !!{formula}~$!B$,
-  then we write $!B \Entails !A$.
+  Se $\Gamma$ é um conjunto de !!{formula}s e $!A$ é !!a{formula}, então
+  $\Gamma$ \emph{acarreta}~$!A$, simbolicamente $\Gamma \Entails !A$,
+  se, e somente se, para todo modelo $\mModel{M} = \tuple{W, R, V}$ e
+  todo mundo $w \in W$, se $\mSat{M}{!B}[w]$ para todo $!B \in \Gamma$,
+  então $\mSat{M}{!A}[w]$. Se $\Gamma$ contém uma única !!{formula}~$!B$,
+  escrevemos $!B \Entails !A$.
 \end{defn}
 
 \begin{ex}
-  To show that !!a{formula} entails another, we have to reason about
-  all models, using the definition of $\mSat{M}{}[w]$. For instance,
-  to show $p \lif \Diamond p \Entails \Box\lnot p \lif \lnot p$, we
-  might argue as follows: Consider a model $\mModel{M} = \tuple{W, R,
-    V}$ and $w \in W$, and suppose $\mSat{M}{p \lif \Diamond
-    p}[w]$. We have to show that $\mSat{M}{\Box\lnot p \lif \lnot
-    p}[w]$. Suppose not. Then $\mSat{M}{\Box\lnot p}[w]$ and
-  $\mSat/{M}{\lnot p}[w]$. Since $\mSat/{M}{\lnot p}[w]$, $\mSat{M}{
-    p}[w]$. By assumption, $\mSat{M}{p \lif \Diamond p}[w]$, hence
-  $\mSat{M}{\Diamond p}[w]$. By definition of $\mSat{M}{\Diamond
-    p}[w]$, there is some $w'$ with $Rww'$ such that
-  $\mSat{M}{p}[w']$. Since also $\mSat{M}{\Box \lnot p}[w]$,
-  $\mSat{M}{\lnot p}[w']$, a contradiction.
+  Para mostrar que !!a{formula} acarreta outra, precisamos raciocinar
+  sobre todos os modelos usando a definição de $\mSat{M}{}[w]$. Por
+  exemplo, para mostrar $p \lif \Diamond p \Entails \Box\lnot p \lif
+  \lnot p$, podemos argumentar assim: considere um modelo $\mModel{M} =
+  \tuple{W, R, V}$ e $w \in W$, e suponha $\mSat{M}{p \lif \Diamond
+  p}[w]$. Precisamos mostrar $\mSat{M}{\Box\lnot p \lif \lnot p}[w]$.
+  Suponha que não. Então $\mSat{M}{\Box\lnot p}[w]$ e
+  $\mSat/{M}{\lnot p}[w]$. Como $\mSat/{M}{\lnot p}[w]$, temos
+  $\mSat{M}{p}[w]$. Por hipótese, $\mSat{M}{p \lif \Diamond p}[w]$;
+  portanto, $\mSat{M}{\Diamond p}[w]$. Pela definição de
+  $\mSat{M}{\Diamond p}[w]$, há algum $w'$ tal que $Rww'$ e
+  $\mSat{M}{p}[w']$. Como também $\mSat{M}{\Box \lnot p}[w]$, temos
+  $\mSat{M}{\lnot p}[w']$, uma contradição.
 
-  To show that !!a{formula}~$!B$ does not entail another~$!A$, we have
-  to give a counterexample, O.s.\@, a model $\mModel{M} = \tuple{W, R,
-    V}$ where we show that at some world~$w \in W$, $\mSat{M}{!B}[w]$
-  but $\mSat/{M}{!A}[w]$. Let's show that $p \lif \Diamond p \Entails/
-  \Box p \lif p$. Consider the model in \olref{fig:counterex}.  We
-  have $\mSat{M}{\Diamond p}[w_1]$ and hence $\mSat{M}{p \lif
-    \Diamond p}[w_1]$. However, since $\mSat{M}{\Box p}[w_1]$ but
-  $\mSat/{M}{p}[w_1]$, we have $\mSat/{M}{\Box p \lif p}[w_1]$.
+  Para mostrar que !!a{formula}~$!B$ não acarreta outra~$!A$, precisamos
+  dar um contraexemplo, O.s.\@, um modelo $\mModel{M} = \tuple{W, R, V}$
+  no qual mostramos que, em algum mundo~$w \in W$, $\mSat{M}{!B}[w]$,
+  mas $\mSat/{M}{!A}[w]$. Mostremos que $p \lif \Diamond p \Entails/
+  \Box p \lif p$. Considere o modelo de \olref{fig:counterex}. Temos
+  $\mSat{M}{\Diamond p}[w_1]$ e, portanto, $\mSat{M}{p \lif \Diamond
+  p}[w_1]$. Contudo, como $\mSat{M}{\Box p}[w_1]$, mas
+  $\mSat/{M}{p}[w_1]$, temos $\mSat/{M}{\Box p \lif p}[w_1]$.
   \begin{figure}
   \begin{center}
     \begin{tikzpicture}[modal]
@@ -60,25 +60,25 @@
       \draw[->] (w1) to (w3);
     \end{tikzpicture}
   \end{center}
-  \caption{Counterexample to $p \lif \Diamond p
+  \caption{Contraexemplo para $p \lif \Diamond p
   \Entails \Box p \lif p$.}
   \ollabel{fig:counterex}
   \end{figure}
   
-  Often very simple counterexamples suffice. The model $\mModel{M'} =
-  \{W', R', V'\}$ with $W' = \{w\}$, $R' = \emptyset$, and $V'(p) =
-  \emptyset$ is also a counterexample: Since $\mSat/{M'}{p}[w]$,
-  $\mSat{M'}{p \lif \Diamond p}[w]$. As no worlds are accessible
-  from~$w$, we have $\mSat{M'}{\Box p}[w]$, and so $\mSat/{M'}{\Box p
-    \lif p}[w]$.
+  Muitas vezes, contraexemplos muito simples bastam. O modelo $\mModel{M'}
+  = \{W', R', V'\}$ com $W' = \{w\}$, $R' = \emptyset$ e $V'(p) =
+  \emptyset$ também é um contraexemplo: como $\mSat/{M'}{p}[w]$,
+  $\mSat{M'}{p \lif \Diamond p}[w]$. Como nenhum mundo é acessível a
+  partir de~$w$, temos $\mSat{M'}{\Box p}[w]$ e, portanto,
+  $\mSat/{M'}{\Box p \lif p}[w]$.
 \end{ex}
 
 \begin{prob}
-  Show that $\Box (!A \land !B) \Entails \Box !A$.
+  Mostre que $\Box (!A \land !B) \Entails \Box !A$.
 \end{prob}
 
 \begin{prob}
-  Show that $\Box (p \lif q) \Entails/ p \lif \Box q$ and $p \lif \Box
+  Mostre que $\Box (p \lif q) \Entails/ p \lif \Box q$ e $p \lif \Box
   q \Entails/\Box (p \lif q)$.
 \end{prob}
 

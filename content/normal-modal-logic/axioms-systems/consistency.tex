@@ -6,57 +6,61 @@
 
 \begin{document}
 
-\olfileid{nml}{prf}{con}
+\olfileid[pt]{nml}{prf}{con}
 
-\olsection{Consistency}
+\olsection{Consistência}
 
-Consistency is an important property of sets of !!{formula}s. A set of
-!!{formula}s is inconsistent if a contradiction, such as~$\lfalse$, is
-!!{derivable} from it; and otherwise consistent. If a set is
-inconsistent, its !!{formula}s cannot all be true in a model at a
-world. For the completeness theorem we prove the converse: every
-consistent set is true at a world in a model, namely in the ``canonical
-model.''
+A consistência é uma propriedade importante dos conjuntos de
+!!{formula}s. Um conjunto de !!{formula}s é inconsistente se uma
+contradição, como~$\lfalse$, é !!{derivable} a partir dele; caso
+contrário, é consistente. Se um conjunto é inconsistente, suas
+!!{formula}s não podem ser todas verdadeiras em um mundo de um modelo.
+Para o teorema da completude, demonstramos a recíproca: todo conjunto
+consistente é verdadeiro em um mundo de um modelo, a saber, no
+``modelo canônico''.
 
 \begin{defn}
-  A set $\Gamma$ is \emph{consistent} relatively to a system~$\Sigma$
-  or, as we will say, $\Sigma$-consistent, if and only if $\Gamma
+  Um conjunto $\Gamma$ é \emph{consistente} relativamente a um
+  sistema~$\Sigma$, ou, como diremos, $\Sigma$-consistente, se e
+  somente se $\Gamma
   \Proves/[\Sigma] \lfalse$.
 \end{defn}
 
-So for instance, the set $\{ \Box(p \lif q), \Box p, \lnot\Box q \}$ is
-consistent relatively to propositional logic, but not
-\Log{K}-consistent. Similarly, the set $\{ \Diamond p, \Box\Diamond
-p \lif q, \lnot q \}$ is not \Log{K5}-consistent.
+Assim, por exemplo, o conjunto $\{ \Box(p \lif q), \Box p,
+\lnot\Box q \}$ é consistente relativamente à lógica proposicional,
+mas não é \Log{K}-consistente. De modo semelhante, o conjunto
+$\{ \Diamond p, \Box\Diamond p \lif q, \lnot q \}$ não é
+\Log{K5}-consistente.
 
 \begin{prop}\ollabel{prop:consistencyfacts}
-  Let $\Gamma$ be a set of !!{formula}s. Then:
+  Seja $\Gamma$ um conjunto de !!{formula}s. Então:
   \begin{enumerate}
-  \item $\Gamma$ is $\Sigma$-consistent if and only if there is
-    some !!{formula}~$!A$ such that $\Gamma \Proves/[\Sigma]
+  \item $\Gamma$ é $\Sigma$-consistente se e somente se existe
+    alguma !!{formula}~$!A$ tal que $\Gamma \Proves/[\Sigma]
     !A$.
   \item \ollabel{prop:consistencyfacts-b}%
-    $\Gamma \Proves[\Sigma] !A$ if and only if $\Gamma \cup \{
-    \lnot!A \}$ is not $\Sigma$-consistent.
+    $\Gamma \Proves[\Sigma] !A$ se e somente se $\Gamma \cup \{
+    \lnot!A \}$ não é $\Sigma$-consistente.
   \item \ollabel{prop:consistencyfacts-c}%
-    If $\Gamma$ is $\Sigma$-consistent, then for any !!{formula}
-    $!A$, either $\Gamma \cup \{ !A \}$ is
-    $\Sigma$-consistent or $\Gamma \cup \{ \lnot!A \}$ is
-    $\Sigma$-consistent.
+    Se $\Gamma$ é $\Sigma$-consistente, então, para qualquer
+    !!{formula} $!A$, ou $\Gamma \cup \{ !A \}$ é
+    $\Sigma$-consistente, ou $\Gamma \cup \{ \lnot!A \}$ é
+    $\Sigma$-consistente.
   \end{enumerate}
 \end{prop}
 
 \begin{proof}
-  These facts follow easily using classical propositional logic. We
-  give the argument for \olref{prop:consistencyfacts-c}. Proceed
-  contrapositively and suppose neither $\Gamma \cup \{ !A \}$ nor
-  $\Gamma \cup \{ \lnot!A \}$ is $\Sigma$-consistent. Then by
-  \olref{prop:consistencyfacts-b}, both $\Gamma, !A \Proves[\Sigma]
-  \lfalse$ and $\Gamma, \lnot !A \Proves[\Sigma] \lfalse$. By the
-  deduction theorem $\Gamma \Proves[\Sigma] !A \to \lfalse$ and
-  $\Gamma \Proves[\Sigma] \lnot!A \lif \lfalse$. But $(!A \lif
-  \lfalse) \lif ((\lnot!A \lif \lfalse) \lif \lfalse)$ is a
-  tautological instance, hence by
+  Esses fatos decorrem facilmente da lógica proposicional clássica.
+  Apresentamos o argumento para \olref{prop:consistencyfacts-c}.
+  Proceda por contraposição e suponha que nem $\Gamma \cup \{ !A \}$
+  nem $\Gamma \cup \{ \lnot!A \}$ seja $\Sigma$-consistente. Então,
+  por \olref{prop:consistencyfacts-b}, tanto
+  $\Gamma, !A \Proves[\Sigma] \lfalse$ quanto
+  $\Gamma, \lnot !A \Proves[\Sigma] \lfalse$. Pelo teorema da dedução,
+  $\Gamma \Proves[\Sigma] !A \to \lfalse$ e
+  $\Gamma \Proves[\Sigma] \lnot!A \lif \lfalse$. Mas $(!A \lif
+  \lfalse) \lif ((\lnot!A \lif \lfalse) \lif \lfalse)$ é uma
+  instância tautológica; portanto, por
   \olref[prp]{prop:derivabilityfacts}\olref[prp]{prop:derivabilityfacts-ruleT},
   $\Gamma \Proves[\Sigma] \lfalse$.
 \end{proof}

@@ -6,37 +6,38 @@
 
 \begin{document}
 
-\olfileid{nml}{syn}{rel}
+\olfileid[pt]{nml}{syn}{rel}
 
-\olsection{Relational Models}
+\olsection{Modelos relacionais}
 
-The basic concept of semantics for normal modal logics is that of a
-\emph{relational model}. It consists of a set of worlds, which are
-related by a binary ``accessibility relation,'' together with an
-assignment which determines which !!{propositional variable}s count as
-``true'' at which worlds.
+O conceito fundamental da semântica para lógicas modais normais é o de
+\emph{modelo relacional}. Ele consiste em um conjunto de mundos,
+relacionados por uma ``relação de acessibilidade'' binária, juntamente
+com uma atribuição que determina quais !!{propositional variable}s
+contam como ``verdadeiras'' em quais mundos.
 
 \begin{defn}
-  A \emph{model} for the basic modal language is a triple $\mModel{M}
-  = \tuple{W, R, V}$, where
+  Um \emph{modelo} para a linguagem modal básica é uma tripla $\mModel{M}
+  = \tuple{W, R, V}$, em que
   \begin{enumerate}
-  \item $W$ is a nonempty set of ``worlds,''
-  \item $R$ is a binary accessibility relation on~$W$, and
-  \item $V$ is a function assigning to each !!{propositional
-    variable}~$p$ a set $V(p)$ of possible worlds.
+  \item $W$ é um conjunto não vazio de ``mundos'';
+  \item $R$ é uma relação binária de acessibilidade sobre~$W$; e
+  \item $V$ é uma função que atribui a cada !!{propositional
+    variable}~$p$ um conjunto $V(p)$ de mundos possíveis.
   \end{enumerate}
-  When $Rww'$ holds, we say that $w'$ is \emph{accessible
-    from}~$w$. When $w \in V(p)$ we say $p$ is \emph{true at}~$w$.
+  Quando vale $Rww'$, dizemos que $w'$ é \emph{acessível a partir
+    de}~$w$. Quando $w \in V(p)$, dizemos que $p$ é \emph{verdadeira
+    em}~$w$.
 \end{defn}
 
-The great advantage of relational semantics is that models can be
-represented by means of simple diagrams, such as the one in
-\olref{fig:simple}. Worlds are represented by nodes, and world~$w'$ is
-accessible from~$w$ precisely when there is an arrow from~$w$
-to~$w'$. Moreover, we label a node (world) by~$\mTrue{p}$ when $w \in V(p)$,
-and otherwise by~\mFalse{p}. \olref{fig:simple} represents the model
-with $W = \{w_1, w_2, w_3\}$, $R = \{\tuple{w_1, w_2},\tuple{w_1,
-  w_3}\}$, $V(p) = \{w_1, w_2\}$, and $V(q) = \{w_2\}$.
+A grande vantagem da semântica relacional é que os modelos podem ser
+representados por diagramas simples, como o de \olref{fig:simple}. Os
+mundos são representados por nós, e o mundo~$w'$ é acessível a partir
+de~$w$ precisamente quando há uma seta de~$w$ para~$w'$. Além disso,
+rotulamos um nó (mundo) com~$\mTrue{p}$ quando $w \in V(p)$ e, caso
+contrário, com~\mFalse{p}. \olref{fig:simple} representa o modelo com
+$W = \{w_1, w_2, w_3\}$, $R = \{\tuple{w_1, w_2},\tuple{w_1, w_3}\}$,
+$V(p) = \{w_1, w_2\}$ e $V(q) = \{w_2\}$.
 
 \begin{figure}
   \begin{center}
@@ -50,7 +51,7 @@ with $W = \{w_1, w_2, w_3\}$, $R = \{\tuple{w_1, w_2},\tuple{w_1,
       \draw[->] (w1) to (w3);
     \end{tikzpicture}
   \end{center}
-  \caption{A simple model.}
+  \caption{Um modelo simples.}
   \ollabel{fig:simple}
 \end{figure}
 

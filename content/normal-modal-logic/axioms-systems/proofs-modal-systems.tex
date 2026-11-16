@@ -6,14 +6,15 @@
 
 \begin{document}
 
-\olfileid{nml}{prf}{prs}
+\olfileid[pt]{nml}{prf}{prs}
 
-\olsection{Proofs in Modal Systems}
+\olsection{Demonstrações em sistemas modais}
 
-We now come to proofs in systems of modal logic other than~\Log{K}.
+Passamos agora às demonstrações em sistemas de lógica modal distintos
+de~\Log{K}.
 
 \begin{prop}\ollabel{prop:S5facts}
-The following provability results obtain:
+Valem os seguintes resultados de demonstrabilidade:
   \begin{enumerate}
   \item $\Log{KT5} \Proves \Ax{B}$;
   \item $\Log{KT5} \Proves \Ax{4}$;
@@ -25,7 +26,7 @@ The following provability results obtain:
 \end{prop}
 
 \begin{proof}
-  We exhibit proofs for each.
+  Exibimos uma demonstração de cada resultado.
   \begin{enumerate}
     \item $\Log{KT5} \Proves \Ax{B}$:
       \begin{derivation}
@@ -36,9 +37,9 @@ The following provability results obtain:
     \item $\Log{KT5} \Proves \Ax{4}$:
       \begin{derivation}
         1. &$\Log{KT5} \Proves \Diamond\Box!A \lif \Box\Diamond\Box!A$ & \Ax{5}
-        with $\Box!A$ for $p$\\
+        com $\Box!A$ no lugar de $p$\\
         2. & $\Log{KT5} \Proves \Box!A \lif \Diamond\Box!A$ & $\Ax{T_\Diamond}$
-        with $\Box!A$ for $p$\\
+        com $\Box!A$ no lugar de $p$\\
         3. & $\Log{KT5} \Proves \Box!A \lif \Box\Diamond\Box!A$ & \PL, 2, 1\\
         4. & $\Log{KT5} \Proves \Diamond\Box!A \lif \Box!A$ & $\Ax{5_\Diamond}$\\
         5. & $\Log{KT5} \Proves \Box\Diamond\Box!A \lif \Box\Box!A$ & \RK{}, 4 \\
@@ -48,7 +49,7 @@ The following provability results obtain:
       \begin{derivation}
         1. & $\Log{KDB4} \Proves \Diamond\Box!A \lif !A $ & $\Ax{B_\Diamond}$ \\
         2. & $\Log{KDB4} \Proves \Box\Box!A \lif \Diamond\Box!A$ & $\Ax{D}$
-        with $\Box!A$ for $p$\\
+        com $\Box!A$ no lugar de $p$\\
         3. & $\Log{KDB4} \Proves \Box\Box!A \lif !A$ & \PL, 1, 2\\
         4. & $\Log{KDB4} \Proves \Box!A \lif \Box\Box!A$ & \Ax{4} \\
         5. & $\Log{KDB4} \Proves \Box!A \lif !A$ & \PL, 4, 3. \\
@@ -56,7 +57,7 @@ The following provability results obtain:
     \item $\Log{KB4} \Proves \Ax{5}$:
       \begin{derivation}
         1. & $\Log{KB4} \Proves \Diamond!A \lif \Box \Diamond\Diamond!A$ & \Ax{B}
-        with $\Diamond!A$ for $p$\\
+        com $\Diamond!A$ no lugar de $p$\\
         2. & $\Log{KB4} \Proves \Diamond\Diamond !A \lif \Diamond !A$ &
         $\Ax{4_\Diamond}$ \\
         3. & $\Log{KB4} \Proves \Box\Diamond\Diamond !A \lif \Box \Diamond!A$ &
@@ -65,8 +66,8 @@ The following provability results obtain:
       \end{derivation}
     \item $\Log{KB5} \Proves \Ax{4}$:
       \begin{derivation}
-        1. & $\Log{KB5} \Proves \Box!A \lif \Box\Diamond\Box !A$ & \Ax{B} with
-        $\Box!A$ for $p$ \\
+        1. & $\Log{KB5} \Proves \Box!A \lif \Box\Diamond\Box !A$ & \Ax{B} com
+        $\Box!A$ no lugar de $p$ \\
         2. & $\Log{KB5} \Proves  \Diamond\Box!A \lif \Box !A$ &
         $\Ax{5_\Diamond}$\\
         3. & $\Log{KB5} \Proves  \Box\Diamond\Box!A \lif \Box\Box !A$ & \RK{}, 2 \\
@@ -82,25 +83,25 @@ The following provability results obtain:
 \end{proof}
 
 \begin{defn}
-  Following tradition, we define \Log{S4} to be the system
-  \Log{KT4}, and \Log{S5} the system \Log{KTB4}.
+  Seguindo a tradição, definimos \Log{S4} como o sistema
+  \Log{KT4}, e \Log{S5} como o sistema \Log{KTB4}.
 \end{defn}
 
-The following proposition shows that the classical system \Log{S5} has
-several equivalent axiomatizations. This should not surprise, as the
-various combinations of axioms all characterize equivalence relations
-(see \olref[frd][es5]{prop:equivalences}).
+A proposição seguinte mostra que o sistema clássico \Log{S5} tem
+várias axiomatizações equivalentes. Isso não deve surpreender, pois as
+diversas combinações de axiomas caracterizam todas elas relações de
+equivalência (veja \olref[frd][es5]{prop:equivalences}).
 
 \begin{prop}\ollabel{prop:S5}
   $\Log{KTB4} = \Log{KT5} = \Log{KDB4} = \Log{KDB5}$.
 \end{prop}
 
 \begin{proof}
-  Exercise.
+  Exercício.
 \end{proof}
 
 \begin{prob}
-  Prove \olref[nml][prf][prs]{prop:S5}.
+  Demonstre \olref[nml][prf][prs]{prop:S5}.
 \end{prob}
 
 
