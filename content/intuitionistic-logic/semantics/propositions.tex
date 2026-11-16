@@ -6,47 +6,47 @@
 
 \begin{document}
 
-\olfileid{int}{sem}{pro}
+\olfileid[pt]{int}{sem}{pro}
 
-\olsection{Propositions}
+\olsection{Proposições}
 
-Sometimes it is useful to have a name for the set of worlds in
-!!a{relational model}~$\mModel{M}$ where !!a{formula}~$!A$ is true. We
-call it the \emph{proposition} defined by~$!A$, and write
+Às vezes, é útil dar um nome ao conjunto de mundos de
+!!a{relational model}~$\mModel{M}$ nos quais !!a{formula}~$!A$ é verdadeira.
+Chamamos esse conjunto de \emph{proposição} definida por~$!A$ e escrevemos
 $\Prop{M}{!A}$. 
 
 \begin{defn}
-  We extend the function $V$ to a function $\Prop{M}{!A} \colon \Frm
-  \to \Pow{W}$ inductively as follows:
+  Estendemos a função $V$ a uma função $\Prop{M}{!A} \colon \Frm
+  \to \Pow{W}$ indutivamente da seguinte maneira:
   \begin{enumerate}
   \item $\Prop{M}{\lfalse} = \emptyset$
   \item $\Prop{M}{p} = V(p)$
   \item $\Prop{M}{\lnot !B} = {}$
     \[
-      \Setabs{w \in W}{\text{for every $w'$ such that $Rww'$, $w'
+      \Setabs{w \in W}{\text{para todo $w'$ tal que $Rww'$, $w'
           \notin \Prop{M}{!B}$}}.
     \]
   \item $\Prop{M}{!B \land !C} = \Prop{M}{!B} \cap \Prop{M}{!C}$.
   \item $\Prop{M}{!B \lor !C} = \Prop{M}{!B} \cup \Prop{M}{!C}$.
   \item $\Prop{M}{!B \lif !C} = {}$
     \[
-      \Setabs{w \in W}{\text{for every $w'$ such that $Rww'$, if $w'
-          \in \Prop{M}{!B}$ then $w' \in \Prop{M}{!C}$}}.
+      \Setabs{w \in W}{\text{para todo $w'$ tal que $Rww'$, se $w'
+          \in \Prop{M}{!B}$, então $w' \in \Prop{M}{!C}$}}.
     \]
   \end{enumerate}
 \end{defn}
 
 \begin{prop}
   \ollabel{prop:propositions-true}
-  $\mModel{M}{!A}[w]$ iff $w \in \Prop{M}{!A}$
+  $\mModel{M}{!A}[w]$ se, e somente se, $w \in \Prop{M}{!A}$
 \end{prop}
 
 \begin{proof}
-  Exercise.
+  Exercício.
 \end{proof}
 
 \begin{prob}
-  Prove \olref[int][sem][pro]{prop:propositions-true}.
+  Demonstre \olref[int][sem][pro]{prop:propositions-true}.
 \end{prob}
 
 \end{document}

@@ -6,208 +6,208 @@
 
 \begin{document}
 
-\olfileid{int}{tab}{sou}
+\olfileid[pt]{int}{tab}{sou}
 
-\olsection{Soundness for Intuitionistic \usetoken{P}{tableau}}
+\olsection{Correção dos \usetoken{P}{tableau} intuicionistas}
 
 \begin{explain}
-  In order to show that intuitionistic !!{tableau}s are sound, we have to
-  show that if
+  Para mostrar que os !!{tableau}s intuicionistas são corretos, precisamos
+  mostrar que, se
   \[
   \sFmla{\True}{!B_1}[1], \dots, \sFmla{\True}{!B_n}[1], \sFmla{\False}{!A}[1]
   \]
-  has a closed !!{tableau} then $!B_1, \dots, !B_n \Entails !A$. It is
-  easier to prove the contrapositive: if for some $\mModel{M}$ and
-  world~$w$, $\mSat{M}{!B_i}[w]$ for all $i=1$, \dots,~$n$ but
-  $\mSat{M}{!A}[w]$, then no !!{tableau} can close. Such a
-  countermodel shows that the initial assumptions of the !!{tableau}
-  are satisfiable. The strategy of the proof is to show that whenever
-  all the prefixed !!{formula}s on !!a{tableau} branch are
-  satisfiable, any application of a rule results in at least one
-  extended branch that is also satisfiable. Since closed branches are
-  unsatisfiable, any !!{tableau} for a satisfiable set of prefixed
-  !!{formula}s must have at least one open branch.
+  tem um !!{tableau} fechado, então $!B_1, \dots, !B_n \Entails !A$. É
+  mais fácil provar a contrapositiva: se, para algum $\mModel{M}$ e algum
+  mundo~$w$, $\mSat{M}{!B_i}[w]$ para todo $i=1$, \dots,~$n$, mas
+  $\mSat/{M}{!A}[w]$, então nenhum !!{tableau} pode se fechar. Tal
+  contramodelo mostra que as premissas iniciais do !!{tableau}
+  são satisfatíveis. A estratégia da prova é mostrar que, sempre que
+  todas as !!{formula}s prefixadas de um ramo de !!a{tableau} são
+  satisfatíveis, qualquer aplicação de uma regra produz pelo menos um
+  ramo estendido que também é satisfatível. Como ramos fechados são
+  insatisfatíveis, qualquer !!{tableau} para um conjunto satisfatível de
+  !!{formula}s prefixadas deve ter pelo menos um ramo aberto.
 
-  In order to apply this strategy in the modal case, we have to extend
-  our definition of ``satisfiable'' to relational and prefixes. With
-  that in hand, however, the proof is straightforward.
+  Para aplicar essa estratégia no caso modal, precisamos estender
+  nossa definição de ``satisfatível'' às relações e aos prefixos. Com
+  isso em mãos, porém, a prova é direta.
 \end{explain}
 
 \begin{defn}
-  Let $P$ be some set of prefixes, O.s.\@, $P \subseteq (\PosInt)^*
-  \setminus \{\emptyseq\}$ and let $\mModel{M}$ be a model.  A
-  function~$f\colon P \to W$ is an \emph{interpretation of}~$P$
-  in~$\mModel{M}$ if, whenever $\sigma$ and $\sigma.n$ are both
-  in~$P$, then $Rf(\sigma)f(\sigma.n)$.
+  Seja $P$ algum conjunto de prefixos, O.s.\@, $P \subseteq (\PosInt)^*
+  \setminus \{\emptyseq\}$, e seja $\mModel{M}$ um modelo. Uma
+  função~$f\colon P \to W$ é uma \emph{interpretação de}~$P$
+  em~$\mModel{M}$ se, sempre que $\sigma$ e $\sigma.n$ pertencem ambos
+  a~$P$, então $Rf(\sigma)f(\sigma.n)$.
 
-  Relative to an interpretation of prefixes~$P$ we can define:
+  Relativamente a uma interpretação dos prefixos~$P$, podemos definir:
   \begin{enumerate}
-  \item $\mModel{M}$ satisfies $\sFmla{\True}{!A}[\sigma]$ iff
+  \item $\mModel{M}$ satisfaz $\sFmla{\True}{!A}[\sigma]$ se, e somente se,
     $\mSat{M}{!A}[f(\sigma)]$.
-  \item $\mModel{M}$ satisfies $\sFmla{\False}{!A}[\sigma]$ iff
+  \item $\mModel{M}$ satisfaz $\sFmla{\False}{!A}[\sigma]$ se, e somente se,
     $\mSat/{M}{!A}[f(\sigma)]$.
   \end{enumerate}
 \end{defn}
 
-Note that since $R$ is reflexive and transitive and $\sigma.{*}$
-denotes, $\sigma$, $\sigma.n_1$, $\sigma.n_1.n_2$, \dots, we also have
-that $Rf(\sigma)f(\sigma.{*})$. 
+Observe que, como $R$ é reflexiva e transitiva e $\sigma.{*}$
+denota $\sigma$, $\sigma.n_1$, $\sigma.n_1.n_2$, \dots, também temos
+$Rf(\sigma)f(\sigma.{*})$. 
 
 \begin{defn}
-  Let $\Gamma$ be a set of prefixed !!{formula}s, and let $P(\Gamma)$
-  be the set of prefixes that occur in it. If $f$ is an interpretation
-  of~$P(\Gamma)$ in $\mModel{M}$, we say that $\mModel{M}$ satisfies
-  $\Gamma$ with respect to~$f$, $\mSat{M}{\Gamma}[f]$, if $\mModel{M}$
-  satisfies every prefixed !!{formula} in~$\Gamma$ with respect
-  to~$f$. $\Gamma$ is \emph{satisfiable} iff there is a
-  model~$\mModel{M}$ and interpretation~$f$ of $P(\Gamma)$ such that
+  Seja $\Gamma$ um conjunto de !!{formula}s prefixadas, e seja $P(\Gamma)$
+  o conjunto dos prefixos que ocorrem nele. Se $f$ é uma interpretação
+  de~$P(\Gamma)$ em $\mModel{M}$, dizemos que $\mModel{M}$ satisfaz
+  $\Gamma$ com respeito a~$f$, $\mSat{M}{\Gamma}[f]$, se $\mModel{M}$
+  satisfaz toda !!{formula} prefixada de~$\Gamma$ com respeito
+  a~$f$. $\Gamma$ é \emph{satisfatível} se, e somente se, existe um
+  modelo~$\mModel{M}$ e uma interpretação~$f$ de $P(\Gamma)$ tais que
   $\mSat{M}{\Gamma}[f]$.
 \end{defn}
 
 \begin{prop}
-  If $\Gamma$ contains both $\sFmla{\True}{!A}[\sigma]$ and
-  $\sFmla{\False}{!A}[\sigma.{*}]$ for some !!{formula}~$!A$ and
-  prefix~$\sigma$, or it contains $\sFmla{\True}{\lfalse}[\sigma]$, then $\Gamma$ is unsatisfiable.
+  Se $\Gamma$ contém tanto $\sFmla{\True}{!A}[\sigma]$ quanto
+  $\sFmla{\False}{!A}[\sigma.{*}]$ para alguma !!{formula}~$!A$ e algum
+  prefixo~$\sigma$, ou se contém $\sFmla{\True}{\lfalse}[\sigma]$, então $\Gamma$ é insatisfatível.
 \end{prop}
 
 \begin{proof}
-  Since always $\mSat/{M}{\lfalse}[f(\sigma)]$, a $\Gamma$ that
-  contains $\sFmla{\True}{\lfalse}$ is unsatisfiable.
+  Como sempre $\mSat/{M}{\lfalse}[f(\sigma)]$, um $\Gamma$ que
+  contém $\sFmla{\True}{\lfalse}$ é insatisfatível.
 
-  There also cannot be a model~$\mModel{M}$ and interpretation~$f$ of
-  $P(\Gamma)$ such that both If $\mSat{M}{!A}[f(\sigma)]$, then by
-  \olref[sem][rel]{prop:true-monotonic}, since
-  $Rf(\sigma)(\sigma.{*})$, $\mSat{M}{!A}[f(\sigma)]$. So we cannot
-  have both $\mSat{M}{!A}[f(\sigma)]$ and
+  Também não pode haver um modelo~$\mModel{M}$ e uma interpretação~$f$ de
+  $P(\Gamma)$ tais que ambos. Se $\mSat{M}{!A}[f(\sigma)]$, então, por
+  \olref[sem][rel]{prop:true-monotonic}, como
+  $Rf(\sigma)(\sigma.{*})$, $\mSat{M}{!A}[f(\sigma)]$. Portanto, não podemos
+  ter simultaneamente $\mSat{M}{!A}[f(\sigma)]$ e
   $\mSat/{M}{!A}[f(\sigma.{*})]$.
 \end{proof}
 
-\begin{thm}[Soundness]
+\begin{thm}[Correção]
   \ollabel{thm:tableau-soundness}
-  If $\Gamma$ has a closed !!{tableau}, $\Gamma$ is unsatisfiable.
+  Se $\Gamma$ tem um !!{tableau} fechado, $\Gamma$ é insatisfatível.
 \end{thm}
 
 \begin{proof}
-We call a branch of !!a{tableau} satisfiable iff the set of
-!!{signed formula}s on it is satisfiable, and let's call !!a{tableau}
-satisfiable if it contains at least one satisfiable branch.
+Chamamos um ramo de !!a{tableau} de satisfatível se, e somente se, o conjunto de
+!!{signed formula}s nele é satisfatível, e chamamos !!a{tableau} de
+satisfatível se contém pelo menos um ramo satisfatível.
 
-We show the following: Extending a satisfiable !!{tableau} by one of
-the rules of inference always results in a satisfiable !!{tableau}.
-This will prove the theorem: any closed !!{tableau} results by
-applying rules of inference to the !!{tableau} consisting only of
-assumptions from~$\Gamma$. So if $\Gamma$ were satisfiable, any
-!!{tableau} for it would be satisfiable. A closed !!{tableau},
-however, is clearly not satisfiable, since all its branches are closed
-and closed branches are unsatisfiable.
+Mostramos o seguinte: estender um !!{tableau} satisfatível por uma das
+regras de inferência sempre produz um !!{tableau} satisfatível.
+Isso provará o teorema: qualquer !!{tableau} fechado resulta da
+aplicação de regras de inferência ao !!{tableau} formado apenas por
+premissas de~$\Gamma$. Portanto, se $\Gamma$ fosse satisfatível, qualquer
+!!{tableau} para ele seria satisfatível. Um !!{tableau} fechado,
+porém, claramente não é satisfatível, pois todos os seus ramos são fechados
+e ramos fechados são insatisfatíveis.
 
-Suppose we have a satisfiable !!{tableau}, O.s.\@, !!a{tableau} with at
-least one satisfiable branch. Applying a rule of inference either adds
-!!{signed formula}s to a branch, or splits a branch in two. If the
-!!{tableau} has a satisfiable branch which is not extended by the rule
-application in question, it remains a satisfiable branch in the
-extended !!{tableau}, so the extended tableau is satisfiable. So we
-only have to consider the case where a rule is applied to a
-satisfiable branch.
+Suponha que temos um !!{tableau} satisfatível, O.s.\@, !!a{tableau} com pelo
+menos um ramo satisfatível. A aplicação de uma regra de inferência ou acrescenta
+!!{signed formula}s a um ramo, ou divide um ramo em dois. Se o
+!!{tableau} tem um ramo satisfatível que não é estendido pela aplicação
+da regra em questão, ele permanece um ramo satisfatível no
+!!{tableau} estendido, de modo que o tableau estendido é satisfatível. Assim,
+precisamos considerar apenas o caso em que uma regra é aplicada a um
+ramo satisfatível.
 
-Let $\Gamma$ be the set of !!{signed formula}s on that branch, and let
-$\sFmla{S}{!A}[\sigma] \in \Gamma$ be the !!{signed formula} to which
-the rule is applied. If the rule does not result in a split branch, we
-have to show that the extended branch, O.s.\@, $\Gamma$ together with
-the conclusions of the rule, is still satisfiable. If the rule results
-in split branch, we have to show that at least one of the two
-resulting branches is satisfiable.
+Seja $\Gamma$ o conjunto das !!{signed formula}s nesse ramo, e seja
+$\sFmla{S}{!A}[\sigma] \in \Gamma$ a !!{signed formula} à qual
+a regra é aplicada. Se a regra não produz a divisão do ramo, precisamos
+mostrar que o ramo estendido, O.s.\@, $\Gamma$ junto com
+as conclusões da regra, continua satisfatível. Se a regra produz
+um ramo dividido, precisamos mostrar que pelo menos um dos dois
+ramos resultantes é satisfatível.
 \begin{enumerate}
-\item The branch is expanded by applying $\TRule{\True}{\lnot}$ to
-  $\sFmla{\True}{\lnot !B}[\sigma] \in \Gamma$. Then the extended
-  branch contains the !!{signed formula}s $\Gamma \cup
-  \{\sFmla{\False}{!B}[\sigma.{*}]\}$. Suppose $\mSat{M}{\Gamma}[f]$.
-  In particular, $\mSat{M}{\lnot !B}[f(\sigma)]$. Thus,
-  $\mSat/{M}{!B}[w]$ for any $w$ such that $Rf(\sigma)w$, and that
-  includes $f(\sigma.{*})$. So, $\mModel{M}$ satisfies
-  $\sFmla{\False}{!B}[\sigma.{*}]$ with respect to~$f$.
-\item The branch is expanded by applying $\TRule{\False}{\lnot}$ to
-  $\sFmla{\False}{\lnot !B}[\sigma] \in \Gamma$: Exercise.
-\item The branch is expanded by applying $\TRule{\True}{\land}$ to
-  $\sFmla{\True}{!B \land !C}[\sigma] \in \Gamma$, which results in
-  two new !!{signed formula}s on the branch:
-  $\sFmla{\True}{!B}[\sigma]$ and $\sFmla{\True}{!C}[\sigma]$. Suppose
-  $\mSat{M}{\Gamma}[f]$, in particular $\mSat{M}{!B \land
-    !C}[f(\sigma)]$. Then $\mSat{M}{!B}[f(\sigma)]$ and
-  $\mSat{M}{!C}[f(\sigma)]$. This means that $\mModel{M}$ satisfies
-  both $\sFmla{\True}{!B}[\sigma]$ and $\sFmla{\True}{!C}[\sigma]$
-  with respect to~$f$.
-\item The branch is expanded by applying $\TRule{\False}{\lor}$ to
-  $\sFmla{\False}{!B \lor !C} \in \Gamma$: Exercise.
-\item The branch is expanded by applying $\TRule{\False}{\lif}$ to
-  $\sFmla{\False}{!B \lif !C}[\sigma] \in \Gamma$: This results in two
-  new !!{signed formula}s on the branch: $\sFmla{\True}{!B}[\sigma.n]$ and
-  $\sFmla{\False}{!C}[\sigma.n]$, where $\sigma.n$ is a
-  new prefix on the branch, O.s.\@, $\sigma.n \notin P(\Gamma)$. 
+\item O ramo é expandido pela aplicação de $\TRule{\True}{\lnot}$ a
+  $\sFmla{\True}{\lnot !B}[\sigma] \in \Gamma$. Então o ramo estendido
+  contém as !!{signed formula}s $\Gamma \cup
+  \{\sFmla{\False}{!B}[\sigma.{*}]\}$. Suponha $\mSat{M}{\Gamma}[f]$.
+  Em particular, $\mSat{M}{\lnot !B}[f(\sigma)]$. Assim,
+  $\mSat/{M}{!B}[w]$ para qualquer $w$ tal que $Rf(\sigma)w$, e isso
+  inclui $f(\sigma.{*})$. Portanto, $\mModel{M}$ satisfaz
+  $\sFmla{\False}{!B}[\sigma.{*}]$ com respeito a~$f$.
+\item O ramo é expandido pela aplicação de $\TRule{\False}{\lnot}$ a
+  $\sFmla{\False}{\lnot !B}[\sigma] \in \Gamma$: exercício.
+\item O ramo é expandido pela aplicação de $\TRule{\True}{\land}$ a
+  $\sFmla{\True}{!B \land !C}[\sigma] \in \Gamma$, o que produz
+  duas novas !!{signed formula}s no ramo:
+  $\sFmla{\True}{!B}[\sigma]$ e $\sFmla{\True}{!C}[\sigma]$. Suponha
+  $\mSat{M}{\Gamma}[f]$, em particular $\mSat{M}{!B \land
+    !C}[f(\sigma)]$. Então $\mSat{M}{!B}[f(\sigma)]$ e
+  $\mSat{M}{!C}[f(\sigma)]$. Isso significa que $\mModel{M}$ satisfaz
+  tanto $\sFmla{\True}{!B}[\sigma]$ quanto $\sFmla{\True}{!C}[\sigma]$
+  com respeito a~$f$.
+\item O ramo é expandido pela aplicação de $\TRule{\False}{\lor}$ a
+  $\sFmla{\False}{!B \lor !C} \in \Gamma$: exercício.
+\item O ramo é expandido pela aplicação de $\TRule{\False}{\lif}$ a
+  $\sFmla{\False}{!B \lif !C}[\sigma] \in \Gamma$: isso produz duas
+  novas !!{signed formula}s no ramo: $\sFmla{\True}{!B}[\sigma.n]$ e
+  $\sFmla{\False}{!C}[\sigma.n]$, em que $\sigma.n$ é um
+  prefixo novo no ramo, O.s.\@, $\sigma.n \notin P(\Gamma)$. 
   
-  Since $\Gamma$ is satisfiable, there is a $\mModel{M}$ and
-  interpretation~$f$ of $P(\Gamma)$ such that $\mSat{M}{\Gamma}[f]$, in
-  particular $\mSat/{M}{!B \lif !C}[f(\sigma)]$. We have to show that
-  $\Gamma \cup \{\sFmla{\False}{!B \lif !C}[\sigma.n]\}$ is
-  satisfiable. To do this, we define an interpretation of $P(\Gamma)
-  \cup \{\sigma.n\}$ as follows:
+  Como $\Gamma$ é satisfatível, existem um $\mModel{M}$ e uma
+  interpretação~$f$ de $P(\Gamma)$ tais que $\mSat{M}{\Gamma}[f]$, em
+  particular $\mSat/{M}{!B \lif !C}[f(\sigma)]$. Precisamos mostrar que
+  $\Gamma \cup \{\sFmla{\False}{!B \lif !C}[\sigma.n]\}$ é
+  satisfatível. Para isso, definimos uma interpretação de $P(\Gamma)
+  \cup \{\sigma.n\}$ como segue:
   
-  Since $\mSat/{M}{!B \lif !C}[f(\sigma)]$, there is a $w \in W$ such
-  that $Rf(\sigma)w$ such that $\mSat{M}{!B}[w]$ and
-  $\mSat/{M}{!C}[w]$. Let $f'$ be like $f$, except that $f'(\sigma.n)
-  = w$. Since $f'(\sigma) = f(\sigma)$ and $Rf(\sigma)w$, we have
-  $Rf'(\sigma)f'(\sigma.n)$, so $f'$ is an interpretation of
-  $P(\Gamma) \cup \{\sigma.n\}$. Obviously
-  $\mSat{M}{!B}[f'(\sigma.n)]$ and $\mSat/{M}{!C}[f'(\sigma.n)]$.
-  Since $f(\sigma') = f'(\sigma')$ for all prefixes $\sigma' \in
-  P(\Gamma)$, $\mSat{M}{\Gamma}[f']$.  So, $\mModel{M}, f'$ satisfies
+  Como $\mSat/{M}{!B \lif !C}[f(\sigma)]$, existe um $w \in W$ tal
+  que $Rf(\sigma)w$ e tal que $\mSat{M}{!B}[w]$ e
+  $\mSat/{M}{!C}[w]$. Seja $f'$ igual a $f$, exceto que $f'(\sigma.n)
+  = w$. Como $f'(\sigma) = f(\sigma)$ e $Rf(\sigma)w$, temos
+  $Rf'(\sigma)f'(\sigma.n)$, de modo que $f'$ é uma interpretação de
+  $P(\Gamma) \cup \{\sigma.n\}$. Evidentemente,
+  $\mSat{M}{!B}[f'(\sigma.n)]$ e $\mSat/{M}{!C}[f'(\sigma.n)]$.
+  Como $f(\sigma') = f'(\sigma')$ para todos os prefixos $\sigma' \in
+  P(\Gamma)$, $\mSat{M}{\Gamma}[f']$. Portanto, $\mModel{M}, f'$ satisfaz
   $\Gamma \cup \{\sFmla{\False}{!B \lif !C}[\sigma.n]\}$
 \end{enumerate}
-Now let's consider the possible inferences with two premises.
+Consideremos agora as inferências possíveis com duas premissas.
 \begin{enumerate}
-\item The branch is expanded by applying $\TRule{\False}{\land}$ to
-  $\sFmla{\False}{!B \land !C}[\sigma] \in \Gamma$, which results in
-  two branches, a left one continuing through
-  $\sFmla{\False}{!B}[\sigma]$ and a right one through
-  $\sFmla{\False}{!C}[\sigma]$. Suppose $\mSat{M}{\Gamma}[f]$, in
-  particular $\mSat/{M}{!B \land !C}[f(\sigma)]$.  Then
-  $\mSat/{M}{!B}[f(\sigma)]$ or $\mSat/{M}{!C}[f(\sigma)]$. In the
-  former case, $\mModel{M}, f$ satisfies $\sFmla{\False}{!B}[\sigma]$,
-  O.s.\@, the left branch is satisfiable. In the latter, $\mModel{M}, f$
-  satisfies $\sFmla{\False}{!C}[\sigma]$, O.s.\@, the right branch is
-  satisfiable.
-\item The branch is expanded by applying $\TRule{\True}{\lor}$ to
-    $\sFmla{\True}{!B \lor !C}[\sigma] \in \Gamma$: Exercise.
-\item The branch is expanded by applying $\TRule{\True}{\lif}$ to
-    $\sFmla{\True}{!B \lif !C}[\sigma] \in \Gamma$: Exercise.
+\item O ramo é expandido pela aplicação de $\TRule{\False}{\land}$ a
+  $\sFmla{\False}{!B \land !C}[\sigma] \in \Gamma$, o que produz
+  dois ramos: um à esquerda, que continua por
+  $\sFmla{\False}{!B}[\sigma]$, e outro à direita, por
+  $\sFmla{\False}{!C}[\sigma]$. Suponha $\mSat{M}{\Gamma}[f]$, em
+  particular $\mSat/{M}{!B \land !C}[f(\sigma)]$. Então
+  $\mSat/{M}{!B}[f(\sigma)]$ ou $\mSat/{M}{!C}[f(\sigma)]$. No
+  primeiro caso, $\mModel{M}, f$ satisfaz $\sFmla{\False}{!B}[\sigma]$,
+  O.s.\@, o ramo esquerdo é satisfatível. No segundo, $\mModel{M}, f$
+  satisfaz $\sFmla{\False}{!C}[\sigma]$, O.s.\@, o ramo direito é
+  satisfatível.
+\item O ramo é expandido pela aplicação de $\TRule{\True}{\lor}$ a
+    $\sFmla{\True}{!B \lor !C}[\sigma] \in \Gamma$: exercício.
+\item O ramo é expandido pela aplicação de $\TRule{\True}{\lif}$ a
+    $\sFmla{\True}{!B \lif !C}[\sigma] \in \Gamma$: exercício.
 \end{enumerate}
 \end{proof}
 
 \begin{prob}
-Complete the proof of \olref[int][tab][sou]{thm:tableau-soundness}.
+Complete a prova de \olref[int][tab][sou]{thm:tableau-soundness}.
 \end{prob}
 
 \begin{cor}
 \ollabel{cor:entailment-soundness}
-If $\Gamma \Proves !A$ then $\Gamma \Entails !A$.
+Se $\Gamma \Proves !A$, então $\Gamma \Entails !A$.
 \end{cor}
 
 \begin{proof}
-  If $\Gamma \Proves !A$ then for some $!B_1$, \dots, $!B_n \in
+  Se $\Gamma \Proves !A$, então, para alguns $!B_1$, \dots, $!B_n \in
   \Gamma$, $\Delta = \{\sFmla{\False}{!A}[1], \sFmla{\True}{!B_1}[1],
-  \dots, \sFmla{\True}{!B_n}[1]\}$ has a closed !!{tableau}. We want
-  to show that $\Gamma \Entails !A$. Suppose not, so for some
-  $\mModel{M}$ and $w$, $\mSat{M}{!B_i}[w]$ for $i=1$, \dots,~$n$, but
-  $\mSat/{M}{!A}[w]$. Let $f(1) = w$; then $f$ is an interpretation
-  of~$P(\Delta)$ into~$\mModel{M}$, and $\mModel{M}$ satisfies~$\Delta$ with
-  respect to~$f$. But by \olref{thm:tableau-soundness}, $\Delta$ is
-  unsatisfiable since it has a closed !!{tableau}, a
-  contradiction. So we must have $\Gamma \Proves !A$ after all.
+  \dots, \sFmla{\True}{!B_n}[1]\}$ tem um !!{tableau} fechado. Queremos
+  mostrar que $\Gamma \Entails !A$. Suponha que não; então, para algum
+  $\mModel{M}$ e algum $w$, $\mSat{M}{!B_i}[w]$ para $i=1$, \dots,~$n$, mas
+  $\mSat/{M}{!A}[w]$. Seja $f(1) = w$; então $f$ é uma interpretação
+  de~$P(\Delta)$ em~$\mModel{M}$, e $\mModel{M}$ satisfaz~$\Delta$ com
+  respeito a~$f$. Mas, por \olref{thm:tableau-soundness}, $\Delta$ é
+  insatisfatível, pois tem um !!{tableau} fechado, uma
+  contradição. Portanto, afinal devemos ter $\Gamma \Proves !A$.
 \end{proof}
 
 \begin{cor}
 \ollabel{cor:weak-soundness}
-If $\Proves !A$ then $!A$ is true in all models.
+Se $\Proves !A$, então $!A$ é verdadeira em todos os modelos.
 \end{cor}
 
 \end{document}
