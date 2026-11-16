@@ -6,29 +6,29 @@
 
 \begin{document}
 
-\olfileid{fol}{axd}{prq}
+\olfileid[pt]{fol}{axd}{prq}
 
-\olsection{\usetoken{P}{derivation} with Quantifiers}
+\olsection{\usetoken{P}{derivation} com Quantificadores}
 
 \begin{ex}
-Let us give !!a{derivation} of $(\lforall[x][!A(x)] \land
+Apresentemos !!a{derivation} de $(\lforall[x][!A(x)] \land
 \lforall[y][!B(y)]) \lif \lforall[x][(!A(x) \land !B(x))]$.
 
-First, note that
+Primeiro, observe que
 \begin{align*}
   (\lforall[x][!A(x)] \land \lforall[y][!B(y)]) & \lif \lforall[x][!A(x)]\\
-  \intertext{is an instance of \olref[prp]{ax:land1}, and}
+  \intertext{é uma instância de \olref[prp]{ax:land1}, e}
   \lforall[x][!A(x)] & \lif !A(a) \\
-  \intertext{of \olref[qua]{ax:q1}. So, by \olref[pro]{prop:chain}, we know that}
+  \intertext{de \olref[qua]{ax:q1}. Assim, por \olref[pro]{prop:chain}, sabemos que}
   (\lforall[x][!A(x)] \land \lforall[y][!B(y)]) & \lif !A(a) \\
-  \intertext{is !!{derivable}. Likewise, since}
-  (\lforall[x][!A(x)] \land \lforall[y][!B(y)]) & \lif \lforall[y][!B(y)] \qquad\text{and}\\
+  \intertext{é !!{derivable}. Analogamente, como}
+  (\lforall[x][!A(x)] \land \lforall[y][!B(y)]) & \lif \lforall[y][!B(y)] \qquad\text{e}\\
     \lforall[y][!B(y)] & \lif !B(a)\\
-    \intertext{are instances of \olref[prp]{ax:land2} and \olref[qua]{ax:q1}, respectively,}
+    \intertext{são, respectivamente, instâncias de \olref[prp]{ax:land2} e \olref[qua]{ax:q1},}
     (\lforall[x][!A(x)] \land \lforall[y][!B(y)]) & \lif !B(a)\\
-    \intertext{is derivable by \olref[pro]{prop:chain}. Using an appropriate instance of \olref[prp]{ax:land3} and two applications of~\MP, we see that}
+    \intertext{é derivável por \olref[pro]{prop:chain}. Usando uma instância adequada de \olref[prp]{ax:land3} e duas aplicações de~\MP, vemos que}
     (\lforall[x][!A(x)] \land \lforall[y][!B(y)]) & \lif (!A(a) \land !B(a))\\
-    \intertext{is derivable. We can now apply \QR{} to obtain}
+    \intertext{é derivável. Agora podemos aplicar \QR{} para obter}
 (\lforall[x][!A(x)] \land \lforall[y][!B(y)]) & \lif \lforall[x][(!A(x) \land !B(x))].
 \end{align*}
 \end{ex}

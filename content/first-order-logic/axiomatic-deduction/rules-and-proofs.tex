@@ -7,89 +7,90 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{axd}{rul}}
-      {\olfileid{pl}{axd}{rul}}
+      {\olfileid[pt]{fol}{axd}{rul}}
+      {\olfileid[pt]{pl}{axd}{rul}}
 
-\olsection{Rules and \usetoken{P}{derivation}}
+\olsection{Regras e \usetoken{P}{derivation}}
 
 \begin{explain}
-  Axiomatic !!{derivation}s are perhaps the simplest !!{derivation} system for
-  logic. !!^a{derivation} is just a sequence of !!{formula}s.  To
-  count as !!a{derivation}, every !!{formula} in the sequence must
-  either be an instance of an axiom, or must follow from one or more
-  !!{formula}s that precede it in the sequence by a rule of inference.
-  !!^a{derivation} !!{derive}s its last !!{formula}.
+  As !!{derivation}s axiomáticas talvez formem o sistema de
+  !!{derivation} mais simples para a lógica. !!^a{derivation} é apenas
+  uma sequência de !!{formula}s. Para contar como !!a{derivation}, cada
+  !!{formula} da sequência deve ser uma instância de um axioma ou decorrer,
+  por uma regra de inferência, de uma ou mais !!{formula}s que a precedem
+  na sequência. !!^a{derivation} !!{derive}s sua última !!{formula}.
 \end{explain}
 
 \begin{defn}[!!^{derivability}]
-If $\Gamma$ is a set of !!{formula}s of $\Lang L$ then a
-\emph{!!{derivation}} from~$\Gamma$ is a finite sequence $!A_1$,
-\dots,~$!A_n$ of !!{formula}s where for each $i \le n$ one of the
-following holds:
+Se $\Gamma$ é um conjunto de !!{formula}s de $\Lang L$, então uma
+\emph{!!{derivation}} a partir de~$\Gamma$ é uma sequência finita $!A_1$,
+\dots,~$!A_n$ de !!{formula}s tal que, para cada $i \le n$, ocorre uma
+das seguintes possibilidades:
 \begin{enumerate}
 \item $!A_i \in \Gamma$; or
-\item $!A_i$ is an axiom; or
-\item $!A_i$ follows from some $!A_j$ (and $!A_k$) with $j < i$ (and
-  $k < i$) by a rule of inference.
+\item $!A_i$ é um axioma; ou
+\item $!A_i$ decorre, por uma regra de inferência, de algum $!A_j$ (e
+  $!A_k$) com $j < i$ (e $k < i$).
 \end{enumerate}
 \end{defn}
 
-What counts as a correct !!{derivation} depends on which inference
-rules we allow (and of course what we take to be axioms).  And an
-inference rule is an if-then statement that tells us that, under
-certain conditions, a step~$A_i$ in !!a{derivation} is a correct
-inference step.
+O que conta como uma !!{derivation} correta depende das regras de
+inferência que admitimos (e, naturalmente, do que tomamos como axiomas).
+Uma regra de inferência é uma afirmação condicional que nos diz que, sob
+certas condições, um passo~$A_i$ em !!a{derivation} é um passo de
+inferência correto.
 
-\begin{defn}[Rule of inference]
-A \emph{rule of inference} gives a sufficient condition for what
-counts as a correct inference step in !!a{derivation} from~$\Gamma$.
+\begin{defn}[Regra de inferência]
+Uma \emph{regra de inferência} fornece uma condição suficiente para que
+um passo conte como passo de inferência correto em !!a{derivation} a
+partir de~$\Gamma$.
 \end{defn}
 
-For instance, since any one-element sequence $!A$ with $!A \in \Gamma$
-trivially counts as !!a{derivation}, the following might be a very
-simple rule of inference:
+Por exemplo, como toda sequência de um elemento $!A$ com $!A \in \Gamma$
+conta trivialmente como !!a{derivation}, a seguinte pode ser uma regra de
+inferência muito simples:
 \begin{quote}
-  If $!A \in \Gamma$, then $!A$ is always a correct inference step in
-  any !!{derivation} from~$\Gamma$.
+  Se $!A \in \Gamma$, então $!A$ é sempre um passo de inferência correto
+  em qualquer !!{derivation} a partir de~$\Gamma$.
 \end{quote}
-Similarly, if $!A$ is one of the axioms, then $!A$ by itself is
-!!a{derivation}, and so this is also a rule of inference:
+De modo semelhante, se $!A$ é um dos axiomas, então $!A$ por si só é
+!!a{derivation}; portanto, esta também é uma regra de inferência:
 \begin{quote}
-  If $!A$ is an axiom, then $!A$ is a correct inference step.
+  Se $!A$ é um axioma, então $!A$ é um passo de inferência correto.
 \end{quote}
-It gets more interesting if the rule of inference appeals to
-!!{formula}s that appear before the step considered. The following
-rule is called \emph{modus ponens:}
+O caso fica mais interessante quando a regra de inferência recorre a
+!!{formula}s que aparecem antes do passo considerado. A regra seguinte
+se chama \emph{modus ponens:}
 \begin{quote}
-  If $!B \lif !A$ and $!B$ occur higher up in the !!{derivation},
-  then~$!A$ is a correct inference step.
+  Se $!B \lif !A$ e $!B$ ocorrem anteriormente na !!{derivation},
+  então~$!A$ é um passo de inferência correto.
 \end{quote}
-If this is the only rule of inference, then our definition of
-!!{derivation} above amounts to this: $!A_1$, \dots,~$!A_n$ is
-!!a{derivation} iff for each $i \le n$ one of the following holds:
+Se esta for a única regra de inferência, então nossa definição de
+!!{derivation} acima equivale ao seguinte: $!A_1$, \dots,~$!A_n$ é
+!!a{derivation} se, e somente se, para cada $i \le n$ ocorre uma das
+seguintes possibilidades:
 \begin{enumerate}
 \item $!A_i \in \Gamma$; or
-\item $!A_i$ is an axiom; or
-\item for some $j < i$, $!A_j$ is $!B \lif !A_i$, and for some $k < i$,
-  $!A_k$ is~$!B$.
+\item $!A_i$ é um axioma; ou
+\item para algum $j < i$, $!A_j$ é $!B \lif !A_i$ e, para algum $k < i$,
+  $!A_k$ é~$!B$.
 \end{enumerate}
-The last clause says that $!A_i$ follows from~$!A_j$ ($!B \lif !A_i$) and $!A_k$
-($!B$) by modus ponens. If we can go from $1$ to~$n$, and
-each time we find !!a{formula}~$!A_i$ that is either in~$\Gamma$, an
-axiom, or which a rule of inference tells us that it is a correct
-inference step, then the entire sequence counts as a correct
-!!{derivation}.
+A última cláusula diz que $!A_i$ decorre de~$!A_j$ ($!B \lif !A_i$) e
+$!A_k$ ($!B$) por modus ponens. Se podemos avançar de $1$ até~$n$ e,
+a cada passo, encontramos !!a{formula}~$!A_i$ que está em~$\Gamma$, é um
+axioma ou é declarada passo de inferência correto por uma regra de
+inferência, então a sequência inteira conta como !!{derivation} correta.
 
 \begin{defn}[!!^{derivability}]
-A !!{formula}~$!A$ is \emph{!!{derivable}} from $\Gamma$, written
-$\Gamma \Proves !A$, if there is !!a{derivation} from $\Gamma$ ending
-in $!A$.
+Uma !!{formula}~$!A$ é \emph{!!{derivable}} a partir de $\Gamma$, o que
+escrevemos $\Gamma \Proves !A$, se existe !!a{derivation} a partir de
+$\Gamma$ que termina em $!A$.
 \end{defn}
 
-\begin{defn}[Theorems]
-!!^a{formula}~$!A$ is a \emph{theorem} if there is !!a{derivation}
-of~$!A$ from the empty set.  We write $\Proves !A$ if $!A$ is a
-theorem and $\Proves/ !A$ if it is not.
+\begin{defn}[Teoremas]
+!!^a{formula}~$!A$ é um \emph{teorema} se existe !!a{derivation}
+de~$!A$ a partir do conjunto vazio. Escrevemos $\Proves !A$ se $!A$ é
+um teorema e $\Proves/ !A$ se não é.
 \end{defn}
 
 

@@ -6,33 +6,33 @@
 
 \begin{document}
 
-\olfileid{fol}{tab}{qpr}
-\olsection{\usetoken{S}{derivability} and the Quantifiers}
+\olfileid[pt]{fol}{tab}{qpr}
+\olsection{\usetoken{S}{derivability} e os quantificadores}
 
 \begin{explain}
-  The completeness theorem also requires that the tableaux rules yield
-  the facts about~$\Proves$ established in this section.
+  O teorema da completude também exige que as regras de tableaux
+  produzam os fatos sobre~$\Proves$ estabelecidos nesta seção.
 \end{explain}
 
 \begin{thm}
-\ollabel{thm:strong-generalization} If $c$ is a constant not occurring
-in $\Gamma$ or~$!A(x)$ and $\Gamma \Proves !A(c)$, then $\Gamma
+\ollabel{thm:strong-generalization} Se $c$ é uma constante que não ocorre
+em $\Gamma$ nem em~$!A(x)$ e $\Gamma \Proves !A(c)$, então $\Gamma
 \Proves \lforall[x][!A(x)]$.
 \end{thm}
 
 \begin{proof}
-Suppose $\Gamma \Proves !A(c)$, O.s.\@, there are $!B_1$, \dots, $!B_n
-\in \Gamma$ and a closed !!{tableau} for
+Suponha que $\Gamma \Proves !A(c)$, O.s.\@, existem $!B_1$, \dots, $!B_n
+\in \Gamma$ e um !!{tableau} fechado para
 \begin{align*}
 \{ \sFmla{\False}{!A(c)}, &
 \sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n} \}.
-\intertext{We have to show that there is also a closed !!{tableau} for}
+\intertext{Devemos mostrar que também existe um !!{tableau} fechado para}
 \{ \sFmla{\False}{\lforall[x][!A(x)]}, &
 \sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n} \}.
 \end{align*}
-Take the closed !!{tableau} and replace the first assumption with
-$\sFmla{\False}{\lforall[x][!A(x)]}$, and insert
-$\sFmla{\False}{!A(c)}$ after the assumptions.
+Considere o !!{tableau} fechado, substitua a primeira hipótese por
+$\sFmla{\False}{\lforall[x][!A(x)]}$ e insira
+$\sFmla{\False}{!A(c)}$ depois das hipóteses.
 \begin{center}
 \begin{tableau}{not line numbering}
   [\sFmla{\False}{\formula{A}(c)}
@@ -50,12 +50,12 @@ $\sFmla{\False}{!A(c)}$ after the assumptions.
         [][][]]]]]]
 \end{tableau}
 \end{center}
-The tableau is still closed, since all !!{sentence}s available as
-assumptions before are still available at the top of the
-!!{tableau}. The inserted line is the result of a correct application
-of $\TRule{\False}{\lforall}$, since the !!{constant}~$c$ does not
-occur in $!B_1$, \dots, $!B_n$ or $\lforall[x][!A(x)]$, O.s.\@, it does
-not occur above the inserted line in the new !!{tableau}.
+O tableau continua fechado, pois todas as !!{sentence}s antes
+disponíveis como hipóteses continuam disponíveis no topo do
+!!{tableau}. A linha inserida resulta de uma aplicação correta de
+$\TRule{\False}{\lforall}$, pois a !!{constant}~$c$ não ocorre em
+$!B_1$, \dots, $!B_n$ nem em $\lforall[x][!A(x)]$, O.s.\@, não ocorre
+acima da linha inserida no novo !!{tableau}.
 \end{proof}
 
 \begin{prop}
@@ -68,15 +68,15 @@ not occur above the inserted line in the new !!{tableau}.
 
 \begin{proof}
 \begin{tagenumerate}{prvEx,prvAll}
-\tagitem{prvEx}{A closed !!{tableau} for
-  $\sFmla{\False}{\lexists[x][!A(x)]}, \sFmla{\True}{!A(t)}$ is:
+\tagitem{prvEx}{Um !!{tableau} fechado para
+  $\sFmla{\False}{\lexists[x][!A(x)]}, \sFmla{\True}{!A(t)}$ é:
   \begin{oltableau}
     [\sFmla{\False}{\lexists[x][\formula{A}(x)]}, just = \TAss
       [\sFmla{\True}{\formula{A}(t)}, just = \TAss
         [\sFmla{\False}{\formula{A}(t)}, just = {\TRule{\False}{\lexists}[1]}, close]]]
     \end{oltableau}}{}
-\tagitem{prvAll}{A closed !!{tableau} for
-  $\sFmla{\False}{\formula{A}(t)}, \sFmla{\True}{\lforall[x][!A(x)]}, $ is:
+\tagitem{prvAll}{Um !!{tableau} fechado para
+  $\sFmla{\False}{\formula{A}(t)}, \sFmla{\True}{\lforall[x][!A(x)]}, $ é:
   \begin{oltableau}
     [\sFmla{\False}{\formula{A}(t)}, just = \TAss
       [\sFmla{\True}{\lforall[x][\formula{A}(x)]}, just = \TAss

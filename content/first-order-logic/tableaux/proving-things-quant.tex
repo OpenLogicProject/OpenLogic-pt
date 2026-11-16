@@ -6,25 +6,25 @@
 
 \begin{document}
 
-\olfileid{fol}{tab}{prq}
+\olfileid[pt]{fol}{tab}{prq}
 
-\olsection{\usetoken{P}{tableau} with Quantifiers}
+\olsection{\usetoken{P}{tableau} com quantificadores}
 
 \begin{ex}
-When dealing with quantifiers, we have to make sure not to violate the
-eigenvariable condition, and sometimes this requires us to play around
-with the order of carrying out certain inferences. In general, it
-helps to try and take care of rules subject to the eigenvariable
-condition first (they will be higher up in the finished !!{tableau}).
+Ao lidar com quantificadores, precisamos garantir que não violemos a
+condição da variável própria, e isso às vezes exige alterar a ordem em
+que certas inferências são realizadas. Em geral, é útil aplicar primeiro
+as regras sujeitas à condição da variável própria (elas ficarão mais acima
+no !!{tableau} concluído).
 
-Let's see how we'd give !!a{tableau} for the !!{sentence}
+Vejamos como construir !!a{tableau} para a !!{sentence}
 $\lexists[x][\lnot !A(x)] \lif \lnot \lforall[x][!A(x)]$.
-Starting as usual, we start by recording the assumption,
+Como de costume, começamos registrando a suposição,
 \begin{oltableau}
 [\sFmla{\False}{\lexists[x][\lnot \formula{A}(x)]\lif \lnot
     \lforall[x][\formula{A}(x)]}, just=\TAss]
 \end{oltableau}
-Since the !!{main operator} is $\lif$, we apply the
+Como o !!{main operator} é $\lif$, aplicamos a
 $\TRule{\False}{\lif}$:
 \begin{oltableau}
 [\sFmla{\False}{\lexists[x][\lnot \formula{A}(x)]\lif \lnot
@@ -36,9 +36,9 @@ $\TRule{\False}{\lif}$:
   ]
 ]
 \end{oltableau}
-The next line to deal with is~$2$. We use
-$\TRule{\True}{\lexists}$. This requires a new !!{constant}; since no
-!!{constant}s yet occur, we can pick any one, say,~$a$.
+A próxima linha a tratar é~$2$. Usamos
+$\TRule{\True}{\lexists}$. Isso exige uma nova !!{constant}; como ainda não
+ocorrem !!{constant}s, podemos escolher qualquer uma, digamos~$a$.
 \begin{oltableau}
 [\sFmla{\False}{\lexists[x][\lnot \formula{A}(x)]\lif \lnot
     \lforall[x][\formula{A}(x)]}, just=\TAss, checked
@@ -51,7 +51,7 @@ $\TRule{\True}{\lexists}$. This requires a new !!{constant}; since no
   ]
 ]
 \end{oltableau}
-Now we apply $\TRule{\False}{\lnot}$ to line~$3$:
+Agora aplicamos $\TRule{\False}{\lnot}$ à linha~$3$:
 \begin{oltableau}
 [\sFmla{\False}{\lexists[x][\lnot \formula{A}(x)]\lif \lnot
     \lforall[x][\formula{A}(x)]}, just=\TAss, checked
@@ -68,8 +68,8 @@ Now we apply $\TRule{\False}{\lnot}$ to line~$3$:
   ]
 ]
 \end{oltableau}
-We obtain a closed !!{tableau} by applying $\TRule{\True}{\lnot}$ to
-line~$4$, followed by $\TRule{\True}{\lforall}$ to line~$5$.
+Obtemos um !!{tableau} fechado aplicando $\TRule{\True}{\lnot}$ à
+linha~$4$, seguida de $\TRule{\True}{\lforall}$ à linha~$5$.
 \begin{oltableau}
 [\sFmla{\False}{\lexists[x][\lnot \formula{A}(x)]\lif \lnot
     \lforall[x][\formula{A}(x)]}, just=\TAss, checked
@@ -94,13 +94,13 @@ line~$4$, followed by $\TRule{\True}{\lforall}$ to line~$5$.
 \end{ex}
 
 \begin{ex}
-Let's see how we'd give !!a{tableau} for the set
+Vejamos como construir !!a{tableau} para o conjunto
 \[
 \sFmla{\False}{\lexists[x][!C(x,b)]},
 \sFmla{\True}{\lexists[x][(!A(x) \land !B(x))]},
 \sFmla{\True}{\lforall[x][(!B(x) \lif !C(x,b))]}.
 \]
-Starting as usual, we start with the assumptions:
+Como de costume, começamos com as suposições:
 \begin{oltableau}
   [\sFmla{\False}{\lexists[x][\formula{C}(x,b)]}, just=\TAss
     [\sFmla{\True}{\lexists[x][(\formula{A}(x) \land \formula{B}(x))]},
@@ -110,10 +110,10 @@ Starting as usual, we start with the assumptions:
     ]
   ]
 \end{oltableau}
-We should always apply a rule with the eigenvariable condition first;
-in this case that would be $\TRule{\True}{\lexists}$ to
-line~$2$. Since the assumptions contain the !!{constant}~$b$, we have
-to use a different one; let's pick~$a$ again.
+Devemos sempre aplicar primeiro uma regra com a condição da variável própria;
+neste caso, seria $\TRule{\True}{\lexists}$ à
+linha~$2$. Como as suposições contêm a !!{constant}~$b$, precisamos
+usar outra; escolhamos novamente~$a$.
 \begin{oltableau}
   [\sFmla{\False}{\lexists[x][\formula{C}(x,b)]}, just=\TAss
     [\sFmla{\True}{\lexists[x][(\formula{A}(x) \land \formula{B}(x))]},
@@ -126,14 +126,14 @@ to use a different one; let's pick~$a$ again.
     ]
   ]
 \end{oltableau}
-If we now apply $\TRule{\False}{\lexists}$ to line~$1$ or
-$\TRule{\True}{\lforall}$ to line~$3$, we have to decide which term~$t$
-to substitute for~$x$. Since there is no eigenvariable condition for
-these rules, we can pick any term we like. In some cases we may even
-have to apply the rule several times with different~$t$s. But as a
-general rule, it pays to pick one of the terms already occurring in the
-!!{tableau}---in this case, $a$ and~$b$---and in this case we can
-guess that $a$ will be more likely to result in a closed branch.
+Se agora aplicarmos $\TRule{\False}{\lexists}$ à linha~$1$ ou
+$\TRule{\True}{\lforall}$ à linha~$3$, teremos de decidir qual termo~$t$
+substituir por~$x$. Como essas regras não têm condição da variável própria,
+podemos escolher qualquer termo. Em alguns casos, talvez seja necessário
+aplicar a regra várias vezes com diferentes~$t$s. Contudo, como regra
+geral, convém escolher um dos termos que já ocorrem no
+!!{tableau}---neste caso, $a$ e~$b$---e aqui podemos
+prever que $a$ terá maior probabilidade de produzir um ramo fechado.
 \begin{oltableau}
   [\sFmla{\False}{\lexists[x][\formula{C}(x,b)]}, just=\TAss
     [\sFmla{\True}{\lexists[x][(\formula{A}(x) \land \formula{B}(x))]},
@@ -150,8 +150,8 @@ guess that $a$ will be more likely to result in a closed branch.
     ]
   ]
 \end{oltableau}
-We don't check the !!{signed formula}s in lines $1$ and $3$, since we may
-have to use them again. Now apply $\TRule{\True}{\land}$ to line~$4$:
+Não marcamos como verificadas as !!{signed formula}s das linhas $1$ e $3$, pois talvez
+precisemos usá-las novamente. Agora aplicamos $\TRule{\True}{\land}$ à linha~$4$:
 \begin{oltableau}
   [\sFmla{\False}{\lexists[x][\formula{C}(x,b)]}, just=\TAss
     [\sFmla{\True}{\lexists[x][(\formula{A}(x) \land \formula{B}(x))]},
@@ -173,7 +173,7 @@ have to use them again. Now apply $\TRule{\True}{\land}$ to line~$4$:
     ]
   ]
 \end{oltableau}
-If we now apply $\TRule{\True}{\lif}$ to line~$6$, the !!{tableau} closes:
+Se agora aplicarmos $\TRule{\True}{\lif}$ à linha~$6$, o !!{tableau} se fecha:
 \begin{oltableau}
   [\sFmla{\False}{\lexists[x][\formula{C}(x,b)]}, just=\TAss
     [\sFmla{\True}{\lexists[x][(\formula{A}(x) \land \formula{B}(x))]},
@@ -210,12 +210,12 @@ If we now apply $\TRule{\True}{\lif}$ to line~$6$, the !!{tableau} closes:
 \end{ex}
 
 \begin{ex}
-We construct !!a{tableau} for the set
+Construímos !!a{tableau} para o conjunto
 \[
 \sFmla{\True}{\lforall[x][!A(x)]}, \sFmla{\True}{\lforall[x][!A(x)] 
   \lif \lexists[y][!B(y)]}, \sFmla{\True}{\lnot\lexists[y][!B(y)]}.
 \]
-Starting as usual, we write down the assumptions:
+Como de costume, anotamos as suposições:
 \begin{oltableau}
   [\sFmla{\True}{\lforall[x][\formula{A}(x)]}, just=\TAss
     [\sFmla{\True}{\lforall[x][\formula{A}(x)] \lif
@@ -225,11 +225,11 @@ Starting as usual, we write down the assumptions:
     ]
   ]
 \end{oltableau}
-We begin by applying the $\TRule{\True}{\lnot}$ rule to line~$3$. A
-corollary to the rule ``always apply rules with eigenvariable
-conditions first'' is ``defer applying quantifier rules without
-eigenvariable conditions until needed.'' Also, defer rules that result
-in a split.
+Começamos aplicando a regra $\TRule{\True}{\lnot}$ à linha~$3$. Um
+corolário da regra ``sempre aplique primeiro as regras com condições de
+variável própria'' é ``adie a aplicação de regras de quantificadores sem
+condições de variável própria até que sejam necessárias''. Adie também as
+regras que produzem uma bifurcação.
 \begin{oltableau}
   [\sFmla{\True}{\lforall[x][\formula{A}(x)]}, just=\TAss
     [\sFmla{\True}{\lforall[x][\formula{A}(x)] \lif
@@ -240,9 +240,9 @@ in a split.
     ]
   ]
 \end{oltableau}
-The new line~$4$ requires $\TRule{\False}{\lexists}$, a quantifier
-rule without the eigenvariable condition. So we defer this in favor of
-using $\TRule{\True}{\lif}$ on line~$2$.
+A nova linha~$4$ exige $\TRule{\False}{\lexists}$, uma regra de
+quantificador sem a condição da variável própria. Por isso, adiamos essa
+aplicação e usamos $\TRule{\True}{\lif}$ na linha~$2$.
 \begin{oltableau}
   [\sFmla{\True}{\lforall[x][\formula{A}(x)]}, just=\TAss
     [\sFmla{\True}{\lforall[x][\formula{A}(x)] \lif
@@ -257,8 +257,8 @@ using $\TRule{\True}{\lif}$ on line~$2$.
     ]
   ]
 \end{oltableau}
-Both new !!{signed formula}s require rules with eigenvariable conditions, so
-these should be next:
+As duas novas !!{signed formula}s exigem regras com condições de variável própria;
+portanto, devem ser tratadas em seguida:
 \begin{oltableau}
   [\sFmla{\True}{\lforall[x][\formula{A}(x)]}, just=\TAss
     [\sFmla{\True}{\lforall[x][\formula{A}(x)] \lif
@@ -277,11 +277,11 @@ these should be next:
     ]
   ]
 \end{oltableau}
-To close the branches, we have to use the !!{signed formula}s on lines $1$
-and~$3$. The corresponding rules (\TRule{\True}{\lforall} and
-\TRule{\False}{\lexists}) don't have eigenvariable conditions, so we
-are free to pick whichever terms are suitable. In this case, that's
-$b$ and~$c$, respectively.
+Para fechar os ramos, precisamos usar as !!{signed formula}s das linhas $1$
+e~$3$. As regras correspondentes (\TRule{\True}{\lforall} e
+\TRule{\False}{\lexists}) não têm condições de variável própria; portanto,
+podemos escolher quaisquer termos adequados. Neste caso, são
+$b$ e~$c$, respectivamente.
 \begin{oltableau}
   [\sFmla{\True}{\lforall[x][\formula{A}(x)]}, just=\TAss
     [\sFmla{\True}{\lforall[x][\formula{A}(x)] \lif
@@ -315,7 +315,7 @@ $b$ and~$c$, respectively.
 \end{ex}
 
 \begin{prob}
-Give closed !!{tableau}s of the following:
+Construa !!{tableau}s fechados para os seguintes casos:
 \begin{enumerate}
 \item $\sFmla{\False}{(\lforall[x][!A(x)] \land \lforall[y][!B(y)])
 \lif \lforall[z][(!A(z) \land !B(z))]}$.
@@ -333,7 +333,7 @@ Give closed !!{tableau}s of the following:
 \end{prob}
 
 \begin{prob}
-Give closed !!{tableau}s of the following:
+Construa !!{tableau}s fechados para os seguintes casos:
 \begin{enumerate}
 \item $\sFmla{\False}{\lnot\lforall[x][!A(x)] \lif \lexists[x][\lnot!A(x)]}$.
 \item $\sFmla{\True}{(\lforall[x][!A(x)] \lif !B)}, \sFmla{\False}{\lexists[y][(!A(y) \lif !B)]}$.

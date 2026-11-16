@@ -6,11 +6,11 @@
 
 \begin{document}
 
-\olfileid{fol}{tab}{qrl}
+\olfileid[pt]{fol}{tab}{qrl}
 
-\olsection{Quantifier Rules}
+\olsection{Regras dos quantificadores}
 
-\subsection{Rules for $\lforall$}
+\subsection{Regras para $\lforall$}
 
 \begin{defish}
 \AxiomC{\sFmla{\True}{\lforall[x][!A(x)]}}
@@ -24,15 +24,15 @@
 \DisplayProof
 \end{defish}
 
-In \TRule{\True}{\lforall}, $t$ is a closed term (O.s.\@, one without
-variables). In \TRule{\False}{\lforall}, $a$~is !!a{constant} which
-must not occur anywhere in the branch above \TRule{\False}{\lforall}
-rule. We call $a$ the \emph{eigenvariable} of the
-\TRule{\False}{\forall} inference.\footnote{We use the term
-``eigenvariable'' even though $a$ in the above rule is !!a{constant}.
-This has historical reasons.}
+Em \TRule{\True}{\lforall}, $t$ é um termo fechado (O.s.\@, sem
+variáveis). Em \TRule{\False}{\lforall}, $a$~é !!a{constant} que
+não pode ocorrer em nenhum ponto do ramo acima da regra
+\TRule{\False}{\lforall}. Chamamos $a$ de \emph{variável própria} da
+inferência \TRule{\False}{\forall}.\footnote{Usamos o termo
+``variável própria'' embora $a$ na regra acima seja !!a{constant}.
+Isso se deve a razões históricas.}
 
-\subsection{Rules for $\lexists$}
+\subsection{Regras para $\lexists$}
 
 \begin{defish}
 \AxiomC{\sFmla{\True}{\lexists[x][!A(x)]}}
@@ -46,44 +46,44 @@ This has historical reasons.}
 \DisplayProof
 \end{defish}
 
-Again, $t$~is a closed term, and $a$~is !!a{constant} which does not
-occur in the branch above the~\TRule{\True}{\lexists} rule. We call
-$a$ the \emph{eigenvariable} of the \TRule{\True}{\lexists} inference.
+Novamente, $t$~é um termo fechado, e $a$~é !!a{constant} que não
+ocorre no ramo acima da regra~\TRule{\True}{\lexists}. Chamamos
+$a$ de \emph{variável própria} da inferência \TRule{\True}{\lexists}.
 
-The condition that an eigenvariable not occur in the branch above the
-\TRule{\False}{\lforall} or \TRule{\True}{\lexists} inference is
-called the \emph{eigenvariable condition}.
+A condição de que uma variável própria não ocorra no ramo acima da
+inferência \TRule{\False}{\lforall} ou \TRule{\True}{\lexists} é
+chamada \emph{condição de variável própria}.
 
 \begin{explain}
-Recall the convention that when $!A$ is !!a{formula} with the
-!!{variable}~$x$ free, we indicate this by writing~$!A(x)$. In the
-same context, $!A(t)$ then is short for~$\Subst{!A}{t}{x}$. So we
-could also write the \TRule{\False}{\lexists} rule as:
+Lembre a convenção de que, quando $!A$ é !!a{formula} com a
+!!{variable}~$x$ livre, indicamos isso escrevendo~$!A(x)$. No mesmo
+contexto, $!A(t)$ é uma abreviação de~$\Subst{!A}{t}{x}$. Portanto,
+também poderíamos escrever a regra \TRule{\False}{\lexists} assim:
 \begin{prooftree}
   \AxiomC{\sFmla{\False}{\lexists[x][!A]}}
   \RightLabel{\TRule{\False}{\lexists}}
   \UnaryInfC{\sFmla{\False}{\Subst{!A}{t}{x}}}
 \end{prooftree}
-Note that $t$ may already occur in~$!A$, p.ex., $!A$~might
-be~$\Atom{\Obj P}{t,x}$. Thus, inferring $\sFmla{\False}{\Atom{\Obj
-P}{t,t}}$ from~$ \sFmla{\False}{\lexists[x][\Atom{\Obj P}{t,x}]}$ is
-a correct application of~\TRule{\False}{\lexists}. However, the
-eigenvariable conditions in \TRule{\False}{\lforall}
-and~\TRule{\True}{\lexists} require that the !!{constant}~$a$ does
-not occur in~$!A$. So, you cannot correctly infer
-$\sFmla{\False}{\Atom{\Obj P}{a,a}}$ from
+Observe que $t$ pode já ocorrer em~$!A$; p.ex., $!A$~pode
+ser~$\Atom{\Obj P}{t,x}$. Assim, inferir $\sFmla{\False}{\Atom{\Obj
+P}{t,t}}$ a partir de~$ \sFmla{\False}{\lexists[x][\Atom{\Obj P}{t,x}]}$ é
+uma aplicação correta de~\TRule{\False}{\lexists}. Entretanto, as
+condições de variável própria em \TRule{\False}{\lforall}
+e~\TRule{\True}{\lexists} exigem que a !!{constant}~$a$ não
+ocorra em~$!A$. Portanto, não se pode inferir corretamente
+$\sFmla{\False}{\Atom{\Obj P}{a,a}}$ a partir de
 $\sFmla{\False}{\lforall[x][\Atom{\Obj P}{a,x}]}$
-using~$\TRule{\False}{\lforall}$.
+usando~$\TRule{\False}{\lforall}$.
 \end{explain}
 
 \begin{explain}
-In \TRule{\True}{\lforall} and \TRule{\False}{\lexists} there are no
-restrictions on the term~$t$. On the other hand, in the
-\TRule{\True}{\lexists} and \TRule{\False}{\lforall} rules, the
-eigenvariable condition requires that the !!{constant}~$a$ does not
-occur anywhere in the branches above the respective inference. It is
-necessary to ensure that the system is sound. Without this condition,
-the following would be a closed !!{tableau} for
+Em \TRule{\True}{\lforall} e \TRule{\False}{\lexists}, não há
+restrições ao termo~$t$. Por outro lado, nas regras
+\TRule{\True}{\lexists} e \TRule{\False}{\lforall}, a condição de
+variável própria exige que a !!{constant}~$a$ não ocorra em nenhum
+ponto dos ramos acima da respectiva inferência. Ela é necessária para
+garantir que o sistema seja correto. Sem essa condição, o seguinte
+seria um !!{tableau} fechado para
 $\lexists[x][\formula{A}(x)] \lif \lforall[x][\formula{A}(x)]$:
 \begin{center}
 \begin{tableau}{}
@@ -102,8 +102,8 @@ $\lexists[x][\formula{A}(x)] \lif \lforall[x][\formula{A}(x)]$:
   ]
 \end{tableau}
 \end{center}
-However, $\lexists[x][\formula{A}(x)] \lif
-\lforall[x][\formula{A}(x)]$ is not valid.
+No entanto, $\lexists[x][\formula{A}(x)] \lif
+\lforall[x][\formula{A}(x)]$ não é válida.
 \end{explain}
 
 \end{document}

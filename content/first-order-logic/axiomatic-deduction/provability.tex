@@ -10,153 +10,153 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{axd}{prv}}
-      {\olfileid{pl}{axd}{prv}}
+      {\olfileid[pt]{fol}{axd}{prv}}
+      {\olfileid[pt]{pl}{axd}{prv}}
 
-\olsection{Properties of \usetoken{S}{derivability}}
+\olsection{Propriedades da \usetoken{S}{derivability}}
 
-\begin{prop}[Monotonicity] If $\Gamma \subseteq \Delta$ and $\Gamma \Proves !A$
-then also $\Delta \Proves !A$ \end{prop}
+\begin{prop}[Monotonicidade] Se $\Gamma \subseteq \Delta$ e $\Gamma \Proves !A$,
+então também $\Delta \Proves !A$. \end{prop}
 
-\begin{proof} Any finite $\Gamma_0 \subseteq \Gamma$ is also a finite
-subset of~$\Delta$, so !!a{derivation} of $\Gamma_0 \Proves !A$ also shows
+\begin{proof} Todo $\Gamma_0 \subseteq \Gamma$ finito também é um subconjunto
+finito de~$\Delta$; portanto, !!a{derivation} de $\Gamma_0 \Proves !A$ também mostra
 $\Delta \Proves !A$. \end{proof}
 
-\begin{prop}\ollabel{prop:provability} $\Gamma \Proves !A$ if and only if
-$\Gamma\cup \{\lnot!A \}$ is inconsistent. \end{prop}
+\begin{prop}\ollabel{prop:provability} $\Gamma \Proves !A$ se, e somente se,
+$\Gamma\cup \{\lnot!A \}$ é inconsistente. \end{prop}
 
 \begin{prop} \begin{enumerate}
-\item \ollabel{prop:provability-contr} If $\Gamma \Proves !A$ and $\Gamma
-\cup \{ !A\} \Proves \lfalse$, then $\Gamma$ is inconsistent.
+\item \ollabel{prop:provability-contr} Se $\Gamma \Proves !A$ e $\Gamma
+\cup \{ !A\} \Proves \lfalse$, então $\Gamma$ é inconsistente.
 
-\item \ollabel{prop:provability-lnot} If $\Gamma \cup \{!A\}
-\Proves \lfalse$, then $\Gamma \Proves \lnot !A$.
+\item \ollabel{prop:provability-lnot} Se $\Gamma \cup \{!A\}
+\Proves \lfalse$, então $\Gamma \Proves \lnot !A$.
 
-\item \ollabel{prop:provability-exhaustive} If $\Gamma \cup \{!A\}
-\Proves \lfalse$ and $\Gamma \cup \{\lnot !A\} \Proves
-\lfalse$, then $\Gamma \Proves \lfalse$.
+\item \ollabel{prop:provability-exhaustive} Se $\Gamma \cup \{!A\}
+\Proves \lfalse$ e $\Gamma \cup \{\lnot !A\} \Proves
+\lfalse$, então $\Gamma \Proves \lfalse$.
 
-\tagitem{prvOr}{\ollabel{prop:provability-lor-left} If $\Gamma \cup \{!A\}
-\Proves \lfalse$ and $\Gamma \cup \{!B\} \Proves
-\lfalse$, then $\Gamma \cup \{!A \lor !B\} \Proves \lfalse$.}{}
+\tagitem{prvOr}{\ollabel{prop:provability-lor-left} Se $\Gamma \cup \{!A\}
+\Proves \lfalse$ e $\Gamma \cup \{!B\} \Proves
+\lfalse$, então $\Gamma \cup \{!A \lor !B\} \Proves \lfalse$.}{}
 
-\tagitem{prvOr}{\ollabel{prop:provability-lor-right} If $\Gamma
-\Proves !A$ or $\Gamma \Proves !B$, then $\Gamma
+\tagitem{prvOr}{\ollabel{prop:provability-lor-right} Se $\Gamma
+\Proves !A$ ou $\Gamma \Proves !B$, então $\Gamma
 \Proves !A \lor !B$.}{}
 
-\tagitem{prvAnd}{\ollabel{prop:provability-land-left} If $\Gamma
-\Proves !A \land !B$ then $\Gamma \Proves !A$ and
+\tagitem{prvAnd}{\ollabel{prop:provability-land-left} Se $\Gamma
+\Proves !A \land !B$, então $\Gamma \Proves !A$ e
 $\Gamma \Proves !B$.}{}
 
-\tagitem{prvAnd}{\ollabel{prop:provability-land-right} If $\Gamma
-\Proves !A$ and $\Gamma \Proves !B$, then $\Gamma
+\tagitem{prvAnd}{\ollabel{prop:provability-land-right} Se $\Gamma
+\Proves !A$ e $\Gamma \Proves !B$, então $\Gamma
 \Proves !A \land !B$.}{}
 
-\tagitem{prvIf}{\ollabel{prop:provability-mp} If $\Gamma \Proves
-!A$ and $\Gamma \Proves !A \lif !B$, then $\Gamma
+\tagitem{prvIf}{\ollabel{prop:provability-mp} Se $\Gamma \Proves
+!A$ e $\Gamma \Proves !A \lif !B$, então $\Gamma
 \Proves !B$.}{}
 
-\tagitem{prvIf}{\ollabel{prop:provability-lif} If $\Gamma \Proves
-\lnot !A$ or $\Gamma \Proves !B$, then $\Gamma \Proves
+\tagitem{prvIf}{\ollabel{prop:provability-lif} Se $\Gamma \Proves
+\lnot !A$ ou $\Gamma \Proves !B$, então $\Gamma \Proves
 !A \lif !B$.}{} \end{enumerate} \end{prop}
 
 \begin{proof} 
 \begin{enumerate}
-\item Assume that $\Gamma_0 \cup \{!A\} \Proves \lfalse$.
+\item Suponha que $\Gamma_0 \cup \{!A\} \Proves \lfalse$.
 
 \begin{derivation} 
-1. & $\Gamma_0 \cup \{!A\} \Proves \lfalse$ & hyp. \\
-2. & $\Gamma_1 \Proves !A$ & hyp.\\ 
-3. & $\Gamma_0 \cup \Gamma_1 \Proves \lfalse$ & cut \\ 
+1. & $\Gamma_0 \cup \{!A\} \Proves \lfalse$ & hip. \\
+2. & $\Gamma_1 \Proves !A$ & hip.\\ 
+3. & $\Gamma_0 \cup \Gamma_1 \Proves \lfalse$ & corte \\ 
 \end{derivation}
 
-Since $\Gamma_0 \subseteq \Gamma$ and $\Gamma_1 \subseteq \Gamma$,
-$\Gamma_0 \cup \Gamma_1 \subseteq \Gamma$, hence $\Gamma \Proves \lfalse$.
+Como $\Gamma_0 \subseteq \Gamma$ e $\Gamma_1 \subseteq \Gamma$,
+$\Gamma_0 \cup \Gamma_1 \subseteq \Gamma$; logo, $\Gamma \Proves \lfalse$.
 
-\item We assume that $\Gamma_0 \cup\{\lnot !A\} \Proves \lfalse$.
+\item Suponhamos que $\Gamma_0 \cup\{\lnot !A\} \Proves \lfalse$.
 
 \begin{derivation} 
-1. & $\Gamma_0 \cup\{\lnot !A\} \Proves \lfalse$ & hyp. \\ 
-2. & $\Gamma_0 \Proves \lnot !A \lif \lfalse$ & Deduction Theorem\\
+1. & $\Gamma_0 \cup\{\lnot !A\} \Proves \lfalse$ & hip. \\ 
+2. & $\Gamma_0 \Proves \lnot !A \lif \lfalse$ & Teorema da Dedução\\
 3. & $\Gamma_0 \Proves (\lnot !A \lif \lfalse) \lif !A$ & Ax0\\ 
 4. & $\Gamma_0 \Proves !A$ & MP 2, 3 \\ 
 \end{derivation}
 
-\item We assume that $\Gamma \cup \{ !A \} \Proves \lfalse$ and that
+\item Suponhamos que $\Gamma \cup \{ !A \} \Proves \lfalse$ e que
 $\Gamma_1 \cup \{\lnot !A \} \Proves \lfalse$.
 
 \begin{derivation} 
-1. & $\Gamma_0 \cup\{!A\} \Proves \lfalse$ & hyp. \\
-2. & $\Gamma_0 \Proves !A \lif \lfalse$ & Deduction Theorem \\ 
-3. & $\Gamma_1 \cup \{\lnot !A \} \Proves \lfalse$ & hyp\\ 
+1. & $\Gamma_0 \cup\{!A\} \Proves \lfalse$ & hip. \\
+2. & $\Gamma_0 \Proves !A \lif \lfalse$ & Teorema da Dedução \\ 
+3. & $\Gamma_1 \cup \{\lnot !A \} \Proves \lfalse$ & hip.\\ 
 4. & $\Gamma_0 \Proves (!A \lif \lfalse) \lif \lnot !A$ & Ax0\\ 
 5. & $\Gamma_0 \Proves \lnot !A$ & MP 2, 4\\ 
-6. & $\Gamma_0 \cup \Gamma_1 \Proves \lfalse$ & Cut 3, 5 \\
+6. & $\Gamma_0 \cup \Gamma_1 \Proves \lfalse$ & corte 3, 5 \\
 \end{derivation}
 
-Since $\Gamma_0 \subseteq \Gamma$ and $\Gamma_1 \subseteq \Gamma$,
-$\Gamma_0 \cup \Gamma_1 \subseteq \Gamma$. Hence $\Gamma \Proves \lfalse$.
+Como $\Gamma_0 \subseteq \Gamma$ e $\Gamma_1 \subseteq \Gamma$,
+$\Gamma_0 \cup \Gamma_1 \subseteq \Gamma$. Portanto, $\Gamma \Proves \lfalse$.
 
 % prop:provability-lor-left 
 \tagitem{defOr}{}{
-\iftag{probOr}{Exercise.}{Exercise.}}
+\iftag{probOr}{Exercício.}{Exercício.}}
 
 % prop:provability-lor-right 
-\tagitem{defOr}{}{ \iftag{probOr}{Exercise.}{
-We assume that $\Gamma_0 \Proves !A$.
+\tagitem{defOr}{}{ \iftag{probOr}{Exercício.}{
+Suponhamos que $\Gamma_0 \Proves !A$.
 
 \begin{derivation} 
-1. & $\Gamma_0 \Proves !A$ & hyp \\ 
+1. & $\Gamma_0 \Proves !A$ & hip. \\
 2. & $\Gamma_0 \Proves !A \lif (!A \lor !B)$ & Ax0\\ 
 3. & $\Gamma_0 \Proves !A \lor !B$ & MP 1, 2 \\
 \end{derivation}
 
-Therefore $\Gamma \Proves !A \lor !B$. The proof for when $\Gamma \Proves
-!B$ is similar.}}
+Portanto, $\Gamma \Proves !A \lor !B$. A demonstração para o caso em que $\Gamma \Proves
+!B$ é semelhante.}}
 
 % prop:provability-land-left 
-\tagitem{defAnd}{}{ \iftag{probAnd}{Exercise}{
-Assume that $\Gamma_0 \Proves !A \land !B$
+\tagitem{defAnd}{}{ \iftag{probAnd}{Exercício}{
+Suponha que $\Gamma_0 \Proves !A \land !B$
 
 \begin{derivation} 
-1. & $\Gamma_0 \Proves !A \land !B$ & hyp \\ 
+1. & $\Gamma_0 \Proves !A \land !B$ & hip. \\
 2. & $\Gamma_0 \Proves (!A\land !B) \lif !A $ & Ax0\\ 
 3. & $\Gamma_0 \Proves !A \lor !B$ & MP 1, 2 \\
 \end{derivation}
 
-Hence, $\Gamma \Proves !A$. A similar !!{derivation} starting shows that
+Logo, $\Gamma \Proves !A$. !!{derivation} semelhante mostra que
 $\Gamma \Proves !B$.}}
 
 % prop:provability-land-right
-\tagitem{defAnd}{}{\iftag{probAnd}{Exercise.}{Exercise.}}
+\tagitem{defAnd}{}{\iftag{probAnd}{Exercício.}{Exercício.}}
 
 % prop:provability-mp 
-\tagitem{defIf}{}{ \iftag{probIf}{Exercise.}{ We
-assume both that $\Gamma_0 \Proves !A$ and $\Gamma_0 \Proves !A \lif !B $.
+\tagitem{defIf}{}{ \iftag{probIf}{Exercício.}{ Suponhamos
+tanto que $\Gamma_0 \Proves !A$ quanto que $\Gamma_0 \Proves !A \lif !B $.
 
 \begin{derivation} 
-1. & $\Gamma_0 \Proves !A$ & hyp \\ 
-2. & $\Gamma_0 \Proves !A \lif !B $ & hyp\\ 
+1. & $\Gamma_0 \Proves !A$ & hip. \\
+2. & $\Gamma_0 \Proves !A \lif !B $ & hip.\\ 
 3. & $\Gamma_0 \Proves !B$ & MP 1, 2\\
 \end{derivation}
 
-Since $\Gamma_0 \cup \Gamma_1 \subseteq \Gamma$, this means that $\Gamma
+Como $\Gamma_0 \cup \Gamma_1 \subseteq \Gamma$, isso significa que $\Gamma
 \Proves !B$.}}
 
 % prop:provability-lif 
-\tagitem{defIf}{}{\iftag{probIf}{Exercise.}{First
-suppose $\Gamma \Proves \lnot !A$.
+\tagitem{defIf}{}{\iftag{probIf}{Exercício.}{Primeiro,
+suponha que $\Gamma \Proves \lnot !A$.
     
 \begin{derivation} 
-1. & $\Gamma_0 \Proves \lnot !A$ & hyp \\ 
+1. & $\Gamma_0 \Proves \lnot !A$ & hip. \\
 2. & $\Gamma_0 \Proves \lnot !A \lif (!A \lif !B) $ & Ax0\\ 
 3. & $\Gamma_0 \Proves !A \lif !B$ & MP 1,
 2\\ \end{derivation}
 
-The proof for $\Gamma \Proves !B$ is similar:
+A demonstração para $\Gamma \Proves !B$ é semelhante:
 
 \begin{derivation} 
-1. & $\Gamma_0 \Proves !B$ & hyp \\ 
+1. & $\Gamma_0 \Proves !B$ & hip. \\
 2. & $\Gamma_0 \Proves !B \lif (!A \lif !B) $ & Ax0\\ 
 3. & $\Gamma_0 \Proves !A \lif !B$ & MP 1, 2\\
 \end{derivation}}}
@@ -164,126 +164,126 @@ The proof for $\Gamma \Proves !B$ is similar:
 \end{enumerate} 
 \end{proof}
 
-\begin{probtag}{probOr,probAnd,probIf} Complete the proof of
+\begin{probtag}{probOr,probAnd,probIf} Complete a demonstração de
 \olref[fol][axd][prv]{prop:provability}. 
 \end{probtag}
 
-\begin{thm}[Generalization] \ollabel{thm:Generalization} If $\Gamma \Proves
-!A$ and $x$ is not free in any !!{formula} in $\Gamma$, then $\Gamma
+\begin{thm}[Generalização] \ollabel{thm:Generalization} Se $\Gamma \Proves
+!A$ e $x$ não é livre em nenhuma !!{formula} de $\Gamma$, então $\Gamma
 \Proves \lforall[x][!A]$. 
 \end{thm}
 
-\begin{proof} By induction on $\mathsf{Thm}_\Gamma$: if $!A$ is an axiom,
-so is $\lforall[x][!A]$. If $!A\in \Gamma$ then $x$ is not free in $!A$, so
-that $!A \lif \lforall[x][!A]$ is an axiom (\textbf{Ax3}), and $\Gamma
-\Proves \lforall[x][!A]$ by MP. Now suppose $!A$ follows by MP because
-$\Gamma \Proves !B$ and $\Gamma \Proves !B \lif !A$. By induction
-hypothesis, $\Gamma \Proves \lforall[x][!B]$ and $\Gamma \Proves
-\lforall[x][( !B \lif !A)]$. But by \textbf{Ax2} also \[ \Gamma \Proves
+\begin{proof} Por indução sobre $\mathsf{Thm}_\Gamma$: se $!A$ é um axioma,
+$\lforall[x][!A]$ também é. Se $!A\in \Gamma$, então $x$ não é livre em $!A$,
+de modo que $!A \lif \lforall[x][!A]$ é um axioma (\textbf{Ax3}), e $\Gamma
+\Proves \lforall[x][!A]$ por MP. Agora, suponha que $!A$ decorra por MP porque
+$\Gamma \Proves !B$ e $\Gamma \Proves !B \lif !A$. Pela hipótese de
+indução, $\Gamma \Proves \lforall[x][!B]$ e $\Gamma \Proves
+\lforall[x][( !B \lif !A)]$. Mas, por \textbf{Ax2}, também \[ \Gamma \Proves
 \lforall[x][( !B \lif !A)] \lif (\lforall[x][ !B] \lif \lforall[x][!A]), \]
-and two applications of MP give $\Gamma \Proves \lforall[x][!A]$ as
-desired. \end{proof}
+e duas aplicações de MP fornecem $\Gamma \Proves \lforall[x][!A]$, como
+desejado. \end{proof}
 
-\begin{thm}\ollabel{thm:WeakGen} (\emph{Weak Generalization on Constants})
-If $\Gamma \Proves !A$ and $c$ is !!a{constant} not in occurring in
-$\Gamma$, then there is a variable $x$ not in $!A$ such that $\Gamma
-\Proves \lforall[x][\Subst{!A}{x}{c}]$, and the proof does not involve $c$.
+\begin{thm}\ollabel{thm:WeakGen} (\emph{Generalização fraca sobre constantes})
+Se $\Gamma \Proves !A$ e $c$ é !!a{constant} que não ocorre em
+$\Gamma$, então existe uma variável $x$ que não ocorre em $!A$ tal que $\Gamma
+\Proves \lforall[x][\Subst{!A}{x}{c}]$, e a demonstração não envolve $c$.
 \end{thm}
 
-\begin{proof} Let $!A_1,\ldots,!A_n$ be a proof of $!A$ from $\Gamma$, so
-that $!A=!A_n$. Pick a variable $x$ not in $!A_1,\ldots,!A_n$, and consider
-the new sequence: $\Subst{!A_1}{x}{c},\ldots,\Subst{!A_n}{x}{c}.$ Such a
-sequence is a proof of $\Subst{!A}{x}{c}$ from $\Gamma$. In fact, for each
-$i=1,\ldots,n$: \begin{itemize} \item if $!A$ is an axiom, then so is
-$\Subst{!A_i}{x}{c}$; \item if $!A_i \in \Gamma$, then since $c$ is not in
-$\Gamma$, we have $\Subst{!A_i}{x}{c} = !A_i \in \Gamma$; \item if $!A_i$
-is obtained from $!A_j$ and $!A_j \lif !A_i$ then $\Subst{!A_i}{x}{c}$
-follows by MP from $\Subst{!A_j}{x}{c}$ and $\Subst{(!A_j \lif !A_i)}{x}{c}
-= \Subst{!A_j}{x}{c} \lif \Subst{!A_i}{x}{c}$. \end{itemize} It is clear
-that the !!{constant} $c$ no longer occurs in the new sequence. Now let
-$\Gamma'$ comprise those !!{formula}s from $\Gamma$ that appear in the
-!!{derivation} of $\Subst{!A}{x}{c}$; then $x$ is not free in any
-!!{formula} in $\Gamma'$ and $\Gamma' \Proves \Subst{!A}{x}{c}$. By
-generalization (\olref{thm:Generalization}) $\Gamma'
-\Proves \lforall[x][\Subst{!A}{x}{c}]$, whence by monotonicity $\Gamma \Proves
-\lforall[x][\Subst{!A}{x}{c}]$, as desired. 
+\begin{proof} Seja $!A_1,\ldots,!A_n$ uma demonstração de $!A$ a partir de $\Gamma$, de modo
+que $!A=!A_n$. Escolha uma variável $x$ que não ocorra em $!A_1,\ldots,!A_n$ e considere
+a nova sequência: $\Subst{!A_1}{x}{c},\ldots,\Subst{!A_n}{x}{c}.$ Essa
+sequência é uma demonstração de $\Subst{!A}{x}{c}$ a partir de $\Gamma$. De fato, para cada
+$i=1,\ldots,n$: \begin{itemize} \item se $!A$ é um axioma, então
+$\Subst{!A_i}{x}{c}$ também é; \item se $!A_i \in \Gamma$, como $c$ não ocorre em
+$\Gamma$, temos $\Subst{!A_i}{x}{c} = !A_i \in \Gamma$; \item se $!A_i$
+é obtida de $!A_j$ e $!A_j \lif !A_i$, então $\Subst{!A_i}{x}{c}$
+decorre por MP de $\Subst{!A_j}{x}{c}$ e $\Subst{(!A_j \lif !A_i)}{x}{c}
+= \Subst{!A_j}{x}{c} \lif \Subst{!A_i}{x}{c}$. \end{itemize} É claro
+que a !!{constant} $c$ já não ocorre na nova sequência. Seja agora
+$\Gamma'$ o conjunto das !!{formula}s de $\Gamma$ que aparecem na
+!!{derivation} de $\Subst{!A}{x}{c}$; então $x$ não é livre em nenhuma
+!!{formula} de $\Gamma'$ e $\Gamma' \Proves \Subst{!A}{x}{c}$. Por
+generalização (\olref{thm:Generalization}), $\Gamma'
+\Proves \lforall[x][\Subst{!A}{x}{c}]$; por monotonicidade, portanto, $\Gamma \Proves
+\lforall[x][\Subst{!A}{x}{c}]$, como desejado. 
 \end{proof}
 
 \begin{explain}
-Our goal is to replace the requirement in \olref{thm:WeakGen} that $x$
-does not occur in $!A$ (at all) by the weaker requirements that $x$ is
-not free in $!A$ and it is !!{free for} $c$ in $!A$. Clearly this can
-be accomplished by a change of bound !!{variable} --- so that is what
-we set out to prove first.
+Nosso objetivo é substituir a exigência, em \olref{thm:WeakGen}, de que $x$
+não ocorra em $!A$ (de modo algum) pelas exigências mais fracas de que $x$
+não seja livre em $!A$ e seja !!{free for} $c$ em $!A$. Isso pode ser
+obtido por uma mudança de !!{variable} ligada --- e é isso que
+provaremos primeiro.
 \end{explain}
 
 \begin{lem}
 \ollabel{lem:free-for} 
-If $x$ is free for $c$ in $!A$ and $y$ is not free in $!A$, then $x$
-is !!{free for} $y$ in $\Subst{!A}{y}{c}$.
+Se $x$ é livre para $c$ em $!A$ e $y$ não é livre em $!A$, então $x$
+é !!{free for} $y$ em $\Subst{!A}{y}{c}$.
 \end{lem}
 
-\begin{proof} If $x$ is not !!{free for} $y$ in $\Subst{!A}{y}{x}$, then
-some free occurrence of $y$ in $\Subst{!A}{y}{c}$ falls within the scope of
-a quantifier $\lforall[x]$. But $y$ is not free in $!A$, by hypothesis, so
-all such occurrences come from the substitution $\Subst{}{y}{c}$. So some
-occurrence of $c$ falls within the scope of $\lforall[x]$ and $x$ is not
-!!{free for} $c$ in $!A$. 
+\begin{proof} Se $x$ não é !!{free for} $y$ em $\Subst{!A}{y}{x}$, então
+alguma ocorrência livre de $y$ em $\Subst{!A}{y}{c}$ está no escopo de
+um quantificador $\lforall[x]$. Mas, por hipótese, $y$ não é livre em $!A$; portanto,
+todas essas ocorrências vêm da substituição $\Subst{}{y}{c}$. Assim, alguma
+ocorrência de $c$ está no escopo de $\lforall[x]$, e $x$ não é
+!!{free for} $c$ em $!A$. 
 \end{proof}
 
-\begin{lem}[Change of Bound Variable]
+\begin{lem}[Mudança de variável ligada]
 \ollabel{lem:ChangeBdVar} 
-If $x$ and $y$ are not free in $!A$ and they are both !!{free for} $c$
-in $!A$, then $\Proves \lforall[x][\Subst{!A}{x}{c}] \equiv
-\lforall[y][\Subst{!A}{y}{c}]$ (and the proof does not involve $c$).
+Se $x$ e $y$ não são livres em $!A$ e ambos são !!{free for} $c$
+em $!A$, então $\Proves \lforall[x][\Subst{!A}{x}{c}] \equiv
+\lforall[y][\Subst{!A}{y}{c}]$ (e a demonstração não envolve $c$).
 \end{lem}
 
 \begin{proof} 
-From the hypotheses, $y$ is !!{free for} $c$ in $!A$ and $x$ is not
-free in $!A$, so by the previous \olref{lem:free-for}, $y$ is
-!!{free for} $x$ in $\Subst{!A}{x}{c}$. It follows that
+Pelas hipóteses, $y$ é !!{free for} $c$ em $!A$ e $x$ não é
+livre em $!A$; portanto, pela \olref{lem:free-for} anterior, $y$ é
+!!{free for} $x$ em $\Subst{!A}{x}{c}$. Segue que
 $\lforall[x][\Subst{!A}{x}{c} \lif \Subst{!A}{x}{c} \Subst{}{y}{x}]$
-is an axiom (\textbf{Ax1}). Since $x$ is not free in $!A$, we have
-$\Subst{!A}{x}{c} \Subst{}{y}{x} = \Subst{!A}{y}{c}$, so that 
+é um axioma (\textbf{Ax1}). Como $x$ não é livre em $!A$, temos
+$\Subst{!A}{x}{c} \Subst{}{y}{x} = \Subst{!A}{y}{c}$, de modo que 
 \[
 \Proves \lforall[x][\Subst{!A}{x}{c}] \lif \Subst{!A}{y}{c}, 
 \] 
-and by the Deduction Theorem $\lforall[x][\Subst{!A}{x}{c}] \Proves
-\Subst{!A}{y}{c}$. Since $y$ is not free in $!A$, it also not free in
-$\lforall[x][\Subst{!A}{x}{c}]$, so that by Generalization
+e, pelo Teorema da Dedução, $\lforall[x][\Subst{!A}{x}{c}] \Proves
+\Subst{!A}{y}{c}$. Como $y$ não é livre em $!A$, também não é livre em
+$\lforall[x][\Subst{!A}{x}{c}]$; assim, por Generalização,
 $\lforall[x][\Subst{!A}{x}{c}] \Proves \lforall[y][\Subst{!A}{y}{c}]$,
-and the Deduction Theorem again gives $\Proves
+e o Teorema da Dedução fornece novamente $\Proves
 \lforall[x][\Subst{!A}{x}{c}] \lif \lforall[y][\Subst{!A}{y}{c}]$.
-The proof of $\Proves \lforall[y][\Subst{!A}{y}{c}] \lif \lforall[x]
-[\Subst{!A}{x}{c}]$ is perfectly symmetric, so that the conclusion
-follows by Taut.
+A demonstração de $\Proves \lforall[y][\Subst{!A}{y}{c}] \lif \lforall[x]
+[\Subst{!A}{x}{c}]$ é perfeitamente simétrica; portanto, a conclusão
+decorre por Taut.
 \end{proof}
 
-\begin{thm}[Strong Generalization on Constants]
+\begin{thm}[Generalização forte sobre constantes]
 \ollabel{thm:StrongGen} 
-If $\Gamma \Proves !A$, the !!{constant} $c$ does not occur in
-$\Gamma$, and $x$ is not free in $!A$ but it is !!{free for} $c$ in $!A$,
-then $\Gamma \Proves \lforall[x][\Subst{!A}{x}{c}]$. 
+Se $\Gamma \Proves !A$, a !!{constant} $c$ não ocorre em
+$\Gamma$, e $x$ não é livre em $!A$, mas é !!{free for} $c$ em $!A$,
+então $\Gamma \Proves \lforall[x][\Subst{!A}{x}{c}]$. 
 \end{thm}
 
 \begin{proof} 
-Since $\Gamma \Proves !A$ and $c$ is not in $\Gamma$, then by
-Weak Generalization there is !!a{variable} $y$ not in $!A$ such that
-$\Gamma \Proves \lforall[y][\Subst{!A}{y}{c}]$. Since $y$ is not in $!A$
-(at all), it is not free in $!A$ and it is also !!{free for} $c$ in $!A$;
-if moreover (by hypothesis) $x$ is not free in $!A$ and !!{free for} $c$ in
-$!A$, then the requirements for a change of bound !!{variable} are met, so
+Como $\Gamma \Proves !A$ e $c$ não ocorre em $\Gamma$, pela
+Generalização Fraca existe !!a{variable} $y$ que não ocorre em $!A$ tal que
+$\Gamma \Proves \lforall[y][\Subst{!A}{y}{c}]$. Como $y$ não ocorre em $!A$
+(de modo algum), não é livre em $!A$ e também é !!{free for} $c$ em $!A$;
+se, além disso, (por hipótese) $x$ não é livre em $!A$ e é !!{free for} $c$ em
+$!A$, então estão satisfeitas as condições para uma mudança de !!{variable} ligada; logo,
 $\Proves \lforall[x][\Subst{!A}{x}{c}] \equiv
-\lforall[y][\Subst{!A}{y}{c}]$, whence $\Gamma \Proves
+\lforall[y][\Subst{!A}{y}{c}]$; daí $\Gamma \Proves
 \lforall[x][\Subst{!A}{x}{c}]$. 
 \end{proof}
 
 \begin{thm} 
 \ollabel{thm:provability-quantifiers}
 \begin{tagenumerate}{prvEx,prvAll} 
-\tagitem{prvEx}{If $\Gamma \Proves !A(t)$ then $\Gamma \Proves
+\tagitem{prvEx}{Se $\Gamma \Proves !A(t)$, então $\Gamma \Proves
   \lexists[x][!A(x)]$.}{} 
-\tagitem{prvAll}{If $\Gamma \Proves \lforall[x][!A(x)]$ then $\Gamma
+\tagitem{prvAll}{Se $\Gamma \Proves \lforall[x][!A(x)]$, então $\Gamma
   \Proves !A(t)$.}{}
 \end{tagenumerate} 
 \end{thm}
@@ -291,11 +291,11 @@ $\Proves \lforall[x][\Subst{!A}{x}{c}] \equiv
 \begin{proof} 
 \begin{tagenumerate}{prvEx,prvAll} 
 %%Need axioms for exists
-\tagitem{prvEx}{Exercise.}{}
-\tagitem{prvAll} {Assume that  $\Gamma_0 \Proves \lforall[x][!A(x)]$.
+\tagitem{prvEx}{Exercício.}{}
+\tagitem{prvAll} {Suponha que $\Gamma_0 \Proves \lforall[x][!A(x)]$.
 
 \begin{derivation} 
-1. & $\Gamma_0 \Proves \lforall[x][!A(x)]$ & hyp. \\
+1. & $\Gamma_0 \Proves \lforall[x][!A(x)]$ & hip. \\
 2. & $\Gamma_0 \Proves \lforall[x][!A(x)] \lif \Subst{!A}{t}{x}$ & Ax1 \\ 
 3. & $\Gamma_0 \Proves \Subst{!A}{t}{x}$ & MP 1, 2 \\ 
 \end{derivation}}{}
