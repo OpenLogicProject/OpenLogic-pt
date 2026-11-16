@@ -6,45 +6,47 @@
 
 \begin{document}
 
-\olfileid{sol}{syn}{sat}
+\olfileid[pt]{sol}{syn}{sat}
 
-\olsection{Satisfaction}
+\olsection{Satisfação}
 
 \begin{explain}
-To define the satisfaction relation $\Sat{M}{!A}[s]$ for second-order
-!!{formula}s, we have to extend the definitions to cover second-order
-!!{variable}s.  The notion of !!a{structure} is the same for second-order
-logic as it is for first-order logic. There is only a difference for
-variable assignments~$s$: these now must not just provide values for
-the first-order !!{variable}s, but also for the second-order !!{variable}s.
+Para definir a relação de satisfação $\Sat{M}{!A}[s]$ para !!{formula}s de
+segunda ordem, precisamos estender as definições de modo a abranger
+!!{variable}s de segunda ordem. A noção de !!a{structure} é a mesma para a
+lógica de segunda ordem e para a lógica de primeira ordem. A única diferença
+está nas atribuições de variáveis~$s$: agora elas devem fornecer valores não
+apenas para as !!{variable}s de primeira ordem, mas também para as
+!!{variable}s de segunda ordem.
 \end{explain}
 
-\begin{defn}[Variable Assignment]
-A \emph{variable assignment}~$s$ for !!a{structure}~$\Struct{M}$ is a
-function which maps each
+\begin{defn}[Atribuição de variáveis]
+Uma \emph{atribuição de variáveis}~$s$ para !!a{structure}~$\Struct{M}$ é
+uma função que associa cada
 \begin{enumerate}
-\item object !!{variable}~$\Obj{v_i}$ to an element of~$\Domain M$,
-  O.s.\@, $s(\Obj{v_i}) \in \Domain{M}$
-\item $n$-place relation variable~$\Obj{V_i^n}$ to an $n$-place
-  relation on~$\Domain{M}$, O.s.\@, $s(\Obj{V_i^n}) \subseteq \Domain{M}^n$;
-\item $n$-place function variable~$\Obj{u_i^n}$ to an $n$-place
-  function from $\Domain{M}$ to $\Domain{M}$, O.s.\@,
+\item !!{variable} de objeto~$\Obj{v_i}$ a um elemento de~$\Domain M$,
+  O.s.\@, $s(\Obj{v_i}) \in \Domain{M}$;
+\item variável de relação de $n$ argumentos~$\Obj{V_i^n}$ a uma relação de
+  $n$ argumentos em~$\Domain{M}$, O.s.\@,
+  $s(\Obj{V_i^n}) \subseteq \Domain{M}^n$;
+\item variável de função de $n$ argumentos~$\Obj{u_i^n}$ a uma função de
+  $n$ argumentos de $\Domain{M}$ para $\Domain{M}$, O.s.\@,
   $s(\Obj{u_i^n})\colon \Domain{M}^n \to \Domain{M}$;
 \end{enumerate}
 \end{defn}
 
 \begin{explain}
-!!^a{structure} assigns !!a{value} to each !!{constant} and
-!!{function}, and a second-order variable assignment assigns objects and
-functions to each object and function variable. Together, they let us
-assign a value to every term.
+!!^a{structure} atribui !!a{value} a cada !!{constant} e !!{function}, e
+uma atribuição de variáveis de segunda ordem associa objetos e funções a
+cada variável de objeto e de função. Juntas, elas nos permitem atribuir um
+valor a cada termo.
 \end{explain}
 
-\begin{defn}[\usetoken{S}{value} of a Term]
-If $t$ is a term of the language~$\Lang L$, $\Struct M$ is
-!!a{structure} for~$\Lang L$, and $s$ is !!a{variable} assignment
-for~$\Struct M$, the \emph{!!{value}}~$\Value{t}{M}[s]$ is defined as
-for first-order terms, plus the following clause:
+\begin{defn}[\usetoken{S}{value} de um termo]
+Se $t$ é um termo da linguagem~$\Lang L$, $\Struct M$ é !!a{structure}
+para~$\Lang L$, e $s$ é !!a{variable} atribuição para~$\Struct M$, o
+\emph{!!{value}}~$\Value{t}{M}[s]$ é definido como para os termos de
+primeira ordem, com a seguinte cláusula adicional:
 \begin{quote}
 \indcase{t}{\Atom{u}{t_1, \ldots, t_n}}{
 \[
@@ -54,156 +56,155 @@ for first-order terms, plus the following clause:
 \end{quote}
 \end{defn}
 
-\begin{defn}[$x$-Variant]
-If $s$ is !!a{variable} assignment for !!a{structure}~$\Struct M$,
-then any !!{variable} assignment $s'$ for $\Struct M$ which differs
-from $s$ at most in what it assigns to $x$ is called an
-\emph{$x$-variant} of~$s$.  If $s'$ is an $x$-variant of $s$ we write
-$\varAssign{s'}{s}{x}$. (Similarly for second-order variables $X$ or $u$.)
+\begin{defn}[Variante em $x$]
+Se $s$ é !!a{variable} atribuição para !!a{structure}~$\Struct M$, então
+qualquer atribuição de !!{variable} $s'$ para $\Struct M$ que difira de $s$
+no máximo no que atribui a $x$ é chamada \emph{variante em $x$} de~$s$. Se
+$s'$ é uma variante em $x$ de $s$, escrevemos $\varAssign{s'}{s}{x}$.
+(Analogamente para variáveis de segunda ordem $X$ ou $u$.)
 \end{defn}
 
 \begin{defn}
-  If $s$ is !!a{variable} assignment for !!a{structure}~$\Struct M$
-  and $m \in \Domain{M}$, then the assignment~$\Subst{s}{m}{x}$ is the
-  !!{variable} assignment defined by
+  Se $s$ é !!a{variable} atribuição para !!a{structure}~$\Struct M$ e
+  $m \in \Domain{M}$, então a atribuição~$\Subst{s}{m}{x}$ é a atribuição
+  de !!{variable} definida por
   \[\Subst{s}{m}{y} = \begin{cases}
-    m & \text{if } y \ident x\\
-    s(y) & \text{otherwise},
+    m & \text{se } y \ident x\\
+    s(y) & \text{caso contrário},
   \end{cases}\]
-  If $X$ is an $n$-place relation !!{variable} and $M \subseteq
-  \Domain{M}^n$, then $\Subst{s}{M}{X}$ is the !!{variable} assignment
-  defined by
+  Se $X$ é uma !!{variable} de relação de $n$ argumentos e $M \subseteq
+  \Domain{M}^n$, então $\Subst{s}{M}{X}$ é a atribuição de !!{variable}
+  definida por
   \[\Subst{s}{M}{y} = \begin{cases}
-    M & \text{if } y \ident X\\
-    s(y) & \text{otherwise}. 
+    M & \text{se } y \ident X\\
+    s(y) & \text{caso contrário}. 
   \end{cases}\]
-  If $u$ is an $n$-place function !!{variable} and $f\colon \Domain{M}^n
-  \to \Domain{M}$, then $\Subst{s}{f}{u}$ is the !!{variable} assignment
-  defined by
+  Se $u$ é uma !!{variable} de função de $n$ argumentos e
+  $f\colon \Domain{M}^n \to \Domain{M}$, então $\Subst{s}{f}{u}$ é a
+  atribuição de !!{variable} definida por
   \[\Subst{s}{f}{y} = \begin{cases}
-    f & \text{if } y \ident u\\
-    s(y) & \text{otherwise}.
+    f & \text{se } y \ident u\\
+    s(y) & \text{caso contrário}.
   \end{cases}\]
-  In each case, $y$ may be any first- or second-order !!{variable}.
+  Em cada caso, $y$ pode ser qualquer !!{variable} de primeira ou de
+  segunda ordem.
 \end{defn}
 
-\begin{defn}[Satisfaction]
-For second-order !!{formula}s~$!A$, the definition of satisfaction is
-like \olref[fol][syn][sat]{defn:satisfaction} with the addition of:
+\begin{defn}[Satisfação]
+Para !!{formula}s de segunda ordem~$!A$, a definição de satisfação é como
+em \olref[fol][syn][sat]{defn:satisfaction}, com o acréscimo de:
 \begin{enumerate}
 \item \indcase{!A}{\Atom{X^n}{t_1, \dots, t_n}}{$\Sat{M}{\indfrm}[s]$
-  iff $\langle \Value{t_1}{M}[s], \dots, \Value{t_n}{M}[s] \rangle \in
+  sse $\langle \Value{t_1}{M}[s], \dots, \Value{t_n}{M}[s] \rangle \in
   s(X^n)$.}
 \tagitem{prvAll}{%
-  \indcase{!A}{\lforall[X][!B]}{$\Sat{M}{\indfrm}[s]$ iff for every $M
+  \indcase{!A}{\lforall[X][!B]}{$\Sat{M}{\indfrm}[s]$ sse, para todo $M
   \subseteq \Domain{M}^n$, $\Sat{M}{!B}[\Subst{s}{M}{X}]$.}}{}
 
 \tagitem{prvEx}{%
-  \indcase{!A}{\lexists[X][!B]}{$\Sat{M}{\indfrm}[s]$ iff for at least
-  one $M \subseteq \Domain{M}^n$ so that
+  \indcase{!A}{\lexists[X][!B]}{$\Sat{M}{\indfrm}[s]$ sse existe pelo menos
+  um $M \subseteq \Domain{M}^n$ tal que
   $\Sat{M}{!B}[\Subst{s}{M}{X}]$.}}{}
 
 \tagitem{prvAll}{%
-  \indcase{!A}{\lforall[u][!B]}{$\Sat{M}{\indfrm}[s]$ iff for every
+  \indcase{!A}{\lforall[u][!B]}{$\Sat{M}{\indfrm}[s]$ sse, para toda
   $f\colon \Domain{M}^n \to \Domain{M}$,
   $\Sat{M}{!B}[\Subst{s}{f}{u}]$.}}{}
 
 \tagitem{prvEx}{%
-  \indcase{!A}{\lexists[u][!B]}{$\Sat{M}{\indfrm}[s]$ iff for at least
-  one $f\colon \Domain{M}^n \to \Domain{M}$ so that
+  \indcase{!A}{\lexists[u][!B]}{$\Sat{M}{\indfrm}[s]$ sse existe pelo menos
+  uma $f\colon \Domain{M}^n \to \Domain{M}$ tal que
   $\Sat{M}{!B}[\Subst{s}{f}{u}]$.}}{}
 \end{enumerate}
 \end{defn}
 
 \begin{ex}
-  Consider the !!{formula} $\lforall[z][(\Atom{X}{z} \liff \lnot
-    \Atom{Y}{z})]$. It contains no second-order quantifiers, but does
-  contain the second-order !!{variable}s $X$ and~$Y$ (here understood to
-  be one-place). The corresponding first-order !!{sentence}
-  $\lforall[z][(\Atom{P}{z} \liff \lnot \Atom{R}{z})]$ says that
-  whatever falls under the interpretation of~$P$ does not fall under
-  the interpretation of~$R$ and vice versa. In !!a{structure}, the
-  interpretation of !!a{predicate}~$P$ is given by the
-  interpretation~$\Assign{P}{M}$. But for second-order !!{variable}s
-  like $X$ and~$Y$, the interpretation is provided, not by the
-  !!{structure} itself, but by !!a{variable} assignment. Since the
-  second-order !!{formula} is not !!a{sentence} (it includes free
-  !!{variable}s $X$ and~$Y$), it is only satisfied relative to
-  !!a{structure}~$\Struct{M}$ together with !!a{variable}
-  assignment~$s$.
+  Considere a !!{formula} $\lforall[z][(\Atom{X}{z} \liff \lnot
+    \Atom{Y}{z})]$. Ela não contém quantificadores de segunda ordem, mas
+  contém as !!{variable}s de segunda ordem $X$ e~$Y$ (aqui entendidas como
+  unárias). A !!{sentence} de primeira ordem correspondente
+  $\lforall[z][(\Atom{P}{z} \liff \lnot \Atom{R}{z})]$ diz que tudo o que
+  pertence à interpretação de~$P$ não pertence à interpretação de~$R$, e
+  vice-versa. Em !!a{structure}, a interpretação de !!a{predicate}~$P$ é
+  dada pela interpretação~$\Assign{P}{M}$. Mas, para !!{variable}s de
+  segunda ordem como $X$ e~$Y$, a interpretação não é fornecida pela própria
+  !!{structure}, e sim por !!a{variable} atribuição. Como a !!{formula} de
+  segunda ordem não é !!a{sentence} (ela contém as !!{variable}s livres $X$
+  e~$Y$), só é satisfeita relativamente a !!a{structure}~$\Struct{M}$ junto
+  com !!a{variable} atribuição~$s$.
 
   $\Sat{M}{\lforall[z][(\Atom{X}{z} \liff \lnot \Atom{Y}{z})]}[s]$
-  whenever the !!{element}s of~$s(X)$ are not !!{element}s of~$s(Y)$,
-  and vice versa, O.s.\@, iff $s(Y) = \Domain{M} \setminus s(X)$. For
-  instance, take $\Domain{M} = \{1, 2, 3\}$. Since no !!{predicate}s,
-  !!{function}s, or !!{constant}s are involved, the domain
-  of~$\Struct{M}$ is all that is relevant. Now for $s_1(X) = \{1, 2\}$
-  and $s_1(Y) = \{3\}$, we have $\Sat{M}{\lforall[z][(\Atom{X}{z}
+  sempre que os !!{element}s de~$s(X)$ não são !!{element}s de~$s(Y)$, e
+  vice-versa, O.s.\@, sse $s(Y) = \Domain{M} \setminus s(X)$. Por exemplo,
+  tome $\Domain{M} = \{1, 2, 3\}$. Como não há !!{predicate}s,
+  !!{function}s nem !!{constant}s envolvidos, apenas o domínio de
+  ~$\Struct{M}$ é relevante. Para $s_1(X) = \{1, 2\}$ e
+  $s_1(Y) = \{3\}$, temos $\Sat{M}{\lforall[z][(\Atom{X}{z}
       \liff \lnot \Atom{Y}{z})]}[s_1]$.
 
-  By contrast, if we have $s_2(X) = \{1, 2\}$ and $s_2(Y) = \{2, 3\}$,
+  Em contraste, se $s_2(X) = \{1, 2\}$ e $s_2(Y) = \{2, 3\}$,
   $\Sat/{M}{\lforall[z][(\Atom{X}{z} \liff \lnot
-      \Atom{Y}{z})]}[s_2]$. That's because 
-  $\Sat{M}{\Atom{X}{z}}[\Subst{s_2}{2}{z}]$ (since $2 \in \Subst{s_2}{2}{z}(X)$) but
-  $\Sat/{M}{\lnot \Atom{Y}{z}}[\Subst{s_2}{2}{z}]$ (since also $2 \in
+      \Atom{Y}{z})]}[s_2]$. Isso ocorre porque
+  $\Sat{M}{\Atom{X}{z}}[\Subst{s_2}{2}{z}]$ (pois $2 \in \Subst{s_2}{2}{z}(X)$), mas
+  $\Sat/{M}{\lnot \Atom{Y}{z}}[\Subst{s_2}{2}{z}]$ (pois também $2 \in
   \Subst{s_2}{2}{z}(Y)$).
 \end{ex}
 
 \begin{ex}
   $\Sat{M}{\lexists[Y][(\lexists[y][\Atom{Y}{y}] \land
-  \lforall[z][(\Atom{X}{z} \liff \lnot \Atom{Y}{z})])]}[s]$ if there
-  is an $N \subseteq \Domain{M}$ such that
+  \lforall[z][(\Atom{X}{z} \liff \lnot \Atom{Y}{z})])]}[s]$ se existe
+  um $N \subseteq \Domain{M}$ tal que
   $\Sat{M}{(\lexists[y][\Atom{Y}{y}] \land \lforall[z][(\Atom{X}{z}
-  \liff \lnot \Atom{Y}{z})])}[\Subst{s}{N}{Y}]$. And that is the case
-  for any $N \neq \emptyset$ (so that
-  $\Sat{M}{\lexists[y][\Atom{Y}{y}]}[\Subst{s}{N}{Y}]$) and, as in the
-  previous example, $N = \Domain{M} \setminus s(X)$. In other words,
+  \liff \lnot \Atom{Y}{z})])}[\Subst{s}{N}{Y}]$. E esse é o caso para
+  qualquer $N \neq \emptyset$ (de modo que
+  $\Sat{M}{\lexists[y][\Atom{Y}{y}]}[\Subst{s}{N}{Y}]$) e, como no exemplo
+  anterior, $N = \Domain{M} \setminus s(X)$. Em outras palavras,
   $\Sat{M}{\lexists[Y][(\lexists[y][\Atom{Y}{y}] \land
-  \lforall[z][(\Atom{X}{z} \liff \lnot \Atom{Y}{z})])]}[s]$ iff
-  $\Domain{M} \setminus s(X)$ is non-empty, O.s.\@, $s(X) \neq
-  \Domain{M}$. So, the !!{formula} is satisfied, p.ex., if $\Domain{M}
-  = \{1, 2, 3\}$ and $s(X) = \{1, 2\}$, but not if $s(X) = \{1, 2, 3\}
-  = \Domain{M}$.
+  \lforall[z][(\Atom{X}{z} \liff \lnot \Atom{Y}{z})])]}[s]$ sse
+  $\Domain{M} \setminus s(X)$ não é vazio, O.s.\@, $s(X) \neq
+  \Domain{M}$. Assim, a !!{formula} é satisfeita, p.ex., se
+  $\Domain{M} = \{1, 2, 3\}$ e $s(X) = \{1, 2\}$, mas não se
+  $s(X) = \{1, 2, 3\} = \Domain{M}$.
 
-  Since the !!{formula} is not satisfied whenever $s(X) = \Domain{M}$,
-  the !!{sentence}
+  Como a !!{formula} não é satisfeita quando $s(X) = \Domain{M}$, a
+  !!{sentence}
   \[
   \lforall[X][\lexists[Y][(\lexists[y][\Atom{Y}{y}] \land
       \lforall[z][(\Atom{X}{z} \liff \lnot \Atom{Y}{z})])]]
   \]
-  is never satisfied: For any !!{structure}~$\Struct{M}$, the
-  assignment~$s(X) = \Domain{M}$ will make the !!{sentence} false. On
-  the other hand, the sentence
+  nunca é satisfeita: para qualquer !!{structure}~$\Struct{M}$, a
+  atribuição~$s(X) = \Domain{M}$ tornará falsa a !!{sentence}. Por outro
+  lado, a sentença
   \[
   \lexists[X][\lexists[Y][(\lexists[y][\Atom{Y}{y}] \land
       \lforall[z][(\Atom{X}{z} \liff \lnot \Atom{Y}{z})])]]
   \]
-  is satisfied relative to any assignment~$s$, since we can always
-  find $M \subseteq \Domain{M}$ but $M \neq \Domain{M}$ (p.ex., $M = \emptyset$).
+  é satisfeita relativamente a qualquer atribuição~$s$, pois sempre podemos
+  encontrar $M \subseteq \Domain{M}$ tal que $M \neq \Domain{M}$ (p.ex., $M = \emptyset$).
 \end{ex}
 
 \begin{ex}
-  The second-order !!{sentence}~$\lforall[X][\lforall[y][X(y)]]$ says
-  that every $1$-place relation, O.s.\@, every property, holds of every
-  object. That is clearly never true, since in every~$\Struct{M}$, for
-  a variable assignment~$s$ with $s(X) = \emptyset$, and $s(y) = a \in
-  \Domain{M}$ we have $\Sat/{M}{X(y)}[s]$. This means that $!A \lif
-  \lforall[X][\lforall[y][X(y)]]$ is equivalent in second-order logic
-  to $\lnot !A$, that is: $\Sat{M}{!A \lif
-  \lforall[X][\lforall[y][X(y)]]}$ iff $\Sat{M}{\lnot !A}$. In other
-  words, in second-order logic we can define $\lnot$ using $\lforall$
-  and~$\lif$.
+  A !!{sentence} de segunda ordem~$\lforall[X][\lforall[y][X(y)]]$ diz que
+  toda relação de $1$ argumento, O.s.\@, toda propriedade, vale para todo objeto. Isso
+  claramente nunca é verdadeiro, pois, em cada~$\Struct{M}$, para uma
+  atribuição de variáveis~$s$ com $s(X) = \emptyset$ e
+  $s(y) = a \in \Domain{M}$, temos $\Sat/{M}{X(y)}[s]$. Isso significa que
+  $!A \lif \lforall[X][\lforall[y][X(y)]]$ é equivalente, na lógica de
+  segunda ordem, a $\lnot !A$, isto é: $\Sat{M}{!A \lif
+  \lforall[X][\lforall[y][X(y)]]}$ sse $\Sat{M}{\lnot !A}$. Em outras
+  palavras, na lógica de segunda ordem podemos definir $\lnot$ usando
+  $\lforall$ e~$\lif$.
 \end{ex}
 
 \begin{prob}
-  Show that in second-order logic $\lforall$ and~$\lif$ can define the other
-  connectives:
+  Mostre que, na lógica de segunda ordem, $\lforall$ e~$\lif$ podem definir
+  os outros conectivos:
   \begin{enumerate}
-    \item Prove that in second-order logic $!A \land !B$ is equivalent
-    to $\lforall[X][(!A \lif (!B \lif \lforall[x][X(x)])\lif
+    \item Prove que, na lógica de segunda ordem, $!A \land !B$ é equivalente
+    a $\lforall[X][(!A \lif (!B \lif \lforall[x][X(x)])\lif
     \lforall[x][X(x)])]$.
-    \item Find a second-order formula using only $\lforall$ and $\lif$
-    equivalent to $!A \lor !B$.
+    \item Encontre uma fórmula de segunda ordem que use apenas $\lforall$ e
+    $\lif$ e seja equivalente a $!A \lor !B$.
   \end{enumerate}
 \end{prob}
 

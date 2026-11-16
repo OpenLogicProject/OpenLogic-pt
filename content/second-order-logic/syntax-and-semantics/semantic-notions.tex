@@ -6,33 +6,35 @@
 
 \begin{document}
 
-\olfileid{sol}{syn}{sem}
-\olsection{Semantic Notions}
+\olfileid[pt]{sol}{syn}{sem}
+\olsection{Noções semânticas}
 
 \begin{explain}
-The central logical notions of \emph{validity}, \emph{entailment}, and
-\emph{satisfiability} are defined the same way for second-order logic
-as they are for first-order logic, except that the underlying
-satisfaction relation is now that for second-order !!{formula}s.  A
-second-order !!{sentence}, of course, is !!a{formula} in which all
-variables, including predicate and function variables, are bound.
+As noções lógicas centrais de \emph{validade}, \emph{consequência} e
+\emph{satisfatibilidade} são definidas da mesma maneira para a lógica de
+segunda ordem e para a lógica de primeira ordem, exceto pelo fato de que a
+relação de satisfação subjacente agora é a das !!{formula}s de segunda
+ordem. Uma !!{sentence} de segunda ordem é, naturalmente, !!a{formula} na
+qual todas as variáveis, inclusive as variáveis de predicado e de função,
+estão ligadas.
 \end{explain}
 
-\begin{defn}[Validity]
-A sentence $!A$ is \emph{valid}, $\Entails !A$, iff $\Sat{M}{!A}$ for every
-!!{structure}~$\Struct M$.
+\begin{defn}[Validade]
+Uma sentença $!A$ é \emph{válida}, $\Entails !A$, sse $\Sat{M}{!A}$ para
+toda !!{structure}~$\Struct M$.
 \end{defn}
 
-\begin{defn}[Entailment]
-A set of sentences~$\Gamma$ \emph{entails} a sentence~$!A$, $\Gamma
-\Entails !A$, iff for every !!{structure}~$\Struct M$ with
-$\Sat{M}{\Gamma}$, $\Sat{M}{!A}$.
+\begin{defn}[Consequência]
+Um conjunto de sentenças~$\Gamma$ \emph{acarreta} uma sentença~$!A$,
+$\Gamma \Entails !A$, sse, para toda !!{structure}~$\Struct M$ tal que
+$\Sat{M}{\Gamma}$, temos $\Sat{M}{!A}$.
 \end{defn}
 
-\begin{defn}[Satisfiability]
-A set of sentences~$\Gamma$ is \emph{satisfiable} if $\Sat{M}{\Gamma}$
-for some !!{structure}~$\Struct M$.  If $\Gamma$ is not satisfiable it is
-called \emph{unsatisfiable}.
+\begin{defn}[Satisfatibilidade]
+Um conjunto de sentenças~$\Gamma$ é \emph{satisfatível} se
+$\Sat{M}{\Gamma}$ para alguma !!{structure}~$\Struct M$. Se $\Gamma$ não é
+satisfatível, é chamado \emph{insatisfatível}.
 \end{defn}
 
 \end{document}
+
