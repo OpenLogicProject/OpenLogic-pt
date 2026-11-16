@@ -6,55 +6,55 @@
 
 \begin{document}
 
-\olfileid{aml}{el}{trw}
+\olfileid[pt]{aml}{el}{trw}
 
-\olsection{Truth at a World}
+\olsection{Verdade em um mundo}
 
-Just as with normal modal logic, every epistemic model determines which !!{formula}s count as true at
-which worlds in it. We use the same notation ``model $\mModel{M}$ makes
-!!{formula}~$!A$ true at world~$w$'' for the basic notion of relational
-semantics. The relation is defined inductively and is identical to the normal modal case for all non-modal operators.
+Assim como na lógica modal normal, todo modelo epistêmico determina quais !!{formula}s são verdadeiras em
+quais de seus mundos. Usamos a mesma notação ``o modelo $\mModel{M}$ torna a
+!!{formula}~$!A$ verdadeira no mundo~$w$'' para a noção básica da semântica
+relacional. A relação é definida indutivamente e, para todos os operadores não modais, é idêntica à do caso modal normal.
 
 \begin{defn}\ollabel{defn:mmodels}
-  \emph{Truth of !!a{formula}~$!A$ at~$w$} in a~$\mModel M$, in symbols:
-  $\mSat{M}{!A}[w]$, is defined inductively as follows:
+  A \emph{verdade de !!a{formula}~$!A$ em~$w$} em um~$\mModel M$, em símbolos
+  $\mSat{M}{!A}[w]$, é definida indutivamente da seguinte maneira:
   \begin{enumerate}
-  \tagitem{prvFalse}{\indcase{!A}{\lfalse}{Never $\mSat{M}{\lfalse}[w]$}.}{}
-  \tagitem{prvTrue}{\indcase{!A}{\ltrue}{Always $\mSat{M}{\ltrue}[w]$}.}{}
-  \item $\mSat{M}{p}[w]$ iff $w \in V(p)$
-  \tagitem{prvNot}{\indcase{!A}{\lnot !B}{$\mSat{M}{\indfrm}[w]$ iff
+  \tagitem{prvFalse}{\indcase{!A}{\lfalse}{Nunca $\mSat{M}{\lfalse}[w]$}.}{}
+  \tagitem{prvTrue}{\indcase{!A}{\ltrue}{Sempre $\mSat{M}{\ltrue}[w]$}.}{}
+  \item $\mSat{M}{p}[w]$ sse $w \in V(p)$
+  \tagitem{prvNot}{\indcase{!A}{\lnot !B}{$\mSat{M}{\indfrm}[w]$ sse
     $\mSat/{M}{!B}[w]$}.}{}
-  \tagitem{prvAnd}{\indcase{!A}{(!B \land !C)}{$\mSat{M}{\indfrm}[w]$ iff
-    $\mSat{M}{!B}[w]$ and $\mSat{M}{!C}[w]$}.}{}
-  \tagitem{prvOr}{\indcase{!A}{(!B \lor !C)}{$\mSat{M}{\indfrm}[w]$ iff
-    $\mSat{M}{!B}[w]$ or $\mSat{M}{!C}[w]$} (or both).}{}
-  \tagitem{prvIf}{\indcase{!A}{(!B \lif !C)}{$\mSat{M}{\indfrm}[w]$ iff
-    $\mSat/{M}{!B}[w]$ or $\mSat{M}{!C}[w]$}.}{}
-  \tagitem{prvIff}{\indcase{!A}{(!B \liff !C)}{$\mSat{M}{\indfrm}[w]$ iff
-    either both $\mSat{M}{!B}[w]$ and $\mSat{M}{!C}[w]$ or
-    neither $\mSat{M}{!B}[w]$ nor $\mSat{M}{!C}[w]$}.}{}
+  \tagitem{prvAnd}{\indcase{!A}{(!B \land !C)}{$\mSat{M}{\indfrm}[w]$ sse
+    $\mSat{M}{!B}[w]$ e $\mSat{M}{!C}[w]$}.}{}
+  \tagitem{prvOr}{\indcase{!A}{(!B \lor !C)}{$\mSat{M}{\indfrm}[w]$ sse
+    $\mSat{M}{!B}[w]$ ou $\mSat{M}{!C}[w]$} (ou ambos).}{}
+  \tagitem{prvIf}{\indcase{!A}{(!B \lif !C)}{$\mSat{M}{\indfrm}[w]$ sse
+    $\mSat/{M}{!B}[w]$ ou $\mSat{M}{!C}[w]$}.}{}
+  \tagitem{prvIff}{\indcase{!A}{(!B \liff !C)}{$\mSat{M}{\indfrm}[w]$ sse
+    ou ambos $\mSat{M}{!B}[w]$ e $\mSat{M}{!C}[w]$, ou
+    nem $\mSat{M}{!B}[w]$ nem $\mSat{M}{!C}[w]$}.}{}
   \item\ollabel{defn:sub:mmodels-box}
-    \indcase{!A}{\Knows_a !B}{$\mSat{M}{\indfrm}[w]$ iff
-    $\mSat{M}{!B}[w']$ for all $w' \in W$ with $R_a ww'$}
+    \indcase{!A}{\Knows_a !B}{$\mSat{M}{\indfrm}[w]$ sse
+    $\mSat{M}{!B}[w']$ para todo $w' \in W$ tal que $R_a ww'$}
   \end{enumerate} 
 \end{defn}
 
-Here's where we need to think about restrictions on our accessibility
-relations, though. After all, by clause~\olref{defn:sub:mmodels-box},
-!!a{formula}~$\Knows_a !B$ is true at~$w$ whenever there are no~$w'$
-with $R_a ww'$. This is the same clause as in normal modal logic; when
-a world has no successors, all $\Box$-formulas are vacuously true
-there. This seems extremely counterintuitive if we think about
-$\Knows$ as representing \emph{knowledge}. After all, we tend to think
-that there are \emph{no} circumstances under which an agent might know
-both $!A$ and $\lnot !A$ at the same time.
+É neste ponto, porém, que precisamos considerar restrições às relações
+de acessibilidade. Afinal, pela cláusula~\olref{defn:sub:mmodels-box},
+!!a{formula}~$\Knows_a !B$ é verdadeira em~$w$ sempre que não existe~$w'$
+tal que $R_a ww'$. Essa é a mesma cláusula da lógica modal normal: quando
+um mundo não tem sucessores, todas as fórmulas-$\Box$ são vacuamente
+verdadeiras nele. Isso parece extremamente contraintuitivo se
+entendermos $\Knows$ como representação de \emph{conhecimento}. Afinal,
+tendemos a pensar que não há \emph{nenhuma} circunstância na qual um
+agente possa saber ao mesmo tempo tanto $!A$ quanto $\lnot !A$.
 
-One solution is to ensure that our accessibility relation in epistemic
-logic will always be \emph{reflexive}. This roughly corresponds to the
-idea that the actual world is consistent with an agent's information.
-In fact, epistemic logics typically use S5, but others might use
-weaker systems depending on what exactly they want the $\Knows_a$
-relation to represent.
+Uma solução é garantir que a relação de acessibilidade da lógica
+epistêmica seja sempre \emph{reflexiva}. Isso corresponde, em linhas
+gerais, à ideia de que o mundo atual é compatível com a informação de
+um agente. De fato, as lógicas epistêmicas costumam usar S5, mas outras
+podem empregar sistemas mais fracos, dependendo do que exatamente se
+pretenda representar pela relação $\Knows_a$.
 
 \begin{figure}
   \begin{center}
@@ -71,12 +71,12 @@ relation to represent.
       \draw[->,loop below] (w3) to node {$a,b$} (w3) ;
     \end{tikzpicture}
   \end{center}
-  \caption{A simple epistemic model.}
+  \caption{Um modelo epistêmico simples.}
   \ollabel{fig:simple}
 \end{figure}
 
 \begin{prob}
-  Consider which of the following hold in
+  Determine quais das afirmações seguintes valem em
   \olref[aml][el][trw]{fig:simple}:
   \begin{enumerate}
     \item $\mSat{M}{\lnot q}[w_1]$;
@@ -88,28 +88,27 @@ relation to represent.
     \end{enumerate}
 \end{prob}
 
-Now that we have given our basic definition of truth at a world, the
-other semantic concepts from normal modal logic, such as modal
-validity and entailment, simply carry over, applied to this new way of
-thinking about the interpretation for the modal operators.
+Agora que apresentamos nossa definição básica de verdade em um mundo,
+os demais conceitos semânticos da lógica modal normal, como validade
+modal e consequência, são simplesmente transportados para essa nova
+maneira de interpretar os operadores modais.
 
-We are now also in a position to give truth conditions for the common
-knowledge operator~$\CKnows_G$. Recall from \olref[sfr][rel][ops]{sec}
-that the \emph{transitive closure}~$R^+$ of a relation~$R$ is defined
-as
+Também podemos agora formular as condições de verdade do operador de
+conhecimento comum~$\CKnows_G$. Recorde, de \olref[sfr][rel][ops]{sec},
+que o \emph{fecho transitivo}~$R^+$ de uma relação~$R$ é definido como
 \begin{align*}
   R^+ &= \bigcup_{ n \in \mathbb{N}} R^n, 
-\intertext{where}
-  R^0 & = R \text{ and}\\ 
+\intertext{em que}
+  R^0 & = R \text{ e}\\ 
   R^{n+1} & = \Setabs{\tuple{x, z}}{\exists y (R^n xy \land Ryz)}.
 \end{align*}
-Then, where $G$ is a group of agents, we define $R_G = ( \bigcup_{b
-\in G} R_b )^+$ to be the transitive closure of the union of all
-agents' accessibility relations.
+Então, se $G$ é um grupo de agentes, definimos $R_G = ( \bigcup_{b
+\in G} R_b )^+$ como o fecho transitivo da união das relações de
+acessibilidade de todos os agentes.
 
 \begin{defn}
-If $G' \subseteq G$, we let $\mSat{M}{\CKnows_{G'} !A}[ w]$ iff for
-every $w'$ such that $R_{G'} w w'$, $\mSat{M}{!A}[w']$.
+Se $G' \subseteq G$, estabelecemos $\mSat{M}{\CKnows_{G'} !A}[ w]$ sse,
+para todo $w'$ tal que $R_{G'} w w'$, $\mSat{M}{!A}[w']$.
 \end{defn}
 
 \end{document}

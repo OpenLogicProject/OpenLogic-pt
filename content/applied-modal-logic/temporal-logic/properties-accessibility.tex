@@ -6,28 +6,28 @@
 
 \begin{document}
 
-\olfileid{aml}{tl}{acc}
+\olfileid[pt]{aml}{tl}{acc}
 
-\olsection{Properties of Temporal Frames}
+\olsection{Propriedades dos frames temporais}
 
-Given that our temporal models do not impose any conditions on the
-relation~$\prec$, the only one of our familiar axioms that holds in
-all models is~$K$, or its analogues $K_{\Gtemp}$ and~$K_{\Htemp}$:
+Como nossos modelos temporais não impõem nenhuma condição à
+relação~$\prec$, o único de nossos axiomas conhecidos que vale em
+todos os modelos é~$K$, ou seus análogos $K_{\Gtemp}$ e~$K_{\Htemp}$:
 \begin{align*}
 \tag{$K_{\Gtemp}$}  \Gtemp (p \to q) & \to (\Gtemp p \to \Gtemp q)\\
 \tag{$K_{\Htemp}$}  \Htemp (p \to q) & \to (\Htemp p \to \Htemp q)
 \end{align*}
 
-However, if we want our models to impose stricter conditions on how
-time is represented, for instance by ensuring that $\prec$ is a linear
-order, then we will end up with other validities in our models.
+Entretanto, se quisermos que nossos modelos imponham condições mais
+rigorosas à representação do tempo, por exemplo garantindo que $\prec$
+seja uma ordem linear, obteremos outras validades em nossos modelos.
 
 \begin{table}[t]
   \begin{tabular}{| p{.48\textwidth} || p{.48\textwidth} |}
     \hline
-    {\emph{If $\prec$ is \dots}} & {\emph{then \dots is true in~$\mModel{M}$:}} \\
+    {\emph{Se $\prec$ é \dots}} & {\emph{então \dots é verdadeira em~$\mModel{M}$:}} \\
     \hline \hline
-    \emph{transitive}: \newline
+    \emph{transitiva}: \newline
     $\forall u \forall v \forall w ((u \prec v \land v \prec w) \lif u \prec w)$ & 
     $\Ftemp \Ftemp p \lif \Ftemp p$  \\
     \hline 
@@ -35,30 +35,30 @@ order, then we will end up with other validities in our models.
     $\forall w \forall v (w \prec v \lor w = v \lor v \prec w)$ &  
     $(\Ftemp \Ptemp  p \lor \Ptemp \Ftemp p) \lif (\Ptemp p \lor p \lor \Ftemp p)$\\
     \hline
-    \emph{dense}: \newline
+    \emph{densa}: \newline
     $\forall w \forall v (w \prec v \to \exists u(w \prec u \land u \prec v))$ &  
     $\Ftemp p \lif \Ftemp \Ftemp p$ \\
     \hline
-    \emph{unbounded (past)}: \newline
+    \emph{ilimitada (passado)}: \newline
     $\forall w \exists v( v \prec w)$ &  
     $\Htemp p \to \Ptemp p$ \\
     \hline
-    \emph{unbounded (future)}: \newline
+    \emph{ilimitada (futuro)}: \newline
     $\forall w \exists v( w \prec v)$ &  
     $\Gtemp p \to \Ftemp p$ \\
     \hline
   \end{tabular}
-  \caption{Some temporal frame correspondence properties.}
+  \caption{Algumas propriedades de correspondência de frames temporais.}
   \ollabel{tab:correspondence}
 \end{table} 
 
-Several of the properties from \olref{tab:correspondence} might seem
-like desirable features for a model that is intended to represent
-time. However, it is worth noting that, even though we can impose
-whichever conditions we like on the $\prec$ relation, not all
-conditions correspond to !!{formula}s that can be expressed in the
-language of temporal logic. For example, irreflexivity, or the idea
-that $\forall w \lnot (w \prec w)$, does not have a corresponding
-formula in temporal logic. 
+Várias propriedades de \olref{tab:correspondence} podem parecer
+características desejáveis para um modelo destinado a representar o
+tempo. Contudo, vale observar que, embora possamos impor à relação
+$\prec$ quaisquer condições que quisermos, nem todas elas correspondem
+a !!{formula}s que possam ser expressas na linguagem da lógica
+temporal. A irreflexividade, por exemplo, isto é, a ideia de que
+$\forall w \lnot (w \prec w)$, não possui uma fórmula correspondente
+na lógica temporal. 
 
 \end{document}
