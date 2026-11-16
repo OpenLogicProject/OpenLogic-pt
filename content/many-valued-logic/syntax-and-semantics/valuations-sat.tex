@@ -6,26 +6,26 @@
 
 \begin{document}
 
-\olfileid{mvl}{syn}{val}
+\olfileid[pt]{mvl}{syn}{val}
 
-\olsection{\usetoken{P}{valuation} and Satisfaction}
+\olsection{\usetoken{P}{valuation} e satisfação}
 
 \begin{defn}[!!^{valuation}s] 
-Let $V$ be a set of truth values. A \emph{!!{valuation}} for
-$\Lang{L}$ into~$V$ is a
-function~$\pAssign{v}$ assigning !!a{element} of~$V$ to the
-!!{propositional variable}s of the language, O.s.\@, $\pAssign{v} \colon
+Seja $V$ um conjunto de valores de verdade. Uma \emph{!!{valuation}} para
+$\Lang{L}$ em~$V$ é uma
+função~$\pAssign{v}$ que atribui !!a{element} de~$V$ às
+!!{propositional variable}s da linguagem, O.s.\@, $\pAssign{v} \colon
 \PVar \to V$.
 \end{defn}
 
 \begin{defn}\ollabel{defn:pValue}
-  Given !!a{valuation}~$\pAssign{v}$ into the set of truth values~$V$ of a
-  many-valued logic~$\Log L$, define the evaluation function
-  $\pValue{v} \colon \Frm[L] \to V$ inductively by:
+  Dada !!a{valuation}~$\pAssign{v}$ no conjunto de valores de verdade~$V$ de uma
+  lógica multivalorada~$\Log L$, definimos indutivamente a função de avaliação
+  $\pValue{v} \colon \Frm[L] \to V$ por:
   \begin{enumerate}
     \item $\pValue{v}(\Obj p_n) = \pAssign{v}(\Obj p_n)$; 
-    \item If $\star$ is a $0$-place connective, then $\pValue{v}(\star)  = \tf{\star}[\Log L]$;
-    \item If $\star$ is an $n$-place connective, then 
+    \item Se $\star$ é um conectivo $0$-ário, então $\pValue{v}(\star)  = \tf{\star}[\Log L]$;
+    \item Se $\star$ é um conectivo $n$-ário, então 
     \[
       \pValue{v}(\star(!A_1, \dots, !A_n)) = \tf{\star}[\Log L]
       (\pValue{v}(!A_1), \dots, \pValue{v}(!A_n)).
@@ -33,15 +33,15 @@ function~$\pAssign{v}$ assigning !!a{element} of~$V$ to the
   \end{enumerate}
 \end{defn}
 
-\begin{defn}[Satisfaction]
-\ollabel{defn:satisfaction} The !!{formula}~$!A$ is \emph{satisfied}
-  by !!a{valuation}~$\pAssign{v}$, $\pSat{v}{!A}[\Log L]$, iff
-  $\pValue{v}(!A)[\Log L] \in V^+$, where $V^+$ is the set of
-  designated truth values of~$\Log L$. 
+\begin{defn}[Satisfação]
+\ollabel{defn:satisfaction} A !!{formula}~$!A$ é \emph{satisfeita}
+  por !!a{valuation}~$\pAssign{v}$, $\pSat{v}{!A}[\Log L]$, se, e somente se,
+  $\pValue{v}(!A)[\Log L] \in V^+$, onde $V^+$ é o conjunto dos
+  valores de verdade designados de~$\Log L$. 
   
-  We write $\pSat/{v}{!A}[\Log L]$ to mean ``not $\pSat{v}{!A}[\Log
-  L]$.'' If $\Gamma$ is a set of !!{formula}s, $\pSat{v}{\Gamma}[\Log
-  L]$ iff $\pSat{v}{!A}[\Log L]$ for every~$!A \in \Gamma$.
+  Escrevemos $\pSat/{v}{!A}[\Log L]$ para dizer ``não $\pSat{v}{!A}[\Log
+  L]$.'' Se $\Gamma$ é um conjunto de !!{formula}s, $\pSat{v}{\Gamma}[\Log
+  L]$ se, e somente se, $\pSat{v}{!A}[\Log L]$ para todo~$!A \in \Gamma$.
 \end{defn}
 
 \end{document}
