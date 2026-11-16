@@ -6,41 +6,43 @@
 
 \begin{document}
 
-\olfileid{cmp}{thy}{cod}
-\olsection{Coding Computations}
+\olfileid[pt]{cmp}{thy}{cod}
+\olsection{Codificação de computações}
 
-In every model of computation, it is possible to do the following:
+Em todo modelo de computação, é possível fazer o seguinte:
 \begin{enumerate}
-\item Describe the \emph{definitions} of computable functions in a
-  systematic way. For instance, you can think of Turing machine
-  specifications, recursive definitions, or programs in a programming
-  language as providing these definitions.
-\item Describe the complete record of the computation of a function
-  given by some definition for a given input. For instance, a Turing
-  machine computation can be described by the sequence of
-  configurations (state of the machine, contents of the tape) for each
-  step of computation.
-\item Test whether a putative record of a computation is in fact the
-  record of how a computable function with a given definition would be
-  computed for a given input (on which the function is
-  defined, O.s.\@, the computation halts).
-\item Extract from such a description of the complete record of a
-  computation the value of the function for a given input. For
-  instance, the contents of the tape in the very last step of a
-  halting Turing machine computation is the value.
+\item Descrever as \emph{definições} de funções computáveis de maneira
+  sistemática. Por exemplo, pode-se pensar que especificações de
+  máquinas de Turing, definições recursivas ou programas em uma
+  linguagem de programação fornecem essas definições.
+\item Descrever o registro completo da computação de uma função dada
+  por alguma definição para uma determinada entrada. Por exemplo, uma
+  computação de máquina de Turing pode ser descrita pela sequência de
+  configurações (estado da máquina, conteúdo da fita) correspondente
+  a cada passo da computação.
+\item Testar se um suposto registro de uma computação é de fato o
+  registro de como uma função computável com uma dada definição seria
+  calculada para uma determinada entrada (na qual a função está
+  definida, O.s.\@, a computação para).
+\item Extrair de tal descrição do registro completo de uma computação
+  o valor da função para uma determinada entrada. Por exemplo, o
+  conteúdo da fita no último passo de uma computação de máquina de
+  Turing que para é o valor.
 \end{enumerate}
 
-Using coding, it is possible to assign to each description of a
-computable function a numerical \emph{index} in such a way that the
-instructions can be recovered from the index in a computable way.
-Similarly, the complete record of a computation can be coded by a
-single number as well. The resulting arithmetical relation ``$s$~codes
-the record of computation of the function with index~$e$ for
-input~$x$'' and the function ``output of computation sequence with
-code~$s$'' are then computable; in fact, they are primitive recursive.
+Por meio de codificação, é possível atribuir a cada descrição de uma
+função computável um \emph{índice} numérico de tal maneira que as
+instruções possam ser recuperadas computavelmente a partir do índice.
+De modo semelhante, o registro completo de uma computação também pode
+ser codificado por um único número. A relação aritmética resultante
+``$s$~codifica o registro da computação da função de índice~$e$ para
+a entrada~$x$'' e a função ``saída da sequência de computação de
+código~$s$'' são, então, computáveis; na verdade, são recursivas
+primitivas.
 
-This fundamental fact is very powerful, and allows us to prove a
-number of striking and important results about computability,
-independently of the model of computation chosen.
+Esse fato fundamental é muito poderoso e nos permite demonstrar
+diversos resultados notáveis e importantes sobre a computabilidade,
+independentemente do modelo de computação escolhido.
 
 \end{document}
+

@@ -6,37 +6,38 @@
 
 \begin{document}
 
-\olfileid{cmp}{rec}{cmp}
-\olsection{Primitive Recursive Functions are Computable}
+\olfileid[pt]{cmp}{rec}{cmp}
+\olsection{As funções recursivas primitivas são computáveis}
 
-Suppose a function $h$ is defined by primitive recursion
+Suponha que uma função $h$ seja definida por recursão primitiva:
 \begin{eqnarray*}
 h(\vec x, 0)     & = & f(\vec x) \\
 h(\vec x, y + 1) & = & g(\vec x, y, h(\vec x, y))
 \end{eqnarray*}
-and suppose the functions $f$ and $g$ are computable.  (We use $\vec x$ to abbreviate $x_0$, \dots, $x_{k-1}$.) Then $h(\vec
-x, 0)$ can obviously be computed, since it is just $f(\vec x)$ which we
-assume is computable.  $h(\vec x, 1)$ can then also be computed, since
-$1 = 0 + 1$ and so $h(\vec x, 1)$ is just
+e suponha que as funções $f$ e $g$ sejam computáveis. (Usamos $\vec x$ como
+abreviação de $x_0$, \dots, $x_{k-1}$.) É claro que $h(\vec x, 0)$ pode ser
+calculada, pois é simplesmente $f(\vec x)$, que supomos ser computável.
+Também podemos então calcular $h(\vec x, 1)$, pois $1 = 0 + 1$ e, portanto,
+$h(\vec x, 1)$ é simplesmente
 \begin{align*}
  h(\vec x, 1) & = g(\vec x, 0, h(\vec x, 0)) =  g(\vec x, 0, f(\vec x)).
-\intertext{We can go on in this way and  compute}
+\intertext{Podemos prosseguir dessa maneira e calcular}
 h(\vec x, 2) & = g(\vec x, 1, h(\vec x, 1)) = g(\vec x, 1, g(\vec x, 0, f(\vec x)))\\
 h(\vec x, 3) & = g(\vec x, 2, h(\vec x, 2)) = g(\vec x, 2, g(\vec x, 1, g(\vec x, 0, f(\vec x))))\\
 h(\vec x, 4) & = g(\vec x, 3, h(\vec x, 3)) = g(\vec x, 3, g(\vec x, 2, g(\vec x, 1, g(\vec x, 0, f(\vec x)))))\\
 & \vdots
 \end{align*}
-Thus, to compute $h(\vec x, y)$ in general, successively compute
-$h(\vec x, 0)$, $h(\vec x, 1)$, \dots, until we reach $h(\vec x, y)$.
+Assim, para calcular $h(\vec x, y)$ em geral, calculamos sucessivamente
+$h(\vec x, 0)$, $h(\vec x, 1)$, \dots, até chegarmos a $h(\vec x, y)$.
 
-Thus, a primitive recursive definition yields a new computable
-function if the functions $f$ and $g$ are computable.  Composition of
-functions also results in a computable function if the functions $f$
-and $g_i$ are computable.
+Portanto, uma definição por recursão primitiva produz uma nova função
+computável se as funções $f$ e $g$ são computáveis. A composição de funções
+também resulta em uma função computável se as funções $f$ e $g_i$ são
+computáveis.
 
-Since the basic functions $\Zero$, $\Succ$, and $\Proj{n}{i}$ are
-computable, and composition and primitive recursion yield computable
-functions from computable functions, this means that every primitive
-recursive function is computable.
+Como as funções básicas $\Zero$, $\Succ$ e $\Proj{n}{i}$ são computáveis, e
+como a composição e a recursão primitiva produzem funções computáveis a partir
+de funções computáveis, segue-se que toda função recursiva primitiva é
+computável.
 
 \end{document}

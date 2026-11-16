@@ -6,88 +6,90 @@
 
 \begin{document}
 
-\olfileid{cmp}{thy}{clo}
+\olfileid[pt]{cmp}{thy}{clo}
 
-\olsection[Union and Intersection of C.E. Sets]{Computably Enumerable
-  Sets are Closed under Union and Intersection}
+\olsection[União e interseção de conjuntos c.e.]{Conjuntos
+  computavelmente enumeráveis são fechados sob união e interseção}
 
-The following theorem gives some closure properties on the set of
-computably enumerable sets.
+O teorema a seguir apresenta algumas propriedades de fechamento do
+conjunto dos conjuntos computavelmente enumeráveis.
 
 \begin{thm}
-Suppose $A$ and $B$ are computably enumerable. Then so are $A \cap B$
-and $A \cup B$.
+Suponha que $A$ e $B$ sejam computavelmente enumeráveis. Então
+$A \cap B$ e $A \cup B$ também o são.
 \end{thm}
 
 \begin{proof}
-\olref[eqc]{thm:ce-equiv} allows us to use various characterizations
-of the computably enumerable sets. By way of illustration, we will
-provide a few different proofs.
+A \olref[eqc]{thm:ce-equiv} nos permite usar várias caracterizações
+dos conjuntos computavelmente enumeráveis. Para ilustrar, apresentaremos
+algumas demonstrações diferentes.
 
-For the first proof, suppose $A$ is enumerated by a computable
-function~$f$, and $B$ is enumerated by a computable function~$g$. Let
+Para a primeira demonstração, suponha que $A$ seja enumerado por uma
+função computável~$f$ e que $B$ seja enumerado por uma função
+computável~$g$. Seja
 \begin{align*}
-h(x) & = \umin{y}{(f(y) = x \lor g(y) = x)} \text{ and}\\
+h(x) & = \umin{y}{(f(y) = x \lor g(y) = x)} \text{ e}\\
 j(x) & = \umin{y}{(f((y)_0) = x \land g((y)_1) = x)}.
 \end{align*}
-Then $A \cup B$ is the domain of $h$, and $A \cap B$ is the domain
-of~$j$.
+Então $A \cup B$ é o domínio de $h$, e $A \cap B$ é o domínio de~$j$.
 
 \begin{explain}
-Here is what is going on, in computational terms: given
-procedures that enumerate $A$ and $B$, we can semi-decide if an
-element $x$ is in $A \cup B$ by looking for $x$ in either enumeration;
-and we can semi-decide if an element $x$ is in $A \cap B$ for looking
-for $x$ in both enumerations at the same time.
+Em termos computacionais, ocorre o seguinte: dados procedimentos que
+enumeram $A$ e $B$, podemos semidecidir se um elemento $x$ pertence a
+$A \cup B$ procurando $x$ em qualquer uma das enumerações; e podemos
+semidecidir se um elemento $x$ pertence a $A \cap B$ procurando $x$
+nas duas enumerações ao mesmo tempo.
 \end{explain}
 
-For the second proof, suppose again that $A$ is enumerated by~$f$ and
-$B$ is enumerated by~$g$. Let
+Para a segunda demonstração, suponha novamente que $A$ seja enumerado
+por~$f$ e $B$ por~$g$. Seja
 \[
 k(x) = \begin{cases}
-f(x/2) & \text{if $x$ is even} \\
-g((x-1)/2) & \text{if $x$ is odd.}
+f(x/2) & \text{se $x$ é par} \\
+g((x-1)/2) & \text{se $x$ é ímpar.}
 \end{cases}
 \]
-Then $k$ enumerates $A \cup B$; the idea is that $k$ just alternates
-between the enumerations offered by $f$ and~$g$. Enumerating $A \cap
-B$ is tricker. If $A \cap B$ is empty, it is trivially computably
-enumerable. Otherwise, let $c$ be any element of $A \cap B$, and
-define $l$ by
+Então $k$ enumera $A \cup B$; a ideia é que $k$ simplesmente alterna
+entre as enumerações fornecidas por $f$ e~$g$. Enumerar $A \cap B$ é
+mais trabalhoso. Se $A \cap B$ for vazio, será trivialmente
+computavelmente enumerável. Caso contrário, seja $c$ um elemento
+qualquer de $A \cap B$ e defina $l$ por
 \[
 l(x) = \begin{cases}
-f((x)_0) & \text{if $f((x)_0) = g((x)_1)$} \\
-c & \text{otherwise.}
+f((x)_0) & \text{se $f((x)_0) = g((x)_1)$} \\
+c & \text{caso contrário.}
 \end{cases}
 \]
-In computational terms, $l$ runs through pairs of elements in the
-enumerations of $f$ and $g$, and outputs every match it finds;
-otherwise, it just stalls by outputting $c$.
+Em termos computacionais, $l$ percorre pares de elementos nas
+enumerações de $f$ e $g$ e produz como saída cada coincidência que
+encontra; caso contrário, apenas fica inativa, produzindo $c$ como
+saída.
 
-For the last proof, suppose $A$ is the \emph{domain} of the partial
-function $m(x)$ and $B$ is the domain of the partial function
-$n(x)$. Then $A \cap B$ is the domain of the partial function $m(x) +
-n(x)$.
+Para a última demonstração, suponha que $A$ seja o \emph{domínio} da
+função parcial $m(x)$ e que $B$ seja o domínio da função parcial
+$n(x)$. Então $A \cap B$ é o domínio da função parcial $m(x) + n(x)$.
 
 \begin{explain}
-In computational terms, if $A$ is the set of values for which
-$m$ halts and $B$ is the set of values for which $n$ halts, $A \cap B$
-is the set of values for which both procedures halt.
+Em termos computacionais, se $A$ é o conjunto dos valores para os quais
+$m$ para e $B$ é o conjunto dos valores para os quais $n$ para,
+$A \cap B$ é o conjunto dos valores para os quais ambos os procedimentos
+param.
 \end{explain}
 
-Expressing $A \cup B$ as a set of halting values is more difficult,
-because one has to simulate $m$ and $n$ in parallel. Let $d$ be an
-index for $m$ and let $e$ be an index for $n$; in other words, $m =
-\cfind{d}$ and $n = \cfind{e}$. Then $A \cup B$ is the domain of the
-function
+Expressar $A \cup B$ como um conjunto de valores de parada é mais
+difícil, pois é preciso simular $m$ e $n$ em paralelo. Seja $d$ um
+índice de $m$ e seja $e$ um índice de $n$; em outras palavras,
+$m = \cfind{d}$ e $n = \cfind{e}$. Então $A \cup B$ é o domínio da
+função
 \[
 p(x) = \umin{y}{(T(d,x,y) \lor T(e,x,y))}.
 \]
 \begin{explain}
-In computational terms, on input $x$, $p$ searches for either a
-halting computation for $m$ or a halting computation for $n$, and
-halts if it finds either one.
+Em termos computacionais, na entrada $x$, $p$ procura uma computação
+que pare de $m$ ou uma computação que pare de $n$, e para se encontrar
+qualquer uma delas.
 \end{explain}
 \end{proof}
 
 \end{document}
+

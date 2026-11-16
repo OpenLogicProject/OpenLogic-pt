@@ -6,85 +6,85 @@
 
 \begin{document}
 
-\olfileid{cmp}{rec}{com}
-\olsection{Composition}
+\olfileid[pt]{cmp}{rec}{com}
+\olsection{Composição}
 
-If $f$ and $g$ are two one-place functions of natural numbers, we can
-compose them: $h(x) = f(g(x))$. The new function~$h(x)$ is then
-defined by \emph{composition} from the functions $f$ and~$g$. We'd
-like to generalize this to functions of more than one argument.
+Se $f$ e $g$ são duas funções unárias de números naturais, podemos
+compô-las: $h(x) = f(g(x))$. A nova função~$h(x)$ é então definida por
+\emph{composição} a partir das funções $f$ e~$g$. Queremos generalizar isso
+para funções de mais de um argumento.
 
-Here's one way of doing this: suppose $f$ is a $k$-place function,
-and $g_0$, \dots, $g_{k-1}$ are $k$ functions which are all
-$n$-place. Then we can define a new $n$-place function $h$ as follows:
+Uma maneira de fazê-lo é a seguinte: suponha que $f$ seja uma função de
+$k$ argumentos e que $g_0$, \dots, $g_{k-1}$ sejam $k$ funções, todas de
+$n$ argumentos. Podemos então definir uma nova função de $n$ argumentos $h$
+como segue:
 \[
 h(x_0, \dots, x_{n-1}) =
 f(g_0(x_0, \dots, x_{n-1}), \dots, g_{k-1}(x_0, \dots, x_{n-1}))
 \]
-If $f$ and all $g_i$ are computable, so is $h$: To compute $h(x_0,
-\dots, x_{n-1})$, first compute the values $y_i = g_i(x_0, \dots,
-x_{n-1})$ for each $i = 0$, \dots,~$k-1$. Then feed these values into
-$f$ to compute $h(x_0, \dots, x_{k-1}) = f(y_0, \dots, y_{k-1})$.
+Se $f$ e todas as $g_i$ são computáveis, $h$ também é: para calcular
+$h(x_0, \dots, x_{n-1})$, calculamos primeiro os valores
+$y_i = g_i(x_0, \dots, x_{n-1})$ para cada $i = 0$, \dots,~$k-1$. Em
+seguida, fornecemos esses valores a $f$ para calcular
+$h(x_0, \dots, x_{k-1}) = f(y_0, \dots, y_{k-1})$.
 
-This may seem like an overly restrictive characterization of what
-happens when we compute a new function using some existing ones. For
-one thing, sometimes we do not use all the arguments of a function, as
-when we defined $g(x, y, z) = \Succ(z)$ for use in the primitive
-recursive definition of~$\Add$. Suppose we are allowed use of the
-following functions:
+Isso talvez pareça uma caracterização restritiva demais do que acontece
+quando calculamos uma nova função usando funções já disponíveis. Para começar,
+às vezes não usamos todos os argumentos de uma função, como quando definimos
+$g(x, y, z) = \Succ(z)$ para empregá-la na definição por recursão primitiva
+de~$\Add$. Suponha que possamos usar as seguintes funções:
 \[
 \Proj{n}{i}(x_0, \dots, x_{n-1}) = x_i
 \]
-The functions~$\Proj{k}{i}$ are called \emph{projection} functions:
-$\Proj{n}{i}$ is an $n$-place function. Then $g$ can be defined by
+As funções~$\Proj{k}{i}$ são chamadas de funções de \emph{projeção}:
+$\Proj{n}{i}$ é uma função de $n$ argumentos. Nesse caso, $g$ pode ser
+definida por
 \[
 g(x, y, z) = \Succ(\Proj{3}{2}(x, y, z)).
 \]
-Here the role of $f$ is played by the $1$-place function $\Succ$, so
-$k=1$. And we have one $3$-place function $\Proj{3}{2}$ which plays
-the role of $g_0$. The result is a $3$-place function that returns the
-successor of the third argument.
+Aqui o papel de $f$ é desempenhado pela função de $1$ argumento $\Succ$, de
+modo que $k=1$. Temos ainda uma função de $3$ argumentos $\Proj{3}{2}$ que
+desempenha o papel de $g_0$. O resultado é uma função de $3$ argumentos que devolve o
+sucessor do terceiro argumento.
 
-The projection functions also allow us to define new functions by
-reordering or identifying arguments. For instance, the function $h(x)
-= \Add(x, x)$ can be defined by
+As funções de projeção também nos permitem definir novas funções reordenando
+ou identificando argumentos. Por exemplo, a função $h(x) = \Add(x, x)$ pode
+ser definida por
 \[
 h(x_0) = \Add(\Proj{1}{0}(x_0),\Proj{1}{0}(x_0)).
 \]
-Here $k=2$, $n=1$, the role of $f(y_0,y_1)$ is played by $\Add$, and
-the roles of $g_0(x_0)$ and $g_1(x_0)$ are both played
-by~$\Proj{1}{0}(x_0)$, the one-place projection function (aka the
-identity function).
+Aqui $k=2$, $n=1$, o papel de $f(y_0,y_1)$ é desempenhado por $\Add$, e os
+papéis de $g_0(x_0)$ e $g_1(x_0)$ são ambos desempenhados por
+$\Proj{1}{0}(x_0)$, a função de projeção unária (isto é, a função identidade).
 
-If $f(y_0, y_1)$ is a function we already have, we can define the
-function $h(x_0, x_1) = f(x_1, x_0)$ by
+Se $f(y_0, y_1)$ é uma função que já temos, podemos definir a função
+$h(x_0, x_1) = f(x_1, x_0)$ por
 \[
 h(x_0, x_1) = f(\Proj{2}{1}(x_0, x_1),\Proj{2}{0}(x_0, x_1)).
 \]
-Here $k=2$, $n = 2$, and the roles of $g_0$ and $g_1$ are played by
-$\Proj{2}{1}$ and~$\Proj{2}{0}$, respectively.
+Aqui $k=2$, $n = 2$, e os papéis de $g_0$ e $g_1$ são desempenhados,
+respectivamente, por $\Proj{2}{1}$ e~$\Proj{2}{0}$.
 
-You may also worry that $g_0$, \dots,~$g_{k-1}$ are all required
-to have the same arity~$n$. (Remember that the \emph{arity} of a
-function is the number of arguments; an $n$-place function has
-arity~$n$.) But adding the projection functions provides the desired
-flexibility. For example, suppose $f$ and~$g$ are $3$-place functions
-and $h$~is the $2$-place function defined by
+Também pode parecer problemático exigir que $g_0$, \dots,~$g_{k-1}$ tenham
+todas a mesma aridade~$n$. (Lembre-se de que a \emph{aridade} de uma função é
+seu número de argumentos; uma função de $n$ argumentos tem aridade~$n$.) Mas
+a inclusão das funções de projeção proporciona a flexibilidade desejada. Por
+exemplo, suponha que $f$ e~$g$ sejam funções de $3$ argumentos e que $h$ seja
+a função de $2$ argumentos definida por
 \[
 h(x,y) = f(x,g(x,x,y),y).
 \]
-The definition of~$h$ can be rewritten with the projection
-functions, as
+A definição de~$h$ pode ser reescrita com as funções de projeção como
 \[
 h(x,y) = f(\Proj{2}{0}(x,y), g(\Proj{2}{0}(x,y), \Proj{2}{0}(x,y),
 \Proj{2}{1}(x,y)), \Proj{2}{1}(x,y)).
 \]
-Then $h$ is the composition of $f$ with $\Proj{2}{0}$, $l$, and
-$\Proj{2}{1}$, where
+Então $h$ é a composição de $f$ com $\Proj{2}{0}$, $l$ e
+$\Proj{2}{1}$, onde
 \[
 l(x,y) = g(\Proj{2}{0}(x,y),\Proj{2}{0}(x,y),\Proj{2}{1}(x,y)),
 \]
-O.s.\@, $l$ is the composition of $g$ with $\Proj{2}{0}$, $\Proj{2}{0}$,
-and~$\Proj{2}{1}$.
+O.s.\@, $l$ é a composição de $g$ com $\Proj{2}{0}$, $\Proj{2}{0}$
+e~$\Proj{2}{1}$.
 
 \end{document}

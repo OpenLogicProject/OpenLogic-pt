@@ -6,94 +6,97 @@
 
 \begin{document}
 
-\olfileid{cmp}{thy}{nfm}
-\olsection{The Normal Form Theorem}
+\olfileid[pt]{cmp}{thy}{nfm}
+\olsection{O teorema da forma normal}
 
-Suppose we can describe definitions of computable functions, and test if
-some putative description of the complete record of the computation of
-that function on some input is correct. Then it stands to reason that
-independently of the model of computation, we can determine the value
-of any computable function~$f$ on any input~$x$ as follows:
+Suponha que possamos descrever definições de funções computáveis e
+testar se uma suposta descrição do registro completo da computação de
+uma dessas funções em certa entrada está correta. Então é razoável
+concluir que, independentemente do modelo de computação, podemos
+determinar o valor de qualquer função computável~$f$ em qualquer
+entrada~$x$ da seguinte maneira:
 \begin{enumerate}
-  \item Search through all possible descriptions of records of
-  computation.
-  \item Test if a given record is the record of a computation of~$f(x)$.
-  \item Extract the value of~$f(x)$ from the correct record if we have
-  found it.
+  \item Percorra todas as descrições possíveis de registros de
+  computação.
+  \item Teste se determinado registro é o registro de uma computação
+  de~$f(x)$.
+  \item Extraia do registro correto o valor de~$f(x)$, caso o tenhamos
+  encontrado.
 \end{enumerate}
-That this is in fact true is the content of Kleene's normal form
-theorem.
+O teorema da forma normal de Kleene afirma que isso de fato é verdade.
 
-\begin{thm}[Kleene's Normal Form Theorem]
+\begin{thm}[Teorema da forma normal de Kleene]
 \ollabel{thm:normal-form}
-There is a primitive recursive relation~$T(e, x, s)$ and a primitive
-recursive function~$U(s)$, with the following property: if $f$ is any
-partial computable function, then for some~$e$,
+Existe uma relação recursiva primitiva~$T(e, x, s)$ e uma função
+recursiva primitiva~$U(s)$ com a seguinte propriedade: se $f$ é uma
+função parcialmente computável qualquer, então, para algum~$e$,
 \[
 f(x) \simeq U(\umin{s}{T(e, x, s)})
 \]
-for every~$x$.
+para todo~$x$.
 \end{thm}
 
 \begin{proof}[Esboço de prova]
-For any model of computation one can rigorously define a description
-of the computable function~$f$ and code such description using a
-natural number~$e$.  One can also rigorously define a notion of
-``computation sequence'' which records the process of computing the
-function with index~$e$ for input~$x$.  Such a computation sequence can
-likewise be coded as a number~$s$.  This can be done in such a way
-that
+Para qualquer modelo de computação, pode-se definir rigorosamente uma
+descrição da função computável~$f$ e codificar tal descrição por meio
+de um número natural~$e$. Também se pode definir rigorosamente uma noção
+de ``sequência de computação'' que registre o processo de calcular a
+função de índice~$e$ na entrada~$x$. Essa sequência de computação pode
+igualmente ser codificada por um número~$s$. Isso pode ser feito de tal
+modo que
 \begin{enumerate}
-  \item the relation $T(e, x, s)$, which holds iff a number~$s$ codes the computation
-  sequence of the function with index~$e$ on input~$x$, and
-  \item the function $U(s)$ which maps a computation sequence coded
-  by~$s$ to the end result of that computation
+  \item a relação $T(e, x, s)$, que vale se, e somente se, um número~$s$
+  codifica a sequência de computação da função de índice~$e$ na
+  entrada~$x$, e
+  \item a função $U(s)$, que associa uma sequência de computação
+  codificada por~$s$ ao resultado final dessa computação,
 \end{enumerate}
-are both computable. In fact, the relation~$T$ and the function~$U$
-are primitive recursive.
+sejam ambas computáveis. Na verdade, a relação~$T$ e a função~$U$
+são recursivas primitivas.
 \end{proof}
 
 \begin{explain}
-In order to give a rigorous proof of the Normal Form Theorem, we would
-have to fix a model of computation and carry out the coding of
-descriptions of computable functions and of computation sequences in
-detail, and verify that the relation~$T$ and function~$U$ are
-primitive recursive.  For most applications, it suffices that $T$
-and~$U$ are computable and that $U$~is total.
+Para dar uma demonstração rigorosa do Teorema da Forma Normal, teríamos
+de fixar um modelo de computação, realizar em detalhe a codificação das
+descrições das funções computáveis e das sequências de computação, e
+verificar que a relação~$T$ e a função~$U$ são recursivas primitivas.
+Para a maioria das aplicações, basta que $T$ e~$U$ sejam computáveis
+e que $U$~seja total.
 
-It is probably best to remember the proof of the normal form theorem
-in slogan form: $\umin{s}{T(e, x, s)}$ searches for a computation
-sequence of the function with index~$e$ on input~$x$, and $U$ returns
-the output of the computation sequence if one can be found.
+Talvez a melhor maneira de lembrar a demonstração do teorema da forma
+normal seja como um lema: $\umin{s}{T(e, x, s)}$ procura uma sequência
+de computação da função de índice~$e$ na entrada~$x$, e $U$ devolve a
+saída da sequência de computação, caso seja possível encontrar uma.
 \end{explain}
 
-If the model of computation is the partial recursive functions (which
-is what Kleene originally used), it shows that only a single use of
-unbounded search, O.s.\@, a single $\umin{y}{f(\vec x, y)}$ operator is
-necessary for the definition of any function. In this sense it shows
-that any partial recursive function has a normal form.
+Se o modelo de computação for o das funções recursivas parciais (que é
+o que Kleene usou originalmente), o teorema mostra que apenas um único
+uso da busca ilimitada, O.s.\@, um único operador
+$\umin{y}{f(\vec x, y)}$, é necessário para definir qualquer função.
+Nesse sentido, ele mostra que toda função recursiva parcial tem uma
+forma normal.
 
-$T$ and $U$ can be used to define the enumeration $\cfind{0}$,
-$\cfind{1}$, $\cfind{2}$, \dots.  From now on, we will assume that we
-have fixed a suitable choice of $T$ and~$U$, and take the equation
+$T$ e $U$ podem ser usados para definir a enumeração $\cfind{0}$,
+$\cfind{1}$, $\cfind{2}$, \dots. De agora em diante, suporemos que
+fixamos uma escolha adequada de $T$ e~$U$ e tomaremos a equação
 \[
 \cfind{e}(x) \simeq U(\umin{s}{T(e,x,s)})
 \]
-to be the \emph{definition} of $\cfind{e}$.
+como a \emph{definição} de $\cfind{e}$.
 
-Here is another useful fact:
+Eis outro fato útil:
 
 \begin{thm}
-Every partial computable function has infinitely many indices.
+Toda função parcialmente computável tem infinitos índices.
 \end{thm}
 
-Again, this is intuitively clear.  Given any (description of) a
-computable function, one can come up with a different description
-which computes the same function (input-output pair) but does so,
-p.ex., by first doing something that has no effect on the computation
-(say, test if $0 = 0$, or count to $5$, etc.).  The index of the
-altered description will always be different from the original
-index.  Both are indices of the same function, just computed slightly
-differently.
+Isso também é intuitivamente claro. Dada qualquer (descrição de uma)
+função computável, pode-se produzir uma descrição diferente que calcule
+a mesma função (o mesmo par de entrada e saída), mas o faça, p.ex., realizando primeiro algo que não tenha efeito sobre a
+computação (digamos, testar se $0 = 0$, contar até $5$ etc.). O índice
+da descrição alterada será sempre diferente do índice original. Ambos
+são índices da mesma função, apenas calculada de maneiras ligeiramente
+diferentes.
 
 \end{document}
+

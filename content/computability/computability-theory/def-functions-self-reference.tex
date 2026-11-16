@@ -6,52 +6,52 @@
 
 \begin{document}
 
-\olfileid{cmp}{thy}{slf}
-\olsection{Defining Functions using Self-Reference}
+\olfileid[pt]{cmp}{thy}{slf}
+\olsection{Definição de funções por autorreferência}
 
-It is generally useful to be able to define functions in terms of
-themselves. For example, given computable functions $k$, $l$, and~$m$,
-the fixed-point lemma tells us that there is a partial computable
-function~$f$ satisfying the following equation for every~$y$:
+Em geral, é útil poder definir funções em termos delas próprias. Por
+exemplo, dadas funções computáveis $k$, $l$ e~$m$, o lema do ponto
+fixo nos diz que existe uma função parcialmente computável~$f$ que
+satisfaz a seguinte equação para todo~$y$:
 \[
 f(y) \simeq
 \begin{cases}
-k(y) & \text{if $l(y) = 0$} \\
-f(m(y)) & \text{otherwise.}
+k(y) & \text{se $l(y) = 0$} \\
+f(m(y)) & \text{caso contrário.}
 \end{cases}
 \]
-Again, more specifically, $f$~is obtained by letting
+Mais especificamente, $f$~é novamente obtida tomando
 \[
 g(x,y) \simeq
 \begin{cases}
-k(y) & \text{if $l(y) = 0$} \\
-\cfind{x}(m(y)) & \text{otherwise}
+k(y) & \text{se $l(y) = 0$} \\
+\cfind{x}(m(y)) & \text{caso contrário}
 \end{cases}
 \]
-and then using the fixed-point lemma to find an index~$e$ such that
-$\cfind{e}(y) = g(e,y)$.
+e usando então o lema do ponto fixo para encontrar um índice~$e$ tal
+que $\cfind{e}(y) = g(e,y)$.
 
-For a concrete example, the ``greatest common divisor'' function
-$\fn{gcd}(u,v)$ can be defined by
+Como exemplo concreto, a função ``máximo divisor comum''
+$\fn{gcd}(u,v)$ pode ser definida por
 \[
 \fn{gcd}(u,v) \simeq
 \begin{cases}
-v & \text{if $u = 0$} \\
-\fn{gcd}(\fn{mod}(v, u), u) & \text{otherwise}
+v & \text{se $u = 0$} \\
+\fn{gcd}(\fn{mod}(v, u), u) & \text{caso contrário}
 \end{cases}
 \]
-where $\fn{mod}(v, u)$ denotes the remainder of dividing $v$
-by~$u$. An appeal to the fixed-point lemma shows that $\fn{gcd}$ is
-partial computable. (In fact, this can be put in the format above,
-letting $y$ code the pair $\tuple{u, v}$.) A subsequent induction
-on~$u$ then shows that, in fact, $\fn{gcd}$ is total.
+em que $\fn{mod}(v, u)$ denota o resto da divisão de $v$
+por~$u$. Um apelo ao lema do ponto fixo mostra que $\fn{gcd}$ é
+parcialmente computável. (Na verdade, isso pode ser colocado no
+formato acima, fazendo $y$ codificar o par $\tuple{u, v}$.) Uma indução
+subsequente sobre~$u$ mostra, então, que $\fn{gcd}$ é, de fato, total.
 
-Of course, one can cook up self-referential definitions that are much
-fancier than the examples just discussed. Most programming languages
-support definitions of functions in terms of themselves, one way or
-another. Note that this is a little bit less dramatic than being able
-to define a function in terms of an \emph{index} for an algorithm
-computing the functions, which is what, in full generality, the
-fixed-point theorem lets you do.
+Naturalmente, é possível criar definições autorreferenciais muito mais
+sofisticadas do que os exemplos que acabamos de discutir. A maioria
+das linguagens de programação permite, de uma maneira ou de outra,
+definir funções em termos delas próprias. Observe que isso é um pouco
+menos impressionante do que poder definir uma função em termos de um
+\emph{índice} para um algoritmo que calcula a função, que é o que o
+teorema do ponto fixo permite fazer em toda a sua generalidade.
 
 \end{document}
