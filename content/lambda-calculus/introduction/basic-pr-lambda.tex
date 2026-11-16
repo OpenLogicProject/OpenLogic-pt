@@ -6,27 +6,28 @@
 
 \begin{document}
 
-\olfileid{lam}{int}{bas}
-\olsection{The Basic Primitive Recursive Functions are \usetoken{S}{lambda definable}}
+\olfileid[pt]{lam}{int}{bas}
+\olsection{As funções recursivas primitivas básicas são \usetoken{S}{lambda definable}}
 
 \begin{lem}
-The functions $\Zero$, $\Succ$, and $\Proj{n}{i}$ are !!{lambda definable}.
+As funções $\Zero$, $\Succ$ e $\Proj{n}{i}$ são !!{lambda definable}.
 \end{lem}
 
 \begin{proof}
-$\Zero$ is just
+$\Zero$ é simplesmente
 $\lambd[x][\lambd[y][y]]$.
 
-The successor function~$\Succ$, is
-defined by $\fn{Succ}(u) = \lambd[x][\lambd[y][x(uxy)]]$. You should
-think about why this works; for each numeral $\num{n}$, thought of as
-an iterator, and each function~$f$, $\fn{Succ}(\num{n},f)$ is a function that,
-on input~$y$, applies $f$ $n$ times starting with~$y$, and then
-applies it once more.
+A função sucessor~$\Succ$ é definida por
+$\fn{Succ}(u) = \lambd[x][\lambd[y][x(uxy)]]$. Você deve pensar por que isso
+funciona; para cada numeral $\num{n}$, considerado um iterador, e cada
+função~$f$, $\fn{Succ}(\num{n},f)$ é uma função que, com entrada~$y$, aplica
+$f$ $n$ vezes a partir de~$y$ e depois a aplica mais uma vez.
 
-There is nothing to say about projections: $\fn{Proj}^n_i(x_0, \dots,
-x_{n-1}) = x_i$. In other words, by our conventions, $\fn{Proj}^n_i$ is
-the lambda term $\lambd[x_0][\dots \lambd[x_{n-1}][x_i]]$.
+Não há nada a dizer sobre projeções: $\fn{Proj}^n_i(x_0, \dots,
+x_{n-1}) = x_i$. Em outras palavras, segundo nossas convenções,
+$\fn{Proj}^n_i$ é o termo lambda
+$\lambd[x_0][\dots \lambd[x_{n-1}][x_i]]$.
 \end{proof}
 
 \end{document}
+

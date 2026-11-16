@@ -6,39 +6,40 @@
 
 \begin{document}
 
-\olfileid{lam}{rep}{arf}
-\olsection{\usetoken{S}{lambda definable} Arithmetical Functions}
+\olfileid[pt]{lam}{rep}{arf}
+\olsection{Funções aritméticas \usetoken{S}{lambda definable}}
 
 \begin{prop}
   \ollabel{prop:succ-ld}
-  The successor function~$\Succ$ is !!{lambda definable}.
+  A função sucessor~$\Succ$ é !!{lambda definable}.
 \end{prop}
 
 \begin{proof}
-A term that !!{lambda define}s the successor function is
+Um termo que !!{lambda define}s a função sucessor é
 \begin{align*}
   \fn{Succ} & \ident \lambd[a][\lambd[fx][f ({a} f x)]].
-  \intertext{Given our conventions, this is short for}
+  \intertext{De acordo com nossas convenções, esta é uma abreviação de}
   \fn{Succ} & \ident \lambd[a][\lambd[f][\lambd[x][(f (({a} f) x))]]].
-  \intertext{$\fn{Succ}$ is a function that accepts as argument a
-    number~$a$, and evaluates to another function, $\lambd[fx][f ({a}
-      f x)]$. That function is not itself a Church numeral. However,
-    if the argument $a$ is a Church numeral, it reduces to one. Consider:}
+  \intertext{$\fn{Succ}$ é uma função que recebe como argumento um
+    número~$a$ e resulta em outra função, $\lambd[fx][f ({a}
+      f x)]$. Essa função não é, ela própria, um numeral de Church. No entanto,
+    se o argumento $a$ for um numeral de Church, ela se reduz a um. Considere:}
    (\lambd[a][\lambd[fx][f ({a} f x)]])\,\num{n} & \redone
    \lambd[fx][f ({\num{n}} f x)].
-   \intertext{The embedded term $\num{n}fx$ is a redex, since
-     $\num{n}$ is $\lambd[fx][f^nx]$. So $\num{n}fx \redone f^nx$ and
-     so, for the entire term we have}
+   \intertext{O termo interno $\num{n}fx$ é um redex, pois
+     $\num{n}$ é $\lambd[fx][f^nx]$. Assim, $\num{n}fx \redone f^nx$ e,
+     para o termo inteiro, temos}
    \fn{Succ}\, \num n & \red \lambd[fx][f(f^n(x))],
 \end{align*}
 O.s.\@, $\num{n+1}$.
 \end{proof}
 
 \begin{ex}
-  Let's look at what happens when we apply $\fn{Succ}$ to~$\num{0}$,
-  O.s.\@, $\lambd[fx][x]$. We'll spell the terms out in full:
+  Vejamos o que acontece quando aplicamos $\fn{Succ}$ a~$\num{0}$,
+  O.s.\@, $\lambd[fx][x]$. Escreveremos os termos por extenso:
   \begin{align*}
-    \fn{Succ}\, \num{0} & \ident (\lambd[a][\lambd[f][\lambd[x][(f (({a} f) x))]]])(\lambd[f][\lambd[x][x]])\\
+    \fn{Succ}\, \num{0} & \ident (\lambd[a][\lambd[f][\lambd[x][(f (({a} f) 
+x))]]])(\lambd[f][\lambd[x][x]])\\
     & \redone \lambd[f][\lambd[x][(f (({(\lambd[f][\lambd[x][x]])} f) x))]] \\
     & \redone \lambd[f][\lambd[x][(f ({(\lambd[x][x])} x))]] \\
     & \redone \lambd[f][\lambd[x][(f x)]] \ident \num{1}\\
@@ -46,96 +47,96 @@ O.s.\@, $\num{n+1}$.
 \end{ex}
 
 \begin{prob}
-  The term 
+  O termo 
   \begin{align*}
     \fn{Succ}' & \ident \lambd[{n}][\lambd[fx][{n} f (f x)]]
   \end{align*}
-  !!{lambda define}s the successor function. Explain why.
+  !!{lambda define}s a função sucessor. Explique por quê.
 \end{prob}
 
 \begin{prop}
   \ollabel{prop:add-ld}
-  The addition function~$\Add$ is !!{lambda definable}.
+  A função adição~$\Add$ é !!{lambda definable}.
 \end{prop}
 
 \begin{proof}
-Addition is !!{lambda define}d by the terms  
+A adição é !!{lambda define}d pelos termos  
 \begin{align*}
   \fn{Add} & \ident \lambd[{a}{b}][\lambd[fx][{a} f ({b} f x)]]
-\intertext{or, alternatively,}
+\intertext{ou, alternativamente,}
   \fn{Add}' & \ident \lambd[{a}{b}][{a}\, \fn{Succ} \, {b}].
-\intertext{The first addition works as follows: $\fn{Add}$ first
-  accept two numbers ${a}$ and ${b}$. The result is a function that
-  accepts $f$ and $x$ and returns $af(bfx)$. If $a$ and $b$ are Church
-  numerals $\num{n}$ and $\num{m}$, this reduces to $f^{n+m}(x)$,
-  which is identical to $f^{n}(f^{m}(x))$. Or, slowly:}
+\intertext{A primeira representação da adição funciona da seguinte maneira: $\fn{Add}$ primeiro
+  recebe dois números, ${a}$ e ${b}$. O resultado é uma função que
+  recebe $f$ e $x$ e devolve $af(bfx)$. Se $a$ e $b$ forem os numerais de Church
+  $\num{n}$ e $\num{m}$, isso se reduz a $f^{n+m}(x)$,
+  que é idêntico a $f^{n}(f^{m}(x))$. Ou, passo a passo:}
   (\lambd[{a}{b}][\lambd[fx][{a} f ({b} f x)]])\num n\,\num m & \redone
   \lambd[fx][\num{n}\, f (\num {m}\, f x)] \\
   & \redone \lambd[fx][\num{n}\, f (f^m x)] \\
   & \redone \lambd[fx][f^n (f^m x)] \ident \num {n+m}.
-\intertext{The second representation of addition $\fn{Add'}$ works
-  differently: Applied to two Church numerals $\num{n}$ and
+\intertext{A segunda representação da adição, $\fn{Add'}$, funciona
+  de outro modo: aplicada a dois numerais de Church $\num{n}$ e
   $\num{m}$,}
 \fn{Add}' \num n \,\num m
 & \redone \num{n}\, \fn{Succ}\, \num{m}.
-\intertext{But $\num{n} f x$ always reduces to $f^n(x)$. So,}
+\intertext{Mas $\num{n} f x$ sempre se reduz a $f^n(x)$. Portanto,}
   \num{n}\,  \fn{Succ}\, \num{m} & \red \fn{Succ}^n(\num{m}).
 \end{align*}
-And since $\fn{Succ}$ !!{lambda define}s the successor function, and the
-successor function applied $n$ times to~$m$ gives $n+m$, this in turn
-reduces to~$\num{n+m}$.
+E, como $\fn{Succ}$ !!{lambda define}s a função sucessor, e aplicar a função
+sucessor $n$ vezes a~$m$ resulta em $n+m$, isso, por sua vez,
+se reduz a~$\num{n+m}$.
 \end{proof}
 
 \begin{prop}
   \ollabel{prop:mult-ld}
-  Multiplication is !!{lambda definable} by the term
+  A multiplicação é !!{lambda definable} pelo termo
   \[
   \fn{Mult} \ident \lambd[ab][\lambd[fx][a (b f) x]]
   \]
 \end{prop}
 
 \begin{proof}
-  To see how this works, suppose we apply $\fn{Mult}$ to Church numerals
-  $\num{n}$ and $\num{m}$: $\fn{Mult} \, \num{n} \, \num{m}$ reduces to
-  $\lambd[fx][\num{n}(\num{m}\, f)x]$.  The term $\num{m} f$ defines a
-  function which applies $f$ to its argument $m$ times. Consequently,
-  $\num{n} (\num{m} f) x$ applies the function ``apply $f$ $m$ times''
-  itself $n$ times to~$x$. In other words, we apply $f$ to $x$, $n\cdot
-  m$ times. But the resulting normal term is just the Church numeral
+  Para ver como isso funciona, suponha que apliquemos $\fn{Mult}$ aos numerais de Church
+  $\num{n}$ e $\num{m}$: $\fn{Mult} \, \num{n} \, \num{m}$ se reduz a
+  $\lambd[fx][\num{n}(\num{m}\, f)x]$. O termo $\num{m} f$ define uma
+  função que aplica $f$ a seu argumento $m$ vezes. Consequentemente,
+  $\num{n} (\num{m} f) x$ aplica a função ``aplicar $f$ $m$ vezes''
+  $n$ vezes a~$x$. Em outras palavras, aplicamos $f$ a $x$, $n\cdot
+  m$ vezes. Mas o termo normal resultante é precisamente o numeral de Church
   $\num{nm}$.
 \end{proof}
 
 \begin{editorial}
-We can actually simplify this term further by $\eta$-reduction:
+Na verdade, podemos simplificar ainda mais esse termo por redução~$\eta$:
 \[
   \fn{Mult} \ident \lambd[ab][\lambd[f][a (b f)]].
 \]
 
-But then we first have to explain $\eta$-reduction.
+Mas então primeiro precisamos explicar a redução~$\eta$.
 \end{editorial}
 
 \begin{prob}
-Multiplication can be !!{lambda define}d by the term
+A multiplicação pode ser !!{lambda define}d pelo termo
 \[
-  \fn{Mult}' \ident \lambd[ab][a (\fn{Add}\, a) \num{0}].
+  \fn{Mult}' \ident \lambd[ab][a (\fn{Add}\, b) \num{0}].
 \]
-Explain why this works.
+Explique por que isso funciona.
 \end{prob}
 
-The definition of exponentiation as a $\lambd$-term is
-surprisingly simple:
+A definição da exponenciação como um termo-$\lambd$ é
+surpreendentemente simples:
 \[
   \fn{Exp} \ident \lambd[be][e b].
 \]
-The first argument $b$ is the base and the second~$e$ is the exponent.
-Intuitively, $e f$ is $f^e$ by our encoding of numbers. If you find it
-hard to understand, we can still define exponentiation also by
-iterated multiplication:
+O primeiro argumento $b$ é a base, e o segundo,~$e$, é o expoente.
+Intuitivamente, $e f$ é $f^e$ segundo nossa codificação dos números. Se isso
+for difícil de entender, ainda podemos definir a exponenciação por
+multiplicação iterada:
 \[
   \fn{Exp}' \ident \lambd[be][e (\fn{Mult}\, b) \num{1}].
 \]
 
-Predecessor and subtraction on Church numeral is not as simple as we
-might think: it requires encoding of pairs.
+O predecessor e a subtração de numerais de Church não são tão simples quanto
+poderíamos pensar: exigem a codificação de pares.
 
 \end{document}

@@ -6,56 +6,56 @@
 
 \begin{document}
 
-\olfileid{lam}{syn}{tr}
-\olsection{Terms as $\alpha$-Equivalence Classes}
+\olfileid[pt]{lam}{syn}{tr}
+\olsection{Termos como classes de equivalência~$\alpha$}
 
-From now on, we will consider terms up to $\alpha$-equivalence.  That
-means when we write a term, we mean its $\alpha$-equivalance class it
-is in. For example, we write $\lambd[a][\lambd[b][a c]]$ for the set
-of all terms $\alpha$-equivalent to it, such as $\lambd[a][\lambd[b][a
-    c]]$, $\lambd[b][\lambd[a][b c]]$, etc.
+Daqui em diante, consideraremos os termos a menos de equivalência~$\alpha$.
+Isso significa que, quando escrevemos um termo, queremos dizer a classe de
+equivalência~$\alpha$ à qual ele pertence. Por exemplo, escrevemos
+$\lambd[a][\lambd[b][a c]]$ para o conjunto de todos os termos
+$\alpha$-equivalentes a ele, como $\lambd[a][\lambd[b][a c]]$,
+$\lambd[b][\lambd[a][b c]]$ etc.
 
-Also, while in previous sections letters such as $N, Q$ are used to
-denote a term, from now on we use them to denote a class, and it is
-these classes instead of terms that will be our subjects of study in
-what follows. Letters such as $x, y$ continues to denote a variable.
+Além disso, embora nas seções anteriores letras como $N, Q$ fossem usadas
+para denotar um termo, daqui em diante as usaremos para denotar uma classe, e
+serão essas classes, em vez dos termos, os objetos de estudo do que segue.
+Letras como $x, y$ continuam a denotar uma variável.
 
-We also adopt the notation $\rep{M}$ to denote an arbitrary
-!!{element} of the class~$M$, and $\rep{M}[0], \rep{M}[1], etc. $ if
-we need more than one.
+Também adotamos a notação $\rep{M}$ para denotar um !!{element} arbitrário da
+classe~$M$, e $\rep{M}[0], \rep{M}[1], etc. $ caso precisemos de mais de um.
 
-We reuse the notations from terms to simplify our wording. We
-have following definition on classes:
+Reutilizamos as notações dos termos para simplificar nossa formulação. Temos
+a seguinte definição sobre classes:
 \begin{defn}
   \begin{enumerate}
-  \item $\lambd[x][N]$ is defined as the class containing
+  \item $\lambd[x][N]$ é definida como a classe que contém
     $\lambd[x][\rep{N}]$.
-  \item $PQ$ is defined to be the class containing $\rep{P}\rep{Q}$.
+  \item $PQ$ é definida como a classe que contém $\rep{P}\rep{Q}$.
   \end{enumerate}
 \end{defn}
 
-It is not hard to see that they are well defined, because
-$\alpha$-conversion is compatible.
+Não é difícil ver que estão bem definidas, pois a conversão~$\alpha$ é
+compatível.
 
 \begin{defn} \ollabel{def:fv}
-  The \emph{free variables} of an $\alpha$-equivalence class~$M$, or
-  $FV(M)$, is defined to be $FV(\rep{M})$.
+  As \emph{variáveis livres} de uma classe de equivalência~$\alpha$~$M$, ou
+  $FV(M)$, são definidas como $FV(\rep{M})$.
 \end{defn}
 
-This is well defined since $FV(\rep{M}[0]) =
-FV(\rep{M}[1])$, as shown in \olref[alp]{thm:fv}.
+Isso está bem definido, pois $FV(\rep{M}[0]) = FV(\rep{M}[1])$, como mostrado
+em \olref[alp]{thm:fv}.
 
-We also reuse the notation for substition into classes:
+Também reutilizamos a notação para substituição em classes:
 \begin{defn} \ollabel{def:sub}
-  The \emph{substitution} of $R$ for $y$ in $M$, or $\Subst{M}{R}{y}$, is
-  defined to be $\Subst{\rep{M}}{\rep{R}}{y}$, for any $\rep{M}$ and
-  $\rep{R}$ making the substition defined.
+  A \emph{substituição} de $R$ no lugar de $y$ em $M$, ou $\Subst{M}{R}{y}$, é
+  definida como $\Subst{\rep{M}}{\rep{R}}{y}$, para quaisquer $\rep{M}$ e
+  $\rep{R}$ que tornem a substituição definida.
 \end{defn}
 
-This is also well defined as shown in \olref[alp]{cor:sub}.
+Isso também está bem definido, como mostrado em \olref[alp]{cor:sub}.
 
-Note how this definition significantly simplifies our reasoning. For
-example:
+Observe como essa definição simplifica significativamente nosso raciocínio.
+Por exemplo:
 \begin{align}
   \Subst{\lambd[x][x]}{y}{x} & =\ollabel{eq:1}\\
   &= \Subst{\lambd[z][z]}{y}{x} \ollabel{eq:2}\\
@@ -63,30 +63,28 @@ example:
   &= \lambd[z][z]
 \end{align}
 
-\olref{eq:1} is undefined if we still regard it as substitution on
-terms; but as mentioned earlier, we now consider it a substitution on
-classes, which is why \olref{eq:2} can happen: we can replace
-$\lambd[x][x]$ with $\lambd[z][z]$ because they belong to the same
-class.
+\olref{eq:1} não está definida se ainda a considerarmos uma substituição
+sobre termos; mas, como mencionado anteriormente, agora a consideramos uma
+substituição sobre classes, razão pela qual \olref{eq:2} pode ocorrer: podemos
+substituir $\lambd[x][x]$ por $\lambd[z][z]$ porque pertencem à mesma classe.
 
-For the same reason, from now on we will assume that the
-representatives we choose always satisfy the conditions needed for
-substitution. For example, when we see $\Subst{\lambd[x][N]}{R}{y}$,
-we will assume the representative $\lambd[x][N]$ is chosen so that
-$x \neq y$ and $x \notin FV(R)$.
+Pela mesma razão, daqui em diante suporemos que os representantes escolhidos
+sempre satisfaçam as condições necessárias à substituição. Por exemplo, ao
+vermos $\Subst{\lambd[x][N]}{R}{y}$, suporemos que o representante
+$\lambd[x][N]$ foi escolhido de modo que $x \neq y$ e $x \notin FV(R)$.
 
-Since it is a bit strange to call $\lambd[x][x]$ a ``class'', let's
-call them $\Lambda$-terms (or simply ``terms'' in the rest of the
-part) from now on, to distinguish them from $\lambda$-terms that we
-are familiar with.
+Como é um pouco estranho chamar $\lambd[x][x]$ de «classe», daqui em diante
+vamos chamá-los de termos~$\Lambda$ (ou simplesmente «termos» no restante
+desta parte), para distingui-los dos termos~$\lambda$ com os quais estamos
+familiarizados.
 
 \begin{editorial}
-  We cannot say goodbye to terms yet: the whole definition of
-  $\Lambda$-terms is based on $\lambda$-terms, and we haven't provided
-  a method to define functions on $\Lambda$-terms, which means all
-  such functions have to be first defined  on $\lambda$-terms, and
-  then ``projected'' to $\Lambda$-terms, as we did for substitutions.
-  However we assume the reader can intuitively understand how we can
-  define functions on $\Lambda$-terms.
+  Ainda não podemos nos despedir dos termos: toda a definição dos
+  termos~$\Lambda$ baseia-se nos termos~$\lambda$, e não fornecemos um método
+  para definir funções sobre termos~$\Lambda$. Isso significa que todas essas
+  funções precisam ser definidas primeiro sobre termos~$\lambda$ e depois
+  «projetadas» para os termos~$\Lambda$, como fizemos com as substituições.
+  Contudo, supomos que o leitor possa compreender intuitivamente como definir
+  funções sobre termos~$\Lambda$.
 \end{editorial}
 \end{document}

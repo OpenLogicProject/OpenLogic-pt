@@ -6,54 +6,53 @@
 
 \begin{document}
 
-\olfileid{lam}{syn}{fv}
-\olsection{Free Variables}
+\olfileid[pt]{lam}{syn}{fv}
+\olsection{Variáveis livres}
 
-Lambda calculus is about functions, and lambda abstraction is how
-functions arise. Intuitively, $\lambd[x][M]$ is the function with
-values given by~$M$ when the argument to the function is assigned
-to~$x$. But not every occurrence of~$x$ in~$M$ is relevant: if $M$
-contains another abstract $\lambd[x][N]$ then the occurrences of $x$
-in~$N$ are relevant to $\lambd[x][N]$ but not to $\lambd[x][M]$.  So,
-a lambda abstract $\lambd[x]$ inside $\lambd[x][M]$ \emph{binds} those
-occurrences of $x$ in~$M$ that are not already bound by another lambda
-abstract---the \emph{free} occurrences of~$x$ in~$M$.
+O cálculo lambda trata de funções, e a abstração lambda é a maneira como as
+funções surgem. Intuitivamente, $\lambd[x][M]$ é a função cujos valores são
+dados por~$M$ quando o argumento da função é atribuído a~$x$. Mas nem toda
+ocorrência de~$x$ em~$M$ é relevante: se $M$ contém outra abstração
+$\lambd[x][N]$, então as ocorrências de $x$ em~$N$ são relevantes para
+$\lambd[x][N]$, mas não para $\lambd[x][M]$. Assim, uma abstração lambda
+$\lambd[x]$ dentro de $\lambd[x][M]$ \emph{liga} aquelas ocorrências de $x$
+em~$M$ que ainda não estão ligadas por outra abstração lambda---as
+ocorrências \emph{livres} de~$x$ em~$M$.
 
-\begin{defn}[Scope]
-If $\lambd[x][M]$ occurs inside a term~$N$, then the corresponding
-occurrence of~$N$ is the \emph{scope} of the~$\lambd[x]$.
+\begin{defn}[Escopo]
+Se $\lambd[x][M]$ ocorre dentro de um termo~$N$, então a ocorrência
+correspondente de~$N$ é o \emph{escopo} de~$\lambd[x]$.
 \end{defn}
 
 
-\begin{defn}[Free and bound occurrence]
-  An occurrence of variable $x$ in a term~$M$ is \emph{free} if it is
-  not in the scope of a $\lambd[x]$, and \emph{bound} otherwise. An
-  occurrence of a variable~$x$ in $\lambd[x][M]$ is bound by the initial
-  $\lambd[x]$ iff the occurrence of $x$ in~$M$ is free.
+\begin{defn}[Ocorrência livre e ligada]
+  Uma ocorrência da variável $x$ em um termo~$M$ é \emph{livre} se não está
+  no escopo de um $\lambd[x]$, e \emph{ligada} caso contrário. Uma
+  ocorrência de uma variável~$x$ em $\lambd[x][M]$ é ligada pelo
+  $\lambd[x]$ inicial sse a ocorrência de $x$ em~$M$ é livre.
 \end{defn}
 
 \begin{ex}
-  In $\lambd[x][x y]$, both $x$ and $y$ are in the scope of $\lambd[x]$,
-  so $x$ is bound by $\lambd[x]$. Since $y$ is not in the scope of
-  any $\lambd[y]$, it is free.  In $\lambd[x][x x]$, both occurrences
-  of $x$ are bound by~$\lambd[x]$, since both are free in $xx$.  In
-  $((\lambd[x][xx])x)$, the last occurrence of~$x$ is free, since it
-  is not in the scope of a $\lambd[x]$. In
-  $\lambd[x][(\lambd[x][x])x]$, the scope of the first $\lambd[x]$ is
-  $(\lambd[x][x])x$ and the scope of the second $\lambd[x]$ is the
-  second-to-last occurrence of~$x$. In $(\lambd[x][x])x$, the last
-  occurrence of $x$ is free, and the second-to-last is bound.  Thus,
-  the second-to-last occurrence of $x$ in $\lambd[x][(\lambd[x][x])x]$
-  is bound by the second $\lambd[x]$, and the last occurrence by the
-  first $\lambd[x]$.
+  Em $\lambd[x][x y]$, tanto $x$ quanto $y$ estão no escopo de $\lambd[x]$,
+  portanto $x$ é ligada por $\lambd[x]$. Como $y$ não está no escopo de
+  nenhum $\lambd[y]$, ela é livre. Em $\lambd[x][x x]$, ambas as ocorrências
+  de $x$ são ligadas por~$\lambd[x]$, pois ambas são livres em $xx$. Em
+  $((\lambd[x][xx])x)$, a última ocorrência de~$x$ é livre, pois não está no
+  escopo de um $\lambd[x]$. Em $\lambd[x][(\lambd[x][x])x]$, o escopo do
+  primeiro $\lambd[x]$ é $(\lambd[x][x])x$, e o escopo do segundo
+  $\lambd[x]$ é a penúltima ocorrência de~$x$. Em $(\lambd[x][x])x$, a
+  última ocorrência de $x$ é livre, e a penúltima é ligada. Assim, a
+  penúltima ocorrência de $x$ em $\lambd[x][(\lambd[x][x])x]$ é ligada pelo
+  segundo $\lambd[x]$, e a última, pelo primeiro $\lambd[x]$.
 \end{ex}
 
-For a term $P$, we can check all variable occurrences in it and get a
-set of free variables. This set is denoted by $\FV{P}$ with a natural
-definition as follows:
+Para um termo $P$, podemos examinar todas as ocorrências de variáveis nele e
+obter um conjunto de variáveis livres. Esse conjunto é denotado por
+$\FV{P}$, com a seguinte definição natural:
 
-\begin{defn}[Free variables of a term] \ollabel{def:fv}
-  The set of \emph{free variables} of a term is defined inductively by:
+\begin{defn}[Variáveis livres de um termo] \ollabel{def:fv}
+  O conjunto das \emph{variáveis livres} de um termo é definido
+  indutivamente por:
   \begin{enumerate}
     \item $\FV{x} = \{x\}$ \ollabel{def:fv1} 
     \item $\FV{\lambd[x][N]} = \FV{N} \setminus \{x\}$    \ollabel{def:fv2}
@@ -63,50 +62,48 @@ definition as follows:
 
 \begin{prob}
   \begin{enumerate}
-  \item Identify the scopes of $\lambd[g]$ and the two $\lambd[x]$ in
-    this term: $\lambd[g][(\lambd[x][g (x x)]) \lambd[x][g (x x)]]$.
-  \item In $\lambd[g][(\lambd[x][g (x x)]) \lambd[x][g (x x)]]$, are
-    all occurrences of variables bound? By which abstractions are they
-    bound respectively?
-    \item Give $\FV{\lambd[x][(\lambd[y][(\lambd[z][x y]) z]) y]}$
+  \item Identifique os escopos de $\lambd[g]$ e dos dois $\lambd[x]$ neste
+    termo: $\lambd[g][(\lambd[x][g (x x)]) \lambd[x][g (x x)]]$.
+  \item Em $\lambd[g][(\lambd[x][g (x x)]) \lambd[x][g (x x)]]$, todas as
+    ocorrências de variáveis estão ligadas? Por quais abstrações elas estão
+    ligadas, respectivamente?
+    \item Dê $\FV{\lambd[x][(\lambd[y][(\lambd[z][x y]) z]) y]}$.
   \end{enumerate}
 \end{prob}
 
 \begin{explain}
-A free variable is like a reference to the outside world (the
-\emph{environment}), and a term containing free variables can be seen
-as a partially specified term, since its behaviour depends on how we
-set up the environment. For example, in the term $\lambd[x][f x]$, which
-accepts an argument~$x$ and returns $f$ of that argument, the
-variable~$f$ is free. This value of the term is dependent on the
-environment it is in, in particular the value of $f$ in that
-environment.
+Uma variável livre é como uma referência ao mundo externo (o
+\emph{ambiente}), e um termo que contém variáveis livres pode ser visto como
+um termo parcialmente especificado, pois seu comportamento depende de como
+configuramos o ambiente. Por exemplo, no termo $\lambd[x][f x]$, que aceita
+um argumento~$x$ e devolve $f$ desse argumento, a variável~$f$ é livre. O
+valor desse termo depende do ambiente em que ele se encontra, em particular
+do valor de $f$ nesse ambiente.
 
-If we apply abstraction to this term, we get $\lambd[f][\lambd[x][f
-    x]]$. This term is no longer dependent on the environment variable
-$f$, because it now designates a function that accepts two arguments
-and returns the result of applying the first to the second. Changing
-$f$ in the environment won't have any effect on the behavior of this
-term, as the term will only use whatever is passed as an argument, and
-not the value of $f$ in the environment.
+Se aplicarmos abstração a esse termo, obtemos $\lambd[f][\lambd[x][f
+    x]]$. Esse termo já não depende da variável de ambiente $f$, pois agora
+designa uma função que aceita dois argumentos e devolve o resultado de
+aplicar o primeiro ao segundo. Alterar $f$ no ambiente não terá efeito sobre
+o comportamento desse termo, pois o termo usará apenas o que lhe for
+passado como argumento, e não o valor de $f$ no ambiente.
 \end{explain}
 
-\begin{defn}[Closed term, combinator]
-  A term with no free variables is called a \emph{closed term}, or a
-  \emph{combinator}.
+\begin{defn}[Termo fechado, combinador]
+  Um termo sem variáveis livres é chamado de \emph{termo fechado}, ou
+  \emph{combinador}.
 \end{defn}
 
 \begin{lem}\ollabel{lem:fv}
   \begin{enumerate}
-    \item \ollabel{lem:fv-abs} If $y \neq x$, then $y \in
-      \FV{\lambd[x][N]}$ iff $y \in \FV{N}$.
-    \item \ollabel{lem:fv-app} $y \in \FV{PQ}$ iff $y \in \FV{P}$ or $y
+    \item \ollabel{lem:fv-abs} Se $y \neq x$, então $y \in
+      \FV{\lambd[x][N]}$ sse $y \in \FV{N}$.
+    \item \ollabel{lem:fv-app} $y \in \FV{PQ}$ sse $y \in \FV{P}$ ou $y
       \in \FV{Q}$.
     \end{enumerate}
 \end{lem}
 
 \begin{proof}
-  Exercise.
+  Exercício.
 \end{proof}
 
 \begin{prob}
@@ -114,3 +111,4 @@ not the value of $f$ in the environment.
 \end{prob}
 
 \end{document}
+

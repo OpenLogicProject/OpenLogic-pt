@@ -6,21 +6,21 @@
 
 \begin{document}
 
-\olfileid{lam}{ldf}{prf}
-\olsection{Primitive Recursive Functions are \usetoken{S}{lambda definable}} 
+\olfileid[pt]{lam}{ldf}{prf}
+\olsection{As funções recursivas primitivas são \usetoken{S}{lambda definable}} 
 
-Recall that the primitive recursive functions are those that can be
-defined from the basic functions $\Zero$, $\Succ$, and $\Proj{n}{i}$
-by composition and primitive recursion.
+Lembre-se de que as funções recursivas primitivas são aquelas que podem ser
+definidas a partir das funções básicas $\Zero$, $\Succ$ e $\Proj{n}{i}$
+por composição e recursão primitiva.
 
 \begin{lem}
   \ollabel{lem:basic}
-  The basic primitive recursive functions $\Zero$, $\Succ$, and
-  projections~$\Proj{n}{i}$ are !!{lambda definable}.
+  As funções recursivas primitivas básicas $\Zero$, $\Succ$ e as
+  projeções~$\Proj{n}{i}$ são !!{lambda definable}.
 \end{lem}
 
 \begin{proof}
-They are !!{lambda define}d by the following terms:
+Elas são !!{lambda define}d pelos seguintes termos:
 \begin{align*}
   \fn{Zero} & \ident \lambd[a][\lambd[fx][x]]\\
   \fn{Succ} & \ident \lambd[a][\lambd[fx][f (a f x)]] \\
@@ -29,85 +29,91 @@ They are !!{lambda define}d by the following terms:
 \end{proof}
 
 \begin{lem}
-  \ollabel{lem:comp} Suppose the $k$-ary function $f$, and $n$-ary
-  functions $g_0, \dots, g_{k-1}$, are !!{lambda definable} by terms
-  $F$, $G_0$, \dots, $G_k$, and $h$ is defined from them by composition.
-  Then $H$ is !!{lambda definable}.
+  \ollabel{lem:comp} Suponha que a função $k$-ária~$f$ e as funções $n$-árias
+  $g_0$, \dots,~$g_{k-1}$ sejam !!{lambda definable} pelos termos
+  $F$, $G_0$, \dots, $G_{k-1}$, e que $h$ seja definida a partir delas por
+  composição. Então $h$ é !!{lambda definable}.
 \end{lem}
 
 \begin{proof}
-  $h$ can be !!{lambda define}d by the term
+  $h$ pode ser !!{lambda define}d pelo termo
   \[
   H \ident \lambd[x_0 \dots x_{n-1}][F\, (G_0 x_0 \dots
     x_{n-1}) \dots (G_{k-1} x_0 \dots x_{n-1})]
   \]
-  We leave verification of this fact as an exercise.
+  Deixamos a verificação desse fato como exercício.
 \end{proof}
 
 \begin{prob}
-  Complete the proof of \olref[lam][ldf][prf]{lem:comp} by showing
-  that $H\num{n_0}\dots\num{n_{n-1}} \red \num{h(n_0, \dots,
+  Complete a prova de \olref[lam][ldf][prf]{lem:comp} mostrando
+  que $H\num{n_0}\dots\num{n_{n-1}} \red \num{h(n_0, \dots,
     n_{n-1})}$.
 \end{prob}
 
-Note that \olref{lem:comp} did not require that $f$ and $g_0$,
-\dots,~$g_{k-1}$ are primitive recursive; it is only required that
-they are total and !!{lambda definable}.
+Observe que \olref{lem:comp} não exigiu que $f$ e $g_0$,
+\dots,~$g_{k-1}$ fossem recursivas primitivas; exige-se apenas que
+sejam totais e !!{lambda definable}.
 
 \begin{lem}\ollabel{lem:prim}
-  Suppose $f$ is an $n$-ary function and~$g$ is an $n+2$-ary function,
-  they are !!{lambda definable} by terms $F$ and~$G$, and the
-  function~$h$ is defined from $f$ and $g$ by primitive
-  recursion. Then $h$ is also !!{lambda definable}.
+  Suponha que $f$ seja uma função $n$-ária e~$g$, uma função $n+2$-ária,
+  que elas sejam !!{lambda definable} pelos termos $F$ e~$G$, e que a
+  função~$h$ seja definida a partir de $f$ e $g$ por recursão
+  primitiva. Então $h$ também é !!{lambda definable}.
 \end{lem}
 
 \begin{proof}
-  Recall that $h$ is defined by
+  Lembre-se de que $h$ é definida por
   \begin{align*}
     h(x_1, \dots, x_n, 0) &= f(x_1, \dots, x_n)\\
-    h(x_1, \dots, x_n, y+1) & = h(x_1, \dots, x_n, y, h(x_1, \dots, x_n, y)).
+    h(x_1, \dots, x_n, y+1) & = g(x_1, \dots, x_n, y, h(x_1, \dots, x_n, y)).
   \end{align*}
-  Informally speaking, the primitive recursive definition iterates the
-  application of the function $h$ $y$ times and applies it to $f(x_1,
-  \dots, x_n)$. This is reminiscent of the definition of Church
-  numerals, which is also defined as a iterator.
+  Informalmente, a definição recursiva primitiva itera a
+  aplicação da função $g$ $y$ vezes e a aplica a $f(x_1,
+  \dots, x_n)$. Isso lembra a definição dos numerais de Church,
+  que também são definidos como um iterador.
 
-  For simplicity, we give the definition and proof for a single
-  additional argument~$x$. The function $h$ is !!{lambda define}d by:
+  Para simplificar, damos a definição e a prova para um único
+  argumento adicional~$x$. A função $h$ é !!{lambda define}d por:
   \begin{align*}
     H \ident & \lambd[x][\lambd[y][\fn{Snd} (y
         D \tuple{\num{0}, F x})]]
-    \intertext{where }
+    \intertext{onde }
     D \ident & \lambd[p][\tuple{\fn{Succ} (\fn{Fst}\, p), (G x
           (\fn{Fst}\, p) (\fn{Snd}\, p))}]
   \end{align*}
-  The iteration state we maintain is a pair, the first of which is the
-  current $y$ and the second is the corresponding value of~$h$. For
-  every step of iteration we create a pair of new values of $y$ and
-  $h$; after the iteration is done we return the second part of the
-  pair and that's the final $h$ value. We now prove this is indeed a
-  representation of primitive recursion.
+  O estado da iteração que mantemos é um par, cujo primeiro componente é o
+  $y$ atual e cujo segundo componente é o valor correspondente de~$h$. A
+  cada passo da iteração, criamos um par de novos valores de $y$ e
+  $h$; ao fim da iteração, devolvemos a segunda parte do
+  par, que é o valor final de $h$. Mostraremos agora que esta é de fato uma
+  representação da recursão primitiva.
 
-  We want to prove that for any $n$ and $m$, $H\,\num{n}\,\num{m} \red
-  \num{h(n,m)}$. To do this we first show that if $D_n \ident
-  \Subst{D}{\num{n}}{x}$, then $D_n^m \tuple{\num{0}, F\, \num{n}} \red
-  \tuple{\num{m}, \num{h(n, m)}}$ We proceed by induction on~$m$.
+  Queremos provar que, para quaisquer $n$ e $m$, $H\,\num{n}\,\num{m} \red
+  \num{h(n,m)}$. Para isso, mostramos primeiro que, se $D_n \ident
+  \Subst{D}{\num{n}}{x}$, então $D_n^m \tuple{\num{0}, F\, \num{n}} \red
+  \tuple{\num{m}, \num{h(n, m)}}$. Procedemos por indução em~$m$.
 
-  If $m=0$, we want $D_n^0 \tuple{\num{0}, F\, \num{n}} \red
-  \tuple{\num{0}, \num{h(n, 0)}}$. But $D_n^0 \tuple{\num{0}, F\,
-    \num{n}}$ just is $\tuple{\num{0}, F\, \num{n}}$. Since $F$
-  !!{lambda define}s~$f$, this reduces to $\tuple{\num{0},
-    \num{f(n)}}$, and since $f(n) = h(n, 0)$, this is $\tuple{\num{0},
-    \num{h(n,0)}}$
+  Se $m=0$, queremos $D_n^0 \tuple{\num{0}, F\, \num{n}} \red
+  \tuple{\num{0}, \num{h(n, 0)}}$. Mas $D_n^0 \tuple{\num{0}, F\,
+    \num{n}}$ é simplesmente $\tuple{\num{0}, F\, \num{n}}$. Como $F$
+  !!{lambda define}s~$f$, isso se reduz a $\tuple{\num{0},
+    \num{f(n)}}$ e, como $f(n) = h(n, 0)$, isso é $\tuple{\num{0},
+    \num{h(n,0)}}$.
 
-  Now suppose that $D_n^m \tuple{\num{0}, F\, \num{n}} \red
-  \tuple{\num{m}, \num{h(n, m)}}$. We want to
-  show that $D_n^{m+1} \tuple{\num{0}, F\, \num{n}} \red
-  \tuple{\num{m+1}, \num{h(n, m+1)}}$.
+  Agora suponha que
+  \[
+    D_n^m \tuple{\num{0}, F\, \num{n}} \red
+    \tuple{\num{m}, \num{h(n, m)}}.
+  \]
+  Queremos mostrar que
+  \[
+    D_n^{m+1} \tuple{\num{0}, F\, \num{n}} \red
+    \tuple{\num{m+1}, \num{h(n, m+1)}}.
+  \]
   \begin{align*}
     D_n^{m+1} \tuple{\num{0}, F\, \num{n}}
     & \ident D_n(D_n^{m} \tuple{\num{0}, F\, \num{n}})\\
-    & \red D_n\,\tuple{\num{m}, \num{h(n, m)}} \text{\qquad (by IH)}\\
+    & \red D_n\,\tuple{\num{m}, \num{h(n, m)}} \text{\qquad (pela HI)}\\
     & \ident (\lambd[p][
       \tuple{
         \fn{Succ} (\fn{Fst}\, p), (G \, \num{n} (\fn{Fst}\, p) (\fn{Snd}\, p))
@@ -119,9 +125,9 @@ they are total and !!{lambda definable}.
     \tuple{\fn{Succ}\, \num{m}, (G \, \num{n} \,\num{m} \, \num{h(n,m)})}\\
     & \red \tuple{\num{m+1}, \num{g(n, m, h(n, m))}}
   \end{align*}
-  Since $g(n, m, h(n, m)) = h(n, m+1)$, we are done.
+  Como $g(n, m, h(n, m)) = h(n, m+1)$, concluímos a prova.
 
-  Finally, consider
+  Por fim, considere
   \begin{align*}
     H\,\num n\,\num m &\ident \lambd[x][\lambd[y][\fn{Snd} (y
         (\lambd[p].\tuple{\fn{Succ} (\fn{Fst}\, p), (G\, x\,
@@ -139,14 +145,13 @@ they are total and !!{lambda definable}.
 
 
 \begin{prop}
-  Every primitive recursive function is !!{lambda definable}.
+  Toda função recursiva primitiva é !!{lambda definable}.
 \end{prop}
 
 \begin{proof}
-  By \olref{lem:basic}, all basic functions are !!{lambda definable},
-  and by \olref{lem:comp} and \olref{lem:prim}, the !!{lambda definable}
-  functions are closed under composition and primitive recursion.
+  Por \olref{lem:basic}, todas as funções básicas são !!{lambda definable},
+  e, por \olref{lem:comp} e \olref{lem:prim}, as funções !!{lambda definable}
+  são fechadas sob composição e recursão primitiva.
 \end{proof}
 
 \end{document}
-

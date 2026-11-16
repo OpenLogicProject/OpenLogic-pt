@@ -6,47 +6,46 @@
 
 \begin{document}
 
-\olfileid{lam}{ldf}{pai}
-\olsection{Pairs and Predecessor}
+\olfileid[pt]{lam}{ldf}{pai}
+\olsection{Pares e predecessor}
 
 \begin{defn}
-The pair of $M$ and $N$ (written $\tuple{M,N}$) is defined as follows:
+O par de $M$ e $N$ (escrito $\tuple{M,N}$) é definido da seguinte maneira:
 \[
 \tuple{M,N} \ident \lambd[f][fMN].
 \]
 \end{defn}
   
-Intuitively it is a function that accepts a function, and applies that
-function to the two elements of the pair. Following this idea we have
-this constructor, which takes two terms and returns the pair containing
-them:
+Intuitivamente, trata-se de uma função que recebe uma função e aplica essa
+função aos dois elementos do par. Seguindo essa ideia, temos este
+construtor, que recebe dois termos e devolve o par que os contém:
 \[
   \fn{Pair} \ident \lambd[mn][\lambd[f][fmn]]
 \]
-Given a pair, we also want to recover its elements.
-For this we need two access functions, which accept a pair as argument and
-return the first or second elements in it:
+Dado um par, também queremos recuperar seus elementos.
+Para isso, precisamos de duas funções de acesso, que recebem um par como argumento e
+devolvem o primeiro ou o segundo elemento dele:
 \begin{align*}
   \fn{Fst} & \ident \lambd[p][p(\lambd[mn][m])]\\
   \fn{Snd} & \ident \lambd[p][p(\lambd[mn][n])]
 \end{align*}
 
 \begin{prob}
-  Explain why the access functions $\fn{Fst}$ and $\fn{Snd}$ work.
+  Explique por que as funções de acesso $\fn{Fst}$ e $\fn{Snd}$ funcionam.
 \end{prob}
 
-Now with pairs we can !!{lambda define} the predecessor function:
+Agora, com pares, podemos !!{lambda define} a função predecessor:
 \[
   \fn{Pred} \ident \lambd[n][\fn{Fst}(n (\lambd[p][\tuple{\fn{Snd}\, {p}, \fn{Succ}(\fn{Snd}\, {p})}]) \tuple{\num 0, \num 0})]
 \]
-Remember that $\num n\, f x$ reduces to $f^{n}(x)$; in this
-case $f$ is a function that accepts a pair $p$ and returns a new
-pair containing the second component of $p$ and the successor of the
-second component; $x$ is the pair $\tuple{0,0}$. Thus, the
-result is $\tuple{0,0}$ for $n=0$, and $\tuple{\num{n-1}, \num n}$
-otherwise. $\fn{Pred}$ then returns the first component of the result.
+Lembre-se de que $\num n\, f x$ se reduz a $f^{n}(x)$; neste
+caso, $f$ é uma função que recebe um par $p$ e devolve um novo
+par contendo o segundo componente de $p$ e o sucessor do
+segundo componente; $x$ é o par $\tuple{0,0}$. Assim, o
+resultado é $\tuple{0,0}$ para $n=0$, e $\tuple{\num{n-1}, \num n}$
+nos demais casos. $\fn{Pred}$ devolve então o primeiro componente do resultado.
 
-Subtraction can be defined as $\fn{Pred}$ applied to $a$, $b$ times:
+A subtração pode ser definida como $\fn{Pred}$ aplicada a $a$, $b$ vezes:
 \[
 \fn{Sub} \ident \lambd[ab][b \fn{Pred}\, a].
 \]

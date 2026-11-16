@@ -6,93 +6,92 @@
 
 \begin{document}
 
-\olfileid{lam}{syn}{unq}
-\olsection{Unique Readability}
+\olfileid[pt]{lam}{syn}{unq}
+\olsection{Legibilidade única}
 
-We may wonder if for each term there is a unique way of forming it,
-and there is.  For each lambda term there is only one way to construct
-and interpret it.  In the following discussion, a \emph{formation} is
-the procedure of constructing a term using the formation rules (one or
-several times) of \olref[trm]{defn:term}.
+Podemos nos perguntar se há, para cada termo, uma única maneira de formá-lo,
+e há. Para cada termo lambda, há apenas uma maneira de construí-lo e
+interpretá-lo. Na discussão seguinte, uma \emph{formação} é o procedimento
+de construir um termo usando as regras de formação (uma ou várias vezes) de
+\olref[trm]{defn:term}.
 
 \begin{lem}\ollabel{lem:term-start}
-A term starts with either a variable or a parenthesis.
+Um termo começa por uma variável ou por um parêntese.
 \end{lem}
 
 \begin{proof}
-Something counts as a term only if it is constructed according to
-\olref[trm]{defn:term}. If it is the result of
-\olref[trm]{defn:term-var}, it must be a variable. If it is the result
-of \olref[trm]{defn:term-abs} or \olref[trm]{defn:term-app}, it starts
-with a parenthesis.
+Algo conta como termo somente se for construído de acordo com
+\olref[trm]{defn:term}. Se for resultado de
+\olref[trm]{defn:term-var}, deve ser uma variável. Se for resultado de
+\olref[trm]{defn:term-abs} ou \olref[trm]{defn:term-app}, começa por um
+parêntese.
 \end{proof}
 
 \begin{lem}\ollabel{lem:app-start}
-The result of an application starts with either two parentheses or a
-parenthesis and a variable.
+O resultado de uma aplicação começa por dois parênteses ou por um parêntese
+e uma variável.
 \end{lem}
 
 \begin{proof}
-If $M$ is the result of an application, it is of the form $(PQ)$, so
-it begins with a parenthesis. Since $P$ is a term, by
-\olref{lem:term-start}, it begins either with a parenthesis or a
-variable.
+Se $M$ é resultado de uma aplicação, tem a forma $(PQ)$ e, portanto, começa
+por um parêntese. Como $P$ é um termo, por \olref{lem:term-start} ele começa
+por um parêntese ou por uma variável.
 \end{proof}
 
 \begin{lem}\ollabel{lem:initial}
-No proper initial part of a term is itself a term.
+Nenhuma parte inicial própria de um termo é, ela própria, um termo.
 \end{lem}
 
 \begin{prob}
-Prove \olref[lam][syn][unq]{lem:initial} by induction on the length
-of terms.
+Prove \olref[lam][syn][unq]{lem:initial} por indução no comprimento dos
+termos.
 \end{prob}
 
-\begin{prop}[Unique Readability] \ollabel{prop:unq}
-There is a unique formation for each term. In other words, if a term
-$M$ is formed by a formation, then it is the only formation that can
-form this term.
+\begin{prop}[Legibilidade única] \ollabel{prop:unq}
+Há uma formação única para cada termo. Em outras palavras, se um termo $M$
+é formado por uma formação, então essa é a única formação capaz de formar
+esse termo.
 \end{prop}
 
 \begin{proof}
-  We prove this by induction on the formation of terms. 
+  Provamos isso por indução na formação dos termos.
   \begin{enumerate}
-    \item $M$ is of the form
-      $x$, where $x$ is some variable. Since the results of abstractions and applications always start with parentheses, they cannot have been used to
-      construct $M$; Thus, the formation of $M$ must be a single step
-      of \olref[trm]{defn:term}\olref[trm]{defn:term-var}.
-    \item $M$ is of the form $(\lambd[x][N])$, where $x$ is some
-      variable and $N$ is a term. It could not have been constructed
-      according to \olref[trm]{defn:term}\olref[trm]{defn:term-var},
-      because it is not a single variable.  It is not the result of an
-      application, by \olref{lem:app-start}. Thus $M$ can only be the
-      result of an abstraction on~$N$.  By inductive hypothesis we
-      know that formation of $N$ is itself unique.
-    \item $M$ is of the form $(PQ)$, where $P$ and $Q$ are terms.
-      Since it starts with a parentheses, it cannot also be
-      constructed by
-      \olref[trm]{defn:term}\olref[trm]{defn:term-var}.  By
-      \olref{lem:term-start}, $P$ cannot begin with $\lambd$, so
-      $(PQ)$ cannot be the result of an abstraction.  Now suppose
-      there were another way of constructing $M$ by application, p.ex.,
-      it is also of the form $(P'Q')$. Then $P$ is a proper initial
-      segment of $P'$ (or vice versa), and this is impossible by
-      \olref{lem:initial}. So $P$ and $Q$ are uniquely
-      determined, and by inductive hypothesis we know that formations
-      of $P$ and $Q$ is unique.
+    \item $M$ tem a forma $x$, onde $x$ é alguma variável. Como os resultados
+      de abstrações e aplicações sempre começam por parênteses, elas não
+      podem ter sido usadas para construir $M$; portanto, a formação de $M$
+      deve ser um único passo de
+      \olref[trm]{defn:term}\olref[trm]{defn:term-var}.
+    \item $M$ tem a forma $(\lambd[x][N])$, onde $x$ é alguma variável e
+      $N$ é um termo. Ele não poderia ter sido construído de acordo com
+      \olref[trm]{defn:term}\olref[trm]{defn:term-var}, pois não é uma única
+      variável. Por \olref{lem:app-start}, ele não é resultado de uma
+      aplicação. Logo, $M$ só pode ser resultado de uma abstração sobre~$N$.
+      Pela hipótese de indução, sabemos que a formação de $N$ é única.
+    \item $M$ tem a forma $(PQ)$, onde $P$ e $Q$ são termos. Como começa por
+      um parêntese, não pode também ser construído por
+      \olref[trm]{defn:term}\olref[trm]{defn:term-var}. Por
+      \olref{lem:term-start}, $P$ não pode começar por $\lambd$; logo,
+      $(PQ)$ não pode ser resultado de uma abstração. Suponha agora que
+      houvesse outra maneira de construir $M$ por aplicação, p.ex.,
+      que ele também tivesse a forma $(P'Q')$. Então $P$ seria um segmento
+      inicial próprio de $P'$ (ou vice-versa), o que é impossível por
+      \olref{lem:initial}. Assim, $P$ e $Q$ são determinados de modo único,
+      e pela hipótese de indução sabemos que as formações de $P$ e $Q$ são
+      únicas.
   \end{enumerate}
 \end{proof}
 
-A more readable paraphrase of the above proposition is as follows:
+Uma paráfrase mais legível da proposição acima é a seguinte:
 \begin{prop}
-  A term $M$ can only be one of the following forms:
+  Um termo $M$ só pode ter uma das formas seguintes:
   \begin{enumerate}
-    \item $x$, where $x$ is a variable uniquely determined by $M$.
-    \item $(\lambd[x][N])$, where $x$ is a variable and $N$ is
-      another term, both of which is uniquely determined by $M$.
-    \item $(PQ)$, where $P$ and $Q$ are two terms uniquely
-      determined by $M$.
+    \item $x$, onde $x$ é uma variável determinada de modo único por $M$.
+    \item $(\lambd[x][N])$, onde $x$ é uma variável e $N$ é outro termo,
+      ambos determinados de modo único por $M$.
+    \item $(PQ)$, onde $P$ e $Q$ são dois termos determinados de modo único
+      por $M$.
   \end{enumerate}
 \end{prop}
 
 \end{document}
+
