@@ -6,37 +6,38 @@
 
 \begin{document}
 
-\olfileid{mod}{bas}{ove}
-\olsection{Overspill}
+\olfileid[pt]{mod}{bas}{ove}
+\olsection{Transbordamento}
 
 \begin{thm}
-\ollabel{overspill} If a set $\Gamma$ of sentences has arbitrarily
-large finite models, then it has an infinite model.
+\ollabel{overspill} Se um conjunto $\Gamma$ de sentenças tem modelos
+finitos arbitrariamente grandes, então tem um modelo infinito.
 \end{thm}
 
 \begin{proof}
-Expand the language of $\Gamma$ by adding countably many new constants
-$c_0$, $c_1$, \dots and consider the set $\Gamma \cup \{c_i \neq c_j :
-i \neq j\}$. To say that $\Gamma$ has arbitrarily large finite models
-means that for every $m >0$ there is $n\ge m$ such that $\Gamma$ has a
-model of cardinality~$n$. This implies that $\Gamma \cup \{c_i \neq
-c_j : i \neq j\}$ is finitely satisfiable. By compactness, $\Gamma
-\cup \{c_i \neq c_j : i \neq j\}$ has a model $\Struct M$ whose domain
-must be infinite, since it satisfies all inequalities $c_i \neq c_j$.
+Amplie a linguagem de $\Gamma$ acrescentando uma quantidade enumerável
+de novas constantes $c_0$, $c_1$, \dots e considere o conjunto $\Gamma
+\cup \{c_i \neq c_j : i \neq j\}$. Dizer que $\Gamma$ tem modelos
+finitos arbitrariamente grandes significa que, para todo $m >0$, existe
+$n\ge m$ tal que $\Gamma$ tem um modelo de cardinalidade~$n$. Isso
+implica que $\Gamma \cup \{c_i \neq c_j : i \neq j\}$ é finitamente
+satisfazível. Pela compacidade, $\Gamma \cup \{c_i \neq c_j : i \neq
+j\}$ tem um modelo $\Struct M$ cujo domínio deve ser infinito, pois ele
+satisfaz todas as desigualdades $c_i \neq c_j$.
 \end{proof}
 
 \begin{prop}
 \ollabel{inf-not-fo} 
-There is no sentence $!A$ of any first-order language that is true in
-!!a{structure}~$\Struct M$ if and only if the domain $\Domain{M}$ of
-the !!{structure} is infinite.
+Não existe sentença $!A$ de nenhuma linguagem de primeira ordem que seja
+verdadeira em !!a{structure}~$\Struct M$ se, e somente se, o domínio
+$\Domain{M}$ da !!{structure} for infinito.
 \end{prop}
 
 \begin{proof}
-If there were such a $!A$, its negation $\lnot !A$ would be true in
-all and only the finite !!{structure}s, and it would therefore have
-arbitrarily large finite models but it would lack an infinite model,
-contradicting \olref{overspill}.
+Se existisse tal $!A$, sua negação $\lnot !A$ seria verdadeira exatamente
+nas !!{structure}s finitas e, portanto, teria modelos finitos
+arbitrariamente grandes, mas não teria um modelo infinito, contradizendo
+\olref{overspill}.
 \end{proof}
 
 \end{document}
