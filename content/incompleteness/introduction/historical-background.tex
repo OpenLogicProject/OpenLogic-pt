@@ -6,218 +6,226 @@
 
 \begin{document}
 
-\olfileid{inc}{int}{bgr}
+\olfileid[pt]{inc}{int}{bgr}
 
-\olsection{Historical Background}
+\olsection{Contexto histórico}
 
-In this section, we will briefly discuss historical developments that
-will help put the incompleteness theorems in context. In particular,
-we will give a very sketchy overview of the history of mathematical
-logic; and then say a few words about the history of the foundations
-of mathematics.
+Nesta seção, discutiremos brevemente alguns desenvolvimentos históricos
+que ajudarão a situar os teoremas da incompletude. Em particular,
+apresentaremos um panorama bastante esquemático da história da lógica
+matemática e, em seguida, diremos algumas palavras sobre a história dos
+fundamentos da matemática.
 
 \begin{digress}
-  The phrase ``mathematical logic'' is ambiguous. One can interpret the
-word ``mathematical'' as describing the subject matter, as in, ``the
-logic of mathematics,'' denoting the principles of mathematical
-reasoning; or as describing the methods, as in ``the mathematics of
-logic,'' denoting a mathematical study of the principles of reasoning.
-The account that follows involves mathematical logic in both senses,
-often at the same time.
+  A expressão ``lógica matemática'' é ambígua. Pode-se interpretar a
+  palavra ``matemática'' como uma descrição do objeto de estudo, como em
+  ``a lógica da matemática'', designando os princípios do raciocínio
+  matemático; ou como uma descrição dos métodos, como em ``a matemática
+  da lógica'', designando um estudo matemático dos princípios do
+  raciocínio. O relato a seguir envolve a lógica matemática nos dois
+  sentidos, muitas vezes simultaneamente.
 \end{digress}
 
-The study of logic began, essentially, with Aristotle, who lived
-approximately 384--322 \textsc{bce}. His \emph{Categories}, \emph{Prior
-  analytics}, and \emph{Posterior analytics} include systematic
-studies of the principles of scientific reasoning, including a
-thorough and systematic study of the syllogism.
+O estudo da lógica começou, essencialmente, com Aristóteles, que viveu
+aproximadamente entre 384 e 322 \textsc{a.e.c.}. Suas obras
+\emph{Categorias}, \emph{Analíticos anteriores} e \emph{Analíticos
+  posteriores} incluem estudos sistemáticos dos princípios do
+raciocínio científico, entre eles um estudo minucioso e sistemático do
+silogismo.
 
-Aristotle's logic dominated scholastic philosophy through the middle
-ages; indeed, as late as the eighteenth century, Kant maintained that
-Aristotle's logic was perfect and in no need of revision. But the
-theory of the syllogism is far too limited to model anything but
-the most superficial aspects of mathematical reasoning. A century
-earlier, Leibniz, a contemporary of Newton's, imagined a complete
-``calculus'' for logical reasoning, and made some rudimentary steps
-towards designing such a calculus, essentially describing a version of
-propositional logic.
+A lógica de Aristóteles dominou a filosofia escolástica durante toda a
+Idade Média; de fato, ainda no século XVIII, Kant sustentava que a
+lógica aristotélica era perfeita e não precisava de revisão. Mas a
+teoria do silogismo é limitada demais para modelar mais do que os
+aspectos mais superficiais do raciocínio matemático. Um século antes,
+Leibniz, contemporâneo de Newton, imaginara um ``cálculo'' completo para
+o raciocínio lógico e dera alguns passos rudimentares na concepção de
+tal cálculo, descrevendo essencialmente uma versão da lógica
+proposicional.
 
-The nineteenth century was a watershed for logic. In 1854 George Boole
-wrote \emph{The Laws of Thought}, with a thorough algebraic study of
-propositional logic that is not far from modern presentations. In 1879
-Gottlob Frege published his \emph{Begriffsschrift} (Concept writing)
-which extends propositional logic with quantifiers and relations, and
-thus includes first-order logic. In fact, Frege's logical systems
-included higher-order logic as well, and more. In his \emph{Basic Laws
-  of Arithmetic}, Frege set out to show that all of arithmetic could
-be derived in his Begriffsschrift from purely logical
-assumption. Unfortunately, these assumptions turned out to be
-inconsistent, as Russell showed in 1902. But setting aside the
-inconsistent axiom, Frege more or less invented modern logic
-singlehandedly, a startling achievement. Quantificational logic was
-also developed independently by algebraically-minded thinkers after
-Boole, including Peirce and Schr\"oder.
+O século XIX foi um divisor de águas para a lógica. Em 1854, George
+Boole escreveu \emph{As leis do pensamento}, contendo um estudo
+algébrico minucioso da lógica proposicional que não está muito distante
+das apresentações modernas. Em 1879, Gottlob Frege publicou sua
+\emph{Begriffsschrift} (Conceitografia), que estende a lógica
+proposicional com quantificadores e relações e, assim, inclui a lógica
+de primeira ordem. Na verdade, os sistemas lógicos de Frege incluíam
+também a lógica de ordem superior e muito mais. Em suas \emph{Leis
+  básicas da aritmética}, Frege procurou mostrar que toda a aritmética
+poderia ser derivada, em sua Begriffsschrift, de pressupostos puramente
+lógicos. Infelizmente, esses pressupostos revelaram-se inconsistentes,
+como Russell mostrou em 1902. Mas, deixando de lado o axioma
+inconsistente, Frege praticamente inventou sozinho a lógica moderna,
+uma realização extraordinária. A lógica quantificacional também foi
+desenvolvida de maneira independente por pensadores de orientação
+algébrica posteriores a Boole, entre eles Peirce e Schr\"oder.
 
-Let us now turn to developments in the foundations of mathematics. Of
-course, since logic plays an important role in mathematics, there is a
-good deal of interaction with the developments just described. For
-example, Frege developed his logic with the explicit purpose of
-showing that all of mathematics could be based solely on his logical
-framework; in particular, he wished to show that mathematics consists
-of a priori \emph{analytic} truths instead of, as Kant had maintained,
-a priori \emph{synthetic} ones.
+Voltemos agora aos desenvolvimentos nos fundamentos da matemática.
+Naturalmente, como a lógica desempenha um papel importante na
+matemática, há muita interação com os desenvolvimentos que acabamos de
+descrever. Frege, por exemplo, desenvolveu sua lógica com o propósito
+explícito de mostrar que toda a matemática poderia basear-se unicamente
+em seu arcabouço lógico; em particular, desejava mostrar que a
+matemática consiste em verdades \emph{analíticas} a priori, e não em
+verdades \emph{sintéticas} a priori, como sustentara Kant.
 
-Many take the birth of mathematics proper to have occurred with the
-Greeks. Euclid's \emph{Elements}, written around 300 B.C., is already
-a mature representative of Greek mathematics, with its emphasis on
-rigor and precision. The definitions and proofs in Euclid's
-\emph{Elements} survive more or less intact in high school geometry
-textbooks today (to the extent that geometry is still taught in high
-schools). This model of mathematical reasoning has been held to be a
-paradigm for rigorous argumentation not only in mathematics but in
-branches of philosophy as well. (Spinoza even presented moral and
-religious arguments in the Euclidean style, which is strange to see!)
+Muitos consideram que o nascimento da matemática propriamente dita
+ocorreu com os gregos. Os \emph{Elementos} de Euclides, escritos por
+volta de 300 a.e.c., já são um representante maduro da matemática
+grega, com sua ênfase no rigor e na precisão. As definições e provas
+dos \emph{Elementos} de Euclides sobrevivem mais ou menos intactas nos
+livros didáticos atuais de geometria do ensino médio (na medida em que
+a geometria ainda é ensinada nesse nível). Esse modelo de raciocínio
+matemático tem sido considerado um paradigma de argumentação rigorosa
+não apenas na matemática, mas também em ramos da filosofia. (Espinosa
+chegou a apresentar argumentos morais e religiosos no estilo
+euclidiano, o que é curioso de ver!)
 
-Calculus was invented by Newton and Leibniz in the seventeenth
-century. (A fierce priority dispute raged for centuries, but most
-scholars today hold that the two developments were for the most part
-independent.)  Calculus involves reasoning about, for example,
-infinite sums of infinitely small quantities; these features fueled
-criticism by Bishop Berkeley, who argued that belief in God was no
-less rational than the mathematics of his time. The methods of
-calculus were widely used in the eighteenth century, for example by
-Leonhard Euler, who used calculations involving infinite sums with
-dramatic results.
+O cálculo foi inventado por Newton e Leibniz no século XVII. (Uma
+acirrada disputa de prioridade prolongou-se por séculos, mas hoje a
+maioria dos estudiosos considera que os dois desenvolvimentos foram,
+em grande medida, independentes.) O cálculo envolve raciocínios sobre,
+por exemplo, somas infinitas de quantidades infinitamente pequenas;
+essas características alimentaram as críticas do bispo Berkeley, que
+argumentava que a crença em Deus não era menos racional do que a
+matemática de sua época. Os métodos do cálculo foram amplamente usados
+no século XVIII, por exemplo por Leonhard Euler, que empregou cálculos
+com somas infinitas para obter resultados impressionantes.
 
-In the nineteenth century, mathematicians tried to address Berkeley's
-criticisms by putting calculus on a firmer foundation. Efforts by
-Cauchy, Weierstrass, Bolzano, and others led to our contemporary
-definitions of limits, continuity, differentiation, and integration in
-terms of ``epsilons and deltas,'' in other words, devoid of any
-reference to infinitesimals. Later in the century, mathematicians
-tried to push further, and explain all aspects of calculus, including
-the real numbers themselves, in terms of the natural numbers.
-(Kronecker: ``God created the whole numbers, all else is the work of
-man.'') In 1872, Dedekind wrote ``Continuity and the irrational
-numbers,'' where he showed how to ``construct'' the real numbers as
-sets of rational numbers (which, as you know, can be viewed as pairs
-of natural numbers); in 1888 he wrote ``Was sind und was sollen die
-Zahlen'' (roughly, ``What are the natural numbers, and what should
-they be?'') which aimed to explain the natural numbers in purely
-``logical'' terms. In 1887 Kronecker wrote ``\"Uber den Zahlbegriff''
-(``On the concept of number'') where he spoke of representing all
-mathematical object in terms of the integers; in 1889 Giuseppe Peano
-gave formal, symbolic axioms for the natural numbers.
+No século XIX, os matemáticos procuraram responder às críticas de
+Berkeley assentando o cálculo sobre fundamentos mais firmes. Os
+esforços de Cauchy, Weierstrass, Bolzano e outros levaram às nossas
+definições atuais de limite, continuidade, diferenciação e integração
+em termos de ``épsilons e deltas'', isto é, sem qualquer referência a
+infinitésimos. Mais tarde naquele século, os matemáticos procuraram ir
+além e explicar todos os aspectos do cálculo, inclusive os próprios
+números reais, em termos dos números naturais. (Kronecker: ``Deus criou
+os números inteiros; todo o resto é obra do homem.'') Em 1872, Dedekind
+escreveu ``Continuidade e números irracionais'', no qual mostrou como
+``construir'' os números reais como conjuntos de números racionais
+(que, como você sabe, podem ser vistos como pares de números naturais);
+em 1888, escreveu ``Was sind und was sollen die Zahlen'' (aproximadamente,
+``O que são e para que servem os números?''), que buscava explicar os
+números naturais em termos puramente ``lógicos''. Em 1887, Kronecker
+escreveu ``\"Uber den Zahlbegriff'' (``Sobre o conceito de número''),
+no qual falou em representar todo objeto matemático em termos dos
+inteiros; em 1889, Giuseppe Peano apresentou axiomas formais e
+simbólicos para os números naturais.
 
-The end of the nineteenth century also brought a new boldness in dealing
-with the infinite. Before then, infinitary objects and structures
-(like the set of natural numbers) were treated gingerly; ``infinitely
-many'' was understood as ``as many as you want,'' and ``approaches in
-the limit'' was understood as ``gets as close as you want.'' But Georg
-Cantor showed that it was possible to take the infinite at face
-value. Work by Cantor, Dedekind, and others help to introduce the
-general set-theoretic understanding of mathematics that is now widely accepted.
+O fim do século XIX trouxe também uma nova ousadia no tratamento do
+infinito. Antes disso, objetos e estruturas infinitários (como o
+conjunto dos números naturais) eram tratados com cautela; ``infinitos''
+era entendido como ``tantos quantos se queira'', e ``aproxima-se no
+limite'' como ``fica tão próximo quanto se queira''. Mas Georg Cantor
+mostrou que era possível tomar o infinito em sentido literal. Os
+trabalhos de Cantor, Dedekind e outros ajudaram a introduzir a
+compreensão geral da matemática em termos da teoria dos conjuntos, hoje
+amplamente aceita.
 
-This brings us to twentieth century developments in logic and foundations.
-In 1902 Russell discovered the paradox in Frege's logical system. In
-1904 Zermelo proved Cantor's well-ordering principle, using the
-so-called ``axiom of choice''; the legitimacy of this axiom prompted a
-good deal of debate. Between 1910 and 1913 the three volumes of
-Russell and Whitehead's \emph{Principia Mathematica} appeared,
-extending the Fregean program of establishing mathematics on logical
-grounds. Unfortunately, Russell and Whitehead were forced to adopt two
-principles that seemed hard to justify as purely logical: an axiom of
-infinity and an axiom of ``reducibility.'' In the 1900's Poincar\'e
-criticized the use of ``impredicative definitions'' in mathematics,
-and in the 1910's Brouwer began proposing to refound all of
-mathematics in an ``intuitionistic'' basis, which avoided the use of
-the law of the excluded middle ($!A \lor \lnot !A$).
+Isso nos leva aos desenvolvimentos do século XX na lógica e nos
+fundamentos. Em 1902, Russell descobriu o paradoxo no sistema lógico de
+Frege. Em 1904, Zermelo provou o princípio da boa ordenação de Cantor
+usando o chamado ``axioma da escolha''; a legitimidade desse axioma
+provocou intenso debate. Entre 1910 e 1913, apareceram os três volumes
+dos \emph{Principia Mathematica} de Russell e Whitehead, ampliando o
+programa fregeano de estabelecer a matemática sobre fundamentos
+lógicos. Infelizmente, Russell e Whitehead foram obrigados a adotar
+dois princípios que pareciam difíceis de justificar como puramente
+lógicos: um axioma do infinito e um axioma da ``redutibilidade''. Na
+primeira década do século XX, Poincar\'e criticou o uso de ``definições
+impredicativas'' na matemática e, na década de 1910, Brouwer começou a
+propor a refundação de toda a matemática sobre uma base
+``intuicionista'', que evitava o uso da lei do terceiro excluído
+($!A \lor \lnot !A$).
 
-Strange days indeed!{} The program of reducing all of mathematics to
-logic is now referred to as ``logicism,'' and is commonly viewed as
-having failed, due to the difficulties mentioned above. The program of
-developing mathematics in terms of intuitionistic mental constructions
-is called ``intuitionism,'' and is viewed as posing overly severe
-restrictions on everyday mathematics. Around the turn of the century,
-David Hilbert, one of the most influential mathematicians of all time,
-was a strong supporter of the new, abstract methods introduced by
-Cantor and Dedekind: ``no one will drive us from the paradise that
-Cantor has created for us.'' At the same time, he was sensitive to
-foundational criticisms of these new methods (oddly enough, now called
-``classical''). He proposed a way of having one's cake and eating it
-too:
+Tempos realmente estranhos!{} O programa de reduzir toda a matemática
+à lógica é hoje chamado de ``logicismo'' e, em geral, considera-se que
+fracassou por causa das dificuldades mencionadas acima. O programa de
+desenvolver a matemática em termos de construções mentais
+intuicionistas chama-se ``intuicionismo'' e é visto como impondo
+restrições excessivamente severas à matemática cotidiana. Por volta da
+virada do século, David Hilbert, um dos matemáticos mais influentes de
+todos os tempos, era um firme defensor dos novos métodos abstratos
+introduzidos por Cantor e Dedekind: ``ninguém nos expulsará do paraíso
+que Cantor criou para nós''. Ao mesmo tempo, era sensível às críticas
+fundacionais a esses novos métodos (que, curiosamente, hoje são
+chamados de ``clássicos''). Ele propôs uma maneira de conciliar as duas
+coisas:
 \begin{enumerate}
-\item Represent classical methods with formal axioms and rules;
-  represent mathematical questions as !!{formula}s in an axiomatic
-  system.
-\item Use safe, ``finitary'' methods to prove that these formal
-  deductive systems are consistent.
+\item Representar os métodos clássicos por axiomas e regras formais;
+  representar as questões matemáticas como !!{formula}s em um sistema
+  axiomático.
+\item Usar métodos seguros, ``finitários'', para provar que esses
+  sistemas dedutivos formais são consistentes.
 \end{enumerate}
 
-Hilbert's work went a long way toward accomplishing the first goal.
-In 1899, he had done this for geometry in his celebrated book
-\emph{Foundations of geometry}. In subsequent years, he and a number
-of his students and collaborators worked on other areas of mathematics
-to do what Hilbert had done for geometry.  Hilbert himself gave axiom
-systems for arithmetic and analysis. Zermelo gave an axiomatization of
-set theory, which was expanded on by Fraenkel, Skolem, von Neumann,
-and others.  By the mid-1920s, there were two approaches that laid
-claim to the title of an axiomatization of ``all'' of mathematics, the
-\emph{Principia mathematica} of Russell and Whitehead, and what came to
-be known as Zermelo--Fraenkel set theory.
+O trabalho de Hilbert avançou muito na realização do primeiro objetivo.
+Em 1899, ele já o fizera para a geometria em seu célebre livro
+\emph{Fundamentos da geometria}. Nos anos seguintes, ele e vários de
+seus alunos e colaboradores trabalharam em outras áreas da matemática
+para fazer o que Hilbert fizera pela geometria. O próprio Hilbert
+apresentou sistemas de axiomas para a aritmética e a análise. Zermelo
+apresentou uma axiomatização da teoria dos conjuntos, posteriormente
+ampliada por Fraenkel, Skolem, von Neumann e outros. Em meados da década
+de 1920, duas abordagens reivindicavam o título de axiomatização de
+``toda'' a matemática: os \emph{Principia mathematica} de Russell e
+Whitehead e o que veio a ser conhecido como teoria dos conjuntos de
+Zermelo--Fraenkel.
 
-In 1921, Hilbert set out on a research project to establish the goal
-of proving these systems to be consistent.  He was aided in this
-project by several of his students, in particular Bernays, Ackermann,
-and later Gentzen. The basic idea for accomplishing this goal was to
-cast the question of the possibility of !!{derivation} of an
-inconsistency in mathematics as a combinatorial problem about possible
-sequences of symbols, namely possible sequences of sentences which
-meet the criterion of being a correct !!{derivation} of, say, $!A \land
-\lnot !A$ from the axioms of an axiom system for arithmetic, analysis,
-or set theory.  A proof of the impossibility of such a sequence of
-symbols would---since it is itself a mathematical proof---be
-formalizable in these axiomatic systems.  In other words, there would
-be some sentence $\OCon$ which states that, say, arithmetic is
-consistent.  Moreover, this sentence should be provable in the systems
-in question, especially if its proof requires only very restricted,
-``finitary'' means.
+Em 1921, Hilbert iniciou um projeto de pesquisa com o objetivo de provar
+que esses sistemas eram consistentes. Nesse projeto, contou com a ajuda
+de vários de seus alunos, em particular Bernays, Ackermann e, mais
+tarde, Gentzen. A ideia básica para alcançar esse objetivo era
+formular a questão da possibilidade de uma !!{derivation} de uma
+inconsistência na matemática como um problema combinatório sobre
+possíveis sequências de símbolos, a saber, possíveis sequências de
+sentenças que satisfizessem o critério de constituir uma
+!!{derivation} correta, digamos, de $!A \land \lnot !A$ a partir dos
+axiomas de um sistema axiomático para a aritmética, a análise ou a
+teoria dos conjuntos. Uma prova da impossibilidade de tal sequência de
+símbolos seria---por ser ela própria uma prova matemática---formalizável
+nesses sistemas axiomáticos. Em outras palavras, haveria alguma
+sentença $\OCon$ que afirmasse, por exemplo, que a aritmética é
+consistente. Além disso, essa sentença deveria ser demonstrável nos
+sistemas em questão, sobretudo se sua prova exigisse apenas meios muito
+restritos, ``finitários''.
 
-The second aim, that the axiom systems developed would settle every
-mathematical question, can be made precise in two ways. In one way, we
-can formulate it as follows: For any sentence~$!A$ in the language of
-an axiom system for mathematics, either $!A$ or $\lnot !A$ is provable
-from the axioms.  If this were true, then there would be no sentences
-which can neither be proved nor refuted on the basis of the axioms, no
-questions which the axioms do not settle.  An axiom system with this
-property is called \emph{complete}. Of course, for any given sentence
-it might still be a difficult task to determine which of the two
-alternatives holds.  But in principle there should be a method to do
-so.  In fact, for the axiom and !!{derivation} systems considered by
-Hilbert, completeness would imply that such a method exists---although
-Hilbert did not realize this.  The second way to interpret the
-question would be this stronger requirement: that there be a
-mechanical, computational method which would determine, for a given
-sentence~$!A$, whether it is derivable from the axioms or not.
+O segundo objetivo, o de que os sistemas de axiomas desenvolvidos
+decidissem toda questão matemática, pode ser formulado com precisão de
+duas maneiras. A primeira é a seguinte: para qualquer sentença~$!A$ na
+linguagem de um sistema axiomático para a matemática, ou $!A$ ou
+$\lnot !A$ é demonstrável a partir dos axiomas. Se isso fosse verdade,
+não haveria sentenças que não pudessem ser nem provadas nem refutadas
+com base nos axiomas, nem questões que os axiomas não decidissem. Um
+sistema axiomático com essa propriedade é chamado de \emph{completo}.
+Naturalmente, para uma sentença dada, ainda poderia ser difícil
+determinar qual das duas alternativas se verifica. Mas, em princípio,
+deveria haver um método para fazê-lo. De fato, para os sistemas de
+axiomas e de !!{derivation} considerados por Hilbert, a completude
+implicaria a existência de tal método---embora Hilbert não tivesse
+percebido isso. A segunda maneira de interpretar a questão seria esta
+exigência mais forte: que houvesse um método mecânico, computacional,
+capaz de determinar, para uma dada sentença~$!A$, se ela é ou não
+derivável dos axiomas.
 
-In 1931, G\"odel proved the two ``incompleteness theorems,'' which
-showed that this program could not succeed. There is no axiom system
-for mathematics which is complete, specifically, the sentence that
-expresses the consistency of the axioms is a sentence which can
-neither be proved nor refuted.
+Em 1931, G\"odel provou os dois ``teoremas da incompletude'', que
+mostraram que esse programa não poderia ter êxito. Não há sistema de
+axiomas completo para a matemática; em particular, a sentença que
+expressa a consistência dos axiomas é uma sentença que não pode ser nem
+provada nem refutada.
 
-This struck a lethal blow to Hilbert's original program. However, as
-is so often the case in mathematics, it also opened up exciting new
-avenues for research. If there is no one, all-encompassing formal
-system of mathematics, it makes sense to develop more circumscribed
-systems and investigate what can be proved in them. It also makes
-sense to develop less restricted methods of proof for establishing the
-consistency of these systems, and to find ways to measure how hard it
-is to prove their consistency.  Since G\"odel showed that (almost)
-every formal system has questions it cannot settle, it makes sense to
-look for ``interesting'' questions a given formal system cannot
-settle, and to figure out how strong a formal system has to be to
-settle them. To the present day, logicians have been pursuing these
-questions in a new mathematical discipline, the theory of proofs.
+Isso desferiu um golpe fatal no programa original de Hilbert. Contudo,
+como tantas vezes acontece na matemática, também abriu novos e
+estimulantes caminhos de pesquisa. Se não existe um único sistema
+formal de matemática que abarque tudo, faz sentido desenvolver sistemas
+mais circunscritos e investigar o que pode ser provado neles. Também
+faz sentido desenvolver métodos de prova menos restritos para
+estabelecer a consistência desses sistemas e encontrar maneiras de
+medir a dificuldade de provar sua consistência. Como G\"odel mostrou
+que (quase) todo sistema formal tem questões que não consegue decidir,
+faz sentido procurar questões ``interessantes'' que um dado sistema
+formal não possa decidir e determinar quão forte deve ser um sistema
+formal para decidi-las. Até hoje, os lógicos vêm investigando essas
+questões em uma nova disciplina matemática, a teoria da prova.
 
 \end{document}

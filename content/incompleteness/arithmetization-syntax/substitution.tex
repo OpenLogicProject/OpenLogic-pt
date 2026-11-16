@@ -6,51 +6,51 @@
 
 \begin{document}
 
-\olfileid{inc}{art}{sub}
-\olsection{Substitution}
+\olfileid[pt]{inc}{art}{sub}
+\olsection{Substituição}
 
-Recall that substitution is the operation of replacing all free
-occurrences of !!a{variable}~$u$ in !!a{formula}~$!A$ by a term~$t$,
-written $\Subst{!A}{t}{u}$. This operation, when carried out on
-G\"odel numbers of !!{variable}s, !!{formula}s, and terms, is
-primitive recursive.
+Lembre-se de que a substituição é a operação de substituir todas as
+ocorrências livres de !!a{variable}~$u$ em !!a{formula}~$!A$ por um
+termo~$t$, escrita $\Subst{!A}{t}{u}$. Quando efetuada sobre
+números de G\"odel de !!{variable}s, !!{formula}s e termos, essa
+operação é recursiva primitiva.
 
 \begin{prop}\ollabel{prop:subst-primrec}
-There is a primitive recursive function $\fn{Subst}(x, y, z)$ with the
-property that
+Existe uma função recursiva primitiva $\fn{Subst}(x, y, z)$ com a
+propriedade de que
 \[
 \fn{Subst}(\Gn{!A}, \Gn{t}, \Gn{u}) = \Gn{\Subst{!A}{t}{u}}.
 \]
 \end{prop}
 
 \begin{proof}
-We can then define a function $\fn{hSubst}$ by primitive recursion as
-follows:
+Podemos então definir uma função $\fn{hSubst}$ por recursão primitiva
+da seguinte maneira:
 \begin{multline*}
 \begin{aligned}
 \fn{hSubst}(x, y, z, 0) & = \emptyseq \\
 \fn{hSubst}(x, y, z, i+1) & =
 \end{aligned}\\
 \begin{cases}
-\fn{hSubst}(x, y, z, i) \concat y & \text{if $\fn{FreeOcc}(x, z, i)$} \\
-\fn{append}(\fn{hSubst}(x, y, z, i), (x)_{i}) & \text{otherwise.}
+\fn{hSubst}(x, y, z, i) \concat y & \text{se $\fn{FreeOcc}(x, z, i)$} \\
+\fn{append}(\fn{hSubst}(x, y, z, i), (x)_{i}) & \text{caso contrário.}
 \end{cases}
 \end{multline*}
-$\fn{Subst}(x, y, z)$ can now be defined as $\fn{hSubst}(x, y, z, \len{x})$.
+$\fn{Subst}(x, y, z)$ pode agora ser definida como
+$\fn{hSubst}(x, y, z, \len{x})$.
 \end{proof}
 
 \begin{prop}
 \ollabel{prop:free-for}
-The relation $\fn{FreeFor}(x, y, z)$, which holds iff the term with
-G\"odel number~$y$ is !!{free for} the variable with G\"odel
-number~$z$ in the formula with G\"odel number~$x$, is primitive
-recursive.
+A relação $\fn{FreeFor}(x, y, z)$, que vale sse o termo com número de
+G\"odel~$y$ é !!{free for} a variável com número de G\"odel~$z$ na
+fórmula com número de G\"odel~$x$, é recursiva primitiva.
 \end{prop}
 
-\begin{proof} Exercise. \end{proof}
+\begin{proof} Exercício. \end{proof}
 
 \begin{prob}
-Prove \olref[inc][art][sub]{prop:free-for}
+Prove \olref[inc][art][sub]{prop:free-for}.
 \end{prob}
 
 \end{document}

@@ -6,40 +6,41 @@
 
 \begin{document}
 
-\olfileid{inc}{tcp}{inc}
+\olfileid[pt]{inc}{tcp}{inc}
 
-\olsection{$\Th{Q}$ has no Complete, Consistent, !!^{axiomatizable}
-  Extensions}
+\olsection{$\Th{Q}$ não possui extensões completas, consistentes e
+  !!^{axiomatizable}}
 
 \begin{thm}
 \ollabel{thm:first-incompleteness}
-There is no complete, consistent, !!{axiomatizable} extension of
+Não existe extensão completa, consistente e !!{axiomatizable} de
 $\Th{Q}$.
 \end{thm}
 
 \begin{proof}
-We already know that there is no consistent, decidable extension of
-$\Th{Q}$. But if $\Th{T}$ is complete and !!{axiomatized}, then
-it is decidable. 
+Já sabemos que não existe extensão consistente e decidível de
+$\Th{Q}$. Mas, se $\Th{T}$ é completa e !!{axiomatized}, então é
+decidível.
 \end{proof}
 
 \begin{explain}
-This theorems is not that far from G\"odel's original 1931 formulation
-of the First Incompleteness Theorem. Aside from the more modern
-terminology, the key differences are this: G\"odel has
-``$\omega$-consistent'' instead of ``consistent''; and he could not
-say ``!!{axiomatizable}'' in full generality, since the formal
-notion of computability was not in place yet. (The formal models of
-computability were developed over the following decade, including by
-G\"odel, and in large part to be able to characterize the kinds of
-theories that are susceptible to the G\"odel phenomenon.)
+Este teorema não está tão distante da formulação original, de 1931, do
+Primeiro Teorema da Incompletude de G\"odel. Além da terminologia mais
+moderna, as diferenças principais são estas: G\"odel usa
+``$\omega$-consistente'' em vez de ``consistente''; e não podia dizer
+``!!{axiomatizable}'' em toda a generalidade, pois a noção formal de
+computabilidade ainda não estava estabelecida. (Os modelos formais de
+computabilidade foram desenvolvidos ao longo da década seguinte,
+inclusive por G\"odel, em grande parte para permitir a caracterização
+dos tipos de teoria suscetíveis ao fenômeno de G\"odel.)
 
-The theorem says you can't have it all, namely, completeness,
-consistency, and !!{axiomatizability}. If you give up any one of
-these, though, you can have the other two: $\Th{Q}$ is consistent and
-computably axiomatized, but not complete; the inconsistent theory is
-complete, and computably axiomatized (say, by $\{ \eq/[0][0] \}$), but
-not consistent; and the set of true sentence of arithmetic is complete
-and consistent, but it is not computably axiomatized.
+O teorema diz que não se pode ter tudo, a saber, completude,
+consistência e !!{axiomatizability}. Se abrirmos mão de qualquer uma
+delas, porém, podemos ter as outras duas: $\Th{Q}$ é consistente e
+axiomatizada computavelmente, mas não completa; a teoria inconsistente
+é completa e axiomatizada computavelmente (digamos, por
+$\{ \eq/[0][0] \}$), mas não consistente; e o conjunto das sentenças
+verdadeiras da aritmética é completo e consistente, mas não é
+axiomatizado computavelmente.
 \end{explain}
 \end{document}

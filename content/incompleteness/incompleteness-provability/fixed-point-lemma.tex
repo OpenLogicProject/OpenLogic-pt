@@ -6,135 +6,131 @@
 
 \begin{document}
 
-\olfileid{inc}{inp}{fix}
+\olfileid[pt]{inc}{inp}{fix}
 
-\olsection{The Fixed-Point Lemma}
+\olsection{O lema do ponto fixo}
 
 \begin{explain}
-The fixed-point lemma says that for any !!{formula}~$!B(x)$, there is
-!!a{sentence}~$!A$ such that $\Th{T} \Proves !A \liff !B(\gn{!A})$,
-provided $\Th{T}$ extends~$\Th{Q}$.  In the case of the liar sentence,
-we'd want $!A$ to be equivalent (provably in~$\Th{T}$) to~``$\gn{!A}$
-is false,'' O.s.\@, the statement that $\Gn{!A}$ is the G\"odel number
-of a false !!{sentence}. To understand the idea of the proof, it will
-be useful to compare it with Quine's informal gloss of~$!A$ as,
-``{}`yields a falsehood when preceded by its own quotation' yields a
-falsehood when preceded by its own quotation.''  The operation of
-taking an expression, and then forming a sentence by preceding this
-expression by its own quotation may be called \emph{diagonalizing} the
-expression, and the result its diagonalization. So, the
-diagonalization of `yields a falsehood when preceded by its own
-quotation' is ``{}`yields a falsehood when preceded by its own
-quotation' yields a falsehood when preceded by its own quotation.''
-Now note that Quine's liar sentence is not the diagonalization of
-`yields a falsehood' but of `yields a falsehood when preceded by its
-own quotation.' So the property being diagonalized to yield the liar
-sentence itself involves diagonalization!{}
+O lema do ponto fixo diz que, para toda !!{formula}~$!B(x)$, existe
+!!a{sentence}~$!A$ tal que $\Th{T} \Proves !A \liff !B(\gn{!A})$,
+desde que $\Th{T}$ estenda~$\Th{Q}$. No caso da sentença do mentiroso,
+queremos que $!A$ seja equivalente (de modo demonstrável em~$\Th{T}$) a
+``$\gn{!A}$ é falsa'', O.s.\@, à afirmação de que $\Gn{!A}$ é o número de
+G\"odel de uma !!{sentence} falsa. Para compreender a ideia da prova, será
+útil compará-la com a glosa informal de Quine para~$!A$: ``{}`produz uma
+falsidade quando precedida por sua própria citação' produz uma falsidade
+quando precedida por sua própria citação''. A operação de tomar uma
+expressão e formar uma sentença precedendo essa expressão por sua própria
+citação pode ser chamada de \emph{diagonalização} da expressão, e o
+resultado, de sua diagonalização. Assim, a diagonalização de `produz uma
+falsidade quando precedida por sua própria citação' é ``{}`produz uma
+falsidade quando precedida por sua própria citação' produz uma falsidade
+quando precedida por sua própria citação''. Observe agora que a sentença do
+mentiroso de Quine não é a diagonalização de `produz uma falsidade', mas de
+`produz uma falsidade quando precedida por sua própria citação'. Portanto,
+a própria propriedade diagonalizada para produzir a sentença do mentiroso
+envolve diagonalização!{}
 
-In the language of arithmetic, we form quotations of !!a{formula} with
-one free variable by computing its G\"odel numbers and then
-substituting the standard numeral for that G\"odel number into the
-free variable. The diagonalization of~$!E(x)$ is $!E(\num{n})$, where
-$n = \Gn{!E(x)}$. (From now on, let's abbreviate $\num{\Gn{!E(x)}}$ as
-$\gn{!E(x)}$.)  So if $!B(x)$ is ``is a falsehood,'' then ``yields a
-falsehood if preceded by its own quotation,'' would be ``yields a
-falsehood when applied to the G\"odel number of its diagonalization.''
-If we had a symbol~$\Obj{diag}$ for the function $\fn{diag}(n)$ which
-computes the G\"odel number of the diagonalization of the !!{formula}
-with G\"odel number~$n$, we could write $!E(x)$ as
-$!B(\Obj{diag}(x))$. And Quine's version of the liar sentence would
-then be the diagonalization of it, O.s.\@, $!E(\gn{!E(x)})$ or
-$!B(\Obj{diag}(\gn{!B(\Obj{diag}(x))}))$.  Of course, $!B(x)$ could
-now be any other property, and the same construction would work. For
-the incompleteness theorem, we'll take $!B(x)$ to be ``$x$~is not
-!!{derivable} in~$\Th{T}$.'' Then $!E(x)$ would be ``yields
-!!a{sentence} not !!{derivable} in~$\Th{T}$ when applied to the
-G\"odel number of its diagonalization.''
+Na linguagem da aritmética, formamos citações de !!a{formula} com uma
+variável livre calculando seu número de G\"odel e substituindo a variável
+livre pelo numeral padrão desse número de G\"odel. A diagonalização
+de~$!E(x)$ é $!E(\num{n})$, onde $n = \Gn{!E(x)}$. (Daqui em diante,
+abreviaremos $\num{\Gn{!E(x)}}$ por $\gn{!E(x)}$.) Assim, se $!B(x)$ é
+``é uma falsidade'', então ``produz uma falsidade se precedida por sua
+própria citação'' seria ``produz uma falsidade quando aplicada ao número de
+G\"odel de sua diagonalização''. Se tivéssemos um símbolo~$\Obj{diag}$ para
+a função $\fn{diag}(n)$ que calcula o número de G\"odel da diagonalização da
+!!{formula} com número de G\"odel~$n$, poderíamos escrever $!E(x)$ como
+$!B(\Obj{diag}(x))$. E a versão de Quine da sentença do mentiroso seria
+então sua diagonalização, O.s.\@, $!E(\gn{!E(x)})$ ou
+$!B(\Obj{diag}(\gn{!B(\Obj{diag}(x))}))$. Evidentemente, $!B(x)$ poderia
+agora ser qualquer outra propriedade, e a mesma construção funcionaria.
+Para o teorema da incompletude, tomaremos $!B(x)$ como ``$x$~não é
+!!{derivable} em~$\Th{T}$.'' Então $!E(x)$ seria ``produz
+!!a{sentence} não !!{derivable} em~$\Th{T}$ quando aplicada ao número de
+G\"odel de sua diagonalização''.
 
-To formalize this in~$\Th{T}$, we have to find a way to formalize
-$\fn{diag}$. The function $\fn{diag}(n)$ is computable, in fact, it is
-primitive recursive: if $n$ is the G\"odel number of a
-formula~$!E(x)$, $\fn{diag}(n)$ returns the G\"odel number
-of~$!E(\gn{!E(x)})$. (Recall, $\gn{!E(x)}$ is the standard numeral of
-the G\"odel number of~$!E(x)$, O.s.\@, $\num{\Gn{!E(x)}}$). If
-$\Obj{diag}$ were a function symbol in $\Th{T}$ representing the
-function $\fn{diag}$, we could take $!A$ to be the formula
-$!B(\Obj{diag}(\gn{!B(\Obj{diag}(x))}))$. Notice that
+Para formalizar isso em~$\Th{T}$, precisamos encontrar uma maneira de
+formalizar $\fn{diag}$. A função $\fn{diag}(n)$ é computável; de fato, é
+recursiva primitiva: se $n$ é o número de G\"odel de uma fórmula~$!E(x)$,
+$\fn{diag}(n)$ devolve o número de G\"odel de~$!E(\gn{!E(x)})$. (Lembre-se:
+$\gn{!E(x)}$ é o numeral padrão do número de G\"odel de~$!E(x)$, O.s.\@,
+$\num{\Gn{!E(x)}}$.) Se $\Obj{diag}$ fosse um símbolo de função em
+$\Th{T}$ que representasse a função $\fn{diag}$, poderíamos tomar $!A$
+como a fórmula $!B(\Obj{diag}(\gn{!B(\Obj{diag}(x))}))$. Observe que
 \begin{align*}
 \fn{diag}(\Gn{!B(\Obj{diag}(x))}) & = 
 \Gn{!B(\Obj{diag}(\gn{!B(\Obj{diag}(x))}))} \\
 & = \Gn{!A}.
 \end{align*}
-Assuming $\Th{T}$ can !!{derive}
+Supondo que $\Th{T}$ possa !!{derive}
 \[
 \Obj{diag}(\gn{!B(\Obj{diag}(x))}) = \gn{!A},
 \]
-it can !!{derive} $!B(\Obj{diag}(\gn{!B(\Obj{diag}(x))}))
-\liff !B(\gn{!A})$. But the left hand side is, by
-definition,~$!A$.
+ela pode !!{derive} $!B(\Obj{diag}(\gn{!B(\Obj{diag}(x))}))
+\liff !B(\gn{!A})$. Mas o lado esquerdo é, por definição,~$!A$.
 
-Of course, $\Obj{diag}$ will in general not be a function symbol of
-$\Th{T}$, and certainly is not one of~$\Th{Q}$. But, since $\fn{diag}$
-is computable, it is \emph{representable} in~$\Th{Q}$ by some formula
-$!D_{\fn{diag}}(x,y)$. So instead of writing $!B(\Obj{diag}(x))$ we
-can write $\lexists[y][(!D_{\fn{diag}}(x,y) \land !B(y))]$. Otherwise,
-the proof sketched above goes through, and in fact, it goes through
-already in~$\Th{Q}$.
+É claro que $\Obj{diag}$ em geral não será um símbolo de função de
+$\Th{T}$ e certamente não é um símbolo de~$\Th{Q}$. Mas, como
+$\fn{diag}$ é computável, ela é \emph{representável} em~$\Th{Q}$ por alguma
+fórmula $!D_{\fn{diag}}(x,y)$. Assim, em vez de escrever
+$!B(\Obj{diag}(x))$, podemos escrever
+$\lexists[y][(!D_{\fn{diag}}(x,y) \land !B(y))]$. De resto, a prova
+esboçada acima funciona e, na verdade, já funciona em~$\Th{Q}$.
 \end{explain}
 
 \begin{lem}
-\ollabel{lem:fixed-point} Let $!B(x)$ be any formula with one free
-variable~$x$. Then there is a sentence~$!A$ such that $\Th{Q} \Proves
+\ollabel{lem:fixed-point} Seja $!B(x)$ qualquer fórmula com uma variável
+livre~$x$. Então existe uma sentença~$!A$ tal que $\Th{Q} \Proves
 !A \liff !B(\gn{!A})$.
 \end{lem}
 
 
 \begin{proof}
-Given $!B(x)$, let $!E(x)$ be the formula
-$\lexists[y][(!D_{\fn{diag}}(x,y) \land !B(y))]$ and let $!A$~be its
-diagonalization, O.s.\@, the formula $!E(\gn{!E(x)})$.
+Dada $!B(x)$, seja $!E(x)$ a fórmula
+$\lexists[y][(!D_{\fn{diag}}(x,y) \land !B(y))]$ e seja $!A$~sua
+diagonalização, O.s.\@, a fórmula $!E(\gn{!E(x)})$.
 
-Since $!D_{\fn{diag}}$ represents $\fn{diag}$, and
-$\fn{diag}(\Gn{!E(x)}) = \Gn{!A}$, $\Th{Q}$ can !!{derive}
+Como $!D_{\fn{diag}}$ representa $\fn{diag}$, e
+$\fn{diag}(\Gn{!E(x)}) = \Gn{!A}$, $\Th{Q}$ pode !!{derive}
 \begin{align}
   & !D_{\fn{diag}}(\gn{!E(x)}, \gn{!A}) \ollabel{repdiag1} \\
   & \lforall[y][(!D_{\fn{diag}}(\gn{!E(x)},y) \lif
   \eq[y][\gn{!A}])]. \ollabel{repdiag2}
 \end{align}
-Now we show that $\Th{Q} \Proves !A \liff !B(\gn{!A})$. We argue
-informally, using just logic and facts !!{derivable} in~$\Th{Q}$.
+Agora mostramos que $\Th{Q} \Proves !A \liff !B(\gn{!A})$. Argumentamos
+informalmente, usando apenas a lógica e fatos !!{derivable} em~$\Th{Q}$.
 
-First, suppose~$!A$, O.s.\@, $!E(\gn{!E(x)})$. Going back to the
-definition of $!E(x)$, we see that $!E(\gn{!E(x)})$ just is
+Primeiro, suponha~$!A$, O.s.\@, $!E(\gn{!E(x)})$. Retomando a definição de
+$!E(x)$, vemos que $!E(\gn{!E(x)})$ é simplesmente
 \[
 \lexists[y][(!D_{\fn{diag}}(\gn{!E(x)},y) \land !B(y))].
 \]
-Consider such a~$y$. Since $!D_{\fn{diag}}(\gn{!E(x)},y)$, by
-\olref{repdiag2}, $y = \gn{!A}$. So, from $!B(y)$ we
-have~$!B(\gn{!A})$.
+Considere um tal~$y$. Como $!D_{\fn{diag}}(\gn{!E(x)},y)$, por
+\olref{repdiag2}, $y = \gn{!A}$. Logo, de $!B(y)$ obtemos~$!B(\gn{!A})$.
 
-Now suppose $!B(\gn{!A})$. By \olref{repdiag1}, we have
+Agora suponha $!B(\gn{!A})$. Por \olref{repdiag1}, temos
 \begin{align*}
 & !D_{\fn{diag}}(\gn{!E(x)}, \gn{!A}) \land !B(\gn{!A}).
-\intertext{It follows
-that}
+\intertext{Segue-se
+que}
 & \lexists[y][(!D_{\fn{diag}}(\gn{!E(x)},y) \land !B(y))].
 \end{align*}
-But that's just $!E(\gn{!E(x)})$, O.s.\@,~$!A$.
+Mas isso é simplesmente $!E(\gn{!E(x)})$, O.s.\@,~$!A$.
 \end{proof}
 
 \begin{digress}
-You should compare this to the proof of the fixed-point lemma in
-computability theory. The difference is that here we want to define a
-\emph{statement} in terms of itself, whereas there we wanted to define
-a \emph{function} in terms of itself; this difference aside, it is
-really the same idea.
+Compare esta prova com a do lema do ponto fixo na teoria da computabilidade.
+A diferença é que aqui queremos definir uma \emph{afirmação} em termos de si
+mesma, enquanto ali queríamos definir uma \emph{função} em termos de si
+mesma; à parte essa diferença, trata-se realmente da mesma ideia.
 \end{digress}
 
 \begin{prob} 
-  !!^a{formula}~$!A(x)$ is a \emph{truth definition} if $\Th{Q}
-  \Proves !B \liff !A(\gn{!B})$ for all !!{sentence}s~$!B$. Show that
-  no !!{formula} is a truth definition by using the fixed-point lemma.
+  !!^a{formula}~$!A(x)$ é uma \emph{definição de verdade} se $\Th{Q}
+  \Proves !B \liff !A(\gn{!B})$ para toda !!{sentence}~$!B$. Mostre, usando
+  o lema do ponto fixo, que nenhuma !!{formula} é uma definição de verdade.
 \end{prob}
 
 \end{document}
+

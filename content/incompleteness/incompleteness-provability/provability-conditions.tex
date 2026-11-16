@@ -6,73 +6,71 @@
 
 \begin{document}
 
-\olfileid{inc}{inp}{prc}
+\olfileid[pt]{inc}{inp}{prc}
 
-\olsection{The \usetoken{S}{derivability} Conditions for $\Th{PA}$}
+\olsection{As condições de \usetoken{S}{derivability} para $\Th{PA}$}
 
-Peano arithmetic, or $\Th{PA}$, is the theory extending $\Th{Q}$ with
-induction axioms for all !!{formula}s. In other words, one adds to $\Th{Q}$
-axioms of the form
+A aritmética de Peano, ou $\Th{PA}$, é a teoria que estende $\Th{Q}$ com
+axiomas de indução para todas as !!{formula}s. Em outras palavras,
+acrescentamos a $\Th{Q}$ axiomas da forma
 \[
 (!A(0) \land \lforall[x][(!A(x) \lif !A(x'))]) \lif \lforall[x][!A(x)]
 \]
-for every !!{formula}~$!A$. Notice that this is really a
-\emph{schema}, which is to say, infinitely many axioms (and it turns
-out that $\Th{PA}$ is {\em not} finitely axiomatizable). But since one
-can effectively determine whether or not a string of symbols is an
-instance of an induction axiom, the set of axioms for $\Th{PA}$ is
-computable. $\Th{PA}$ is a much more robust theory than~$\Th{Q}$. For
-example, one can easily prove that addition and multiplication are
-commutative, using induction in the usual way. In fact, most finitary
-number-theoretic and combinatorial arguments can be carried out
-in~$\Th{PA}$.
+para toda !!{formula}~$!A$. Observe que isso é, na verdade, um
+\emph{esquema}, isto é, uma coleção infinita de axiomas (e verifica-se que
+$\Th{PA}$ {\em não} é finitamente axiomatizável). Mas, como podemos
+determinar efetivamente se uma cadeia de símbolos é ou não uma instância de
+um axioma de indução, o conjunto de axiomas de $\Th{PA}$ é computável.
+$\Th{PA}$ é uma teoria muito mais robusta que~$\Th{Q}$. Por exemplo, usando
+indução da maneira usual, podemos provar facilmente que a adição e a
+multiplicação são comutativas. De fato, a maior parte dos argumentos
+finitários da teoria dos números e da combinatória pode ser desenvolvida
+em~$\Th{PA}$.
 
-Since $\Th{PA}$ is computably axiomatized, the !!{derivability}
-predicate $\Prf[\Th{PA}](x,y)$ is computable and hence represented
-in~$\Th{Q}$ (and so, in~$\Th{PA}$). As before, we will take
-$\OPrf[\Th{PA}](x,y)$ to denote the formula representing the relation.
-Let $\OProv[\Th{PA}](y)$ be the formula
-$\lexists[x][\Prf[\Th{PA}](x,y)]$, which, intuitively says, ``$y$ is
-!!{derivable} from the axioms of $\Th{PA}$.''  The reason we need a
-little bit more than the axioms of $\Th{Q}$ is we need to know that
-the theory we are using is strong enough to !!{derive} a few basic
-facts about this !!{derivability} predicate. In fact, what we need are
-the following facts:
+Como $\Th{PA}$ é axiomatizada computavelmente, o predicado de
+!!{derivability} $\Prf[\Th{PA}](x,y)$ é computável e, portanto,
+representado em~$\Th{Q}$ (e, assim, em~$\Th{PA}$). Como antes, tomaremos
+$\OPrf[\Th{PA}](x,y)$ para denotar a fórmula que representa a relação. Seja
+$\OProv[\Th{PA}](y)$ a fórmula
+$\lexists[x][\Prf[\Th{PA}](x,y)]$, que intuitivamente diz: ``$y$ é
+!!{derivable} a partir dos axiomas de $\Th{PA}$.'' Precisamos de um pouco
+mais que os axiomas de $\Th{Q}$ porque precisamos saber que a teoria usada
+é forte o bastante para !!{derive} alguns fatos básicos sobre esse
+predicado de !!{derivability}. De fato, precisamos dos fatos seguintes:
 \begin{enumerate}
-\item[P1.] If $\Th{PA} \Proves !A$, then $\Th{PA} \Proves
+\item[P1.] Se $\Th{PA} \Proves !A$, então $\Th{PA} \Proves
   \OProv[\Th{PA}](\gn{!A})$.
-\item[P2.] For all !!{formula}s $!A$ and $!B$,
+\item[P2.] Para todas as !!{formula}s $!A$ e $!B$,
   \[
   \Th{PA} \Proves \OProv[\Th{PA}](\gn{!A \lif !B}) \lif
   (\OProv[\Th{PA}](\gn{!A}) \lif \OProv[\Th{PA}](\gn{!B})).
   \]
-\item[P3.] For every !!{formula}~$!A$,
+\item[P3.] Para toda !!{formula}~$!A$,
   \[
   \Th{PA} \Proves \OProv[\Th{PA}](\gn{!A})
   \lif \OProv[\Th{PA}](\gn{\OProv[\Th{PA}](\gn{!A})}).
   \]
 \end{enumerate}
-The only way to verify that these three properties hold is to describe
-the !!{formula} $\OProv[\Th{PA}](y)$ carefully and use the axioms of
-$\Th{PA}$ to describe the relevant formal !!{derivation}s. Conditions (1)
-and~(2) are easy; it is really condition~(3) that requires
-work. (Think about what kind of work it entails \dots) Carrying out the
-details would be tedious and uninteresting, so here we will ask you to
-take it on faith that $\Th{PA}$ has the three properties listed
-above. A reasonable choice of $\OProv[\Th{PA}](y)$ will also satisfy
+A única maneira de verificar que essas três propriedades valem é descrever
+cuidadosamente a !!{formula} $\OProv[\Th{PA}](y)$ e usar os axiomas de
+$\Th{PA}$ para descrever as !!{derivation}s formais pertinentes. As
+condições (1) e~(2) são fáceis; é realmente a condição~(3) que exige
+trabalho. (Pense no tipo de trabalho que ela envolve \dots) Desenvolver os
+detalhes seria tedioso e pouco interessante, por isso pediremos aqui que
+você aceite pela confiança que $\Th{PA}$ tem as três propriedades listadas
+acima. Uma escolha razoável de $\OProv[\Th{PA}](y)$ também satisfará
 \begin{enumerate}
-\item[P4.] If $\Th{PA} \Proves \OProv[\Th{PA}](\gn{!A})$, then
+\item[P4.] Se $\Th{PA} \Proves \OProv[\Th{PA}](\gn{!A})$, então
   $\Th{PA} \Proves !A$.
 \end{enumerate}
-But we will not need this fact.
+Mas não precisaremos desse fato.
 
 \begin{digress}
-Incidentally, G\"odel was lazy in the same way we are
-being now. At the end of the 1931 paper, he sketches the proof of the
-second incompleteness theorem, and promises the details in a later
-paper. He never got around to it; since everyone who understood the
-argument believed that it could be carried out (he did not need to
-fill in the details.)
+Aliás, G\"odel foi preguiçoso da mesma maneira que estamos sendo agora. No
+fim do artigo de 1931, ele esboça a prova do segundo teorema da incompletude
+e promete os detalhes em um artigo posterior. Nunca chegou a escrevê-los;
+como todos os que compreendiam o argumento acreditavam que ele podia ser
+desenvolvido, ele não precisou preencher os detalhes.
 \end{digress}
 
 \end{document}

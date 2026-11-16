@@ -6,87 +6,88 @@
 
 \begin{document}
 
-\olfileid{inc}{art}{int}
-\olsection{Introduction}
+\olfileid[pt]{inc}{art}{int}
+\olsection{Introdução}
 
-In order to connect computability and logic, we need a way to talk
-about the objects of logic (symbols, terms, !!{formula}s,
-!!{derivation}s), operations on them, and their properties and
-relations, in a way amenable to computational treatment.  We can do
-this directly, by considering computable functions and relations on
-symbols, sequences of symbols, and other objects built from them.
-Since the objects of logical syntax are all finite and built from
-!!a{enumerable} sets of symbols, this is possible for some models of
-computation.  But other models of computation---such as the recursive
-functions----are restricted to numbers, their relations and functions.
-Moreover, ultimately we also want to be able to deal with syntax
-within certain theories, specifically, in theories formulated in the
-language of arithmetic.  In these cases it is necessary to
-\emph{arithmetize} syntax, O.s.\@, to represent syntactic objects,
-operations on them, and their relations, as numbers, arithmetical
-functions, and arithmetical relations, respectively. The idea, which
-goes back to Leibniz, is to assign numbers to syntactic objects.
+Para relacionar computabilidade e lógica, precisamos de uma maneira de
+falar dos objetos da lógica (símbolos, termos, !!{formula}s,
+!!{derivation}s), das operações sobre eles e de suas propriedades e
+relações de uma forma que permita tratamento computacional. Podemos
+fazer isso diretamente, considerando funções e relações computáveis
+sobre símbolos, sequências de símbolos e outros objetos construídos a
+partir deles. Como os objetos da sintaxe lógica são todos finitos e
+construídos a partir de conjuntos !!a{enumerable} de símbolos, isso é
+possível para alguns modelos de computação. Outros modelos de
+computação---como as funções recursivas---restringem-se, porém, aos
+números, às suas relações e às suas funções. Além disso, em última
+análise também queremos poder tratar da sintaxe dentro de certas
+teorias, especificamente em teorias formuladas na linguagem da
+aritmética. Nesses casos, é necessário \emph{aritmetizar} a sintaxe,
+O.s.\@, representar objetos sintáticos, operações sobre eles e suas
+relações, respectivamente, como números, funções aritméticas e relações
+aritméticas. A ideia, que remonta a Leibniz, é atribuir números aos
+objetos sintáticos.
 
-It is relatively straightforward to assign numbers to symbols as their
-``codes.''  Some symbols pose a bit of a challenge, since, p.ex., there
-are infinitely many !!{variable}s, and even infinitely many
-!!{function}s of each arity~$n$. But of course it's possible to assign
-numbers to symbols systematically in such a way that, say, $\Obj v_2$
-and $\Obj v_3$ are assigned different codes. Sequences of symbols
-(such as terms and !!{formula}s) are a bigger challenge. But if we can
-deal with sequences of numbers purely arithmetically (p.ex., by the
-powers-of-primes coding of sequences), we can extend the coding of
-individual symbols to coding of sequences of symbols, and then further
-to sequences or other arrangements of !!{formula}s, such as
-!!{derivation}s. This extended coding is called ``G\"odel numbering.''
-Every term, !!{formula}, and !!{derivation} is assigned a G\"odel
-number.
+É relativamente simples atribuir números aos símbolos como seus
+``códigos''. Alguns símbolos apresentam uma pequena dificuldade, pois,
+p.ex., há infinitas !!{variable}s e até infinitas !!{function}s
+de cada aridade~$n$. Mas é claro que se podem atribuir números aos
+símbolos sistematicamente, de tal modo que, digamos, $\Obj v_2$ e
+$\Obj v_3$ recebam códigos diferentes. Sequências de símbolos (como
+termos e !!{formula}s) constituem um desafio maior. Contudo, se
+conseguirmos tratar sequências de números de maneira puramente
+aritmética (p.ex., pela codificação de sequências mediante
+potências de primos), poderemos estender a codificação dos símbolos
+individuais à codificação de sequências de símbolos e, depois, a
+sequências ou outros arranjos de !!{formula}s, como !!{derivation}s.
+Essa codificação ampliada é chamada ``numeração de G\"odel''. A cada
+termo, !!{formula} e !!{derivation} atribui-se um número de G\"odel.
 
-By coding sequences of symbols as sequences of their codes, and by
-choosing a system of coding sequences that can be dealt with using
-computable functions, we can then also deal with G\"odel numbers using
-computable functions.  In practice, all the relevant functions will be
-primitive recursive.  For instance, computing the length of a sequence
-and computing the $i$-th element of a sequence from the code of the
-sequence are both primitive recursive. If the number coding the
-sequence is, p.ex., the G\"odel number of !!a{formula}~$!A$, we
-immediately see that the length of !!a{formula} and the (code of the)
-$i$-th symbol in !!a{formula} can also be computed from the G\"odel
-number of~$!A$. It is a bit harder to prove that, p.ex., the property
-of being the G\"odel number of a correctly formed term or of a correct
-!!{derivation} is primitive recursive.  It is nevertheless possible,
-because the sequences of interest (terms, !!{formula}s,
-!!{derivation}s) are inductively defined.
+Ao codificar sequências de símbolos como sequências de seus códigos e
+escolher um sistema de codificação de sequências que possa ser tratado
+por funções computáveis, podemos também tratar os números de G\"odel
+por funções computáveis. Na prática, todas as funções relevantes serão
+recursivas primitivas. Por exemplo, tanto computar o comprimento de uma
+sequência quanto computar seu $i$-ésimo elemento a partir do código da
+sequência são operações recursivas primitivas. Se o número que codifica
+a sequência for, p.ex., o número de G\"odel de !!a{formula}~$!A$,
+vemos imediatamente que o comprimento de !!a{formula} e o (código do)
+$i$-ésimo símbolo de !!a{formula} também podem ser computados a partir
+do número de G\"odel de~$!A$. É um pouco mais difícil provar que, p.ex., a propriedade de ser o número de G\"odel de um termo bem
+formado ou de uma !!{derivation} correta é recursiva primitiva. Ainda
+assim, isso é possível porque as sequências de interesse (termos,
+!!{formula}s, !!{derivation}s) são definidas indutivamente.
 
-As an example, consider the operation of substitution. If $!A$ is a
-formula, $x$ a variable, and $t$ a term, then $\Subst{!A}{t}{x}$ is
-the result of replacing every free occurrence of~$x$ in~$!A$ by~$t$.
-Now suppose we have assigned G\"odel numbers to $!A$, $x$, $t$---say,
-$k$, $l$, and $m$, respectively.  The same scheme assigns a G\"odel
-number to $\Subst{!A}{t}{x}$, say,~$n$.  This mapping---of $k$, $l$,
-and $m$ to $n$---is the arithmetical analog of the substitution
-operation. When the substitution operation maps $!A$, $x$, $t$ to
-$\Subst{!A}{t}{x}$, the arithmetized substitution functions maps the
-G\"odel numbers $k$, $l$, $m$ to the G\"odel number~$n$.  We will see
-that this function is primitive recursive.
+Como exemplo, considere a operação de substituição. Se $!A$ é uma
+fórmula, $x$ uma variável e $t$ um termo, então $\Subst{!A}{t}{x}$ é o
+resultado de substituir toda ocorrência livre de~$x$ em~$!A$ por~$t$.
+Suponha agora que tenhamos atribuído números de G\"odel a $!A$, $x$ e
+$t$---digamos, respectivamente, $k$, $l$ e $m$. O mesmo esquema atribui
+um número de G\"odel a $\Subst{!A}{t}{x}$, digamos,~$n$. Esse
+mapeamento---de $k$, $l$ e $m$ para $n$---é o análogo aritmético da
+operação de substituição. Quando a operação de substituição leva $!A$,
+$x$ e $t$ a $\Subst{!A}{t}{x}$, a função de substituição aritmetizada
+leva os números de G\"odel $k$, $l$ e $m$ ao número de G\"odel~$n$.
+Veremos que essa função é recursiva primitiva.
 
-Arithmetization of syntax is not just of abstract interest, although
-it was originally a non-trivial insight that languages like the
-language of arithmetic, which do not come with mechanisms for
-``talking about'' languages can, after all, formalize complex
-properties of expressions.  It is then just a small step to ask what a
-theory in this language, such as Peano arithmetic, can \emph{prove}
-about its own language (including, p.ex., whether !!{sentence}s are
-provable or true).  This leads us to the famous limitative theorems of
-G\"odel (about unprovability) and Tarski (the undefinability of
-truth). But the trick of arithmetizing syntax is also important in
-order to prove some important results in computability theory, p.ex.,
-about the computational power of theories or the relationship between
-different models of computability.  The arithmetization of syntax
-serves as a model for arithmetizing other objects and properties. For
-instance, it is similarly possible to arithmetize configurations and
-computations (say, of Turing machines). This makes it possible to
-simulate computations in one model (p.ex., Turing machines) in another
-(p.ex., recursive functions).
+A aritmetização da sintaxe não tem apenas interesse abstrato, embora a
+percepção de que linguagens como a linguagem da aritmética, que não
+dispõem de mecanismos para ``falar sobre'' linguagens, podem afinal
+formalizar propriedades complexas de expressões tenha sido
+originalmente nada trivial. Daí é apenas um pequeno passo perguntar o
+que uma teoria nessa linguagem, como a aritmética de Peano, pode
+\emph{provar} acerca de sua própria linguagem (inclusive, p.ex.,
+se !!{sentence}s são demonstráveis ou verdadeiras). Isso nos leva aos
+famosos teoremas limitativos de G\"odel (sobre a indemonstrabilidade) e
+de Tarski (sobre a indefinibilidade da verdade). Mas o recurso de
+aritmetizar a sintaxe também é importante para provar alguns resultados
+fundamentais da teoria da computabilidade, p.ex., sobre o poder
+computacional das teorias ou a relação entre diferentes modelos de
+computabilidade. A aritmetização da sintaxe serve de modelo para a
+aritmetização de outros objetos e propriedades. Por exemplo, é
+igualmente possível aritmetizar configurações e computações (digamos,
+de máquinas de Turing). Isso permite simular computações de um modelo
+(p.ex., máquinas de Turing) em outro (p.ex., funções
+recursivas).
 
 \end{document}
