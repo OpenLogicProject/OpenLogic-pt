@@ -6,34 +6,34 @@
 
 \begin{document}
 
-\olfileid{pl}{syn}{sem}
+\olfileid[pt]{pl}{syn}{sem}
 
-\olsection{Semantic Notions}
+\olsection{Noções semânticas}
 
-We define the following semantic notions:
+Definimos as seguintes noções semânticas:
 
 \begin{defn} 
 \begin{enumerate}
-\item !!^a{formula}~$!A$ is \emph{satisfiable} if for
-  some~$\pAssign{v}$, $\pSat{v}{!A}$; it is
-  \emph{unsatisfiable} if for no $\pAssign{v}$, $\pSat{v}{!A}$;
-\item !!^a{formula}~$!A$ is a \emph{tautology} if $\pSat{v}{!A}$ for
-  all !!{valuation}s~$\pAssign{v}$;
-\item !!^a{formula}~$!A$ is \emph{contingent} if it is satisfiable but
-  not a tautology;
-\item If $\Gamma$ is a set of !!{formula}s, $\Gamma \Entails !A$ (``$\Gamma$
-  entails $!A$'') if and only if $\pSat{v}{!A}$ for every
-  !!{valuation}~$\pAssign{v}$ for which $\pSat{v}{\Gamma}$.
-\item If $\Gamma$ is a set of !!{formula}s, $\Gamma$ is
-  \emph{satisfiable} if there is !!a{valuation}~$\pAssign{v}$ for which
-  $\pSat{v}{\Gamma}$, and $\Gamma$ is
-  \emph{unsatisfiable} otherwise.
+\item !!^a{formula}~$!A$ é \emph{satisfatível} se, para
+  algum~$\pAssign{v}$, $\pSat{v}{!A}$; ela é
+  \emph{insatisfatível} se não há $\pAssign{v}$ tal que $\pSat{v}{!A}$;
+\item !!^a{formula}~$!A$ é uma \emph{tautologia} se $\pSat{v}{!A}$ para
+  todas as !!{valuation}s~$\pAssign{v}$;
+\item !!^a{formula}~$!A$ é \emph{contingente} se é satisfatível, mas
+  não é uma tautologia;
+\item Se $\Gamma$ é um conjunto de !!{formula}s, $\Gamma \Entails !A$ (``$\Gamma$
+  tem $!A$ como consequência'') se, e somente se, $\pSat{v}{!A}$ para toda
+  !!{valuation}~$\pAssign{v}$ para a qual $\pSat{v}{\Gamma}$.
+\item Se $\Gamma$ é um conjunto de !!{formula}s, $\Gamma$ é
+  \emph{satisfatível} se existe !!a{valuation}~$\pAssign{v}$ para a qual
+  $\pSat{v}{\Gamma}$, e $\Gamma$ é
+  \emph{insatisfatível} caso contrário.
 \end{enumerate} 
 \end{defn}
 
 \begin{prob} 
- For each of the following four !!{formula}s determine whether it
- is (a)~satisfiable, (b)~tautology, and (c)~contingent.
+ Para cada uma das quatro !!{formula}s a seguir, determine se ela é
+ (a)~satisfatível, (b)~uma tautologia e (c)~contingente.
 \begin{enumerate}
   \item \( ( \Obj p_0 \lif ( \lnot \Obj p_1 \lif \lnot \Obj p_0 ) ) \).
   \item \( ( ( \Obj p_0 \land \lnot \Obj p_1 ) \lif ( \lnot \Obj p_0 \land \Obj p_2 )) \liff ( ( \Obj p_2 \lif \Obj p_0 ) \lif ( \Obj p_0 \lif \Obj p_1 )) \).
@@ -45,52 +45,52 @@ We define the following semantic notions:
 \begin{prop}
 \ollabel{prop:semanticalfacts} 
 \begin{enumerate} 
-\item $!A$ is a tautology if and only if
+\item $!A$ é uma tautologia se, e somente se,
   $\emptyset \Entails !A$; 
-\item If $\Gamma \Entails !A$ and $\Gamma \Entails !A \lif !B$ then
+\item Se $\Gamma \Entails !A$ e $\Gamma \Entails !A \lif !B$, então
   $\Gamma \Entails !B$;
-\item If $\Gamma$ is satisfiable then every finite subset of $\Gamma$
-  is also satisfiable; 
-\item \ollabel{def:monotonicity} Monotonicity: if $\Gamma \subseteq \Delta$
-  and $\Gamma \Entails !A$ then also $\Delta \Entails !A$;
-\item \ollabel{def:Cut} Transitivity: if $\Gamma \Entails !A$ and
-  $\Delta \cup \{ !A\} \Entails !B$ then $\Gamma \cup \Delta \Entails
+\item Se $\Gamma$ é satisfatível, então todo subconjunto finito de $\Gamma$
+  também é satisfatível; 
+\item \ollabel{def:monotonicity} Monotonicidade: se $\Gamma \subseteq \Delta$
+  e $\Gamma \Entails !A$, então também $\Delta \Entails !A$;
+\item \ollabel{def:Cut} Transitividade: se $\Gamma \Entails !A$ e
+  $\Delta \cup \{ !A\} \Entails !B$, então $\Gamma \cup \Delta \Entails
   !B$.
 \end{enumerate}
 \end{prop}
 
 \begin{proof}
-Exercise.
+Exercício.
 \end{proof}
 
 \begin{prob}
-Prove \olref[pl][syn][sem]{prop:semanticalfacts}
+Demonstre \olref[pl][syn][sem]{prop:semanticalfacts}
 \end{prob}
 
 \begin{prop}\ollabel{prop:entails-unsat}
-  $\Gamma \Entails !A$ if and only if $\Gamma \cup \{\lnot !A\}$
-  is unsatisfiable.
+  $\Gamma \Entails !A$ se, e somente se, $\Gamma \cup \{\lnot !A\}$
+  é insatisfatível.
 \end{prop}
 
 \begin{proof}
-Exercise.
+Exercício.
 \end{proof}
 
 \begin{prob}
-Prove \olref[pl][syn][sem]{prop:entails-unsat}
+Demonstre \olref[pl][syn][sem]{prop:entails-unsat}
 \end{prob}
 
-\begin{thm}[Semantic Deduction Theorem]
-  \ollabel{thm:sem-deduction} $\Gamma \Entails !A \lif !B$ if and only
-  if $\Gamma \cup \{!A\} \Entails !B$.
+\begin{thm}[Teorema semântico da dedução]
+  \ollabel{thm:sem-deduction} $\Gamma \Entails !A \lif !B$ se, e somente
+  se, $\Gamma \cup \{!A\} \Entails !B$.
 \end{thm}
 
 \begin{proof}
-Exercise.
+Exercício.
 \end{proof}
 
 \begin{prob}
-Prove \olref[pl][syn][sem]{thm:sem-deduction}
+Demonstre \olref[pl][syn][sem]{thm:sem-deduction}
 \end{prob}
 
 \end{document}

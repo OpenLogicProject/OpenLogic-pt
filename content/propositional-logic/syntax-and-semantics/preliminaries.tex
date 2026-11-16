@@ -6,102 +6,102 @@
 
 \begin{document}
 
-\olfileid{pl}{syn}{pre}
+\olfileid[pt]{pl}{syn}{pre}
 
-\olsection{Preliminaries}
+\olsection{Preliminares}
 
-\begin{thm}[\emph{Principle of induction on !!{formula}s}]
+\begin{thm}[\emph{Princípio da indução sobre !!{formula}s}]
   \ollabel{thm:induction}  
-  If some property~$P$ holds for all the atomic !!{formula}s and is
-  such that
+  Se alguma propriedade~$P$ vale para todas as !!{formula}s atômicas e é
+  tal que
   \begin{enumerate}
-    \tagitem{prvNot}{it holds for $\lnot !A$ whenever it holds
-      for~$!A$;}{}
-    \tagitem{prvAnd}{it holds for $(!A \land !B)$
-      whenever it holds for $!A$ and~$!B$;}{}
-    \tagitem{prvOr}{it holds for $(!A \lor !B)$
-      whenever it holds for $!A$ and~$!B$;}{}
-    \tagitem{prvIf}{it holds for $(!A \lif !B)$
-      whenever it holds for $!A$ and~$!B$;}{}
-    \tagitem{prvIff}{it holds for $(!A \liff !B)$
-      whenever it holds for $!A$ and~$!B$;}{}
+    \tagitem{prvNot}{ela vale para $\lnot !A$ sempre que vale
+      para~$!A$;}{}
+    \tagitem{prvAnd}{ela vale para $(!A \land !B)$
+      sempre que vale para $!A$ e~$!B$;}{}
+    \tagitem{prvOr}{ela vale para $(!A \lor !B)$
+      sempre que vale para $!A$ e~$!B$;}{}
+    \tagitem{prvIf}{ela vale para $(!A \lif !B)$
+      sempre que vale para $!A$ e~$!B$;}{}
+    \tagitem{prvIff}{ela vale para $(!A \liff !B)$
+      sempre que vale para $!A$ e~$!B$;}{}
   \end{enumerate}
-  then $P$ holds for all !!{formula}s.
+  então $P$ vale para todas as !!{formula}s.
 \end{thm}
 
 \begin{proof}
-  Let $S$ be the collection of all !!{formula}s with
-  property~$P$. Clearly $S \subseteq \Frm[L_0]$. $S$~satisfies all the
-  conditions of \olref[fml]{defn:formulas}: it contains all atomic
-  !!{formula}s and is closed under the !!{operator}s.  $\Frm[L_0]$ is
-  the smallest such class, so $\Frm[L_0] \subseteq S$. So $\Frm[L_0] = S$, and
-  every formula has property~$P$.
+  Seja $S$ a coleção de todas as !!{formula}s com a
+  propriedade~$P$. Claramente, $S \subseteq \Frm[L_0]$. $S$~satisfaz todas as
+  condições de \olref[fml]{defn:formulas}: contém todas as
+  !!{formula}s atômicas e é fechada sob os !!{operator}s. $\Frm[L_0]$ é
+  a menor classe desse tipo, portanto $\Frm[L_0] \subseteq S$. Logo, $\Frm[L_0] = S$, e
+  toda fórmula tem a propriedade~$P$.
 \end{proof}
 
 \begin{prop}\ollabel{prop:balanced}
-   Any !!{formula} in~$\Frm[L_0]$ is \emph{balanced}, in that it has
-   as many left parentheses as right ones.
+   Toda !!{formula} em~$\Frm[L_0]$ é \emph{balanceada}, pois tem
+   tantos parênteses esquerdos quanto direitos.
 \end{prop}
 
 \begin{prob}
-Prove \olref[pl][syn][pre]{prop:balanced}
+Demonstre \olref[pl][syn][pre]{prop:balanced}
 \end{prob}
 
 \begin{prop} \ollabel{prop:noinit}
-No proper initial segment of !!a{formula} is !!a{formula}.
+Nenhum segmento inicial próprio de !!a{formula} é !!a{formula}.
 \end{prop}
 
 \begin{prob}
-  Prove \olref[pl][syn][pre]{prop:noinit}
+  Demonstre \olref[pl][syn][pre]{prop:noinit}
 \end{prob}
 
-\begin{prop}[Unique Readability]
-Any !!{formula}~$!A$ in $ \Frm[L_0]$ has exactly one parsing as one of
-the following
+\begin{prop}[Leitura Unívoca]
+Toda !!{formula}~$!A$ em $ \Frm[L_0]$ tem exatamente uma análise sintática em uma das
+seguintes formas:
 \begin{enumerate}
 \tagitem{prvFalse}{$\lfalse$.}{}
 
 \tagitem{prvTrue}{$\ltrue$.}{}
 
-\item $\Obj p_n$ for some $\Obj p_n \in  \PVar$.
+\item $\Obj p_n$ para algum $\Obj p_n \in  \PVar$.
   
-\tagitem{prvNot}{$\lnot !B$ for some !!{formula}~$!B$.}{}
+\tagitem{prvNot}{$\lnot !B$ para alguma !!{formula}~$!B$.}{}
 
-\tagitem{prvAnd}{$(!B \land !C)$ for some !!{formula}s $!B$ and~$!C$.}{}
+\tagitem{prvAnd}{$(!B \land !C)$ para algumas !!{formula}s $!B$ e~$!C$.}{}
 
-\tagitem{prvOr}{$(!B \lor !C)$ for some !!{formula}s $!B$ and~$!C$.}{}
+\tagitem{prvOr}{$(!B \lor !C)$ para algumas !!{formula}s $!B$ e~$!C$.}{}
 
-\tagitem{prvIf}{$(!B \lif !C)$ for some !!{formula}s $!B$ and~$!C$.}{}
+\tagitem{prvIf}{$(!B \lif !C)$ para algumas !!{formula}s $!B$ e~$!C$.}{}
 
-\tagitem{prvIff}{$(!B \liff !C)$ for some !!{formula}s $!B$ and~$!C$.}{}
+\tagitem{prvIff}{$(!B \liff !C)$ para algumas !!{formula}s $!B$ e~$!C$.}{}
 \end{enumerate}
-Moreover, this parsing is \emph{unique}.
+Além disso, essa análise sintática é \emph{única}.
 \end{prop}
 
 \begin{proof}
-By induction on $!A$. For instance, suppose that $!A$ has two distinct
-readings as $(!B \lif !C)$ and $(!B' \lif !C')$. Then $!B$ and $!B'$
-must be the same (or else one would be a proper initial segment of the
-other); so if the two readings of $!A$ are distinct it must be because
-$!C$ and $!C'$ are distinct readings of the same sequence of symbols,
-which is impossible by the inductive hypothesis.
+Por indução sobre $!A$. Por exemplo, suponha que $!A$ tenha duas
+leituras distintas como $(!B \lif !C)$ e $(!B' \lif !C')$. Então, $!B$ e $!B'$
+devem ser iguais (caso contrário, um seria um segmento inicial próprio do
+outro); assim, se as duas leituras de $!A$ forem distintas, isso deve ocorrer porque
+$!C$ e $!C'$ são leituras distintas da mesma sequência de símbolos,
+o que é impossível pela hipótese de indução.
 \end{proof}
 
 
-\begin{defn}[Uniform Substitution]
-If $!A$ and $!B$ are !!{formula}s, and $\Obj p_i$ is a !!{propositional
-variable}, then $\Subst{!A}{!B}{\Obj p_i}$ denotes the result of
-replacing each occurrence of $\Obj p_i$ by an occurrence of $!B$ in $!A$;
-similarly, the simultaneous substitution of $\Obj p_1$, \dots,~$\Obj p_n$ by
-!!{formula}s $!B_1$, \dots,~$!B_n$ is denoted by
+\begin{defn}[Substituição Uniforme]
+Se $!A$ e $!B$ são !!{formula}s e $\Obj p_i$ é uma !!{propositional
+variable}, então $\Subst{!A}{!B}{\Obj p_i}$ denota o resultado de
+substituir cada ocorrência de $\Obj p_i$ por uma ocorrência de $!B$ em $!A$;
+de modo semelhante, a substituição simultânea de $\Obj p_1$, \dots,~$\Obj p_n$ por
+!!{formula}s $!B_1$, \dots,~$!B_n$ é denotada por
 $\SSubst{!A}{\subst{!B_1}{\Obj p_1},\dots,\subst{!B_n}{\Obj p_n}}$.
 \end{defn}
 
-\begin{prob} For each of the five !!{formula}s below determine whether the 
- !!{formula} can be expressed as a substitution \( \Subst{!A}{!B}{\Obj p_i} \)
- where \( !A \) is (i) \( \Obj p_0 \); (ii) \( ( \lnot \Obj p_0 \land \Obj
- p_1) \); and (iii) \( ( ( \lnot \Obj p_0 \lif \Obj p_1 ) \land \Obj
- p_2 ) \). In each case specify the relevant substitution.
+\begin{prob} Para cada uma das cinco !!{formula}s abaixo, determine se a 
+ !!{formula} pode ser expressa como uma substituição \( \Subst{!A}{!B}{\Obj p_i} \),
+ em que \( !A \) é (i) \( \Obj p_0 \); (ii) \( ( \lnot \Obj p_0 \land \Obj
+ p_1) \); e (iii) \( ( ( \lnot \Obj p_0 \lif \Obj p_1 ) \land \Obj
+ p_2 ) \). Em cada caso, especifique a substituição pertinente.
   \begin{enumerate}
     \item \( \Obj p_1 \) 
     \item \( ( \lnot \Obj p_0 \land \Obj p_0 ) \)
@@ -112,8 +112,8 @@ $\SSubst{!A}{\subst{!B_1}{\Obj p_1},\dots,\subst{!B_n}{\Obj p_n}}$.
 \end{prob}
 
 \begin{prob}
-Give a mathematically rigorous definition of $\Subst{!A}{!B}{p}$ by
-induction.
+Dê uma definição matematicamente rigorosa de $\Subst{!A}{!B}{p}$ por
+indução.
 \end{prob}
 
 \end{document}
