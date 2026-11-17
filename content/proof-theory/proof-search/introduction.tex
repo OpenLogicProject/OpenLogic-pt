@@ -1,0 +1,124 @@
+% Part: proof-theory
+% Chapter: proof-search
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{pt}{ps}{int}
+
+\olsection{Introdução}
+
+Os axiomas e as regras de inferência de sistemas de !!{proof}, como
+\Log{G3c} ou \Log{N1i}, definem quais árvores de sequentes ou
+!!{formula}s contam como !!{proof}s corretas. Dada uma árvore de
+sequentes ou !!{formula}s desse tipo (possivelmente com informações
+adicionais, como quais regras são aplicadas em cada passo, ou rótulos
+para as premissas e para as regras de inferência que as descarregam),
+as definições dos axiomas e das regras nos permitem verificar se a
+árvore dada é uma !!{proof} correta. Um problema diferente, e em geral
+mais difícil, é \emph{encontrar} !!a{proof} de um determinado sequente
+ou de uma determinada !!{formula} a partir de premissas dadas. Esse é o
+problema da \emph{busca de provas}.
+
+Há um procedimento muito rudimentar para a busca de provas. Podemos
+considerar as !!{formula}s sequências de símbolos de um alfabeto
+finito. Sequentes e árvores de sequentes ou !!{formula}s também podem
+ser considerados sequências de !!{formula}s (talvez usando colchetes
+especiais para indicar as ramificações da árvore). Os axiomas e as
+regras nos permitem verificar mecanicamente se uma sequência de
+símbolos representa uma !!{proof} correta. Consequentemente, podemos
+gerar mecanicamente \emph{todas as !!{proof}s corretas possíveis}
+(gerando todas as sequências de símbolos do alfabeto usado para
+representar !!{proof}s e verificando, para cada sequência candidata, se
+ela representa uma !!{proof} correta). O procedimento rudimentar de
+busca de provas é o seguinte: gerar todas as !!{proof}s corretas até
+encontrarmos uma que seja uma !!{proof} do sequente dado (ou da
+!!{formula} dada cujas premissas abertas estejam entre as premissas
+dadas).
+
+Um método melhor é usar o método ingênuo que você empregaria para
+encontrar !!a{proof} à mão: começa-se pelo sequente final, escolhe-se
+!!a{formula} e aplica-se uma regra de inferência ``de trás para a
+frente'' para gerar uma premissa ou premissas que, se tivessem
+!!{proof}s, combinariam com a última inferência para formar !!a{proof}
+do sequente dado. Um método semelhante (embora mais complicado) é o que
+você usaria para encontrar !!a{proof} em um sistema de dedução natural.
+
+Mas esse método não é infalível: se você escolher a regra errada ou as
+!!{formula}s na ordem errada, poderá chegar a um beco sem saída. Ele
+também não está completamente especificado: em cada ponto, pode haver
+mais de uma !!{formula} possível a escolher ou mais de uma regra que
+possa ser aplicada de trás para a frente. Um \emph{algoritmo de busca
+de provas} é um procedimento completamente especificado que encontrará
+!!a{proof} caso exista uma (isto é, é infalível).
+
+Alguns sistemas de !!{proof} permitem algoritmos de busca de provas
+mais simples do que outros. Em sistemas de sequentes, o !!{main operator}
+de !!a{formula}, e o fato de ela ocorrer à esquerda ou à
+direita, determinam qual regra deve ser aplicada de trás para a frente.
+Por exemplo, se você quiser encontrar !!a{proof} de $\Gamma \Sequent
+\Delta, !A \land !B$ na qual $!A \land !B$ ocorre à direita, deverá
+aplicar \RightR{\land} de trás para a frente e gerar as duas premissas
+correspondentes $\Gamma \Sequent \Delta, !A$ e $\Gamma \Sequent
+\Delta, !B$. Contudo, se seu sistema for \Log{G1c}, a presença da
+contração torna as coisas mais difíceis porque oferece mais opções:
+você também poderia aplicar \RightR{\Contraction} de trás para a frente
+e gerar, em vez disso, a premissa $\Gamma \Sequent \Delta, !A \land
+!B, !A \land !B$. E depois a premissa $\Gamma \Sequent \Delta, !A
+\land !B, !A \land !B, !A \land !B$, e assim por diante. Em \Log{G2c},
+a situação é ainda pior. Aplicar a regra \RightR{\land} de trás para a
+frente também significa que você precisa adivinhar $\Gamma_1$,
+$\Gamma_2$ tais que $\Gamma = \Gamma_1 \cup \Gamma_2$ e $\Delta_1$,
+$\Delta_2$ tais que $\Delta = \Delta_1 \cup \Delta_2$, e tentar a
+sorte com as premissas $\Gamma_1 \Sequent \Delta_1, !A$ e $\Gamma_2
+\Sequent \Delta_2, !B$. Uma suposição errada pode conduzir a um beco
+sem saída mais adiante, e você teria de voltar ao início e escolher
+outros $\Gamma_1$, $\Gamma_2$, $\Delta_1$, $\Delta_2$. Se a !!{formula}
+for $!A \lor !B$, você precisará escolher uma das duas possibilidades
+para \RightR{\lor}, produzindo uma das duas premissas possíveis
+$\Gamma \Sequent \Delta, !A$ ou $\Gamma \Sequent \Delta, !B$. Uma
+escolha errada exigiria novamente voltar atrás.
+
+O sistema \Log{G3c} não tem esses problemas. Ele não tem regras
+estruturais, e a escolha da regra de inferência é determinada pelo
+!!{main operator} e pelo lado em que a !!{formula} ocorre. Portanto,
+\Log{G3c} é mais apropriado para a busca de provas do que \Log{G1c} ou
+\Log{G2c}. Uma busca bem-sucedida produzirá !!a{proof} em \Log{G3c}, e
+essa !!{proof} poderá então ser traduzida para \Log{G1c} ou \Log{G2c}
+(ou para \Log{N1c}, aliás). Assim, ter um algoritmo de busca de provas
+para \Log{G3c} e algoritmos de tradução de !!{proof}s de \Log{G3c} para
+!!{proof}s em outros sistemas também resolve o problema da busca de
+provas para esses sistemas.
+
+Como sabemos que um algoritmo de busca de provas é infalível? Seria
+necessário mostrar que, se o algoritmo não consegue encontrar
+!!a{proof}, nenhuma !!{proof} pode existir. Afinal, se escolhermos um
+algoritmo ruim, poderemos encontrar casos em que ele não encontra uma
+prova mesmo quando existe uma. Esse problema não afeta o algoritmo
+rudimentar, pois ele examina todas as !!{proof}s possíveis. Mas um
+algoritmo de busca de provas deve ser eficiente e empregar o mínimo de
+esforço.
+
+A ideia essencial para mostrar que um algoritmo de busca de provas é
+infalível é mostrar que, se o algoritmo falhar, poderemos mostrar, pela
+maneira como ele falha, que o sequente não pode ter !!a{proof}. E a
+maneira de mostrar isso é mostrar que ele não é válido. Na lógica
+clássica de primeira ordem, os sequentes válidos $\Gamma \Sequent
+\Delta$ são aqueles em que toda !!{structure} torna falsa pelo menos
+uma !!{formula} de $\Gamma$ ou verdadeira pelo menos uma !!{formula}
+de~$\Delta$. \Log{G3c} é \emph{correto}, isto é, !!{prove}s apenas
+sequentes válidos. Isso é estabelecido por indução sobre !!{proof}s: os
+axiomas são obviamente válidos e, se as premissas de uma regra forem
+válidas, sua conclusão também será. Para mostrar que um algoritmo de
+busca de provas é infalível, mostramos que, se a busca de !!a{proof} de
+$\Gamma \Sequent \Delta$ falhar, poderemos definir !!a{structure} na
+qual todas as !!{formula}s de $\Gamma$ sejam verdadeiras e todas as
+!!{formula}s de~$\Delta$ sejam falsas. Isso também estabelece que
+\Log{G3c} é \emph{completo}, isto é, que, se $\Gamma \Sequent \Delta$
+for válido, haverá uma \Log{G3c}-!!{proof} dele. Como toda busca de
+prova malsucedida mostra que $\Gamma \Sequent \Delta$ é inválido, toda
+busca de prova de um sequente válido deve ter êxito.
+
+\end{document}

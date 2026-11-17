@@ -1,0 +1,98 @@
+% part: intuitionistic-logic
+% chapter: propositions-as-types
+% section: terms-to-proofs
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{int}{pty}{tp}
+
+\olsection{Recuperando \usetoken{P}{derivation} a partir de termos de prova}
+
+Consideremos agora a direção oposta: traduzir um termo de prova~$N$
+de volta para !!a{proof} em \Log{N2i}. Em geral, isso só pode ser feito
+em relação a um contexto que contenha pares $x : !A$ para cada
+variável~$x$ que ocorre livre no termo de prova dado. Mas comecemos
+com um exemplo sem variáveis livres, a saber, o termo
+\[
+\lambd[\typeof{x}{!A \land
+  !B}][\pair{\proj{2}{x}}{\proj{1}{x}}]
+\]
+Ele tem a forma $\lambd[\typeof{x}{!A \land !B}][N_1]$. Como a
+única regra de \Log{tN2i} que produz um termo dessa forma
+é~\Intro{\lif}, sabemos que a !!{proof} codificada por~$N$ deve terminar
+com~\Intro{\lif}, isto é, termina em
+  \[
+  \Axiom$x : !A\land !B \fCenter \pair{\proj{2}{x}}{\proj{1}{x}} : 
+    !C$
+  \RightLabel{\Intro\lif}
+  \UnaryInf$\fCenter \lambd[\typeof{x}{!A \land
+  !B}][\pair{\proj{2}{x}}{\proj{1}{x}}] : (!A \land !B) \lif !C$
+  \DisplayProof
+  \]
+Ainda não sabemos o que é $!C$, mas sabemos que o antecedente é
+$!A \land !B$ e que o contexto da premissa deve incluir
+$x:!A \land !B$.
+
+O termo de prova associado à premissa já está determinado:
+$\pair{\proj{2}{x}}{\proj{1}{x}}$. A !!{proof} que \emph{ele} codifica
+deve terminar com \Intro{\land}. Ainda não sabemos o que é $!C$, mas,
+como ele é a conclusão de~\Intro{\land}, sabemos que deve ser uma
+conjunção, isto é, $!C \ident (!C_1 \land !C_2)$. Prosseguimos com a
+reconstrução:
+  \[
+  \Axiom$x : !A\land !B \fCenter \proj{2}{x} : !C_1$
+  \Axiom$x : !A\land !B \fCenter \proj{1}{x} : !C_2$
+  \RightLabel{\Intro\land}
+  \BinaryInf$x : !A\land !B \fCenter \pair{\proj{2}{x}}{\proj{1}{x}} : 
+    !C_1 \land !C_2$
+  \RightLabel{\Intro\lif}
+  \UnaryInf$\fCenter \lambd[\typeof{x}{!A \land
+  !B}][\pair{\proj{2}{x}}{\proj{1}{x}}] : (!A \land !B) \lif (!C_1 \land !C_2)$
+  \DisplayProof
+  \]
+O termo de prova $\pi_2(x)$ significa que o sequente superior à esquerda
+foi obtido por \Elim{\land}[2], isto é, a premissa tem a forma $!D
+\land !C_1$. À direita, podemos determinar que a inferência que leva
+a $!C_2$ deve ser \Elim{\land}[1] e que a premissa tem a forma
+$!C_2 \land !E$.
+  \[
+  \Axiom$x : !A\land !B \fCenter x: !D\land !C_1$
+  \RightLabel{\Elim\land[2]}
+  \UnaryInf$x : !A\land !B \fCenter \proj{2}{x} : !C_1$
+  \Axiom$x : !A\land !B \fCenter x: !C_2\land !E$
+  \RightLabel{\Elim\land[1]}
+  \UnaryInf$x : !A\land !B \fCenter \proj{1}{x} : !C_2$
+  \RightLabel{\Intro\land}
+  \BinaryInf$x : !A\land !B \fCenter \pair{\proj{2}{x}}{\proj{1}{x}} : 
+    !C_1 \land !C_2$
+  \RightLabel{\Intro\lif}
+  \UnaryInf$\fCenter \lambd[\typeof{x}{!A \land
+  !B}][\pair{\proj{2}{x}}{\proj{1}{x}}] : (!A \land !B) \lif (!C_1 \land !C_2)$
+  \DisplayProof
+  \]
+Como os termos de prova dos sequentes superiores agora são variáveis,
+sabemos que eles devem ser axiomas. Isso determina $!C_1$, $!C_2$, $!D$ e
+$!E$: $!D \ident !A$ e $!C_1 \ident !B$, caso contrário o sequente à
+esquerda não seria um axioma, e $!C_2 \ident !A$ e $!E \ident !B$,
+caso contrário o sequente à direita não seria um axioma. Recuperamos
+completamente a prova:
+  \[
+  \Axiom$x : !A\land !B \fCenter x: !A\land !B$
+  \RightLabel{\Elim\land[2]}
+  \UnaryInf$x : !A\land !B \fCenter \proj{2}{x} : !B$
+  \Axiom$x : !A\land !B \fCenter x: !A\land !B$
+  \RightLabel{\Elim\land[1]}
+  \UnaryInf$x : !A\land !B \fCenter \proj{1}{x} : !A$
+  \RightLabel{\Intro\land}
+  \BinaryInf$x : !A\land !B \fCenter \pair{\proj{2}{x}}{\proj{1}{x}} : 
+    !B \land !A$
+  \RightLabel{\Intro\lif}
+  \UnaryInf$\fCenter \lambd[\typeof{x}{!A \land
+  !B}][\pair{\proj{2}{x}}{\proj{1}{x}}] : (!A \land !B) \lif (!B \land !A)$
+  \DisplayProof
+  \]
+
+
+\end{document}

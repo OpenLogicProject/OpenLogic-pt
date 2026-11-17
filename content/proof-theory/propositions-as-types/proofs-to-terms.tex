@@ -1,0 +1,95 @@
+% part: intuitionistic-logic
+% chapter: propositions-as-types
+% section: proofs-to-terms
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{int}{pty}{pt}
+
+\olsection{Conversão de \usetoken{P}{derivation} em termos de prova}
+
+O processo de converter !!{proof}s de dedução natural em termos de prova,
+isto é, de traduzir !!{proof}s em~\Log{N2i} para !!{proof}s em~\Log{tN2i},
+é extremamente direto. Basta escrever um termo de prova à esquerda de
+cada !!{formula} que aparece à direita de um sequente na !!{derivation},
+obtendo sequentes da forma $\Gamma \Sequent M : !A$. Diremos, então, que
+$M$ \emph{testemunha}~$!A$ no contexto~$\Gamma$. O termo de prova a ser
+escrito é inteiramente determinado pelas regras de \Log{tN2i}.
+
+\begin{prop}
+Toda !!{proof}~$\delta$ de $\Gamma \Sequent !A$ em \Log{N2i}
+corresponde a !!a{proof}~$\delta'$ de $\Gamma \Sequent N : !A$ em
+\Log{tN2i}. O termo de prova $N$ é unicamente determinado por~$\delta$.
+\end{prop}
+
+\begin{proof}
+Procedemos por indução sobre a altura de~$\delta$. Se $\delta$ é o axioma
+$x:!A \Sequent !A$, então $\delta'$ é o axioma~$x:!A \Sequent x:!A$. Se
+$\delta$ termina em uma regra de inferência, a hipótese indutiva fornece
+termos de prova para cada premissa e \Log{tN2i}-!!{proof}s de sequentes
+que incluem esses termos de prova correspondentes a cada premissa.
+Aplicamos a regra correspondente de \Log{tN2i}; o termo de prova
+correspondente é determinado pela regra de inferência de \Log{tN2i}.
+\end{proof}
+
+\begin{ex}
+  Considere a seguinte !!{proof} muito simples, em \Log{N1i}, de $(!A \land !B)
+  \lif (!B \land !A)$:
+  \[
+  \AxiomC{$\Discharge{!A\land !B}{x}$}
+  \RightLabel{\Elim\land[2]}
+  \UnaryInfC{$!B$}
+  \AxiomC{$\Discharge{!A\land !B}{x}$}
+  \RightLabel{\Elim\land[1]}
+  \UnaryInfC{$!A$}
+  \RightLabel{\Intro\land}
+  \BinaryInfC{$!B \land !A$}
+  \DischargeRule{\Intro\lif}{x}
+  \UnaryInfC{$(!A \land !B) \lif (!B \land !A)$}
+  \DisplayProof
+  \]
+  Em \Log{N2i}, ela tem a seguinte forma:
+  \[
+  \Axiom$x : !A\land !B \fCenter !A\land !B$
+  \RightLabel{\Elim\land[2]}
+  \UnaryInf$x : !A\land !B \fCenter !B$
+  \Axiom$x : !A\land !B \fCenter !A\land !B$
+  \RightLabel{\Elim\land[1]}
+  \UnaryInf$x : !A\land !B \fCenter !A$
+  \RightLabel{\Intro\land}
+  \BinaryInf$x : !A\land !B \fCenter !B \land !A$
+  \RightLabel{\Intro\lif}
+  \UnaryInf$\fCenter (!A \land !B) \lif (!B \land !A)$
+  \DisplayProof
+  \]
+  Atribuímos termos de prova de cima para baixo. Os termos de prova dos
+  axiomas são simplesmente a própria variável do contexto,~$x$. Os
+  termos de prova associados a $\Elim\land[i]$ ficam, então, determinados
+  como $\proj{2}{x}$ e~$\proj{1}{x}$. Ao aplicarmos \Intro{\land},
+  combinamos esses dois termos de prova: $\pair{\proj{2}{x}}{\proj{1}{x}}$.
+  Por fim, a regra \Intro{\lif} aplica uma abstração~$\lambd$, ligando~$x$
+  e registrando que $x$ rotulava a hipótese~$!A \land !B$:
+  $\lambd[\typeof{x}{!A \land
+  !B}][\pair{\proj{2}{x}}{\proj{1}{x}}]$.
+  A !!{proof} em \Log{tN2i} é, portanto:
+  \[
+  \Axiom$x : !A\land !B \fCenter x: !A\land !B$
+  \RightLabel{\Elim\land[2]}
+  \UnaryInf$x : !A\land !B \fCenter \proj{2}{x} : !B$
+  \Axiom$x : !A\land !B \fCenter x: !A\land !B$
+  \RightLabel{\Elim\land[1]}
+  \UnaryInf$x : !A\land !B \fCenter \proj{1}{x} : !A$
+  \RightLabel{\Intro\land}
+  \BinaryInf$x : !A\land !B \fCenter \pair{\proj{2}{x}}{\proj{1}{x}} : 
+    !B \land !A$
+  \RightLabel{\Intro\lif}
+  \UnaryInf$\fCenter \lambd[\typeof{x}{!A \land
+  !B}][\pair{\proj{2}{x}}{\proj{1}{x}}] : (!A \land !B) \lif (!B \land !A)$
+  \DisplayProof
+  \]
+\end{ex}
+
+
+\end{document}

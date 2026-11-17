@@ -1,0 +1,197 @@
+% Part: proof-theory
+% Chapter: natural-deduction
+% Section: quantifiers
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{pt}{nat}{qua}
+
+\olsection{\usetoken{P}{proof} regulares e substituição}
+
+As regras dos quantificadores introduzem algumas complicações devido
+às ``condições de variável própria'' que se aplicam às regras
+\Elim{\lexists} e~\Intro{\lforall}. A maioria dessas complicações pode
+ser resolvida garantindo que a !!{constant}~$c$ nessas inferências
+nunca seja reutilizada. Introduzamos a seguinte definição.
+
+\begin{defn}
+Uma !!{proof}~$\delta$ em dedução natural é \emph{regular} se
+\begin{enumerate}
+  \item nenhuma variável própria~$a$ é usada como variável própria de
+  mais de uma inferência \Elim{\lexists} ou~\Intro{\lforall}; e
+  \item se $a$ é a variável própria de uma inferência \Elim{\lexists}
+  ou~\Intro{\lforall}, ela ocorre apenas na sub-!!{proof} imediata que
+  conduz, respectivamente, à premissa menor ou à premissa.
+\end{enumerate}
+\end{defn}
+
+\begin{lem}\ollabel{lem:subst-regular} Se $\delta$ é regular, termina
+em~$!C$, $c$ é !!a{constant} não usada como variável própria
+em~$\delta$, e $t$~é um termo que não contém nenhuma variável própria
+de~$\delta$, então $\Subst{\delta}{t}{c}$, resultante de~$\delta$ pela
+substituição de toda ocorrência de~$c$ por~$t$, é uma !!{proof}
+regular. A !!{formula} final de $\Subst{\delta}{t}{c}$ é
+$\Subst{!C}{t}{c}$. Se $!A^x$ é uma hipótese aberta de~$\delta$, então
+$\Subst{!A}{t}{c}^x$ é uma hipótese aberta de~$\Subst{\delta}{t}{c}$.
+\end{lem}
+
+\begin{proof}
+  Por indução em $\pheight{\delta}$. Se $\pheight{\delta} = 0$, ela
+  consiste simplesmente em uma hipótese~$!A^x$. Então,
+  $\Subst{\delta}{t}{c}$ é~$\Subst{!A}{t}{c}^x$.
+
+  Se $\pheight{\delta} > 0$, distinguimos casos segundo a última
+  inferência em~$\delta$. Os casos das regras para os conectivos
+  proposicionais são fáceis e ficam como exercícios. Consideramos os
+  casos em que $\delta$ termina em uma inferência de quantificador.
+  \begin{enumerate}
+    \item Se a última inferência é $\Intro{\lforall}$, $\delta$ tem a
+    forma
+    \[
+    \AxiomC{}
+    \RightLabel{$\delta'$}
+    \DeduceC{$!A(a,c)$}
+    \RightLabel{\Intro{\lforall}}
+    \UnaryInfC{$\lforall[x][!A(x,c)]$}
+    \DisplayProof
+    \]
+    Pela hipótese de indução, $\Subst{\delta'}{t}{c}$ é uma
+    !!{proof} regular de $!A(a,t)$. Como $a$ é uma variável própria
+    de~$\delta$, $a$~não ocorre em~$t$. Portanto, a última inferência em
+    $\Subst{\delta}{t}{c}$,
+    \[
+    \AxiomC{}
+    \RightLabel{$\Subst{\delta'}{t}{c}$}
+    \DeduceC{$!A(a,t)$}
+    \RightLabel{\Intro{\lforall}}
+    \UnaryInfC{$\lforall[x][!A(x,t)]$}
+    \DisplayProof
+    \]
+    está correta: como $t$ não contém~$a$, nem a conclusão nem qualquer
+    hipótese aberta contém~$a$.
+    \item Se a última inferência é $\Elim{\lforall}$,
+    $\delta$ tem a forma
+    \[
+    \AxiomC{}
+    \RightLabel{$\delta'$}
+    \DeduceC{$\lforall[x][!A(x,c)]$}
+    \RightLabel{\Elim{\lforall}}
+    \UnaryInfC{$!A(s(c),c)$}
+    \DisplayProof
+    \]
+    Pela hipótese de indução, $\Subst{\delta'}{t}{c}$ é uma
+    !!{proof} regular de $\lforall[x][!A(x,t)]$. (O termo~$s(c)$ na
+    conclusão pode conter~$c$, mas não necessariamente.) A última
+    inferência em
+    $\Subst{\delta}{t}{c}$,
+    \[
+    \AxiomC{}
+    \RightLabel{$\Subst{\delta'}{t}{c}$}
+    \DeduceC{$\lforall[x][!A(x,t)]$}
+    \RightLabel{\Elim{\lforall}}
+    \UnaryInfC{$!A(s(t),t)$}
+    \DisplayProof
+    \]
+    está correta, e $!A(s(t),t) \ident \Subst{!A(s(c),c)}{t}{c}$. O
+    caso de \Intro{\lexists} é semelhante.
+  \item Se a última inferência é $\Elim{\lexists}$, $\delta$ tem a
+    forma
+    \[
+    \AxiomC{}
+    \RightLabel{$\delta_1'$}
+    \DeduceC{$\lexists[x][!A(x,c)]$}
+    \AxiomC{$\Discharge{!A(a,c)}{x}$}
+    \RightLabel{$\delta_2'$}
+    \DeduceC{$!C$}
+    \DischargeRule{\Elim{\lexists}}{x}
+    \BinaryInfC{$!C$}
+    \DisplayProof
+    \]
+    Pela hipótese de indução, $\Subst{\delta_1'}{t}{c}$ e
+    $\Subst{\delta_2'}{t}{c}$ são !!{proof}s regulares de
+    $\lexists[x][!A(x,c)]$ e de $!C$ a partir da hipótese
+    aberta~$!A(a,t)$. Como $a$ é uma variável própria de~$\delta$,
+    $a$~não ocorre em~$t$. Portanto, a última inferência em
+    $\Subst{\delta}{t}{c}$,
+    \[
+    \AxiomC{}
+    \RightLabel{$\Subst{\delta'}{t}{c}$}
+    \DeduceC{$!A(a,t)$}
+    \RightLabel{\Intro{\lforall}}
+    \UnaryInfC{$\lforall[x][!A(x,t)]$}
+    \DisplayProof
+    \]
+    está correta: $\Subst{!A(x,t)}{a}{x} \ident
+    \Subst{!A(a,c)}{t}{c}$; nem a conclusão~$!C$ nem qualquer hipótese
+    aberta contém~$a$.
+  \end{enumerate}
+\end{proof}
+
+\begin{prop}\ollabel{prop:regular}
+Se $\delta$ é !!a{proof} em \Log{N1c} ou \Log{N1i}, então existe uma
+!!{proof} regular~$\delta'$ com a mesma estrutura (em particular, a
+mesma !!{height}) que difere de $\delta$ apenas pela substituição de
+variáveis próprias.
+\end{prop}
+
+\begin{proof}
+Somente para os fins da demonstração, chame uma inferência de variável
+própria de~$\delta$ de \emph{limpa} se sua variável própria não é a
+variável própria de outra inferência nem ocorre em qualquer lugar
+de~$\delta$, exceto na sub-!!{proof} imediata da inferência; caso
+contrário, chame-a de \emph{suja}. Seja $n$ o número de inferências de
+variável própria sujas em~$\delta$. Mostramos, por indução em~$n$, que
+$\delta$~pode ser transformada na !!{proof} regular exigida~$\delta'$.
+Se $n=0$, todas as inferências de variável própria em~$\delta$ são
+limpas; portanto, $\delta$ é regular e não há nada a demonstrar. Caso
+contrário, escolha uma inferência de variável própria mais alta,
+digamos \Intro{\lforall}. A sub-!!{proof}~$\delta_1$ de~$\delta$ que
+termina nela tem a forma
+    \[
+    \AxiomC{}
+    \RightLabel{$\delta_2$}
+    \DeduceC{$!A(c)$}
+    \RightLabel{\Intro{\lforall}}
+    \UnaryInfC{$\lforall[x][!A(x)]$}
+    \DisplayProof
+    \]
+Observe que, como $c$ é uma variável própria, ela não ocorre
+em~$\lforall[x][!A(x)]$ nem em uma hipótese aberta. A prova $\delta_2$
+é regular, pois não contém nenhuma inferência de variável própria.
+Seja $a$ !!a{constant} que não ocorre em~$\delta$. Por
+\olref{lem:subst-regular}, $\Subst{\delta_2}{a}{c}$ é uma prova regular
+de $!A(a)$. Pela condição de variável própria, nenhuma hipótese aberta
+de~$\delta_2$ contém~$c$; portanto, nenhuma hipótese aberta de
+$\Subst{\delta_2}{a}{c}$ contém~$a$. Assim, podemos
+aplicar~$\Intro{\lforall}$. Se substituirmos $\delta_1$ em~$\delta$
+pela prova $\delta_1'$,
+    \[
+    \AxiomC{}
+    \RightLabel{$\Subst{\delta_2}{a}{c}$}
+    \DeduceC{$!A(a)$}
+    \RightLabel{\Intro{\lforall}}
+    \UnaryInfC{$\lforall[x][!A(x)]$}
+    \DisplayProof
+    \]
+teremos substituído uma inferência de variável própria suja por uma
+limpa, e a única diferença é a substituição da variável própria $c$
+por~$a$. A prova resultante tem $n-1$ inferências de variável própria
+sujas, e o resultado segue da hipótese de indução.
+\end{proof}
+
+\begin{prob}
+Descreva o caso da demonstração de \olref{prop:regular} em que a
+inferência de variável própria mais alta é~\Elim{\lexists}.
+\end{prob}
+
+Não recorreremos explicitamente à proposição que acabamos de
+demonstrar, mas assumiremos que todas as !!{proof}s consideradas são
+regulares---se não forem, sempre poderemos substituir as variáveis
+próprias para torná-las regulares.
+
+\Olref{lem:subst-regular} e \olref{prop:regular} também valem para
+\Log{N2c} e~\Log{N2i}. Deixamos as demonstrações como exercícios.
+
+\end{document}

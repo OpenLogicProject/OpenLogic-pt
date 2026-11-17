@@ -1,0 +1,163 @@
+% Part: proof-theory
+% Chapter: natural-deduction
+% Section: sequents
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{pt}{nat}{seq}
+
+\olsection{Dedução natural com sequentes: \Log{N2c} e~\Log{N2i}}
+
+!!^a{proof}~$\delta$ em \Log{G1c} ou \Log{G1i} mostra que sua
+!!{formula} final~$!A$ decorre de suas hipóteses abertas. Se $\Gamma$ é
+o conjunto das !!{formula}s~$!B$ para as quais $!B^x$ ocorre como
+hipótese aberta em~$\delta$, podemos escrever isso como $\delta \Proves
+\Gamma \Sequent !A$. Isso sugere que também podemos formular um sistema
+de dedução natural para sequentes. Nesse sistema, cada sequente contém a
+informação sobre as hipóteses abertas das quais depende a !!{formula} à
+direita, isto é, sobre quais hipóteses estão abertas na sub-!!{proof} que
+termina em um sequente. Trata-se da dedução natural com sequentes, ou
+dedução natural ``em estilo de sequentes'', e chamamos os sistemas
+resultantes de \Log{N2c} e~\Log{N2i}.
+
+Para aproximar a correspondência entre \Log{N1} e \Log{N2}, tomemos os
+conjuntos~$\Gamma$ à esquerda como conjuntos de !!{formula}s
+rotuladas~$x:!B$. Como as regras de \Log{N1} operam apenas sobre as
+!!{formula}s nas premissas, isto é, as !!{formula}s finais das
+sub-!!{proof}s imediatas, as regras de \Log{N2} operam apenas sobre o
+sucedente do sequente. Assim, podemos chamar simplesmente de
+contexto as fórmulas rotuladas à esquerda dos sequentes.
+
+Em vez de hipóteses, as provas de \Log{N2} têm como sequentes superiores
+axiomas da forma
+\[x:!A \Sequent !A.\]
+As regras correspondem exatamente às regras de \Log{N1} e são
+apresentadas em \olref{tab:N2}.
+
+\subfile{rules-N2}
+
+Como precisamos admitir (tal como em \Log{N1c} e \Log{N1i}) que as
+regras \Intro{\lif}, \Intro{\lnot}, \Elim{\lor} e \Elim{\lexists}
+possam, mas não precisem, descarregar efetivamente hipóteses, também
+admitimos aplicações corretas das regras correspondentes em \Log{N2c}
+e~\Log{N2i} quando as !!{formula}s de contexto correspondentes $!A$,
+$!B$ e $!A(a)$ não estão presentes no contexto da premissa pertinente.
+
+\begin{prop}
+Se $\delta$ é !!a{proof} de~$!A$ em~\Log{N1c} ou \Log{N1i}, então
+existe !!a{proof}~$\delta'$ de $\Gamma \Sequent !A$ em~\Log{N2c}
+(\Log{N2i}), onde $\Gamma$ é o conjunto de todos os~$x:!B$ tais que
+$!B^x$ é uma hipótese aberta de~$\delta$.
+\end{prop}
+
+\begin{proof}
+  Procedemos por indução em $n=\pheight{\delta}$. Se $n=0$, $\delta$ é
+  uma única hipótese aberta~$!A^x$. Então $\Gamma = \{x:!A\}$ e
+  $\Gamma \Sequent !A$ é um axioma de \Log{N2c} ou~\Log{N2i}.
+
+  Se $n>0$, distinguimos casos conforme a última inferência
+  em~$\delta$. Examinamos apenas um caso; os demais ficam como
+  exercícios.
+
+  Suponha que a última inferência seja $\Intro{\lif}$. Então $\delta$
+  termina em
+  \[
+  \AxiomC{$\Discharge{!B}{x}$}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!C$}
+  \DischargeRule{\Intro{\lif}}{x}
+  \UnaryInfC{$!B \lif !C$}
+  \DisplayProof
+  \]
+  Pela hipótese de indução, existe !!a{proof}~$\delta_1'$ em~\Log{N2c}
+  (\Log{N2i}) de $\Gamma' \Sequent !C$, onde $\Gamma'$ são as
+  hipóteses rotuladas abertas em~$\delta_1$. Se $!B^x$ é uma hipótese
+  aberta de $\delta_1$, ela é descarregada na inferência
+  \Intro{\lif}, e as hipóteses abertas de~$\delta$ são $\Gamma =
+  \Gamma' \setminus \{x:!B\}$. Em outras palavras, $\delta_1'$ é
+  !!a{proof} de~$x:!B, \Gamma \Sequent !C$, e podemos tomar $\delta'$
+  como
+  \[
+  \AxiomC{}
+  \RightLabel{$\delta_1'$}
+  \Deduce$x:B, \Gamma \fCenter !C$
+  \RightLabel{\Intro{\lif}}
+  \UnaryInf$\Gamma \fCenter !B \lif !C$
+  \DisplayProof
+  \]
+  Se $!B^x$ não é uma hipótese aberta de~$\delta_1$, então
+  \Intro{\lif} não descarrega uma hipótese, e as hipóteses abertas de
+  $\delta$ e $\delta_1$ são as mesmas. Como não se exige que a fórmula
+  de contexto $x:!B$ esteja presente na premissa de \Intro{\lif}
+  em~\Log{N2c} e~\Log{N2i}, podemos tomar $\delta'$ como
+  \[
+  \AxiomC{}
+  \RightLabel{$\delta_1'$}
+  \Deduce$\Gamma \fCenter !C$
+  \RightLabel{\Intro{\lif}}
+  \UnaryInf$\Gamma \fCenter !B \lif !C$
+  \DisplayProof
+  \]
+
+  Os casos em que $\delta$ termina em outra regra são semelhantes.
+\end{proof}
+
+\begin{prop}
+Se $\delta$ é !!a{proof} em \Log{N2c} ou \Log{N2i} de $\Gamma
+\Sequent !A$, então existe !!a{proof}~$\delta'$ em \Log{N1c}
+(\Log{N1i}) com !!{formula} final~$!A$ e hipóteses abertas $!B^x$ para
+todo $x:!B \in \Gamma$.
+\end{prop}
+
+\begin{proof}
+  Novamente, procedemos por indução na !!{height}~$n$ de~$\delta$. Se
+  $n=0$, $\delta$ é um axioma, $x:!A \Sequent !A$. A
+  !!{proof}~$\delta'$ é a hipótese~$!A^x$.
+
+  Se $n>0$, distinguimos casos conforme a última inferência
+  em~$\delta$. Por exemplo, se essa inferência é~$\Intro{\lif}$,
+  $\delta$~termina em
+  \[
+  \bottomAlignProof
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \Deduce$x:!B, \Gamma \fCenter !C$
+  \RightLabel{\Intro{\lif}}
+  \UnaryInf$\Gamma \fCenter !B \lif !C$
+  \DisplayProof
+  \quad\text{ ou }\quad
+  \bottomAlignProof
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \Deduce$\Gamma \fCenter !C$
+  \RightLabel{\Intro{\lif}}
+  \UnaryInf$\Gamma \fCenter !B \lif !C$
+  \DisplayProof
+  \]
+  Pela hipótese de indução, existe !!a{proof} de~$!C$ em~\Log{N1c}
+  (\Log{N1i}). No primeiro caso, $!B^x$ é uma hipótese aberta
+  de~$\delta'$; no segundo, não é. Podemos tomar a !!{proof}~$\delta'$
+  como
+  \[
+  \bottomAlignProof
+  \AxiomC{$\Discharge{!B}{x}$}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!C$}
+  \DischargeRule{\Intro{\lif}}{x}
+  \UnaryInfC{$!B \lif !C$}
+  \DisplayProof
+  \quad\text{ ou }\quad
+  \bottomAlignProof
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!C$}
+  \RightLabel{\Intro{\lif}}
+  \UnaryInfC{$!B \lif !C$}
+  \DisplayProof
+  \]
+  respectivamente.
+\end{proof}
+
+\end{document}

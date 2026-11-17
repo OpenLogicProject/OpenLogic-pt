@@ -1,0 +1,207 @@
+% Part: proof-theory
+% Chapter: natural-deduction
+% Section: translation-G2i
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{pt}{nat}{tgi}
+
+\olsection{Tradução de \Log{G2i} para \Log{N2i}}
+
+Os antecedentes dos sequentes em \Log{G2i} são multiconjuntos~$\Gamma$
+de !!{formula}s, enquanto os antecedentes dos sequentes em \Log{N2i}
+são conjuntos~$\Gamma'$ de fórmulas rotuladas com a propriedade de que
+cada rótulo ocorre apenas uma vez. Digamos que um conjunto~$\Gamma'$ de
+!!{formula}s rotuladas \emph{corresponde a} um multiconjunto~$\Gamma$
+se, para toda !!{formula}~$!A$, o número de !!{element}s de~$\Gamma'$ da
+forma $x : !A$ é menor ou igual à multiplicidade de~$!A$ (isto é, ao
+número de cópias de~$!A$) em~$\Gamma$.
+
+\begin{prop}\ollabel{prop:G2i-to-N2i}
+Se $\Log{G2i} + \Cut \Proves \Gamma \Sequent \Delta$, então $\Log{N2i}
+\Proves \Gamma' \Sequent !C$, onde $!C \ident \lfalse$ se $\Delta$ é
+vazio e $\Delta = \{!A\}$ caso contrário, e $\Gamma'$ corresponde
+a~$\Gamma$.
+\end{prop}
+
+\begin{proof}
+  Mostramos que, se $\pi$ é !!a{proof} de $\Gamma \Sequent \Delta$ em
+  \Log{G2ci}, então existe um~$\Gamma'$ correspondente a~$\Gamma$ e
+  !!a{proof}~$\delta$ de~$\Gamma' \Sequent !C$ em~\Log{N2i}. Fazemos
+  isso por indução em $n = \pheight{\pi}$.
+
+  Se $n = 0$, então $\pi$ é um axioma. Se for o axioma $\lfalse \Sequent
+  \quad$, $\delta$ é o axioma $x:\lfalse \Sequent \lfalse$, isto é,
+  $\Gamma' = \{x:\lfalse\}$ e $!C \ident \lfalse$. Se $\pi$ é um
+  axioma da forma $!A \Sequent !A$, então $\delta$ é $x: !A \Sequent !A$.
+  
+  Se $n>0$, $\pi$ termina em uma regra~$R$. A hipótese de indução
+  garante que há !!{proof}s de sequentes correspondentes às premissas
+  dessa regra em~\Log{N2c}. Podemos supor que todos os rótulos de
+  descarga nessas provas são distintos e que um rótulo $x$ ocorre
+  apenas acima de uma inferência que o descarrega, caso seja de fato
+  descarregado (renomeando-o, se necessário). Mostramos então como
+  combinar essas !!{proof}s para obter provas de um sequente adequado
+  $\Gamma' \Sequent !C$. Distinguimos casos conforme~$R$.
+
+  \begin{enumerate}
+    \item Se $R$ é \RightR{\Weakening}, $\pi$ termina em
+    \[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\Gamma \fCenter$
+    \RightLabel{\RightR{\Weakening}}
+    \UnaryInf$\Gamma \fCenter !A$
+    \DisplayProof
+    \]
+    A hipótese de indução aplicada a $\pi_1$ fornece !!a{proof}
+    de~$\Gamma' \Sequent \lfalse$. Aplicamos $\FalseInt$ para obter
+    !!a{proof} de $\Gamma' \Sequent !A$.
+    \item Se $R$ é \LeftR{\Weakening}, $\pi$ termina em
+    \[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\Gamma \fCenter \Delta$
+    \RightLabel{\RightR{\Weakening}}
+    \UnaryInf$!A, \Gamma \fCenter \Delta$
+    \DisplayProof
+    \]
+    A hipótese de indução aplicada a $\pi_1$ fornece !!a{proof}
+    de~$\Gamma' \Sequent !C$, que tomamos como $\delta$. Observe que, se
+    $\Gamma'$ corresponde a $\Gamma$, também corresponde a $!A,
+    \Gamma$, pois o número de $x : !A$ em $\Gamma'$ não é maior que o
+    número de cópias de~$!A$ em $\Gamma$ e, portanto, também não é maior
+    que o número de cópias de $!A$ em $\Gamma \cup \{!A\}$.
+    \item Se $R$ é \LeftR{\Contraction}, $\pi$ termina em
+    \[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$!A, !A, \Gamma \fCenter \Delta$
+    \RightLabel{\LeftR{\Contraction}}
+    \UnaryInf$!A, \Gamma \fCenter \Delta$
+    \DisplayProof
+    \]
+    A hipótese de indução aplicada a $\pi_1$ fornece !!a{proof}
+    de~$\Pi, \Gamma' \Sequent !C$, onde $\Pi \subseteq \{x : !A,
+    y:!A\}$. Se $\Pi = \{x : !A, y:!A\}$, substituímos todas as
+    !!{formula}s rotuladas $y:!A$ em~$\pi_1$ por $x:!A$. Como $x$~ocorre
+    no contexto do sequente final de~$\pi_1$, podemos supor que nenhuma
+    inferência em~$\pi_1$ descarrega !!a{formula} da forma~$x:!B$, isto
+    é, que nenhum $x:!B$ no lado esquerdo de um sequente em~$\pi_1$ é
+    ativo. Consequentemente, o resultado ainda é !!a{proof} em~\Log{N2i}.
+    \item Se $R$ é $\RightR{\lif}$, $\pi$ termina em
+    \[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$!A, \Gamma \fCenter !B$
+    \RightLabel{\RightR{\lif}}
+    \UnaryInf$\Gamma \fCenter !A \lif !B$
+    \DisplayProof
+    \]
+    Pela hipótese de indução, existe !!a{proof}~$\delta_1$ de $x:
+    !A, \Gamma' \Sequent !B$ ou $\Gamma' \Sequent !B$, onde $\Gamma'$
+    corresponde a~$\Gamma$. Podemos tomar $\delta_1$ como $\delta$
+    acrescida de uma aplicação de \Intro{\lif}.
+    \item Se $R$ é \LeftR{\lif}, $\pi$ termina em
+    \[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\Gamma_1 \fCenter !A$
+    \AxiomC{}
+    \RightLabel{$\pi_2$}
+    \Deduce$!B, \Gamma_2 \fCenter \Delta$
+    \RightLabel{\LeftR{\lif}}
+    \BinaryInf$!A \lif !B, \Gamma_1, \Gamma_2 \fCenter \Delta$
+    \DisplayProof
+    \]
+    A hipótese de indução fornece !!{proof}s $\delta_1$ de $\Gamma_1'
+    \Sequent !A$ e $\delta_2$ de $x: !B, \Gamma_2' \Sequent !C$ ou de
+    $\Gamma_2' \Sequent !C$. Se $\delta_2$ tem a segunda forma,
+    $\delta_2$ pode servir como~$\delta$. Caso contrário, podemos
+    renomear todas as fórmulas e todos os rótulos de descarga em~$\pi_1$
+    para garantir que nenhum rótulo ocorra tanto em $\delta_1$ quanto
+    em~$\delta_2$. Então $\Gamma_1' \cup \Gamma_2'$ corresponde a
+    $\Gamma_1 \cup \Gamma_2$. Como $x:!B$ ocorre no sequente final
+    de~$\delta_2$, $x:!B$ não pode estar ativo em nenhuma inferência com
+    rótulo de descarga~$x$ em~$\delta_2$. Substituímos todo axioma $x:!B
+    \Sequent !B$ em~$\delta_2$ pela !!{proof}~$\delta_3$
+    \[
+    \Axiom$x: !A \lif !B \fCenter !A \lif !B$
+    \AxiomC{}
+    \RightLabel{$\delta_1$}
+    \Deduce$\Gamma_1' \fCenter !A$
+    \RightLabel{\Elim{\lif}}
+    \BinaryInf$x: !A \lif !B \fCenter !B$
+    \DisplayProof
+    \]
+    e toda ocorrência de $x:!B$ em~$\delta_2$ por $x:!A \lif !B$.
+    O resultado $\Subst{\delta_2}{\delta_3}{x:!B}$ é !!a{proof} de
+    $x:!A \lif !B, \Gamma_1', \Gamma_2' \Sequent !C$.
+    \item Se $R$ é \RightR{\land}, $\pi$ termina em
+    \[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\Gamma_1 \fCenter !A$
+    \AxiomC{}
+    \RightLabel{$\pi_2$}
+    \Deduce$\Gamma_2 \fCenter !B$
+    \RightLabel{\RightR{\land}}
+    \BinaryInf$\Gamma_1, \Gamma_2 \fCenter !A \land !B$
+    \DisplayProof
+    \]
+    A hipótese de indução fornece uma prova $\delta_1$ de $\Gamma_1'
+    \Sequent !A$ e $\delta_2$ de $\Gamma_2' \Sequent !A$. Renomeando
+    todas as fórmulas e todos os rótulos de descarga em~$\pi_2$,
+    podemos garantir que nenhum rótulo ocorra tanto em $\delta_1$ quanto
+    em $\delta_2$. Então $\Gamma_1' \cup \Gamma_2'$ corresponde a
+    $\Gamma_1 \cup \Gamma_2$. Obtemos !!a{proof}~$\delta$ aplicando
+    $\Intro{\land}$ aos sequentes finais de $\delta_1$ e~$\delta_2$.
+    \item Se $R$ é $\LeftR{\land}$, $\pi$ termina, por exemplo, em
+    \[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$!A, \Gamma \fCenter \Delta$
+    \RightLabel{\LeftR{\land}}
+    \UnaryInf$!A \land !B, \Gamma \fCenter \Delta$
+    \DisplayProof
+    \]
+    Pela hipótese de indução, existe !!a{proof}~$\delta_1$ de $x:
+    !A, \Gamma' \Sequent !C$ ou $\Gamma' \Sequent !C$, onde $\Gamma'$
+    corresponde a~$\Gamma$. No segundo caso, podemos tomar $\delta_1$
+    como $\delta$. No primeiro, observe que, como $x:!A$ ocorre no
+    sequente final, $x:!A$ não está ativo em nenhuma inferência com
+    rótulo de descarga~$x$ em~$\delta_1$. Substituímos todo axioma $x:!A
+    \Sequent !A$ pela !!{proof}~$\delta_2$
+    \[
+    \Axiom$x: !A \land !B \fCenter !A \land !B$
+    \RightLabel{\Elim{\land}}
+    \UnaryInf$x: !A \land !B \fCenter !A$
+    \DisplayProof
+    \]
+    e toda ocorrência de $x:!A$ por $x:!A \land !B$, isto é,
+    consideramos $\Subst{\delta_1}{\delta_2}{x:!A}$. Essa é !!a{proof} de $x:!A
+    \land !B, \Gamma' \Sequent !C$.
+    \item Se $R$ é \Cut, $\pi$ termina em
+    \[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\Gamma_1 \fCenter !A$
+    \AxiomC{}
+    \RightLabel{$\pi_2$}
+    \Deduce$!A, \Gamma_2 \fCenter \Delta$
+    \RightLabel{\Cut}
+    \BinaryInf$\Gamma_1, \Gamma_2 \fCenter \Delta$
+    \DisplayProof
+    \]
+    A hipótese de indução fornece uma prova $\delta_1$ de $\Gamma_1'
+    \Sequent !A$ e $\delta_2$ de $x:!A, \Gamma_2' \Sequent !C$ ou de
+    $\Gamma_2' \Sequent !C$. No segundo caso, tomamos $\delta$ como
+    ~$\delta_2$. Caso contrário, substituímos todo axioma $x:!A \Sequent !A$ em
+    $\delta_2$ por $\delta_1$ para obter~$\delta$ como a !!{proof}~$\Subst{\delta_2}{\delta_1}{x:!A}$ de $\Gamma_1',
+    \Gamma_2' \Sequent !C$.
+  \end{enumerate}
+\end{proof}
+
+\end{document}

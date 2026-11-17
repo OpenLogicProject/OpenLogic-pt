@@ -1,0 +1,127 @@
+% part: intuitionistic-logic
+% chapter: propositions-as-types
+% section: sequent-natural-deduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{int}{pty}{snd}
+
+\olsection{Dedução natural em sequentes}
+
+Escrevemos $\Gamma \Sequent !A$ quando existe uma !!{derivation} de
+dedução natural com $\Gamma$ como hipóteses !!{undischarged} e $!A$
+como conclusão; ou $\Sequent !A$ quando $\Gamma$ é vazio.
+
+Escrevemos $\Gamma, !A_1, \dots, !A_n$ para $\Gamma \cup \{!A_1, \dots,
+!A_n\}$ e $\Gamma, \Delta$ para $\Gamma \cup \Delta$.
+
+Observe que, quando temos $\Gamma \Sequent !A \land !A$, isso significa
+que temos !!a{derivation} com $\Gamma$ como hipóteses !!{undischarged} e
+$!A \land !A$ como !!{formula} final. Aplicando $\Elim{\land}$ na parte
+inferior, podemos obter !!a{derivation} com as mesmas hipóteses
+!!{undischarged} e $!A$ como conclusão. Em outras palavras, se $\Gamma
+\Sequent !A \land !B$, então $\Gamma \Sequent !A$.
+\begin{prooftree}
+  \Axiom$\Gamma \fCenter !A \land !B$
+  \RightLabel{$\Elim{\land}$}
+  \UnaryInf$\Gamma \fCenter !A$
+  \DisplayProof\qquad\bottomAlignProof
+  \Axiom$\Gamma \fCenter !A \land !B$
+  \RightLabel{$\Elim{\land}$}
+  \UnaryInf$\Gamma \fCenter !B$
+\end{prooftree}
+O rótulo $\Elim{\land}$ sugere a relação com a regra de mesmo nome na
+dedução natural.
+
+De modo semelhante, suponha que temos $\Gamma, !A \Sequent !B$, isto é,
+!!a{derivation} com as hipóteses !!{undischarged} $\Gamma, !A$ e a
+!!{formula} final~$!B$. Se aplicarmos a regra $\Intro{\lif}$, teremos
+!!a{derivation} com $\Gamma$ como hipóteses !!{undischarged} e $!A \lif
+!B$ como !!{formula} final, isto é, $\Gamma \Sequent !A \lif !B$.
+Observe como isso torna mais explícita a !!{discharge} de hipóteses.
+\begin{prooftree}
+  \Axiom $\Gamma, !A \fCenter !B$
+  \RightLabel{$\Intro{\lif}$}
+  \UnaryInf $\Gamma \fCenter !A \lif !B$
+\end{prooftree}
+
+Podemos extrair conclusões das outras regras da mesma maneira, conforme
+detalhado a seguir:
+\begin{gather*}
+  \Axiom $\Gamma \fCenter !A$
+  \Axiom $\Delta \fCenter !B$
+  \RightLabel{$\Intro{\land}$}
+  \BinaryInf $\Gamma,\Delta \fCenter !A \land !B$
+  \DisplayProof\\
+  \Axiom $\Gamma \fCenter !A \land !B$
+  \RightLabel{$\Elim{\land}_1$}
+  \UnaryInf $\Gamma \fCenter !A$
+  \DisplayProof
+  \qquad
+  \Axiom $\Gamma \fCenter !A \land !B$
+  \RightLabel{$\Elim{\land}_2$}
+  \UnaryInf $\Gamma \fCenter !B$
+  \DisplayProof
+  \\
+  \Axiom $\Gamma \fCenter !A$
+  \RightLabel{$\Intro{\lor}_1$}
+  \UnaryInf $\Gamma \fCenter !A \lor !B$
+  \DisplayProof\qquad
+  \Axiom $\Gamma \fCenter !B$
+  \RightLabel{$\Intro{\lor}_2$}
+  \UnaryInf $\Gamma \fCenter !A \lor !B$
+  \DisplayProof\\
+  \Axiom $\Gamma \fCenter !A \lor !B$
+  \Axiom $\Delta, !A \fCenter !C$
+  \Axiom $\Delta', !B \fCenter !C$
+  \RightLabel{$\Elim{\lor}$}
+  \TrinaryInf $\Gamma, \Delta, \Delta' \fCenter !C$
+  \DisplayProof
+  \\
+  \Axiom $\Gamma, !A \fCenter !B$
+  \RightLabel{$\Intro{\lif}$}
+  \UnaryInf $\Gamma \fCenter !A \lif !B$
+  \DisplayProof
+  \qquad
+  \Axiom $\Delta \fCenter !A \lif !B$
+  \Axiom $\Gamma \fCenter !A$
+  \RightLabel{$\Elim{\lif}$}
+  \BinaryInf $\Gamma, \Delta \fCenter !B$
+  \DisplayProof
+  \\
+  \Axiom $\Gamma \fCenter \lfalse$
+  \RightLabel{$\FalseInt$}
+  \UnaryInf $\Gamma \fCenter !A$
+  \DisplayProof
+\end{gather*}
+
+Toda hipótese, por si só, é !!a{derivation} de $!A$ a partir de~$!A$,
+isto é, sempre temos $!A \Sequent !A$.
+
+\begin{prooftree}
+  \AxiomC{$ $}
+  \UnaryInfC{$!A \fCenter !A$}
+\end{prooftree}
+
+Em conjunto, essas regras podem ser tomadas como um cálculo sobre quais
+!!{derivation}s de dedução natural existem. Também podem ser tomadas
+como uma variante notacional da dedução natural, na qual cada passo
+registra não apenas a !!{formula} !!{derive}d, mas também as hipóteses
+!!{undischarged} a partir das quais ela foi !!{derive}d.
+
+\begin{prooftree}
+  \Axiom$!A \fCenter !A$
+  \UnaryInf $!A \fCenter !A \lor (!A \lif \lfalse)$
+  \Axiom $!B \fCenter !B$
+  \BinaryInf$!A, !B\lif \fCenter \lfalse$
+  \UnaryInf$(!B \fCenter !A \lif \lfalse$
+  \UnaryInf$( !B \fCenter !A \lor (!A \lif \lfalse)$
+  \Axiom$(!B \fCenter !B$
+  \BinaryInf$(!B \fCenter \lfalse$
+  \UnaryInf$\fCenter !B \lif \lfalse$
+\end{prooftree}
+em que $!B$ abrevia $(!A \lor (!A \lif \lfalse))\lif \lfalse$.
+
+\end{document}

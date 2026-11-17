@@ -1,0 +1,145 @@
+% part: intuitionistic-logic
+% chapter: propositions-as-types
+% section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{int}{pty}{int}
+
+\olsection{Introdução}
+
+O cálculo lambda é um modelo simples de computação. Ele opera sobre
+termos construídos a partir de variáveis. Se $N$ e $M$ são termos,
+então $(NM)$ também é um termo (``$N$ aplicado a~$M$''). Se $N$ é um
+termo, então $\lambd[x][N]$ é um termo. Se $N$ contém a variável~$x$,
+então as ocorrências correspondentes de~$x$ em $\lambd[x][N]$ são
+ligadas pelo operador $\lambd[x]$ e, portanto, deixam de ser livres.
+Dizemos que um termo da forma $(\lambd[x][N]M)$ se $\beta$-contrai a
+$\Subst{N}{M}{x}$ (o resultado de substituir toda ocorrência livre de
+$x$ em~$N$ por $M$). Um termo $N$ se $\beta$-converte em~$N'$ se $N'$
+resulta de $N$ pela $\beta$-contração de um subtermo, e escrevemos $N
+\redone N'$. Uma computação no $\lambd$-cálculo é uma sequência $N
+\redone N_1 \redone N_2 \redone \dots$. Se essa sequência termina em
+um termo $N_k$ no qual nenhum subtermo pode ser $\beta$-contraído, ele
+é chamado de \emph{normal}, ou de forma normal de~$N$. Pense nas
+computações no $\lambd$-cálculo como tais sequências. A computação
+termina se resultar em uma forma normal, e a forma normal é o resultado da
+computação. Esse modelo simples de computações revela-se completo no
+sentido de Turing: toda função recursiva parcial pode ser computada
+por um termo no $\lambd$-cálculo.
+
+Haskell Curry e William Howard descobriram, independentemente, uma
+estreita semelhança entre a dedução natural e o $\lambd$-cálculo.
+Intuitivamente, um termo $\lambd[x][N]$ é uma função: $x$ é o argumento;
+$N$ nos diz como calcular o valor dado~$x$. O termo
+$(\lambd[x][N]M)$ consiste então em aplicar a função $\lambd[x][N]$ a
+um argumento~$M$, e a $\beta$-contração nos diz como avaliá-lo:
+substitua $x$ em $N$ por~$M$ (e continue avaliando o termo resultante).
+Agora pense nessas expressões como funções com domínio e imagem fixos.
+Se o domínio de $\lambd[x][N]$ é $A$ e e sua imagem é~$B$, então
+devemos pensar que a variável~$x$ recebe apenas argumentos de~$A$ e
+que $N$ produz valores de~$B$. Consequentemente, $(\lambd[x][N]M)$ só
+deve fazer sentido se $\lambd[x][N]$ é uma função $A \to B$ e $M \in
+A$. Se quisermos acrescentar essa informação ao $\lambd$-cálculo,
+obteremos a versão \emph{tipada} do $\lambd$-cálculo. No
+$\lambd$-cálculo tipado,
+nem toda expressão $(\lambd[x][N]M)$ é permitida, mas apenas aquelas
+em que os ``tipos'' de $\lambd[x][N]$ e $M$ se ajustam, isto é,
+$\lambd[x][N]$ tem tipo $A \lif B$ e $M$ tem tipo~$A$. O tipo de
+$\lambd[x][N]$ é $A \to B$ somente se o tipo de $x$ é $A$ e o tipo de
+$N$ é~$B$. Em geral, nem toda expressão $(M_1M_2)$ é permitida. São
+permitidos apenas os termos $(M_1M_2)$ em que $M_1$ tem tipo $A \to B$
+e $M_2$ tem tipo~$A$; nesse caso, $(M_1M_2)$ tem tipo~$B$.
+
+Essas regras de tipagem correspondem agora claramente a
+!!{derivation}s em dedução natural, nas quais os tipos são
+representados por !!{formula}s e as próprias !!{derivation}s por
+$\lambd$-termos. Por exemplo, !!a{derivation} de $!A \lif !B$
+corresponde a um termo $\lambd[\typeof{x}{!A}][N]$, que tem o tipo de
+função $!A \lif !B$. As regras de inferência da dedução natural
+correspondem a regras de tipagem no cálculo lambda tipado, por exemplo,
+\begin{prooftree}
+  \AxiomC{$\Discharge{!A}{x}$}
+  \DeduceC{$!B$}
+  \DischargeRule{\Intro\lif}{x}
+  \UnaryInfC{$!A \lif !B$}
+  \DisplayProof\bottomAlignProof
+  \quad\text{corresponde a}\quad
+  \Axiom$x: !A \fCenter N: !B$
+  \UnaryInf$ \fCenter \lambd[\typeof{x}{!A}][N] : !A \lif !B$
+\end{prooftree}
+em que a regra à direita significa que, se $x$ é do tipo~$!A$ e $N$ é
+do tipo~$!B$, então $\lambd[\typeof{x}{!A}][N]$ é do tipo~$!A \lif !B$.
+
+A regra $\Elim\lif$ corresponde à regra de tipagem para termos de
+composição, isto é,
+\[
+  \AxiomC{$!A \lif !B$}
+  \AxiomC{$!A$}
+  \RightLabel{\Elim\lif}
+  \BinaryInfC{$!B$}
+  \DisplayProof
+  \quad\text{corresponde a}\quad
+  \Axiom$\fCenter M_1: !A \lif !B$
+  \Axiom$\fCenter M_2: !A$
+  \BinaryInf$ \fCenter (M_1M_2) : !B$
+  \DisplayProof
+\]
+Se uma regra \Intro\lif{} é seguida imediatamente por uma regra
+\Elim\lif{}, a !!{derivation} pode ser simplificada:
+\begin{gather*}
+  \AxiomC{$\Discharge{!A}{x}$}
+  \DeduceC{$!B$}
+  \DischargeRule{\Intro\lif}{x}
+  \UnaryInfC{$!A \lif !B$}
+  \AxiomC{}
+  \DeduceC{$!A$}
+  \RightLabel{\Elim\lif}
+  \BinaryInfC{$!B$}
+  \DisplayProof
+  \quad\redone\quad
+  \AxiomC{}
+  \DeduceC{$!A$}
+  \DeduceC{$!B$}
+  \DisplayProof
+\end{gather*}
+o que corresponde à $\beta$-contração de termos lambda
+\[
+(\lambd[\typeof{x}{!A}][N]M) \quad\redone\quad
+\Subst{N}{M}{x}.
+\]
+
+Correspondências semelhantes valem entre as regras para $\land$ e os
+tipos ``produto'', e entre as regras para $\lor$ e os tipos ``soma''.
+
+Essa correspondência entre termos no cálculo lambda simplesmente
+tipado e !!{derivation}s em dedução natural é chamada de
+correspondência ``Curry--Howard'', ``provas como programas'' ou
+``proposições como tipos''. Além das !!{formula}s (proposições)
+corresponderem a tipos, e das provas corresponderem a termos, podemos
+resumir as correspondências da seguinte maneira:
+\begin{center}
+  \begin{tabular}{c c c}
+    lógica & programa \\
+    \hline
+    proposição/!!{formula} & tipo \\
+    prova & termo \\
+    hipótese & variável \\
+    hipótese descarregada & variável ligada \\
+    hipótese não descarregada & variável livre \\
+    $!A \lif !B$ & tipo de função \\
+    $!A \land !B$ & tipo produto \\
+    $!A \lor !B$ & tipo soma \\
+    $\lfalse$ & tipo vazio \\
+    \hline
+  \end{tabular}
+\end{center}
+
+A correspondência de Curry--Howard é um dos pilares dos assistentes
+automatizados de demonstração e dos verificadores de tipos para
+programas, pois verificar uma prova que testemunha uma proposição
+(como fizemos acima) equivale a verificar se um programa (termo) tem o
+tipo declarado.
+\end{document}

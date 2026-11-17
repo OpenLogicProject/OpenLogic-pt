@@ -6,15 +6,15 @@
 
 \begin{document}
 
-\olfileid{pt}{seq}{rp}
+\olfileid[pt]{pt}{seq}{rp}
 
-\olsection{Rules and \usetoken{P}{proof}}
+\olsection{Regras e \usetoken{P}{proof}}
 
-We begin by giving some definitions and fixing some terminology.
+Começamos apresentando algumas definições e fixando certa terminologia.
 
-Consider, for example, the two rules in \Log{G3c} that allow !!{proving}
-sequents containing $!A \land !B$ from sequents containing $!A$
-and~$!B$:
+Considere, por exemplo, as duas regras de \Log{G3c} que permitem
+!!{proving} sequentes que contêm $!A \land !B$ a partir de sequentes que
+contêm $!A$ e~$!B$:
 \[
 \Axiom$ !A, !B, \Gamma \fCenter \Delta$
 \RightLabel{\LeftR{\land}}
@@ -27,16 +27,16 @@ and~$!B$:
 \BinaryInf$ \Gamma \fCenter \Delta, !A \land !B $
 \DisplayProof
 \]
-The sequents on top of the line are called the \emph{premises} and the
-sequent below the line the \emph{conclusion}. The !!{formula}s in
-$\Gamma$ and $\Delta$ in each rule are called the \emph{context} or
-the \emph{side !!{formula}s}. The !!{formula} in the conclusion that
-isn't part of the context is called the \emph{principal} !!{formula},
-and the !!{formula}s in the premises not in the context the
-\emph{active} (or \emph{auxiliary}) !!{formula}s.
+Os sequentes acima da linha são chamados de \emph{premissas}, e o sequente
+abaixo da linha, de \emph{conclusão}. As !!{formula}s em $\Gamma$ e
+$\Delta$ em cada regra são chamadas de \emph{contexto} ou de
+\emph{!!{formula}s laterais}. A !!{formula} na conclusão que não faz parte
+do contexto é chamada de !!{formula} \emph{principal}, e as !!{formula}s
+nas premissas que não pertencem ao contexto são chamadas de !!{formula}s
+\emph{ativas} (ou \emph{auxiliares}).
 
-The quantifier rules are slightly more complicated. P.ex., the rules in
-\Log{G1c} for $\lforall$ are:
+As regras dos quantificadores são um pouco mais complicadas. P.ex., as
+regras de \Log{G1c} para $\lforall$ são:
 \[\Axiom$ !A(t), \Gamma \fCenter \Delta$
 \RightLabel{\LeftR{\lforall}}
 \UnaryInf$ \lforall[x][!A(x)],\Gamma \fCenter \Delta$
@@ -47,38 +47,35 @@ The quantifier rules are slightly more complicated. P.ex., the rules in
 \UnaryInf$ \Gamma \fCenter \Delta, \lforall[x][!A(x)]$
 \DisplayProof
 \]
-In the \LeftR{\lforall} rule, the active !!{formula} is~$!A(t)$ where
-$t$~is a closed term, O.s.\@, a term without variables. Such an
-inference is correct---that is, it matches the schematic rule
-\LeftR{\lforall}---if there is some !!{formula}~$!A$, some
-variable~$x$, and some closed term~$t$ such that the principal
-!!{formula} in the conclusion is $\lforall[x][!A]$ and the active
-!!{formula} in the premise is~$\Subst{!A}{t}{x}$. The
-\RightR{\lforall} rule works the same, except that instead of any
-term~$t$ the active !!{formula} in the premise must
-be~$\Subst{!A}{a}{x}$, where $a$ is !!a{constant}. This constant is
-called the \emph{eigenvariable} of the \RightR{\lforall} inference.
-The inference is only correct the lower sequent does not contain~$a$,
-that is, if $a$ does not occur in $\Gamma$, $\Delta$, or~$!A$. This is
-called the \emph{eigenvariable condition}.
+Na regra \LeftR{\lforall}, a !!{formula} ativa é~$!A(t)$, onde $t$ é um
+termo fechado, O.s.\@, um termo sem variáveis. Tal inferência é correta---ou
+seja, corresponde à regra esquemática \LeftR{\lforall}---se existem alguma
+!!{formula}~$!A$, alguma variável~$x$ e algum termo fechado~$t$ tais que a
+!!{formula} principal na conclusão é $\lforall[x][!A]$ e a !!{formula}
+ativa na premissa é~$\Subst{!A}{t}{x}$. A regra \RightR{\lforall} funciona
+do mesmo modo, exceto que, em vez de um termo~$t$ qualquer, a !!{formula}
+ativa na premissa deve ser~$\Subst{!A}{a}{x}$, onde $a$ é !!a{constant}.
+Essa constante é chamada de \emph{variável própria} da inferência
+\RightR{\lforall}. A inferência só é correta se o sequente inferior não
+contiver~$a$, isto é, se $a$ não ocorrer em $\Gamma$, $\Delta$ ou~$!A$.
+Isso se chama \emph{condição da variável própria}.
 
-Sequent systems like \Log{G1c} and \Log{G3c} consists of a collection
-of such schematically specified rules together with some (also
-schematically specified) sequents that count as axioms.
-!!^{proof}s in such a system are finite trees of sequents that
-are inductively generated from axioms using the rules of inference.
-Each leaf is an axiom, and every other sequent follows from the
-sequents immediately above it by one of the inference rules of the
-system.
+Sistemas de sequentes como \Log{G1c} e \Log{G3c} consistem em uma coleção
+dessas regras especificadas esquematicamente, juntamente com alguns
+sequentes (também especificados esquematicamente) que contam como axiomas.
+Os !!^{proof}s em tal sistema são árvores finitas de sequentes geradas
+indutivamente a partir de axiomas pelo uso das regras de inferência. Cada
+folha é um axioma, e todo outro sequente decorre dos sequentes imediatamente
+acima dele por uma das regras de inferência do sistema.
 
 \begin{defn}\ollabel{defn:proof}
-\emph{!!^{proof}s} in a sequent system are finite trees of
-sequents inductively as follows:
+Os \emph{!!^{proof}s} em um sistema de sequentes são árvores finitas de
+sequentes definidas indutivamente da seguinte maneira:
 \begin{enumerate}
-  \item\ollabel{defn:prf:axiom} Every axiom is !!a{proof}.
-  \item\ollabel{defn:prf:one-prem} If $\pi_1$ is !!a{proof} ending in
-  a sequent~$S_1$, and $S$ is a sequent that follows from~$S_1$ by a
-  one-premise rule~$R$, then
+  \item\ollabel{defn:prf:axiom} Todo axioma é !!a{proof}.
+  \item\ollabel{defn:prf:one-prem} Se $\pi_1$ é !!a{proof} que termina em
+  um sequente~$S_1$, e $S$ é um sequente que decorre de~$S_1$ por uma
+  regra~$R$ de uma premissa, então
   \[
   \AxiomC{}
   \RightLabel{$\pi_1$}
@@ -87,9 +84,9 @@ sequents inductively as follows:
   \UnaryInfC{$S$}
   \DisplayProof
   \]
-  is !!a{proof}.
-  \item\ollabel{defn:prf:two-prem} If $\pi_1$ and $\pi_2$ are !!{proof}s ending in sequents~$S_1$ and~$S_2$, and $S$ is a
-  sequent that follows from~$S_1$ and$S_2$ by a two-premise rule~$R$, then
+  é !!a{proof}.
+  \item\ollabel{defn:prf:two-prem} Se $\pi_1$ e $\pi_2$ são !!{proof}s que terminam nos sequentes~$S_1$ e~$S_2$, e $S$ é um
+  sequente que decorre de~$S_1$ e$S_2$ por uma regra~$R$ de duas premissas, então
   \[
   \AxiomC{}
   \RightLabel{$\pi_1$}
@@ -101,67 +98,64 @@ sequents inductively as follows:
   \BinaryInfC{$S$}
   \DisplayProof
   \]
-  is !!a{proof}.
+  é !!a{proof}.
 \end{enumerate}
 \end{defn}
 
-\Olref{defn:proof} defines !!{proof}s as trees of sequents. We think
-of these trees as growing ``upwards.'' The topmost (leaf) nodes of
-this tree are axioms and called \emph{initial sequents}. The
-bottom-most sequent is called the \emph{end-sequent}. If $\pi$ is
-!!a{proof} with end-sequent~$S$ we also write $\pi \Proves S$. If
-there is !!a{proof} of a sequent~$S$ we write $\Proves S$, possibly
-indicating the system in which the proof exists on the left of the
-$\Proves$~symbol, p.ex., $\Log{G1c} \Proves !A, !B \Sequent !A \land
-!B$. Every sequent in !!a{proof}, with the exception of initial
-sequents, is the \emph{conclusion} of an inference by some rule~$R$.
-The one or two sequents standing immediately above a sequent in
-!!a{proof} (O.s.\@, the parents of the node) are called the
-\emph{premises} of the inference.
+\Olref{defn:proof} define !!{proof}s como árvores de sequentes. Imaginamos
+que essas árvores crescem ``para cima''. Os nós superiores (folhas) dessa
+árvore são axiomas e são chamados de \emph{sequentes iniciais}. O sequente
+inferior é chamado de \emph{sequente final}. Se $\pi$ é !!a{proof} com
+sequente final~$S$, também escrevemos $\pi \Proves S$. Se existe
+!!a{proof} de um sequente~$S$, escrevemos $\Proves S$, podendo indicar à
+esquerda do símbolo~$\Proves$ o sistema no qual a demonstração existe; p.ex., $\Log{G1c} \Proves !A, !B \Sequent !A \land !B$. Todo sequente em
+!!a{proof}, com exceção dos sequentes iniciais, é a \emph{conclusão} de uma
+inferência por alguma regra~$R$. O único ou os dois sequentes imediatamente
+acima de um sequente em !!a{proof} (O.s.\@, os pais do nó) são chamados de
+\emph{premissas} da inferência.
 
-The !!{proof}s used in the inductive construction of
-!!a{proof} are called its \emph{sub-!!{proof}s}. The
-sub-!!{proof}s ending in the premises of an inference are called
-the \emph{immediate sub-!!{proof}s} of the inference.
+Os !!{proof}s usados na construção indutiva de !!a{proof} são chamados de
+seus \emph{sub-!!{proof}s}. Os sub-!!{proof}s que terminam nas premissas de
+uma inferência são chamados de \emph{sub-!!{proof}s imediatos} da
+inferência.
 
-It is often necessary to measure the complexity of !!{proof}s as
-a natural number. We could simply count the number of sequents in
-!!a{proof}, but often a more useful measure is the !!{height} of
-!!a{proof}: it is the maximal number of sequents between the
-end-sequent and an initial sequent. We can also give an inductive
-definition.
+Muitas vezes é necessário medir a complexidade dos !!{proof}s por um número
+natural. Poderíamos simplesmente contar o número de sequentes em !!a{proof},
+mas uma medida frequentemente mais útil é a !!{height} de !!a{proof}: ela é
+o número máximo de sequentes entre o sequente final e um sequente inicial.
+Também podemos dar uma definição indutiva.
 
 \begin{defn}
-The \emph{!!{height}}~$\pheight{\pi}$ of !!a{proof}~$\pi$ is
-inductively defined as follows.
+A \emph{!!{height}}~$\pheight{\pi}$ de !!a{proof}~$\pi$ é definida
+indutivamente da seguinte maneira.
 \begin{enumerate}
-  \item If $\pi$ consists of a single axiom, $\pheight{\pi} = 0$.
-  \item If $\pi$ ends in an inference with one premise with immediate
-  sub-!!{proof}~$\pi_1$, then $\pheight{\pi} = \pheight{\pi_1} + 1$.
-  \item If $\pi$ ends in an inference with two premises with immediate
-  sub-!!{proof}s~$\pi_1$ and~$\pi_2$, then $\pheight{\pi} =
+  \item Se $\pi$ consiste em um único axioma, $\pheight{\pi} = 0$.
+  \item Se $\pi$ termina em uma inferência com uma premissa cujo
+  sub-!!{proof} imediato é~$\pi_1$, então $\pheight{\pi} = \pheight{\pi_1} + 1$.
+  \item Se $\pi$ termina em uma inferência com duas premissas cujos
+  sub-!!{proof}s imediatos são~$\pi_1$ e~$\pi_2$, então $\pheight{\pi} =
   \max(\pheight{\pi_1}, \pheight{\pi_2}) + 1$.
 \end{enumerate}
-If a sequent~$S$ has !!a{proof} of height $\le n$, we write $\Proves[n] S$.
+Se um sequente~$S$ tem !!a{proof} de altura $\le n$, escrevemos $\Proves[n] S$.
 \end{defn}
 
 \begin{ex}
-In \Log{G3c}, any sequent of the form $!C, \Gamma \Sequent \Delta, !C$
-is an axiom, where $!C$ must be atomic. Suppose $!D$ and $!E$ are
-atomic sentences. Then $!D, !E \Sequent !D$ and $!D, !E \Sequent !E$
-are instances of the axiom $!C, \Gamma \Sequent \Delta, !C$. P.ex., if
-we take $!C \ident !E$, $\Gamma = \{!D\}$ and $\Delta = \emptyset$ in
-$!C, \Gamma \Sequent \Delta, !C$ we get exactly the sequent $!D, !E
-\Sequent !E$. (Remember that we are dealing with multi\emph{sets} and
-so $!D, !E \Sequent !E$ and $!E, !D \Sequent !D$ are the same
-sequent.)
+Em \Log{G3c}, todo sequente da forma $!C, \Gamma \Sequent \Delta, !C$ é um
+axioma, onde $!C$ deve ser atômica. Suponha que $!D$ e $!E$ sejam sentenças
+atômicas. Então, $!D, !E \Sequent !D$ e $!D, !E \Sequent !E$ são instâncias
+do axioma $!C, \Gamma \Sequent \Delta, !C$. P.ex., se tomarmos
+$!C \ident !E$, $\Gamma = \{!D\}$ e $\Delta = \emptyset$ em
+$!C, \Gamma \Sequent \Delta, !C$, obteremos exatamente o sequente
+$!D, !E \Sequent !E$. (Lembre-se de que estamos lidando com
+multi\emph{conjuntos}; portanto, $!D, !E \Sequent !E$ e
+$!E, !D \Sequent !D$ são o mesmo sequente.)
 
-Since $!D, !E \Sequent !D$ is an instance of an axiom of~\Log{G3c}, it
-(by itself) counts as !!a{proof} in~\Log{G3c}, and so does $!D, !E
-\Sequent !E$ by \olref{defn:proof}\olref{defn:prf:axiom}. Let's
-call them $\pi_1$ and~$\pi_2$. By \olref{defn:prf:two-prem}, we can
-take these two !!{proof}s and generate a new one ($\pi_3$) using the
-two-premise rule~$\RightR{\land}$:
+Como $!D, !E \Sequent !D$ é uma instância de um axioma de~\Log{G3c}, ele
+(por si só) conta como !!a{proof} em~\Log{G3c}; o mesmo vale para
+$!D, !E \Sequent !E$ por \olref{defn:proof}\olref{defn:prf:axiom}.
+Chamemos essas demonstrações de $\pi_1$ e~$\pi_2$. Por
+\olref{defn:prf:two-prem}, podemos tomar esses dois !!{proof}s e gerar um
+novo ($\pi_3$) usando a regra~$\RightR{\land}$ de duas premissas:
 \[
 \Axiom$!D, !E \fCenter !D$
 \Axiom$!D, !E \fCenter !E$
@@ -169,7 +163,7 @@ two-premise rule~$\RightR{\land}$:
 \BinaryInf$!D, !E  \fCenter !D \land !E $
 \DisplayProof
 \]
-From $\pi_3$ in turn we obtain the !!{proof}~$\pi_4$
+De $\pi_3$, por sua vez, obtemos o !!{proof}~$\pi_4$
 \[
 \Axiom$!D, !E \fCenter !D$
 \Axiom$!D, !E \fCenter !E$
@@ -182,15 +176,15 @@ From $\pi_3$ in turn we obtain the !!{proof}~$\pi_4$
 \RightSubproofLabel{$\pi_4$}
 \DisplayProof
 \]
-using the one-premise rule~$\LeftR{\land}$ (using
-\olref{defn:proof}\olref{defn:prf:one-prem}). The immediate
-sub-!!{proof} of the last inference in~$\pi_4$ is~$\pi_3$. The
-immediate sub-!!{proof}s of the $\RightR{\land}$ inference are $\pi_1$
-and~$\pi_2$. The sub-!!{proof}s of $\pi_4$ are all of $\pi_1$,
-$\pi_2$, $\pi_3$, and $\pi_4$ itself. We have $\pheight{\pi_1} =
-\pheight{\pi_2} = 0$, $\pheight{\pi_3} = 1$ and $\pheight{\pi_4} = 2$.
-We have shown that $\Log{G3c} \Proves[4] !D \land !E  \fCenter !D
-\land !E$ for any atomic $!D$ and~$!E$.
+usando a regra~$\LeftR{\land}$ de uma premissa (por
+\olref{defn:proof}\olref{defn:prf:one-prem}). O sub-!!{proof} imediato da
+última inferência em~$\pi_4$ é~$\pi_3$. Os sub-!!{proof}s imediatos da
+inferência $\RightR{\land}$ são $\pi_1$ e~$\pi_2$. Os sub-!!{proof}s de
+$\pi_4$ são $\pi_1$, $\pi_2$, $\pi_3$ e o próprio $\pi_4$. Temos
+$\pheight{\pi_1} = \pheight{\pi_2} = 0$, $\pheight{\pi_3} = 1$ e
+$\pheight{\pi_4} = 2$. Mostramos que
+$\Log{G3c} \Proves[4] !D \land !E  \fCenter !D \land !E$ para quaisquer
+$!D$ e~$!E$ atômicas.
 \end{ex}
 
 \end{document}

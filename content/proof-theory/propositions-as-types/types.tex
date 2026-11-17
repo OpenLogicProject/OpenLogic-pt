@@ -1,0 +1,112 @@
+% part: intuitionistic-logic
+% chapter: propositions-as-types
+% section: types
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{int}{pty}{typ}
+
+\olsection{Tipos}
+
+Um termo de prova como $(MN)$, por si só, não determina unicamente a
+demonstração da qual é termo de prova. Isso ocorre porque as variáveis
+livres, isto é, os termos de prova dos axiomas, não especificam as
+!!{formula}s nos axiomas correspondentes. Contudo, se as especificarmos
+em um contexto~$\Gamma$, a demonstração \emph{fica} unicamente
+determinada.
+
+\begin{defn}
+Um \emph{contexto} para um termo de prova~$N$ é um conjunto $\Gamma$ tal
+que, para cada variável livre de~$N$, $\Gamma$ contém exatamente um par
+$x : !A$.
+\end{defn}
+
+Observe que a definição não exige que $\Gamma$ contenha $x:!A$
+\emph{somente} para variáveis livres de~$N$. Assim, por exemplo,
+$\Gamma = \{x:!A, y:!B, z:!C\}$ é um contexto para $\pair{x}{y}$.
+
+\begin{defn}\ollabel{defn:type}
+  Suponha que $\Gamma$ seja um contexto para~$N$. O \emph{tipo} de~$N$
+  (relativo a~$\Gamma$) é definido indutivamente da seguinte maneira:
+  \begin{enumerate}
+  \item O tipo de $x$ é $!A$ se, e somente se, $x:!A \in \Gamma$.
+  \item Se $N$ tem tipo~$!B$ relativo a $x:!A, \Gamma$, então o tipo de $\lambd[\typeof{x}{!A}][N]$ é $!A \lif !B$.
+  \item Se $N$ tem tipo $!A \lif !B$ e $M$ tem tipo~$!A$, então $(NM)$
+  tem tipo~$!B$.
+  \item Se $N$ tem tipo $!A$ e $M$ tem tipo~$!B$, então $\pair{N}{M}$
+  tem tipo $!A \land !B$.
+  \item Se $N$ tem tipo~$!A_1 \land !A_2$, então $\proj{i}{N}$ tem tipo~$!A_i$.
+  \item Se $N$ tem tipo $!A$, então
+    $\inj[!B]{i}{!M}$ tem tipo $!A \lor !B$ se $i=1$ e tipo $!B \lor
+    !A$ se $i=2$.
+  \item Se $M$ tem tipo $!A \lor !B$, $N_1$ tem tipo $!C$ relativo
+  a $x_1:!A, \Gamma$, e $N_2$ tem tipo~$!C$ relativo a $x_2:!B,
+  \Gamma$, então $\dcase{M}{x_1}{N_1}{x_2}{N_2}$ tem tipo~$!C$.
+  \item Se $N$ tem tipo~$\lfalse$, então
+    $\abort{!A}{N}$ tem tipo~$!A$.
+  \end{enumerate}
+\end{defn}
+
+\begin{prop}
+Todo termo de prova~$N$ tem exatamente um tipo relativo a um
+contexto~$\Gamma$ para~$N$, se tiver algum tipo (isto é, se for um termo
+de prova correto).
+\end{prop}
+
+\begin{proof}
+  Por indução sobre~$N$.
+\end{proof}
+
+Escrevemos $\Gamma \Sequent N : !A$ se o tipo de $N$ relativo a
+$\Gamma$ é~$!A$. As cláusulas em \olref{defn:type} devem parecer
+familiares: são precisamente as regras de \Log{tN2i}, com uma pequena
+diferença: o contexto~$\Gamma$ permanece o mesmo. Podemos codificar a
+definição como um cálculo \Log{tN3i}, com as regras dadas em
+\olref{tab:tN2ip}.
+
+\subfile{rules-tN3}
+
+Os termos de prova são termos de uma versão do cálculo~$\lambd$: o
+\emph{cálculo~$\lambd$ tipado com produtos, somas e tipo vazio}. O
+cálculo~$\lambd$ clássico só tem termos construídos a partir de
+variáveis, \emph{abstrações~$\lambd$}~$\lambd[x][N]$ e aplicação $(MN)$,
+e não contém a anotação por~$!A$ da abstração~$\lambd$ tipada
+$\lambd[\typeof{x}{!A}][N]$. O cálculo~$\lambd$ é um modelo de
+computação Turing-completo (isto é, toda função computável parcial pode
+ser representada nele por um termo). A versão do cálculo~$\lambd$
+fornecida pelos termos de prova e pelas regras de tipagem é um modelo
+restrito de computação, mas as ideias básicas são as mesmas. A atribuição
+de tipos o restringe: apenas termos \emph{bem tipados}, isto é, termos
+de prova com tipos (relativos a um contexto~$\Gamma$), são termos
+legítimos. Por exemplo, $\lambd[x][(xx)]$ é um termo legítimo no
+cálculo~$\lambd$ clássico não tipado, mas
+$\lambd[\typeof{x}{!A}][(xx)]$ não é bem tipado para nenhum $!A$. Isso
+ocorre porque as regras de tipagem exigem que, para $(xx)$ ter um tipo,
+o primeiro~$x$ tenha tipo $!A \lif !B$ e o segundo $x$ tenha tipo~$!A$,
+o que é impossível, pois $!A$ é uma sub-!!{formula} própria de~$!A \lif !B$.
+
+Podemos pensar intuitivamente nos tipos como as espécies de coisa
+nomeadas por termos desses tipos. Assim, um termo de tipo $!A \land !B$
+seleciona um par cujo primeiro componente tem tipo~$!A$ e cujo segundo
+componente tem tipo~$!B$, isto é, !!a{element} do produto~$!A \times !B$.
+Um termo de tipo $!A \lif !B$ é uma função de coisas de tipo $!A$ em
+coisas de tipo~$!B$. Um termo de tipo $!A \lor !B$ é algo de tipo $!A$
+ou algo de tipo~$!B$, acompanhado da informação de qual dos dois é. Isso
+se assemelha à união disjunta dos conjuntos $!A$ e $!B$, definida como
+$\{\tuple{i,x} : i = 1 \text{ ou } 2, x \in !A \text{ se } i = 1,
+x \in !B \text{ se } i=2\}$. O tipo $\lfalse$ é o conjunto vazio, isto
+é, se um termo tem esse tipo, não pode nomear nada. Como a dedução
+natural (incluindo \Log{tN3i}) é consistente, não existe !!{proof}
+de~$\lfalse$ sem hipóteses abertas; portanto, não existe termo de prova
+fechado (termo sem variáveis livres) que tenha tipo~$\lfalse$.
+
+Os operadores do cálculo~$\lambd$ tipado produzem termos que
+intuitivamente nomeiam a espécie correta de coisa, desde que os termos
+aos quais são aplicados nomeiem certas coisas. Por exemplo, ``se
+$N_1 : !A$ e $N_2 : !B$, então $\pair{N_1}{N_2} : !A \land !B$'' afirma
+que, se $N_1$ nomeia algo de tipo~$!A$ e $N_2$ nomeia algo de tipo~$!B$,
+então $\pair{N_1}{N_2}$ nomeia algo de tipo $!A \land !B$.
+
+\end{document}

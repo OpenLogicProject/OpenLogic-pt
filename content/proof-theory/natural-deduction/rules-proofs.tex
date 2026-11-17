@@ -1,0 +1,294 @@
+% Part: proof-theory
+% Chapter: natural-deduction
+% Section: rules-proofs
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{pt}{nat}{rp}
+
+\olsection{Regras e \usetoken{P}{proof}}
+
+Começamos apresentando algumas definições e fixando certa terminologia.
+
+Considere as duas regras de \Log{N1c} e~\Log{N1i} que mencionam $!A
+\lif !B$.
+\[
+\bottomAlignProof
+\AxiomC{$\Discharge{!A}{x}$}
+\shortDeduce
+\DeduceC{$!B$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!A \lif !B$}
+\DisplayProof
+\qquad
+\bottomAlignProof
+\AxiomC{$!A \lif !B$}
+\AxiomC{$!A$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!B$}
+\DisplayProof
+\]
+A regra \Elim{\lif} é bastante simples. As !!{formula}s acima da linha
+são as \emph{premissas}. A !!{formula} à esquerda é a
+!!{formula} \emph{principal}~$!A \lif !B$. Todas as regras de !!{elimination}
+têm uma premissa desse tipo, sempre na extrema esquerda. Ela é chamada de
+premissa \emph{maior} da inferência. Se há outras, como neste
+caso, elas são chamadas de premissas \emph{menores}. As premissas das
+regras de !!{introduction} também são chamadas de premissas maiores. A
+!!{formula} abaixo da linha é a \emph{conclusão}.
+
+A regra \Intro{\lif} tem apenas uma premissa, e aqui a conclusão
+é a fórmula principal~$!A \lif !B$. Todas as regras de !!{introduction} são
+assim: a conclusão é a fórmula principal; seu operador principal
+é o que está sendo ``introduzido''.
+
+A notação $\Discharge{!A}{x}$ significa o seguinte. Em !!a{proof},
+a inferência \Intro{\lif} é aplicada a !!a{formula}~$!B$ como premissa.
+A sub-!!{proof} que termina em~$!B$ tem várias !!{formula}s iniciais.
+Elas são chamadas de \emph{hipóteses}. !!^a{proof} de~$!B$ a partir de uma ou
+mais hipóteses da forma~$!A$ é !!a{proof} de que $!A$
+implica~$!B$. Quando aplicamos a regra \Intro{\lif}, concluímos~$!A
+\lif !B$, e a conclusão já não depende da hipótese~$!A$.
+Para indicar isso, as hipóteses da forma~$!A$ na !!{proof}
+que inclui a inferência~\Intro{\lif} são \emph{descarregadas} ou
+\emph{fechadas}. A regra especifica quais hipóteses podem ser descarregadas. No
+caso de \Intro{\lif} com conclusão $!A \lif !B$, são as
+hipóteses que têm a forma~$!A$, isto é, que coincidem com o antecedente
+da condicional. Às vezes é importante indicar quais
+hipóteses são descarregadas em qual regra, e isso é feito
+com o rótulo de descarga~$x$. É importante notar que as regras que descarregam
+hipóteses não \emph{precisam} descarregar \emph{todas} as hipóteses da
+forma exigida, nem sequer alguma delas. Por exemplo, a seguinte é
+correta, embora a primeira \Intro{\lif} não descarregue nenhuma
+hipótese:
+\[
+\AxiomC{$\Discharge{!A}{y}$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!B \lif !A$}
+\DischargeRule{\Intro{\lif}}{y}
+\UnaryInfC{$!A \lif (!B \lif !A)$}
+\DisplayProof
+\]
+Quando uma regra não descarrega nenhuma hipótese, simplesmente omitimos o
+rótulo de descarga (como fizemos aqui).
+
+Na !!{proof}
+\[
+\AxiomC{$\Discharge{!A}{x}$}
+\AxiomC{$\Discharge{!A}{y}$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!A \land !A$}
+\RightLabel{\Elim{\land}}
+\UnaryInfC{$!A$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!A \lif !A$}
+\DischargeRule{\Intro{\lif}}{y}
+\UnaryInfC{$!A \lif (!A \lif !A)$}
+\DisplayProof
+\]
+a primeira inferência \Intro{\lif} descarrega a hipótese à esquerda
+$!A^x$, e a segunda, a hipótese à direita~$!A^y$. Isto é, todas as
+hipóteses rotuladas por~$x$ são descarregadas pela \Intro{\lif} com
+rótulo~$x$, e todas as hipóteses com rótulo~$y$, por aquela rotulada
+por~$y$. Para que isso funcione, é importante que todas as hipóteses
+com o mesmo rótulo sejam também a mesma !!{formula}.
+
+As regras dos quantificadores são um pouco mais complicadas. Por
+exemplo, as regras de \Log{N1i} para $\lexists$ são:
+\[
+\bottomAlignProof
+\AxiomC{$!A(t)$}
+\RightLabel{\Intro{\lexists}}
+\UnaryInfC{$\lexists[x][!A(x)]$}
+\DisplayProof
+\qquad
+\bottomAlignProof
+\AxiomC{$\lexists[x][!A(x)]$} 
+\AxiomC{$\Discharge{!A(c)}{x}$}
+\shortDeduce
+\DeduceC{$!B$}
+\DischargeRule{\Elim{\lexists}}{x}
+\BinaryInfC{$!B$} \DisplayProof 
+\bottomAlignProof
+\] Na regra
+\Intro{\lexists}, a premissa é~$!A(t)$, em que $t$~é um termo fechado,
+isto é, um termo sem variáveis. Uma inferência desse tipo é
+correta---isto é, corresponde à regra esquemática \Intro{\lexists}---se
+existe alguma !!{formula}~$!A$, alguma variável~$x$ e algum termo
+fechado~$t$ tais que a conclusão é $\lexists[x][!A]$ e a premissa
+é~$\Subst{!A}{t}{x}$. A regra \Elim{\lexists} permite descarregar
+hipóteses da forma~$!A(c)$, isto é, para cada inferência existe alguma
+!!{constant}~$c$, e hipóteses da forma $\Subst{!A}{c}{x}$ podem ser
+descarregadas. Todas as hipóteses descarregadas por uma inferência
+devem usar o mesmo~$c$. Essa constante é chamada de
+\emph{variável própria} da inferência \Elim{\lexists}. A inferência só
+é correta se $c$~não ocorre em nenhuma hipótese aberta além de
+$!A(c)$, que é descarregada, não ocorre em~$!B$ e não ocorre
+em~$!A$. Isso é chamado de \emph{condição da variável própria}.
+
+!!^{proof}s em \Log{N1c} e~\Log{N1i} são árvores finitas de sequentes
+geradas indutivamente a partir de axiomas mediante as regras de
+inferência. Cada folha é uma hipótese, possivelmente marcada com um
+rótulo de descarga, e toda outra !!{formula} segue das
+!!{formula}s imediatamente acima dela por uma das regras de inferência do
+sistema. Se uma ocorrência de uma !!{formula} como hipótese na árvore
+acima de uma inferência não foi descarregada por uma inferência acima dela,
+ela é chamada de \emph{aberta} (na inferência).
+
+\begin{defn}\ollabel{defn:proof}
+\emph{!!^{proof}s} em \Log{N1c} e~\Log{N1i} são árvores finitas de
+!!{formula}s definidas indutivamente da seguinte maneira:
+\begin{enumerate}
+  \item\ollabel{defn:prf:assumption} Toda !!{formula}
+  marcada com um rótulo de descarga, como $x$ ou $y$, é, por si só,
+  !!a{proof}. Em !!a{proof} que consiste em uma única !!{formula}, a
+  !!{formula} conta como hipótese aberta.
+  \item\ollabel{defn:prf:one-prem} Se $R$ é uma regra com uma, duas ou
+  três premissas $!A_1$, $!A_2$, $!A_3$, conclusão~$!A$, e
+  $\delta_1$, $\delta_2$, $\delta_3$ são !!{proof}s que terminam em $!A_1$,
+  $!A_2$, $!A_3$, respectivamente, então cada uma das construções
+  \[
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!A_1$}
+  \RightLabel{$R$}
+  \UnaryInfC{$!A$}
+  \DisplayProof
+\qquad
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!A_1$}
+  \AxiomC{}
+  \RightLabel{$\delta_2$}
+  \DeduceC{$!A_2$}
+  \RightLabel{$R$}
+  \BinaryInfC{$!A$}
+  \DisplayProof
+\qquad
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!A_1$}
+  \AxiomC{}
+  \RightLabel{$\delta_2$}
+  \DeduceC{$!A_2$}
+  \AxiomC{}
+  \RightLabel{$\delta_3$}
+  \DeduceC{$!A_2$}
+  \RightLabel{$R$}
+  \TrinaryInfC{$!A$}
+  \DisplayProof
+  \]
+  é !!a{proof}, conforme o caso, desde que os rótulos das hipóteses nas
+  !!{proof}s sejam compatíveis (nenhuma dupla de !!{formula}s diferentes
+  tem o mesmo rótulo de descarga) e as inferências sejam aplicações
+  corretas de~$R$.
+  \item As ocorrências mais altas de !!{formula} na nova !!{proof} contam
+  como \emph{hipóteses abertas} da !!{proof} se são hipóteses abertas de
+  $\delta_1$, $\delta_2$ ou~$\delta_3$, exceto pelas ocorrências
+  descarregadas pela regra. Se a regra tem o rótulo~$x$ (ou $x\, y$),
+  então, para \Intro{\lif} e~\Intro{\lnot}, essas ocorrências são todas
+  as hipóteses abertas de~$\delta_1$ rotuladas por~$x$; para
+  \Elim{\lexists}, são todas as hipóteses abertas rotuladas por~$x$ em
+  $\delta_2$; para \Elim{\lor}, são todas as hipóteses abertas rotuladas
+  por~$x$ em~$\delta_2$ e todas as hipóteses abertas rotuladas por~$y$
+  em~$\delta_3$.
+\end{enumerate}
+\end{defn}
+
+As !!{proof}s usadas na construção indutiva de !!a{proof} são chamadas
+de suas \emph{sub-!!{proof}s}. As sub-!!{proof}s que terminam nas
+premissas de uma inferência são chamadas de \emph{sub-!!{proof}s
+imediatas} da inferência. As regras de \Log{N2c} e \Log{N2i} são
+apresentadas em \olref{tab:N1}.
+
+\subfile{rules-N1}
+
+\begin{defn}
+A \emph{!!{height}}~$\pheight{\delta}$ de !!a{proof}~$\delta$ é
+definida indutivamente da seguinte maneira.
+\begin{enumerate}
+  \item Se $\delta$ consiste em uma hipótese, $\pheight{\delta} = 0$.
+  \item Se $\delta$ termina em uma inferência com uma premissa cuja
+  sub-!!{proof} imediata é~$\delta_1$, então $\pheight{\delta} = \pheight{\delta_1} + 1$.
+  \item Se $\delta$ termina em uma inferência com duas premissas cujas
+  sub-!!{proof}s imediatas são~$\delta_1$ e~$\delta_2$, então $\pheight{\delta} =
+  \max(\pheight{\delta_1}, \pheight{\delta_2}) + 1$.
+  \item Se $\delta$ termina em \Elim{\lor} com sub-!!{proof}s imediatas
+  $\delta_1$, $\delta_2$ e~$\delta_3$, então $\pheight{\delta} =
+  \max(\pheight{\delta_1}, \pheight{\delta_2}, \pheight{\delta_3}) + 1$.
+\end{enumerate}
+Se um sequente~$S$ tem !!a{proof} de altura $\le n$, escrevemos $\Proves[n] S$.
+\end{defn}
+
+\begin{ex}
+Em \Log{N1i}, toda !!{formula} conta como !!a{proof} a partir de si
+mesma como hipótese aberta. Assim,
+\[
+!A \land !B^x
+\]
+é !!a{proof}~$\delta_1$. Sua altura é~$0$.
+A partir de $\delta_1$, podemos obter duas !!{proof}s~$\delta_2$ e~$\delta_3$
+aplicando uma das duas versões de~\Elim{\land}:
+\[
+\AxiomC{$!A \land !B^x$}
+\RightLabel{\Elim{\land}[2]}
+\UnaryInfC{$!B$}
+\DisplayProof
+\qquad
+\AxiomC{$!A \land !B^x$}
+\RightLabel{\Elim{\land}[1]}
+\UnaryInfC{$!A$}
+\DisplayProof
+\]
+As sub-!!{proof}s imediatas da última inferência em~$\delta_2$ e
+em~$\delta_3$ são iguais: $!A \land !B$. Ambas as !!{proof}s têm a
+ocorrência de $!A\land !B$ como hipótese aberta. Temos
+$\pheight{\delta_1} = \pheight{\delta_2} = 1$.
+
+A regra \Intro{\land} exige duas premissas da forma $!B$ e $!A$
+para justificar uma conclusão da forma~$!B \land !A$. Assim, a seguinte
+é !!a{proof}~$\delta_4$:
+\[
+\AxiomC{$!A \land !B^x$}
+\RightLabel{\Elim{\land}[2]}
+\UnaryInfC{$!B$}
+\LeftSubproofLabel{$\delta_2$}
+\AxiomC{$!A \land !B^x$}
+\RightLabel{\Elim{\land}[1]}
+\UnaryInfC{$!A$}
+\RightSubproofLabel{$\delta_3$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!B \land !A$}
+\DisplayProof
+\]
+Sua altura é $\pheight{\delta_4} = \max(\pheight{\delta_2},
+\pheight{\delta_3})+1 = \max(1,1) + 1 = 2$. Ela tem duas ocorrências de
+$!A \land !B$ como hipóteses, ambas abertas.
+
+Por fim, podemos aplicar \Intro{\lif} para obter $\delta_5$:
+\[
+\AxiomC{$\Discharge{!A \land !B}{x}$}
+\RightLabel{\Elim{\land}[2]}
+\UnaryInfC{$!B$}
+\LeftSubproofLabel{$\delta_2$}
+\AxiomC{$\Discharge{!A \land !B}{x}$}
+\RightLabel{\Elim{\land}[1]}
+\UnaryInfC{$!A$}
+\RightSubproofLabel{$\delta_3$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!B \land !A$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$(!A \land !B) \lif (!B \land !A)$}
+\DisplayProof
+\]
+Sua altura é $\pheight{\delta_4} + 1 = 3$. A inferência \Intro{\lif}
+descarrega todas as ocorrências de hipóteses da forma $!A \land !B$
+rotuladas por~$x$, isto é, ambas as hipóteses anteriormente abertas da
+subprova imediata. Como essas são as únicas hipóteses de $\delta_5$, ela
+não tem hipóteses abertas e, portanto, é !!a{proof} \emph{de} sua
+!!{formula} final $(!A \land !B) \lif (!B \land !A)$.
+\end{ex}
+
+\end{document}
