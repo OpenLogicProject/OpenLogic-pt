@@ -6,37 +6,37 @@
 
 \begin{document}
 
-\olfileid{mvl}{syn}{fml}
+\olfileid[pt]{mvl}{syn}{fml}
 
 \olsection{\usetoken{P}{formula}}
 
-\begin{defn}[Formula]
+\begin{defn}[Fórmula]
 \ollabel{defn:formulas}
-The set~$\Frm[L]$ of \emph{!!{formula}s} of a propositional
-language~$\Lang L$ is defined inductively as follows:
+O conjunto~$\Frm[L]$ de \emph{!!{formula}s} de uma linguagem
+proposicional~$\Lang L$ é definido indutivamente da seguinte maneira:
 \begin{enumerate}
-\item Every !!{propositional variable}~$\Obj p_i$ is an atomic
-  !!{formula}.
-\item Every $0$-place connective (propositional constant) of~$\Lang L$
-is an atomic !!{formula}.
-\item If $\star$ is an $n$-place connective of~$\Lang L$, and $!A_1$,
-\dots, $!A_n$ are !!{formula}s, then $\star(!A_1, \dots, !A_n)$ is
+\item Toda !!{propositional variable}~$\Obj p_i$ é uma
+  !!{formula} atômica.
+\item Todo conectivo $0$-ário (constante proposicional) de~$\Lang L$
+é uma !!{formula} atômica.
+\item Se $\star$ é um conectivo $n$-ário de~$\Lang L$, e $!A_1$,
+\dots, $!A_n$ são !!{formula}s, então $\star(!A_1, \dots, !A_n)$ é
   !!a{formula}.
-\tagitem{limitClause}{Nothing else is !!a{formula}.}{}
+\tagitem{limitClause}{Nada mais é !!a{formula}.}{}
 \end{enumerate}
-If $\star$ is $1$-place, then $\star(!A_1)$ will often be written
-simply as $\star !A_1$. If $\star$ is $2$-place $\star(!A_1,!A_2)$
-will often be written as $(!A_1 \star !A_2)$. 
+Se $\star$ é $1$-ário, então $\star(!A_1)$ muitas vezes será escrito
+simplesmente como $\star !A_1$. Se $\star$ é $2$-ário, $\star(!A_1,!A_2)$
+muitas vezes será escrito como $(!A_1 \star !A_2)$. 
 \end{defn}
 
-As usual, we will often silently leave out the outermost parentheses.
+Como de costume, frequentemente omitiremos sem menção os parênteses mais externos.
 
 \begin{ex}
-  In the standard language~$\Lang{L_0}$, $\Obj p_1 \lif (\Obj p_1
-  \land \lnot \Obj p_2)$ is a formula. In the language of product
-  logic, it would be written instead as $\Obj p_1 \lif (\Obj p_1 \odot
-  \lnot \Obj p_2)$.  If we add the $1$-place $\triangle$ to the
-  language, we would also have formulas such as $\triangle (\Obj p_1
+  Na linguagem padrão~$\Lang{L_0}$, $\Obj p_1 \lif (\Obj p_1
+  \land \lnot \Obj p_2)$ é uma fórmula. Na linguagem da lógica do produto,
+  ela seria escrita, em vez disso, como $\Obj p_1 \lif (\Obj p_1 \odot
+  \lnot \Obj p_2)$. Se acrescentarmos à linguagem o conectivo $1$-ário $\triangle$,
+  também teremos fórmulas como $\triangle (\Obj p_1
   \land \Obj p_2) \lif (\triangle \Obj p_1 \land \triangle \Obj p_2)$.
 \end{ex}
 

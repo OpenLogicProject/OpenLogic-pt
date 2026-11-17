@@ -6,24 +6,24 @@
 
 \begin{document}
 
-\olfileid{mvl}{thr}{god}
+\olfileid[pt]{mvl}{thr}{god}
 
-\olsection{G\"odel logics}
+\olsection{Lógicas de G\"odel}
 
-Kurt G\"odel introduced a sequence of $n$-valued logics that each
-contain all !!{formula}s valid in intuitionistic logic, and are
-contained in classical logic.  Here is the first interesting one:
+Kurt G\"odel introduziu uma sequência de lógicas $n$-valoradas, cada uma das quais
+contém todas as !!{formula}s válidas na lógica intuicionista e está
+contida na lógica clássica. Eis a primeira que apresenta interesse:
 
 \begin{defn}\ollabel{defn:goedel}
-\emph{$3$-valued G\"odel logic}~$\LogGod$ is defined using the matrix:
+A \emph{lógica $3$-valorada de G\"odel}~$\LogGod$ é definida pela matriz:
 \begin{enumerate}
-  \item The standard propositional language $\Lang L_0$ with
+  \item A linguagem proposicional padrão $\Lang L_0$, com
   $\lfalse$, $\lnot$, $\land$, $\lor$, $\lif$.
-  \item The set of truth values $V = \{\True, \Undef, \False\}$.
-  \item $\True$ is the only designated value, O.s.\@, $V^+ = \{\True\}$.
-  \item For $\lfalse$, we have $\tf{\lfalse} = \False$. Truth
-  functions for the remaining connectives are given by the following
-  tables:
+  \item O conjunto de valores de verdade $V = \{\True, \Undef, \False\}$.
+  \item $\True$ é o único valor designado, O.s.\@, $V^+ = \{\True\}$.
+  \item Para $\lfalse$, temos $\tf{\lfalse} = \False$. As funções de
+  verdade dos demais conectivos são dadas pelas seguintes
+  tabelas:
   \begin{center}
     \begin{tabular}{c|c} 
       $\tf{\lnot}[\LogGod]$ & \\ 
@@ -60,31 +60,31 @@ contained in classical logic.  Here is the first interesting one:
 \end{enumerate}
 \end{defn}
 
-You'll notice that the truth tables for $\land$ and~$\lor$ are the
-same as in \L ukasiewicz and strong Kleene logic, but the truth tables
-for $\lnot$ and~$\lif$ differ for each. In G\"odel logic,
-$\tf{\lnot}(\Undef) = \False$. In contrast to \L ukasiewicz logic and
-Kleene logic, $\tf{\lif}(\Undef, \False) = \False$; in contrast to
-Kleene logic (but as in \L ukasiewicz logic), $\tf{\lif}(\Undef,
+Você observará que as tabelas-verdade de $\land$ e~$\lor$ são as
+mesmas das lógicas de \L ukasiewicz e forte de Kleene, mas as tabelas-verdade
+de $\lnot$ e~$\lif$ diferem em cada uma. Na lógica de G\"odel,
+$\tf{\lnot}(\Undef) = \False$. Em contraste com as lógicas de \L ukasiewicz e
+Kleene, $\tf{\lif}(\Undef, \False) = \False$; em contraste com a
+lógica de Kleene (mas como na de \L ukasiewicz), $\tf{\lif}(\Undef,
 \Undef) = \True$.
 
-As the connection to intuitionistic logic alluded to above suggests,
-$\LogGod[3]$ is close to intuitionistic logic. All intuitionistic
-truths are tautologies in~$\LogGod[3]$, and many classical tautologies
-that are not valid intuitionistically also fail to be tautologies
-in~$\LogGod[3]$. For instance, the following are not tautologies:
+Como sugere a relação com a lógica intuicionista mencionada acima,
+$\LogGod[3]$ é próxima da lógica intuicionista. Todas as verdades intuicionistas
+são tautologias em~$\LogGod[3]$, e muitas tautologias clássicas
+que não são válidas intuicionisticamente também deixam de ser tautologias
+em~$\LogGod[3]$. Por exemplo, as seguintes não são tautologias:
 \begin{align*}
   & p \lor \lnot p && (p \lif q) \lif (\lnot p \lor q) \\
   & \lnot\lnot p \lif p && \lnot(\lnot p \land \lnot q) \lif (p \lor q) \\
   & ((p \lif q) \lif p) \lif p && \lnot(p \lif q) \lif (p \land \lnot q)
 \end{align*}
-However, not every tautology of $\LogGod[3]$ is also
-intuitionistically valid, p.ex., $\lnot\lnot p \lor \lnot p$ or $(p
+Entretanto, nem toda tautologia de $\LogGod[3]$ também é
+intuicionisticamente válida; p.ex., $\lnot\lnot p \lor \lnot p$ ou $(p
 \lif q) \lor (q \lif p)$.
 
 \begin{prob}
-  Give truth tables to show that the following are tautologies
-  of~$\LogGod[3]$:
+  Dê tabelas-verdade que mostrem que as seguintes fórmulas são tautologias
+  de~$\LogGod[3]$:
   \begin{align*}
     & \lnot\lnot p \lor \lnot p\\
     & (p \lif q) \lor (q \lif p) \\
@@ -94,8 +94,8 @@ intuitionistically valid, p.ex., $\lnot\lnot p \lor \lnot p$ or $(p
 \end{prob}
 
 \begin{prob}
-  Give truth tables that show that the following are not tautologies
-  of~$\LogGod[3]$
+  Dê tabelas-verdade que mostrem que as seguintes fórmulas não são tautologias
+  de~$\LogGod[3]$:
   \begin{align*}
     & (p \lif q) \lif (\lnot p \lor q) \\
     & \lnot(\lnot p \land \lnot q) \lif (p \lor q) \\
@@ -105,7 +105,7 @@ intuitionistically valid, p.ex., $\lnot\lnot p \lor \lnot p$ or $(p
 \end{prob}
 
 \begin{prob}
-  Which of the following relations hold in G\"odel logic? Give a truth table for each.
+  Quais das relações a seguir valem na lógica de G\"odel? Dê uma tabela-verdade para cada uma.
   \begin{enumerate}
     \item $p, p \lif q \Entails q$
     \item $p \lor q, \lnot p \Entails q$

@@ -6,68 +6,68 @@
 
 \begin{document}
 
-\olfileid{mvl}{seq}{rul}
+\olfileid[pt]{mvl}{seq}{rul}
 
-\olsection{Rules and \usetoken{P}{derivation}}
+\olsection{Regras e \usetoken{P}{derivation}}
 
-For the following, let $\Gamma, \Delta, \Pi, \Lambda$ represent finite
-sequences of !!{sentence}s.
+No que segue, sejam $\Gamma, \Delta, \Pi, \Lambda$ sequências finitas
+de !!{sentence}s.
 
-\begin{defn}[Sequent]
-An \emph{$n$-sided sequent} is an expression of the form
+\begin{defn}[Sequente]
+Um \emph{sequente de $n$ lados} é uma expressão da forma
 \[
 \Gamma_1 \nSequent \dots \nSequent \Gamma_n
 \]
-where each $\Gamma_1$ is a finite (possibly empty) sequences of
-!!{sentence}s of the language~$\Lang L$.
+em que cada $\Gamma_1$ é uma sequência finita (possivelmente vazia) de
+!!{sentence}s da linguagem~$\Lang L$.
 \end{defn}
 
-\begin{defn}[Initial Sequent]
-An \emph{$n$-sided initial sequent} is an $n$-sided sequent of the
-form $!A \nSequent \dots \nSequent !A$ for any !!{sentence} $!A$ in
-the language.
+\begin{defn}[Sequente inicial]
+Um \emph{sequente inicial de $n$ lados} é um sequente de $n$ lados da
+forma $!A \nSequent \dots \nSequent !A$ para qualquer !!{sentence} $!A$
+da linguagem.
 
-If the language contains a $0$-place connective~$\star$, O.s.\@, a
-propositional constant, then we also take the sequent $\dots \nSequent
-\star \nSequent \dots$ where $\star$ appears in the space for the truth
-value associated with~$\tf{\star} \in V$, and is empty otherwise. 
+Se a linguagem contém um conectivo de aridade~$0$, $\star$, O.s.\@, uma
+constante proposicional, tomamos também o sequente $\dots \nSequent
+\star \nSequent \dots$, no qual $\star$ aparece na posição do valor de
+verdade associado a~$\tf{\star} \in V$, e as demais posições ficam vazias.
 \end{defn}
 
-For each connective of an $n$-valued logic~$\Log{L}$, there is a
-logical rule for each truth value that this connective can take
-in~$\Log{L}$. !!^{derivation}s in an $n$-sided sequent calculus
-for~$\Log{L}$ are trees of sequents, where the topmost sequents are
-initial sequents, and if a sequent stands below one or more other
-sequents, it must follow correctly by a rule of inference for the
-connectives of~$\Log{L}$.
+Para cada conectivo de uma lógica $n$-valorada~$\Log{L}$, há uma regra
+lógica para cada valor de verdade que esse conectivo pode assumir
+em~$\Log{L}$. As !!^{derivation}s em um cálculo de sequentes de $n$
+lados para~$\Log{L}$ são árvores de sequentes, nas quais os sequentes
+superiores são sequentes iniciais e, se um sequente aparece abaixo de
+um ou mais sequentes, deve decorrer corretamente deles por uma regra
+de inferência para os conectivos de~$\Log{L}$.
 
-\begin{defn}[Theorems]
-!!^a{sentence}~$!A$ is a \emph{theorem} of an $n$-valued
-logic~$\Log{L}$ if there is !!a{derivation}
-of the $n$-sequent containing $!A$ in each position corresponding to a
-designated truth value of~$\Log{L}$.  We write $\Proves[\Log{L}]
-!A$ if $!A$ is a theorem and $\Proves/[\Log{L}] !A$ if it is not.
+\begin{defn}[Teoremas]
+!!^a{sentence}~$!A$ é um \emph{teorema} de uma lógica
+$n$-valorada~$\Log{L}$ se há !!a{derivation} do $n$-sequente que contém
+$!A$ em cada posição correspondente a um valor de verdade designado
+de~$\Log{L}$. Escrevemos $\Proves[\Log{L}] !A$ se $!A$ é um teorema e
+$\Proves/[\Log{L}] !A$ se não o é.
 \end{defn}
 
 \begin{defn}[!!^{derivability}]
-!!^a{sentence}~$!A$ is \emph{!!{derivable} from} a set of
-!!{sentence}s~$\Gamma$ in an $n$-valued logic~$\Log{L}$, $\Gamma
-\Proves[\Log{L}] !A$, iff there is a finite subset~$\Gamma_0 \subseteq
-\Gamma$ and a sequence $\Gamma_0'$ of the !!{sentence}s in~$\Gamma_0$
-such that the following sequent has  !!a{derivation}:
-\[ \Lambda_1 \nSequent \dots \nSequent \Lambda_n \] where $\Lambda_i$
-is $!A$ if position $i$ corresponds to a designated truth value, and
-$\Gamma_0'$otherwise. If $!A$ is not !!{derivable} from $\Gamma$ we
-write $\Gamma \Proves/ !A$.
+!!^a{sentence}~$!A$ é \emph{!!{derivable} a partir de} um conjunto de
+!!{sentence}s~$\Gamma$ em uma lógica $n$-valorada~$\Log{L}$, $\Gamma
+\Proves[\Log{L}] !A$, sse há um subconjunto finito~$\Gamma_0 \subseteq
+\Gamma$ e uma sequência $\Gamma_0'$ das !!{sentence}s em~$\Gamma_0$
+tais que o sequente a seguir tem !!a{derivation}:
+\[ \Lambda_1 \nSequent \dots \nSequent \Lambda_n \] em que $\Lambda_i$
+é $!A$ se a posição $i$ corresponde a um valor de verdade designado, e
+$\Gamma_0'$ caso contrário. Se $!A$ não é !!{derivable} a partir de
+$\Gamma$, escrevemos $\Gamma \Proves/ !A$.
 \end{defn}
 
-For instance, $3$-valued \L ukasiewicz logic has a $3$-sided sequent
-calculus. In a $3$-sided sequent $\Gamma \nSequent \Pi \nSequent
-\Delta$, $\Gamma$ corresponds to~$\False$, $\Delta$ to~$\True$, and
-$\Pi$ to~$\Undef$.  Axioms are $!A \nSequent !A \nSequent !A$. Since
-only $\True$ is designated, $\Gamma \Proves[\LogLuk[3]] !A$ iff the
-sequent $\Gamma \nSequent \Gamma \nSequent !A$ has !!a{derivation}.
-(If $\Undef$ were also designated, we would need !!a{derivation} of
-$\Gamma \nSequent !A \nSequent !A$.)
+Por exemplo, a lógica $3$-valorada de \L ukasiewicz tem um cálculo de
+sequentes de $3$ lados. Em um sequente de $3$ lados $\Gamma \nSequent
+\Pi \nSequent \Delta$, $\Gamma$ corresponde a~$\False$, $\Delta$
+a~$\True$ e $\Pi$ a~$\Undef$. Os axiomas são $!A \nSequent !A
+\nSequent !A$. Como apenas $\True$ é designado, $\Gamma
+\Proves[\LogLuk[3]] !A$ sse o sequente $\Gamma \nSequent \Gamma
+\nSequent !A$ tem !!a{derivation}. (Se $\Undef$ também fosse designado,
+precisaríamos de !!a{derivation} de $\Gamma \nSequent !A \nSequent !A$.)
 
 \end{document}

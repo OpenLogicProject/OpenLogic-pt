@@ -6,65 +6,65 @@
 
 \begin{document}
 
-\olfileid{mvl}{syn}{sem}
+\olfileid[pt]{mvl}{syn}{sem}
 
-\olsection{Semantic Notions}
+\olsection{Noções semânticas}
 
-Suppose a many-valued logic $\Log L$ is given by a matrix.  Then we
-can define the usual semantic notions for~$\Log L$.
+Suponha que uma lógica multivalorada $\Log L$ seja dada por uma matriz. Então
+podemos definir as noções semânticas usuais para~$\Log L$.
 
 \begin{defn} 
 \begin{enumerate}
-\item !!^a{formula}~$!A$ is \emph{satisfiable} if for
-  some~$\pAssign{v}$, $\pSat{v}{!A}$; it is
-  \emph{unsatisfiable} if for no $\pAssign{v}$, $\pSat{v}{!A}$;
-\item !!^a{formula}~$!A$ is a \emph{tautology} if $\pSat{v}{!A}$ for
-  all !!{valuation}s~$v$;
-\item If $\Gamma$ is a set of !!{formula}s, $\Gamma \Entails !A$ (``$\Gamma$
-  entails $!A$'') if and only if $\pSat{v}{!A}$ for every
-  !!{valuation}~$\pAssign{v}$ for which $\pSat{v}{\Gamma}$.
-\item If $\Gamma$ is a set of !!{formula}s, $\Gamma$ is
-  \emph{satisfiable} if there is !!a{valuation}~$\pAssign{v}$ for which
-  $\pSat{v}{\Gamma}$, and $\Gamma$ is
-  \emph{unsatisfiable} otherwise.
+\item !!^a{formula}~$!A$ é \emph{satisfatível} se, para
+  algum~$\pAssign{v}$, $\pSat{v}{!A}$; ela é
+  \emph{insatisfatível} se não há $\pAssign{v}$ tal que $\pSat{v}{!A}$;
+\item !!^a{formula}~$!A$ é uma \emph{tautologia} se $\pSat{v}{!A}$ para
+  todas as !!{valuation}s~$v$;
+\item Se $\Gamma$ é um conjunto de !!{formula}s, $\Gamma \Entails !A$ (``$\Gamma$
+  tem $!A$ como consequência'') se, e somente se, $\pSat{v}{!A}$ para toda
+  !!{valuation}~$\pAssign{v}$ para a qual $\pSat{v}{\Gamma}$.
+\item Se $\Gamma$ é um conjunto de !!{formula}s, $\Gamma$ é
+  \emph{satisfatível} se existe !!a{valuation}~$\pAssign{v}$ para a qual
+  $\pSat{v}{\Gamma}$, e $\Gamma$ é
+  \emph{insatisfatível} caso contrário.
 \end{enumerate} 
 \end{defn}
 
-We have some of the same facts for these notions as we do for
-the case of classical logic:
+Para essas noções, valem alguns dos mesmos fatos que no
+caso da lógica clássica:
 
 \begin{prop}
 \ollabel{prop:semanticalfacts} 
 \begin{enumerate} 
-\item $!A$ is a tautology if and only if
+\item $!A$ é uma tautologia se, e somente se,
   $\emptyset \Entails !A$; 
-\item If $\Gamma$ is satisfiable then every finite subset of $\Gamma$
-  is also satisfiable; 
+\item Se $\Gamma$ é satisfatível, então todo subconjunto finito de $\Gamma$
+  também é satisfatível; 
 \item\ollabel{def:monotonicity}%
-Monotonicity: if $\Gamma \subseteq \Delta$
-  and $\Gamma \Entails !A$ then also $\Delta \Entails !A$;
+Monotonicidade: se $\Gamma \subseteq \Delta$
+  e $\Gamma \Entails !A$, então também $\Delta \Entails !A$;
 \item\ollabel{def:Cut}%
-Transitivity: if $\Gamma \Entails !A$ and
-  $\Delta \cup \{ !A\} \Entails !B$ then $\Gamma \cup \Delta \Entails
+Transitividade: se $\Gamma \Entails !A$ e
+  $\Delta \cup \{ !A\} \Entails !B$, então $\Gamma \cup \Delta \Entails
   !B$;
 \end{enumerate}
 \end{prop}
 
 \begin{proof}
-Exercise.
+Exercício.
 \end{proof}
 
 \begin{prob}
-Prove \olref[mvl][syn][sem]{prop:semanticalfacts}
+Demonstre \olref[mvl][syn][sem]{prop:semanticalfacts}.
 \end{prob}
 
-In classical logic we can connect entailment and the conditional. For
-instance, we have the validity of \emph{modus ponens}: If $\Gamma
-\Entails !A$ and $\Gamma \Entails !A \lif !B$ then $\Gamma \Entails
-!B$.  Another important relationship between $\Entails$ and $\lif$ in
-classical logic is the semantic deduction theorem: $\Gamma \Entails !A
-\lif !B$ if and only if $\Gamma \cup \{!A\} \Entails !B$. These
-results \emph{do not} always hold in many-valued logics. Whether they
-do depends on the truth function~$\tf{\lif}$.
+Na lógica clássica, podemos relacionar a consequência e o condicional. Por
+exemplo, temos a validade do \emph{modus ponens}: se $\Gamma
+\Entails !A$ e $\Gamma \Entails !A \lif !B$, então $\Gamma \Entails
+!B$. Outra relação importante entre $\Entails$ e $\lif$ na
+lógica clássica é o teorema semântico da dedução: $\Gamma \Entails !A
+\lif !B$ se, e somente se, $\Gamma \cup \{!A\} \Entails !B$. Esses
+resultados \emph{nem sempre} valem em lógicas multivaloradas. Sua validade
+depende da função de verdade~$\tf{\lif}$.
 
 \end{document}

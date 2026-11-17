@@ -6,58 +6,58 @@
 
 \begin{document}
 
-\olfileid{mvl}{syn}{int}
+\olfileid[pt]{mvl}{syn}{int}
 
-\olsection{Introduction}
+\olsection{Introdução}
 
-In classical logic, we deal  with !!{formula}s that are built from
-!!{propositional variable}s using the propositional connectives
-$\lnot$, $\land$, $\lor$, $\lif$, and $\liff$.  When we define a
-semantics for classical logic, we do so using the two truth values
-$\True$ and $\False$.  We interpret !!{propositional variable}s in
-!!a{valuation}~$\pAssign{v}$, which assigns these truth values
-$\True$, $\False$ to the !!{propositional variable}s. Any
-!!{valuation} then determines a truth value $\pValue{v}(!A)$ for any
-!!{formula}~$!A$, and !!^a{formula} is satisfied in
-!!a{valuation}~$\pAssign{v}$, $\pSat{v}{!A}$, iff $\pValue{v}(!A) =
+Na lógica clássica, lidamos com !!{formula}s construídas a partir de
+!!{propositional variable}s por meio dos conectivos proposicionais
+$\lnot$, $\land$, $\lor$, $\lif$ e $\liff$. Quando definimos uma
+semântica para a lógica clássica, fazemos isso usando os dois valores de verdade
+$\True$ e $\False$. Interpretamos as !!{propositional variable}s em
+!!a{valuation}~$\pAssign{v}$, que atribui esses valores de verdade
+$\True$, $\False$ às !!{propositional variable}s. Toda
+!!{valuation} determina então um valor de verdade $\pValue{v}(!A)$ para qualquer
+!!{formula}~$!A$, e !!^a{formula} é satisfeita em
+!!a{valuation}~$\pAssign{v}$, $\pSat{v}{!A}$, se, e somente se, $\pValue{v}(!A) =
 \True$.
 
-Many-valued logics are generalizations of classical two-valued logic
-by allowing more truth values than just $\True$ and $\False$. So in
-many-valued logic, !!a{valuation}~$\pAssign{v}$ is a function
-assigning to every !!{propositional variable}~$p$ one of a range of
-possible truth values.  We'll generally call the set of allowed truth
-values~$V$.  Classical logic is a many-valued logic where $V =
-\{\True, \False\}$, and the truth value~$\pValue{v}(!A)$ is computed
-using the familiar characteristic truth tables for the connectives.
+As lógicas multivaloradas são generalizações da lógica clássica bivalorada
+que admitem mais valores de verdade que apenas $\True$ e $\False$. Assim, na
+lógica multivalorada, !!a{valuation}~$\pAssign{v}$ é uma função que
+atribui a cada !!{propositional variable}~$p$ um dentre uma coleção de
+possíveis valores de verdade. Em geral, chamaremos de~$V$ o conjunto dos valores de verdade
+permitidos. A lógica clássica é uma lógica multivalorada na qual $V =
+\{\True, \False\}$, e o valor de verdade~$\pValue{v}(!A)$ é calculado
+usando as conhecidas tabelas-verdade características dos conectivos.
 
-Once we add additional truth values, we have more than one natural
-option for how to compute~$\pValue{v}(!A)$ for the connectives we read
-as ``and,'' ``or,'' ``not,'' and ``if---then.''  So a many-valued
-logic is determined not just by the set of truth values, but also by
-the \emph{truth functions} we decide to use for each connective.  Once
-these are selected for a many-valued logic~$\Log L$, however, the
-truth value $\pValue{v}(!A)[\Log L]$ is uniquely determined by the
-valuation, just like in classical logic. Many-valued logics, like
-classical logic, are \emph{truth functional}.
+Quando acrescentamos valores de verdade, há mais de uma opção natural
+para calcular~$\pValue{v}(!A)$ para os conectivos que lemos
+como ``e'', ``ou'', ``não'' e ``se---então''. Portanto, uma lógica multivalorada
+é determinada não apenas pelo conjunto de valores de verdade, mas também pelas
+\emph{funções de verdade} que decidimos usar para cada conectivo. Uma vez
+selecionadas essas funções para uma lógica multivalorada~$\Log L$, contudo, o
+valor de verdade $\pValue{v}(!A)[\Log L]$ é unicamente determinado pela
+valoração, assim como na lógica clássica. As lógicas multivaloradas, a exemplo da
+lógica clássica, são \emph{funcionais em relação à verdade}.
 
-With this semantic building blocks in hand, we can go on to define the
-analogs of the semantic concepts of tautology, entailment, and
-satisfiability.  In classical logic, !!a{formula} is a tautology if
-its truth value $\pValue{v}(!A) = \True$ for any~$\pAssign{v}$.  In
-many-valued logic, we have to generalize this a bit as well. First of
-all, there is no requirement that the set of truth values~$V$
-contains~$\True$. For instance, some many-valued logics use numbers,
-such as all rational numbers between $0$ and~$1$ as their set of truth
-values.  In such a case, $1$~usually plays the rule of~$\True$. In
-other logics, not just one but several truth values do.  So, we
-require that every many-valued logic have a set~$V^+$ of
-\emph{designated values}.  We can then say that !!a{formula} is
-satisfied in !!a{valuation}~$\pAssign{v}$, $\pSat{v}{!A}[\Log L]$, iff
-$\pValue{v}(!A)[\Log L] \in V^+$. !!^a{formula}~$!A$ is a tautology of the
-logic, $\Entails[\Log L] !A$, iff $\pValue{v}(!A) \in V^+$ for
-any~$\pAssign{v}$. And, finally, we say that $!A$ is entailed by a set
-of !!{formula}s, $\Gamma \Entails[\Log L] !A$, if every !!{valuation} that
-satisfies all the !!{formula}s in~$\Gamma$ also satisfies~$!A$.
+Com esses elementos semânticos em mãos, podemos passar a definir os
+análogos dos conceitos semânticos de tautologia, consequência e
+satisfatibilidade. Na lógica clássica, !!a{formula} é uma tautologia se
+seu valor de verdade $\pValue{v}(!A) = \True$ para qualquer~$\pAssign{v}$. Na
+lógica multivalorada, também precisamos generalizar um pouco essa ideia. Em primeiro
+lugar, não se exige que o conjunto de valores de verdade~$V$
+contenha~$\True$. Por exemplo, algumas lógicas multivaloradas usam números,
+como todos os números racionais entre $0$ e~$1$, como conjunto de valores de verdade.
+Nesse caso, $1$~costuma desempenhar o papel de~$\True$. Em
+outras lógicas, não apenas um, mas vários valores de verdade o fazem. Por isso,
+exigimos que toda lógica multivalorada tenha um conjunto~$V^+$ de
+\emph{valores designados}. Podemos então dizer que !!a{formula} é
+satisfeita em !!a{valuation}~$\pAssign{v}$, $\pSat{v}{!A}[\Log L]$, se, e somente se,
+$\pValue{v}(!A)[\Log L] \in V^+$. !!^a{formula}~$!A$ é uma tautologia da
+lógica, $\Entails[\Log L] !A$, se, e somente se, $\pValue{v}(!A) \in V^+$ para
+qualquer~$\pAssign{v}$. E, por fim, dizemos que $!A$ é consequência de um conjunto
+de !!{formula}s, $\Gamma \Entails[\Log L] !A$, se toda !!{valuation} que
+satisfaz todas as !!{formula}s de~$\Gamma$ também satisfaz~$!A$.
 
 \end{document}

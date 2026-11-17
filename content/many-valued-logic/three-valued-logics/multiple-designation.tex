@@ -6,36 +6,36 @@
 
 \begin{document}
 
-\olfileid{mvl}{thr}{mul}
+\olfileid[pt]{mvl}{thr}{mul}
 
-\olsection{Designating not just $\True$}
+\olsection{Designando não apenas $\True$}
 
-So far the logics we've seen all had the set of designated truth
-values $V^+ = \{\True\}$, O.s.\@, something counts as true iff its truth
-value is~$\True$.  But one might also count something as true if it's
-just not~$\False$. Then one would get a logic by stipulating in the
-matrix, p.ex., that $V^+ = \{\True, \Undef\}$.
+Até aqui, todas as lógicas que vimos tinham como conjunto de valores de verdade
+designados $V^+ = \{\True\}$, O.s.\@, algo conta como verdadeiro se, e somente se, seu valor de
+verdade é~$\True$. Mas também se poderia contar algo como verdadeiro se simplesmente
+não fosse~$\False$. Nesse caso, obteríamos uma lógica estipulando na
+matriz, p.ex., que $V^+ = \{\True, \Undef\}$.
 
 \begin{defn}
-The \emph{logic of paradox}~$\LogLP$ is defined using the matrix:
+A \emph{lógica do paradoxo}~$\LogLP$ é definida pela matriz:
 \begin{enumerate}
-  \item The standard propositional language $\Lang L_0$ with
+  \item A linguagem proposicional padrão $\Lang L_0$, com
   $\lnot$, $\land$, $\lor$, $\lif$.
-  \item The set of truth values $V = \{\True, \Undef, \False\}$.
-  \item $\True$ and $\Undef$ are designated, O.s.\@, $V^+ = \{\True, \Undef\}$.
-  \item Truth functions are the same as in strong Kleene logic.
+  \item O conjunto de valores de verdade $V = \{\True, \Undef, \False\}$.
+  \item $\True$ e $\Undef$ são designados, O.s.\@, $V^+ = \{\True, \Undef\}$.
+  \item As funções de verdade são as mesmas da lógica forte de Kleene.
 \end{enumerate}
 \end{defn}
 
 \begin{defn}
-Halld\'en's \emph{logic of nonsense}~$\LogHal$ is defined using the matrix:
+A lógica de Halld\'en, a \emph{lógica do absurdo}~$\LogHal$, é definida pela matriz:
 \begin{enumerate}
-  \item The standard propositional language $\Lang L_0$ with
-  $\lnot$, $\land$, $\lor$, $\lif$ and a $1$-place connective~$+$.
-  \item The set of truth values $V = \{\True, \Undef, \False\}$.
-  \item $\True$ and $\Undef$ are designated, O.s.\@, $V^+ = \{\True, \Undef\}$.
-  \item Truth functions are the same as weak Kleene logic, plus the
-  ``is meaningless'' operator:
+  \item A linguagem proposicional padrão $\Lang L_0$, com
+  $\lnot$, $\land$, $\lor$, $\lif$ e um conectivo $1$-ário~$+$.
+  \item O conjunto de valores de verdade $V = \{\True, \Undef, \False\}$.
+  \item $\True$ e $\Undef$ são designados, O.s.\@, $V^+ = \{\True, \Undef\}$.
+  \item As funções de verdade são as mesmas da lógica fraca de Kleene, acrescidas do
+  operador ``é sem sentido'':
   \begin{center}
     \begin{tabular}{c|c} 
     $\tf{+}$ & \\ 
@@ -48,104 +48,104 @@ Halld\'en's \emph{logic of nonsense}~$\LogHal$ is defined using the matrix:
 \end{enumerate}
 \end{defn}
 
-By contrast to the Kleene logics with which they share truth tables,
-these \emph{do} have tautologies. 
+Ao contrário das lógicas de Kleene, com as quais compartilham tabelas-verdade,
+estas \emph{têm} tautologias. 
 
-\begin{prop}\ollabel{prop:LP-taut-CL} The tautologies of $\LogLP$  are
-  the same as the tautologies of classical propositional logic.
+\begin{prop}\ollabel{prop:LP-taut-CL} As tautologias de $\LogLP$ são
+  as mesmas da lógica proposicional clássica.
 \end{prop}
 
 \begin{proof}
-  By \olref[syn][sub]{prop:mvl-cl}, if $\Entails[\LogLP] !A$ then
-  $\Entails[\LogCL] !A$. To show the reverse, we show that if there is
+  Por \olref[syn][sub]{prop:mvl-cl}, se $\Entails[\LogLP] !A$, então
+  $\Entails[\LogCL] !A$. Para mostrar a recíproca, mostramos que, se existe
   !!a{valuation}~$\pAssign v\colon \PVar \to \{\False, \True,
-  \Undef\}$ such that $\pValue v(!A)[\LogKs] = \False$ then there is
+  \Undef\}$ tal que $\pValue v(!A)[\LogKs] = \False$, então existe
   !!a{valuation}~$\pAssign {v'}\colon \PVar \to \{\False, \True\}$
-  such that $\pValue {v'}(!A)[\LogCL] = \False$. This establishes the
-  result for $\LogLP$, since $\LogKs$ and $\LogLP$ have the same
-  characteristic truth functions, and $\False$ is the only truth value
-  of $\LogLP$ that is not designated (that is the only difference
-  between $\LogLP$ and~$\LogKs$). Thus, if $\Entails/[\LogLP] !A$, for
-  some !!{valuation}~$\pAssign v$, $\pValue v(!A)[\LogLP] = \pValue
-  v[\LogKs](!A) = \False$. By the claim we're proving,
+  tal que $\pValue {v'}(!A)[\LogCL] = \False$. Isso estabelece o
+  resultado para $\LogLP$, pois $\LogKs$ e $\LogLP$ têm as mesmas
+  funções de verdade características, e $\False$ é o único valor de verdade
+  de $\LogLP$ que não é designado (essa é a única diferença
+  entre $\LogLP$ e~$\LogKs$). Assim, se $\Entails/[\LogLP] !A$, para
+  alguma !!{valuation}~$\pAssign v$, $\pValue v(!A)[\LogLP] = \pValue
+  v[\LogKs](!A) = \False$. Pela afirmação que estamos demonstrando,
   $\pValue{v'}[\LogCL](!A) = \False$, O.s.\@, $\Entails/[\LogCL] !A$.
   
-  To establish the claim, we first define $\pAssign {v'}$ as
+  Para estabelecer a afirmação, primeiro definimos $\pAssign {v'}$ por
   \[
     \pAssign {v'}(p) = 
     \begin{cases}
-    \True & \text{if } \pAssign {v}(p) \in \{\True, \Undef\}\\
-    \False & \text{otherwise}
+    \True & \text{se } \pAssign {v}(p) \in \{\True, \Undef\}\\
+    \False & \text{caso contrário}
   \end{cases}
   \]
-  We now show by induction on $!A$ that (a)~if $\pValue v(!A)[\LogKs]
-  = \False$ then $\pValue {v'}(!A)[\LogCL] = \False$, and (b)~if
-  $\pValue v(!A)[\LogKs] = \True$ then $\pValue {v'}(!A)[\LogCL] =
-  \True$
+  Mostramos agora, por indução em $!A$, que (a)~se $\pValue v(!A)[\LogKs]
+  = \False$, então $\pValue {v'}(!A)[\LogCL] = \False$, e (b)~se
+  $\pValue v(!A)[\LogKs] = \True$, então $\pValue {v'}(!A)[\LogCL] =
+  \True$.
   \begin{enumerate}
-    \item Induction basis: $!A \ident p$. By
+    \item Base da indução: $!A \ident p$. Por
     \olref[syn][val]{defn:pValue}, $\pValue v(!A)[\LogKs]
-    = \pAssign v(p) = \pValue {v'}(!A)[\LogCL]$, which implies both (a)
-    and~(b).
+    = \pAssign v(p) = \pValue {v'}(!A)[\LogCL]$, o que implica tanto (a)
+    quanto~(b).
     
-    For the induction step, consider the cases:
+    Para o passo de indução, considere os casos:
     \item $!A \ident \lnot !B$. 
     \begin{enumerate}
-      \item Suppose $\pValue v(\lnot!B)[\LogKs] = \False$. By the
-      definition of $\tf{\lnot}[\LogKs]$, $\pValue v(!B)[\LogKs]  =
-      \True$. By inductive hypothesis, case~(b), we get $\pValue
-      {v'}(!B)[\LogCL]  = \True$, so $\pValue {v'}(\lnot !B)[\LogCL] = \False$.
-      \item Suppose $\pValue v(\lnot!B)[\LogKs] = \True$. By the
-      definition of $\tf{\lnot}[\LogKs]$, $\pValue v(!B)[\LogKs]  =
-      \False$. By inductive hypothesis, case~(a), we get $\pValue
-      {v'}(!B)[\LogCL]  = \False$, so $\pValue {v'}(\lnot !B)[\LogCL] = \True$.
+      \item Suponha $\pValue v(\lnot!B)[\LogKs] = \False$. Pela
+      definição de $\tf{\lnot}[\LogKs]$, $\pValue v(!B)[\LogKs]  =
+      \True$. Pela hipótese de indução, caso~(b), obtemos $\pValue
+      {v'}(!B)[\LogCL]  = \True$; portanto, $\pValue {v'}(\lnot !B)[\LogCL] = \False$.
+      \item Suponha $\pValue v(\lnot!B)[\LogKs] = \True$. Pela
+      definição de $\tf{\lnot}[\LogKs]$, $\pValue v(!B)[\LogKs]  =
+      \False$. Pela hipótese de indução, caso~(a), obtemos $\pValue
+      {v'}(!B)[\LogCL]  = \False$; portanto, $\pValue {v'}(\lnot !B)[\LogCL] = \True$.
     \end{enumerate}
 
     \item $!A \ident (!B \land !C)$.
     \begin{enumerate}
-      \item Suppose $\pValue v(!B \land !C)[\LogKs] = \False$. By the
-      definition of $\tf{\land}[\LogKs]$, $\pValue v(!B)[\LogKs]  =
-      \False$ or $\pValue v(!B)[\LogKs]  = \False$. By inductive
-      hypothesis, case~(a), we get $\pValue {v'}(!B)[\LogCL]  = \False$
-      or $\pValue {v'}(!C)[\LogCL]  = \False$, so $\pValue {v'}(!B \land
+      \item Suponha $\pValue v(!B \land !C)[\LogKs] = \False$. Pela
+      definição de $\tf{\land}[\LogKs]$, $\pValue v(!B)[\LogKs]  =
+      \False$ ou $\pValue v(!B)[\LogKs]  = \False$. Pela hipótese de
+      indução, caso~(a), obtemos $\pValue {v'}(!B)[\LogCL]  = \False$
+      ou $\pValue {v'}(!C)[\LogCL]  = \False$; portanto, $\pValue {v'}(!B \land
       !C)[\LogCL] = \False$.
-      \item Suppose $\pValue v(!B \land !C)[\LogKs] = \True$. By the
-      definition of $\tf{\land}[\LogKs]$, $\pValue v(!B)[\LogKs]  =
-      \True$ and $\pValue v(!B)[\LogKs]  = \True$. By inductive
-      hypothesis, case~(b), we get $\pValue {v'}(!B)[\LogCL]  = \True$
-      and $\pValue {v'}(!C)[\LogCL]  = \True$, so $\pValue {v'}(!B \land
+      \item Suponha $\pValue v(!B \land !C)[\LogKs] = \True$. Pela
+      definição de $\tf{\land}[\LogKs]$, $\pValue v(!B)[\LogKs]  =
+      \True$ e $\pValue v(!B)[\LogKs]  = \True$. Pela hipótese de
+      indução, caso~(b), obtemos $\pValue {v'}(!B)[\LogCL]  = \True$
+      e $\pValue {v'}(!C)[\LogCL]  = \True$; portanto, $\pValue {v'}(!B \land
       !C)[\LogCL] = \True$.
     \end{enumerate}
   \end{enumerate}
 
-  The other two cases are similar, and left as exercises. Alternatively,
-  the proof above establishes the result for all !!{formula}s only
-  containing $\lnot$ and~$\land$. One may now appeal to the facts that in
-  both $\LogKs$ and $\LogCL$, for any $\pAssign v$, $\pValue v(!B \lor
-  !C) = \pValue v(\lnot(\lnot!B \land \lnot !C))$ and $\pValue v(!B \lif
+  Os outros dois casos são semelhantes e ficam como exercícios. Alternativamente,
+  a prova acima estabelece o resultado para todas as !!{formula}s que contêm
+  apenas $\lnot$ e~$\land$. Podemos então recorrer aos fatos de que, tanto em
+  $\LogKs$ quanto em $\LogCL$, para qualquer $\pAssign v$, $\pValue v(!B \lor
+  !C) = \pValue v(\lnot(\lnot!B \land \lnot !C))$ e $\pValue v(!B \lif
   !C) = \pValue v(\lnot(!B \land \lnot !C))$.
 \end{proof}
 
 \begin{prob}
-  Complete the proof \olref[mvl][thr][mul]{prop:LP-taut-CL}, O.s.\@,
-  establish (a) and~(b) for the cases where $!A \ident (!B \lor !C)$
-  and $!A \ident (!B \lif !C)$.
+  Complete a prova de \olref[mvl][thr][mul]{prop:LP-taut-CL}, O.s.\@,
+  estabeleça (a) e~(b) para os casos em que $!A \ident (!B \lor !C)$
+  e $!A \ident (!B \lif !C)$.
 \end{prob}
 
 \begin{prob}
-Prove that every classical tautology is a tautology in~$\LogHal$.
+Demonstre que toda tautologia clássica é uma tautologia em~$\LogHal$.
 \end{prob}
 
-Although they have the same tautologies as classical logic, their
-consequence relations are different.  $\LogLP$, for instance, is
-\emph{paraconsistent} in that $\lnot p, p \Entails/ q$, and so the
-principle of explosion $\lnot !A, !A \Entails !B$ does not hold in
-general. (It holds for some cases of $!A$ and $!B$, p.ex., if $!B$~is a
-tautology.)
+Embora tenham as mesmas tautologias que a lógica clássica, suas
+relações de consequência são diferentes. $\LogLP$, por exemplo, é
+\emph{paraconsistente}, pois $\lnot p, p \Entails/ q$; assim, o
+princípio de explosão $\lnot !A, !A \Entails !B$ não vale em
+geral. (Ele vale para alguns casos de $!A$ e $!B$, p.ex., se $!B$~é uma
+tautologia.)
 
 \begin{prob}
-  Which of the following relations hold in (a)~$\LogLP$
-  and in (b)~$\LogHal$? Give a truth table for each.
+  Quais das relações a seguir valem (a)~em $\LogLP$
+  e (b)~em $\LogHal$? Dê uma tabela-verdade para cada uma.
   \begin{enumerate}
     \item $p, p \lif q \Entails q$
     \item $\lnot q, p \lif q \Entails \lnot p$
@@ -156,21 +156,21 @@ tautology.)
   \end{enumerate}
 \end{prob}
 
-What if you make $\Undef$ designated in $\LogLuk[3]$?
+O que acontece se designarmos $\Undef$ em $\LogLuk[3]$?
 
 \begin{defn}
-  The logic \emph{3-valued R-Mingle}~$\LogRM[3]$ is defined using the matrix:
+  A lógica \emph{R-Mingle trivalorada}~$\LogRM[3]$ é definida pela matriz:
   \begin{enumerate}
-    \item The standard propositional language $\Lang L_0$ with
+    \item A linguagem proposicional padrão $\Lang L_0$, com
     $\lfalse$, $\lnot$, $\land$, $\lor$, $\lif$.
-    \item The set of truth values $V = \{\True, \Undef, \False\}$.
-    \item $\True$ and $\Undef$ are designated, O.s.\@, $V^+ = \{\True, \Undef\}$.
-    \item Truth functions are the same as \L ukasiewicz logic~$\LogLuk[3]$.
+    \item O conjunto de valores de verdade $V = \{\True, \Undef, \False\}$.
+    \item $\True$ e $\Undef$ são designados, O.s.\@, $V^+ = \{\True, \Undef\}$.
+    \item As funções de verdade são as mesmas da lógica de \L ukasiewicz~$\LogLuk[3]$.
   \end{enumerate}
 \end{defn}
 
 \begin{prob}
-  Which of the following relations hold in $\LogRM[3]$?
+  Quais das relações a seguir valem em $\LogRM[3]$?
   \begin{enumerate}
     \item $p, p \lif q \Entails q$
     \item $p \lor q, \lnot p \Entails q$
@@ -179,31 +179,31 @@ What if you make $\Undef$ designated in $\LogLuk[3]$?
   \end{enumerate}
 \end{prob}
 
-Different truth tables can sometimes generate the same logic
-(entailment relation) just by changing the designated values.
-P.ex., this happens if in G\"odel logic we take $V^+ = \{\True,
-\Undef\}$ instead of~$\{\True\}$.
+Tabelas-verdade diferentes podem, às vezes, gerar a mesma lógica
+(relação de consequência) apenas pela mudança dos valores designados.
+P.ex., isso ocorre se, na lógica de G\"odel, tomarmos $V^+ = \{\True,
+\Undef\}$ em vez de~$\{\True\}$.
 
 \begin{prop}\ollabel{prop:gl-udes}
-  The matrix with $V = \{\False, \Undef,\True\}$, $V^+=\{\True,
-  \Undef\}$, and the truth functions of $3$-valued G\"odel logic
-  defines classical logic.
+  A matriz com $V = \{\False, \Undef,\True\}$, $V^+=\{\True,
+  \Undef\}$ e as funções de verdade da lógica $3$-valorada de G\"odel
+  define a lógica clássica.
 \end{prop}
 
 \begin{proof}
-  Exercise. 
+  Exercício. 
 \end{proof}
 
 \begin{prob}
-  Prove \olref[mvl][thr][mul]{prop:gl-udes} by showing that for the
-  logic~$\Log L$ defined just like G\"odel logic but with
-  $V^+=\{\True,\Undef\}$, if $\Gamma \Entails/[\Log L] !B$ then
-  $\Gamma \Entails/[\LogCL] !B$. Use the ideas of
-  \olref[mvl][thr][mul]{prop:LP-taut-CL}, except instead of proving
-  properties (a) and~(b), show that $\pValue v(!A)[\LogGod] = \False$
-  iff $\pValue {v'}(!A)[\LogCL] = \False$ (and hence that $\pValue
-  v(!A)[\LogGod] \in \{\True,\Undef\}$ iff $\pValue {v'}(!A)[\LogCL] =
-  \True$). Explain why this establishes the proposition.
+Demonstre \olref[mvl][thr][mul]{prop:gl-udes} mostrando que, para a
+  lógica~$\Log L$ definida como a lógica de G\"odel, mas com
+  $V^+=\{\True,\Undef\}$, se $\Gamma \Entails/[\Log L] !B$, então
+  $\Gamma \Entails/[\LogCL] !B$. Use as ideias de
+  \olref[mvl][thr][mul]{prop:LP-taut-CL}, mas, em vez de provar
+  as propriedades (a) e~(b), mostre que $\pValue v(!A)[\LogGod] = \False$
+  se, e somente se, $\pValue {v'}(!A)[\LogCL] = \False$ (e, portanto, que $\pValue
+  v(!A)[\LogGod] \in \{\True,\Undef\}$ se, e somente se, $\pValue {v'}(!A)[\LogCL] =
+  \True$). Explique por que isso estabelece a proposição.
 \end{prob}
 
 \end{document}

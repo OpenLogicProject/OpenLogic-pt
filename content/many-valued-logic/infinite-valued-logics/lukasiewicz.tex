@@ -6,45 +6,46 @@
 
 \begin{document}
 
-\olfileid{mvl}{inf}{luk}
+\olfileid[pt]{mvl}{inf}{luk}
 
-\olsection{\L ukasiewicz logic}
+\olsection{Lógica de \L ukasiewicz}
 
 \begin{editorial}
-  This is a short ``stub'' of a section on infinite-valued \L
-  ukasiewicz logic.
+  Este é um breve ``esboço'' de uma seção sobre a lógica de infinitos
+  valores de \L ukasiewicz.
 \end{editorial}
 
-\begin{defn}\ollabel{def:lukasiewicz} Infinite-valued \L ukasiewicz
-logic~$\LogLuk[\infty]$ is defined using the matrix:
+\begin{defn}\ollabel{def:lukasiewicz} A lógica de infinitos valores de
+\L ukasiewicz~$\LogLuk[\infty]$ é definida pela matriz:
 \begin{enumerate}
-  \item The standard propositional language $\Lang L_0$ with
+  \item A linguagem proposicional padrão $\Lang L_0$ com
   $\lnot$, $\land$, $\lor$, $\lif$.
-  \item The set of truth values $V_\infty$.
-  \item $1$ is the only designated value, O.s.\@, $V^+ = \{1\}$.
-  \item Truth functions are given by the following functions:
+  \item O conjunto de valores de verdade $V_\infty$.
+  \item $1$ é o único valor designado, O.s.\@, $V^+ = \{1\}$.
+  \item As funções de verdade são dadas pelas seguintes funções:
   \begin{align*}
     \tf{\lnot}[\LogLuk](x) & = 1 - x\\
     \tf{\land}[\LogLuk](x,y) & = \min(x,y)\\
     \tf{\lor}[\LogLuk](x,y) & = \max(x,y)\\
     \tf{\lif}[\LogLuk](x,y) & = \min(1,1-(x-y)) = \begin{cases}
-      1 & \text{if } x \le y\\
-      1-(x-y) & \text{otherwise.}
+      1 & \text{se } x \le y\\
+      1-(x-y) & \text{caso contrário.}
     \end{cases}
     \end{align*}
 \end{enumerate}
-$m$-valued \L ukasiewicz logic is defined the same, except $V = V_m$.
+A lógica $m$-valorada de \L ukasiewicz é definida da mesma maneira,
+exceto que $V = V_m$.
 \end{defn}
 
 \begin{prop}
-  The logic $\LogLuk[3]$ defined by \olref[thr][luk]{def:lukasiewicz}
-  is the same as $\LogLuk[3]$ defined by \olref{def:lukasiewicz}.
+  A lógica $\LogLuk[3]$ definida por \olref[thr][luk]{def:lukasiewicz}
+  é a mesma que $\LogLuk[3]$ definida por \olref{def:lukasiewicz}.
 \end{prop}
 
 \begin{proof}
-  This can be seen by comparing the truth tables for the connectives
-  given in \olref[thr][luk]{def:lukasiewicz} with the truth tables
-  determined by the equations in \olref{def:lukasiewicz}:
+  Isso pode ser visto comparando as tabelas de verdade dos conectivos
+  dadas em \olref[thr][luk]{def:lukasiewicz} com as tabelas de verdade
+  determinadas pelas equações em \olref{def:lukasiewicz}:
   \begin{center}
     \begin{tabular}{c|c} 
       $\tf{\lnot}$ & \\ 
@@ -81,28 +82,28 @@ $m$-valued \L ukasiewicz logic is defined the same, except $V = V_m$.
 \end{proof}
 
 \begin{prop}\ollabel{prop:luk-infty-m}
-  If $\Gamma \Entails[\LogLuk[\infty]] !B$ then $\Gamma
-  \Entails[\LogLuk[m]] !B$ for all~$m \ge 2$.
+  Se $\Gamma \Entails[\LogLuk[\infty]] !B$, então $\Gamma
+  \Entails[\LogLuk[m]] !B$ para todo~$m \ge 2$.
 \end{prop}
 
 \begin{proof}
-  Exercise.
+  Exercício.
 \end{proof}
 
 \begin{prob}
-  Prove \olref[mvl][inf][luk]{prop:luk-infty-m}.
+  Demonstre \olref[mvl][inf][luk]{prop:luk-infty-m}.
 \end{prob}
 
-In fact, the converse holds as well.
+Na verdade, a recíproca também vale.
 
-Infinite-valued \L ukasiewicz logic is the most popular fuzzy logic.
-In the fuzzy logic literature, the conditional is often defined as
-$\lnot !A \lor !B$. The result would be an infinite-valued strong
-Kleene logic.
+A lógica de infinitos valores de \L ukasiewicz é a lógica difusa mais
+popular. Na literatura de lógica difusa, o condicional é muitas vezes
+definido como $\lnot !A \lor !B$. O resultado seria uma lógica forte
+de Kleene com infinitos valores.
 
 \begin{prob}
-  Show that $(p \lif q) \lor (q \lif p)$ is a
-  tautology of~$\LogLuk[\infty]$.
+  Mostre que $(p \lif q) \lor (q \lif p)$ é uma
+  tautologia de~$\LogLuk[\infty]$.
 \end{prob}
 
 \end{document}
