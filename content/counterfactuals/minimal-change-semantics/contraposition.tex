@@ -6,32 +6,32 @@
 
 \begin{document}
 
-\olfileid{cnt}{min}{cpo}
+\olfileid[pt]{cnt}{min}{cpo}
 
-\olsection{Contraposition}
+\olsection{Contraposição}
 
-Material and strict conditionals are equivalent to their
-contrapositives. Counterfactuals are not.  Here is an example due to
+Condicionais materiais e estritos equivalem às suas
+contrapositivas. Contrafactuais não. Eis um exemplo de
 Kratzer:
 \begin{quote}
-  If Goethe hadn't died in 1832, he would (still) be dead now.
+  Se Goethe não tivesse morrido em 1832, ele (ainda) estaria morto agora.
 
-  If Goethe weren't dead now, he would have died in 1832.
+  Se Goethe não estivesse morto agora, ele teria morrido em 1832.
 \end{quote}
-The first sentence is true: humans don't live hundreds of years.  The
-second is clearly false: if Goethe weren't dead now, he would be still
-alive, and so couldn't have died in 1832.
+A primeira sentença é verdadeira: seres humanos não vivem centenas de anos. A
+segunda é claramente falsa: se Goethe não estivesse morto agora, ainda estaria
+vivo e, portanto, não poderia ter morrido em 1832.
 
 \begin{ex}\ollabel{ex:contraposition-counterex}
-  The sphere semantics invalidates contraposition, O.s.\@, we have $p
-  \cif q \Entails/ \lnot q \cif \lnot p$. Think of $p$ as ``Goethe
-  didn't die in 1832'' and $q$ as ``Goethe is dead now.'' We can
-  capture this in a model $\mModel{M_1} = \tuple{W, O, V}$ with $W =
+  A semântica de esferas invalida a contraposição, O.s.\@, temos $p
+  \cif q \Entails/ \lnot q \cif \lnot p$. Interprete $p$ como ``Goethe
+  não morreu em 1832'' e $q$ como ``Goethe está morto agora''. Podemos
+  representar isso em um modelo $\mModel{M_1} = \tuple{W, O, V}$ com $W =
   \{w, w_1, w_2\}$, $O = \{\{w\}, \{w, w_1\}, \{w, w_1, w_2\}\}$,
-  $V(p) = \{w_1, w_2\}$ and $V(q) = \{w, w_1\}$. So $w$ is the actual
-  world where Goethe died in 1832 and is still dead; $w_1$ is the
-  (close) world where Goethe died in, say, 1833, and is still dead;
-  and $w_2$ is a (remote) world where Goethe is still alive.
+  $V(p) = \{w_1, w_2\}$ e $V(q) = \{w, w_1\}$. Assim, $w$ é o mundo
+  real em que Goethe morreu em 1832 e continua morto; $w_1$ é o
+  mundo próximo em que Goethe morreu, digamos, em 1833 e continua morto;
+  e $w_2$ é um mundo remoto em que Goethe ainda está vivo.
 \begin{figure}
 \begin{center}
 \begin{tikzpicture}[scale=.6,layerwidth=1.5]\tiny
@@ -50,15 +50,15 @@ alive, and so couldn't have died in 1832.
   \spherepos{-55}{4}{node {$p$}}
   \spherepos{-67}{4}{node {$\lnot p$}}
 \end{tikzpicture}
-\caption{Counterexample to contraposition}
+\caption{Contraexemplo à contraposição}
 \ollabel{fig:contraposition}
 \end{center}
 \end{figure}
-There is a $p$-admitting sphere $S =
-\{w, w_1\}$ and $p \lif q$ is true at all worlds in it, so $\mSat{M}{p
-  \cif q}[w]$. However, the $\lnot q$-admitting sphere $\{w, w_1,
-w_2\}$ contains a world, namely~$w_2$, where $q$ is false and $p$ is
-true, so $\mSat/{M}{\lnot q \lif \lnot p}[w_2]$.
+Existe uma esfera que admite $p$, $S =
+\{w, w_1\}$, e $p \lif q$ é verdadeiro em todos os mundos nela, portanto $\mSat{M}{p
+  \cif q}[w]$. Contudo, a esfera que admite $\lnot q$, $\{w, w_1,
+w_2\}$, contém um mundo, a saber,~$w_2$, em que $q$ é falso e $p$ é
+verdadeiro, portanto $\mSat/{M}{\lnot q \lif \lnot p}[w_2]$.
 \end{ex}
 
 \end{document}

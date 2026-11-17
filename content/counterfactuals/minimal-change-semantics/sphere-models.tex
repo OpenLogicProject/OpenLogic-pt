@@ -6,41 +6,41 @@
 
 \begin{document}
 
-\olfileid{con}{min}{sph}
+\olfileid[pt]{con}{min}{sph}
 
-\olsection{Sphere Models}
+\olsection{Modelos de esferas}
 
-One way of providing a formal semantics for counterfactuals is to turn
-Lewis's informal account into a mathematical structure. The spheres
-around a world~$w$ then are sets of worlds. Since the spheres are
-nested, the sets of worlds around~$w$ have to be linearly ordered by
-the subset relation.
+Uma maneira de fornecer uma semântica formal para os contrafactuais é transformar
+a explicação informal de Lewis em uma estrutura matemática. As esferas
+ao redor de um mundo~$w$ são, então, conjuntos de mundos. Como as esferas são
+aninhadas, os conjuntos de mundos ao redor de~$w$ precisam estar linearmente ordenados pela
+relação de inclusão.
 
 \begin{defn}
-  A \emph{sphere model} is a triple~$\mModel{M} = \tuple{W, O, V}$
-  where $W$ is a non-empty set of worlds, $V\colon \PVar \to \Pow{W}$
-  is a valuation, and $O\colon W \to \Pow{\Pow{W}}$ assigns to each
-  world~$w$ a \emph{system of spheres}~$O_w$. For each $w$, $O_w$ is a
-  set of sets of worlds, and must satisfy:
+  Um \emph{modelo de esferas} é uma tripla~$\mModel{M} = \tuple{W, O, V}$,
+  em que $W$ é um conjunto não vazio de mundos, $V\colon \PVar \to \Pow{W}$
+  é uma valoração, e $O\colon W \to \Pow{\Pow{W}}$ atribui a cada
+  mundo~$w$ um \emph{sistema de esferas}~$O_w$. Para cada $w$, $O_w$ é um
+  conjunto de conjuntos de mundos e deve satisfazer:
   \begin{enumerate}
-  \item $O_w$ is \emph{centered} on~$w$: $\{w\} \in O_w$.
-  \item $O_w$ is \emph{nested}: whenever $S_1$, $S_2 \in O_w$, $S_1
-    \subseteq S_2$ or $S_2 \subseteq S_1$, O.s.\@, $O_w$ is linearly
-    ordered by~$\subseteq$.
-  \item $O_w$ is closed under non-empty unions.
-  \item $O_w$ is closed under non-empty intersections.
+  \item $O_w$ é \emph{centrado} em~$w$: $\{w\} \in O_w$.
+  \item $O_w$ é \emph{aninhado}: sempre que $S_1$, $S_2 \in O_w$, $S_1
+    \subseteq S_2$ ou $S_2 \subseteq S_1$, O.s.\@, $O_w$ é linearmente
+    ordenado por~$\subseteq$.
+  \item $O_w$ é fechado sob uniões não vazias.
+  \item $O_w$ é fechado sob interseções não vazias.
   \end{enumerate}
 \end{defn}
 
-The intuition behind $O_w$ is that the worlds ``around'' $w$ are
-stratified according to how far away they are from~$w$. The innermost
-sphere is just $w$ by itself, O.s.\@, the set~$\{w\}$: $w$ is closer
-to~$w$ than the worlds in any other sphere. If $S \subsetneq S'$, then
-the worlds in $S' \setminus S$ are further way from $w$ than the
-worlds in~$S$: $S' \setminus S$ is the ``layer'' between the $S$ and
-the worlds outside of~$S'$. In particular, we have to think of the
-spheres as containing all the worlds within their outer surface; they
-are not just the individual layers.
+A intuição por trás de $O_w$ é que os mundos ``ao redor'' de $w$ são
+estratificados de acordo com sua distância de~$w$. A esfera mais interna
+é apenas o próprio $w$, O.s.\@, o conjunto~$\{w\}$: $w$ está mais próximo
+de~$w$ do que os mundos em qualquer outra esfera. Se $S \subsetneq S'$, então
+os mundos em $S' \setminus S$ estão mais distantes de $w$ do que os
+mundos em~$S$: $S' \setminus S$ é a ``camada'' entre $S$ e
+os mundos fora de~$S'$. Em particular, devemos conceber as
+esferas como contendo todos os mundos dentro de sua superfície externa;
+elas não são apenas as camadas individuais.
 
 \begin{figure}
 \begin{center}
@@ -57,57 +57,57 @@ are not just the individual layers.
   \spherepos{20}{4}{node[world] {$w_7$}}
   \path (5,0) node[left] {$p$};
 \end{tikzpicture}
-\caption{Diagram of a sphere model}
+\caption{Diagrama de um modelo de esferas}
 \ollabel{fig:sphere-model}
 \end{center}
 \end{figure}
 
-The diagram in \olref{fig:sphere-model} corresponds to the sphere
-model with $W = \{w, w_1, \dots, w_7\}$, $V(p) = \{w_5, w_6,
-w_7\}$. The innermost sphere $S_1 = \{w\}$. The closest worlds to $w$
-are $w_1, w_2, w_3$, so the next larger sphere is $S_2 = \{w, w_1,
-w_2, w_3\}$. The worlds further out are $w_4$, $w_5$, $w_6$, so the
-outermost sphere is $S_3 = \{w, w_1, \dots, w_6\}$. The system of
-spheres around $w$ is $O_w = \{S_1, S_2, S_3\}$. The world~$w_7$ is
-not in any sphere around~$w$. The closest worlds in which $p$~is true
-are $w_5$ and~$w_6$, and so the smallest $p$-admitting sphere
-is~$S_3$.
+O diagrama em \olref{fig:sphere-model} corresponde ao modelo de
+esferas com $W = \{w, w_1, \dots, w_7\}$, $V(p) = \{w_5, w_6,
+w_7\}$. A esfera mais interna é $S_1 = \{w\}$. Os mundos mais próximos de $w$
+são $w_1, w_2, w_3$, portanto a esfera seguinte, maior, é $S_2 = \{w, w_1,
+w_2, w_3\}$. Os mundos mais afastados são $w_4$, $w_5$, $w_6$, de modo que a
+esfera mais externa é $S_3 = \{w, w_1, \dots, w_6\}$. O sistema de
+esferas ao redor de $w$ é $O_w = \{S_1, S_2, S_3\}$. O mundo~$w_7$ não está
+em nenhuma esfera ao redor de~$w$. Os mundos mais próximos nos quais $p$~é verdadeiro
+são $w_5$ e~$w_6$; assim, a menor esfera que admite $p$
+é~$S_3$.
 
-To define satisfaction of a formula~$!A$ at world~$w$ in a sphere
-model~$\mModel M$, $\mSat{M}{!A}[w]$, we expand the definition for
-modal !!{formula}s to include a clause for $!B \cif !C$:
+Para definir a satisfação de uma fórmula~$!A$ em um mundo~$w$ de um modelo de
+esferas~$\mModel M$, $\mSat{M}{!A}[w]$, ampliamos a definição para
+!!{formula}s modais, incluindo uma cláusula para $!B \cif !C$:
 
 \begin{defn}
-  $\mSat{M}{!B \cif !C}[w]$ iff either
+  $\mSat{M}{!B \cif !C}[w]$ se, e somente se, ou
   \begin{enumerate}
-  \item\ollabel{sphere-vac} For all $u \in \bigcup O_w$, $\mSat/{M}{!B}[u]$, or
-  \item\ollabel{sphere-nonvac} For some $S \in O_w$,
+  \item\ollabel{sphere-vac} para todo $u \in \bigcup O_w$, $\mSat/{M}{!B}[u]$; ou
+  \item\ollabel{sphere-nonvac} para algum $S \in O_w$,
     \begin{enumerate}
-      \item $\mSat{M}{!B}[u]$ for some $u \in
-        S$, and
-      \item for all $v \in S$, either
-        $\mSat/{M}{!B}[v]$ or $\mSat{M}{!C}[v]$.
+      \item $\mSat{M}{!B}[u]$ para algum $u \in
+        S$; e
+      \item para todo $v \in S$, ou
+        $\mSat/{M}{!B}[v]$ ou $\mSat{M}{!C}[v]$.
     \end{enumerate}
   \end{enumerate}
 \end{defn}
 
-According to this definition, $\mSat{M}{!B \cif !C}[w]$ iff either the
-antecedent~$!B$ is false everywhere in the spheres around~$w$, or
-there is a sphere~$S$ where $!B$ is true, and the material conditional
-$!B \lif !C$ is true at all worlds in that ``$!B$-admitting''
-sphere. Note that we didn't require in the definition that $S$ is the
-\emph{innermost} $!B$-admitting sphere, contrary to what one might
-expect from the intuitive explanation. But if the condition
-in~\olref{sphere-nonvac} is satisfied for some sphere~$S$, then it is
-also satisfied for all spheres~$S$ contains, and hence in particular
-for the innermost sphere.
+Segundo essa definição, $\mSat{M}{!B \cif !C}[w]$ se, e somente se, ou o
+antecedente~$!B$ é falso em todos os pontos das esferas ao redor de~$w$, ou
+existe uma esfera~$S$ na qual $!B$ é verdadeiro e o condicional material
+$!B \lif !C$ é verdadeiro em todos os mundos dessa esfera que
+``admite $!B$''. Observe que não exigimos na definição que $S$ seja a
+esfera \emph{mais interna} que admite $!B$, ao contrário do que se poderia
+esperar da explicação intuitiva. Mas, se a condição
+em~\olref{sphere-nonvac} é satisfeita por alguma esfera~$S$, então ela também é
+satisfeita por todas as esferas contidas em~$S$ e, portanto, em particular,
+pela esfera mais interna.
 
-Note also that the definition of sphere models does not require that
-there \emph{is} an innermost $!B$-admitting sphere: we may have an
-infinite sequence $S_1 \supsetneq S_2 \supsetneq \dots \supsetneq
-\{w\}$ of $!B$-admitting spheres, and hence no innermost
-$!B$-admitting spheres. In that case, $\mSat{M}{!B \cif !C}[w]$ iff
-$!B \lif !C$ holds throughout the spheres $S_i$, $S_{i+1}$, \dots, for
-some~$i$.
+Observe também que a definição de modelos de esferas não exige que
+\emph{exista} uma esfera mais interna que admita $!B$: podemos ter uma
+sequência infinita $S_1 \supsetneq S_2 \supsetneq \dots \supsetneq
+\{w\}$ de esferas que admitem $!B$ e, portanto, nenhuma esfera mais interna
+que admita $!B$. Nesse caso, $\mSat{M}{!B \cif !C}[w]$ se, e somente se,
+$!B \lif !C$ vale em todas as esferas $S_i$, $S_{i+1}$, \dots, para
+algum~$i$.
 
 \end{document}

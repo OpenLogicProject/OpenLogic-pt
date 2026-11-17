@@ -6,66 +6,66 @@
 
 \begin{document}
 
-\olfileid{cnt}{int}{mat}
+\olfileid[pt]{cnt}{int}{mat}
 
-\olsection{The Material Conditional}
+\olsection{O condicional material}
 
-In its simplest form in English, a conditional is a sentence of the
-form ``If \dots then \dots,'' where the \dots{} are themselves
-sentences, such as ``If the butler did it, then the gardener is
-innocent.'' In introductory logic courses, we earn to symbolize
-conditionals using the $\lif$ connective: symbolize the parts
-indicated by \dots, p.ex., by !!{formula}s $!A$ and~$!B$,
-and the entire conditional is symbolized by $!A \lif !B$.
+Em sua forma mais simples em inglês, um condicional é uma sentença da
+forma ``Se \dots, então \dots'', em que os \dots{} são, eles próprios,
+sentenças, como ``Se o mordomo fez isso, então o jardineiro é
+inocente''. Em cursos introdutórios de lógica, aprendemos a simbolizar
+condicionais usando o conectivo $\lif$: simbolizamos as partes
+indicadas por \dots, p.ex., pelas !!{formula}s $!A$ e~$!B$,
+e o condicional inteiro é simbolizado por $!A \lif !B$.
 
-The connective $\lif$ is \emph{truth-functional}, O.s.\@, the truth
-value---$\True$ or $\False$---of $!A \lif !B$ is determined by the truth
-values of $!A$ and~$!B$: $!A \lif !B$ is true iff $!A$~is false or
-$!B$~is true, and false otherwise. Relative to a truth value
-assignment~$\pAssign v$, we define $\pSat{v}{!A \lif !B}$ iff
-$\pSat/{v}{!A}$ or $\pSat{v}{!B}$. The connective $\lif$ with this
-semantics is called the \emph{material conditional}.
+O conectivo $\lif$ é \emph{verofuncional}, O.s.\@, o valor de
+verdade---$\True$ ou $\False$---de $!A \lif !B$ é determinado pelos valores de
+verdade de $!A$ e~$!B$: $!A \lif !B$ é verdadeiro se, e somente se, $!A$~é falso ou
+$!B$~é verdadeiro, e é falso nos demais casos. Relativamente a uma
+atribuição de valores de verdade~$\pAssign v$, definimos $\pSat{v}{!A \lif !B}$ se, e somente se,
+$\pSat/{v}{!A}$ ou $\pSat{v}{!B}$. O conectivo $\lif$ com essa
+semântica é chamado de \emph{condicional material}.
 
-This definition results in a number of elementary logical facts. First
-of all, the deduction theorem holds for the material conditional:
+Essa definição produz vários fatos lógicos elementares. Antes
+de tudo, o teorema da dedução vale para o condicional material:
 \begin{align}
-  \text{If } \Gamma, !A \Entails !B \text{ then } \Gamma \Entails !A \lif !B
+  \text{Se } \Gamma, !A \Entails !B \text{, então } \Gamma \Entails !A \lif !B
 \end{align}
-It is truth-functional: $!A \lif !B$ and $\lnot !A \lor !B$ are equivalent:
+Ele é verofuncional: $!A \lif !B$ e $\lnot !A \lor !B$ são equivalentes:
 \begin{align}
   !A \lif !B & \Entails \lnot !A \lor !B\\
   \lnot !A \lor !B & \Entails !A \lif !B
-  \intertext{A material conditional is entailed by its consequent and
-    by the negation of its antecedent:}
+  \intertext{Um condicional material é implicado por seu consequente e
+    pela negação de seu antecedente:}
   !B & \Entails !A \lif !B\\
   \lnot !A & \Entails !A \lif !B
-  \intertext{A false material conditional is equivalent to the
-    conjunction of its antecedent and the negation of its consequent:
-    if $!A \lif !B$ is false, $!A \land \lnot !B$ is true, and vice versa:}
+  \intertext{Um condicional material falso equivale à
+    conjunção de seu antecedente com a negação de seu consequente:
+    se $!A \lif !B$ é falso, $!A \land \lnot !B$ é verdadeiro, e vice-versa:}
   \lnot(!A \lif !B) & \Entails !A \land \lnot !B\\
   !A \land \lnot !B & \Entails \lnot(!A \lif !B)
-  \intertext{The material conditional supports modus ponens:}
+  \intertext{O condicional material admite o modus ponens:}
   !A, !A \lif !B & \Entails !B
-  \intertext{The material conditional agglomerates:}
+  \intertext{O condicional material aglomera:}
   !A \lif !B,  !A \lif !C & \Entails !A \lif (!B \land !C)
-  \intertext{We can always strengthen the antecedent, O.s.\@, the
-    conditional is \emph{monotonic}:}
+  \intertext{Sempre podemos fortalecer o antecedente, O.s.\@, o
+    condicional é \emph{monótono}:}
   !A \lif !B & \Entails (!A \land !C) \lif !B
-  \intertext{The material conditional is transitive, O.s.\@, the chain
-    rule is valid:}
+  \intertext{O condicional material é transitivo, O.s.\@, a regra da
+    cadeia é válida:}
   !A \lif !B, !B \lif !C & \Entails !A \lif !C
-  \intertext{The material conditional is equivalent to its
-    contrapositive:}
+  \intertext{O condicional material equivale à sua
+    contrapositiva:}
   !A \lif !B & \Entails \lnot !B \lif \lnot !A\\
   \lnot !B \lif \lnot !A & \Entails !A \lif !B
 \end{align}
 
-These are all useful and unproblematic inferences in mathematical
-reasoning. However, the philosophical and linguistic literature is
-replete with purported counterexamples to the equivalent inferences in
-non-mathematical contexts. These suggest that the material
-conditional~$\lif$ is not---or at least not always---the appropriate
-connective to use when symbolizing English ``if \dots then \dots''
-statements.
+Todas essas são inferências úteis e não problemáticas no raciocínio
+matemático. Contudo, a literatura filosófica e linguística está
+repleta de supostos contraexemplos às inferências equivalentes em
+contextos não matemáticos. Eles sugerem que o condicional
+material~$\lif$ não é---ou pelo menos nem sempre é---o conectivo
+apropriado para simbolizar enunciados em inglês da forma ``se \dots,
+então \dots''.
 
 \end{document}

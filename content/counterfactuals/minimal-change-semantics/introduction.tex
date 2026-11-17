@@ -6,49 +6,49 @@
 
 \begin{document}
 
-\olfileid{cnt}{min}{int}
+\olfileid[pt]{cnt}{min}{int}
 
-\olsection{Introduction}
+\olsection{Introdução}
 
-Stalnaker and Lewis proposed accounts of counterfactual conditionals
-such as ``If the match were struck, it would light.''  Their accounts
-were proposals for how to properly understand the truth conditions for
-such sentences. The idea behind both proposals is this: to evaluate
-whether a counterfactual conditional is true, we have to consider
-those possible worlds which are minimally different from the way the
-world actually is to make the antecedent true. If the consequent is
-true in these possible worlds, then the counterfactual is true. For
-instance, suppose I hold a match and a matchbook in my hand. In the
-actual world I only look at them and ponder what would happen if I
-were to strike the match. The minimal change from the actual world
-where I strike the match is that where I decide to act and strike the
-match. It is minimal in that nothing else changes: I don't also jump
-in the air, striking the match doesn't also light my hair on fire, I
-don't suddenly lose all strength in my fingers, I am not simultaneously
-doused with water in a SuperSoaker ambush, etc. In that alternative
-possibility, the match lights. Hence, it's true that if I were to
-strike the match, it would light.
+Stalnaker e Lewis propuseram explicações de condicionais contrafactuais
+como ``Se o fósforo fosse riscado, ele acenderia''. Suas explicações
+eram propostas de como compreender corretamente as condições de verdade de
+tais sentenças. A ideia subjacente a ambas é esta: para avaliar
+se um condicional contrafactual é verdadeiro, precisamos considerar
+os mundos possíveis que diferem minimamente do modo como o
+mundo real é, de maneira a tornar verdadeiro o antecedente. Se o consequente é
+verdadeiro nesses mundos possíveis, então o contrafactual é verdadeiro. Por
+exemplo, suponha que eu tenha um fósforo e uma caixa de fósforos na mão. No
+mundo real, apenas olho para eles e pondero o que aconteceria se eu
+riscasse o fósforo. A mudança mínima em relação ao mundo real
+na qual risco o fósforo é aquela em que decido agir e riscá-lo.
+Ela é mínima porque nada mais muda: não pulo também
+no ar, riscar o fósforo não incendeia também meu cabelo, não
+perco de repente toda a força dos dedos, não sou simultaneamente
+encharcado em uma emboscada com uma Super Soaker etc. Nessa possibilidade
+alternativa, o fósforo acende. Portanto, é verdade que, se eu
+riscasse o fósforo, ele acenderia.
 
-This intuitive account can be paired with formal semantics for logics
-of counterfactuals.  Lewis introduced the symbol ``$\boxright$'' for
-the counterfactual while Stalnaker used the symbol~``$>$''. We'll
-use~$\cif$, and add it as a binary connective to propositional
-logic. So, we have, in addition to !!{formula}s of the form $!A \lif
-!B$ also !!{formula}s of the form~$!A \cif !B$. The formal semantics,
-like the relational semantics for modal logic, is based on models in
-which !!{formula}s are evaluated at worlds, and the satisfaction
-condition defining $\mSat{M}{!A \cif !B}[w]$ is given in terms of
-$\mSat{M}{!A}[w']$ and $\mSat{M}{!B}[w']$ for some (other)
-worlds~$w'$. Which $w'$?  Intuitively, the one(s) closest to~$w$ for
-which it holds that~$\mSat{M}{!A}[w']$. This requires that a relation
-of ``closeness'' has to be included in the model as well.
+Essa explicação intuitiva pode ser combinada com semânticas formais para lógicas
+de contrafactuais. Lewis introduziu o símbolo ``$\boxright$'' para
+o contrafactual, enquanto Stalnaker usou o símbolo~``$>$''. Usaremos
+~$\cif$ e o acrescentaremos como conectivo binário à lógica
+proposicional. Assim, além de !!{formula}s da forma $!A \lif
+!B$, também temos !!{formula}s da forma~$!A \cif !B$. A semântica formal,
+como a semântica relacional da lógica modal, baseia-se em modelos nos
+quais as !!{formula}s são avaliadas em mundos, e a condição de satisfação
+que define $\mSat{M}{!A \cif !B}[w]$ é dada em termos de
+$\mSat{M}{!A}[w']$ e $\mSat{M}{!B}[w']$ para alguns outros
+mundos~$w'$. Quais $w'$? Intuitivamente, aquele ou aqueles mais próximos de~$w$
+para os quais vale~$\mSat{M}{!A}[w']$. Isso exige que uma relação
+de ``proximidade'' também seja incluída no modelo.
 
-Lewis introduced an instructive way of representing counterfactual
-situations graphically. Each possible world is at the center of a set
-of nested spheres containing other worlds---we draw these spheres as
-concentric circles. The worlds between two spheres are equally close
-to the world at the center as each other, those contained in a nested
-sphere are closer, and those in a surrounding sphere further away.
+Lewis introduziu uma maneira instrutiva de representar graficamente situações
+contrafactuais. Cada mundo possível está no centro de um conjunto
+de esferas aninhadas que contêm outros mundos---desenhamos essas esferas como
+círculos concêntricos. Os mundos entre duas esferas são igualmente próximos
+do mundo central; os contidos em uma esfera mais interna são mais próximos,
+e os que estão em uma esfera circundante são mais distantes.
 \begin{center}
 \begin{tikzpicture}[scale=.7]\small
   \spheresystem{5}
@@ -60,9 +60,9 @@ sphere are closer, and those in a surrounding sphere further away.
   \path (3,0) node {$\formula{A}$};
 \end{tikzpicture}
 \end{center}
-The closest $!A$-worlds are those worlds $w'$ where~$!A$ is satisfied
-which lie in the smallest sphere around the center world~$w$ (the gray
-area). Intuitively, $!A \cif !B$ is satisfied at~$w$ if $!B$ is true
-at all closest $!A$-worlds.
+Os mundos-$!A$ mais próximos são os mundos $w'$ nos quais~$!A$ é satisfeita
+e que estão na menor esfera ao redor do mundo central~$w$ (a área
+cinza). Intuitivamente, $!A \cif !B$ é satisfeita em~$w$ se $!B$ é verdadeira
+em todos os mundos-$!A$ mais próximos.
 
 \end{document}
