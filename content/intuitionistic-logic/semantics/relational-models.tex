@@ -6,63 +6,63 @@
 
 \begin{document}
 
-\olfileid{int}{sem}{rel}
+\olfileid[pt]{int}{sem}{rel}
 
 \olsection{\usetoken{P}{relational model}}
 
-In order to give a precise semantics for intuitionistic propositional
-logic, we have to give a definition of what counts as a model relative
-to which we can evaluate !!{formula}s. On the basis of such a
-definition it is then also possible to define semantics notions such
-as validity and entailment. One such semantics is given by
-!!{relational model}s.
+Para oferecer uma semântica precisa da lógica proposicional
+intuicionista, precisamos definir o que conta como um modelo em relação
+ao qual possamos avaliar !!{formula}s. Com base nessa definição,
+também é possível definir noções semânticas como validade e
+consequência. Uma dessas semânticas é dada por !!{relational model}s.
 
 \begin{defn}
-  !!^a{relational model} for intuitionistic propositional logic is a
-  triple $\mModel{M} = \tuple{W, R, V}$, where
+  !!^a{relational model} para a lógica proposicional intuicionista é
+  uma tripla $\mModel{M} = \tuple{W, R, V}$, em que
   \begin{enumerate}
-  \item $W$ is a non-empty set,
-  \item $R$ is a partial order (O.s.\@, a reflexive, antisymmetric, and transitive binary relation) on~$W$, and
-  \item $V$ is a function assigning to each !!{propositional
-    variable}~$p$ a subset of~$W$, such that
-  \item $V$ is monotone with respect to $R$, O.s.\@, if $w
-    \in V(p)$ and $Rww'$, then $w' \in V(p)$.
+  \item $W$ é um conjunto não vazio;
+  \item $R$ é uma ordem parcial (O.s.\@, uma relação binária reflexiva,
+    antissimétrica e transitiva) sobre~$W$; e
+  \item $V$ é uma função que atribui a cada !!{propositional
+    variable}~$p$ um subconjunto de~$W$, de modo que
+  \item $V$ é monotônica em relação a $R$, O.s.\@, se $w
+    \in V(p)$ e $Rww'$, então $w' \in V(p)$.
   \end{enumerate}
 \end{defn}
 
 \begin{defn}\ollabel{defn:true-at-w}
-  We define the notion of $!A$ \emph{being true at $w$ in
-    $\mModel{M}$}, $\mSat{M}{!A}[w]$, inductively as follows:
+  Definimos a noção de $!A$ \emph{ser verdadeira em $w$ em
+    $\mModel{M}$}, $\mSat{M}{!A}[w]$, indutivamente da seguinte maneira:
   \begin{enumerate}
-  \item \indcase{!A}{p}{$\mSat{M}{\indfrm}[w]$ iff $w \in V(p)$.}
-  \item \indcase{!A}{\lfalse}{not $\mSat{M}{\indfrm}[w]$}.
-  \item \indcase{!A}{\lnot !B}{$\mSat{M}{\indfrm}[w]$ iff for no
-    $w'$ such that $Rww'$, $\mSat{M}{!B}[w']$}.
-  \item \indcase{!A}{!B \land !C}{$\mSat{M}{\indfrm}[w]$ iff
-    $\mSat{M}{!B}[w]$ and $\mSat{M}{!C}[w]$}.
-  \item \indcase{!A}{!B \lor !C}{$\mSat{M}{\indfrm}[w]$ iff
-    $\mSat{M}{!B}[w]$ or $\mSat{M}{!C}[w]$ (or both)}.
-  \item \indcase{!A}{!B \lif !C}{$\mSat{M}{\indfrm}[w]$ iff for every
-    $w'$ such that $Rww'$, not $\mSat{M}{!B}[w']$ or
-    $\mSat{M}{!C}[w']$} (or both).
+  \item \indcase{!A}{p}{$\mSat{M}{\indfrm}[w]$ sse $w \in V(p)$.}
+  \item \indcase{!A}{\lfalse}{não $\mSat{M}{\indfrm}[w]$}.
+  \item \indcase{!A}{\lnot !B}{$\mSat{M}{\indfrm}[w]$ sse não existe
+    $w'$ tal que $Rww'$ e $\mSat{M}{!B}[w']$}.
+  \item \indcase{!A}{!B \land !C}{$\mSat{M}{\indfrm}[w]$ sse
+    $\mSat{M}{!B}[w]$ e $\mSat{M}{!C}[w]$}.
+  \item \indcase{!A}{!B \lor !C}{$\mSat{M}{\indfrm}[w]$ sse
+    $\mSat{M}{!B}[w]$ ou $\mSat{M}{!C}[w]$ (ou ambos)}.
+  \item \indcase{!A}{!B \lif !C}{$\mSat{M}{\indfrm}[w]$ sse, para todo
+    $w'$ tal que $Rww'$, não $\mSat{M}{!B}[w']$ ou
+    $\mSat{M}{!C}[w']$} (ou ambos).
   \end{enumerate}
-  We write $\mSat/{M}{!A}[w]$ if not $\mSat{M}{!A}[w]$. If $\Gamma$ is
-  a set of !!{formula}s, $\mSat{M}{\Gamma}[w]$ means $\mSat{M}{!B}[w]$
-  for all $!B \in \Gamma$.
+  Escrevemos $\mSat/{M}{!A}[w]$ se não $\mSat{M}{!A}[w]$. Se $\Gamma$ é
+  um conjunto de !!{formula}s, $\mSat{M}{\Gamma}[w]$ significa
+  $\mSat{M}{!B}[w]$ para todo $!B \in \Gamma$.
 \end{defn}
 
 \begin{prob}
-  Show that according to \olref[int][sem][rel]{defn:true-at-w},
-  $\mSat{M}{\lnot !A}[w]$ iff $\mSat{M}{!A \lif \lfalse}[w]$.
+  Mostre que, de acordo com \olref[int][sem][rel]{defn:true-at-w},
+  $\mSat{M}{\lnot !A}[w]$ sse $\mSat{M}{!A \lif \lfalse}[w]$.
 \end{prob}
 
 \begin{prop}\ollabel{prop:true-monotonic}
-  Truth at worlds is monotonic with respect to~$R$, O.s.\@, if
-  $\mSat{M}{!A}[w]$ and $Rww'$, then $\mSat{M}{!A}[w']$.
+  A verdade nos mundos é monotônica em relação a~$R$, O.s.\@, se
+  $\mSat{M}{!A}[w]$ e $Rww'$, então $\mSat{M}{!A}[w']$.
 \end{prop}
 
 \begin{proof}
-  Exercise.
+  Exercício.
 \end{proof}
 
 \begin{prob}

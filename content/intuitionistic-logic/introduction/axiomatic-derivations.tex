@@ -6,30 +6,31 @@
 
 \begin{document}
 
-\olfileid{int}{int}{axd}
+\olfileid[pt]{int}{int}{axd}
 
-\olsection{Axiomatic \usetoken{P}{derivation}}
+\olsection{\usetoken{P}{derivation} axiomáticas}
 
-Axiomatic !!{derivation}s for intuitionistic propositional logic are
-the conceptually simplest, and historically first, !!{derivation}
-systems. They work just as in classical propositional logic.
+As !!{derivation}s axiomáticas da lógica proposicional intuicionista
+são os sistemas de !!{derivation} conceitualmente mais simples e,
+historicamente, os primeiros. Elas funcionam exatamente como na lógica
+proposicional clássica.
 
 \begin{defn}[!!^{derivability}]
-If $\Gamma$ is a set of !!{formula}s of $\Lang L$ then a
-\emph{!!{derivation}} from $\Gamma$ is a finite sequence $!A_1$,
-\dots,~$!A_n$ of !!{formula}s where for each $i \le n$ one of the
-following holds:
+Se $\Gamma$ é um conjunto de !!{formula}s de $\Lang L$, então uma
+\emph{!!{derivation}} a partir de $\Gamma$ é uma sequência finita
+$!A_1$, \dots,~$!A_n$ de !!{formula}s tal que, para cada $i \le n$,
+vale uma das seguintes condições:
 \begin{enumerate}
-\item $!A_i \in \Gamma$; or
-\item $!A_i$ is an axiom; or
-\item $!A_i$ follows from some $!A_j$ and $!A_k$ with $j < i$ and $k <
-  i$ by modus ponens, O.s.\@, $!A_k \ident !A_j \lif !A_i$.
+\item $!A_i \in \Gamma$; ou
+\item $!A_i$ é um axioma; ou
+\item $!A_i$ decorre de algum $!A_j$ e de algum $!A_k$, com $j < i$ e
+  $k < i$, por modus ponens, O.s.\@, $!A_k \ident !A_j \lif !A_i$.
 \end{enumerate}
 \end{defn}
 
-\begin{defn}[Axioms]
-The set of $\PAx$ of \emph{axioms} for the intuitionistic propositional logic 
-are all !!{formula}s of the following forms:
+\begin{defn}[Axiomas]
+O conjunto $\PAx$ de \emph{axiomas} da lógica proposicional intuicionista
+consiste em todas as !!{formula}s das seguintes formas:
 \begin{align}
   & (!A \land !B) \lif !A \ollabel{ax:land1}\\
   & (!A \land !B) \lif !B \ollabel{ax:land2}\\
@@ -44,27 +45,28 @@ are all !!{formula}s of the following forms:
 \end{defn}
 
 \begin{defn}[!!^{derivability}]
-!!^a{formula}~$!A$ is \emph{!!{derivable}} from $\Gamma$, written
-$\Gamma \Proves !A$, if there is !!a{derivation} from $\Gamma$ ending
-in $!A$.
+!!^a{formula}~$!A$ é \emph{!!{derivable}} a partir de $\Gamma$, o que
+se escreve $\Gamma \Proves !A$, se existe !!a{derivation} a partir de
+$\Gamma$ que termina em $!A$.
 \end{defn}
 
-\begin{defn}[Theorems]
-!!^a{formula}~$!A$ is a \emph{theorem} if there is !!a{derivation}
-of~$!A$ from the empty set.  We write $\Proves !A$ if $!A$ is a
-theorem and $\Proves/ !A$ if it is not.
+\begin{defn}[Teoremas]
+!!^a{formula}~$!A$ é um \emph{teorema} se existe !!a{derivation}
+de~$!A$ a partir do conjunto vazio. Escrevemos $\Proves !A$ se $!A$ é
+um teorema e $\Proves/ !A$ se não é.
 \end{defn}
 
 \begin{prop}
-  If $\Gamma \Proves !A$ in intuitionistic logic, $\Gamma \Proves !A$ in
-  classical logic. In particular, if $!A$ is an intuitionistic
-  theorem, it is also a classical theorem.
+  Se $\Gamma \Proves !A$ no sistema axiomático de !!{derivation} da
+  lógica intuicionista, então $\Gamma \Proves !A$ também na lógica
+  clássica. Em particular, se $!A$ é um teorema intuicionista, também é
+  um teorema clássico.
 \end{prop}
 
 \begin{proof}
-  Every intuitionistic axiom is also a classical axiom, so every
-  !!{derivation} in intuitionistic logic is also !!a{derivation} in
-  classical logic.
+  Todo axioma intuicionista também é um axioma clássico; portanto, toda
+  !!{derivation} na lógica intuicionista também é !!a{derivation} na
+  lógica clássica.
 \end{proof}
 
 \end{document}

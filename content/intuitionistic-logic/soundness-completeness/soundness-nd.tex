@@ -6,143 +6,151 @@
 
 \begin{document}
 
-\olfileid{int}{sc}{snd}
+\olfileid[pt]{int}{sc}{snd}
 
-\olsection{Soundness of Natural Deduction}
+\olsection{Correção da dedução natural}
 
-We will now prove soundness of natural deduction with regards to the
-relational semantics, that is, showing that if !!a{formula} is !!{derivable}
-from a set of assumptions then the set of assumptions entails the
-!!{formula}.
+Provaremos agora a correção da dedução natural em relação à semântica
+relacional, isto é, mostraremos que, se !!a{formula} é !!{derivable} a
+partir de um conjunto de hipóteses, então esse conjunto de hipóteses
+implica a !!{formula}.
 
-\begin{thm}[Soundness]
+\begin{thm}[Correção]
   \ollabel{thm:soundness}
-  If $\Gamma \Proves !A$, then $ \Gamma \Entails !A$.
+  Se $\Gamma \Proves !A$, então $ \Gamma \Entails !A$.
 \end{thm}
 
 \begin{proof}
-  We prove that if $\Gamma \Proves !A$, then $\Gamma \Entails !A$.
-  The proof is by induction on the !!{derivation} of~$!A$
-  from~$\Gamma$.
+  Provamos que, se $\Gamma \Proves !A$, então $\Gamma \Entails !A$.
+  A prova é por indução sobre a !!{derivation} de~$!A$ a partir
+  de~$\Gamma$.
   
   \begin{enumerate}
-  \item If the !!{derivation} consists of just the assumption~$!A$, we
-    have $!A \Proves !A$, and want to show that $!A \Entails !A$.
-    Suppose that $\mSat{M}{!A}[w]$. Then trivially $\mSat{M}{!A}[w]$.
+  \item Se a !!{derivation} consiste apenas na hipótese~$!A$, temos
+    $!A \Proves !A$ e queremos mostrar que $!A \Entails !A$. Suponha
+    $\mSat{M}{!A}[w]$. Então, trivialmente, $\mSat{M}{!A}[w]$.
 
-  \item The !!{derivation} ends in $\Intro{\land}$:
-    \iftag{probAnd}{Exercise.}{The !!{derivation}s of the premises
-      $!B$ from !!{undischarged} assumptions~$\Gamma$ and of~$!C$ from
-      !!{undischarged} assumptions~$\Delta$ show that $\Gamma \Proves
-      !B$ and $\Delta \Proves !C$. By induction hypothesis we have
-      that $\Gamma \Entails !B$ and $\Delta \Entails !C$. We have to
-      show that $\Gamma \cup \Delta \Entails !A \land !B$, since the
-      !!{undischarged} assumptions of the entire !!{derivation} are
-      $\Gamma$ together with $\Delta$.  So suppose $\mSat{M}{\Gamma
-        \cup \Delta}[w]$. Then also $\mSat{M}{\Gamma}[w]$. Since $\Gamma
-      \Entails !B$, $\mSat{M}{!B}[w]$. Similarly, $\mSat{M}{!C}[w]$. So
-      $\mSat{M}{!B \land !C}[w]$.}
+  \item A !!{derivation} termina em $\Intro{\land}$:
+    \iftag{probAnd}{Exercício.}{As !!{derivation}s das premissas
+      $!B$ a partir das hipóteses~$\Gamma$ !!{undischarged} e de~$!C$
+      a partir das hipóteses~$\Delta$ !!{undischarged} mostram que
+      $\Gamma \Proves !B$ e $\Delta \Proves !C$. Pela hipótese de
+      indução, temos $\Gamma \Entails !B$ e $\Delta \Entails !C$.
+      Precisamos mostrar que $\Gamma \cup \Delta \Entails !A \land !B$,
+      pois as hipóteses !!{undischarged} de toda a !!{derivation} são
+      $\Gamma$ juntamente com $\Delta$. Suponha, então,
+      $\mSat{M}{\Gamma \cup \Delta}[w]$. Logo, também
+      $\mSat{M}{\Gamma}[w]$. Como $\Gamma \Entails !B$,
+      $\mSat{M}{!B}[w]$. De modo semelhante, $\mSat{M}{!C}[w]$.
+      Portanto, $\mSat{M}{!B \land !C}[w]$.}
 
-  \item The !!{derivation} ends in $\Elim{\land}$:
-    \iftag{probAnd}{Exercise.}{The !!{derivation} of the premise $!B
-        \land !C$ from !!{undischarged} assumptions $\Gamma$ shows
-        that $\Gamma \Proves !B \land !C$. By induction hypothesis,
-        $\Gamma \Entails !B \land !C$. We have to show that $\Gamma
-        \Entails !B$. So suppose $\mSat{M}{\Gamma}[w]$. Since $\Gamma
-        \Entails !B \land !C$, $\mSat{M}{!B \land !C}[w]$. Then also
-        $\mSat{M}{!B}[w]$. Similarly if $\Elim\land$ ends in~$!C$, then
+  \item A !!{derivation} termina em $\Elim{\land}$:
+    \iftag{probAnd}{Exercício.}{A !!{derivation} da premissa
+        $!B \land !C$ a partir das hipóteses $\Gamma$ !!{undischarged}
+        mostra que $\Gamma \Proves !B \land !C$. Pela hipótese de
+        indução, $\Gamma \Entails !B \land !C$. Precisamos mostrar que
+        $\Gamma \Entails !B$. Suponha, então, $\mSat{M}{\Gamma}[w]$.
+        Como $\Gamma \Entails !B \land !C$,
+        $\mSat{M}{!B \land !C}[w]$. Logo, também $\mSat{M}{!B}[w]$.
+        De modo semelhante, se $\Elim\land$ termina em~$!C$, então
         $\Gamma \Entails !C$.}
 
-  \item The !!{derivation} ends in $\Intro{\lor}$:
-    \iftag{probOr}{Exercise.}{Suppose the premise is $!B$, and the
-      !!{undischarged} assumptions of the !!{derivation} ending
-      in~$!B$ are $\Gamma$. Then we have $\Gamma \Proves !B$ and by
-      inductive hypothesis, $\Gamma \Entails !B$. We have to show that
-      $\Gamma \Entails !B \lor !C$. Suppose $\mSat{M}{\Gamma}[w]$. Since
-      $\Gamma \Entails !B$, $\mSat{M}{!B}[w]$. But then also $\mSat{M}{!B
-        \lor !C}[w]$. Similarly, if the premise is~$!C$, we have that
-      $\Gamma \Entails !C$.}
+  \item A !!{derivation} termina em $\Intro{\lor}$:
+    \iftag{probOr}{Exercício.}{Suponha que a premissa seja $!B$ e que
+      as hipóteses !!{undischarged} da !!{derivation} que termina
+      em~$!B$ sejam $\Gamma$. Então temos $\Gamma \Proves !B$ e, pela
+      hipótese de indução, $\Gamma \Entails !B$. Precisamos mostrar que
+      $\Gamma \Entails !B \lor !C$. Suponha $\mSat{M}{\Gamma}[w]$.
+      Como $\Gamma \Entails !B$, $\mSat{M}{!B}[w]$. Mas então também
+      $\mSat{M}{!B \lor !C}[w]$. De modo semelhante, se a premissa é
+      $!C$, temos $\Gamma \Entails !C$.}
     
-  \item The !!{derivation} ends in~$\Elim{\lor}$:
-    \iftag{probOr}{Exercise.}{The !!{derivation}s ending in the
-      premises are of $!B \lor !C$ from !!{undischarged}
-      assumptions~$\Gamma$, of $!D$ from !!{undischarged} assumptions
-      $\Delta_1 \cup \{!B\}$, and of $!D$ from !!{undischarged}
-      assumptions~$\Delta_2 \cup \{!C\}$. So we have $\Gamma \Proves
-      !B \lor !C$, $\Delta_1 \cup \{!B\} \Proves !D$, and $\Delta_2
-      \cup \{!C\} \Proves !D$.  By induction hypothesis, $\Gamma
-      \Entails !B \lor !C$, $\Delta_1 \cup \{!B\} \Entails !D$, and
-      $\Delta_2 \cup \{!C\} \Entails !D$.  We have to prove that
+  \item A !!{derivation} termina em~$\Elim{\lor}$:
+    \iftag{probOr}{Exercício.}{As !!{derivation}s que terminam nas
+      premissas são de $!B \lor !C$ a partir das hipóteses~$\Gamma$
+      !!{undischarged}, de $!D$ a partir das hipóteses
+      $\Delta_1 \cup \{!B\}$ !!{undischarged} e de $!D$ a partir das
+      hipóteses $\Delta_2 \cup \{!C\}$ !!{undischarged}. Portanto,
+      temos $\Gamma \Proves !B \lor !C$,
+      $\Delta_1 \cup \{!B\} \Proves !D$ e
+      $\Delta_2 \cup \{!C\} \Proves !D$. Pela hipótese de indução,
+      $\Gamma \Entails !B \lor !C$,
+      $\Delta_1 \cup \{!B\} \Entails !D$ e
+      $\Delta_2 \cup \{!C\} \Entails !D$. Precisamos provar que
       $\Gamma \cup \Delta_1 \cup \Delta_2 \Entails !D$.
 
-    Suppose $\mSat{M}{\Gamma \cup \Delta_1 \cup \Delta_2}[w]$. Then
-    $\mSat{M}{\Gamma}[w]$ and since $\Gamma \Entails !B \lor !C$,
-    $\mSat{M}{!B \lor !C}[w]$. By definition of $\mSat{M}{}$, either
-    $\mSat{M}{!B}[w]$ or $\mSat{M}{!C}[w]$. So we distinguish cases:
-    (a)~$\mSat{M}{!B}$[w]. Then $\mSat{M}{\Delta_1 \cup \{!B\}}[w]$.
-    Since $\Delta_1 \cup !B \Entails !D$, we have $\mSat{M}{!D}[w]$.
-    (b)~$\mSat{M}{!C}[w]$. Then $\mSat{M}{\Delta_2 \cup \{!C\}}[w]$.
-    Since $\Delta_2 \cup !C \Entails !D$, we have $\mSat{M}{!D}[w]$. So
-    in either case, $\mSat{M}{!D}[w]$, as we wanted to show.}
+    Suponha $\mSat{M}{\Gamma \cup \Delta_1 \cup \Delta_2}[w]$.
+    Então $\mSat{M}{\Gamma}[w]$ e, como
+    $\Gamma \Entails !B \lor !C$, $\mSat{M}{!B \lor !C}[w]$. Pela
+    definição de $\mSat{M}{}$, ou $\mSat{M}{!B}[w]$ ou
+    $\mSat{M}{!C}[w]$. Distinguimos, portanto, os casos:
+    (a)~$\mSat{M}{!B}$[w]. Então
+    $\mSat{M}{\Delta_1 \cup \{!B\}}[w]$. Como
+    $\Delta_1 \cup !B \Entails !D$, temos $\mSat{M}{!D}[w]$.
+    (b)~$\mSat{M}{!C}[w]$. Então
+    $\mSat{M}{\Delta_2 \cup \{!C\}}[w]$. Como
+    $\Delta_2 \cup !C \Entails !D$, temos $\mSat{M}{!D}[w]$. Assim,
+    em ambos os casos, $\mSat{M}{!D}[w]$, como queríamos mostrar.}
 
-  \item The !!{derivation} ends with $\Intro{\lif}$ concluding~$!B\lif
-    !C$. Then the premise is~$!C$, and the !!{derivation} ending in
-    the premise has !!{undischarged} assumptions~$\Gamma \cup
-    \{!B\}$. So we have that $\Gamma \cup \{!B\} \Proves !C$, and by
-    induction hypothesis that $\Gamma \cup \{!B\} \Entails !C$. We
-    have to show that $\Gamma \Entails !B \lif !C$.
+  \item A !!{derivation} termina em $\Intro{\lif}$ com a conclusão
+    $!B\lif !C$. A premissa é~$!C$, e a !!{derivation} que termina na
+    premissa tem as hipóteses~$\Gamma \cup \{!B\}$ !!{undischarged}.
+    Portanto, $\Gamma \cup \{!B\} \Proves !C$ e, pela hipótese de
+    indução, $\Gamma \cup \{!B\} \Entails !C$. Precisamos mostrar que
+    $\Gamma \Entails !B \lif !C$.
 
-    Suppose $\mSat{M}{\Gamma}[w]$. We want to show that for all
-    $w'$ such that $Rww'$, if $\mSat{M}{!B}[w']$, then
-    $\mSat{M}{!C}[w']$. So assume that $Rww'$ and
-    $\mSat{M}{!B}[w']$. By \olref[sem][rel]{prop:true-monotonic},
-    $\mSat{M}{\Gamma}[w']$. Since $\Gamma \cup \{!B\} \Entails !C$,
-    $\mSat{M}{!C}[w']$, which is what we wanted to show. 
+    Suponha $\mSat{M}{\Gamma}[w]$. Queremos mostrar que, para todo
+    $w'$ tal que $Rww'$, se $\mSat{M}{!B}[w']$, então
+    $\mSat{M}{!C}[w']$. Suponha, portanto, $Rww'$ e
+    $\mSat{M}{!B}[w']$. Por \olref[sem][rel]{prop:true-monotonic},
+    $\mSat{M}{\Gamma}[w']$. Como $\Gamma \cup \{!B\} \Entails !C$,
+    $\mSat{M}{!C}[w']$, que é o que queríamos mostrar. 
 
-  \item The !!{derivation} ends in $\Elim{\lif}$ and
-    conclusion~$!C$. The premises are $!B \lif !C$ and $!B$, with
-    !!{derivation}s from !!{undischarged} assumptions $\Gamma$,
-    $\Delta$. So we have $\Gamma \Proves !B \lif !C$ and $\Delta
-    \Proves !B$. By inductive hypothesis, $\Gamma \Entails !B \lif !C$
-    and $\Delta \Entails !B$. We have to show that $\Gamma \cup \Delta
-    \Entails !C$.
+  \item A !!{derivation} termina em $\Elim{\lif}$ e tem a
+    conclusão~$!C$. As premissas são $!B \lif !C$ e $!B$, com
+    !!{derivation}s a partir das hipóteses $\Gamma$, $\Delta$
+    !!{undischarged}. Portanto, temos $\Gamma \Proves !B \lif !C$ e
+    $\Delta \Proves !B$. Pela hipótese de indução,
+    $\Gamma \Entails !B \lif !C$ e $\Delta \Entails !B$. Precisamos
+    mostrar que $\Gamma \cup \Delta \Entails !C$.
 
-    Suppose $\mSat{M}{\Gamma \cup \Delta}[w]$. Since
-    $\mSat{M}{\Gamma}[w]$ and $\Gamma \Entails !B \lif !C$,
-    $\mSat{M}{!B \lif !C}[w]$. By definition, this means that for all
-    $w'$ such that $Rww'$, if $\mSat{M}{!B}[w']$ then
-    $\mSat{M}{!C}[w']$. Since $R$ is reflexive, $w$ is among the $w'$
-    such that $Rww'$, O.s.\@, we have that if $\mSat{M}{!B}[w]$ then
-    $\mSat{M}{!C}[w]$. Since $\mSat{M}{\Delta}[w]$ and $\Delta
-    \Entails !B$, $\mSat{M}{!B}[w]$. So, $\mSat{M}{!C}[w]$, as we
-    wanted to show.
+    Suponha $\mSat{M}{\Gamma \cup \Delta}[w]$. Como
+    $\mSat{M}{\Gamma}[w]$ e $\Gamma \Entails !B \lif !C$,
+    $\mSat{M}{!B \lif !C}[w]$. Por definição, isso significa que, para
+    todo $w'$ tal que $Rww'$, se $\mSat{M}{!B}[w']$, então
+    $\mSat{M}{!C}[w']$. Como $R$ é reflexiva, $w$ está entre os $w'$
+    tais que $Rww'$, O.s.\@, se $\mSat{M}{!B}[w]$, então
+    $\mSat{M}{!C}[w]$. Como $\mSat{M}{\Delta}[w]$ e
+    $\Delta \Entails !B$, $\mSat{M}{!B}[w]$. Logo,
+    $\mSat{M}{!C}[w]$, como queríamos mostrar.
 
-  \item The !!{derivation} ends in $\FalseInt$, concluding~$!A$. The
-    premise is $\lfalse$ and the !!{undischarged} assumptions of the
-    !!{derivation} of the premise are~$\Gamma$. Then $\Gamma \Proves
-    \lfalse$. By inductive hypothesis, $\Gamma \Entails \lfalse$. We
-    have to show $\Gamma \Entails !A$.
+  \item A !!{derivation} termina em $\FalseInt$, concluindo~$!A$. A
+    premissa é $\lfalse$, e as hipóteses !!{undischarged} da
+    !!{derivation} da premissa são~$\Gamma$. Então
+    $\Gamma \Proves \lfalse$.
+    Pela hipótese de indução, $\Gamma \Entails \lfalse$. Precisamos
+    mostrar $\Gamma \Entails !A$.
 
-    We proceed indirectly. If $\Gamma \Entails/ !A$ there is a
-    model~$\mModel{M}$ and world~$w$ such that $\mSat{M}{\Gamma}[w]$
-    and $\mSat/{M}{!A}[w]$.  Since $\Gamma \Entails \lfalse$,
-    $\mSat{M}{\lfalse}[w]$. But that's impossible, since by
-    definition, $\mSat/{M}{\lfalse}[w]$. So $\Gamma \Entails !A$.
-  \item The !!{derivation} ends in $\Intro\lnot$: Exercise.
-  \item The !!{derivation} ends in $\Elim\lnot$: Exercise.
+    Procedemos indiretamente. Se $\Gamma \Entails/ !A$, existe um
+    modelo~$\mModel{M}$ e um mundo~$w$ tais que
+    $\mSat{M}{\Gamma}[w]$ e $\mSat/{M}{!A}[w]$. Como
+    $\Gamma \Entails \lfalse$, $\mSat{M}{\lfalse}[w]$. Mas isso é
+    impossível, pois, por definição, $\mSat/{M}{\lfalse}[w]$.
+    Portanto, $\Gamma \Entails !A$.
+  \item A !!{derivation} termina em $\Intro\lnot$: exercício.
+  \item A !!{derivation} termina em $\Elim\lnot$: exercício.
   \end{enumerate}
 \end{proof}
 
 \begin{prob}
-  Complete the proof of \olref[int][sc][snd]{thm:soundness}. For the
-  cases for $\Intro\lnot$ and $\Elim\lnot$, use the definition of
-  $\mSat{M}{\lnot !A}[w]$ in \olref[int][sem][rel]{defn:true-at-w}, O.s.\@,
-  don't treat $\lnot !A$ as defined by $!A \lif \lfalse$.
+  Complete a prova de \olref[int][sc][snd]{thm:soundness}. Nos casos
+  de $\Intro\lnot$ e $\Elim\lnot$, use a definição de
+  $\mSat{M}{\lnot !A}[w]$ em \olref[int][sem][rel]{defn:true-at-w}, O.s.\@, não trate $\lnot !A$ como definida por $!A \lif \lfalse$.
 \end{prob}
 
 \begin{prob}
-  Show that the following !!{formula}s are not !!{derivable} in
-  intuitionistic logic:
+  Mostre que as seguintes !!{formula}s não são !!{derivable} na lógica
+  intuicionista:
   \begin{enumerate}
     \item $(!A \lif !B) \lor (!B \lif !A)$
     \item $(\lnot\lnot !A \lif !A) \lif (!A \lor \lnot !A)$
