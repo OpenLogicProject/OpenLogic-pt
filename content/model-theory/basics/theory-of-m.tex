@@ -6,59 +6,59 @@
 
 \begin{document}
 
-\olfileid{mod}{bas}{thm}
+\olfileid[pt]{mod}{bas}{thm}
 
-\section{The Theory of a \printtoken{S}{structure}}
+\section{A Teoria de uma \printtoken{S}{structure}}
 
-Every !!{structure}~$\Struct{M}$ makes some !!{sentence}s true, and
-some false. The set of all the !!{sentence}s it makes true is called
-its \emph{theory}. That set is in fact a theory, since anything it
-entails must be true in all its models, including~$\Struct{M}$.
+Cada !!{structure}~$\Struct{M}$ torna algumas !!{sentence}s verdadeiras e
+outras falsas. O conjunto de todas as !!{sentence}s que ela torna verdadeiras é chamado
+de sua \emph{teoria}. Esse conjunto é de fato uma teoria, pois tudo o que ele
+implica deve ser verdadeiro em todos os seus modelos, inclusive~$\Struct{M}$.
 
 \begin{defn}
-  Given !!a{structure}~$\Struct M$, the \emph{theory} of
-  $\Struct{M}$ is the set $\Theory{M}$ of !!{sentence}s
-  that are true in $\Struct{M}$, O.s.\@, $\Theory{M} =
+  Dada !!a{structure}~$\Struct M$, a \emph{teoria} de
+  $\Struct{M}$ é o conjunto $\Theory{M}$ das !!{sentence}s
+  verdadeiras em $\Struct{M}$, O.s.\@, $\Theory{M} =
   \Setabs{!A}{\Sat{M}{!A}}$.
 \end{defn}
 
-We also use the term ``theory'' informally to refer to sets
-of !!{sentence}s having an intended interpretation, whether deductively
-closed or not.
+Também usamos informalmente o termo ``teoria'' para nos referir a conjuntos
+de !!{sentence}s que têm uma interpretação pretendida, sejam eles dedutivamente
+fechados ou não.
 
 \begin{prop}
-For any $\Struct{M}$, $\Theory{M}$ is complete.
+Para toda $\Struct{M}$, $\Theory{M}$ é completa.
 \end{prop}
 
 \begin{proof}
-For any !!{sentence}~$!A$ either $\Sat{M}{!A}$ or $\Sat{M}{\lnot !A}$,
-so either $!A \in \Theory{M}$ or $\lnot !A \in \Theory{M}$.
+Para toda !!{sentence}~$!A$, ou $\Sat{M}{!A}$ ou $\Sat{M}{\lnot !A}$;
+portanto, ou $!A \in \Theory{M}$ ou $\lnot !A \in \Theory{M}$.
 \end{proof}
 
 \begin{prop}\ollabel{prop:equiv}
-  If $\Struct{N} \models !A$ for every $!A \in \Theory{M}$, then
+  Se $\Struct{N} \models !A$ para todo $!A \in \Theory{M}$, então
   $\Struct{M} \elemequiv \Struct{N}$.
 \end{prop}
 
 \begin{proof}
-Since $\Sat{N}{!A}$ for all $!A \in \Theory{M}$, $\Theory{M} \subseteq
-\Theory{N}$. If $\Sat{N}{!A}$, then $\Sat/{N}{\lnot !A}$, so $\lnot !A
-\notin \Theory{M}$. Since $\Theory{M}$ is complete, $!A \in
-\Theory{M}$. So, $\Theory{N} \subseteq \Theory{M}$, and we have
+Como $\Sat{N}{!A}$ para todo $!A \in \Theory{M}$, $\Theory{M} \subseteq
+\Theory{N}$. Se $\Sat{N}{!A}$, então $\Sat/{N}{\lnot !A}$, logo $\lnot !A
+\notin \Theory{M}$. Como $\Theory{M}$ é completa, $!A \in
+\Theory{M}$. Portanto, $\Theory{N} \subseteq \Theory{M}$, e temos
 $\Struct{M} \elemequiv \Struct{N}$.
 \end{proof}
 
 \begin{rem}\ollabel{remark:R}
-  Consider $\Struct{R} = \langle\Real, <\rangle$, the !!{structure}
-  whose domain is the set $\Real$ of the real numbers, in the !!{language}
-  comprising only a 2-place !!{predicate} interpreted as the $<$
-  relation over the reals. Clearly $\Struct{R}$ is !!{nonenumerable};
-  however, since $\Theory{R}$ is obviously consistent, by the
-  L\"owenheim--Skolem theorem it has !!a{enumerable} model, say
-  $\Struct{S}$, and by \olref{prop:equiv}, $\Struct{R}
-  \equiv \Struct{S}$. Moreover, since $\Struct{R}$ and $\Struct{S}$
-  are not isomorphic, this shows that the converse of
-  \olref[iso]{thm:isom} fails in general.
+  Considere $\Struct{R} = \langle\Real, <\rangle$, a !!{structure}
+  cujo domínio é o conjunto $\Real$ dos números reais, na !!{language}
+  que contém apenas um !!{predicate} binário interpretado como a relação $<$
+  sobre os reais. Claramente, $\Struct{R}$ é !!{nonenumerable};
+  entretanto, como $\Theory{R}$ é obviamente consistente, pelo teorema de
+  L\"owenheim--Skolem ela tem !!a{enumerable} modelo, digamos
+  $\Struct{S}$, e, por \olref{prop:equiv}, $\Struct{R}
+  \equiv \Struct{S}$. Além disso, como $\Struct{R}$ e $\Struct{S}$
+  não são isomorfas, isso mostra que a recíproca de
+  \olref[iso]{thm:isom} falha em geral.
 \end{rem}
 
 \end{document}

@@ -6,51 +6,53 @@
 
 \begin{document}
 
-\olfileid{mod}{bas}{iso}
-\olsection{Isomorphic Structures}
+\olfileid[pt]{mod}{bas}{iso}
+\olsection{Estruturas isomorfas}
 
-First-order !!{structure}s can be alike in one of two ways. One way in
-which they can be alike is that they make the same !!{sentence}s
-true. We call such !!{structure}s \emph{elementarily equivalent}. But
-structures can be very different and still make the same !!{sentence}s
-true---for instance, one can be !!{enumerable} and the other not.
-This is because there are lots of features of !!a{structure} that
-cannot be expressed in first-order languages, either because the
-language is not rich enough, or because of fundamental limitations of
-first-order logic such as the L\"owenheim--Skolem theorem. So another,
-stricter, aspect in which !!{structure}s can be alike is if they are
-fundamentally the same, in the sense that they only differ in the
-objects that make them up, but not in their structural features. A way
-of making this precise is by the notion of an \emph{isomorphism}.
+As !!{structure}s de primeira ordem podem ser semelhantes de duas
+maneiras. Uma delas consiste em tornar verdadeiras as mesmas
+!!{sentence}s. Chamamos essas !!{structure}s de \emph{elementarmente
+equivalentes}. No entanto, duas estruturas podem ser muito diferentes
+e ainda tornar verdadeiras as mesmas !!{sentence}s---por exemplo, uma
+pode ser !!{enumerable} e a outra não. Isso ocorre porque há muitas
+características de !!a{structure} que não podem ser expressas em
+linguagens de primeira ordem, seja porque a linguagem não é rica o
+bastante, seja por limitações fundamentais da lógica de primeira ordem,
+como o teorema de L\"owenheim--Skolem. Assim, outra maneira, mais
+estrita, pela qual duas !!{structure}s podem ser semelhantes é serem
+fundamentalmente iguais: diferem apenas nos objetos que as compõem, não
+em suas características estruturais. A noção de \emph{isomorfismo}
+torna essa ideia precisa.
 
 \begin{defn}
 \ollabel{defn:elem-equiv} 
-Given two !!{structure}s $\Struct{M}$ and $\Struct M'$ for the same
-!!{language}~$\Lang{L}$, we say that $\Struct{M}$ is \emph{elementarily
-  equivalent to} $\Struct M'$, written $\Struct{M} \equiv \Struct M'$,
-if and only if for every !!{sentence}~$!A$ of~$\Lang{L}$,
-$\Sat{M}{!A}$ iff $\Sat{M'}{!A}$.
+Dadas duas !!{structure}s $\Struct{M}$ e $\Struct M'$ para a mesma
+!!{language}~$\Lang{L}$, dizemos que $\Struct{M}$ é
+\emph{elementarmente equivalente a} $\Struct M'$, e escrevemos
+$\Struct{M} \equiv \Struct M'$, se, e somente se, para toda
+!!{sentence}~$!A$ de~$\Lang{L}$, $\Sat{M}{!A}$ se, e somente se,
+$\Sat{M'}{!A}$.
 \end{defn}
 
 \begin{defn}
-\ollabel{defn:isomorphism} Given two !!{structure}s $\Struct{M}$ and
-$\Struct M'$ for the same !!{language}~$\Lang L$, we say that
-$\Struct{M}$ is \emph{isomorphic to}~$\Struct M'$, written $\Struct{M}
-\simeq \Struct M'$, if and only if there is a function $h \colon
-\Domain{M} \to \Domain{M'}$ such that:
+\ollabel{defn:isomorphism} Dadas duas !!{structure}s $\Struct{M}$ e
+$\Struct M'$ para a mesma !!{language}~$\Lang L$, dizemos que
+$\Struct{M}$ é \emph{isomorfa a}~$\Struct M'$, e escrevemos $\Struct{M}
+\simeq \Struct M'$, se, e somente se, existe uma função $h \colon
+\Domain{M} \to \Domain{M'}$ tal que:
 \begin{enumerate}
-\item $h$ is !!{injective}: if $h(x) =
-  h(y)$ then $x = y$; 
-\item $h$ is !!{surjective}: for every $y \in \Domain{M'}$ there
-  is $x \in \Domain{M}$ such that $h(x) = y$;
-\item \ollabel{defn:iso-const}for every !!{constant} $c$:
+\item $h$ é !!{injective}: se $h(x) =
+  h(y)$, então $x = y$; 
+\item $h$ é !!{surjective}: para todo $y \in \Domain{M'}$, existe
+  $x \in \Domain{M}$ tal que $h(x) = y$;
+\item \ollabel{defn:iso-const}para toda !!{constant} $c$:
   $h(\Assign{c}{M}) = \Assign{c}{M'}$;
-\item \ollabel{defn:iso-pred}for every $n$-place !!{predicate}~$P$:
+\item \ollabel{defn:iso-pred}para todo !!{predicate} de aridade $n$,~$P$:
   \[
-  \tuple{a_1, \dots, a_n}\in \Assign{P}{M} \quad\text{iff}\quad
+  \tuple{a_1, \dots, a_n}\in \Assign{P}{M} \quad\text{se, e somente se,}\quad
   \tuple{h(a_1), \dots, h(a_n)} \in \Assign{P}{M'};
   \]
-\item \ollabel{defn:iso-func}for every $n$-place !!{function} $f$:
+\item \ollabel{defn:iso-func}para toda !!{function} de aridade $n$, $f$:
   \[
   h(\Assign{f}{M}(a_1, \dots, a_n)) =
   \Assign{f}{M'}(h(a_1), \dots, h(a_n)).
@@ -60,71 +62,71 @@ $\Struct{M}$ is \emph{isomorphic to}~$\Struct M'$, written $\Struct{M}
 
 \begin{thm}
 \ollabel{thm:isom}
-If $\Struct{M} \iso \Struct M'$ then $\Struct{M} \elemequiv
+Se $\Struct{M} \iso \Struct M'$, então $\Struct{M} \elemequiv
 \Struct{M'}$.
 \end{thm}
 
 \begin{proof}
-Let $h$ be an isomorphism of $\Struct{M}$ onto $\Struct M'$. For any
-assignment~$s$, $h \circ s$ is the composition of $h$ and $s$, O.s.\@,
-the assignment in $\Struct{M'}$ such that $(h \circ s)(x) = h(s(x))$.
-By induction on $t$ and $!A$ one can prove the stronger claims:
+Seja $h$ um isomorfismo de $\Struct{M}$ sobre $\Struct M'$. Para toda
+atribuição~$s$, $h \circ s$ é a composição de $h$ e $s$, O.s.\@, a
+atribuição em $\Struct{M'}$ tal que $(h \circ s)(x) = h(s(x))$. Por
+indução em $t$ e $!A$, podem-se provar as afirmações mais fortes:
 \begin{enumerate}
   \item[a.] $h(\Value{t}{M}[s]) = \Value{t}{M'}[h\circ s]$.
-  \item[b.] $\Sat{M}{!A}[s]$ iff $\Sat{M'}{!A}[h \circ s]$.
+  \item[b.] $\Sat{M}{!A}[s]$ se, e somente se, $\Sat{M'}{!A}[h \circ s]$.
 \end{enumerate}
-The first is proved by induction on the complexity of~$t$.
+A primeira é provada por indução na complexidade de~$t$.
 \begin{enumerate}
-\item If $t \ident c$, then $\Value{c}{M}[s] = \Assign{c}{M}$ and
-  $\Value{c}{M'}[h \circ s] = \Assign{c}{M'}$. Thus,
-  $h(\Value{t}{M}[s]) = h(\Assign{c}{M}) = \Assign{c}{M'}$ (by
-  \olref{defn:iso-const} of \olref{defn:isomorphism}) $=
+\item Se $t \ident c$, então $\Value{c}{M}[s] = \Assign{c}{M}$ e
+  $\Value{c}{M'}[h \circ s] = \Assign{c}{M'}$. Portanto,
+  $h(\Value{t}{M}[s]) = h(\Assign{c}{M}) = \Assign{c}{M'}$ (por
+  \olref{defn:iso-const} de \olref{defn:isomorphism}) $=
   \Value{t}{M'}[h \circ s]$.
-\item If $t \ident x$, then $\Value{x}{M}[s] = s(x)$ and
-  $\Value{x}{M'}[h \circ s] = h(s(x))$. Thus, $h(\Value{x}{M}[s]) =
+\item Se $t \ident x$, então $\Value{x}{M}[s] = s(x)$ e
+  $\Value{x}{M'}[h \circ s] = h(s(x))$. Portanto, $h(\Value{x}{M}[s]) =
   h(s(x)) = \Value{x}{M'}[h \circ s]$.
-\item If $t \ident f(t_1, \dots, t_n)$, then
+\item Se $t \ident f(t_1, \dots, t_n)$, então
   \begin{align*}
-    \Value{t}{M}[s] & = \Assign{f}{M}(\Value{t_1}{M}[s], \dots, \Value{t_n}{M}[s]) \quad\text{and}\\
-  \Value{t}{M'}[h \circ s] & = \Assign{f}{M}(\Value{t_1}{M'}[h \circ
+    \Value{t}{M}[s] & = \Assign{f}{M}(\Value{t_1}{M}[s], \dots, \Value{t_n}{M}[s]) \quad\text{e}\\
+  \Value{t}{M'}[h \circ s] & = \Assign{f}{M'}(\Value{t_1}{M'}[h \circ
     s], \dots, \Value{t_n}{M'}[h \circ s]).
   \end{align*}
-  The induction hypothesis is that for each $i$, $h(\Value{t_i}{M}[s])
-  = \Value{t_i}{M'}[h\circ s]$. So,
+  A hipótese de indução afirma que, para cada $i$, $h(\Value{t_i}{M}[s])
+  = \Value{t_i}{M'}[h\circ s]$. Logo,
   \begin{align}
     h(\Value{t}{M}[s]) 
-    & = h(\Assign{f}{M}(\Value{t_1}{M}[s], \dots, \Value{t_n}{M}[s]) \notag\\
+    & = h(\Assign{f}{M}(\Value{t_1}{M}[s], \dots, \Value{t_n}{M}[s]))\notag\\
     & = \Assign{f}{M'}(h(\Value{t_1}{M}[s]), \dots,
     h(\Value{t_n}{M}[s])) \ollabel{iso-1}\\
     & = \Assign{f}{M'}(\Value{t_1}{M'}[h \circ s], \dots,
     \Value{t_n}{M'}[h \circ s]) \ollabel{iso-2}\\
     & = \Value{t}{M'}[h\circ s] \notag
   \end{align}
-  Here, \olref{iso-1} follows by \olref{defn:iso-func} of
-  \olref{defn:isomorphism} and \olref{iso-2} by induction hypothesis.
+  Aqui, \olref{iso-1} decorre de \olref{defn:iso-func} de
+  \olref{defn:isomorphism}, e \olref{iso-2}, da hipótese de indução.
 \end{enumerate}
-Part (b) is left as an exercise.
+A parte (b) fica como exercício.
 
-If $!A$ is a sentence, the assignments~$s$ and $h \circ s$ are
-irrelevant, and we have $\Sat{M}{!A}$ iff $\Sat{M'}{!A}$.
+Se $!A$ é uma sentença, as atribuições~$s$ e $h \circ s$ são
+irrelevantes, e temos $\Sat{M}{!A}$ se, e somente se, $\Sat{M'}{!A}$.
 \end{proof}
 
 \begin{prob}
-Carry out the proof of (b) of \olref[mod][bas][iso]{thm:isom} in
-detail. Make sure to note where each of the five properties
-characterizing isomorphisms of \olref[mod][bas][iso]{defn:isomorphism}
-is used.
+Apresente em detalhes a prova de (b) de
+\olref[mod][bas][iso]{thm:isom}. Indique em que ponto é usada cada uma
+das cinco propriedades que caracterizam os isomorfismos em
+\olref[mod][bas][iso]{defn:isomorphism}.
 \end{prob}
 
 \begin{defn}
-An \emph{automorphism} of a structure $\Struct{M}$ is an isomorphism
-of $\Struct{M}$ onto itself.
+Um \emph{automorfismo} de uma estrutura $\Struct{M}$ é um isomorfismo
+de $\Struct{M}$ sobre si mesma.
 \end{defn}
 
 \begin{prob}
-Show that for any structure $\Struct{M}$, if $X$ is a definable subset
-of $\Struct{M}$, and $h$ is an automorphism of $\Struct{M}$, then $X
-= \Setabs{h(x)}{x \in X}$ (O.s.\@, $X$ is fixed under $h$).
+Mostre que, para toda estrutura $\Struct{M}$, se $X$ é um subconjunto
+definível de $\Struct{M}$ e $h$ é um automorfismo de $\Struct{M}$,
+então $X = \Setabs{h(x)}{x \in X}$ (O.s.\@, $X$ é fixado por $h$).
 \end{prob}
 
 

@@ -6,13 +6,13 @@
 
 \begin{document}
 
-\olfileid{mod}{bas}{dlo}
-\section{Dense Linear Orders}
+\olfileid[pt]{mod}{bas}{dlo}
+\section{Ordens Lineares Densas}
 
 \begin{defn}
-  A \emph{dense linear ordering without endpoints} is !!a{structure}
-  $\Struct{M}$ for the !!{language} containing a single 2-place
-  !!{predicate}~$<$ satisfying the following sentences:
+  Uma \emph{ordem linear densa sem extremos} é !!a{structure}
+  $\Struct{M}$ para a !!{language} que contém um único
+  !!{predicate} binário~$<$ e satisfaz as seguintes sentenças:
   \begin{enumerate}
   \item $\lforall[x][\lnot x < x]$;
   \item $\lforall[x][\lforall[y][\lforall[z][(x < y \lif (y < z \lif x
@@ -26,59 +26,58 @@
 \end{defn}
 
 \begin{thm}\ollabel{thm:cantorQ}
-  Any two !!{enumerable} dense linear orderings without
-  endpoints are isomorphic.
+  Quaisquer duas ordens lineares densas !!{enumerable} sem
+  extremos são isomorfas.
 \end{thm}
 
 \begin{proof}
-  Let $\Struct{M_1}$ and $\Struct{M_2}$ be !!{enumerable} dense linear
-  orderings without endpoints, with ${<_1} = \Assign{<}{M_1}$ and ${<_2} =
-  \Assign{<}{M_2}$, and let $\PIso{I}$ be the set of all partial
-  isomorphisms between them. $\PIso{I}$ is not empty since at least
-  $\emptyset \in \PIso{I}$. We show that $\PIso{I}$ satisfies the
-  Back-and-Forth property.  Then $\Struct{M_1} \iso[p] \Struct{M_2}$,
-  and the theorem follows by \olref[pis]{thm:p-isom1}.
+  Sejam $\Struct{M_1}$ e $\Struct{M_2}$ ordens lineares densas !!{enumerable}
+  sem extremos, com ${<_1} = \Assign{<}{M_1}$ e ${<_2} =
+  \Assign{<}{M_2}$, e seja $\PIso{I}$ o conjunto de todos os isomorfismos
+  parciais entre elas. $\PIso{I}$ não é vazio, pois ao menos
+  $\emptyset \in \PIso{I}$. Mostraremos que $\PIso{I}$ satisfaz a
+  propriedade de ida e volta. Então, $\Struct{M_1} \iso[p] \Struct{M_2}$,
+  e o teorema decorre de \olref[pis]{thm:p-isom1}.
 
-  To show $\PIso{I}$ satisfies the Forth property, let $p \in
-  \PIso{I}$ and let $p(a_i) = b_i$ for $i = 1$, \dots,~$n$, and
-  without loss of generality suppose $a_1 <_1 a_2 <_1 \cdots <_1
-  a_n$. Given $a \in \Domain{M_1}$, find $b \in \Domain{M_2}$ as
-  follows:
+  Para mostrar que $\PIso{I}$ satisfaz a propriedade de ida, seja $p \in
+  \PIso{I}$, e suponha que $p(a_i) = b_i$ para $i = 1$, \dots,~$n$ e,
+  sem perda de generalidade, que $a_1 <_1 a_2 <_1 \cdots <_1
+  a_n$. Dado $a \in \Domain{M_1}$, encontre $b \in \Domain{M_2}$ da
+  seguinte maneira:
   \begin{enumerate}
-  \item if $a <_1 a_1$ let $b \in \Domain{M_2}$ be such that $b <_2
+  \item se $a <_1 a_1$, tome $b \in \Domain{M_2}$ tal que $b <_2
     b_1$;
-  \item if $a_n <_1 a$ let $b \in \Domain{M_2}$ be such that $b_n <_2 b$;
- \item if $a_i <_1 a <_1 a_{i+1}$ for some $i$, then let $b \in
-   \Domain{M_2}$ be such that $b_i <_2 b <_2 b_{i+1}$.
+  \item se $a_n <_1 a$, tome $b \in \Domain{M_2}$ tal que $b_n <_2 b$;
+ \item se $a_i <_1 a <_1 a_{i+1}$ para algum $i$, tome $b \in
+   \Domain{M_2}$ tal que $b_i <_2 b <_2 b_{i+1}$.
   \end{enumerate}
-  It is always possible to find a $b$ with the desired property since
-  $\Struct{M_2}$ is a dense linear ordering without endpoints. Define
-  $q = p \cup \{ \langle a, b \rangle \}$ so that $q \in \PIso{I}$ is
-  the desired extension of $p$. This establishes the Forth
-  property. The Back property is similar. So $\Struct{M_1} \iso[p]
-  \Struct{M_2}$; by \olref[pis]{thm:p-isom1}, $\Struct{M_1} \iso
+  Sempre é possível encontrar um $b$ com a propriedade desejada, pois
+  $\Struct{M_2}$ é uma ordem linear densa sem extremos. Defina
+  $q = p \cup \{ \langle a, b \rangle \}$ de modo que $q \in \PIso{I}$ seja
+  a extensão desejada de $p$. Isso estabelece a propriedade de ida.
+  A propriedade de volta é análoga. Portanto, $\Struct{M_1} \iso[p]
+  \Struct{M_2}$; por \olref[pis]{thm:p-isom1}, $\Struct{M_1} \iso
   \Struct{M_2}$.
 \end{proof}
 
 \begin{prob}
-  Complete the proof of \olref[mod][bas][dlo]{thm:cantorQ} by
-  verifying that $\PIso{I}$ satisfies the Back property.
+  Complete a demonstração de \olref[mod][bas][dlo]{thm:cantorQ}
+  verificando que $\PIso{I}$ satisfaz a propriedade de volta.
 \end{prob}
 
 \begin{rem}
-  Let $\Struct{S}$ be any !!{enumerable} dense linear ordering without
-  endpoints. Then (by \olref{thm:cantorQ}) $\Struct{S} \iso
-  \Struct{Q}$, where $\Struct{Q} = (\Rat, <)$ is the !!{enumerable}
-  dense linear ordering having the set $\Rat$ of the rational numbers
-  as its domain. Now consider again the !!{structure}~$\Struct{R} =
-  (\Real, <)$ from \olref[thm]{remark:R}. We saw that there is
-  !!a{enumerable} !!{structure}~$\Struct{S}$ such that $\Struct{R}
-  \elemequiv \Struct{S}$. But $\Struct{S}$ is !!a{enumerable} dense
-  linear ordering without endpoints, and so it is isomorphic (and
-  hence elementarily equivalent) to the !!{structure}~$\Struct{Q}$. By
-  transitivity of elementary equivalence, $\Struct{R} \elemequiv
-  \Struct{Q}$. (We could have shown this directly by establishing
-  $\Struct{R} \iso[p] \Struct{Q}$ by the same back-and-forth
-  argument.)
+  Seja $\Struct{S}$ qualquer ordem linear densa !!{enumerable} sem
+  extremos. Então (por \olref{thm:cantorQ}) $\Struct{S} \iso
+  \Struct{Q}$, em que $\Struct{Q} = (\Rat, <)$ é a ordem linear densa !!{enumerable}
+  cujo domínio é o conjunto $\Rat$ dos números racionais.
+  Agora, considere novamente a !!{structure}~$\Struct{R} =
+  (\Real, <)$ de \olref[thm]{remark:R}. Vimos que existe
+  !!a{enumerable} !!{structure}~$\Struct{S}$ tal que $\Struct{R}
+  \elemequiv \Struct{S}$. Mas $\Struct{S}$ é !!a{enumerable} ordem
+  linear densa sem extremos e, portanto, é isomorfa (e,
+  consequentemente, elementarmente equivalente) à !!{structure}~$\Struct{Q}$. Pela
+  transitividade da equivalência elementar, $\Struct{R} \elemequiv
+  \Struct{Q}$. (Poderíamos ter demonstrado isso diretamente estabelecendo
+  $\Struct{R} \iso[p] \Struct{Q}$ pelo mesmo argumento de ida e volta.)
 \end{rem}
 \end{document}
