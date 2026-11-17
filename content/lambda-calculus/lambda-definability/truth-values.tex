@@ -6,73 +6,73 @@
 
 \begin{document}
 
-\olfileid{lam}{ldf}{tvr}
-\olsection{Truth Values and Relations}
+\olfileid[pt]{lam}{ldf}{tvr}
+\olsection{Valores de verdade e relações}
 
-We can encode truth values in the pure lambda calculus as follows:
+Podemos codificar valores de verdade no cálculo lambda puro da seguinte maneira:
 \begin{align*}
   \fn{true} & \ident \lambd[x][\lambd[y][x]]\\
   \fn{false} & \ident \lambd[x][\lambd[y][y]]
 \end{align*}
 
-Truth values are represented as \emph{selectors}, O.s.\@, functions that
-accept two arguments and returning one of them. The truth value
-$\fn{true}$ selects its first argument, and $\fn{false}$ its
-second. For example, $\fn{true}\, M N$ always reduces to $M$, while
-$\fn{false}\, M N$ always reduces to~$N$.
+Os valores de verdade são representados como \emph{seletores}, O.s.\@, funções que
+recebem dois argumentos e devolvem um deles. O valor de verdade
+$\fn{true}$ seleciona seu primeiro argumento, e $\fn{false}$, o
+segundo. Por exemplo, $\fn{true}\, M N$ sempre se reduz a $M$, ao passo que
+$\fn{false}\, M N$ sempre se reduz a~$N$.
 
 \begin{defn}
-We call a relation $R \subseteq \Nat^n$ !!{lambda definable} if there is
-a term~$R$ such that
+Dizemos que uma relação $R \subseteq \Nat^k$ é !!{lambda definable} se existe
+um termo~$R$ tal que
 \begin{align*}
   R\, \num{n_1} \dots \num{n_k} & \bred \fn{true}
-  \intertext{whenever $R(n_1, \dots, n_k)$ and}
+  \intertext{sempre que $R(n_1, \dots, n_k)$, e}
   R\, \num{n_1} \dots \num{n_k} & \bred \fn{false}
 \end{align*}
-otherwise.
+caso contrário.
 \end{defn}
 
-For instance, the relation $\fn{IsZero} = \{0\}$ which holds of $0$
-and $0$ only, is !!{lambda definable} by
+Por exemplo, a relação $\fn{IsZero} = \{0\}$, que vale para $0$
+e somente para $0$, é !!{lambda definable} por
 \[
   \fn{IsZero} \ident \lambd[n][n (\lambd[x][\fn{false}])\, \fn{true}].
 \]
-How does it work? Since Church numerals are defined as iterators
-(functions which apply their first argument $n$~times to the second),
-we set the initial value to be $\fn{true}$, and for every step of
-iteration, we return $\fn{false}$ regardless of the result of the last
-iteration.  This step will be applied to the initial value $n$
-times, and the result will be $\fn{true}$ if and only if the step is
-not applied at all, O.s.\@, when $n = 0$.
+Como isso funciona? Como os numerais de Church são definidos como iteradores
+(funções que aplicam seu primeiro argumento $n$~vezes ao segundo),
+fixamos o valor inicial como $\fn{true}$ e, a cada passo da
+iteração, devolvemos $\fn{false}$ independentemente do resultado da iteração
+anterior. Esse passo será aplicado ao valor inicial $n$
+vezes, e o resultado será $\fn{true}$ se, e somente se, o passo não for
+aplicado nenhuma vez, O.s.\@, quando $n = 0$.
 
-On the basis of this representation of truth values, we can further
-define some truth functions. Here are two, the representations of
-negation and conjunction:
+Com base nessa representação dos valores de verdade, podemos ainda
+definir algumas funções de verdade. Eis duas delas, as representações da
+negação e da conjunção:
 \begin{align*}
   \fn{Not} & \ident \lambd[x][x\, \fn{false}\, \fn{true}]\\
   \fn{And} & \ident \lambd[x][\lambd[y][xy \,\fn{false}]]
 \end{align*}
-The function ``$\fn{Not}$'' accepts one argument, and returns
-$\fn{true}$ if the argument is $\fn{false}$, and $\fn{false}$ if the
-argument is~$\fn{true}$.  The function ``$\fn{And}$'' accepts two
-truth values as arguments, and should return $\fn{true}$ iff both
-arguments are~$\fn{true}$. Truth values are represented as selectors
-(described above), so when $x$ is a truth value and is applied to two
-arguments, the result will be the first argument if $x$ is $\fn{true}$
-and the second argument otherwise. Now $\fn{And}$ takes its two
-arguments $x$ and $y$, and in return passes $y$ and $\fn{false}$ to
-its first argument~$x$. Assuming $x$ is a truth value, the result
-will evaluate to~$y$ if $x$ is $\fn{true}$, and to $\fn{false}$ if $x$
-is $\fn{false}$, which is just what is desired.
+A função ``$\fn{Not}$'' recebe um argumento e devolve
+$\fn{true}$ se o argumento for $\fn{false}$, e $\fn{false}$ se o
+argumento for~$\fn{true}$. A função ``$\fn{And}$'' recebe dois
+valores de verdade como argumentos e deve devolver $\fn{true}$ se, e somente se, ambos os
+argumentos forem~$\fn{true}$. Os valores de verdade são representados como seletores
+(descritos acima); portanto, quando $x$ é um valor de verdade e é aplicado a dois
+argumentos, o resultado será o primeiro argumento se $x$ for $\fn{true}$,
+e o segundo argumento caso contrário. Agora, $\fn{And}$ recebe seus dois
+argumentos $x$ e $y$ e passa, em resposta, $y$ e $\fn{false}$ a
+seu primeiro argumento~$x$. Supondo que $x$ seja um valor de verdade, o resultado
+será avaliado como~$y$ se $x$ for $\fn{true}$, e como $\fn{false}$ se $x$
+for $\fn{false}$, que é precisamente o que se deseja.
 
-Note that we assume here that only truth values are used as arguments
-to $\fn{And}$. If it is passed other terms, the result (O.s.\@, the
-normal form, if it exists) may well not be a truth value.
+Observe que supomos aqui que apenas valores de verdade são usados como argumentos
+de $\fn{And}$. Se outros termos lhe forem passados, o resultado (O.s.\@, a
+forma normal, se existir) pode muito bem não ser um valor de verdade.
 
 \begin{prob}
-  Define the functions $\fn{Or}$ and $\fn{Xor}$ representing the truth
-  functions of inclusive and exclusive disjunction using the encoding
-  of truth values as $\lambd$-terms.
+  Defina as funções $\fn{Or}$ e $\fn{Xor}$ que representam as funções de verdade
+  da disjunção inclusiva e da disjunção exclusiva usando a codificação
+  dos valores de verdade como termos-$\lambd$.
 \end{prob}
 
 \end{document}

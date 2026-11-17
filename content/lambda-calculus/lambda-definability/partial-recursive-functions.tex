@@ -6,38 +6,37 @@
 
 \begin{document}
 
-\olfileid{lam}{ldf}{par}
-\olsection{Partial Recursive Functions are \usetoken{S}{lambda definable}}
+\olfileid[pt]{lam}{ldf}{par}
+\olsection{As funções recursivas parciais são \usetoken{S}{lambda definable}}
 
-Partial recursive functions are those obtained from the basic
-functions by composition, primitive recursion, and unbounded
-minimization. They differ from general recursive function in that the
-functions used in unbounded search are not required to be regular.
-Not requiring regularity means that functions defined by minimization
-may sometimes not be defined. 
+As funções recursivas parciais são aquelas obtidas a partir das funções
+básicas por composição, recursão primitiva e minimização
+ilimitada. Elas diferem das funções recursivas gerais porque não se
+exige que as funções usadas na busca ilimitada sejam regulares.
+Não exigir regularidade significa que, às vezes, as funções definidas por minimização
+podem não estar definidas. 
 
-At first glance it might seem that the same methods used to show that
-the (total) general recursive functions are all !!{lambda definable} can
-be used to prove that all partial recursive functions are
-!!{lambda definable}.  For instance, the composition of $f$ with $g$ is
-!!{lambda define}d by $\lambd[x][F (G x)]$ if $f$ and $g$ are
-!!{lambda define}d by terms $F$ and~$G$, respectively. However, when the
-functions are partial, this is problematic. When $g(x)$ is undefined,
-meaning $G x$ has no normal form. In most cases this means that $F (G
-x)$ has no normal forms either, which is what we want.  But consider
-when $F$ is $\lambd[x][\lambd[y][y]]$, in which case $F (G x)$ does
-have a normal form ($\lambd[y][y]$). 
+À primeira vista, poderia parecer que os mesmos métodos usados para mostrar que
+as funções recursivas gerais (totais) são todas !!{lambda definable} podem
+ser usados para provar que todas as funções recursivas parciais são
+!!{lambda definable}. Por exemplo, a composição de $f$ com $g$ é
+!!{lambda define}d por $\lambd[x][F (G x)]$ se $f$ e $g$ são
+!!{lambda define}d pelos termos $F$ e~$G$, respectivamente. No entanto, quando as
+funções são parciais, isso é problemático. Quando $g(x)$ não está definida,
+isso significa que $G x$ não tem forma normal. Na maioria dos casos, isso significa que $F (G
+x)$ tampouco tem forma normal, que é o que queremos. Mas considere
+o caso em que $F$ é $\lambd[x][\lambd[y][y]]$: nesse caso, $F (G x)$ de fato
+tem uma forma normal ($\lambd[y][y]$). 
 
-This problem is not insurmountable, and there are ways to
-!!{lambda define} all partial recursive functions in such a way that
-undefined values are represented by terms without a normal form.
-These ways are, however, somewhat more complicated and less intuitive
-than the approach we have taken for general recursive functions. We
-record the theorem here without proof:
+Esse problema não é insuperável, e há maneiras de
+!!{lambda define} todas as funções recursivas parciais de modo que
+valores indefinidos sejam representados por termos sem forma normal.
+Essas maneiras, contudo, são um pouco mais complicadas e menos intuitivas
+que a abordagem que adotamos para as funções recursivas gerais. Registramos
+aqui o teorema sem prova:
 
 \begin{thm}
-  All partial recursive functions are !!{lambda definable}.
+  Todas as funções recursivas parciais são !!{lambda definable}.
 \end{thm}
 
 \end{document}
-

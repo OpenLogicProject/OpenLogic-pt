@@ -6,70 +6,69 @@
 
 \begin{document}
 
-\olfileid{lam}{int}{red}
-\olsection{Reduction of Lambda Terms}
+\olfileid[pt]{lam}{int}{red}
+\olsection{Redução de termos lambda}
 
-What can one do with lambda terms? Simplify them. If $M$ and $N$ are
-any lambda terms and $x$ is any variable, we can use $\Subst{M}{N}{x}$ to
-denote the result of substituting $N$ for~$x$ in~$M$, after renaming
-any bound variables of $M$ that would interfere with the free
-variables of~$N$ after the substitution. For example,
+O que se pode fazer com termos lambda? Simplificá-los. Se $M$ e $N$ são
+termos lambda quaisquer e $x$ é uma variável qualquer, podemos usar
+$\Subst{M}{N}{x}$ para denotar o resultado de tomar $N$ como substituto de~$x$
+em~$M$, depois de renomear quaisquer variáveis ligadas de $M$ que, após a
+substituição, interfeririam com as variáveis livres de~$N$. Por exemplo,
 \[
 \Subst{(\lambd[w][xxw])}{yyz}{x} = \lambd[w][(yyz)(yyz)w].
 \]
 
 \begin{digress}
-Alternative notations for substitution are $[N/x]M$, $[x/N]M$, and
-also $M[x/N]$. Beware!
+Notações alternativas para substituição são $[N/x]M$, $[x/N]M$ e também
+$M[x/N]$. Cuidado!
 \end{digress}
 
-Intuitively, $(\lambd[x][M])N$ and $\Subst{M}{N}{x}$ have the same
-meaning; the act of replacing the first term by the second is called
-\emph{$\beta$-contraction}. $(\lambd[x][M])N$ is called a \emph{redex}
-and $\Subst{M}{N}{x}$ its \emph{contractum}. Generally, if it is
-possible to change a term $P$ to~$P'$ by $\beta$-contraction of some
-subterm, we say that $P$ \emph{$\beta$-reduces to $P'$ in one step},
-and write $P \redone P'$. If from $P$ we can obtain~$P'$ with some
-number of one-step reductions (possibly none), then $P$
-\emph{$\beta$-reduces} to~$P'$; in symbols, $P \red P'$. A term that
-cannot be $\beta$-reduced any further is called
-\emph{$\beta$-irreducible}, or \emph{$\beta$-normal}. We will say
-``reduces'' instead of ``$\beta$-reduces,'' etc., when the context is
-clear.
+Intuitivamente, $(\lambd[x][M])N$ e $\Subst{M}{N}{x}$ têm o mesmo
+significado; o ato de substituir o primeiro termo pelo segundo é chamado de
+\emph{$\beta$-contração}. $(\lambd[x][M])N$ é chamado de \emph{redex}, e
+$\Subst{M}{N}{x}$, de seu \emph{contractum}. Em geral, se é possível
+transformar um termo $P$ em~$P'$ por uma $\beta$-contração de algum
+subtermo, dizemos que $P$ \emph{$\beta$-reduz-se a $P'$ em um passo} e
+escrevemos $P \redone P'$. Se, a partir de $P$, podemos obter~$P'$ por algum
+número de reduções em um passo (possivelmente nenhuma), então $P$
+\emph{$\beta$-reduz-se} a~$P'$; em símbolos, $P \red P'$. Um termo que não
+pode mais ser $\beta$-reduzido é chamado de \emph{$\beta$-irredutível}, ou
+\emph{$\beta$-normal}. Diremos ``reduz-se'' em vez de
+``$\beta$-reduz-se'' etc. quando o contexto for claro.
 
-Let us consider some examples.
+Consideremos alguns exemplos.
 \begin{enumerate}
-\item We have
+\item Temos
 \begin{align*}
 (\lambd[x][xxy]) \lambd[z][z] & \redone (\lambd[z][z])(\lambd[z][z]) y \\
 & \redone (\lambd[z][z]) y \\
 & \redone y.
 \end{align*}
-\item ``Simplifying'' a term can make it more complex:
+\item ``Simplificar'' um termo pode torná-lo mais complexo:
 \begin{align*}
 (\lambd[x][xxy])(\lambd[x][xxy]) & \redone (\lambd[x][xxy])(\lambd[x][xxy])y \\
 & \redone (\lambd[x][xxy])(\lambd[x][xxy])yy \\
 & \redone \dots
 \end{align*}
-\item It can also leave a term unchanged:
+\item A redução também pode deixar um termo inalterado:
 \[
 (\lambd[x][xx])(\lambd[x][xx]) \redone (\lambd[x][xx])(\lambd[x][xx]).
 \]
-\item Also, some terms can be reduced in more than one way; for
-  example,
+\item Além disso, alguns termos podem ser reduzidos de mais de uma maneira;
+  por exemplo,
 \[
 (\lambd[x][(\lambd[y][yx]) z)] v \redone (\lambd[y][yv]) z
 \]
-by contracting the outermost application; and
+contraindo a aplicação mais externa; e
 \[
 (\lambd[x][(\lambd[y][yx]) z)] v \redone (\lambd[x][zx]) v
 \]
-by contracting the innermost one. Note, in this case, however, that
-both terms further reduce to the same term, $zv$.
+contraindo a mais interna. Observe, porém, que nesse caso ambos os termos se
+reduzem depois ao mesmo termo, $zv$.
 \end{enumerate}
 
-The final outcome in the last example is not a coincidence, but rather
-illustrates a deep and important property of the lambda calculus, known as the
-``Church--Rosser property.''
+O resultado final no último exemplo não é coincidência; ele ilustra uma
+propriedade profunda e importante do cálculo lambda, conhecida como
+``propriedade de Church--Rosser''.
 
 \end{document}

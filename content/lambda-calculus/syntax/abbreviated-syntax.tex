@@ -6,39 +6,40 @@
 
 \begin{document}
 
-\olfileid{lam}{syn}{abb}
-\olsection{Abbreviated Syntax}
+\olfileid[pt]{lam}{syn}{abb}
+\olsection{Sintaxe abreviada}
 
-Terms as defined in \olref[trm]{defn:term} are sometimes cumbersome to
-write, so it is useful to introduce a more concise syntax. We must of
-course be careful to make sure that the terms in the concise notation
-also are uniquely readable.  One widely used version called
-\emph{abbreviated terms} is as follows.
+Os termos definidos em \olref[trm]{defn:term} às vezes são incômodos de
+escrever; por isso, é útil introduzir uma sintaxe mais concisa. Devemos,
+naturalmente, ter o cuidado de garantir que os termos na notação concisa
+também tenham leitura única. Uma versão amplamente usada, chamada
+\emph{termos abreviados}, é a seguinte.
 
 \begin{enumerate}
-\item When parentheses are left out, application takes place from left
-  to right. For example, if $M$, $N$, $P$, and~$Q$ are terms, then
-  $MNPQ$ abbreviates $(((MN)P)Q)$.
-\item Again, when parentheses are left out, lambda abstraction is
-  given the widest scope possible. From example, $\lambd[x][MNP]$ is
-  read as $(\lambd[x][MNP])$.
-\item A lambda can be used to abstract multiple variables. For
-  example, $\lambd[xyz][M]$ is short for
+\item Quando os parênteses são omitidos, a aplicação é feita da esquerda
+  para a direita. Por exemplo, se $M$, $N$, $P$ e~$Q$ são termos, então
+  $MNPQ$ abrevia $(((MN)P)Q)$.
+\item Novamente, quando os parênteses são omitidos, a abstração lambda recebe
+  o maior escopo possível. Por exemplo, $\lambd[x][MNP]$ é lido como
+  $(\lambd[x][MNP])$.
+\item Um lambda pode ser usado para abstrair várias variáveis. Por exemplo,
+  $\lambd[xyz][M]$ abrevia
   $\lambd[x][\lambd[y][\lambd[z][M]]]$.
 \end{enumerate}
 
-For example,
+Por exemplo,
 \[
 \lambd[xy][xxyx \lambd[z][xz]]
 \]
-abbreviates
+abrevia
 \[
 (\lambd[x][(\lambd[y][((((xx)y)x)(\lambd[z][(xz)]))])]).
 \]
 
 \begin{prob}
-Expand the abbreviated term $\lambd[g][(\lambd[x][g (x x)])
+Expanda o termo abreviado $\lambd[g][(\lambd[x][g (x x)])
   \lambd[x][g (x x)]]$.
 \end{prob}
 
 \end{document}
+

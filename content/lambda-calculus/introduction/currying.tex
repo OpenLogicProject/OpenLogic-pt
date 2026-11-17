@@ -6,52 +6,49 @@
 
 \begin{document}
 
-\olfileid{lam}{rep}{cur} 
+\olfileid[pt]{lam}{rep}{cur} 
 \olsection{Currying}
 
-A $\lambd$-abstract $\lambd[x][M]$ represents a function of one
-argument, which is quite a limitation when we want to define function
-accepting multiple arguments.  One way to do this would be by
-extending the $\lambd$-calculus to allow the formation of pairs,
-triples, etc., in which case, say, a three-place function
-$\lambd[x][M]$ would expect its argument to be a triple.  However, it
-is more convenient to do this by \emph{Currying}.
+Uma abstração-$\lambd$ $\lambd[x][M]$ representa uma função de um
+argumento, o que é bastante limitante quando queremos definir uma função que
+aceita vários argumentos. Uma maneira de fazer isso seria estender o
+cálculo-$\lambd$ para permitir a formação de pares, triplas etc.; nesse
+caso, digamos, uma função ternária $\lambd[x][M]$ esperaria que seu argumento
+fosse uma tripla. Contudo, é mais conveniente fazer isso por meio de
+\emph{Currying}.
 
-Let's consider an example. We'll pretend for a moment that we have a
-$+$ operation in the $\lambd$-calculus. The addition function is
-$2$-place, O.s.\@, it takes two arguments.  But a $\lambd$-abstract only
-gives us functions of one argument: the syntax does not allow
-expressions like $\lambd[(x,y)][(x+y)]$.  However, we can consider the
-one-place function~$f_x(y)$ given by $\lambd[y][(x+y)]$, which adds
-$x$ to its single argument~$y$.  Actually, this is not a single
-function, but a family of different functions ``add $x$,'' one for
-each number~$x$.  Now we can define another one-place function~$g$ as
-$\lambd[x][f_x]$. Applied to argument $x$, $g(x)$ returns the
-function~$f_x$---so its values are other functions.  Now if we apply
-$g$ to $x$, and then the result to~$y$ we get: $(g(x))y = f_x(y) =
-x+y$.  In this way, the one-place function~$g$ can do the same job as
-the two-place addition function. ``Currying'' simply refers to this
-trick for turning two-place functions into one place functions (whose
-values are one-place functions).
+Consideremos um exemplo. Fingiremos por um momento que temos uma operação
+$+$ no cálculo-$\lambd$. A função de adição é de $2$ argumentos, O.s.\@, recebe dois
+argumentos. Mas uma abstração-$\lambd$ só nos dá funções de um argumento: a
+sintaxe não permite expressões como $\lambd[(x,y)][(x+y)]$. Podemos, porém,
+considerar a função unária~$f_x(y)$ dada por $\lambd[y][(x+y)]$, que soma
+$x$ a seu único argumento~$y$. Na verdade, essa não é uma única função, mas
+uma família de funções diferentes, ``somar $x$'', uma para cada número~$x$.
+Podemos agora definir outra função unária~$g$ como $\lambd[x][f_x]$.
+Aplicada ao argumento $x$, $g(x)$ devolve a função~$f_x$---portanto, seus
+valores são outras funções. Agora, se aplicarmos $g$ a $x$ e depois o
+resultado a~$y$, obtemos: $(g(x))y = f_x(y) = x+y$. Desse modo, a função
+unária~$g$ pode cumprir a mesma tarefa que a função binária de adição.
+``Currying'' designa simplesmente esse artifício de transformar funções
+binárias em funções unárias (cujos valores são funções unárias).
 
-Here is an example properly in the syntax of the $\lambd$-calculus.
-How do we represent the function $f(x,y) = x$? If we want to define a
-function that accepts two arguments and returns the first, we can
-write $\lambd[x][\lambd[y][x]]$, which literally is a function that
-accepts an argument~$x$ and returns the function~$\lambd[y][x]$. The
-function $\lambd[y][x]$ accepts another argument~$y$, but drops it,
-and always returns~$x$.  Let's see what happens when we apply
-$\lambd[x][\lambd[y][x]]$ to two arguments:
+Eis um exemplo propriamente na sintaxe do cálculo-$\lambd$. Como
+representamos a função $f(x,y) = x$? Se queremos definir uma função que
+aceita dois argumentos e devolve o primeiro, podemos escrever
+$\lambd[x][\lambd[y][x]]$, que literalmente é uma função que aceita um
+argumento~$x$ e devolve a função~$\lambd[y][x]$. A função $\lambd[y][x]$
+aceita outro argumento~$y$, mas o descarta e sempre devolve~$x$. Vejamos o
+que acontece quando aplicamos $\lambd[x][\lambd[y][x]]$ a dois argumentos:
 \begin{align*}
   (\lambd[x][\lambd[y][x]])MN 
   \bredone & (\lambd[y][M])N \\
   \bredone & M
 \end{align*}
 
-In general, to write a function with parameters $x_1$, \dots,~$x_n$
-defined by some term~$N$, we can write
-$\lambd[x_1][\lambd[x_2][\ldots\lambd[x_n][N]]]$. If we apply $n$ arguments
-to it we get:
+Em geral, para escrever uma função com parâmetros $x_1$, \dots,~$x_n$
+definida por algum termo~$N$, podemos escrever
+$\lambd[x_1][\lambd[x_2][\ldots\lambd[x_n][N]]]$. Se lhe aplicarmos $n$
+argumentos, obtemos:
 \begin{multline*}
   (\lambd[x_1][\lambd[x_2][\ldots\lambd[x_n][N]]]) M_1 \dots M_n \bredone\\
   \begin{aligned}
@@ -63,8 +60,8 @@ to it we get:
   \bredone {} &\Subst{\Subst{P}{M_1}{x_1}\ldots}{M_n}{x_n}
   \end{aligned}
 \end{multline*}
-The last line literally means substituting $M_i$ for $x_i$ in the body
-of the function definition, which is exactly what we want when
-applying multiple arguments to a function.
+A última linha significa literalmente tomar $M_i$ como substituto de $x_i$ no corpo
+da definição da função, exatamente o que queremos ao aplicar vários
+argumentos a uma função.
 \end{document}
 
