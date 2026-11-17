@@ -6,65 +6,65 @@
 
 \begin{document}
 
-\olfileid{aml}{el}{psm}
+\olfileid[pt]{aml}{el}{psm}
 
-\olsection{Semantics of Public Announcement Logic}
+\olsection{Semântica da lógica de anúncios públicos}
 
-Relational models for public announcement logics are the same as they
-were in epistemic logics. However, the semantics for the public
-announcement operator are something new.
+Os modelos relacionais das lógicas de anúncios públicos são os mesmos
+das lógicas epistêmicas. A semântica do operador de anúncio público,
+porém, é nova.
 
-\begin{defn}\ollabel{defn:mmodels} \emph{Truth of !!a{formula}~$!A$
-  at~$w$} in a~$\mModel M = \tuple{W, R, V}$, in symbols:
-  $\mSat{M}{!A}[w]$, is defined inductively as follows:
+\begin{defn}\ollabel{defn:mmodels} A \emph{verdade de !!a{formula}~$!A$
+  em~$w$} em um~$\mModel M = \tuple{W, R, V}$, em símbolos
+  $\mSat{M}{!A}[w]$, é definida indutivamente da seguinte maneira:
   \begin{enumerate}
-  \tagitem{prvFalse}{\indcase{!A}{\lfalse}{Never $\mSat{M}{\lfalse}[w]$}.}{}
-  \tagitem{prvTrue}{\indcase{!A}{\ltrue}{Always $\mSat{M}{\ltrue}[w]$}.}{}
-  \item $\mSat{M}{p}[w]$ iff $w \in V(p)$
-  \tagitem{prvNot}{\indcase{!A}{\lnot !B}{$\mSat{M}{\indfrm}[w]$ iff
+  \tagitem{prvFalse}{\indcase{!A}{\lfalse}{Nunca $\mSat{M}{\lfalse}[w]$}.}{}
+  \tagitem{prvTrue}{\indcase{!A}{\ltrue}{Sempre $\mSat{M}{\ltrue}[w]$}.}{}
+  \item $\mSat{M}{p}[w]$ sse $w \in V(p)$
+  \tagitem{prvNot}{\indcase{!A}{\lnot !B}{$\mSat{M}{\indfrm}[w]$ sse
     $\mSat/{M}{!B}[w]$}.}{}
-  \tagitem{prvAnd}{\indcase{!A}{(!B \land !C)}{$\mSat{M}{\indfrm}[w]$ iff
-    $\mSat{M}{!B}[w]$ and $\mSat{M}{!C}[w]$}.}{}
-  \tagitem{prvOr}{\indcase{!A}{(!B \lor !C)}{$\mSat{M}{\indfrm}[w]$ iff
-    $\mSat{M}{!B}[w]$ or $\mSat{M}{!C}[w]$} (or both).}{}
-  \tagitem{prvIf}{\indcase{!A}{(!B \lif !C)}{$\mSat{M}{\indfrm}[w]$ iff
-    $\mSat/{M}{!B}[w]$ or $\mSat{M}{!C}[w]$}.}{}
-  \tagitem{prvIff}{\indcase{!A}{(!B \liff !C)}{$\mSat{M}{\indfrm}[w]$ iff
-    either both $\mSat{M}{!B}[w]$ and $\mSat{M}{!C}[w]$ or
-    neither $\mSat{M}{!B}[w]$ nor $\mSat{M}{!C}[w]$}.}{}
+  \tagitem{prvAnd}{\indcase{!A}{(!B \land !C)}{$\mSat{M}{\indfrm}[w]$ sse
+    $\mSat{M}{!B}[w]$ e $\mSat{M}{!C}[w]$}.}{}
+  \tagitem{prvOr}{\indcase{!A}{(!B \lor !C)}{$\mSat{M}{\indfrm}[w]$ sse
+    $\mSat{M}{!B}[w]$ ou $\mSat{M}{!C}[w]$} (ou ambos).}{}
+  \tagitem{prvIf}{\indcase{!A}{(!B \lif !C)}{$\mSat{M}{\indfrm}[w]$ sse
+    $\mSat/{M}{!B}[w]$ ou $\mSat{M}{!C}[w]$}.}{}
+  \tagitem{prvIff}{\indcase{!A}{(!B \liff !C)}{$\mSat{M}{\indfrm}[w]$ sse
+    ou ambos $\mSat{M}{!B}[w]$ e $\mSat{M}{!C}[w]$, ou
+    nem $\mSat{M}{!B}[w]$ nem $\mSat{M}{!C}[w]$}.}{}
   \item\ollabel{defn:sub:mmodels-box}
-    \indcase{!A}{\Knows_a !B}{$\mSat{M}{\indfrm}[w]$ iff
-    $\mSat{M}{!B}[w']$ for all $w' \in W$ with $R_a ww'$}
+    \indcase{!A}{\Knows_a !B}{$\mSat{M}{\indfrm}[w]$ sse
+    $\mSat{M}{!B}[w']$ para todo $w' \in W$ tal que $R_a ww'$}
   \item\ollabel{defn:sub:mmodels-pal}
-    \indcase{!A}{[!B] !C}{$\mSat{M}{\indfrm}[w]$ iff
-    $\mSat{M}{!B}[w]$ implies $\mSat{M \mid !B}{!C}[w]$}
+    \indcase{!A}{[!B] !C}{$\mSat{M}{\indfrm}[w]$ sse
+    $\mSat{M}{!B}[w]$ implica $\mSat{M \mid !B}{!C}[w]$}
 
   
-  Where $\mModel M \mid !B = \tuple{W', R', V'}$ is defined as
-  follows:
+  Em que $\mModel M \mid !B = \tuple{W', R', V'}$ é definido da
+  seguinte maneira:
   \begin{enumerate}
-    \item $W' = \Setabs{ u \in W}{\mSat{M}{!B}[u]}$. So the worlds of
-      $\mModel M \mid !B$ are the worlds in~$\mModel M$ at which $!B$
-      holds.
-    \item $R'_a = R_a \cap (W' \times W')$. Each agent's accessibility
-      relation is simply restricted to the worlds that remain in~$W'$.
-    \item $V'(p) = \Setabs{ u \in W'}{u \in V(p) }$. Similarly, the
-      propositional valuations at worlds remain the same, representing
-      the idea that informational events will not change the truth
-      value of propositional variables.
+    \item $W' = \Setabs{ u \in W}{\mSat{M}{!B}[u]}$. Assim, os mundos de
+      $\mModel M \mid !B$ são os mundos de~$\mModel M$ nos quais $!B$
+      vale.
+    \item $R'_a = R_a \cap (W' \times W')$. A relação de acessibilidade
+      de cada agente é simplesmente restringida aos mundos que permanecem em~$W'$.
+    \item $V'(p) = \Setabs{ u \in W'}{u \in V(p) }$. De modo semelhante,
+      as valorações proposicionais nos mundos permanecem as mesmas, o que
+      representa a ideia de que eventos informacionais não alteram o
+      valor de verdade das variáveis proposicionais.
   \end{enumerate}
   
   \end{enumerate} 
 \end{defn}
 
-What is distinctive, then, about public announcement logics, is that
-the truth of !!a{formula} at~$\mModel M$ can sometimes only be decided
-by referring to a model other than~$\mModel M$ itself.
+O aspecto distintivo das lógicas de anúncios públicos, portanto, é que
+a verdade de !!a{formula} em~$\mModel M$ às vezes só pode ser decidida
+por referência a um modelo diferente do próprio~$\mModel M$.
 
-Notice also that our semantics treats the announcement operator as a
-$\Box$~operator, and so if !!a{formula}~$!A$ cannot be truthfully
-announced at a world, then $[!A]B$ will hold there trivially, just as
-all $\Box$ !!{formula}s hold at endpoints. 
+Observe também que nossa semântica trata o operador de anúncio como um
+operador~$\Box$; assim, se !!a{formula}~$!A$ não pode ser anunciada de
+modo verídico em um mundo, então $[!A]B$ valerá ali trivialmente, assim
+como todas as !!{formula}s $\Box$ valem em pontos terminais. 
 
 \begin{figure}
   \begin{center}
@@ -87,39 +87,39 @@ all $\Box$ !!{formula}s hold at endpoints.
       \node(m)[below=of w1]{$\mModel M$};
       \node(m')[below=of v1]{$\mModel M \mid p$}; 
 
-      \draw[-,dotted] (w1) to node {\footnotesize announcement of $p$}(v1) ;
+      \draw[-,dotted] (w1) to node {\footnotesize anúncio de $p$}(v1) ;
      
     \end{tikzpicture}
   \end{center}
-  \caption{Before and after the public announcement of $p$.}
+  \caption{Antes e depois do anúncio público de $p$.}
   \ollabel{fig:announcement-example}
 \end{figure}
 
-We can see the public announcement of !!a{formula} as shrinking a
-model, or restricting it to the worlds at which the !!{formula} was
-true. \olref{fig:announcement-example} gives an example of the effects
-of publicly announcing~$p$. One notable thing about that model is that
-agent~$b$ learns that~$p$ as a result of the announcement, while
-agent~$a$ does not (since $a$ already knew that~$p$ was true).
+Podemos entender o anúncio público de !!a{formula} como uma redução do
+modelo, ou como sua restrição aos mundos nos quais a !!{formula} era
+verdadeira. \olref{fig:announcement-example} apresenta um exemplo dos
+efeitos do anúncio público de~$p$. Um aspecto notável desse modelo é
+que o agente~$b$ passa a saber que~$p$ como resultado do anúncio,
+enquanto o agente~$a$ não (pois $a$ já sabia que~$p$ era verdadeira).
 
-More formally, we have $\mSat{M}{\lnot \Knows_b p}[w_1]$ but $\mSat{M
-\mid p}{\Knows_b p}[w'_1]$. This implies that $\mSat{M}{[p] \Knows_b
-p}[w_1]$. But we have some even stronger claims that we can make about
-the result of the announcement. In fact, it is the case that
-$\mSat{M}{[p]\CKnows_{\{a,b\}} p}[w_1]$. In other words, after $p$ is
-announced, it becomes \emph{common knowledge}.
+Mais formalmente, temos $\mSat{M}{\lnot \Knows_b p}[w_1]$, mas $\mSat{M
+\mid p}{\Knows_b p}[w'_1]$. Isso implica $\mSat{M}{[p] \Knows_b
+p}[w_1]$. Podemos, porém, fazer afirmações ainda mais fortes sobre o
+resultado do anúncio. De fato,
+$\mSat{M}{[p]\CKnows_{\{a,b\}} p}[w_1]$. Em outras palavras, depois que
+$p$ é anunciada, ela se torna \emph{conhecimento comum}.
 
-We might wonder, though, whether this holds in the general case, and
-whether a truthful announcement of~$!A$ will \emph{always} result in
-$!A$ becoming common knowledge. It may be surprising that the answer
-is no. And in fact, it is possible to truthfully announce !!{formula}s
-that will no longer be true once they are announced. For example,
-consider the effects of announcing $p \land \lnot \Knows_b p$ at~$w_1$
-in \olref{fig:announcement-example}. In fact, $\mModel M \mid p$ and
-$\mModel M \mid (p \land \lnot \Knows_b p)$ are the same model.
-However, as we have already noted, $\mSat{M \mid p}{\Knows_b
-p}[w'_1]$. Therefore, $\mSat{M \mid (p \land \lnot \Knows_b p)}{\lnot
-(p \land \lnot \Knows_b p)}[w'_1]$, so this is !!a{formula} that
-becomes false once it has been announced. 
+Podemos perguntar, porém, se isso vale no caso geral e se um anúncio
+verídico de~$!A$ fará \emph{sempre} com que $!A$ se torne conhecimento
+comum. Talvez seja surpreendente que a resposta seja não. De fato, é
+possível anunciar de modo verídico !!{formula}s que deixam de ser
+verdadeiras assim que são anunciadas. Considere, por exemplo, os efeitos
+de anunciar $p \land \lnot \Knows_b p$ em~$w_1$ na
+\olref{fig:announcement-example}. Na realidade, $\mModel M \mid p$ e
+$\mModel M \mid (p \land \lnot \Knows_b p)$ são o mesmo modelo.
+Entretanto, como já observamos, $\mSat{M \mid p}{\Knows_b
+p}[w'_1]$. Portanto, $\mSat{M \mid (p \land \lnot \Knows_b p)}{\lnot
+(p \land \lnot \Knows_b p)}[w'_1]$; assim, essa é !!a{formula} que se
+torna falsa depois de ser anunciada. 
 
 \end{document}

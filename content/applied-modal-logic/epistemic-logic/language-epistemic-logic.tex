@@ -6,82 +6,84 @@
 
 \begin{document}
 
-\olfileid{aml}{el}{lan}
+\olfileid[pt]{aml}{el}{lan}
 
-\olsection{The Language of Epistemic Logic}
+\olsection{A linguagem da lógica epistêmica}
 
 \begin{defn}
-Let $G$ be a set of agent-symbols. The basic language of multi-agent
-epistemic logic contains
+Seja $G$ um conjunto de símbolos de agentes. A linguagem básica da
+lógica epistêmica multiagente contém:
 \begin{enumerate}
-  \tagitem{prvFalse}{The propositional constant for !!{falsity}~$\lfalse$.}{}
-  \tagitem{prvTrue}{The propositional constant for !!{truth}~$\ltrue$.}{}
-  \item A !!{denumerable}s set of !!{propositional variable}s: $\Obj
+  \tagitem{prvFalse}{A constante proposicional de !!{falsity}~$\lfalse$.}{}
+  \tagitem{prvTrue}{A constante proposicional de !!{truth}~$\ltrue$.}{}
+  \item Um conjunto de elementos !!{denumerable}s, as !!{propositional variable}s: $\Obj
     p_0$, $\Obj p_1$, $\Obj p_2$, \dots
-  \item The propositional connectives: \startycommalist
-  \iftag{prvNot}{\ycomma $\lnot$ (negation)}{}%
-  \iftag{prvAnd}{\ycomma $\land$ (conjunction)}{}%
-  \iftag{prvOr}{\ycomma $\lor$ (disjunction)}{}%
+  \item Os conectivos proposicionais: \startycommalist
+  \iftag{prvNot}{\ycomma $\lnot$ (negação)}{}%
+  \iftag{prvAnd}{\ycomma $\land$ (conjunção)}{}%
+  \iftag{prvOr}{\ycomma $\lor$ (disjunção)}{}%
   \iftag{prvIf}{\ycomma $\lif$ (!!{conditional})}{}%
   \iftag{prvIff}{\ycomma $\liff$ (!!{biconditional})}{}.
-  \item The knowledge operator $\Knows_a$ where $a \in G$.
+  \item O operador de conhecimento $\Knows_a$, em que $a \in G$.
 \end{enumerate}
 \end{defn}
 
-If we are only concerned with the knowledge of a single agent in our
-system, we can drop the reference to the set~$G$, and individual
-agents. In that case, we only have the basic operator~$\Knows$.
+Se estivermos interessados apenas no conhecimento de um único agente
+em nosso sistema, podemos omitir a referência ao conjunto~$G$ e aos
+agentes individuais. Nesse caso, temos apenas o operador
+básico~$\Knows$.
 
 \begin{defn}
-\emph{!!^{formula}s} of the epistemic language are inductively
-  defined as follows:
+As \emph{!!^{formula}s} da linguagem epistêmica são definidas
+  indutivamente da seguinte maneira:
 \begin{enumerate}
-\tagitem{prvFalse}{$\lfalse$ is an atomic !!{formula}.}{}
+\tagitem{prvFalse}{$\lfalse$ é uma !!{formula} atômica.}{}
 
-\tagitem{prvTrue}{$\ltrue$ is an atomic !!{formula}.}{}
+\tagitem{prvTrue}{$\ltrue$ é uma !!{formula} atômica.}{}
 
-\item Every propositional variable $\Obj p_i$ is an (atomic) !!{formula}.
+\item Toda variável proposicional $\Obj p_i$ é uma !!{formula} (atômica).
 
-\tagitem{prvNot}{If $!A$ is !!a{formula}, then $\lnot !A$ is
+\tagitem{prvNot}{Se $!A$ é !!a{formula}, então $\lnot !A$ é
   !!a{formula}.}{}
 
-\tagitem{prvAnd}{If $!A$ and $!B$ are !!{formula}s, then $(!A \land
-  !B)$ is !!a{formula}.}{}
+\tagitem{prvAnd}{Se $!A$ e $!B$ são !!{formula}s, então $(!A \land
+  !B)$ é !!a{formula}.}{}
 
-\tagitem{prvOr}{If $!A$ and $!B$ are !!{formula}s, then $(!A \lor !B)$
-  is !!a{formula}.}{}
+\tagitem{prvOr}{Se $!A$ e $!B$ são !!{formula}s, então $(!A \lor !B)$
+  é !!a{formula}.}{}
 
-\tagitem{prvIf}{If $!A$ and $!B$ are !!{formula}s, then $(!A \lif !B)$
-  is !!a{formula}.}{}
+\tagitem{prvIf}{Se $!A$ e $!B$ são !!{formula}s, então $(!A \lif !B)$
+  é !!a{formula}.}{}
 
-\tagitem{prvIff}{If $!A$ and $!B$ are !!{formula}s, then $(!A \liff !B)$
-  is !!a{formula}.}{}
+\tagitem{prvIff}{Se $!A$ e $!B$ são !!{formula}s, então $(!A \liff !B)$
+  é !!a{formula}.}{}
 
-\item If $!A$ is !!a{formula} and $a \in G$, then $\Knows_a !A$ is
+\item Se $!A$ é !!a{formula} e $a \in G$, então $\Knows_a !A$ é
   !!a{formula}.
 
-\tagitem{limitClause}{Nothing else is !!a{formula}.}{}
+\tagitem{limitClause}{Nada mais é !!a{formula}.}{}
 \end{enumerate}
 \end{defn}
 
-If !!a{formula}~$!A$ does not contain $\Knows_a$, we say it
-is \emph{modal-free}.
+Se !!a{formula}~$!A$ não contém $\Knows_a$, dizemos que ela é
+\emph{livre de modalidade}.
 
 \begin{defn}
-  While the $\Knows$ operator is intended to symbolize individual
-  knowledge, $\EKnows$, often read as ``everybody knows,'' symbolizes
-  group knowledge. Where $G' \subseteq G$, we define $\EKnows_{G'} !A$
- as an abbreviation for \[\bigwedge_{b \in G'} \Knows_b !A.\]
+  Enquanto o operador $\Knows$ simboliza o conhecimento individual,
+  $\EKnows$, frequentemente lido como ``todos sabem'', simboliza o
+  conhecimento do grupo. Se $G' \subseteq G$, definimos $\EKnows_{G'} !A$
+ como abreviação de \[\bigwedge_{b \in G'} \Knows_b !A.\]
 \end{defn}
 
-We can also define an even stronger sense of knowledge, namely
-\emph{common knowledge} among a group of agents~$G$. When a piece of
-information is common knowledge among a group of agents, it means that
-for every combination of agents in that group, they all know that each
-other knows that each other knows \dots ad infinitum. This is
-significantly stronger than group knowledge, and it is easy to come up
-with relational models in which !!a{formula} is group knowledge, but
-not common knowledge. We will use $\CKnows_G !A$ to symbolize ``it is
-common knowledge among~$G$ that~$!A$.''
+Também podemos definir um sentido ainda mais forte de conhecimento: o
+\emph{conhecimento comum} entre um grupo de agentes~$G$. Quando uma
+informação é conhecimento comum entre um grupo de agentes, isso
+significa que, para toda combinação de agentes do grupo, todos sabem
+que os demais sabem que os demais sabem \dots ad infinitum. Essa noção
+é consideravelmente mais forte do que o conhecimento do grupo, e é
+fácil construir modelos relacionais nos quais !!a{formula} é
+conhecimento do grupo, mas não conhecimento comum. Usaremos
+$\CKnows_G !A$ para simbolizar ``é conhecimento comum entre~$G$
+que~$!A$.''
 
 \end{document}

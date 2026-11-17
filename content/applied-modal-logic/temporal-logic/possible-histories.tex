@@ -6,70 +6,72 @@
 
 \begin{document}
 
-\olfileid{aml}{tl}{poss}
+\olfileid[pt]{aml}{tl}{poss}
 
-\olsection{Possible Histories}
+\olsection{Histórias possíveis}
 
-The relational models of temporal logic that we have been using are
-extremely flexible, since we do not have to place any restrictions on
-the accessibility relation. This means that temporal models can branch
-in the past and in the future, but we might want to consider a more
-``modal'' conception of branching, in which we consider sequences of
-events as possible histories. This does not necessarily require
-changing our language, though we might also add our ``ordinary'' modal
-operators $\Box$ and~$\Diamond$, and we could also consider adding
-epistemic accessibility relations to represent changes in agents'
-knowledge over time.
+Os modelos relacionais de lógica temporal que temos usado são
+extremamente flexíveis, pois não precisamos impor restrição alguma à
+relação de acessibilidade. Isso significa que os modelos temporais
+podem ramificar-se no passado e no futuro, mas talvez queiramos
+considerar uma concepção mais ``modal'' de ramificação, na qual
+sequências de acontecimentos são tratadas como histórias possíveis.
+Isso não exige necessariamente uma mudança de linguagem, embora
+também possamos acrescentar os operadores modais ``usuais'' $\Box$
+e~$\Diamond$, bem como relações de acessibilidade epistêmica para
+representar mudanças no conhecimento dos agentes ao longo do tempo.
 
 \begin{defn}
-  A \emph{possible histories model} for the temporal language is a triple
-  $\mModel{M} = \tuple{T, C, V}$, where
+  Um \emph{modelo de histórias possíveis} para a linguagem temporal é uma tripla
+  $\mModel{M} = \tuple{T, C, V}$, em que
   \begin{enumerate}
-    \item $T$ is a nonempty set, interpreted as states in time.
-    \item $C$ is a set of computational paths, or \emph{possible
-      histories} of a system. In other words, $C$~is a set of
-      sequences~$\sigma$ of states $s_1$, $s_2$,~$s_3$, \dots, where
-      every $s_i \in T$.
-    \item $V$ is a function assigning to each !!{propositional
-      variable}~$p$ a set~$V(p)$ of points in time.
+    \item $T$ é um conjunto não vazio, interpretado como estados temporais.
+    \item $C$ é um conjunto de trajetórias computacionais, ou
+      \emph{histórias possíveis}, de um sistema. Em outras palavras,
+      $C$~é um conjunto de sequências~$\sigma$ de estados $s_1$,
+      $s_2$,~$s_3$, \dots, em que todo $s_i \in T$.
+    \item $V$ é uma função que atribui a cada !!{propositional
+      variable}~$p$ um conjunto~$V(p)$ de instantes temporais.
   \end{enumerate}
-  To make things simpler, we will also generally assume that when a
-  history is in~$C$, then so are all of its suffixes. For example, if
-  $s_1$, $s_2$,~$s_3$ is a sequence in~$C$, then so are $s_2$, $s_3$
-  and~$s_3$. Also, when two states $s_i$ and~$s_j$ appear in a
-  sequence~$\sigma$, we say that $s_i \prec_\sigma s_j$ when $i < j$.
-  When $t \in V(p)$ we say $p$~is \emph{true at}~$t$.
+  Para simplificar, em geral também suporemos que, quando uma história
+  pertence a~$C$, todos os seus sufixos também pertencem. Por exemplo,
+  se $s_1$, $s_2$,~$s_3$ é uma sequência em~$C$, então $s_2$, $s_3$
+  e~$s_3$ também o são. Além disso, quando dois estados $s_i$ e~$s_j$
+  aparecem em uma sequência~$\sigma$, dizemos que
+  $s_i \prec_\sigma s_j$ quando $i < j$. Quando $t \in V(p)$, dizemos
+  que $p$~é \emph{verdadeira em}~$t$.
 \end{defn}
 
-The one relevant change is that when we evaluate the truth of
-!!a{formula} at a point in time~$t$ in a model~$\mModel M$, we do so
-relative to a history~$\sigma$, in which $t$ appears as a state. We do
-not need to change any of the semantics for !!{propositional
-variable}s or for truth-functional connectives, though. All of those
-are exactly as they were in \olref[sem]{defn:tmodels}, since none of
-those will make reference to~$\sigma$. However, we now redefine our
-future operator~$\Ftemp$ and add our~$\Diamond$ operator with respect
-to these histories. 
+A única mudança relevante é que, ao avaliarmos a verdade de
+!!a{formula} em um instante~$t$ de um modelo~$\mModel M$, fazemos isso
+em relação a uma história~$\sigma$, na qual $t$ aparece como estado.
+Não precisamos, contudo, mudar a semântica das !!{propositional
+variable}s nem a dos conectivos vero-funcionais. Elas permanecem
+exatamente como em \olref[sem]{defn:tmodels}, pois nenhuma faz
+referência a~$\sigma$. Agora, porém, redefinimos o operador de
+futuro~$\Ftemp$ e acrescentamos o operador~$\Diamond$ em relação a
+essas histórias. 
 
 \begin{defn}\ollabel{defn:phmodels}
-  \emph{Truth of !!a{formula}~$!A$ at~$t, \sigma$} in~$\mModel M$, in symbols:
+  A \emph{verdade de !!a{formula}~$!A$ em~$t, \sigma$} em~$\mModel M$, em símbolos:
   $\mSat{M}{!A}[t, \sigma]$:
   \begin{enumerate}
   \item\ollabel{defn:sub:phmodels-f} \indcase{!A}{\Ftemp
-    !B}{$\mSat{M}{\indfrm}[t, \sigma]$ iff $\mSat{M}{!B}[t', \sigma]$
-    for some $t' \in T$ such that $t \prec_\sigma t'$.}
+    !B}{$\mSat{M}{\indfrm}[t, \sigma]$ sse $\mSat{M}{!B}[t', \sigma]$
+    para algum $t' \in T$ tal que $t \prec_\sigma t'$.}
   \item\ollabel{defn:sub:phmodels-diamond} \indcase{!A}{\Diamond
-    !B}{$\mSat{M}{\indfrm}[t, \sigma]$ iff $\mSat{M}{!B}[t, \sigma']$
-    for some $\sigma' \in C$ in which $t$ occurs.}
+    !B}{$\mSat{M}{\indfrm}[t, \sigma]$ sse $\mSat{M}{!B}[t, \sigma']$
+    para algum $\sigma' \in C$ no qual $t$ ocorra.}
   \end{enumerate} 
 \end{defn}
 
-Other temporal and modal operators can be defined similarly. However,
-we can now represent claims that combine tense and modality. For
-example, we might symbolize ``$p$~will not occur, but it might have
-occurred'' using the formula $\lnot \Ftemp p \land \Diamond \Ftemp p$.
-This would hold at a point and a history at which $p$ does not become
-true at a successor state, but there is an alternative history at
-which $p$ will become true. 
+Outros operadores temporais e modais podem ser definidos de maneira
+semelhante. Agora, porém, podemos representar afirmações que combinam
+tempo verbal e modalidade. Por exemplo, podemos simbolizar
+``$p$~não ocorrerá, mas poderia ter ocorrido'' pela fórmula
+$\lnot \Ftemp p \land \Diamond \Ftemp p$. Ela valeria em um instante e
+uma história nos quais $p$ não se torna verdadeira em um estado
+sucessor, mas existe uma história alternativa na qual $p$ se tornará
+verdadeira. 
 
 \end{document}
