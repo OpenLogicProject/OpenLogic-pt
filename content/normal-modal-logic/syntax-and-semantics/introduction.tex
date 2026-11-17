@@ -6,92 +6,92 @@
 
 \begin{document}
 
-\olfileid{nml}{syn}{int}
+\olfileid[pt]{nml}{syn}{int}
 
-\olsection{Introduction}
+\olsection{Introdução}
 
-Modal logic deals with \emph{modal propositions} and the entailment
-relations among them. Examples of modal propositions are the
-following:
+A lógica modal trata de \emph{proposições modais} e das relações de
+acarretamento entre elas. Alguns exemplos de proposições modais são:
 \begin{enumerate}
-\item It is necessary that $2+2=4$.
-\item It is necessarily possible that it will rain tomorrow.
-\item If it is necessarily possible that~$!A$ then it is possible
-  that~$!A$.
+\item É necessário que $2+2=4$.
+\item É necessariamente possível que chova amanhã.
+\item Se é necessariamente possível que~$!A$, então é possível
+  que~$!A$.
 \end{enumerate}
-Possibility and necessity are not the only modalities: other unary
-connectives are also classified as modalities, for instance, ``it
-ought to be the case that~$!A$,'' ``It will be the case that~$!A$,''
-``Dana knows that~$!A$,'' or ``Dana believes that~$!A$.''
+Possibilidade e necessidade não são as únicas modalidades: outros
+conectivos unários também são classificados como modalidades, por
+exemplo, ``deveria ser o caso que~$!A$'', ``será o caso que~$!A$'',
+``Dana sabe que~$!A$'' ou ``Dana acredita que~$!A$''.
 
-Modal logic makes its first appearance in Aristotle's \emph{De
-  Interpretatione}: he was the first to notice that necessity implies
-possibility, but not vice versa; that possibility and necessity are
-inter-definable; that If $!A \land !B$ is possibly true then
-$!A$ is possibly true and $!B$ is possibly true, but not
-conversely; and that if $!A \to !B$ is necessary, then if
-$!A$ is necessary, so is~$!B$.
+A lógica modal aparece pela primeira vez no \emph{De Interpretatione}
+de Aristóteles: ele foi o primeiro a notar que a necessidade implica a
+possibilidade, mas não o inverso; que possibilidade e necessidade são
+interdefiníveis; que, se $!A \land !B$ é possivelmente verdadeira,
+então $!A$ é possivelmente verdadeira e $!B$ é possivelmente verdadeira,
+mas não o inverso; e que, se $!A \to !B$ é necessário, então, se $!A$
+é necessário, $!B$ também o é.
 
-The first modern approach to modal logic was the work of C.~I. Lewis,
-culminating with Lewis and Langford, \emph{Symbolic Logic}
-(1932). Lewis \& Langford were unhappy with the representation of
-implication by means of the material conditional: $!A \lif !B$
-is a poor substitute for ``$!A$ implies $!B$.'' Instead, they
-proposed to characterize implication as ``Necessarily, if $!A$
-then $!B$,'' symbolized as $!A \strictif !B$. In trying to
-sort out the different properties, Lewis identified five different
-modal systems, \Log{S1}, \ldots, \Log{S4}, \Log{S5}, the last
-two of which are still in use.
+A primeira abordagem moderna à lógica modal foi a obra de C.~I. Lewis,
+que culminou em \emph{Symbolic Logic} (1932), de Lewis e Langford.
+Lewis \& Langford estavam insatisfeitos com a representação da
+implicação por meio do condicional material: $!A \lif !B$ é um
+substituto insatisfatório para ``$!A$ implica $!B$''. Em vez disso,
+propuseram caracterizar a implicação como ``Necessariamente, se $!A$,
+então $!B$'', simbolizada por $!A \strictif !B$. Ao tentar distinguir
+as diferentes propriedades, Lewis identificou cinco sistemas modais,
+\Log{S1}, \ldots, \Log{S4}, \Log{S5}; os dois últimos ainda são usados.
 
-The approach of Lewis and Langford was purely \emph{syntactical}: they
-identified reasonable axioms and rules and investigated what was
-provable with those means. A semantic approach remained elusive for a
-long time, until a first attempt was made by Rudolf Carnap in
-\emph{Meaning and Necessity} (1947) using the notion of a \emph{state
-  description}, O.s.\@, a collection of atomic sentences (those that are
-``true'' in that state description). After lifting the truth
-definition to arbitrary sentences $!A$, Carnap defines $!A$
-to be \emph{necessarily true} if it is true in all state
-descriptions. Carnap's approach could not handle \emph{iterated}
-modalities, in that sentences of the form ``Possibly necessarily
-\ldots possibly $!A$'' always reduce to the innermost modality.
+A abordagem de Lewis e Langford era puramente \emph{sintática}: eles
+identificaram axiomas e regras razoáveis e investigaram o que se podia
+provar por esses meios. Uma abordagem semântica permaneceu fora de
+alcance por muito tempo, até que Rudolf Carnap fez uma primeira tentativa
+em \emph{Meaning and Necessity} (1947), usando a noção de \emph{descrição
+  de estado}, O.s.\@, uma coleção de sentenças atômicas (aquelas que são
+``verdadeiras'' nessa descrição de estado). Depois de estender a definição
+de verdade a sentenças arbitrárias $!A$, Carnap define $!A$ como
+\emph{necessariamente verdadeira} se ela é verdadeira em todas as
+descrições de estado. A abordagem de Carnap não podia tratar de
+modalidades \emph{iteradas}, pois sentenças da forma ``Possivelmente,
+necessariamente, \ldots, possivelmente $!A$'' sempre se reduzem à
+modalidade mais interna.
 
-The major breakthrough in modal semantics came with Saul Kripke's
-article ``A Completeness Theorem in Modal Logic'' (JSL 1959). Kripke
-based his work on Leibniz's idea that a statement is necessarily true
-if it is true ``at all possible worlds.'' This idea, though, suffers
-from the same drawbacks as Carnap's, in that the truth of statement at
-a world $w$ (or a state description $s$) does not depend on $w$ at
-all. So Kripke assumed that worlds are related by an
-\emph{accessibility relation} $R$, and that a statement of the form
-``Necessarily $!A$'' is true at a world $w$ if and only if
-$!A$ is true at all worlds $w'$ \emph{accessible from}
-$w$. Semantics that provide some version of this approach are called
-Kripke semantics and made possible the tumultuous development of modal
-logics (in the plural).
+O grande avanço da semântica modal veio com o artigo de Saul Kripke
+``A Completeness Theorem in Modal Logic'' (JSL 1959). Kripke baseou
+seu trabalho na ideia de Leibniz de que uma afirmação é necessariamente
+verdadeira se é verdadeira ``em todos os mundos possíveis''. Essa ideia,
+porém, sofre dos mesmos inconvenientes que a de Carnap, pois a verdade de
+uma afirmação em um mundo $w$ (ou em uma descrição de estado $s$) não
+depende de $w$. Kripke supôs, então, que os mundos estão relacionados por
+uma \emph{relação de acessibilidade} $R$ e que uma afirmação da forma
+``Necessariamente $!A$'' é verdadeira em um mundo $w$ se, e somente se,
+$!A$ é verdadeira em todos os mundos $w'$ \emph{acessíveis a partir de}
+$w$. Semânticas que oferecem alguma versão dessa abordagem são chamadas
+semânticas de Kripke e tornaram possível o desenvolvimento tumultuado das
+lógicas modais (no plural).
 
-When interpreted by the Kripke semantics, modal logic shows us what
-\emph{relational structures} look like ``from the inside.'' A
-relational structure is just a set equipped with a binary relation
-(for instance, the set of students in the class ordered by their
-social security number is a relational structure). But in fact
-relational structures come in all sorts of domains: besides relative
-possibility of states of the world, we can have epistemic states of
-some agent related by epistemic possibility, or states of a dynamical
-system with their state transitions, etc. Modal logic can be used to
-model all of these: the first gives us ordinary, alethic, modal logic;
-the others give us epistemic logic, dynamic logic, etc.
+Quando interpretada pela semântica de Kripke, a lógica modal nos mostra
+como são as \emph{estruturas relacionais} ``por dentro''. Uma estrutura
+relacional é apenas um conjunto munido de uma relação binária (por
+exemplo, o conjunto dos estudantes de uma turma ordenado pelo número de
+seu cadastro de seguridade social é uma estrutura relacional). Na verdade,
+porém, as estruturas relacionais aparecem em toda sorte de domínios: além
+da possibilidade relativa de estados do mundo, podemos ter estados
+epistêmicos de um agente relacionados pela possibilidade epistêmica, ou
+estados de um sistema dinâmico com suas transições de estado, e assim por
+diante. A lógica modal pode ser usada para modelar todos eles: o primeiro
+caso nos dá a lógica modal alética ordinária; os demais nos dão a lógica
+epistêmica, a lógica dinâmica etc.
 
-We focus on one particular angle, known to modal logicians as
-``correspondence theory.'' One of the most significant early
-discoveries of Kripke's is that many properties of the accessibility
-relation~$R$ (whether it is transitive, symmetric, etc.)  can be
-characterized \emph{in the modal language} itself by means of
-appropriate ``modal schemas.'' Modal logicians say, for instance, that
-the reflexivity of $R$ ``corresponds'' to the schema ``If
-necessarily~$!A$, then~$!A$''. We explore mainly the correspondence
-theory of a number of classical systems of modal logic (p.ex., \Log{S4}
-and \Log{S5}) obtained by a combination of the schemas \Ax{D}, \Ax{T},
-\Ax{B}, \Ax{4}, and~\Ax{5}.
+Concentramo-nos em um ângulo específico, conhecido pelos lógicos modais
+como ``teoria da correspondência''. Uma das primeiras descobertas mais
+significativas de Kripke foi que muitas propriedades da relação de
+acessibilidade~$R$ (se ela é transitiva, simétrica etc.) podem ser
+caracterizadas \emph{na própria linguagem modal} por meio de ``esquemas
+modais'' apropriados. Os lógicos modais dizem, por exemplo, que a
+reflexividade de $R$ ``corresponde'' ao esquema ``Se necessariamente
+~$!A$, então~$!A$''. Exploramos principalmente a teoria da correspondência
+de vários sistemas clássicos de lógica modal (p.ex., \Log{S4} e
+\Log{S5}) obtidos por uma combinação dos esquemas \Ax{D}, \Ax{T}, \Ax{B},
+\Ax{4} e~\Ax{5}.
 
 \end{document}

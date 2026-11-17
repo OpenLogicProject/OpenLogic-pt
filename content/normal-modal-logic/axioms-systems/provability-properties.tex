@@ -6,44 +6,45 @@
 
 \begin{document}
 
-\olfileid{nml}{prf}{prp}
+\olfileid[pt]{nml}{prf}{prp}
 
-\olsection{Properties of \usetoken{S}{derivability}}
+\olsection{Propriedades da \usetoken{S}{derivability}}
 
 \begin{prop}\ollabel{prop:derivabilityfacts}
-  Let $\Sigma$ be a modal system and $\Gamma$ a set of modal
-  !!{formula}s. The following properties hold:
+  Seja $\Sigma$ um sistema modal e $\Gamma$ um conjunto de
+  !!{formula}s modais. Valem as seguintes propriedades:
   \begin{enumerate}
-  \item\ollabel{prop:derivabilityfacts-monotonicity} \emph{Monotonicity}: If
-    $\Gamma \Proves[\Sigma] !A$ and $\Gamma \subseteq \Delta$ then
+  \item\ollabel{prop:derivabilityfacts-monotonicity} \emph{Monotonicidade}: Se
+    $\Gamma \Proves[\Sigma] !A$ e $\Gamma \subseteq \Delta$, então
     $\Delta \Proves[\Sigma] !A$;
   \item\ollabel{prop:derivabilityfacts-reflexivity}
-    \emph{Reflexivity}: If $!A \in \Gamma$ then $\Gamma
+    \emph{Reflexividade}: Se $!A \in \Gamma$, então $\Gamma
     \Proves[\Sigma] !A$;
-  \item\ollabel{prop:derivabilityfacts-cut} \emph{Cut}: If $\Gamma
-    \Proves[\Sigma] !A$ and $\Delta \cup \{!A\} \Proves[\Sigma] !B$
-    then $\Gamma \cup \Delta \Proves[\Sigma] !B$;
-  \item\ollabel{prop:derivabilityfacts-deduction} \emph{Deduction theorem}: $\Gamma \cup \{!B\}
-    \Proves[\Sigma] !A$ if and only if $\Gamma \Proves[\Sigma] !B \lif
+  \item\ollabel{prop:derivabilityfacts-cut} \emph{Corte}: Se $\Gamma
+    \Proves[\Sigma] !A$ e $\Delta \cup \{!A\} \Proves[\Sigma] !B$,
+    então $\Gamma \cup \Delta \Proves[\Sigma] !B$;
+  \item\ollabel{prop:derivabilityfacts-deduction} \emph{Teorema da dedução}: $\Gamma \cup \{!B\}
+    \Proves[\Sigma] !A$ se e somente se $\Gamma \Proves[\Sigma] !B \lif
       !A$;
-  \item \ollabel{prop:derivabilityfacts-ruleT}% \emph{Rule T}: If
-    $\Gamma \Proves[\Sigma] !A_1$ and \dots and $\Gamma
-    \Proves[\Sigma] !A_n$ and $!A_1 \to (!A_2 \lif \cdots (!A_n \lif
-    !B)\cdots)$ is a tautological instance, then $\Gamma
+  \item \ollabel{prop:derivabilityfacts-ruleT}% \emph{Regra T}: Se
+    $\Gamma \Proves[\Sigma] !A_1$ e \dots e $\Gamma
+    \Proves[\Sigma] !A_n$ e $!A_1 \to (!A_2 \lif \cdots (!A_n \lif
+    !B)\cdots)$ é uma instância tautológica, então $\Gamma
     \Proves[\Sigma] !B$.
   \end{enumerate}
 \end{prop}
 
-The proof is an easy exercise. Part
-\olref{prop:derivabilityfacts-ruleT} of \olref{prop:derivabilityfacts}
-gives us that, for instance, if $\Gamma \Proves[\Sigma] !A \lor !B$
-and $\Gamma \Proves[\Sigma] \lnot !A$, then $\Gamma \Proves[\Sigma]
-!B$. Also, in what follows, we write $\Gamma, !A \Proves[\Sigma] !B$
-instead of $\Gamma \cup \{ !A\} \Proves[\Sigma] !B$.
+A demonstração é um exercício fácil. A parte
+\olref{prop:derivabilityfacts-ruleT} de \olref{prop:derivabilityfacts}
+nos dá, por exemplo, que, se $\Gamma \Proves[\Sigma] !A \lor !B$ e
+$\Gamma \Proves[\Sigma] \lnot !A$, então $\Gamma \Proves[\Sigma]
+!B$. Além disso, daqui em diante escrevemos
+$\Gamma, !A \Proves[\Sigma] !B$ em vez de
+$\Gamma \cup \{ !A\} \Proves[\Sigma] !B$.
 
 \begin{defn}
-  A set $\Gamma$ is \emph{deductively closed} relatively to a system
-  $\Sigma$ if and only if $\Gamma \Proves[\Sigma] !A$ implies
+  Um conjunto $\Gamma$ é \emph{dedutivamente fechado} relativamente a
+  um sistema $\Sigma$ se e somente se $\Gamma \Proves[\Sigma] !A$ implica
   $!A \in \Gamma$.
 \end{defn}
 

@@ -6,90 +6,92 @@
 
 \begin{document}
 
-\olfileid{nml}{prf}{prf}
+\olfileid[pt]{nml}{prf}{prf}
 
-\olsection{\usetoken{P}{derivation} and Modal Systems}
+\olsection{\usetoken{P}{derivation} e sistemas modais}
 
-We first define what !!a{derivation} is for normal modal
-logics. Roughly, !!a{derivation} is a sequence of !!{formula}s in
-which every !!{element} is either (a substitution instance of) one of
-a number of \emph{axioms}, or follows from previous !!{element}s by
-one of a few inference rules. For normal modal logics, all instances
-of tautologies\iftag{prvDiamond}{, \Ax{K}, and~\Dual{}}{ and~\Ax{K}}
-count as axioms. This results in the modal system~$\Log{K}$, the
-smallest normal modal logic. We may wish to add additional axioms to
-obtain other systems, however. The rules are always modus ponens~\MP{}
-and necessitation~\Nec.
+Primeiro definimos o que é !!a{derivation} para lógicas modais
+normais. Em linhas gerais, !!a{derivation} é uma sequência de
+!!{formula}s na qual cada !!{element} é ou (uma instância de
+substituição de) um de certos \emph{axiomas}, ou decorre de
+!!{element}s anteriores por uma de algumas regras de inferência. Para
+lógicas modais normais, todas as instâncias de
+tautologias\iftag{prvDiamond}{, \Ax{K} e~\Dual{}}{ e~\Ax{K}}
+contam como axiomas. Isso resulta no sistema modal~$\Log{K}$, a menor
+lógica modal normal. Podemos, contudo, querer acrescentar axiomas para
+obter outros sistemas. As regras são sempre modus ponens~\MP{} e
+necessitação~\Nec.
 
 \begin{defn}
-  Given a modal system $\Log{K} !A_1 \dots !A_n$ and !!a{formula}~$!B$
-  we say that $!B$ is \emph{!!{derivable}} in $\Log{K} !A_1 \dots
-  !A_n$, written $\Log{K} !A_1 \dots !A_n \Proves !B$, if and only if
-  there are !!{formula}s $!C_1$, \dots, $!C_k$ such that $!C_k = !B$
-  and each $!C_i$ is either a tautological instance, or an instance of
-  one of $\Ax{K}$,\iftag{prvDiamond}{ $\Dual$,}{} $!A_1$,
-  \dots, $!A_n$, or it follows from previous !!{formula}s by means of
-  the rules \MP{} or~\Nec.
+  Dado um sistema modal $\Log{K} !A_1 \dots !A_n$ e !!a{formula}~$!B$,
+  dizemos que $!B$ é \emph{!!{derivable}} em $\Log{K} !A_1 \dots
+  !A_n$, e escrevemos $\Log{K} !A_1 \dots !A_n \Proves !B$, se e
+  somente se existem !!{formula}s $!C_1$, \dots, $!C_k$ tais que
+  $!C_k = !B$ e cada $!C_i$ é ou uma instância tautológica, ou uma
+  instância de um dos axiomas $\Ax{K}$,\iftag{prvDiamond}{ $\Dual$,}{}
+  $!A_1$, \dots, $!A_n$, ou decorre de !!{formula}s anteriores por
+  meio das regras \MP{} ou~\Nec.
 \end{defn}
 
-The following proposition allows us to show that $!B \in \Sigma$
-by exhibiting a $\Sigma$-!!{derivation} of~$!B$.
+A proposição seguinte nos permite mostrar que $!B \in \Sigma$
+exibindo uma $\Sigma$-!!{derivation} de~$!B$.
 
 \begin{prop}
   $\Log{K} !A_1 \dots !A_n = \Setabs{!B}{\Log{K} !A_1 \dots !A_n \Proves !B}$.
 \end{prop}
 
 \begin{proof}
-  We use induction on the length of !!{derivation}s to show that
+  Usamos indução no comprimento de !!{derivation}s para mostrar que
   $\Setabs{!B}{\Log{K} !A_1 \dots !A_n \Proves !B} \subseteq
   \Log{K} !A_1 \dots !A_n$.
 
-  If the !!{derivation} of~$!B$ has length~$1$, it contains a single
-  !!{formula}. That !!{formula} cannot follow from previous formulas
-  by \MP{} or \Nec, so must be a tautological instance, an instance of
-  \Ax{K},\iftag{prvDiamond}{ $\Dual$,}{} or an instance
-  of one of $!A_1$, \dots,~$!A_n$. But $\Log{K}!A_1\dots!A_n$ contains
-  these as well, so $!B \in \Log{K}!A_1 \dots !A_n$.
+  Se a !!{derivation} de~$!B$ tem comprimento~$1$, ela contém uma única
+  !!{formula}. Essa !!{formula} não pode decorrer de fórmulas anteriores
+  por \MP{} ou \Nec, portanto deve ser uma instância tautológica, uma
+  instância de \Ax{K},\iftag{prvDiamond}{ $\Dual$,}{} ou uma instância
+  de um dos axiomas $!A_1$, \dots,~$!A_n$. Mas
+  $\Log{K}!A_1\dots!A_n$ também contém essas instâncias, logo
+  $!B \in \Log{K}!A_1 \dots !A_n$.
 
-  If the !!{derivation} of $!B$ has length~$> 1$, then $!B$ may in
-  addition be obtained by \MP{} or \Nec{} from !!{formula}s not
-  occurring as the last line in the !!{derivation}. If $!B$ follows
-  from $!C$ and $!C \lif !B$ (by \MP), then $!C$ and $!C \lif !B \in
-  \Log{K}!A_1 \dots !A_n$ by induction hypothesis. But every modal
-  logic is closed under modus ponens, so $!B \in \Log{K}!A_1 \dots
-  !A_n$. If $!B \equiv \Box !C$ follows from $!C$ by \Nec, then $!C
-  \in \Log{K}!A_1 \dots !A_n$ by induction hypothesis. But every
-  normal modal logic is closed under $\Nec$, so $!B \in
+  Se a !!{derivation} de $!B$ tem comprimento~$> 1$, então $!B$ também
+  pode ser obtida por \MP{} ou \Nec{} a partir de !!{formula}s que não
+  ocorrem como a última linha da !!{derivation}. Se $!B$ decorre de
+  $!C$ e $!C \lif !B$ (por \MP), então $!C$ e $!C \lif !B \in
+  \Log{K}!A_1 \dots !A_n$ pela hipótese de indução. Mas toda lógica
+  modal é fechada sob modus ponens, logo $!B \in \Log{K}!A_1 \dots
+  !A_n$. Se $!B \equiv \Box !C$ decorre de $!C$ por \Nec, então $!C
+  \in \Log{K}!A_1 \dots !A_n$ pela hipótese de indução. Mas toda
+  lógica modal normal é fechada sob $\Nec$, logo $!B \in
   \Log{K}!A_1\dots!A_n$.
 
-  The converse inclusion follows by showing that
-  $\Sigma = \Setabs{!B}{\Log{K} !A_1 \dots !A_n \Proves !B }$ is a normal
-  modal logic containing all the instances of $!A_1$,
-  \dots, $!A_n$, and the observation that $\Log{K} !A_1 \dots !A_n$
-  is, by definition, the smallest such logic.
+  A inclusão inversa resulta de mostrar que
+  $\Sigma = \Setabs{!B}{\Log{K} !A_1 \dots !A_n \Proves !B }$ é uma
+  lógica modal normal que contém todas as instâncias de $!A_1$,
+  \dots, $!A_n$, e de observar que $\Log{K} !A_1 \dots !A_n$ é, por
+  definição, a menor lógica desse tipo.
   \begin{enumerate}
-    \item Every tautology~$!B$ is a tautological instance, so
-      $\Log{K}!A_1\dots!A_n \Proves !B$, so $\Sigma$ contains all
-      tautologies.
-    \item If $\Log{K}!A_1\dots!A_n \Proves !C$ and
-      $\Log{K}!A_1\dots!A_n \Proves !C \lif !B$, then
-      $\Log{K}!A_1\dots!A_n \Proves !B$: Combine the !!{derivation} of
-      $!C$ with that of $!C \lif !B$, and add the line~$!B$. The last
-      line is justified by \MP{}. So $\Sigma$ is closed under modus
-      ponens.
-    \item If $!B$ has !!a{derivation}, then every substitution
-      instance of~$!B$ also has !!a{derivation}: apply the substitution
-      to every !!{formula} in the !!{derivation}. (Exercise: prove by
-      induction on the length of !!{derivation}s that the result is
-      also a correct !!{derivation}). So $\Sigma$ is closed under
-      uniform substitution. (We have now established that $\Sigma$
-      satisfies all conditions of a modal logic.)
-    \item We have $\Log{K}!A_1\dots!A_n \Proves \Ax{K}$, so $K \in \Sigma$.
-    \tagitem{prvDiamond}{We have
-      $\Log{K}!A_1\dots!A_n \Proves \Dual$, so $\Dual \in \Sigma$.}{}
-    \item If $\Log{K}!A_1\dots!A_n \Proves !C$, the additional
-      line~$\Box !C$ is justified by~\Nec. Consequently, $\Sigma$ is
-      closed under~\Nec. Thus, $\Sigma$ is normal.
+    \item Toda tautologia~$!B$ é uma instância tautológica, portanto
+      $\Log{K}!A_1\dots!A_n \Proves !B$, e assim $\Sigma$ contém todas
+      as tautologias.
+    \item Se $\Log{K}!A_1\dots!A_n \Proves !C$ e
+      $\Log{K}!A_1\dots!A_n \Proves !C \lif !B$, então
+      $\Log{K}!A_1\dots!A_n \Proves !B$: combinamos a !!{derivation} de
+      $!C$ com a de $!C \lif !B$ e acrescentamos a linha~$!B$. A última
+      linha é justificada por \MP{}. Portanto, $\Sigma$ é fechada sob
+      modus ponens.
+    \item Se $!B$ tem !!a{derivation}, então toda instância de
+      substituição de~$!B$ também tem !!a{derivation}: aplicamos a
+      substituição a cada !!{formula} da !!{derivation}. (Exercício:
+      prove, por indução no comprimento de !!{derivation}s, que o
+      resultado também é uma !!{derivation} correta.) Portanto,
+      $\Sigma$ é fechada sob substituição uniforme. (Já estabelecemos
+      que $\Sigma$ satisfaz todas as condições de uma lógica modal.)
+    \item Temos $\Log{K}!A_1\dots!A_n \Proves \Ax{K}$, logo $K \in \Sigma$.
+    \tagitem{prvDiamond}{Temos
+      $\Log{K}!A_1\dots!A_n \Proves \Dual$, logo $\Dual \in \Sigma$.}{}
+    \item Se $\Log{K}!A_1\dots!A_n \Proves !C$, a linha adicional
+      $\Box !C$ é justificada por~\Nec. Consequentemente, $\Sigma$ é
+      fechada sob~\Nec. Assim, $\Sigma$ é normal.
   \end{enumerate}
 \end{proof}
 

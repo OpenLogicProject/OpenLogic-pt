@@ -6,17 +6,17 @@
 
 \begin{document}
 
-\olfileid{nml}{seq}{rul}
+\olfileid[pt]{nml}{seq}{rul}
 
-\olsection{Rules for \Log{K}}
+\olsection{Regras para \Log{K}}
 
-The rules for the regular propositional connectives are the same as
-for regular sequent calculus~$\Log{LK}$. Axioms are also the same: any
-sequent of the form $!A \Sequent !A$ counts as an axiom.
+As regras para os conectivos proposicionais usuais são as mesmas do
+cálculo de sequentes usual~$\Log{LK}$. Os axiomas também são os mesmos:
+todo sequente da forma $!A \Sequent !A$ conta como axioma.
 
-For the modal operator\iftag{prvBox}{\iftag{prvDiamond}{s~$\Box$
-and}{~$\Box$}}{}\iftag{prvDiamond}{~$\Diamond$}{}, we have the
-following additional \iftag{notprvBox,notprvDiamond}{rule}{rules}:
+Para a linguagem modal, com\iftag{prvBox}{\iftag{prvDiamond}{~$\Box$
+e}{~$\Box$}}{}\iftag{prvDiamond}{~$\Diamond$}{}, temos a
+\iftag{notprvBox,notprvDiamond}{seguinte regra adicional}{seguintes regras adicionais}:
 \[
   \iftag{prvBox}{\iftag{prvDiamond}{% <> and [] primitive
     \Axiom$\Gamma \fCenter \Delta, !A$
@@ -40,28 +40,28 @@ following additional \iftag{notprvBox,notprvDiamond}{rule}{rules}:
   \DisplayProof
 }
 \]
-Here, \iftag{prvBox}{$\Box\Gamma$ means the sequence of !!{formula}s
-resulting from~$\Gamma$ by putting $\Box$ in front of every
-!!{formula} in~$\Gamma$\iftag{prvDiamond}{ and
-}{}}{}\iftag{prvDiamond}{$\Diamond\Delta$ is the sequence of
-!!{formula}s resulting from~$\Delta$ by putting $\Diamond$ in front of
-every !!{formula} in~$\Delta$}{}. \iftag{notprvDiamond}{The right side
-of the premise of the $\Box$ rule must contain at most one
+Aqui, \iftag{prvBox}{$\Box\Gamma$ significa a sequência de !!{formula}s
+obtida de~$\Gamma$ antepondo $\Box$ a cada
+!!{formula} de~$\Gamma$\iftag{prvDiamond}{ e
+}{}}{}\iftag{prvDiamond}{$\Diamond\Delta$ é a sequência de
+!!{formula}s obtida de~$\Delta$ antepondo $\Diamond$ a cada
+!!{formula} de~$\Delta$}{}. \iftag{notprvDiamond}{O lado direito da
+premissa da regra $\Box$ deve conter no máximo uma
 !!{formula}~$!A$. }{}%
-\iftag{notprvBox}{The left side of the premise of the $\Diamond$
-rule must contain at most one !!{formula}~$!A$. }{}%
-\iftag{prvBox}{$\Gamma$\iftag{prvDiamond}{~and~}{}}{}\iftag{prvDiamond}{$\Delta$}{}
-may be empty; in that case the corresponding part
-\iftag{prvBox}{$\Box\Gamma$\iftag{prvDiamond}{~and~}{}}{}\iftag{prvDiamond}{$\Diamond\Delta$}{}
-of the conclusion sequent is empty as well.
+\iftag{notprvBox}{O lado esquerdo da premissa da regra $\Diamond$
+deve conter no máximo uma !!{formula}~$!A$. }{}%
+\iftag{prvBox}{$\Gamma$\iftag{prvDiamond}{~e~}{}}{}\iftag{prvDiamond}{$\Delta$}{}
+podem ser vazios; nesse caso, a parte correspondente
+\iftag{prvBox}{$\Box\Gamma$\iftag{prvDiamond}{~e~}{}}{}\iftag{prvDiamond}{$\Diamond\Delta$}{}
+do sequente da conclusão também é vazia.
 
-The restriction of adding a
-\iftag{prvBox}{$\Box$ on the right\iftag{prvDiamond}{ and
-}{}}{}\iftag{prvDiamond}{$\Diamond$ on the left}{}
-to a single !!{formula}~$!A$ is necessary. If we allowed to
-\iftag{prvBox}{add $\Box$ to any number of !!{formula}s on the
-right\iftag{prvDiamond}{ or to }{}}{}\iftag{prvDiamond}{add $\Diamond$
-to any number of !!{formula}s on the left}{} we would be able to
+A restrição de acrescentar
+\iftag{prvBox}{$\Box$ à direita\iftag{prvDiamond}{ e
+}{}}{}\iftag{prvDiamond}{$\Diamond$ à esquerda}{}
+a uma única !!{formula}~$!A$ é necessária. Se fosse permitido
+\iftag{prvBox}{acrescentar $\Box$ a qualquer número de !!{formula}s à
+direita\iftag{prvDiamond}{ ou }{}}{}\iftag{prvDiamond}{acrescentar $\Diamond$
+a qualquer número de !!{formula}s à esquerda}{}, seria possível
 !!{derive}:
   \[
     \iftag{prvBox}{
@@ -87,15 +87,15 @@ to any number of !!{formula}s on the left}{} we would be able to
       \UnaryInf$ \fCenter \Diamond!A \lif \lnot\Diamond\lnot !A$
       \DisplayProof}{}
   \]
-But \iftag{prvBox}{$\Box!A \lor \Box \lnot !A$\iftag{prvDiamond}{ and
-$\Diamond!A \lif \lnot\Diamond\lnot !A$ are}{is}}{$\Diamond!A \lif
-\lnot\Diamond\lnot !A$ is} not valid in~$\Log{K}$.
+Mas \iftag{prvBox}{$\Box!A \lor \Box \lnot !A$\iftag{prvDiamond}{ e
+$\Diamond!A \lif \lnot\Diamond\lnot !A$ não são válidas}{ não é válida}}{$\Diamond!A \lif
+\lnot\Diamond\lnot !A$ não é válida} em~$\Log{K}$.
 
-If we allowed side formulas in addition to~$!A$ in the premise, and
-allowed \iftag{prvBox}{the $\Box$ rule to add $\Box$ to only~$!A$ on
-the right\iftag{prvDiamond}{, or allowed }{}}{}\iftag{prvDiamond}{the
-$\Diamond$ rule to add $\Diamond$ to only~$!A$ on the left}{} (but do
-nothing to the side formulas) we would be able to !!{derive}:
+Se fossem permitidas fórmulas laterais além de~$!A$ na premissa e se
+permitisse \iftag{prvBox}{que a regra $\Box$ acrescentasse $\Box$ apenas a~$!A$ à
+direita\iftag{prvDiamond}{, ou se permitisse }{}}{}\iftag{prvDiamond}{que a
+regra $\Diamond$ acrescentasse $\Diamond$ apenas a~$!A$ à esquerda}{} (sem
+fazer nada com as fórmulas laterais), seria possível !!{derive}:
 \[
   \iftag{prvBox}{
     \Axiom$!A \fCenter !A$
@@ -122,8 +122,8 @@ nothing to the side formulas) we would be able to !!{derive}:
     \UnaryInf$ \fCenter !A \lif \lnot\Diamond\lnot !A$
     \DisplayProof}{}
 \]
-But \iftag{prvBox}{$\lnot!A \lor \Box !A$ (which is equivalent to $!A
-\lif \Box!A$)\iftag{prvDiamond}{ and $!A \lif \lnot\Diamond\lnot !A$
-are}{is}}{$!A \lif \lnot\Diamond\lnot !A$ is} not valid in~$\Log{K}$.
+Mas \iftag{prvBox}{$\lnot!A \lor \Box !A$ (que é equivalente a $!A
+\lif \Box!A$)\iftag{prvDiamond}{ e $!A \lif \lnot\Diamond\lnot !A$
+não são válidas}{ não é válida}}{$!A \lif \lnot\Diamond\lnot !A$ não é válida} em~$\Log{K}$.
 
 \end{document}

@@ -6,44 +6,45 @@
 
 \begin{document}
 
-\olfileid{nml}{frd}{fra}
+\olfileid[pt]{nml}{frd}{fra}
 
 \olsection{Frames}
 
 \begin{defn}
-  A \emph{frame} is a pair $\mModel{F} = \tuple{W,R}$ where $W$ is a
-  non-empty set of worlds and $R$ a binary relation on~$W$. A model
-  $\mModel{M}$ is \emph{based on} a frame $\mModel{F} = \tuple{W,R}$
-  if and only if $\mModel{M} = \tuple{W, R, V}$ for some valuation $V$.
+  Um \emph{frame} é um par $\mModel{F} = \tuple{W,R}$, onde $W$ é um
+  conjunto não vazio de mundos e $R$ é uma relação binária sobre~$W$. Um
+  modelo $\mModel{M}$ é \emph{baseado em} um frame
+  $\mModel{F} = \tuple{W,R}$ se e somente se
+  $\mModel{M} = \tuple{W, R, V}$ para alguma valoração $V$.
 \end{defn}
 
 \begin{defn}
-  If $\mModel{F}$ is a frame, we say that $!A$ is \emph{valid in
-    $\mModel{F}$,} $\mModel{F} \Entails !A$, if $\mSat{M}{!A}$ for
-  every model~$\mModel{M}$ based on~$\mModel{F}$.
+  Se $\mModel{F}$ é um frame, dizemos que $!A$ é \emph{válida em
+    $\mModel{F}$,} $\mModel{F} \Entails !A$, se $\mSat{M}{!A}$ para todo
+  modelo~$\mModel{M}$ baseado em~$\mModel{F}$.
   
-  If $\mClass{F}$ is a class of frames, we say $!A$ is \emph{valid in
-    $\mClass{F}$,} $\mClass{F} \Entails !A$, iff $\mModel{F} \Entails
-  !A$ for every frame~$\mModel{F} \in \mClass{F}$.
+  Se $\mClass{F}$ é uma classe de frames, dizemos que $!A$ é \emph{válida em
+    $\mClass{F}$,} $\mClass{F} \Entails !A$, se e somente se
+  $\mModel{F} \Entails !A$ para todo frame~$\mModel{F} \in \mClass{F}$.
 \end{defn}
 
-The reason frames are interesting is that correspondence between
-schemas and properties of the accessibility relation~$R$ is at the
-level of frames, \emph{not of models}. For instance, although \Ax{T}
-is true in all reflexive models, not every model in which \Ax{T} is
-true is reflexive. However, it \emph{is} true that not only is \Ax{T}
-\emph{valid} on all reflexive \emph{frames}, also every frame in
-which \Ax{T} is valid is reflexive.
+Os frames são interessantes porque a correspondência entre esquemas e
+propriedades da relação de acessibilidade~$R$ ocorre no nível dos frames,
+\emph{não no dos modelos}. Por exemplo, embora \Ax{T} seja verdadeira em
+todos os modelos reflexivos, nem todo modelo no qual \Ax{T} é verdadeira é
+reflexivo. Contudo, \emph{é} verdade não apenas que \Ax{T} é \emph{válida}
+em todos os \emph{frames} reflexivos, mas também que todo frame no qual
+\Ax{T} é válida é reflexivo.
 
 \begin{rem}
-Validity in a class of frames is a special case of the notion of
-validity in a class of models: $\mClass{F} \Entails !A$ iff
-$\mClass{C} \Entails !A$ where $\mClass{C}$ is the class of all models
-based on a frame in~$\mClass{F}$.
+A validade em uma classe de frames é um caso particular da noção de validade
+em uma classe de modelos: $\mClass{F} \Entails !A$ se e somente se
+$\mClass{C} \Entails !A$, onde $\mClass{C}$ é a classe de todos os modelos
+baseados em um frame de~$\mClass{F}$.
 
-Obviously, if !!a{formula} or a schema is valid, O.s.\@, valid with
-respect to the class of \emph{all} models, it is also valid with
-respect to any class~$\mClass{F}$ of frames.
+Evidentemente, se !!a{formula} ou um esquema é válido, O.s.\@, válido com
+respeito à classe de \emph{todos} os modelos, ele também é válido com respeito
+a qualquer classe~$\mClass{F}$ de frames.
 \end{rem}
 
 \end{document}

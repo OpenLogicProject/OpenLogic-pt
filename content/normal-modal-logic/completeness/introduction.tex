@@ -6,68 +6,73 @@
 
 \begin{document}
 
-\olfileid{nml}{com}{int}
+\olfileid[pt]{nml}{com}{int}
 
-\olsection{Introduction}
+\olsection{Introdução}
 
-If $\Sigma$ is a modal system, then the soundness theorem establishes
-that if $\Sigma \Proves !A$, then $!A$ is valid in any class
-$\mClass{C}$ of models in which all instances of all !!{formula}s
-in~$\Sigma$ are valid. In particular that means that if $\Log{K}
-\Proves !A$ then $!A$ is true in all models; if $\Log{KT} \Proves !A$
-then $!A$ is true in all reflexive models; if $\Log{KD} \Proves !A$
-then $!A$ is true in all serial models, etc.
+Se $\Sigma$ é um sistema modal, então o teorema da correção estabelece
+que, se $\Sigma \Proves !A$, $!A$ é válida em qualquer classe
+$\mClass{C}$ de modelos na qual todas as instâncias de todas as
+!!{formula}s em~$\Sigma$ são válidas. Em particular, isso significa
+que, se $\Log{K} \Proves !A$, então $!A$ é verdadeira em todos os
+modelos; se $\Log{KT} \Proves !A$, então $!A$ é verdadeira em todos os
+modelos reflexivos; se $\Log{KD} \Proves !A$, então $!A$ é verdadeira
+em todos os modelos seriais; e assim por diante.
 
-Completeness is the converse of soundness: that \Log{K} is complete
-means that if !!a{formula}~$!A$ is valid, $\Proves !A$, for instance.
-Proving completeness is a lot harder to do than proving soundness.  It
-is useful, first, to consider the contrapositive: \Log{K} is complete
-iff whenever $\Proves/ !A$, there is a countermodel, O.s.\@, a
-model~$\mModel{M}$ such that $\mSat/{M}{!A}$. Equivalently (negating
-$!A$), we could prove that whenever $\Proves/ \lnot !A$, there is a
-model of~$!A$.  In the construction of such a model, we can use
-information contained in $!A$.  When we find models for specific
-!!{formula}s we often do the same: p.ex., if we want to find a
-countermodel to $p \lif \Box q$, we know that it has to contain a
-world where $p$ is true and $\Box q$ is false. And a world where $\Box
-q$ is false means there has to be a world accessible from it where $q$
-is false. And that's all we need to know: which worlds make the
-!!{propositional variable}s true, and which worlds are accessible from
-which worlds.
+A completude é a recíproca da correção: dizer que \Log{K} é completa
+significa, por exemplo, que, se !!a{formula}~$!A$ é válida, então
+$\Proves !A$. Demonstrar a completude é muito mais difícil do que
+demonstrar a correção. Para começar, é útil considerar a
+contrapositiva: \Log{K} é completa se e somente se, sempre que
+$\Proves/ !A$, existe um contramodelo, O.s.\@, um modelo~$\mModel{M}$
+tal que $\mSat/{M}{!A}$. Equivalentemente (negando $!A$), poderíamos
+demonstrar que, sempre que $\Proves/ \lnot !A$, existe um modelo
+de~$!A$. Na construção de tal modelo, podemos usar as informações
+contidas em $!A$. Quando encontramos modelos para !!{formula}s
+específicas, muitas vezes fazemos o mesmo: p.ex., se queremos
+encontrar um contramodelo de $p \lif \Box q$, sabemos que ele deve
+conter um mundo no qual $p$ é verdadeiro e $\Box q$ é falso. E um
+mundo no qual $\Box q$ é falso exige que haja um mundo acessível a
+partir dele no qual $q$ é falso. Isso é tudo o que precisamos saber:
+quais mundos tornam verdadeiras quais !!{propositional variable}s e
+quais mundos são acessíveis a partir de quais outros mundos.
 
-In the case of proving completeness, however, we don't have a specific
-!!{formula}~$!A$ for which we are constructing a model. We want to
-establish that a model exists for every $!A$ such that
-$\Proves/[\Sigma] \lnot !A$. This is a minimal requirement, since
-\emph{if} $\Proves[\Sigma] \lnot !A$, by soundness, there is no model
-for~$!A$ (in which $\Sigma$ is true).  Now note that $\Proves/[\Sigma]
-\lnot !A$ iff $!A$ is $\Sigma$-consistent.  (Recall that $\Sigma
-\Proves/[\Sigma] \lnot !A$ and $!A \Proves/[\Sigma] \lfalse$ are
-equivalent.)  So our task is to construct a model for every
-$\Sigma$-consistent !!{formula}.
+No caso da demonstração da completude, contudo, não temos uma
+!!{formula}~$!A$ específica para a qual estamos construindo um modelo.
+Queremos estabelecer que existe um modelo para todo $!A$ tal que
+$\Proves/[\Sigma] \lnot !A$. Esse é um requisito mínimo, pois,
+\emph{se} $\Proves[\Sigma] \lnot !A$, pela correção não existe modelo
+de~$!A$ (no qual $\Sigma$ seja verdadeiro). Observe agora que
+$\Proves/[\Sigma] \lnot !A$ se e somente se $!A$ é
+$\Sigma$-consistente. (Lembre-se de que $\Sigma
+\Proves/[\Sigma] \lnot !A$ e $!A \Proves/[\Sigma] \lfalse$ são
+equivalentes.) Portanto, nossa tarefa é construir um modelo para toda
+!!{formula} $\Sigma$-consistente.
 
-The trick we'll use is to find a $\Sigma$-consistent set of
-!!{formula}s that contains~$!A$, but also other formulas which tell us
-what the world that makes $!A$ true has to look like. Such sets are
-\emph{complete} $\Sigma$-consistent sets. It's not enough to
-construct a model with a single world to make~$!A$ true, it will have
-to contain multiple worlds and an accessibility relation. The complete
-$\Sigma$-consistent set containing~$!A$ will also contain other
-!!{formula}s of the form $\Box !B$ and~$\Diamond !C$. In all
-accessible worlds, $!B$ has to be true; in at least one, $!C$ has to
-be true. In order to accomplish this, we'll simply take \emph{all}
-possible complete $\Sigma$-consistent sets as the basis for the set of
-worlds. A tricky part will be to figure out when a complete
-$\Sigma$-consistent set should count as being accessible from another
-in our model.
+O recurso que usaremos consiste em encontrar um conjunto
+$\Sigma$-consistente de !!{formula}s que contenha~$!A$, mas também
+outras fórmulas que nos digam como deve ser o mundo que torna $!A$
+verdadeira. Esses conjuntos são chamados \emph{conjuntos
+$\Sigma$-consistentes completos}. Não basta construir um modelo com um único mundo que
+torne~$!A$ verdadeira: ele terá de conter vários mundos e uma relação
+de acessibilidade. O conjunto $\Sigma$-consistente completo que
+contém~$!A$ também conterá outras !!{formula}s da forma $\Box !B$
+e~$\Diamond !C$. Em todos os mundos acessíveis, $!B$ deve ser
+verdadeira; em pelo menos um deles, $!C$ deve ser verdadeira. Para
+conseguir isso, tomaremos simplesmente \emph{todos} os conjuntos
+$\Sigma$-consistentes completos possíveis como base do conjunto de
+mundos. Uma parte delicada será determinar quando um conjunto
+$\Sigma$-consistente completo deve contar como acessível a partir de
+outro em nosso modelo.
 
-We'll show that in the model so defined, $!A$ is true at a
-world---which is also a complete $\Sigma$-consistent set---iff $!A$ is
-!!a{element} of that set.  If $!A$ is $\Sigma$-consistent, it will be
-!!a{element} of at least one complete $\Sigma$-consistent set (a fact
-we'll prove), and so there will be a world where $!A$~is true. So we
-will have a single model where every $\Sigma$-consistent
-!!{formula}~$!A$ is true at some world.  This single model is the
-\emph{canonical} model for~$\Sigma$.
+Mostraremos que, no modelo assim definido, $!A$ é verdadeira em um
+mundo---que também é um conjunto $\Sigma$-consistente completo---se e
+somente se $!A$ é !!a{element} desse conjunto. Se $!A$ é
+$\Sigma$-consistente, ela será !!a{element} de pelo menos um conjunto
+$\Sigma$-consistente completo (um fato que demonstraremos) e, assim,
+haverá um mundo no qual $!A$ é verdadeira. Portanto, teremos um único
+modelo no qual toda !!{formula} $\Sigma$-consistente~$!A$ é verdadeira
+em algum mundo. Esse único modelo é o modelo \emph{canônico}
+de~$\Sigma$.
 
 \end{document}

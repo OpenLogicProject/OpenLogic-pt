@@ -6,54 +6,54 @@
 
 \begin{document}
 
-\olfileid{nml}{frd}{int}
+\olfileid[pt]{nml}{frd}{int}
 
-\olsection{Introduction}
+\olsection{Introdução}
 
-One question that interests modal logicians is the relationship
-between the accessibility relation and the truth of certain
-!!{formula}s in models with that accessibility relation. For instance,
-suppose the accessibility relation is reflexive, O.s.\@, for every $w
-\in W$, $Rww$. In other words, every world is accessible from
-itself. That means that when $\Box !A$ is true at a world~$w$, $w$
-itself is among the accessible worlds at which~$!A$ must therefore be
-true. So, if the accessibility relation~$R$ of~$\mModel{M}$ is
-reflexive, then whatever world $w$ and formula $!A$ we take, $\Box !A
-\lif !A$ will be true there (in other words, the schema $\Box p \lif
-p$ and all its substitution instances are true in~$\mModel{M}$).
+Uma questão de interesse para os lógicos modais é a relação entre a relação
+de acessibilidade e a verdade de certas !!{formula}s em modelos que possuem
+essa relação de acessibilidade. Por exemplo, suponha que a relação de
+acessibilidade seja reflexiva, O.s.\@, que, para todo $w \in W$, $Rww$. Em
+outras palavras, cada mundo é acessível a partir de si mesmo. Isso significa
+que, quando $\Box !A$ é verdadeira em um mundo~$w$, o próprio $w$ está entre
+os mundos acessíveis nos quais~$!A$ deve, portanto, ser verdadeira. Assim, se
+a relação de acessibilidade~$R$ de~$\mModel{M}$ é reflexiva, então, quaisquer
+que sejam o mundo $w$ e a fórmula $!A$ que tomemos, $\Box !A \lif !A$ será
+verdadeira nesse mundo (em outras palavras, o esquema $\Box p \lif p$ e todas
+as suas instâncias de substituição são verdadeiros em~$\mModel{M}$).
 
-The converse, however, is false. It's not the case, p.ex., that if
-$\Box p \lif p$ is true in~$\mModel{M}$, then $R$ is reflexive. For we
-can easily find a non-reflexive model~$\mModel{M}$ where $\Box p \lif
-p$ is true at all worlds: take the model with a single world~$w$, not
-accessible from itself, but with $w \in V(p)$. By picking the truth
-value of $p$ suitably, we can make $\Box !A \lif !A$ true in a model
-that is not reflexive.
+A recíproca, contudo, é falsa. Não ocorre, p.ex., que, se
+$\Box p \lif p$ é verdadeira em~$\mModel{M}$, então $R$ é reflexiva. De fato,
+podemos encontrar facilmente um modelo não reflexivo~$\mModel{M}$ no qual
+$\Box p \lif p$ é verdadeira em todos os mundos: tome o modelo com um único
+mundo~$w$, que não é acessível a partir de si mesmo, mas no qual $w \in V(p)$.
+Escolhendo adequadamente o valor de verdade de $p$, podemos tornar
+$\Box !A \lif !A$ verdadeira em um modelo que não é reflexivo.
 
-The solution is to remove the variable assignment~$V$ from the
-equation. If we require that $\Box p \lif p$ is true at all worlds
-in~$\mModel{M}$, regardless of which worlds are in~$V(p)$, then it is
-necessary that $R$ is reflexive. For in any non-reflexive model, there
-will be at least one world~$w$ such that not $Rww$. If we set $V(p) =
-W \setminus \{w\}$, then $p$ will be true at all worlds other
-than~$w$, and so at all worlds accessible from~$w$ (since $w$ is
-guaranteed not to be accessible from~$w$, and $w$ is the only world
-where~$p$ is false). On the other hand, $p$ is false at $w$, so $\Box
-p \lif p$ is false at~$w$.
+A solução é retirar da equação a atribuição de variáveis~$V$. Se exigirmos
+que $\Box p \lif p$ seja verdadeira em todos os mundos de~$\mModel{M}$,
+independentemente de quais mundos pertençam a~$V(p)$, então é necessário que
+$R$ seja reflexiva. Pois, em todo modelo não reflexivo, haverá ao menos um
+mundo~$w$ tal que não $Rww$. Se definirmos $V(p) = W \setminus \{w\}$, então
+$p$ será verdadeira em todos os mundos distintos de~$w$ e, portanto, em todos
+os mundos acessíveis a partir de~$w$ (pois está garantido que $w$ não é
+acessível a partir de~$w$, e $w$ é o único mundo no qual~$p$ é falsa). Por
+outro lado, $p$ é falsa em $w$, de modo que $\Box p \lif p$ é falsa em~$w$.
 
-This suggests that we should introduce a notation for model structures
-without a valuation: we call these \emph{frames}. A frame $\mModel{F}$
-is simply a pair $\tuple{W, R}$ consisting of a set of worlds with an
-accessibility relation. Every model $\tuple{W, R, V}$ is then, as we
-say, \emph{based on} the frame $\tuple{W, R}$. Conversely, a frame
-determines the class of models based on it; and a class of frames
-determines the class of models which are based on any frame in the
-class. And we can define $\mModel{F} \Entails !A$, the notion of !!a{formula}
-being \emph{valid} in a frame as: $\mSat{M}{!A}$ for all $\mModel{M}$
-based on~$\mModel{F}$.
+Isso sugere que devemos introduzir uma notação para estruturas de modelos sem
+uma valoração: nós as chamamos de \emph{frames}. Um frame $\mModel{F}$ é
+simplesmente um par $\tuple{W, R}$ formado por um conjunto de mundos com uma
+relação de acessibilidade. Dizemos, então, que todo modelo $\tuple{W, R, V}$
+é \emph{baseado no} frame $\tuple{W, R}$. Reciprocamente, um frame determina
+a classe de modelos nele baseados; e uma classe de frames determina a classe
+de modelos baseados em algum frame da classe. Podemos definir
+$\mModel{F} \Entails !A$, a noção de !!a{formula} ser \emph{válida} em um
+frame, da seguinte maneira: $\mSat{M}{!A}$ para todo $\mModel{M}$ baseado
+em~$\mModel{F}$.
 
-With this notation, we can establish correspondence relations between
-!!{formula}s and classes of frames: p.ex., $\mModel{F} \Entails \Box p \lif p$
-if, and only if, $\mModel{F}$ is reflexive.
+Com essa notação, podemos estabelecer relações de correspondência entre
+!!{formula}s e classes de frames: p.ex.,
+$\mModel{F} \Entails \Box p \lif p$ se, e somente se, $\mModel{F}$ é
+reflexivo.
 
 \end{document}

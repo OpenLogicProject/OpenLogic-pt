@@ -6,142 +6,144 @@
 
 \begin{document}
 
-\olfileid{nml}{com}{tru}
+\olfileid[pt]{nml}{com}{tru}
 
-\olsection{The Truth Lemma}
+\olsection{O lema da verdade}
 
-The canonical model~$\mModel{M^\Sigma}$ is defined in such a way that
-$\mSat{M^\Sigma}{!A}[\Delta]$ iff $!A \in \Delta$. For !!{propositional
-variable}s, the definition of $V^\Sigma$ yields this directly. We have
-to verify that the equivalence holds for all !!{formula}s, however. We
-do this by induction. The inductive step involves proving the
-equivalence for !!{formula}s involving propositional operators (where
-we have to use \olref[ccs]{prop:ccs-properties}) and the modal
-operators (where we invoke the results of \olref[mod]{sec}).
+O modelo canônico~$\mModel{M^\Sigma}$ é definido de modo que
+$\mSat{M^\Sigma}{!A}[\Delta]$ se e somente se $!A \in \Delta$. Para
+!!{propositional
+variable}s, a definição de $V^\Sigma$ produz isso
+diretamente. Contudo, devemos verificar que a equivalência vale para
+todas as !!{formula}s. Fazemos isso por indução. O passo indutivo
+envolve demonstrar a equivalência para !!{formula}s que contêm
+operadores proposicionais (caso em que devemos usar
+\olref[ccs]{prop:ccs-properties}) e operadores modais (caso em que
+invocamos os resultados de \olref[mod]{sec}).
 
-\begin{prop}[Truth Lemma]
+\begin{prop}[Lema da verdade]
   \ollabel{prop:truthlemma}
-  For every !!{formula}~$!A$, $\mSat{M^\Sigma}{!A}[\Delta]$ if and only if
+  Para toda !!{formula}~$!A$, $\mSat{M^\Sigma}{!A}[\Delta]$ se e somente se
   $!A \in \Delta$.
 \end{prop}
 
 \begin{proof}
-  By induction on~$!A$.
+  Por indução em~$!A$.
   \begin{enumerate}
     \tagitem{prvFalse}{\indcase{!A}{\lfalse}{$\mSat/{M^\Sigma}{\lfalse}[\Delta]$
-        by \olref[syn][trw]{defn:mmodels}, and $\lfalse \notin \Delta$
-        by
+        por \olref[syn][trw]{defn:mmodels}, e $\lfalse \notin \Delta$
+        por
         \olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-lfalse}.}}{}
 
     \tagitem{prvTrue}{\indcase{!A}{\ltrue}{$\mSat{M^\Sigma}{\ltrue}[\Delta]$
-        by \olref[syn][trw]{defn:mmodels}, and $\ltrue \in \Delta$ by
+        por \olref[syn][trw]{defn:mmodels}, e $\ltrue \in \Delta$ por
         \olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-ltrue}.}}{}
 
-    \item \indcase{!A}{p}{$\mSat{M^\Sigma}{p}[\Delta]$ iff $\Delta \in
-      V^\Sigma(p)$ by \olref[syn][trw]{defn:mmodels}.  Also, $\Delta
-      \in V^\Sigma(p)$ iff $p \in \Delta$ by definition
-      of~$V^\Sigma$.}
+    \item \indcase{!A}{p}{$\mSat{M^\Sigma}{p}[\Delta]$ se e somente se $\Delta \in
+      V^\Sigma(p)$ por \olref[syn][trw]{defn:mmodels}. Além disso, $\Delta
+      \in V^\Sigma(p)$ se e somente se $p \in \Delta$ por definição
+      de~$V^\Sigma$.}
 
     \tagitem{prvNot}{\indcase{!A}{\lnot !B}{%
-        \iftag{probNot}{Exercise.}{$\mSat{M^\Sigma}{\lnot !B}[\Delta]$
-          iff $\mSat/{M^\Sigma}{!B}[\Delta]$
-          (\olref[syn][trw]{defn:mmodels}) iff $!B \notin \Delta$ (by
-          inductive hypothesis) iff $\lnot !B \in \Delta$ (by
+        \iftag{probNot}{Exercício.}{$\mSat{M^\Sigma}{\lnot !B}[\Delta]$
+          se e somente se $\mSat/{M^\Sigma}{!B}[\Delta]$
+          (\olref[syn][trw]{defn:mmodels}) se e somente se $!B \notin \Delta$ (pela
+          hipótese de indução) se e somente se $\lnot !B \in \Delta$ (por
           \olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-lnot}).}}}{}
 
     \tagitem{prvAnd}{\indcase{!A}{!B \land !C}{%
-        \iftag{probAnd}{Exercise.}{$\mSat{M^\Sigma}{!B \land
-            !C}[\Delta]$ iff $\mSat{M^\Sigma}{!B}[\Delta]$ and
-          $\mSat{M^\Sigma}{!C}[\Delta]$ (by
-          \olref[syn][trw]{defn:mmodels}) iff $!B \in \Delta$ and $!C
-          \in \Delta$ (by inductive hypothesis) iff $!B \land !C \in
-          \Delta$ (by
+        \iftag{probAnd}{Exercício.}{$\mSat{M^\Sigma}{!B \land
+            !C}[\Delta]$ se e somente se $\mSat{M^\Sigma}{!B}[\Delta]$ e
+          $\mSat{M^\Sigma}{!C}[\Delta]$ (por
+          \olref[syn][trw]{defn:mmodels}) se e somente se $!B \in \Delta$ e $!C
+          \in \Delta$ (pela hipótese de indução) se e somente se $!B \land !C \in
+          \Delta$ (por
           \olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-land}).}}}{}
 
     \tagitem{prvOr}{\indcase{!A}{!B \lor !C}{%
-        \iftag{probOr}{Exercise.}{$\mSat{M^\Sigma}{!B \lor
-            !C}[\Delta]$ iff $\mSat{M^\Sigma}{!B}[\Delta]$ or
-          $\mSat{M^\Sigma}{!C}[\Delta]$ (by
-          \olref[syn][trw]{defn:mmodels}) iff $!B \in \Delta$ or $!C
-          \in \Delta$ (by inductive hypothesis) iff $!B \lor !C \in
-          \Delta$ (by
+        \iftag{probOr}{Exercício.}{$\mSat{M^\Sigma}{!B \lor
+            !C}[\Delta]$ se e somente se $\mSat{M^\Sigma}{!B}[\Delta]$ ou
+          $\mSat{M^\Sigma}{!C}[\Delta]$ (por
+          \olref[syn][trw]{defn:mmodels}) se e somente se $!B \in \Delta$ ou $!C
+          \in \Delta$ (pela hipótese de indução) se e somente se $!B \lor !C \in
+          \Delta$ (por
           \olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-lor}).}}}{}
 
     \tagitem{prvIf}{\indcase{!A}{!B \lif !C}{%
-        \iftag{probIf}{Exercise.}{$\mSat{M^\Sigma}{!B \lif
-            !C}[\Delta]$ iff $\mSat/{M^\Sigma}{!B}[\Delta]$ or
-          $\mSat{M^\Sigma}{!C}[\Delta]$ (by
-          \olref[syn][trw]{defn:mmodels}) iff $!B \notin \Delta$ or
-          $!C \in \Delta$ (by inductive hypothesis) iff $!B \lif !C
-          \in \Delta$ (by
+        \iftag{probIf}{Exercício.}{$\mSat{M^\Sigma}{!B \lif
+            !C}[\Delta]$ se e somente se $\mSat/{M^\Sigma}{!B}[\Delta]$ ou
+          $\mSat{M^\Sigma}{!C}[\Delta]$ (por
+          \olref[syn][trw]{defn:mmodels}) se e somente se $!B \notin \Delta$ ou
+          $!C \in \Delta$ (pela hipótese de indução) se e somente se $!B \lif !C
+          \in \Delta$ (por
           \olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-lif}).}}}{}
 
     \tagitem{prvIff}{\indcase{!A}{!B \liff !C}{%
-        \iftag{probIff}{Exercise.}{$\mSat{M^\Sigma}{!B \liff
-            !C}[\Delta]$ iff either $\mSat{M^\Sigma}{!B}[\Delta]$ and
-          $\mSat{M^\Sigma}{!C}[\Delta]$ or
-          $\mSat/{M^\Sigma}{!B}[\Delta]$ and
-          $\mSat/{M^\Sigma}{!C}[\Delta]$ (by
-          \olref[syn][trw]{defn:mmodels}) iff either $!B \in \Delta$
-          and $!C \in \Delta$ or $!B \notin \Delta$ and $!C \notin
-          \Delta$ (by inductive hypothesis) iff $!B \liff !C \in
-          \Delta$ (by
+        \iftag{probIff}{Exercício.}{$\mSat{M^\Sigma}{!B \liff
+            !C}[\Delta]$ se e somente se ou $\mSat{M^\Sigma}{!B}[\Delta]$ e
+          $\mSat{M^\Sigma}{!C}[\Delta]$ ou
+          $\mSat/{M^\Sigma}{!B}[\Delta]$ e
+          $\mSat/{M^\Sigma}{!C}[\Delta]$ (por
+          \olref[syn][trw]{defn:mmodels}) se e somente se ou $!B \in \Delta$
+          e $!C \in \Delta$ ou $!B \notin \Delta$ e $!C \notin
+          \Delta$ (pela hipótese de indução) se e somente se $!B \liff !C \in
+          \Delta$ (por
           \olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-liff}).}}}{}
 
     \tagitem{prvBox}{\indcase{!A}{\Box !B}{%
-        \iftag{probBox}{Exercise.}{First suppose that
-          $\mSat{M^\Sigma}{\Box !B}[\Delta]$. By
-          \olref[syn][trw]{defn:mmodels}, for every $\Delta'$ such
-          that $R^\Sigma \Delta\Delta'$,
-          $\mSat{M^\Sigma}{!B}[\Delta']$. By inductive hypothesis, for
-          every $\Delta'$ such that $R^\Sigma \Delta\Delta'$, $!B \in
-          \Delta'$. By definition of $R^\Sigma$, for every $\Delta'$
-          such that $\Box^{-1} \Delta \subseteq \Delta'$, $!B \in
-          \Delta'$. By \olref[mod]{prop:box}, $\Box !B \in
+        \iftag{probBox}{Exercício.}{Primeiro, suponha que
+          $\mSat{M^\Sigma}{\Box !B}[\Delta]$. Por
+          \olref[syn][trw]{defn:mmodels}, para todo $\Delta'$ tal
+          que $R^\Sigma \Delta\Delta'$,
+          $\mSat{M^\Sigma}{!B}[\Delta']$. Pela hipótese de indução, para
+          todo $\Delta'$ tal que $R^\Sigma \Delta\Delta'$, $!B \in
+          \Delta'$. Pela definição de $R^\Sigma$, para todo $\Delta'$
+          tal que $\Box^{-1} \Delta \subseteq \Delta'$, $!B \in
+          \Delta'$. Por \olref[mod]{prop:box}, $\Box !B \in
           \Delta$.
 
-          Now assume $\Box !B \in \Delta$. Let $\Delta' \in W^\Sigma$
-          be such that $R^\Sigma \Delta\Delta'$, O.s.\@, $\Box^{-1}\Delta
-          \subseteq \Delta'$. Since $\Box !B \in \Delta$, $!B \in
-          \Box^{-1} \Delta$. Consequently, $!B \in \Delta'$. By
-          inductive hypothesis, $\mSat{M^\Sigma}{!B}[\Delta']$. Since
-          $\Delta'$ is arbitrary with $R^\Sigma \Delta\Delta'$, for
-          all $\Delta' \in W^\Sigma$ such that $R^\Sigma
-          \Delta\Delta'$, $\mSat{M^\Sigma}{!B}[\Delta']$. By
+          Suponha agora $\Box !B \in \Delta$. Seja
+          $\Delta' \in W^\Sigma$ tal que $R^\Sigma \Delta\Delta'$, O.s.\@, $\Box^{-1}\Delta \subseteq \Delta'$. Como
+          $\Box !B \in \Delta$, $!B \in \Box^{-1} \Delta$.
+          Consequentemente, $!B \in \Delta'$. Pela hipótese de indução,
+          $\mSat{M^\Sigma}{!B}[\Delta']$. Como $\Delta'$ é arbitrário
+          com $R^\Sigma \Delta\Delta'$, para todo
+          $\Delta' \in W^\Sigma$ tal que $R^\Sigma \Delta\Delta'$,
+          $\mSat{M^\Sigma}{!B}[\Delta']$. Por
           \olref[syn][trw]{defn:mmodels}, $\mSat{M^\Sigma}{\Box
             !B}[\Delta]$.}}}{}
 
     \tagitem{prvDiamond}{\indcase{!A}{\Diamond !B}{%
-        \iftag{probDiamond}{Exercise.}{First suppose that
-          $\mSat{M^\Sigma}{\Diamond !B}[\Delta]$.  By
-          \olref[syn][trw]{defn:mmodels}, for some $\Delta'$ such that
+        \iftag{probDiamond}{Exercício.}{Primeiro, suponha que
+          $\mSat{M^\Sigma}{\Diamond !B}[\Delta]$. Por
+          \olref[syn][trw]{defn:mmodels}, para algum $\Delta'$ tal que
           $R^\Sigma \Delta\Delta'$, $\mSat{M^\Sigma}{!B}[\Delta']$.
-          By inductive hypothesis, for some $\Delta'$ such that
-          $R^\Sigma \Delta\Delta'$, $!B \in \Delta'$. By definition of
-          $R^\Sigma$,\iftag{prvBox}{ for some $\Delta'$ such that
+          Pela hipótese de indução, para algum $\Delta'$ tal que
+          $R^\Sigma \Delta\Delta'$, $!B \in \Delta'$. Pela definição de
+          $R^\Sigma$,\iftag{prvBox}{ para algum $\Delta'$ tal que
             $\Box^{-1} \Delta \subseteq \Delta'$, $!B \in \Delta'$.
-            By \olref[mod]{prop:diamond},}{} for some $\Delta'$ such
-          that $\Diamond \Delta' \subseteq \Delta$, $!B \in
-          \Delta'$. Since $!B \in \Delta'$, $\Diamond !B \in \Diamond
-          \Delta'$, so $\Diamond !B \in \Delta$.
+            Por \olref[mod]{prop:diamond},}{} para algum $\Delta'$ tal
+          que $\Diamond \Delta' \subseteq \Delta$, $!B \in
+          \Delta'$. Como $!B \in \Delta'$, $\Diamond !B \in \Diamond
+          \Delta'$, logo $\Diamond !B \in \Delta$.
 
-          Now assume $\Diamond !B \in \Delta$. By
-          \olref[mod]{prop:diamond}, there is a complete
-          $\Sigma$-consistent $\Delta' \in W^\Sigma$ such that
-          $\Diamond \Delta' \subseteq \Delta$ and $!B \in
-          \Delta'$.\iftag{prvBox}{ By \olref[mod]{lem:box-iff-diamond},
-            there is a $\Delta' \in W^\Sigma$ such that $\Box^{-1}
-            \Delta \subseteq \Delta'$, and $!B \in \Delta'$.}{} By
-          definition of $R^\Sigma$, $R^\Sigma \Delta\Delta'$, so there
-          is a $\Delta' \in W^\Sigma$ such that $R^\Sigma
-          \Delta\Delta'$ and $!B \in \Delta'$. By
+          Suponha agora $\Diamond !B \in \Delta$. Por
+          \olref[mod]{prop:diamond}, existe um conjunto completo
+          $\Sigma$-consistente $\Delta' \in W^\Sigma$ tal que
+          $\Diamond \Delta' \subseteq \Delta$ e $!B \in
+          \Delta'$.\iftag{prvBox}{ Por \olref[mod]{lem:box-iff-diamond},
+            existe um $\Delta' \in W^\Sigma$ tal que $\Box^{-1}
+            \Delta \subseteq \Delta'$, e $!B \in \Delta'$.}{} Pela
+          definição de $R^\Sigma$, $R^\Sigma \Delta\Delta'$; logo,
+          existe um $\Delta' \in W^\Sigma$ tal que $R^\Sigma
+          \Delta\Delta'$ e $!B \in \Delta'$. Por
           \olref[syn][trw]{defn:mmodels}, $\mSat{M^\Sigma}{\Diamond
             !B}[\Delta]$.}}}{}
   \end{enumerate}
 \end{proof}
 
 \begin{probtag}{probFalse,probTrue,probNot,proband,probOr,probIf,probIff,probBox,probDiamond}
-  Complete the proof of \olref[nml][com][tru]{prop:truthlemma}.
+  Complete a demonstração de \olref[nml][com][tru]{prop:truthlemma}.
 \end{probtag}
 
 \end{document}
