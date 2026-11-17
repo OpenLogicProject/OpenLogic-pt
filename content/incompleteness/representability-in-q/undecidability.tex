@@ -6,69 +6,71 @@
 
 \begin{document}
 
-\olfileid{inc}{req}{und}
-\olsection{Undecidability}
+\olfileid[pt]{inc}{req}{und}
+\olsection{Indecidibilidade}
 
-We call a theory $\Th{T}$ \emph{undecidable} if there is no
-computational procedure which, after finitely many steps and
-unfailingly, provides a correct answer to the question ``does $\Th{T}$
-prove~$!A$?'' for any sentence~$!A$ in the language of~$\Th{T}$.  So
-$\Th{Q}$ would be decidable iff there were a computational procedure
-which decides, given a sentence~$!A$ in the language of arithmetic,
-whether $\Th{Q} \Proves !A$ or not.  We can make this more precise by
-asking: Is the relation~$\Prov[\Th{Q}](y)$, which holds of~$y$
-iff $y$ is the G\"odel number of a sentence provable in~$\Th{Q}$,
-recursive?  The answer is: no.
+Chamamos uma teoria $\Th{T}$ de \emph{indecidível} se não existe um
+procedimento computacional que, depois de um número finito de passos e
+sem falhar, forneça uma resposta correta à pergunta ``$\Th{T}$
+prova~$!A$?'', para qualquer sentença~$!A$ na linguagem de~$\Th{T}$.
+Assim, $\Th{Q}$ seria decidível sse existisse um procedimento
+computacional que decidisse, dada uma sentença~$!A$ na linguagem da
+aritmética, se $\Th{Q} \Proves !A$ ou não. Podemos tornar isso mais
+preciso perguntando: a relação~$\Prov[\Th{Q}](y)$, que vale de~$y$ sse
+$y$ é o número de G\"odel de uma sentença demonstrável em~$\Th{Q}$, é
+recursiva? A resposta é: não.
 
 \begin{thm}
-$\Th{Q}$ is undecidable, O.s.\@, the relation
+$\Th{Q}$ é indecidível, O.s.\@, a relação
 \[
 \Prov[\Th{Q}](y) \defiff \fn{Sent}(y) \land
 \lexists[x][\Prf[\Th{Q}](x, y)]
 \]
-is not recursive.
+não é recursiva.
 \end{thm}
 
 \begin{proof}
-Suppose it were.  Then we could solve the halting problem as follows:
-Given $e$ and $n$, we know that $\cfind{e}(n) \fdefined$ iff there is
-an~$s$ such that $T(e, n, s)$, where $T$ is Kleene's predicate from
-\olref[cmp][rec][nft]{thm:kleene-nf}.  Since $T$ is primitive recursive
-it is representable in~$\Th{Q}$ by a formula $!B_T$, that is, $\Th{Q}
-\Proves !B_T(\num{e}, \num{n}, \num{s})$ iff $T(e, n, s)$.  If $\Th{Q}
-\Proves !B_T(\num{e}, \num{n}, \num{s})$ then also $ \Th{Q} \Proves
-\lexists[y][!B_T(\num{e}, \num{n}, y)]$.  If no such $s$ exists, then
-$\Th{Q} \Proves \lnot !B_T(\num{e}, \num{n}, \num{s})$ for
-every~$s$.  But $\Th{Q}$ is $\omega$-consistent, O.s.\@, if $\Th{Q}
-\Proves \lnot !A(\num{n})$ for every~$n \in \Nat$, then $\Th{Q}
-\Proves/ \lexists[y][!A(y)]$.  We know this because the axioms of
-$\Th{Q}$ are true in the standard model~$\Struct{N}$.  So, $\Th{Q}
-\Proves/ \lexists[y][!B_T(\num{e}, \num{n}, y)]$.  In other words,
-$\Th{Q} \Proves \lexists[y][!B_T(\num{e}, \num{n}, y)]$ iff there is
-an $s$ such that $T(e, n, s)$, O.s.\@, iff $\cfind{e}(n) \fdefined$.
-From $e$ and~$n$ we can compute $\Gn{\lexists[y][!B_T(\num{e},
-    \num{n}, y)]}$, let $g(e, n)$ be the primitive recursive function
-which does that.  So
+Suponha que fosse. Então poderíamos resolver o problema da parada da
+seguinte maneira. Dados $e$ e $n$, sabemos que
+$\cfind{e}(n) \fdefined$ sse existe um~$s$ tal que $T(e, n, s)$, em que
+$T$ é o predicado de Kleene de
+\olref[cmp][rec][nft]{thm:kleene-nf}. Como $T$ é recursivo primitivo,
+ele é representável em~$\Th{Q}$ por uma fórmula $!B_T$, isto é,
+$\Th{Q} \Proves !B_T(\num{e}, \num{n}, \num{s})$ sse $T(e, n, s)$.
+Se $\Th{Q} \Proves !B_T(\num{e}, \num{n}, \num{s})$, então também
+$ \Th{Q} \Proves \lexists[y][!B_T(\num{e}, \num{n}, y)]$. Se não
+existe tal $s$, então $\Th{Q} \Proves \lnot
+!B_T(\num{e}, \num{n}, \num{s})$ para todo~$s$. Mas $\Th{Q}$ é
+$\omega$-consistente, O.s.\@, se
+$\Th{Q} \Proves \lnot !A(\num{n})$ para todo~$n \in \Nat$, então
+$\Th{Q} \Proves/ \lexists[y][!A(y)]$. Sabemos disso porque os axiomas
+de $\Th{Q}$ são verdadeiros no modelo padrão~$\Struct{N}$. Logo,
+$\Th{Q} \Proves/ \lexists[y][!B_T(\num{e}, \num{n}, y)]$. Em outras
+palavras, $\Th{Q} \Proves \lexists[y][!B_T(\num{e}, \num{n}, y)]$ sse
+existe um $s$ tal que $T(e, n, s)$, O.s.\@, sse
+$\cfind{e}(n) \fdefined$. A partir de $e$ e~$n$, podemos computar
+$\Gn{\lexists[y][!B_T(\num{e}, \num{n}, y)]}$; seja $g(e, n)$ a função
+recursiva primitiva que faz isso. Assim,
 \[
 h(e, n) =
 \begin{cases}
-1 & \text{if $\Prov[\Th{Q}](g(e, n))$}\\
-0 & \text{otherwise}.
+1 & \text{se $\Prov[\Th{Q}](g(e, n))$}\\
+0 & \text{caso contrário}.
 \end{cases}
 \]
-This would show that $h$ is recursive if $\Prov[\Th{Q}]$ is. But~$h$
-is not recursive, by \olref[cmp][rec][hlt]{thm:halting-problem}, so
-$\Prov[\Th{Q}]$ cannot be either.
+Isso mostraria que $h$ é recursiva se $\Prov[\Th{Q}]$ fosse. Mas~$h$
+não é recursiva, por \olref[cmp][rec][hlt]{thm:halting-problem}; logo,
+$\Prov[\Th{Q}]$ também não pode ser.
 \end{proof}
 
 \begin{cor}
-First-order logic is undecidable.
+A lógica de primeira ordem é indecidível.
 \end{cor}
 
 \begin{proof}
-If first-order logic were decidable, provability in~$\Th{Q}$ would be
-as well, since $\Th{Q} \Proves !A$ iff $\Proves !T \lif !A$, where
-$!T$ is the conjunction of the axioms of~$\Th{Q}$.
+Se a lógica de primeira ordem fosse decidível, a demonstrabilidade
+em~$\Th{Q}$ também seria, pois $\Th{Q} \Proves !A$ sse
+$\Proves !T \lif !A$, em que $!T$ é a conjunção dos axiomas de~$\Th{Q}$.
 \end{proof}
 
 \end{document}

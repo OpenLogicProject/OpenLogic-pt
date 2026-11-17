@@ -6,28 +6,27 @@
 
 \begin{document}
 
-\olfileid{inc}{req}{int}
-\olsection{Introduction}
+\olfileid[pt]{inc}{req}{int}
+\olsection{Introdução}
 
-The incompleteness theorems apply to theories in which basic facts
-about computable functions can be expressed and proved.  We will
-describe a very minimal such theory called ``$\Th{Q}$'' (or, sometimes,
-``Robinson's $Q$,'' after Raphael Robinson). We will say what it means
-for a function to be \emph{representable} in $\Th{Q}$, and then we
-will prove the following:
+Os teoremas da incompletude aplicam-se a teorias nas quais fatos
+básicos sobre funções computáveis podem ser expressos e provados.
+Descreveremos uma teoria mínima desse tipo, chamada ``$\Th{Q}$'' (ou,
+às vezes, ``$Q$ de Robinson'', em homenagem a Raphael Robinson).
+Diremos o que significa uma função ser \emph{representável} em
+$\Th{Q}$ e, em seguida, provaremos o seguinte:
 \begin{quote}
-  A function is representable in $\Th{Q}$ if and only if it is computable.
+  Uma função é representável em $\Th{Q}$ se, e somente se, é computável.
 \end{quote}
-For one thing, this provides us with another model of
-computability. But we will also use it to show that the set
-$\Setabs{!A}{\Th{Q} \Proves !A}$ is not decidable, by reducing the
-halting problem to it. By the time we are done, we will have proved
-much stronger things than this.
+Por um lado, isso nos fornece outro modelo de computabilidade. Mas
+também o usaremos para mostrar que o conjunto
+$\Setabs{!A}{\Th{Q} \Proves !A}$ não é decidível, reduzindo a ele o
+problema da parada. Ao terminarmos, teremos provado coisas muito mais
+fortes do que essa.
 
-The language of $\Th{Q}$ is the language of
-arithmetic; $\Th{Q}$ consists of the following axioms
-(to be used in conjunction with the other axioms and rules of
-first-order logic with !!{identity}):
+A linguagem de $\Th{Q}$ é a linguagem da aritmética; $\Th{Q}$ consiste
+nos axiomas a seguir (a serem usados juntamente com os demais axiomas e
+regras da lógica de primeira ordem com !!{identity}):
 \begin{align*}
 & \lforall[x][\lforall[y][(\eq[x'][y'] \lif \eq[x][y])]] \tag{$!Q_1$}\\
 & \lforall[x][\eq/[\Obj 0][x']] \tag{$!Q_2$}\\
@@ -38,45 +37,47 @@ first-order logic with !!{identity}):
 & \lforall[x][\lforall[y][\eq[(x \times y')][((x \times y) + x)]]] \tag{$!Q_7$}\\
 & \lforall[x][\lforall[y][(x < y \liff \lexists[z][\eq[(z' + x)][y]])]] \tag{$!Q_8$}
 \end{align*}
-For each natural number $n$, define the numeral $\num{n}$ to be the
-term $\Obj{0}^{\prime\prime\ldots\prime}$ where there are $n$ tick marks in
-all.  So, $\num{0}$ is the !!{constant}~$\Obj{0}$ by itself, $\num{1}$
-is $\Obj{0}'$, $\num{2}$ is $\Obj{0}''$, etc.
+Para cada número natural $n$, defina o numeral $\num{n}$ como o termo
+$\Obj{0}^{\prime\prime\ldots\prime}$ no qual há, ao todo, $n$ marcas
+de prima. Assim, $\num{0}$ é apenas a !!{constant}~$\Obj{0}$,
+$\num{1}$ é $\Obj{0}'$, $\num{2}$ é $\Obj{0}''$ etc.
 
-As a theory of arithmetic, $\Th{Q}$ is \emph{extremely} weak; for
-example, you can't even prove very simple facts like
-$\lforall[x][\eq/[x][x']]$ or $\lforall[x][\lforall[y][(x + y) = (y +
-    x)]]$. But we will see that much of the reason that $\Th{Q}$ is so
-interesting is \emph{because} it is so weak. In fact, it is just
-barely strong enough for the incompleteness theorem to hold. Another
-reason $\Th{Q}$ is interesting is because it has a \emph{finite} set
-of axioms.
+Como teoria da aritmética, $\Th{Q}$ é \emph{extremamente} fraca; por
+exemplo, não se podem sequer provar fatos muito simples como
+$\lforall[x][\eq/[x][x']]$ ou $\lforall[x][\lforall[y][(x + y) = (y +
+    x)]]$. Mas veremos que grande parte do motivo pelo qual $\Th{Q}$ é
+tão interessante está \emph{justamente} em ser tão fraca. Na verdade,
+ela mal possui força suficiente para que o teorema da incompletude
+valha. Outra razão de $\Th{Q}$ ser interessante é possuir um conjunto
+\emph{finito} de axiomas.
 
-A stronger theory than $\Th{Q}$ (called \emph{Peano arithmetic} $\Th{PA}$)
-is obtained by adding a schema of induction to~$\Th{Q}$:
+Uma teoria mais forte que $\Th{Q}$ (chamada \emph{aritmética de Peano}
+$\Th{PA}$) é obtida acrescentando-se a~$\Th{Q}$ um esquema de indução:
 \[
 (!A(\Obj 0) \land \lforall[x][(!A(x) \lif !A(x'))]) \lif \lforall[x][!A(x)]
 \]
-where $!A(x)$ is any formula. If $!A(x)$ contains free !!{variable}s
-other than $x$, we add universal quantifiers to the front to bind all
-of them (so that the corresponding instance of the induction schema is
-!!a{sentence}). For instance, if $!A(x, y)$ also contains the
-!!{variable}~$y$ free, the corresponding instance is
+em que $!A(x)$ é uma fórmula qualquer. Se $!A(x)$ contém
+!!{variable}s livres além de $x$, acrescentamos quantificadores
+universais ao início para ligar todas elas (de modo que a instância
+correspondente do esquema de indução seja !!a{sentence}). Por exemplo,
+se $!A(x, y)$ também contém livre a !!{variable}~$y$, a instância
+correspondente é
 \[
 \lforall[y][((!A(\Obj 0) \land \lforall[x][(!A(x) \lif !A(x'))]) \lif
   \lforall[x][!A(x)])]
 \]
-Using instances of the induction schema, one can prove much more from
-the axioms of~$\Th{PA}$ than from those of $\Th{Q}$. In fact, it takes
-a good deal of work to find ``natural'' statements about the natural
-numbers that can't be proved in Peano arithmetic!{}
+Usando instâncias do esquema de indução, pode-se provar muito mais a
+partir dos axiomas de~$\Th{PA}$ do que dos axiomas de $\Th{Q}$. Na
+verdade, é necessário bastante trabalho para encontrar afirmações
+``naturais'' sobre os números naturais que não possam ser provadas na
+aritmética de Peano!{}
 
 \begin{defn}
 \ollabel{defn:representable-fn}
-  A function $f(x_0,\ldots,x_k)$ from the natural numbers to
-  the natural numbers is said to be {\em representable in $\Th{Q}$} if
-  there is a formula $!A_f(x_0,\dots,x_k,y)$ such that whenever
-  $f(n_0,\dots,n_k) = m$, $\Th{Q}$ proves
+  Dizemos que uma função $f(x_0,\ldots,x_k)$ dos números naturais nos
+  números naturais é {\em representável em $\Th{Q}$} se existe uma
+  fórmula $!A_f(x_0,\dots,x_k,y)$ tal que, sempre que
+  $f(n_0,\dots,n_k) = m$, $\Th{Q}$ prova
 \begin{enumerate}
 \item\ollabel{defn:rep:a} $!A_f(\num{n_0}, \dots, \num{n_k}, \num{m})$
 \item\ollabel{defn:rep:b} $\lforall[y][(!A_f(\num{n_0}, \dots,
@@ -84,45 +85,45 @@ numbers that can't be proved in Peano arithmetic!{}
 \end{enumerate}
 \end{defn}
 
-There are other ways of stating the definition; for example, we could
-equivalently require that $\Th{Q}$ proves $\lforall[y][(!A_f(\num{n_0}, \dots,
+Há outras maneiras de enunciar a definição; por exemplo, poderíamos
+exigir, de modo equivalente, que $\Th{Q}$ prove
+$\lforall[y][(!A_f(\num{n_0}, \dots,
 \num{n_k}, y) \liff \eq[y][\num{m}])]$.
 
 \begin{thm}
 \ollabel{thm:representable-iff-comp}
-A function is representable in $\Th{Q}$ if and only if it is computable.
+Uma função é representável em $\Th{Q}$ se, e somente se, é computável.
 \end{thm}
 
-There are two directions to proving the theorem. The left-to-right
-direction is fairly straightforward once arithmetization of syntax is
-in place. The other direction requires more work.  Here is the basic
-idea: we pick ``general recursive'' as a way of making ``computable''
-precise, and show that every general recursive function is
-representable in~$\Th{Q}$. Recall that a function is general recursive
-if it can be defined from $\Zero$, the successor function~$\Succ$, and the
-projection functions~$\Proj{n}{i}$, using composition, primitive recursion,
-and regular minimization. So one way of showing that every general
-recursive function is representable in~$\Th{Q}$ is to show that the
-basic functions are representable, and whenever some functions are
-representable, then so are the functions defined from them using
-composition, primitive recursion, and regular minimization. In other
-words, we might show that the basic functions are representable, and
-that the representable functions are ``closed under'' composition,
-primitive recursion, and regular minimization.  This guarantees that
-every general recursive function is representable.
+Há duas direções na prova do teorema. A direção da esquerda para a
+direita é bastante simples depois de estabelecida a aritmetização da
+sintaxe. A outra direção exige mais trabalho. A ideia básica é esta:
+adotamos ``recursiva geral'' como uma maneira de tornar precisa a noção
+de ``computável'' e mostramos que toda função recursiva geral é
+representável em~$\Th{Q}$. Lembre-se de que uma função é recursiva geral
+se pode ser definida a partir de $\Zero$, da função sucessor~$\Succ$ e
+das funções de projeção~$\Proj{n}{i}$ por composição, recursão primitiva
+e minimização regular. Assim, uma forma de mostrar que toda função
+recursiva geral é representável em~$\Th{Q}$ consiste em mostrar que as
+funções básicas são representáveis e que, sempre que certas funções
+são representáveis, também o são as funções delas definidas por
+composição, recursão primitiva e minimização regular. Em outras
+palavras, podemos mostrar que as funções básicas são representáveis e
+que as funções representáveis são ``fechadas sob'' composição,
+recursão primitiva e minimização regular. Isso garante que toda função
+recursiva geral é representável.
 
-It turns out that the step where we would show that representable
-functions are closed under primitive recursion is hard. In order to
-avoid this step, we show first that in fact we can do without
-primitive recursion. That is, we show that every general recursive
-function can be defined from basic functions using composition and
-regular minimization alone.  To do this, we show that primitive
-recursion can actually be done by a specific regular minimization.
-However, for this to work, we have to add some additional basic
-functions: addition, multiplication, and the characteristic function
-of the identity relation~$\Char{=}$.  Then, we can prove the theorem
-by showing that all of \emph{these} basic functions are representable
-in~$\Th{Q}$, and the representable functions are closed under
-composition and regular minimization.
+O passo em que mostraríamos que as funções representáveis são fechadas
+sob recursão primitiva revela-se difícil. Para evitá-lo, mostramos
+primeiro que, na verdade, podemos dispensar a recursão primitiva. Isto
+é, mostramos que toda função recursiva geral pode ser definida a partir
+de funções básicas usando apenas composição e minimização regular. Para
+isso, mostramos que a recursão primitiva pode ser realizada por uma
+minimização regular específica. Contudo, para que isso funcione,
+precisamos acrescentar algumas funções básicas: adição, multiplicação e
+a função característica da relação de identidade~$\Char{=}$. Podemos,
+então, provar o teorema mostrando que todas \emph{essas} funções
+básicas são representáveis em~$\Th{Q}$ e que as funções representáveis
+são fechadas sob composição e minimização regular.
 
 \end{document}

@@ -6,64 +6,64 @@
 
 \begin{document}
 
-\olfileid{inc}{tcp}{itp}
+\olfileid[pt]{inc}{tcp}{itp}
 
-\olsection{Theories in which $\Th{Q}$ is Interpretable are Undecidable}
+\olsection{Teorias nas quais $\Th{Q}$ é interpretável são indecidíveis}
 
-We can strengthen these results even more. Informally, an
-interpretation of a language $\Lang{L_1}$ in another language
-$\Lang{L_2}$ involves defining the universe, relation symbols, and
-function symbols of $\Lang{L_1}$ with !!{formula}s in
-$\Lang{L_2}$. Though we won't take the time to do this, one can make
-this definition precise.
+Podemos fortalecer ainda mais esses resultados. Informalmente, uma
+interpretação de uma linguagem $\Lang{L_1}$ em outra linguagem
+$\Lang{L_2}$ envolve definir o universo, os símbolos de relação e os
+símbolos de função de $\Lang{L_1}$ por meio de !!{formula}s em
+$\Lang{L_2}$. Embora não nos detenhamos nisso, é possível tornar essa
+definição precisa.
 
 \begin{thm}
-  Suppose $\Th{T}$ is a theory in a language in which one can
-  interpret the language of arithmetic, in such a way that $\Th{T}$ is
-  consistent with the interpretation of $\Th{Q}$. Then $\Th{T}$ is
-  undecidable. If $\Th{T}$ proves the interpretation of the axioms of
-  $\Th{Q}$, then no consistent extension of $\Th{T}$ is decidable.
+  Suponha que $\Th{T}$ seja uma teoria em uma linguagem na qual se possa
+  interpretar a linguagem da aritmética, de tal maneira que $\Th{T}$ seja
+  consistente com a interpretação de $\Th{Q}$. Então $\Th{T}$ é
+  indecidível. Se $\Th{T}$ prova a interpretação dos axiomas de
+  $\Th{Q}$, então nenhuma extensão consistente de $\Th{T}$ é decidível.
 \end{thm}
 
-The proof is just a small modification of the proof of the last
-theorem; one could use a counterexample to get a separation of $\Th{Q}$ and
-$\Th{\bar Q}$. One can take $\Th{ZFC}$, Zermelo--Fraenkel set theory with the
-axiom of choice, to be an axiomatic foundation that is powerful enough
-to carry out a good deal of ordinary mathematics. In $\Th{ZFC}$ one
-can define the natural numbers, and via this interpretation, the
-axioms of $\Th{Q}$ are true. So we have
+A prova é apenas uma pequena modificação da prova do último teorema;
+poderíamos usar um contraexemplo para obter uma separação de $\Th{Q}$ e
+$\Th{\bar Q}$. Podemos tomar $\Th{ZFC}$, a teoria dos conjuntos de
+Zermelo--Fraenkel com o axioma da escolha, como um fundamento axiomático
+poderoso o suficiente para desenvolver boa parte da matemática usual. Em
+$\Th{ZFC}$ podemos definir os números naturais e, por meio dessa
+interpretação, os axiomas de $\Th{Q}$ são verdadeiros. Portanto, temos
 
 \begin{cor}
-There is no decidable extension of $\Th{ZFC}$.
+Não há extensão decidível de $\Th{ZFC}$.
 \end{cor}
 
 \begin{cor}
-There is no complete, consistent, computably !!{axiomatizable} extension of
-$\Th{ZFC}$. 
+Não há extensão completa, consistente e computavelmente !!{axiomatizable} de
+$\Th{ZFC}$.
 \end{cor}
 
-The language of $\Th{ZFC}$ has only a single binary relation,
-$\in$. (In fact, you don't even need equality.) So we have
+A linguagem de $\Th{ZFC}$ tem apenas uma relação binária,
+$\in$. (Na verdade, nem sequer é preciso ter igualdade.) Portanto, temos
 
 \begin{cor}
-First-order logic for any language with a binary relation symbol is
-undecidable.
+A lógica de primeira ordem para qualquer linguagem com um símbolo de relação
+binária é indecidível.
 \end{cor}
 
-This result extends to any language with two unary function symbols,
-since one can use these to simulate a binary relation symbol. The
-results just cited are tight: it turns out that first-order logic for
-a language with only \emph{unary} relation symbols and at most one
-\emph{unary} function symbol is decidable.
+Esse resultado se estende a qualquer linguagem com dois símbolos de função
+unária, pois eles podem ser usados para simular um símbolo de relação binária.
+Os resultados que acabamos de citar são exatos: verifica-se que a lógica de
+primeira ordem para uma linguagem com apenas símbolos de relação
+\emph{unária} e no máximo um símbolo de função \emph{unária} é decidível.
 
-One more bit of trivia. We know that the set of sentences in the
-language $\Obj 0$, $'$, $+$, $\times$, $<$ true in the standard model
-is undecidable. In fact, one can define $<$ in terms of the other
-symbols, and then one can define $+$ in terms of $\times$ and $'$. So
-the set of true sentences in the language $\Obj 0$, $'$, $\times$ is
-undecidable. On the other hand, Presburger has shown that the set of
-sentences in the language $\Obj 0$, $'$, $+$ true in the language of
-arithmetic is decidable. The procedure is computationally infeasible,
-however.
+Mais uma curiosidade. Sabemos que é indecidível o conjunto das sentenças na
+linguagem $\Obj 0$, $'$, $+$, $\times$, $<$ que são verdadeiras no modelo
+padrão. Na verdade, podemos definir $<$ em termos dos outros símbolos e,
+depois, definir $+$ em termos de $\times$ e $'$. Assim, o conjunto das
+sentenças verdadeiras na linguagem $\Obj 0$, $'$, $\times$ é indecidível. Por
+outro lado, Presburger mostrou que o conjunto das sentenças na linguagem
+$\Obj 0$, $'$, $+$ verdadeiras na linguagem da aritmética é decidível. O
+procedimento, porém, é computacionalmente inviável.
 
 \end{document}
+

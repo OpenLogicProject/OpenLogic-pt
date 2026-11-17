@@ -6,112 +6,110 @@
 
 \begin{document}
 
-\olfileid{inc}{inp}{tar}
+\olfileid[pt]{inc}{inp}{tar}
 
-\olsection{The Undefinability of Truth}
+\olsection{A indefinibilidade da verdade}
 
-The notion of \emph{definability} depends on having a formal semantics
-for the language of arithmetic.  We have described a set of formulas
-and sentences in the language of arithmetic. The ``intended
-interpretation'' is to read such sentences as making assertions about
-the natural numbers, and such an assertion can be true or false. Let
-$\Struct{N}$ be the !!{structure} with domain $\Nat$ and the standard
-interpretation for the symbols in the language of arithmetic.  Then
-$\Sat{N}{!A}$ means ``$!A$ is true in the standard interpretation.''
+A noção de \emph{definibilidade} depende de dispormos de uma semântica
+formal para a linguagem da aritmética. Descrevemos um conjunto de fórmulas e
+sentenças na linguagem da aritmética. A ``interpretação pretendida''
+consiste em ler essas sentenças como afirmações sobre os números naturais, e
+tal afirmação pode ser verdadeira ou falsa. Seja $\Struct{N}$ a
+!!{structure} com domínio $\Nat$ e a interpretação padrão dos símbolos da
+linguagem da aritmética. Então $\Sat{N}{!A}$ significa ``$!A$ é verdadeira
+na interpretação padrão''.
 
 \begin{defn}
-A relation $R(x_1,\dots,x_k)$ of natural numbers is \emph{definable}
-in $\Struct{N}$ if and only if there is a formula $!A(x_1,\dots,x_k)$
-in the language of arithmetic such that for every $n_1,\dots,n_k$,
-$R(n_1,\dots,n_k)$ if and only if $\Sat{N}{!A(\num n_1,\dots,\num
-  n_k)}$.
+Uma relação $R(x_1,\dots,x_k)$ de números naturais é \emph{definível} em
+$\Struct{N}$ se, e somente se, existe uma fórmula $!A(x_1,\dots,x_k)$ na
+linguagem da aritmética tal que, para quaisquer $n_1,\dots,n_k$,
+$R(n_1,\dots,n_k)$ se, e somente se,
+$\Sat{N}{!A(\num n_1,\dots,\num n_k)}$.
 \end{defn}
 
-Put differently, a relation is definable in $\Struct{N}$ if and
-only if it is representable in the theory $\Th{TA}$, where $\Th{TA} =
-\Setabs{!A}{\Sat{N}{!A}}$ is the set of true sentences of
-arithmetic. (If this is not immediately clear to you, you should go
-back and check the definitions and convince yourself that this is the
-case.)
+Em outras palavras, uma relação é definível em $\Struct{N}$ se, e somente
+se, é representável na teoria $\Th{TA}$, onde $\Th{TA} =
+\Setabs{!A}{\Sat{N}{!A}}$ é o conjunto das sentenças verdadeiras da
+aritmética. (Se isso não lhe parece imediatamente claro, retome as
+definições e convença-se de que esse é o caso.)
 
 \begin{lem}
-Every computable relation is definable in~$\Struct{N}$.
+Toda relação computável é definível em~$\Struct{N}$.
 \end{lem}
 
 \begin{proof}
-It is easy to check that the formula representing a relation in
-$\Th{Q}$ defines the same relation in $\Struct{N}$. 
+É fácil verificar que a fórmula que representa uma relação em $\Th{Q}$
+define a mesma relação em $\Struct{N}$.
 \end{proof}
 
-Now one can ask, is the converse also true?  That is, is every
-relation definable in~$\Struct{N}$ computable? The answer is no. For
-example:
+Podemos agora perguntar se a recíproca também é verdadeira. Isto é, toda
+relação definível em~$\Struct{N}$ é computável? A resposta é não. Por
+exemplo:
 
 \begin{lem}
-The halting relation is definable in $\Struct{N}$.
+A relação de parada é definível em $\Struct{N}$.
 \end{lem}
 
 \begin{proof}
-Recall that the Kleene normal form theorem states that every partial
-computable function~$f$ has an index~$e$ such that $f(x) =
-U(\umin{s}{T(e,x,s)})$ for all $x \in \Nat$, where $U$ and $T$ are
-primitive recursive and therefore total. Thus, $f(x)$ is defined
-(O.s.\@, the computation halts) iff there is an~$s$ such that $T(e,x,s)$
-holds.
+Lembre-se de que o teorema da forma normal de Kleene afirma que toda função
+computável parcial~$f$ tem um índice~$e$ tal que $f(x) =
+U(\umin{s}{T(e,x,s)})$ para todo $x \in \Nat$, onde $U$ e $T$ são
+recursivas primitivas e, portanto, totais. Assim, $f(x)$ está definida (O.s.\@, a computação para) sse existe um~$s$ tal que $T(e,x,s)$ vale.
 
-Now let $H$ be the halting relation, O.s.\@,
+Seja agora $H$ a relação de parada, O.s.\@,
 \[
 H = \Setabs{\tuple{e,x}}{\lexists[s][T(e, x, s)]}.
 \]
-Let $!D_T$ define $T$ in $\Struct{N}$. Then
+Seja $!D_T$ uma fórmula que define $T$ em $\Struct{N}$. Então
 \[
 H = \Setabs{\tuple{e,x}}{\Sat{N}{\lexists[s][!D_T(\num e, \num x, s)]}},
 \]
-so $\lexists[s][!D_T(z, x, s)]$ defines~$H$ in $\Struct{N}$. 
+de modo que $\lexists[s][!D_T(z, x, s)]$ define~$H$ em $\Struct{N}$.
 \end{proof}
 
 \begin{prob}
-Show that $Q(n) \defiff n \in \Setabs{\Gn{!A}}{\Th{Q} \Proves !A}$ is
-  definable in arithmetic.
+Mostre que $Q(n) \defiff n \in \Setabs{\Gn{!A}}{\Th{Q} \Proves !A}$ é
+  definível na aritmética.
 \end{prob}
 
-What about $\Th{TA}$ itself? Is it definable in arithmetic? That
-is: is the set $\Setabs{\Gn{!A}}{\Sat{N}{!A}}$ definable in
-arithmetic? Tarski's theorem answers this in the negative.
+E quanto à própria $\Th{TA}$? Ela é definível na aritmética? Isto é: o
+conjunto $\Setabs{\Gn{!A}}{\Sat{N}{!A}}$ é definível na aritmética? O
+teorema de Tarski responde negativamente.
 
 \begin{thm}
 \ollabel{thm:tarski}
-The set of true !!{sentence}s of arithmetic is not definable in arithmetic.
+O conjunto das !!{sentence}s verdadeiras da aritmética não é definível na
+aritmética.
 \end{thm}
 
 \begin{proof} 
-Suppose $!D(x)$ defined it, O.s.\@, $\Sat{N}{!A}$ iff
-$\Sat{N}{!D(\gn{!A})}$. By the fixed-point lemma, there is a formula
-$!A$ such that $\Th{Q} \Proves !A \liff \lnot !D(\gn{!A})$, and hence
-$\Sat{N}{!A \liff \lnot !D(\gn{!A})}$. But then $\Sat{N}{!A}$ if and
-only if $\Sat{N}{\lnot !D(\gn{!A})}$, which contradicts the fact that
-$!D(y)$ is supposed to define the set of true statements of
-arithmetic.  
+Suponha que $!D(x)$ o definisse, O.s.\@, $\Sat{N}{!A}$ sse
+$\Sat{N}{!D(\gn{!A})}$. Pelo lema do ponto fixo, existe uma fórmula $!A$
+tal que $\Th{Q} \Proves !A \liff \lnot !D(\gn{!A})$ e, portanto,
+$\Sat{N}{!A \liff \lnot !D(\gn{!A})}$. Mas então $\Sat{N}{!A}$ se, e
+somente se, $\Sat{N}{\lnot !D(\gn{!A})}$, o que contradiz o fato de que
+$!D(y)$ deveria definir o conjunto das afirmações verdadeiras da aritmética.
 \end{proof}
 
-Tarski applied this analysis to a more general philosophical notion of
-truth. Given any language $L$, Tarski argued that an adequate notion
-of truth for $L$ would have to satisfy, for each sentence $X$,
+Tarski aplicou essa análise a uma noção filosófica mais geral de verdade.
+Dada qualquer linguagem $L$, Tarski argumentou que uma noção adequada de
+verdade para $L$ teria de satisfazer, para cada sentença $X$,
 \begin{quote}
-`$X$' is true if and only if $X$.
+`$X$' é verdadeira se, e somente se, $X$.
 \end{quote}
-Tarski's oft-quoted example, for English, is the sentence
+O exemplo frequentemente citado de Tarski, para o inglês, é a sentença
 \begin{quote}
-`Snow is white' is true if and only if snow is white.
+`A neve é branca' é verdadeira se, e somente se, a neve é branca.
 \end{quote}
-However, for any language strong enough to represent the diagonal
-function, and any linguistic predicate $T(x)$, we can construct a
-sentence $X$ satisfying ``$X$ if and only if not $T(\text{`$X$'})$.''
-Given that we do not want a truth predicate to declare some sentences
-to be both true and false, Tarski concluded that one cannot specify a
-truth predicate for all sentences in a language without, somehow,
-stepping outside the bounds of the language. In other words, a the
-truth predicate for a language cannot be defined in the language
-itself.
+Contudo, para qualquer linguagem forte o suficiente para representar a
+função diagonal e qualquer predicado linguístico $T(x)$, podemos construir
+uma sentença $X$ que satisfaça ``$X$ se, e somente se, não
+$T(\text{`$X$'})$.'' Como não queremos que um predicado de verdade declare
+algumas sentenças simultaneamente verdadeiras e falsas, Tarski concluiu que
+não se pode especificar um predicado de verdade para todas as sentenças de
+uma linguagem sem, de algum modo, sair dos limites da própria linguagem. Em
+outras palavras, o predicado de verdade de uma linguagem não pode ser
+definido na própria linguagem.
 
 \end{document}
+
