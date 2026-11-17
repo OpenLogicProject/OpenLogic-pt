@@ -6,28 +6,28 @@
 
 \begin{document}
 
-\olfileid{pl}{prp}{snd}
+\olfileid[pt]{pl}{prp}{snd}
 
-\olsection{Soundness of Propositional Logic}
+\olsection{Correção da lógica proposicional}
 
-\begin{thm}[Soundness] 
+\begin{thm}[Correção] 
 \ollabel{thm:soundness} 
-If $\Gamma\Proves!A$ then
+Se $\Gamma\Proves!A$, então
 $\Gamma \Entails !A$. 
 \end{thm}
 
 \begin{proof} 
-By induction on theorems. If $!A$ is an axiom then $\Entails
-!A$ and hence a fortiori $\Gamma \Entails!A$. Similarly if $!A \in \Gamma$,
-$\Gamma \Entails!A$. For the inductive step, suppose $!A$ is obtained by
-\emph{modus ponens} from $!C$ and $!C\lif!A$; also assume as inductive
-hypothesis that the theorem holds for $!C\lif !A$ and $!C$. The third item
-in \olref[sem]{prop:semanticalfacts} gives the desired result. 
+Por indução sobre os teoremas. Se $!A$ é um axioma, então $\Entails
+!A$ e, portanto, a fortiori, $\Gamma \Entails!A$. Do mesmo modo, se $!A \in \Gamma$,
+$\Gamma \Entails!A$. Para o passo indutivo, suponha que $!A$ seja obtida por
+\emph{modus ponens} de $!C$ e $!C\lif!A$; suponha também, como hipótese de
+indução, que o teorema valha para $!C\lif !A$ e $!C$. O terceiro item
+de \olref[sem]{prop:semanticalfacts} fornece o resultado desejado. 
 \end{proof}
 
 \begin{cor} 
-If $\Gamma$ is satisfiable, then $\Gamma$ is consistent. Hence,
-propositional logic is consistent. 
+Se $\Gamma$ é satisfatível, então $\Gamma$ é consistente. Logo,
+a lógica proposicional é consistente. 
 \end{cor}
 
 \end{document}

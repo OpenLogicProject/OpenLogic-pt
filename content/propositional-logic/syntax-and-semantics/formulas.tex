@@ -6,41 +6,41 @@
 
 \begin{document}
 
-\olfileid{pl}{syn}{fml}
+\olfileid[pt]{pl}{syn}{fml}
 
-\olsection{Propositional \usetoken{P}{formula}}
+\olsection{\usetoken{P}{formula} proposicionais}
 
-!!^{formula}s of propositional logic are built up from
+As !!^{formula}s da lógica proposicional são construídas a partir de
 \emph{!!{propositional
-    variable}s}\iftag{prvFalse}{\iftag{prvTrue}{,}{ and} the
-  propositional constant~$\lfalse$}{}\iftag{prvTrue}{\iftag{prvFalse}{
-    and}{} the propositional constant~$\ltrue$}{} using \emph{logical
-  connectives}.
+    variable}s}\iftag{prvFalse}{\iftag{prvTrue}{,}{ e} da constante
+  proposicional~$\lfalse$}{}\iftag{prvTrue}{\iftag{prvFalse}{
+    e}{} da constante proposicional~$\ltrue$}{} usando \emph{conectivos
+  lógicos}.
 
 \begin{enumerate}
-\item !!^a{denumerable} set~$\PVar$ of !!{propositional variable}s $\Obj p_0$,
+\item !!^a{denumerable} conjunto~$\PVar$ de !!{propositional variable}s $\Obj p_0$,
   $\Obj p_1$, \dots
-\tagitem{prvFalse}{The propositional constant for !!{falsity}~$\lfalse$.}{}
-\tagitem{prvTrue}{The propositional constant for !!{truth}~$\ltrue$.}{}
-\item The logical connectives:
+\tagitem{prvFalse}{A constante proposicional para !!{falsity}~$\lfalse$.}{}
+\tagitem{prvTrue}{A constante proposicional para !!{truth}~$\ltrue$.}{}
+\item Os conectivos lógicos:
   \startycommalist
-  \iftag{prvNot}{\ycomma $\lnot$ (negation)}{}%
-  \iftag{prvAnd}{\ycomma $\land$ (conjunction)}{}%
-  \iftag{prvOr}{\ycomma $\lor$ (disjunction)}{}%
+  \iftag{prvNot}{\ycomma $\lnot$ (negação)}{}%
+  \iftag{prvAnd}{\ycomma $\land$ (conjunção)}{}%
+  \iftag{prvOr}{\ycomma $\lor$ (disjunção)}{}%
   \iftag{prvIf}{\ycomma $\lif$ (!!{conditional})}{}%
   \iftag{prvIff}{\ycomma $\liff$ (!!{biconditional})}{}%
-\item Punctuation marks: (, ), and the comma.
+\item Sinais de pontuação: (, ) e a vírgula.
 \end{enumerate}
 
-We denote this language of propositional logic by $\Lang L_0$.
+Denotamos essa linguagem da lógica proposicional por $\Lang L_0$.
 
 \iftag{defNot,defOr,defAnd,defIf,defIff,defTrue,defFalse,defEx,defAll}{%
-In addition to the primitive connectives introduced
-above, we also use the following \emph{defined} symbols:
+Além dos conectivos primitivos introduzidos acima, também usamos os
+seguintes símbolos \emph{definidos}:
 \startycommalist
-  \iftag{defNot}{\ycomma $\lnot$ (negation)}{}%
-  \iftag{defAnd}{\ycomma $\land$ (conjunction)}{}%
-  \iftag{defOr}{\ycomma $\lor$ (disjunction)}{}%
+  \iftag{defNot}{\ycomma $\lnot$ (negação)}{}%
+  \iftag{defAnd}{\ycomma $\land$ (conjunção)}{}%
+  \iftag{defOr}{\ycomma $\lor$ (disjunção)}{}%
   \iftag{defIf}{\ycomma $\lif$ (!!{conditional})}{}%
   \iftag{defIff}{\ycomma $\liff$ (!!{biconditional})}{}%
   \iftag{defFalse}{\ycomma $\lfalse$ (!!{falsity})}{}%
@@ -48,135 +48,137 @@ above, we also use the following \emph{defined} symbols:
 
 \begin{tagblock}{defNot,defOr,defAnd,defIf,defIff,defTrue,defFalse,defEx,defAll}
 \begin{explain}
-A defined symbol is not officially part of the language, but is
-introduced as an informal abbreviation: it allows us to abbreviate
-formulas which would, if we only used primitive symbols, get quite
-long.  This is obviously an advantage.  The bigger advantage, however,
-is that proofs become shorter.  If a symbol is primitive, it has to be
-treated separately in proofs. The more primitive symbols, therefore,
-the longer our proofs.
+Um símbolo definido não faz oficialmente parte da linguagem, mas é
+introduzido como abreviação informal: ele nos permite abreviar
+fórmulas que ficariam bastante longas se usássemos apenas símbolos
+primitivos. Essa é uma vantagem evidente. A vantagem maior, porém, é
+que as demonstrações ficam mais curtas. Se um símbolo é primitivo, ele
+precisa ser tratado separadamente nas demonstrações. Portanto, quanto
+mais símbolos primitivos houver, mais longas serão nossas
+demonstrações.
 \end{explain}
 \end{tagblock}
 
 % Alternate symbols
 
 \begin{intro}
-You may be familiar with different terminology and symbols than the
-ones we use above. Logic texts (and teachers) commonly use either
-$\sim$, $\neg$, and~!\ for ``negation'', $\wedge$, $\cdot$, and $\&$
-for ``conjunction''.  Commonly used symbols for the ``conditional'' or
-``implication'' are $\rightarrow$, $\Rightarrow$, and $\supset$.
-\iftag{prvIff,defIff}{Symbols for ``biconditional,'' ``bi-implication,''
-  or ``(material) equivalence'' are $\leftrightarrow$,
-  $\Leftrightarrow$, and $\equiv$.}{}
-\iftag{prvFalse,defFalse}{The $\lfalse$ symbol is variously called
-  ``falsity,'' ``falsum,'' ``absurdity,'' or ``bottom.''}{}
-\iftag{prvTrue,defTrue}{The $\ltrue$ symbol is variously called
-  ``truth,'' ``verum,'' or ``top.''}{}
+Talvez você conheça terminologia e símbolos diferentes dos que usamos
+acima. Textos de lógica (e professores) costumam usar $\sim$, $\neg$
+e~!\ para a ``negação'', e $\wedge$, $\cdot$ e $\&$ para a
+``conjunção''. Símbolos comumente usados para a ``condicional'' ou a
+``implicação'' são $\rightarrow$, $\Rightarrow$ e $\supset$.
+\iftag{prvIff,defIff}{Os símbolos para a ``bicondicional'', a
+  ``bi-implicação'' ou a ``equivalência (material)'' são $\leftrightarrow$,
+  $\Leftrightarrow$ e $\equiv$.}{}
+\iftag{prvFalse,defFalse}{O símbolo $\lfalse$ recebe diversos nomes:
+  ``falsidade'', ``falso'', ``absurdo'' ou ``base''.}{}
+\iftag{prvTrue,defTrue}{O símbolo $\ltrue$ recebe diversos nomes:
+  ``verdade'', ``verdadeiro'' ou ``topo''.}{}
 \end{intro}
 
-\begin{defn}[Formula]
+\begin{defn}[Fórmula]
 \ollabel{defn:formulas}
-The set~$\Frm[L_0]$ of \emph{!!{formula}s} of propositional logic
-is defined inductively as follows:
+O conjunto~$\Frm[L_0]$ das \emph{!!{formula}s} da lógica proposicional
+é definido indutivamente da seguinte maneira:
 \begin{enumerate}
-\tagitem{prvFalse}{$\lfalse$ is an atomic !!{formula}.}{}
+\tagitem{prvFalse}{$\lfalse$ é uma !!{formula} atômica.}{}
 
-\tagitem{prvTrue}{$\ltrue$ is an atomic !!{formula}.}{}
+\tagitem{prvTrue}{$\ltrue$ é uma !!{formula} atômica.}{}
 
-\item Every !!{propositional variable}~$\Obj p_i$ is an atomic
-  !!{formula}.
+\item Toda !!{propositional variable}~$\Obj p_i$ é uma !!{formula}
+  atômica.
 
-\tagitem{prvNot}{If $!A$ is !!a{formula}, then $\lnot !A$ is
+\tagitem{prvNot}{Se $!A$ é !!a{formula}, então $\lnot !A$ é
   !!a{formula}.}{}
 
-\tagitem{prvAnd}{If $!A$ and $!B$ are !!{formula}s, then $(!A \land
-  !B)$ is !!a{formula}.}{}
+\tagitem{prvAnd}{Se $!A$ e $!B$ são !!{formula}s, então $(!A \land
+  !B)$ é !!a{formula}.}{}
 
-\tagitem{prvOr}{If $!A$ and $!B$ are !!{formula}s, then $(!A \lor !B)$
-  is !!a{formula}.}{}
+\tagitem{prvOr}{Se $!A$ e $!B$ são !!{formula}s, então $(!A \lor !B)$
+  é !!a{formula}.}{}
 
-\tagitem{prvIf}{If $!A$ and $!B$ are !!{formula}s, then $(!A \lif !B)$
-  is !!a{formula}.}{}
+\tagitem{prvIf}{Se $!A$ e $!B$ são !!{formula}s, então $(!A \lif !B)$
+  é !!a{formula}.}{}
 
-\tagitem{prvIff}{If $!A$ and $!B$ are !!{formula}s, then $(!A \liff !B)$
-  is !!a{formula}.}{}
+\tagitem{prvIff}{Se $!A$ e $!B$ são !!{formula}s, então $(!A \liff !B)$
+  é !!a{formula}.}{}
 
-\tagitem{limitClause}{Nothing else is !!a{formula}.}{}
+\tagitem{limitClause}{Nada mais é !!a{formula}.}{}
 \end{enumerate}
 \end{defn}
 
 \begin{explain}
-The definition of !!{formula}s is an
-\emph{inductive definition}.  Essentially, we construct the set of
-!!{formula}s in infinitely many stages.  In the initial stage, we
-pronounce all atomic formulas to be formulas; this corresponds to the
-first few cases of the definition, O.s.\@, the cases for
+A definição das !!{formula}s é uma \emph{definição indutiva}.
+Essencialmente, construímos o conjunto das !!{formula}s em uma
+infinidade de estágios. No estágio inicial, declaramos que todas as
+fórmulas atômicas são fórmulas; isso corresponde aos primeiros casos
+da definição, O.s.\@, aos casos de
 \iftag{prvTrue}{$\ltrue$, }{}%
 \iftag{prvFalse}{$\lfalse$, }{}%
-$\Obj p_i$.  ``Atomic !!{formula}''
-thus means any !!{formula} of this form.
+$\Obj p_i$. Assim, ``!!{formula} atômica'' significa qualquer
+!!{formula} dessa forma.
 
-The other cases of the definition give rules for constructing new
-!!{formula}s out of !!{formula}s already constructed.  At the second
-stage, we can use them to construct !!{formula}s out of atomic
-!!{formula}s.  At the third stage, we construct new formulas from the
-atomic formulas and those obtained in the second stage, and so on.  A
-!!{formula} is anything that is eventually constructed at such a
-stage, and nothing else.
+Os outros casos da definição fornecem regras para construir novas
+!!{formula}s a partir de !!{formula}s já construídas. No segundo
+estágio, podemos usá-las para construir !!{formula}s a partir de
+!!{formula}s atômicas. No terceiro estágio, construímos novas fórmulas
+a partir das fórmulas atômicas e das obtidas no segundo estágio, e
+assim por diante. Uma !!{formula} é qualquer coisa que acaba sendo
+construída em algum desses estágios, e nada mais.
 \end{explain}
 
-When writing a formula $(!B \ast !C)$ constructed from $!B$, $!C$
-using a two-place connective~$\ast$, we will often leave out the
-outermost pair of parentheses and write simply~$!B \ast !C$.
+Ao escrever uma fórmula $(!B \ast !C)$ construída a partir de $!B$,
+$!C$ mediante um conectivo binário~$\ast$, frequentemente omitiremos
+o par exterior de parênteses e escreveremos simplesmente~$!B \ast !C$.
 
 \begin{tagblock}{defNot,defOr,defAnd,defIf,defIff,defTrue,defFalse,defEx,defAll}
 \begin{defn}
-Formulas constructed using the defined operators are to be understood
-as follows:
+As fórmulas construídas com os operadores definidos devem ser
+entendidas da seguinte maneira:
 
 \begin{tagenumerate}{defTrue,defFalse,defNot,defOr,defAnd,defIf,defIff,defEx,defAll}
 
-\tagitem{defTrue}{$\ltrue$ abbreviates
-  \iftag{prvFalse}{$\lnot\lfalse$}{$(!A \lor \lnot !A)$ for some
-    fixed atomic !!{formula}~$!A$}.}{}
+\tagitem{defTrue}{$\ltrue$ abrevia
+  \iftag{prvFalse}{$\lnot\lfalse$}{$(!A \lor \lnot !A)$ para alguma
+    !!{formula} atômica fixa~$!A$}.}{}
 
-\tagitem{defFalse}{$\lfalse$ abbreviates
-  \iftag{prvTrue}{$\lnot\ltrue$}{$(!A \land \lnot !A)$ for some
-    fixed atomic !!{formula}~$!A$}.}{}
+\tagitem{defFalse}{$\lfalse$ abrevia
+  \iftag{prvTrue}{$\lnot\ltrue$}{$(!A \land \lnot !A)$ para alguma
+    !!{formula} atômica fixa~$!A$}.}{}
 
-\tagitem{defNot}{$\lnot !A$ abbreviates $!A \lif \lfalse$.}{}
+\tagitem{defNot}{$\lnot !A$ abrevia $!A \lif \lfalse$.}{}
 
-\tagitem{defOr}{$!A \lor !B$ abbreviates
+\tagitem{defOr}{$!A \lor !B$ abrevia
   \iftag{prvAnd}{$\lnot(\lnot !A \land \lnot !B)$}{$\lnot !A \lif
     !B$}.}{}
 
-\tagitem{defAnd}{$!A \land !B$ abbreviates
+\tagitem{defAnd}{$!A \land !B$ abrevia
   \iftag{prvOr}{$\lnot(\lnot !A \lor \lnot !B)$}{$\lnot (!A \lif
     \lnot !B)$}.}{}
 
-\tagitem{defIf}{$!A \lif !B$ abbreviates
+\tagitem{defIf}{$!A \lif !B$ abrevia
   \iftag{prvOr}{$\lnot !A \lor !B)$}{$\lnot (!A \land \lnot !B)$}.}{}
 
-\tagitem{defIff}{$!A \liff !B$ abbreviates $(!A \lif !B) \land (!B
+\tagitem{defIff}{$!A \liff !B$ abrevia $(!A \lif !B) \land (!B
   \lif !A)$.}{}
 \end{tagenumerate}
 \end{defn}
 \end{tagblock}
 
-\begin{defn}[Syntactic identity]
-The symbol $\ident$ expresses syntactic identity between strings of
-symbols, O.s.\@, $!A \ident !B$ iff $!A$ and $!B$ are strings of symbols
-of the same length and which contain the same symbol in each place.
+\begin{defn}[Identidade sintática]
+O símbolo $\ident$ expressa a identidade sintática entre cadeias de
+símbolos, O.s.\@, $!A \ident !B$ sse $!A$ e $!B$ são cadeias de
+símbolos de mesmo comprimento que contêm o mesmo símbolo em cada
+posição.
 \end{defn}
 
-The $\ident$ symbol may be flanked by strings obtained by
-concatenation, p.ex., $!A \ident (!B \lor !C)$ means: the string of
-symbols~$!A$ is the same string as the one obtained by concatenating
-an opening parenthesis, the string $!B$, the $\lor$ symbol, the
-string~$!C$, and a closing parenthesis, in this order. If this is the
-case, then we know that the first symbol of $!A$ is an opening
-parenthesis, $!A$ contains $!B$ as a substring (starting at the second
-symbol), that substring is followed by $\lor$, etc.
+O símbolo $\ident$ pode ser ladeado por cadeias obtidas por
+concatenação. p.ex., $!A \ident (!B \lor !C)$ significa que a
+cadeia de símbolos~$!A$ é a mesma cadeia obtida concatenando, nessa
+ordem, um parêntese de abertura, a cadeia $!B$, o símbolo $\lor$, a
+cadeia~$!C$ e um parêntese de fechamento. Nesse caso, sabemos que o
+primeiro símbolo de $!A$ é um parêntese de abertura, que $!A$ contém
+$!B$ como subcadeia (a partir do segundo símbolo), que essa subcadeia
+é seguida por $\lor$ etc.
 
 \end{document}
