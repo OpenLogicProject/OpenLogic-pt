@@ -6,40 +6,40 @@
 
 \begin{document}
 
-\olfileid{fol}{tab}{sid}
+\olfileid[pt]{fol}{tab}{sid}
 
-\olsection{Soundness with \usetoken{S}{identity}}
+\olsection{Correção com \usetoken{S}{identity}}
 
 \begin{prop}
-!!^{tableau}s with rules for identity are sound: no closed !!{tableau}
-  is satisfiable.
+!!^{tableau}s com regras para a identidade são corretos: nenhum
+  !!{tableau} fechado é satisfatível.
 \end{prop}
 
 \begin{proof}
-We just have to show as before that if !!a{tableau} has a satisfiable
-branch, the branch resulting from applying one of the rules for~$\eq$
-to it is also satisfiable. Let $\Gamma$ be the set of signed
-!!{formula}s on the branch, and let $\Struct{M}$ be !!a{structure}
-satisfying~$\Gamma$.
+Como antes, basta mostrar que, se !!a{tableau} tem um ramo
+satisfatível, então o ramo resultante da aplicação de uma das regras
+para~$\eq$ também é satisfatível. Seja $\Gamma$ o conjunto de
+!!{formula}s com sinal no ramo, e seja $\Struct{M}$ !!a{structure} que
+satisfaz~$\Gamma$.
 
-Suppose the branch is expanded using~$\eq$, O.s.\@, by adding the signed
-!!{formula}~$\sFmla{\True}{\eq[t][t]}$. Trivially,
-$\Sat{M}{\eq[t][t]}$, so $\Struct{M}$ also satisfies $\Gamma \cup
+Suponha que o ramo seja expandido usando~$\eq$, O.s.\@, acrescentando
+a !!{formula} com sinal~$\sFmla{\True}{\eq[t][t]}$. Trivialmente,
+$\Sat{M}{\eq[t][t]}$, portanto $\Struct{M}$ também satisfaz $\Gamma \cup
 \{\sFmla{\True}{\eq[t][t]}\}$.
 
-If the branch is expanded using $\TRule{\True}{\eq}$, we add a signed
-!!{formula}~$\sFmla{S}{!A(t_2)}$, but $\Gamma$ contains
-both~$\sFmla{\True}{\eq[t_1][t_2]}$ and $\sFmla{\True}{!A(t_1)}$. Thus
-we have $\Sat{M}{\eq[t_1][t_2]}$ and $\Sat{M}{!A(t_1)}$. Let $s$ be a
-variable assignment with $s(x) = \Value{t_1}{M}$.  By
-\olref[syn][ass]{prop:sentence-sat-true}, $\Sat{M}{!A(t_1)}[s]$. Since
-$\varAssign{s}{s}{x}$, by \olref[syn][ext]{prop:ext-formulas},
-$\Sat{M}{!A(x)}[s]$. since $\Sat{M}{\eq[t_1][t_2]}$, we have
-$\Value{t_1}{M} = \Value{t_2}{M}$, and hence $s(x) = \Value{t_2}{M}$.
-By applying \olref[syn][ext]{prop:ext-formulas} again, we also have
-$\Sat{M}{!A(t_2)}[s]$.  By \olref[syn][ass]{prop:sentence-sat-true},
-$\Sat{M}{!A(t_2)}$. The case of $\TRule{\False}{\eq}$ is treated
-similarly.
+Se o ramo for expandido usando $\TRule{\True}{\eq}$, acrescentamos uma
+!!{formula} com sinal~$\sFmla{S}{!A(t_2)}$, mas $\Gamma$ contém tanto
+$\sFmla{\True}{\eq[t_1][t_2]}$ quanto $\sFmla{\True}{!A(t_1)}$. Assim,
+temos $\Sat{M}{\eq[t_1][t_2]}$ e $\Sat{M}{!A(t_1)}$. Seja $s$ uma
+atribuição de variáveis tal que $s(x) = \Value{t_1}{M}$.  Por
+\olref[syn][ass]{prop:sentence-sat-true}, $\Sat{M}{!A(t_1)}[s]$. Como
+$\varAssign{s}{s}{x}$, por \olref[syn][ext]{prop:ext-formulas},
+$\Sat{M}{!A(x)}[s]$. Como $\Sat{M}{\eq[t_1][t_2]}$, temos
+$\Value{t_1}{M} = \Value{t_2}{M}$ e, portanto, $s(x) = \Value{t_2}{M}$.
+Aplicando novamente \olref[syn][ext]{prop:ext-formulas}, também temos
+$\Sat{M}{!A(t_2)}[s]$.  Por \olref[syn][ass]{prop:sentence-sat-true},
+$\Sat{M}{!A(t_2)}$. O caso de $\TRule{\False}{\eq}$ é tratado de modo
+semelhante.
 \end{proof}
 
 \end{document}

@@ -7,85 +7,86 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{axd}{prv}}
-      {\olfileid{pl}{axd}{prv}}
+      {\olfileid[pt]{fol}{axd}{prv}}
+      {\olfileid[pt]{pl}{axd}{prv}}
 
-\olsection{\usetoken{S}{derivability} and Consistency}
+\olsection{\usetoken{S}{derivability} e consistência}
 
-We will now establish a number of properties of the !!{derivability}
-relation.  They are independently interesting, but each will play a
-role in the proof of the completeness theorem.
+Estabeleceremos agora algumas propriedades da relação de
+!!{derivability}. Elas são interessantes por si mesmas, e cada uma
+desempenhará um papel na demonstração do teorema da completude.
 
 \begin{prop}\ollabel{prop:provability-contr}
-  If $\Gamma \Proves !A$ and $\Gamma \cup \{!A\}$ is inconsistent,
-  then $\Gamma$ is inconsistent.
+  Se $\Gamma \Proves !A$ e $\Gamma \cup \{!A\}$ é inconsistente,
+  então $\Gamma$ é inconsistente.
 \end{prop}
 
 \begin{proof}
-  If $\Gamma \cup \{!A\}$ is inconsistent, then $\Gamma \cup \{!A\}
-  \Proves \lfalse$. By \olref[ptn]{prop:reflexivity}, $\Gamma \Proves
-  !B$ for every $!B \in \Gamma$. Since also $\Gamma \Proves !A$ by
-  hypothesis, $\Gamma \Proves !B$ for every $!B \in \Gamma \cup
-  \{!A\}$. By \olref[ptn]{prop:transitivity}, $\Gamma \Proves
-  \lfalse$, O.s.\@, $\Gamma$ is inconsistent.
+  Se $\Gamma \cup \{!A\}$ é inconsistente, então $\Gamma \cup \{!A\}
+  \Proves \lfalse$. Por \olref[ptn]{prop:reflexivity}, $\Gamma \Proves
+  !B$ para todo $!B \in \Gamma$. Como também $\Gamma \Proves !A$ por
+  hipótese, $\Gamma \Proves !B$ para todo $!B \in \Gamma \cup
+  \{!A\}$. Por \olref[ptn]{prop:transitivity}, $\Gamma \Proves
+  \lfalse$, O.s.\@, $\Gamma$ é inconsistente.
 \end{proof}
 
 \begin{prop}
 \ollabel{prop:prov-incons}
-$\Gamma \Proves !A$ iff $\Gamma \cup \{\lnot !A\}$ is inconsistent.
+$\Gamma \Proves !A$ se, e somente se, $\Gamma \cup \{\lnot !A\}$ é inconsistente.
 \end{prop}
 
 \begin{proof}
-First suppose $\Gamma \Proves !A$. Then $\Gamma \cup \{\lnot !A\}
-\Proves !A$ by \olref[ptn]{prop:monotonicity}. $\Gamma \cup \{\lnot
-!A\} \Proves \lnot !A$ by \olref[ptn]{prop:reflexivity}.  We also have
-$\Proves \lnot !A \lif (!A \lif \lfalse)$ by \olref[prp]{ax:lnot2}. So
-by two applications of \olref[ded]{prop:mp}, we have $\Gamma \cup \{\lnot
-!A\} \Proves \lfalse$.
+Primeiro, suponha $\Gamma \Proves !A$. Então $\Gamma \cup \{\lnot !A\}
+\Proves !A$ por \olref[ptn]{prop:monotonicity}. Temos também
+$\Gamma \cup \{\lnot !A\} \Proves \lnot !A$ por
+\olref[ptn]{prop:reflexivity}. Também temos
+$\Proves \lnot !A \lif (!A \lif \lfalse)$ por \olref[prp]{ax:lnot2}.
+Portanto, por duas aplicações de \olref[ded]{prop:mp}, temos $\Gamma
+\cup \{\lnot !A\} \Proves \lfalse$.
 
-Now assume $\Gamma \cup \{\lnot !A\}$ is inconsistent, O.s.\@, $\Gamma
-\cup \{\lnot !A\} \Proves \lfalse$. By the deduction theorem, $\Gamma
-\Proves \lnot !A \lif \lfalse$. $\Gamma \Proves (\lnot !A \lif
-\lfalse) \lif \lnot\lnot !A$ by \olref[prp]{ax:lfalse2}, so $\Gamma
-\Proves \lnot\lnot !A$ by \olref[ded]{prop:mp}. Since $\Gamma \Proves
-\lnot\lnot !A \lif !A$ (\olref[prp]{ax:dne}), we have $\Gamma
-\Proves !A$ by \olref[ded]{prop:mp} again.
+Agora suponha que $\Gamma \cup \{\lnot !A\}$ seja inconsistente, O.s.\@,
+$\Gamma \cup \{\lnot !A\} \Proves \lfalse$. Pelo teorema da dedução,
+$\Gamma \Proves \lnot !A \lif \lfalse$. Temos $\Gamma \Proves (\lnot !A
+\lif \lfalse) \lif \lnot\lnot !A$ por \olref[prp]{ax:lfalse2}; logo,
+$\Gamma \Proves \lnot\lnot !A$ por \olref[ded]{prop:mp}. Como $\Gamma
+\Proves \lnot\lnot !A \lif !A$ (\olref[prp]{ax:dne}), temos novamente
+$\Gamma \Proves !A$ por \olref[ded]{prop:mp}.
 \end{proof}
 
 \begin{prob}
-Prove that $\Gamma \Proves \lnot !A$ iff $\Gamma \cup \{!A\}$ is
-inconsistent.
+Demonstre que $\Gamma \Proves \lnot !A$ se, e somente se,
+$\Gamma \cup \{!A\}$ é inconsistente.
 \end{prob}
 
 \begin{prop}\ollabel{prop:explicit-inc}
-  If $\Gamma \Proves !A$ and $\lnot !A \in \Gamma$, then $\Gamma$ is
-  inconsistent.
+  Se $\Gamma \Proves !A$ e $\lnot !A \in \Gamma$, então $\Gamma$ é
+  inconsistente.
 \end{prop}
 
 \begin{proof}
-  $\Gamma \Proves \lnot !A \lif (!A \lif \lfalse)$ by \olref[prp]{ax:lnot2}.
-  $\Gamma \Proves \lfalse$ by two applications of \olref[ded]{prop:mp}.
+  $\Gamma \Proves \lnot !A \lif (!A \lif \lfalse)$ por \olref[prp]{ax:lnot2}.
+  $\Gamma \Proves \lfalse$ por duas aplicações de \olref[ded]{prop:mp}.
 \end{proof}
 
 
 \begin{prop}\ollabel{prop:provability-exhaustive}
-  If $\Gamma \cup \{!A\}$ and $\Gamma \cup \{\lnot !A\}$ are both
-  inconsistent, then $\Gamma$ is inconsistent.
+  Se $\Gamma \cup \{!A\}$ e $\Gamma \cup \{\lnot !A\}$ são ambos
+  inconsistentes, então $\Gamma$ é inconsistente.
 \end{prop}
 
 \begin{proof}
-Exercise.
+Exercício.
 \end{proof}
 
 \tagprob{FOL}
 \begin{prob}
-  Prove \olref[fol][axd][prv]{prop:provability-exhaustive}
+  Demonstre \olref[fol][axd][prv]{prop:provability-exhaustive}
 \end{prob}
 \tagendprob
 
 \tagprob{notFOL}
 \begin{prob}
-  Prove \olref[pl][axd][prv]{prop:provability-exhaustive}
+  Demonstre \olref[pl][axd][prv]{prop:provability-exhaustive}
 \end{prob}
 \tagendprob
 

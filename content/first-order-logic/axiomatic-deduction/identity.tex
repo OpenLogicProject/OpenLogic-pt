@@ -6,51 +6,51 @@
 
 \begin{document}
 
-\olfileid{fol}{axd}{ide}
+\olfileid[pt]{fol}{axd}{ide}
 
-\olsection{\usetoken{P}{derivation} with \usetoken{S}{identity}}
+\olsection{\usetoken{P}{derivation} com \usetoken{S}{identity}}
 
-In order to accommodate $\eq$ in !!{derivation}s, we simply add new
-axiom schemas. The definition of !!{derivation} and $\Proves$ remains
-the same, we just also allow the new axioms.
+Para incorporar $\eq$ às !!{derivation}s, simplesmente adicionamos novos
+esquemas de axiomas. A definição de !!{derivation} e de $\Proves$
+permanece a mesma; apenas permitimos também os novos axiomas.
 
-\begin{defn}[Axioms for !!{identity}]
+\begin{defn}[Axiomas para a !!{identity}]
 \begin{align}
 \ollabel{ax:id1} & \eq[t][t], \\
 \ollabel{ax:id2} & \eq[t_1][t_2] \lif (!B(t_1) \lif
   !B(t_2)),
 \end{align}
-for any closed terms $t$, $t_1$, $t_2$.
+para quaisquer termos fechados $t$, $t_1$, $t_2$.
 \end{defn}
 
 \begin{prop}\ollabel{prop:sound}
-  The axioms \olref{ax:id1} and \olref{ax:id2} are valid.
+  Os axiomas \olref{ax:id1} e \olref{ax:id2} são válidos.
 \end{prop}
 
 \begin{proof}
-  Exercise.
+  Exercício.
 \end{proof}
 
 \begin{prob}
-Prove \olref[fol][axd][ide]{prop:sound}.
+Demonstre \olref[fol][axd][ide]{prop:sound}.
 \end{prob}
 
 \begin{prop}\ollabel{prop:iden1}
- $\Gamma \Proves \eq[t][t]$, for any term $t$ and set~$\Gamma$.
+ $\Gamma \Proves \eq[t][t]$, para qualquer termo $t$ e conjunto~$\Gamma$.
 \end{prop}
 
 \begin{prop}\ollabel{prop:iden2}
-  If $\Gamma \Proves !A(t_1)$ and $\Gamma \Proves
-  \eq[t_1][t_2]$, then $\Gamma \Proves !A(t_2)$.
+  Se $\Gamma \Proves !A(t_1)$ e $\Gamma \Proves
+  \eq[t_1][t_2]$, então $\Gamma \Proves !A(t_2)$.
 \end{prop}
 
 \begin{proof}
-The !!{formula}
+A !!{formula}
 \[
 (\eq[t_1][t_2] \lif (!A(t_1) \lif !A(t_2)))
 \]
-is an instance of~\olref{ax:id2}. The conclusion follows by two applications
-of~\MP.
+é uma instância de~\olref{ax:id2}. A conclusão decorre de duas aplicações
+de~\MP.
 \end{proof}
 
 \end{document}

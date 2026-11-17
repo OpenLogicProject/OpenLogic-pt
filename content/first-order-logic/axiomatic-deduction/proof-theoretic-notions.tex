@@ -7,128 +7,128 @@
 \begin{document}
 
 \iftag{FOL}
-      {\olfileid{fol}{axd}{ptn}}
-      {\olfileid{pl}{axd}{ptn}}
+      {\olfileid[pt]{fol}{axd}{ptn}}
+      {\olfileid[pt]{pl}{axd}{ptn}}
 
-\olsection{Proof-Theoretic Notions}
+\olsection{Noções da teoria da prova}
 
 \begin{explain}
-Just as we've defined a number of important semantic notions
-(\iftag{FOL}{validity}{tautology}, entailment, satisfiability), we now
-define corresponding \emph{proof-theoretic notions}.  These are not
-defined by appeal to satisfaction of !!{sentence}s in !!{structure}s,
-but by appeal to the !!{derivability} or !!{nonderivability} of
-certain formulas.  It was an important discovery that these notions
-coincide.  That they do is the content of the \emph{soundness} and
-\emph{completeness theorems}.
+Assim como definimos várias noções semânticas importantes
+(\iftag{FOL}{validade}{tautologia}, consequência, satisfatibilidade),
+agora definimos as \emph{noções da teoria da prova} correspondentes.
+Elas não são definidas por meio da satisfação de !!{sentence}s em
+!!{structure}s, mas por meio da !!{derivability} ou da
+!!{nonderivability} de certas fórmulas. A descoberta de que essas
+noções coincidem foi importante. Essa coincidência é o conteúdo dos
+teoremas da \emph{correção} e da \emph{completude}.
 \end{explain}
 
 \begin{defn}[!!^{derivability}]
-!!^a{formula}~$!A$ is \emph{!!{derivable}} from $\Gamma$, written
-$\Gamma \Proves !A$, if there is !!a{derivation} from~$\Gamma$ ending
-in~$!A$.
+!!^a{formula}~$!A$ é \emph{!!{derivable}} a partir de $\Gamma$, o que
+escrevemos $\Gamma \Proves !A$, se existe !!a{derivation} a partir
+de~$\Gamma$ que termina em~$!A$.
 \end{defn}
 
-\begin{defn}[Theorems]
-!!^a{formula}~$!A$ is a \emph{theorem} if there is !!a{derivation} of
-$!A$ from the empty set.  We write $\Proves !A$ if $!A$ is a theorem
-and $\Proves/ !A$ if it is not.
+\begin{defn}[Teoremas]
+!!^a{formula}~$!A$ é um \emph{teorema} se existe !!a{derivation} de
+$!A$ a partir do conjunto vazio. Escrevemos $\Proves !A$ se $!A$ é um
+teorema e $\Proves/ !A$ se não é.
 \end{defn}
 
-\begin{defn}[Consistency]
-A set $\Gamma$ of !!{formula}s is \emph{consistent} if and only if
-$\Gamma\Proves/ \lfalse$; it is \emph{inconsistent} otherwise.
+\begin{defn}[Consistência]
+Um conjunto $\Gamma$ de !!{formula}s é \emph{consistente} se, e somente
+se, $\Gamma\Proves/ \lfalse$; caso contrário, é \emph{inconsistente}.
 \end{defn}
 
-\begin{prop}[Reflexivity]
+\begin{prop}[Reflexividade]
 \ollabel{prop:reflexivity}
-If $!A \in \Gamma$, then $\Gamma \Proves !A$.
+Se $!A \in \Gamma$, então $\Gamma \Proves !A$.
 \end{prop}
 
 \begin{proof}
-  The !!{formula}~$!A$ by itself is !!a{derivation} of~$!A$ from~$\Gamma$.
+  A !!{formula}~$!A$ por si só é !!a{derivation} de~$!A$ a partir de~$\Gamma$.
 \end{proof}
 
-\begin{prop}[Monotonicity]
+\begin{prop}[Monotonicidade]
 \ollabel{prop:monotonicity}
-If $\Gamma \subseteq \Delta$ and $\Gamma \Proves !A$, then $\Delta
+Se $\Gamma \subseteq \Delta$ e $\Gamma \Proves !A$, então $\Delta
 \Proves !A$.
 \end{prop}
 
 \begin{proof}
-Any !!{derivation} of $!A$ from $\Gamma$ is also !!a{derivation} of
-$!A$ from~$\Delta$.
+Toda !!{derivation} de $!A$ a partir de $\Gamma$ também é !!a{derivation}
+de $!A$ a partir de~$\Delta$.
 \end{proof}
 
-\begin{prop}[Transitivity]
+\begin{prop}[Transitividade]
 \ollabel{prop:transitivity}
-If $\Gamma \Proves !A$ and $\{!A\} \cup \Delta \Proves
-!B$, then $\Gamma \cup \Delta \Proves !B$.
+Se $\Gamma \Proves !A$ e $\{!A\} \cup \Delta \Proves
+!B$, então $\Gamma \cup \Delta \Proves !B$.
 \end{prop}
 
 \begin{proof}
-  Suppose $\{!A\} \cup \Delta \Proves !B$. Then there is
-  !!a{derivation} $!B_1$, \dots, $!B_l = !B$ from~$\{!A\} \cup
-  \Delta$. Some of the steps in that !!{derivation} will be correct
-  because of a rule which refers to a prior line~$!B_i = !A$. By
-  hypothesis, there is !!a{derivation} of~$!A$ from~$\Gamma$, O.s.\@,
-  !!a{derivation}~$!A_1$, \dots, $!A_k = !A$ where every $!A_i$ is an
-  axiom, !!a{element} of~$\Gamma$, or correct by a rule of
-  inference. Now consider the sequence
+  Suponha $\{!A\} \cup \Delta \Proves !B$. Então existe
+  !!a{derivation} $!B_1$, \dots, $!B_l = !B$ a partir de~$\{!A\} \cup
+  \Delta$. Alguns passos dessa !!{derivation} serão corretos por uma
+  regra que se refere a uma linha anterior~$!B_i = !A$. Por hipótese,
+  existe !!a{derivation} de~$!A$ a partir de~$\Gamma$, O.s.\@,
+  !!a{derivation}~$!A_1$, \dots, $!A_k = !A$ na qual cada $!A_i$ é um
+  axioma, !!a{element} de~$\Gamma$ ou é correto por uma regra de
+  inferência. Considere agora a sequência
   \[
   !A_1, \dots, !A_k = !A, !B_1, \dots, !B_l = !B.
   \]
-  This is a correct !!{derivation} of~$!B$ from $\Gamma \cup \Delta$
-  since every $B_i = !A$ is now justified by the same rule which
-  justifies~$!A_k = !A$.
+  Esta é uma !!{derivation} correta de~$!B$ a partir de $\Gamma \cup
+  \Delta$, pois todo $B_i = !A$ agora é justificado pela mesma regra
+  que justifica~$!A_k = !A$.
 \end{proof}
 
-Note that this means that in particular if $\Gamma \Proves !A$ and $!A
-\Proves !B$, then $\Gamma \Proves !B$. It follows also that if $!A_1,
-\dots, !A_n \Proves !B$ and $\Gamma \Proves !A_i$ for each~$i$, then
-$\Gamma \Proves !B$.
+Observe que isso significa, em particular, que, se $\Gamma \Proves !A$
+e $!A \Proves !B$, então $\Gamma \Proves !B$. Segue também que, se
+$!A_1, \dots, !A_n \Proves !B$ e $\Gamma \Proves !A_i$ para cada~$i$,
+então $\Gamma \Proves !B$.
 
 \begin{prop}
 \ollabel{prop:incons}
-$\Gamma$ is inconsistent iff $\Gamma \Proves !A$ for every~$!A$.
+$\Gamma$ é inconsistente se, e somente se, $\Gamma \Proves !A$ para todo~$!A$.
 \end{prop}
 
 \begin{proof}
-Exercise.
+Exercício.
 \end{proof}
 
 \tagprob{FOL}
 \begin{prob}
-Prove \olref[fol][axd][ptn]{prop:incons}.
+Demonstre \olref[fol][axd][ptn]{prop:incons}.
 \end{prob}
 \tagendprob
 
 \tagprob{notFOL}
 \begin{prob}
-Prove \olref[pl][axd][ptn]{prop:incons}.
+Demonstre \olref[pl][axd][ptn]{prop:incons}.
 \end{prob}
 \tagendprob
 
-\begin{prop}[Compactness]
+\begin{prop}[Compacidade]
 \ollabel{prop:proves-compact}
   \begin{enumerate}
-  \item If $\Gamma \Proves !A$ then there is a finite subset $\Gamma_0
-    \subseteq \Gamma$ such that $\Gamma_0 \Proves !A$.
-  \item If every finite subset of~$\Gamma$ is
-    consistent, then $\Gamma$ is consistent.
+  \item Se $\Gamma \Proves !A$, então existe um subconjunto finito $\Gamma_0
+    \subseteq \Gamma$ tal que $\Gamma_0 \Proves !A$.
+  \item Se todo subconjunto finito de~$\Gamma$ é
+    consistente, então $\Gamma$ é consistente.
   \end{enumerate}
 \end{prop}
 
 \begin{proof}
   \begin{enumerate}
-    \item If $\Gamma \Proves !A$, then there is a finite sequence of
-      !!{formula}s $!A_1$, \dots,~$!A_n$ so that $!A \ident !A_n$ and
-      each $!A_i$ is either a logical axiom, !!a{element} of~$\Gamma$
-      or follows from previous !!{formula}s by modus ponens.  Take
-      $\Gamma_0$ to be those $!A_i$ which are in~$\Gamma$.  Then the
-      !!{derivation} is likewise !!a{derivation} from~$\Gamma_0$, and
-      so $\Gamma_0 \Proves !A$.
-    \item This is the contrapositive of~(1) for the special case $!A
+    \item Se $\Gamma \Proves !A$, então existe uma sequência finita de
+      !!{formula}s $!A_1$, \dots,~$!A_n$ tal que $!A \ident !A_n$ e
+      cada $!A_i$ é um axioma lógico, !!a{element} de~$\Gamma$ ou
+      decorre de !!{formula}s anteriores por modus ponens. Tome
+      $\Gamma_0$ como o conjunto dos $!A_i$ que pertencem a~$\Gamma$.
+      Então a !!{derivation} também é !!a{derivation} a partir
+      de~$\Gamma_0$, e portanto $\Gamma_0 \Proves !A$.
+    \item Esta é a contrapositiva de~(1) para o caso especial $!A
       \ident \lfalse$.
 \end{enumerate}
 \end{proof}
