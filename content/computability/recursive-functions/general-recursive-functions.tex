@@ -6,37 +6,36 @@
 
 \begin{document}
 
-\olfileid{cmp}{rec}{gen}
-\olsection{General Recursive Functions}
+\olfileid[pt]{cmp}{rec}{gen}
+\olsection{Funções recursivas gerais}
 
-There is another way to obtain a set of total functions. Say a total
-function $f(x,\vec z)$ is \emph{regular} if for every sequence of
-natural numbers $\vec z$, there is an $x$ such that $f(x,\vec z) = 0$.
-In other words, the regular functions are exactly those functions to
-which one can apply unbounded search, and end up with a total
-function. One can, conservatively, restrict unbounded search to
-regular functions:
+Há outra maneira de obter um conjunto de funções totais. Dizemos que
+uma função total $f(x,\vec z)$ é \emph{regular} se, para toda sequência
+de números naturais $\vec z$, existe um $x$ tal que $f(x,\vec z) = 0$.
+Em outras palavras, as funções regulares são exatamente aquelas às
+quais se pode aplicar a busca ilimitada e obter como resultado uma
+função total. Podemos, de modo conservador, restringir a busca
+ilimitada às funções regulares:
 
 \begin{defn}
 \ollabel{defn:general-recursive}
-The set of \emph{general recursive functions} is the smallest set of
-functions from the natural numbers to the natural numbers (of various
-arities) containing zero, successor, and projections, and closed under
-composition, primitive recursion, and unbounded search applied to
-\emph{regular} functions.
+O conjunto das \emph{funções recursivas gerais} é o menor conjunto de
+funções dos números naturais nos números naturais (de diversas
+aridades) que contém zero, sucessor e projeções e é fechado sob
+composição, recursão primitiva e busca ilimitada aplicada a funções
+\emph{regulares}.
 \end{defn}
 
-Clearly every general recursive function is total. The difference
-between \olref{defn:general-recursive} and
-\olref[par]{defn:recursive-fn} is that in the latter one is allowed to
-use partial recursive functions along the way; the only requirement is
-that the function you end up with at the end is total. So the word
-``general,'' a historic relic, is a misnomer; on the surface,
-\olref{defn:general-recursive} is \emph{less} general than
-\olref[par]{defn:recursive-fn}. But, fortunately, the difference is
-illusory; though the definitions are different, the set of general
-recursive functions and the set of recursive functions are one and the
-same.
+É evidente que toda função recursiva geral é total. A diferença entre
+\olref{defn:general-recursive} e
+\olref[par]{defn:recursive-fn} é que, na última, permite-se usar funções
+recursivas parciais durante o processo; a única exigência é que a
+função obtida ao final seja total. Assim, a palavra ``geral'', um
+vestígio histórico, é uma denominação inadequada; à primeira vista,
+\olref{defn:general-recursive} é \emph{menos} geral do que
+\olref[par]{defn:recursive-fn}. Felizmente, porém, a diferença é
+ilusória; embora as definições sejam diferentes, o conjunto das
+funções recursivas gerais e o conjunto das funções recursivas são um
+só e o mesmo.
 
 \end{document}
-

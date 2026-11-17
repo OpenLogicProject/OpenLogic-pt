@@ -6,97 +6,102 @@
 
 \begin{document}
 
-\olfileid{cmp}{thy}{ppr}
-\olsection{Properties of Reducibility}
+\olfileid[pt]{cmp}{thy}{ppr}
+\olsection{Propriedades da redutibilidade}
 
-We write $A \leq_m B$ if $A$ reduces to~$B$, and this notation
-suggests that if $A \leq_m B$, then $A$ is ``no harder than''~$B$ and
-that $B$ is ``as hard or harder than''~$A$, and that $\le_m$, like the
-usual $\le$ on numbers, orders sets (or decision problems) by their
-complexity. The following two propositions support this intuition. The
-first one say taht $\le_m$ is transitive.
+Escrevemos $A \leq_m B$ se $A$ se reduz a~$B$, e essa notação sugere
+que, se $A \leq_m B$, então $A$ não é ``mais difícil que''~$B$, e
+$B$ é ``tão difícil quanto ou mais difícil que''~$A$, e que
+$\le_m$, assim como a relação usual $\le$ sobre os números, ordena os
+conjuntos (ou problemas de decisão) por sua complexidade. As duas
+proposições a seguir sustentam essa intuição. A primeira diz que
+$\le_m$ é transitiva.
 
 \begin{prop}
 \ollabel{prop:trans-red}
-If $A \leq_m B$ and $B \leq_m C$, then $A \leq_m C$.
+Se $A \leq_m B$ e $B \leq_m C$, então $A \leq_m C$.
 \end{prop}
 
 \begin{proof}
-Composing a reduction of $A$ to~$B$ with a reduction of $B$ to
-$C$ yields a reduction of $A$ to~$C$.
+Compor uma redução de $A$ a~$B$ com uma redução de $B$ a~$C$ produz
+uma redução de $A$ a~$C$.
 \end{proof}
 
 \begin{prob}
-Prove \olref{prop:trans-red} by showing that if $f$ and~$g$ are
-many-one reductions of $A$ to~$B$ and $B$ to~$C$, respectively, then
-$\comp{f}{g}$ is a many-one reduction of $A$ to~$C$.
+Demonstre \olref{prop:trans-red} mostrando que, se $f$ e~$g$ são,
+respectivamente, reduções muitos-para-um de $A$ a~$B$ e de $B$ a~$C$,
+então $\comp{f}{g}$ é uma redução muitos-para-um de $A$ a~$C$.
 \end{prob}
 
 \begin{prop}
 \ollabel{prop:reduce}
-Let $A$ and $B$ be any sets, and suppose $A \leq_m B$.
+Sejam $A$ e $B$ conjuntos quaisquer, e suponha que $A \leq_m B$.
 \begin{enumerate}
-\item If $B$ is computably enumerable, so is~$A$.
-\item If $B$ is computable, so is~$A$.
+\item Se $B$ é computavelmente enumerável, $A$ também é.
+\item Se $B$ é computável, $A$ também é.
 \end{enumerate}
 \end{prop}
 
 \begin{proof}
-Let $f$ be a many-one reduction from $A$ to~$B$. For the first
-claim, just check that if $B$ is the domain of a partial function~$g$,
-then $A$ is the domain of~$\comp{f}{g}$:
+Seja $f$ uma redução muitos-para-um de $A$ a~$B$. Para a primeira
+afirmação, basta verificar que, se $B$ é o domínio de uma função
+parcial~$g$, então $A$ é o domínio de~$\comp{f}{g}$:
 \begin{align*}
-x \in A & \text{ iff } f(x) \in B \\
-& \text{ iff }  g(f(x)) \fdefined.
+x \in A & \text{ se, e somente se, } f(x) \in B \\
+& \text{ se, e somente se, }  g(f(x)) \fdefined.
 \end{align*}
 
-For the second claim, remember that if $B$~is computable then $B$
-and~$\Complement{B}$ are computably enumerable
-(\olref[cmp]{thm:ce-comp}). It is not hard to check that $f$~is also a
-many-one reduction of $\Complement{A}$ to $\Complement{B}$, so, by the
-first part of this proof, $A$ and~$\Complement{A}$ are !!{computably
-enumerable}. So $A$ is computable as well by \olref[cmp]{thm:ce-comp}.
-(Alternatively, you can check that $\Char{A} = \comp{f}{\Char{B}}$; so
-if $\Char{B}$ is computable, then so is~$\Char{A}$.)
+Para a segunda afirmação, lembre-se de que, se $B$~é computável, então
+$B$ e~$\Complement{B}$ são computavelmente enumeráveis
+(\olref[cmp]{thm:ce-comp}). Não é difícil verificar que $f$~também é
+uma redução muitos-para-um de $\Complement{A}$ a $\Complement{B}$;
+portanto, pela primeira parte desta demonstração, $A$
+e~$\Complement{A}$ são !!{computably
+enumerable}. Assim, $A$ também é
+computável por \olref[cmp]{thm:ce-comp}. (Como alternativa, você pode
+verificar que $\Char{A} = \comp{f}{\Char{B}}$; portanto, se
+$\Char{B}$ é computável, $\Char{A}$ também é.)
 \end{proof}
 
 \begin{prob}
-Suppose $f$ is a many-one reduction of $A$ to~$B$. Show that $f$ is
-also a many-one reduction of $\Complement{A}$ to $\Complement{B}$.
+Suponha que $f$ seja uma redução muitos-para-um de $A$ a~$B$. Mostre
+que $f$ também é uma redução muitos-para-um de $\Complement{A}$ a
+$\Complement{B}$.
 \end{prob}
 
 \begin{prob}
-Show that if $f\colon A \to B$ is a many-one reduction, then $\Char{A}
-= \comp{f}{\Char{B}}$.
+Mostre que, se $f\colon A \to B$ é uma redução muitos-para-um, então
+$\Char{A} = \comp{f}{\Char{B}}$.
 \end{prob}
 
 \begin{digress}
-A more general notion of reducibility called \emph{Turing
-reducibility} is useful in other contexts, especially for proving
-undecidability results. Note that by \olref[cmp]{cor:comp-k}, the
-complement of~$K_0$ is not reducible to~$K_0$, since it is not
-computably enumerable. But, intuitively, if you knew the answers to
-questions about $K_0$, you would know the answer to questions about
-its complement as well. A set $A$ is said to be Turing reducible
-to~$B$ if one can determine answers to questions in~$A$ using a
-computable procedure that can ask questions about~$B$. This is more
-liberal than many-one reducibility, in which (1)~you are only allowed
-to ask one question about $B$, and (2)~a ``yes'' answer has to
-translate to a ``yes'' answer to the question about $A$, and similarly
-for ``no.'' It is still the case that if $A$~is Turing reducible
-to~$B$ and $B$~is computable then $A$~is computable as well (though,
-as we have seen, the analogous statement does not hold for computable
-enumerability).
+Uma noção mais geral de redutibilidade, chamada \emph{redutibilidade
+de Turing}, é útil em outros contextos, sobretudo para demonstrar
+resultados de indecidibilidade. Observe que, por
+\olref[cmp]{cor:comp-k}, o complemento de~$K_0$ não é redutível a~$K_0$,
+pois não é computavelmente enumerável. Intuitivamente, porém, se você
+soubesse as respostas a perguntas sobre $K_0$, também saberia as
+respostas a perguntas sobre seu complemento. Diz-se que um conjunto
+$A$ é redutível por Turing a~$B$ se for possível determinar respostas
+a perguntas sobre~$A$ usando um procedimento computável que possa
+fazer perguntas sobre~$B$. Essa noção é mais liberal do que a
+redutibilidade muitos-para-um, na qual (1)~só se permite fazer uma
+pergunta sobre $B$, e (2)~uma resposta ``sim'' precisa se traduzir em uma
+resposta ``sim'' à pergunta sobre $A$, e de modo semelhante para
+``não''. Ainda é verdade que, se $A$~é redutível por Turing a~$B$ e
+$B$~é computável, então $A$~também é computável (embora, como vimos,
+o enunciado análogo não valha para a enumerabilidade computável).
 
-You should think about the various notions of reducibility we have
-discussed, and understand the distinctions between them. We will,
-however, only deal with many-one reducibility in this chapter.
-Incidentally, both types of reducibility discussed in the last
-paragraph have analogues in computational complexity, with the added
-requirement that the Turing machines run in polynomial time: the
-complexity version of many-one reducibility is known as \emph{Karp
-reducibility}, while the complexity version of Turing reducibility is
-known as \emph{Cook reducibility}.
+Você deve refletir sobre as várias noções de redutibilidade que
+discutimos e compreender as distinções entre elas. Neste capítulo,
+porém, trataremos apenas da redutibilidade muitos-para-um. A propósito,
+os dois tipos de redutibilidade discutidos no parágrafo anterior têm
+análogos na complexidade computacional, com a exigência adicional de
+que as máquinas de Turing sejam executadas em tempo polinomial: a
+versão da redutibilidade muitos-para-um para a complexidade é conhecida
+como \emph{redutibilidade de Karp}, enquanto a versão da redutibilidade
+de Turing para a complexidade é conhecida como \emph{redutibilidade de
+Cook}.
 \end{digress}
 
 \end{document}

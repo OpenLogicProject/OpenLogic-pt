@@ -6,122 +6,125 @@
 
 \begin{document}
 
-\olfileid{cmp}{thy}{rce}
-\olsection{Rice's Theorem}
+\olfileid[pt]{cmp}{thy}{rce}
+\olsection{Teorema de Rice}
 
-If you think about it, you will see that the specifics of $\fn{Tot}$
-do not play into the proof of \olref[tot]{prop:total}. We designed
-$h(x,y)$ to act like the constant function $j(y) = 0$ exactly when $x$
-is in $K$; but we could just as well have made it act like any other
-partial computable function under those circumstances. This
-observation lets us state a more general theorem, which says, roughly,
-that no nontrivial property of computable functions is decidable.
+Se você refletir a respeito, verá que as particularidades de
+$\fn{Tot}$ não desempenham nenhum papel na demonstração de
+\olref[tot]{prop:total}. Projetamos $h(x,y)$ para se comportar como a
+função constante $j(y) = 0$ exatamente quando $x$ pertence a $K$; mas,
+nessas circunstâncias, poderíamos igualmente tê-la feito se comportar
+como qualquer outra função parcialmente computável. Essa observação
+nos permite enunciar um teorema mais geral, que diz, grosso modo, que
+nenhuma propriedade não trivial de funções computáveis é decidível.
 
-Keep in mind that $\cfind{0}$, $\cfind{1}$, $\cfind{2}$,~\dots is our
-standard enumeration of the partial computable functions.
+Tenha em mente que $\cfind{0}$, $\cfind{1}$, $\cfind{2}$,~\dots é
+nossa enumeração padrão das funções parcialmente computáveis.
 
-\begin{thm}[Rice's Theorem]
-  Let $C$ be any set of partial computable functions, and let $A =
-  \Setabs{n}{\cfind{n} \in C}$. If $A$ is computable, then either $C$
-  is empty or $C$ is the set of all the partial computable
-  functions.
+\begin{thm}[Teorema de Rice]
+  Seja $C$ um conjunto qualquer de funções parcialmente computáveis, e
+  seja $A = \Setabs{n}{\cfind{n} \in C}$. Se $A$ é computável, então
+  ou $C$ é vazio, ou $C$ é o conjunto de todas as funções parcialmente
+  computáveis.
 \end{thm}
 
-An {\em index set} is a set $A$ with the property that if $n$ and $m$
-are indices which ``compute'' the same function, then either both $n$
-and $m$ are in $A$, or neither is. It is not hard to see that the
-set~$A$ in the theorem has this property. Conversely, if $A$~is an
-index set and $C$~is the set of functions computed by these indices,
-then $A = \Setabs{n}{\cfind{n} \in C}$.
+Um {\em conjunto de índices} é um conjunto $A$ com a propriedade de
+que, se $n$ e $m$ são índices que ``calculam'' a mesma função, então
+ou ambos, $n$ e $m$, pertencem a $A$, ou nenhum dos dois pertence.
+Não é difícil ver que o conjunto~$A$ do teorema tem essa propriedade.
+Reciprocamente, se $A$~é um conjunto de índices e $C$~é o conjunto das
+funções calculadas por esses índices, então
+$A = \Setabs{n}{\cfind{n} \in C}$.
 
 \begin{explain}
-With this terminology, Rice's theorem is equivalent to saying that no
-nontrivial index set is decidable. To understand what the theorem
-says, it is helpful to emphasize the distinction between
-\emph{programs} (say, in your favorite programming language) and the
-functions they compute. There are certainly questions about programs
-(indices), which are syntactic objects, that are computable: does this
-program have more than 150 symbols? Does it have more than 22 lines?
-Does it have a ``while'' statement? Does the string ``hello world''
-ever appear as the argument to a ``print'' statement? Rice's theorem
-says that no nontrivial question about the program's \emph{behavior}
-is computable. This includes questions like these: does the program
-halt on input $0$? Does it ever halt? Does it ever output an even
-number?
+Com essa terminologia, o teorema de Rice equivale a dizer que nenhum
+conjunto de índices não trivial é decidível. Para entender o que o
+teorema diz, é útil enfatizar a distinção entre \emph{programas}
+(digamos, em sua linguagem de programação preferida) e as funções que
+eles calculam. Certamente há perguntas computáveis sobre programas
+(índices), que são objetos sintáticos: este programa tem mais de 150
+símbolos? Tem mais de 22 linhas? Tem uma instrução ``while''? A cadeia
+``olá, mundo'' aparece alguma vez como argumento de uma instrução
+``print''? O teorema de Rice diz que nenhuma pergunta não trivial
+sobre o \emph{comportamento} do programa é computável. Isso inclui
+perguntas como estas: o programa para na entrada $0$? Ele para em
+algum momento? Em algum momento produz um número par como saída?
 \end{explain}
 
 \begin{proof}[Prova do teorema de Rice]
-Suppose $C$ is neither empty nor the set of all the partial
-computable functions, and let $A$ be the set of indices of functions
-in~$C$. We will show that if $A$ were computable, we could solve the
-halting problem; so $A$~is not computable.
+Suponha que $C$ não seja vazio nem o conjunto de todas as funções
+parcialmente computáveis, e seja $A$ o conjunto dos índices das funções
+em~$C$. Mostraremos que, se $A$ fosse computável, poderíamos resolver
+o problema da parada; portanto, $A$~não é computável.
 
-Without loss of generality, we can assume that the function $f$ which
-is nowhere defined is not in $C$ (otherwise, switch $C$ and its
-complement in the argument below). Let $g$ be any function in~$C$. The
-idea is that if we could decide~$A$, we could tell the difference
-between indices computing~$f$, and indices computing~$g$; and then we
-could use that capability to solve the halting problem.
+Sem perda de generalidade, podemos supor que a função $f$ que não está
+definida em ponto algum não pertence a $C$ (caso contrário, troque $C$
+por seu complemento no argumento abaixo). Seja $g$ uma função qualquer
+em~$C$. A ideia é que, se pudéssemos decidir~$A$, poderíamos distinguir
+os índices que calculam~$f$ dos índices que calculam~$g$; e então
+poderíamos usar essa capacidade para resolver o problema da parada.
 
-Here's how. Using the universal partial computable functions, we can
-define a function
+Eis como. Usando as funções parcialmente computáveis universais,
+podemos definir uma função
 \[
 h(x,y) \simeq
 \begin{cases}
-\text{undefined} & \text{if $\cfind{x}(x) \fundefined$} \\
-g(y) & \text{otherwise.}
+\text{indefinida} & \text{se $\cfind{x}(x) \fundefined$} \\
+g(y) & \text{caso contrário.}
 \end{cases}
 \]
-To compute $h$, first we try to compute $\cfind{x}(x)$; if that
-computation halts, we go on to compute~$g(y)$; and if {\em that}
-computation halts, we return the output. More formally, we can write
+Para calcular $h$, primeiro tentamos calcular $\cfind{x}(x)$; se essa
+computação parar, passamos a calcular~$g(y)$; e, se {\em essa}
+computação parar, devolvemos a saída. Mais formalmente, podemos escrever
 \[
 h(x,y) \simeq \Proj{2}{0}(g(y),\fn{Un}(x,x)).
 \]
-where $\Proj{2}{0}(z_0, z_1) = z_0$ is the $2$-place projection
-function returning the $0$-th argument, which is computable.
+em que $\Proj{2}{0}(z_0, z_1) = z_0$ é a função de projeção de
+$2$ argumentos que devolve o $0$-ésimo argumento e é computável.
 
-Then $h$ is a composition of partial computable functions, and the right
-side is defined and equal to~$g(y)$ just when $\fn{Un}(x,x)$ and
-$g(y)$ are both defined.
+Então $h$ é uma composição de funções parcialmente computáveis, e o
+lado direito está definido e é igual a~$g(y)$ precisamente quando
+$\fn{Un}(x,x)$ e $g(y)$ estão ambas definidas.
 
-Notice that for a fixed~$x$, if $\cfind{x}(x)$ is undefined, then
-$h(x,y)$ is undefined for every~$y$; and if $\cfind{x}(x)$ is defined,
-then $h(x,y) \simeq g(y)$. So, for any fixed value of~$x$, either
-$h(x,y)$ acts just like $f$ or it acts just like $g$, and deciding
-whether or not $\cfind{x}(x)$ is defined amounts to deciding which of
-these two cases holds. But this amounts to deciding whether or not
-$h_x(y) \simeq h(x,y)$ is in~$C$ or not, and if $A$ were computable,
-we could do just that.
+Observe que, para um~$x$ fixo, se $\cfind{x}(x)$ é indefinida, então
+$h(x,y)$ é indefinida para todo~$y$; e, se $\cfind{x}(x)$ está
+definida, então $h(x,y) \simeq g(y)$. Logo, para qualquer valor fixo
+de~$x$, ou $h(x,y)$ se comporta exatamente como $f$, ou se comporta
+exatamente como $g$, e decidir se $\cfind{x}(x)$ está definida equivale
+a decidir qual desses dois casos ocorre. Mas isso equivale a decidir
+se $h_x(y) \simeq h(x,y)$ pertence ou não a~$C$ e, se $A$ fosse
+computável, poderíamos fazer exatamente isso.
 
-More formally, since $h$~is partial computable, it is equal to the
-function $\cfind{e}$ for some index~$e$. By the $s$-$m$-$n$ theorem
-there is a primitive recursive function~$s$ such that for each~$x$,
-$\cfind{s(e,x)}(y) = h_x(y)$. Now we have that for each $x$, if
-$\cfind{x}(x) \fdefined$, then $\cfind{s(e,x)}$ is the same function
-as~$g$, and so $s(e,x)$ is in $A$. On the other hand, if $\cfind{x}(x)
-\uparrow$, then $\cfind{s(e,x)}$ is the same function as~$f$, and so
-$s(e,x)$ is not in~$A$. In other words, we have that for every~$x$, $x
-\in K$ if and only if $s(e,x) \in A$. If $A$ were computable,
-$K$~would be also, which is a contradiction. So $A$ is not computable.
+Mais formalmente, como $h$~é parcialmente computável, ela é igual à
+função $\cfind{e}$ para algum índice~$e$. Pelo teorema $s$-$m$-$n$,
+existe uma função recursiva primitiva~$s$ tal que, para cada~$x$,
+$\cfind{s(e,x)}(y) = h_x(y)$. Agora temos que, para cada $x$, se
+$\cfind{x}(x) \fdefined$, então $\cfind{s(e,x)}$ é a mesma função
+que~$g$ e, portanto, $s(e,x)$ pertence a $A$. Por outro lado, se
+$\cfind{x}(x) \uparrow$, então $\cfind{s(e,x)}$ é a mesma função
+que~$f$ e, portanto, $s(e,x)$ não pertence a~$A$. Em outras palavras,
+temos que, para todo~$x$, $x \in K$ se, e somente se,
+$s(e,x) \in A$. Se $A$ fosse computável, $K$~também seria, o que é uma
+contradição. Logo, $A$ não é computável.
 \end{proof}
 
-Rice's theorem is very powerful. The following immediate corollary
-shows some sample applications.
+O teorema de Rice é muito poderoso. O corolário imediato a seguir
+mostra algumas aplicações.
 \begin{cor}
-The following sets are undecidable.
+Os conjuntos a seguir são indecidíveis.
 \begin{enumerate}
-\item $\Setabs{x}{\text{$17$ is in the range of $\cfind{x}$}}$
-\item $\Setabs{x}{\text{$\cfind{x}$ is constant}}$
-\item $\Setabs{x}{\text{$\cfind{x}$ is total}}$
-\item $\Setabs{x}{\text{whenever $y < y'$, $\cfind{x}(y) \fdefined$, and
-    if $\cfind{x}(y') \fdefined$, then $\cfind{x}(y) < \cfind{x}(y')$}}$
+\item $\Setabs{x}{\text{$17$ pertence à imagem de $\cfind{x}$}}$
+\item $\Setabs{x}{\text{$\cfind{x}$ é constante}}$
+\item $\Setabs{x}{\text{$\cfind{x}$ é total}}$
+\item $\Setabs{x}{\text{sempre que $y < y'$, $\cfind{x}(y) \fdefined$, e
+    se $\cfind{x}(y') \fdefined$, então $\cfind{x}(y) < \cfind{x}(y')$}}$
 \end{enumerate}
 \end{cor}
 
 \begin{proof}
-  These are all nontrivial index sets.
+  Todos esses são conjuntos de índices não triviais.
 \end{proof}
 
 \end{document}
+
 

@@ -6,63 +6,64 @@
 
 \begin{document}
 
-\olfileid{cmp}{rec}{ore}
-\olsection{Other Recursions}
+\olfileid[pt]{cmp}{rec}{ore}
+\olsection{Outras formas de recursão}
 
-Using pairing and sequencing, we can justify more exotic (and
-useful) forms of primitive recursion. For example, it is often useful
-to define two functions simultaneously, such as in the following
-definition:
+Usando pareamento e sequenciamento, podemos justificar formas mais
+exóticas (e úteis) de recursão primitiva. Por exemplo, muitas vezes é
+útil definir duas funções simultaneamente, como na seguinte definição:
 \begin{align*}
 h_0(\vec x, 0) & = f_0(\vec x) \\
 h_1(\vec x, 0) & = f_1(\vec x) \\
 h_0(\vec x, y+1) & = g_0(\vec x, y, h_0(\vec x, y), h_1(\vec x, y)) \\
 h_1(\vec x, y+1) & = g_1(\vec x, y, h_0(\vec x, y), h_1(\vec x, y))
 \end{align*}
-This is an instance of \emph{simultaneous recursion}. Another useful
-way of defining functions is to give the value of $h(\vec x, y+1)$ in
-terms of \emph{all} the values $h(\vec x, 0)$, \dots,~$h(\vec x, y)$, as in
-the following definition:
+Esse é um caso de \emph{recursão simultânea}. Outra maneira útil de
+definir funções é dar o valor de $h(\vec x, y+1)$ em termos de
+\emph{todos} os valores $h(\vec x, 0)$, \dots,~$h(\vec x, y)$, como
+na seguinte definição:
 \begin{align*}
 h(\vec x, 0) & = f(\vec x) \\
 h(\vec x, y+1) & = g(\vec x, y, \tuple{h(\vec x, 0), \dots, h(\vec x, y)}).
 \end{align*}
-The following schema captures this idea more succinctly:
+O esquema a seguir expressa essa ideia de forma mais sucinta:
 \[
 h(\vec x, y) = g(\vec x, y, \tuple{h(\vec x, 0), \dots, h(\vec x, y-1)})
 \]
-with the understanding that the last argument to $g$ is just the
-empty sequence when $y$ is $0$. In either formulation, the idea is
-that in computing the ``successor step,'' the function $h$ can make
-use of the entire sequence of values computed so far.
-This is known as a \emph{course-of-values} recursion. For a particular
-example, it can be used to justify the following type of definition:
+com o entendimento de que o último argumento de $g$ é simplesmente a
+sequência vazia quando $y$ é $0$. Em qualquer uma das formulações, a
+ideia é que, ao calcular o ``passo sucessor'', a função $h$ pode usar
+toda a sequência de valores calculados até então.
+Isso é conhecido como \emph{recursão por curso de valores}. Como exemplo
+específico, ela pode ser usada para justificar o seguinte tipo de
+definição:
 \begin{align*}
 h(\vec x, y) & = \begin{cases}
-  g(\vec x, y, h(\vec x, k(\vec x, y))) & \text{if $k(\vec x, y) < y$} \\
-  f(\vec x) & \text{otherwise}
+  g(\vec x, y, h(\vec x, k(\vec x, y))) & \text{se $k(\vec x, y) < y$} \\
+  f(\vec x) & \text{caso contrário}
 \end{cases}
 \end{align*}
-In other words, the value of $h$ at $y$ can be computed in terms of
-the value of $h$ at \emph{any} previous value, given by~$k$.
+Em outras palavras, o valor de $h$ em $y$ pode ser calculado em termos
+do valor de $h$ em \emph{qualquer} valor anterior, dado por~$k$.
 
 
 \begin{prob}
-  Define the remainder function $r(x,y)$ by course-of-values
-  recursion. (If $x$, $y$ are natural numbers and $y > 0$, $r(x,y)$ is
-  the number less than~$y$ such that $x = z\times y + r(x,y)$ for
-  some~$z$. For definiteness, let's say that if $y=0$, $r(x,0) = 0$.)
+  Defina a função resto $r(x,y)$ por recursão por curso de valores.
+  (Se $x$, $y$ são números naturais e $y > 0$, $r(x,y)$ é o número
+  menor que~$y$ tal que $x = z\times y + r(x,y)$ para algum~$z$.
+  Para fixar a definição, digamos que, se $y=0$, $r(x,0) = 0$.)
 \end{prob}
 
-You should think about how to obtain these functions using ordinary
-primitive recursion. One final version of primitive recursion is more
-flexible in that one is allowed to change the \emph{parameters} (side
-values) along the way:
+Você deve pensar em como obter essas funções usando recursão primitiva
+comum. Uma última versão da recursão primitiva é mais flexível, pois
+permite alterar os \emph{parâmetros} (valores laterais) ao longo do
+processo:
 \begin{align*}
 h(\vec x, 0) & = f(\vec x) \\
 h(\vec x, y+1) & = g(\vec x, y, h(k(\vec x), y))
 \end{align*}
-This, too, can be simulated with ordinary primitive recursion. (Doing
-so is tricky. For a hint, try unwinding the computation by hand.)
+Isso também pode ser simulado pela recursão primitiva comum. (Fazer
+isso é trabalhoso. Como dica, tente desenrolar o cálculo à mão.)
 
 \end{document}
+

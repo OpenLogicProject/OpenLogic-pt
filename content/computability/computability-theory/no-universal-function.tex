@@ -6,46 +6,47 @@
 
 \begin{document}
 
-\olfileid{cmp}{thy}{nou}
-\olsection{No Universal Computable Function}
+\olfileid[pt]{cmp}{thy}{nou}
+\olsection{Inexistência de uma função computável universal}
 
-Although there is a partial computable function that is total for the
-partial computable functions, there is no total computable
-function that is universal for the total computable functions. 
+Embora exista uma função parcialmente computável que é total para as
+funções parcialmente computáveis, não existe uma função computável
+total que seja universal para as funções computáveis totais.
 
 \begin{thm}
 \ollabel{thm:no-univ}
-There is no universal computable function. In other words, any
-function $\fn{Un}'(k, x)$ which is such that if $f(x)$ is a total
-computable function, then there is a natural number~$k$ such that
-$f(x) = \fn{Un}'(k,x)$ for every~$x$, is not computable.
+Não existe uma função computável universal. Em outras palavras,
+qualquer função $\fn{Un}'(k, x)$ tal que, se $f(x)$ é uma função
+computável total, então existe um número natural~$k$ tal que
+$f(x) = \fn{Un}'(k,x)$ para todo~$x$, não é computável.
 \end{thm}
 
 \begin{proof}
-The proof is a simple diagonalization: if $\fn{Un}'(k,x)$ were total
-and computable, then
+A demonstração é uma diagonalização simples: se $\fn{Un}'(k,x)$ fosse
+total e computável, então
 \[
 d(x) = \fn{Un}'(x, x) + 1
 \]
-would also be total and computable. However, by definition, $d(k)$ is
-not equal to $\fn{Un}'(k,k)$. Hence, for every $k$, the values of
-$d(x)$ and~$\fn{Un}'(k, x)$ differ for at least one~$x$, namely $x = k$.
+também seria total e computável. Contudo, por definição, $d(k)$ não é
+igual a $\fn{Un}'(k,k)$. Portanto, para todo $k$, os valores de
+$d(x)$ e~$\fn{Un}'(k, x)$ diferem para pelo menos um~$x$, a saber,
+$x = k$.
 \end{proof}
 
 \begin{explain}
-\olref[uni]{thm:univ-comp} above shows that we can get around this
-diagonalization argument, but only at the expense of allowing the
-universal function to be partial. That is, $\fn{Un}$ is universal for
-the total computable functions, it just isn't total. The
-diagonalization argument doesn't work in the partial case. 
+A \olref[uni]{thm:univ-comp} acima mostra que podemos contornar esse
+argumento de diagonalização, mas apenas ao custo de permitir que a
+função universal seja parcial. Isto é, $\fn{Un}$ é universal para as
+funções computáveis totais; ela apenas não é total. O argumento de
+diagonalização não funciona no caso parcial.
 \end{explain}
 
 \begin{prob}
-  To understand why the diagonalization argument in the proof of
-  \olref{thm:no-univ} does not work in the partial
-  case, consider the function $f(x) \simeq \fn{Un}(x,x)+1$. Is it
-  partial computable? If so, it has an index~$e$, O.s.\@, $f(x) \simeq
-  \fn{Un}(e,x)$. What can you say about~$f(e)$?
+  Para entender por que o argumento de diagonalização na demonstração
+  de \olref{thm:no-univ} não funciona no caso parcial, considere a
+  função $f(x) \simeq \fn{Un}(x,x)+1$. Ela é parcialmente computável?
+  Se for, tem um índice~$e$, O.s.\@,
+  $f(x) \simeq \fn{Un}(e,x)$. O que você pode dizer sobre~$f(e)$?
 \end{prob}
 
 

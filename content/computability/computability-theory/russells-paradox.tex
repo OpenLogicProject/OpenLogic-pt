@@ -6,70 +6,72 @@
 
 \begin{document}
 
-\olfileid{cmp}{thy}{rus}
-\olsection{Comparison with Russell's Paradox}
+\olfileid[pt]{cmp}{thy}{rus}
+\olsection{Comparação com o paradoxo de Russell}
 
-It is instructive to compare and contrast the arguments in
-this section with Russell's paradox:
+É instrutivo comparar e contrastar os argumentos desta seção com o
+paradoxo de Russell:
 \begin{enumerate}
-\item Russell's paradox: let $S = \Setabs{x}{x \notin x}$. Then $S
-  \in S$ if and only if $X \notin S$, a contradiction.
+\item Paradoxo de Russell: seja $S = \Setabs{x}{x \notin x}$. Então
+  $S \in S$ se, e somente se, $S \notin S$, uma contradição.
 
-  \emph{Conclusion:} There is no such set~$S$. Assuming the existence of a
-  ``set of all sets'' is inconsistent with the other axioms of set
-  theory.
+  \emph{Conclusão:} Não existe tal conjunto~$S$. Supor a existência de
+  um ``conjunto de todos os conjuntos'' é incompatível com os outros
+  axiomas da teoria dos conjuntos.
 
-\item A modification of Russell's paradox: let $F$ be the ``function''
-  from the set of all functions to $\{ 0, 1 \}$, defined by
+\item Uma modificação do paradoxo de Russell: seja $F$ a ``função''
+  do conjunto de todas as funções em $\{ 0, 1 \}$, definida por
   \[
   F(f) =
   \begin{cases}
-    1 & \text{if $f$ is in the domain of $f$, and $f(f) = 0$} \\
-    0 & \text{otherwise}
+    1 & \text{se $f$ pertence ao domínio de $f$, e $f(f) = 0$} \\
+    0 & \text{caso contrário}
   \end{cases}
   \]
-  A similar argument shows that $F(F) = 0$ if and only if $F(F) = 1$,
-  a contradiction.
+  Um argumento semelhante mostra que $F(F) = 0$ se, e somente se,
+  $F(F) = 1$, uma contradição.
 
-  \emph{Conclusion:} $F$ is not a function. The ``set of all
-  functions'' is too big to be the domain of a function.
+  \emph{Conclusão:} $F$ não é uma função. O ``conjunto de todas as
+  funções'' é grande demais para ser o domínio de uma função.
 
-\item The diagonalization argument: let $f_0$, $f_1$, \dots be the
-  enumeration of the partial computable functions, and let $G \colon \Nat \to
-  \{ 0, 1 \}$ be defined by
+\item O argumento de diagonalização: sejam $f_0$, $f_1$, \dots a
+  enumeração das funções parcialmente computáveis, e seja
+  $G \colon \Nat \to \{ 0, 1 \}$ definida por
   \[
   G(x) =
   \begin{cases}
-    1 & \text{if $f_x(x)\downarrow = 0$} \\
-    0 & \text{otherwise}
+    1 & \text{se $f_x(x)\downarrow = 0$} \\
+    0 & \text{caso contrário}
   \end{cases}
   \]
-  If $G$ is computable, then it is the function $f_k$ for some
-  $k$. But then $G(k) = 1$ if and only if $G(k) = 0$, a contradiction.
+  Se $G$ é computável, então ela é a função $f_k$ para algum
+  $k$. Mas então $G(k) = 1$ se, e somente se, $G(k) = 0$, uma
+  contradição.
 
-  \emph{Conclusion:} $G$ is not computable. Note that according to the
-  axioms of set theory, $G$ is still a function; there is no paradox
-  here, just a clarification.
+  \emph{Conclusão:} $G$ não é computável. Observe que, de acordo com os
+  axiomas da teoria dos conjuntos, $G$ ainda é uma função; não há
+  paradoxo aqui, apenas um esclarecimento.
 \end{enumerate}
 
-That talk of partial functions, computable functions,
-partial computable functions, and so on can be confusing. The set of
-all partial functions from $\Nat$ to $\Nat$ is a big collection of
-objects. Some of them are total, some of them are computable, some are
-both total and computable, and some are neither. Keep in mind that
-when we say ``function,'' by default, we mean a total function. Thus we
-have:
+Essa conversa sobre funções parciais, funções computáveis, funções
+parcialmente computáveis e assim por diante pode ser confusa. O
+conjunto de todas as funções parciais de $\Nat$ em $\Nat$ é uma grande
+coleção de objetos. Algumas delas são totais, algumas são computáveis,
+algumas são tanto totais quanto computáveis, e outras não são nem uma
+coisa nem outra. Tenha em mente que, quando dizemos ``função'', por
+padrão queremos dizer uma função total. Assim, temos:
 \begin{enumerate}
-\item computable functions
-\item partial computable functions that are not total
-\item functions that are not computable
-\item partial functions that are neither total nor computable
+\item funções computáveis
+\item funções parcialmente computáveis que não são totais
+\item funções que não são computáveis
+\item funções parciais que não são nem totais nem computáveis
 \end{enumerate}
-To sort this out, it might help to draw a big square representing all
-the partial functions from $\Nat$ to $\Nat$, and then mark off two
-overlapping regions, corresponding to the total functions and the
-computable partial functions, respectively. It is a good exercise to
-see if you can describe an object in each of the resulting regions in
-the diagram.
+Para organizar essas categorias, pode ser útil desenhar um quadrado
+grande representando todas as funções parciais de $\Nat$ em $\Nat$ e
+marcar, em seguida, duas regiões sobrepostas, correspondentes,
+respectivamente, às funções totais e às funções parciais computáveis.
+É um bom exercício verificar se você consegue descrever um objeto em
+cada uma das regiões resultantes do diagrama.
 
 \end{document}
+
