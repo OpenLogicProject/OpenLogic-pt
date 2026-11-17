@@ -6,54 +6,53 @@
 
 \begin{document}
 
-\olfileid{sol}{syn}{int}
+\olfileid[pt]{sol}{syn}{int}
 
-\olsection{Introduction}
+\olsection{Introdução}
 
-In first-order logic, we combine the non-logical symbols of a given
-language, O.s.\@, its !!{constant}s, !!{function}s, and !!{predicate}s,
-with the logical symbols to express things about first-order
-!!{structure}s.  This is done using the notion of satisfaction, which
-relates !!a{structure}~$\Struct{M}$, together with a variable
-assignment~$s$, and !!a{formula}~$!A$: $\Sat{M}{!A}[s]$ holds iff what
-$!A$ expresses when its !!{constant}s, !!{function}s, and
-!!{predicate}s are interpreted as $\Struct{M}$ says, and its free
-variables are interpreted as~$s$ says, is true.  The interpretation of
-the !!{identity}~$\eq$ is built into the definition of
-$\Sat{M}{!A}[s]$, as is the interpretation of~$\lforall$ and
-$\lexists$. The former is always interpreted as the identity relation
-on the !!{domain}~$\Domain{M}$ of the structure, and the quantifiers
-are always interpreted as ranging over the entire !!{domain}.  But,
-crucially, quantification is only allowed over elements of the
-!!{domain}, and so only object !!{variable}s are allowed to follow a
-quantifier.
+Na lógica de primeira ordem, combinamos os símbolos não lógicos de uma dada
+linguagem, O.s.\@, suas !!{constant}s, !!{function}s e !!{predicate}s, com
+os símbolos lógicos para expressar coisas sobre !!{structure}s de primeira
+ordem. Isso é feito por meio da noção de satisfação, que relaciona
+!!a{structure}~$\Struct{M}$, uma atribuição de variáveis~$s$ e
+!!a{formula}~$!A$: $\Sat{M}{!A}[s]$ vale sse é verdadeiro aquilo que $!A$
+expressa quando suas !!{constant}s, !!{function}s e !!{predicate}s são
+interpretados como determina $\Struct{M}$, e suas variáveis livres são
+interpretadas como determina~$s$. A interpretação da !!{identity}~$\eq$
+está incorporada à definição de $\Sat{M}{!A}[s]$, assim como a interpretação
+de~$\lforall$ e $\lexists$. A primeira é sempre interpretada como a relação
+de identidade no !!{domain}~$\Domain{M}$ da estrutura, e os quantificadores
+são sempre interpretados como variando sobre todo o !!{domain}. Mas,
+fundamentalmente, a quantificação só é permitida sobre elementos do
+!!{domain}; assim, somente !!{variable}s de objeto podem seguir um
+quantificador.
 
-In second-order logic, both the language and the definition of
-satisfaction are extended to include free and bound function and
-predicate variables, and quantification over them.  These variables
-are related to !!{function}s and !!{predicate}s the same way that
-object variables are related to !!{constant}s.  They play the same
-role in the formation of terms and !!{formula}s of second-order logic,
-and quantification over them is handled in a similar way.  In the
-\emph{standard} semantics, the second-order quantifiers range over all
-possible objects of the right type ($n$-place functions from
-$\Domain{M}$ to~$\Domain{M}$ for function variables, $n$-place
-relations for predicate variables).  For instance, while
+Na lógica de segunda ordem, tanto a linguagem quanto a definição de
+satisfação são estendidas para incluir variáveis livres e ligadas de função
+e de predicado, bem como a quantificação sobre elas. Essas variáveis se
+relacionam com !!{function}s e !!{predicate}s do mesmo modo que as variáveis
+de objeto se relacionam com !!{constant}s. Elas desempenham o mesmo papel
+na formação de termos e !!{formula}s da lógica de segunda ordem, e a
+quantificação sobre elas é tratada de maneira semelhante. Na semântica
+\emph{padrão}, os quantificadores de segunda ordem variam sobre todos os
+objetos possíveis do tipo apropriado (funções de $n$ argumentos de
+$\Domain{M}$ para~$\Domain{M}$, no caso de variáveis de função, e relações
+de $n$ argumentos, no caso de variáveis de predicado). Por exemplo, embora
 $\lforall[\Obj{v_0}][(\Obj{P^1_0}(\Obj{v_0}) \lor \lnot
-  \Obj{P^1_0}(\Obj{v_0}))]$ is a formula in both first- and second-order
-logic, in the latter we can also consider
+  \Obj{P^1_0}(\Obj{v_0}))]$ seja uma fórmula tanto na lógica de primeira
+quanto na de segunda ordem, nesta última também podemos considerar
 $\lforall[\Obj{V^1_0}][\lforall[\Obj{v_0}][(\Obj{V^1_0}(\Obj{v_0}) \lor
-    \lnot \Obj{V^1_0}(\Obj{v_0}))]]$ and
+    \lnot \Obj{V^1_0}(\Obj{v_0}))]]$ e
 $\lexists[\Obj{V^1_0}][\lforall[\Obj{v_0}][(\Obj{V^1_0}(\Obj{v_0}) \lor
-    \lnot \Obj{V^1_0}(\Obj{v_0}))]]$. Since these contain no free variables,
-they are !!{sentence}s of second-order logic. Here, $\Obj{V^1_0}$ is a
-second-order $1$-place predicate variable.  The allowable
-interpretations of $\Obj{V^1_0}$ are the same that we can assign to a
-$1$-place !!{predicate} like $\Obj{P^1_0}$, O.s.\@, subsets
-of~$\Domain{M}$.  Quantification over them then amounts to saying that
-$\lforall[\Obj{v_0}][(\Obj{V^1_0}(\Obj v_0) \lor \lnot
-  \Obj{V^1_0}(v_0))]$ holds for all ways of assigning a subset
-of~$\Domain{M}$ as the value of $\Obj{V^1_0}$, or for at least one.
-Since every set either contains or fails to contain a given object,
-both are true in any !!{structure}.
+    \lnot \Obj{V^1_0}(\Obj{v_0}))]]$. Como não contêm variáveis livres,
+elas são !!{sentence}s da lógica de segunda ordem. Aqui, $\Obj{V^1_0}$ é
+uma variável de predicado de segunda ordem com $1$ argumento. As
+interpretações admissíveis de $\Obj{V^1_0}$ são as mesmas que podemos
+atribuir a !!{predicate} de $1$ argumento como $\Obj{P^1_0}$, O.s.\@,
+subconjuntos de~$\Domain{M}$. Quantificar sobre elas equivale então a dizer
+que $\lforall[\Obj{v_0}][(\Obj{V^1_0}(\Obj v_0) \lor \lnot
+  \Obj{V^1_0}(v_0))]$ vale para todas as maneiras de atribuir um subconjunto
+de~$\Domain{M}$ como valor de $\Obj{V^1_0}$, ou para pelo menos uma delas.
+Como todo conjunto contém ou não contém um dado objeto, ambas são
+verdadeiras em qualquer !!{structure}.
 \end{document}
