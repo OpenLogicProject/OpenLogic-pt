@@ -27,8 +27,8 @@ Logic builds site](https://builds.openlogicproject.org/):
 
 ## How this is organized (consolidated layout)
 
-The English books are standalone repositories cloned into
-`OpenLogic/courses/`. The **Portuguese** editions instead live *inside* the
+The English books are generated from driver files in
+`OpenLogic/textbooks/`. The **Portuguese** editions live inside the
 localization repository `OpenLogic-pt`, which is cloned into `locale/pt/`:
 
 ```
@@ -36,9 +36,9 @@ OpenLogic/                                   # English upstream: sty/, assets/, 
 └── locale/
     └── pt/                                  # OpenLogic-pt (this localization)
         ├── content/                         # translated content
-        └── courses/
-            ├── sets-logic-computation-pt/   # <-- this book
-            └── set-theory-pt/
+        └── textbooks/
+            ├── sets-logic-computation/   # <-- this book
+            └── set-theory/
 ```
 
 ## Building the book
@@ -62,14 +62,13 @@ cp githooks/post-commit githooks/post-checkout githooks/post-merge .git/hooks/
 git checkout HEAD        # generates .git/gitHeadInfo.gin
 
 # 4. Build
-cd courses/sets-logic-computation-pt
+cd textbooks/sets-logic-computation
 make                     # or: latexmk -pdf slc-screen
 ```
 
-`make` regenerates `olprevision.tex` (via `../../../../misc/makeolprevision`
-— this file is **generated, not versioned**) and runs `latexmk` with the
-glossary and bibliography. Building by hand also works, but then also run
-`makeglossaries slc-screen` and `bibtex slc-screen`.
+`make` runs `latexmk` with the glossary and bibliography. Building by
+hand also works, but then also run `makeglossaries slc-screen` and
+`bibtex slc-screen`.
 
 - `slc-screen.tex` — color version with links, for screen reading.
 - `slc-print.tex` — black-and-white version for printing.

@@ -11,9 +11,9 @@
 
 .PHONY : FORCE_MAKE
 
-all: slc-screen.pdf slc-print.pdf slc-print-cover.pdf index.html
+all: slc-screen.pdf slc-print.pdf slc-print-cover.pdf
 
-%.pdf : %.tex olprevision.tex FORCE_MAKE
+%.pdf : %.tex FORCE_MAKE
 	latexmk -pdf -dvi- -ps- $<
 
 index.html: README.md  webpage-template.html slc-screen.pdf
@@ -22,6 +22,3 @@ index.html: README.md  webpage-template.html slc-screen.pdf
 
 clean:	
 	latexmk -c slc-screen.tex slc-print.tex
-
-olprevision.tex: FORCE_MAKE
-	../../../../misc/makeolprevision ../../

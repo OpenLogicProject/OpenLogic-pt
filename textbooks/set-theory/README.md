@@ -23,8 +23,8 @@ Logic builds site](https://builds.openlogicproject.org/):
 
 ## How this is organized (consolidated layout)
 
-The English books are standalone repositories cloned into
-`OpenLogic/courses/`. The **Portuguese** editions instead live *inside* the
+The English books are generated from driver files in
+`OpenLogic/textbooks/`. The **Portuguese** editions live inside the
 localization repository `OpenLogic-pt`, which is cloned into `locale/pt/`:
 
 ```
@@ -32,9 +32,9 @@ OpenLogic/                                   # English upstream: sty/, assets/, 
 └── locale/
     └── pt/                                  # OpenLogic-pt (this localization)
         ├── content/                         # translated content
-        └── courses/
-            ├── set-theory-pt/               # <-- this book
-            └── sets-logic-computation-pt/
+        └── textbooks/
+            ├── set-theory/               # <-- this book
+            └── sets-logic-computation/
 ```
 
 ## Building the book
@@ -58,14 +58,13 @@ cp githooks/post-commit githooks/post-checkout githooks/post-merge .git/hooks/
 git checkout HEAD        # generates .git/gitHeadInfo.gin
 
 # 4. Build
-cd courses/set-theory-pt
+cd textbooks/set-theory
 make                     # or: latexmk -pdf settheory-screen
 ```
 
-`make` regenerates `olprevision.tex` (via `../../../../misc/makeolprevision`
-— this file is **generated, not versioned**) and runs `latexmk` with the
-bibliography. Building by hand also works, but then also run `bibtex
-settheory-screen` for the bibliography.
+`make` runs `latexmk` with the bibliography. Building by hand also
+works, but then also run `bibtex settheory-screen` for the
+bibliography.
 
 `settheory-screen.tex` produces the color on-screen version;
 `settheory-print.tex` the print version. Both load `settheory.tex`, which
