@@ -1,0 +1,57 @@
+% Part: proof-theory
+% Chapter: normalization
+% Section: normalization-thm
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{pt}{nor}{thm}
+
+\olsection{O Teorema da Normalização}
+
+!!^a{proof} está na forma \emph{normal} se não tem segmentos de corte.
+Claramente, esse é o caso se, e somente se, não podemos aplicar a ela nem uma
+conversão de permutação nem uma conversão de redução. \emph{Normalizar}
+!!a{proof} significa transformá-la em uma prova normal aplicando
+conversões de permutação e de redução até que não reste nenhum corte. O fato de
+isso ser sempre possível é o \emph{teorema da normalização}.
+
+\begin{thm}\ollabel{thm:normalization} Toda \Log{N1i}-!!{proof}
+$\delta$ se normaliza, isto é, pode ser transformada em
+!!a{proof}~$\delta'$ sem cortes.
+\end{thm}
+
+\begin{proof}
+  Por indução sobre o posto e o comprimento de corte de~$\delta$. A hipótese de
+  indução é que qualquer !!{proof} que tenha um posto de corte menor, ou
+  o mesmo posto de corte mas um comprimento de corte menor, se normaliza.
+
+  Se o comprimento de corte for~$0$, não há cortes e $\delta$ já é
+  normal. Portanto, suponha que o posto e o comprimento de corte de~$\delta$ sejam~$>
+  0$. Escolha o segmento de corte maximal mais acima e mais à direita. Se o
+  segmento de corte tiver comprimento $>1$, aplique uma conversão de permutação. Se o
+  segmento de corte tiver comprimento~$1$, aplique a conversão de redução
+  correspondente. Isso resulta em uma nova !!{proof} que tem ou o
+  mesmo posto de corte e um comprimento de corte menor, ou um posto de corte menor; então
+  a hipótese de indução se aplica.
+\end{proof}
+
+A estratégia usada na demonstração acima (sempre tratar de um
+corte maximal mais acima e mais à direita) sugere uma ordem específica em que
+as conversões devem ser aplicadas a !!a{proof} para resultar em uma
+!!{proof} normal. Surpreendentemente, a ordem na verdade não
+importa. Aplicar conversões de permutação e de redução em qualquer ordem
+acaba resultando em uma prova normal.
+
+A definição de segmento e de corte pode ser formulada facilmente para
+\Log{N2i}, e as conversões de permutação e de redução para \Log{N1i}
+se traduzem diretamente para \Log{N2i}. Consequentemente, o teorema da
+normalização também vale para \Log{N2i}.
+
+\begin{thm}\ollabel{thm:normalization-N2i} Toda \Log{N2i}-!!{proof}
+$\delta$ se normaliza, isto é, pode ser transformada em
+!!a{proof}~$\delta'$ sem cortes.
+\end{thm}
+
+\end{document}

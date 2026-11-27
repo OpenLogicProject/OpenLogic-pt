@@ -1,0 +1,345 @@
+% Part: proof-theory
+% Chapter: normalization
+% Section: reductions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{pt}{nor}{red}
+
+\olsection{Conversões de redução}
+
+Se um corte em !!a{proof} em \Log{N1i} tiver comprimento~$1$, ele será
+um segmento constituído por uma única ocorrência de !!{formula}, e essa
+!!{formula} será tanto a conclusão de uma inferência de
+!!a{introduction} quanto a premissa maior de uma inferência de
+!!a{elimination}. Na prova da normalização, esses cortes são
+``reduzidos'' substituindo-se a sub-!!{proof} que termina nesse par
+!!{introduction}/!!{elimination} por uma nova !!{proof} na qual o par
+de inferências foi eliminado. Essa substituição pode produzir novos
+cortes. Contudo, podemos nos convencer de que os novos cortes têm posto
+menor que o corte reduzido. Assim, a nova !!{proof} ou tem comprimento
+de corte menor (porque um corte maximal de comprimento~$1$ foi removido)
+ou tem o posto de corte da !!{proof} reduzido (se o corte maximal em questão era o
+único corte maximal).
+
+Por exemplo, se as inferências envolvidas forem \Intro{\lif} e
+\Elim{\lif}, $!A \ident !B \lif !C$, e houver uma
+sub-!!{proof}~$\delta_1$ que termine em:
+\[
+\AxiomC{$\Discharge{!B}{x}$}
+\RightLabel{$\delta_2$}
+\DeduceC{$!C$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!B \lif !C$}
+\AxiomC{}
+\RightLabel{$\delta_3$}
+\DeduceC{$!B$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!C$}
+\DisplayProof
+\]
+Para remover esse corte, substituímos a subprova~$\delta_1$ em~$\delta$
+pelo seguinte:
+\[
+\AxiomC{}
+\RightLabel{$\delta_3$}
+\DeduceC{$!B$}
+\RightLabel{$\Subst{\delta_2}{\delta_3}{!B^x}$}
+\DeduceC{$!C$}
+\DisplayProof
+\]
+Por $\Subst{\delta_2}{\delta_3}{!B^x}$ entendemos a !!{proof} que
+resulta de~$\delta_2$ quando substituímos cada premissa~$!B$ rotulada
+por~$x$ pela !!{proof} inteira~$\delta_3$. Essa !!{proof} já não tem
+premissas abertas da forma~$!B$ com o rótulo~$x$. Ela não tem outras
+premissas rotuladas por~$x$, pois supomos, como de costume, que duas
+!!{formula}s distintas não ocorrem como premissas com o mesmo rótulo.
+Portanto, a nova !!{proof} tem as mesmas premissas abertas
+que~$\delta_1$; cada inferência em~$\delta_2$ que descarrega premissas
+descarrega as mesmas premissas em~$\Subst{\delta_2}{\delta_3}{!B^x}$; e
+cada inferência em~$\delta_3$ que descarrega premissas dá origem a
+possivelmente várias cópias, que descarregam as premissas
+correspondentes em~$\Subst{\delta_2}{\delta_3}{!B^x}$.
+
+Todo corte que esteja inteiramente dentro de $\delta_2$, $\delta_3$ ou
+$\delta_4$, ou inteiramente fora de~$\delta_1$ em~$\delta$, permanece
+inalterado: ele ainda envolve as mesmas !!{formula}s e passa pelas
+mesmas inferências; portanto, tem, em particular, o mesmo posto e o
+mesmo comprimento que o corte correspondente em~$\delta$. Removemos um
+corte maximal de comprimento~$1$ e, assim, reduzimos o comprimento de
+corte ou reduzimos o posto de corte (se o comprimento de corte
+de~$\delta$ era~$1$ e esse era o único corte maximal).
+
+Contudo, duas coisas podem acontecer:
+\begin{enumerate}
+  \item Ao substituir todas as premissas $!B^x$ por $\delta_3$,
+  multiplicamos todos os cortes em~$\delta_3$. Se alguns deles eram
+  cortes maximais, o comprimento de corte da nova !!{proof} pode ser
+  maior que o da antiga !!{proof}. Precisamos garantir que isso não
+  aconteça. Fazemos isso aplicando conversões de redução somente aos
+  cortes maximais situados \emph{mais à direita}, isto é, a cortes para
+  os quais nenhum corte maximal se encontra em um ramo que passa
+  por~$\delta$, à direita do corte que está sendo reduzido. Se houvesse
+  um corte em~$\delta_3$, ele estaria à direita do corte reduzido aqui;
+  portanto, não estaríamos trabalhando com um corte situado mais à
+  direita. Ao escolher sempre os cortes mais à direita, garantimos que
+  reduziremos o comprimento de corte da !!{proof} ou até mesmo seu posto
+  de corte.
+  \item Se uma premissa $!B^x$ em $\delta_2$ for a premissa maior de
+  !!a{elimination}, e a última inferência de~$\delta_3$ for
+  \Elim{\lor}, \Elim{\lexists} ou !!a{introduction}, teremos produzido
+  um novo corte enxertando~$\delta_3$ em $\delta_2$ nessa premissa. O
+  que era apenas uma premissa em~$\delta_2$ agora é um corte de
+  comprimento~$1$ (a conclusão de !!a{introduction} e a premissa maior
+  de !!a{elimination}) ou a última ocorrência de !!{formula} de um
+  segmento de corte (premissa maior de !!a{elimination} e conclusão
+  de~\Elim{\lor} ou \Elim{\lexists}). Se $B^x$ era uma premissa menor
+  de \Elim{\lor} ou \Elim{\lexists}, ela já era a primeira ocorrência
+  de !!{formula} de um segmento, e possivelmente de um segmento de
+  corte. Na nova !!{proof}, esse segmento pode agora ser mais longo.
+  Contudo, observe que a !!{formula} que constitui esse novo corte ou o
+  segmento de corte existente é~$!B$, e $\depth{!B} < \depth{!B \lif
+  !C}$. Portanto, embora possamos ter acrescentado cortes ou aumentado
+  o comprimento de cortes, nenhum deles é um corte maximal. Assim,
+  reduzimos o posto de corte ou, se restarem cortes do mesmo posto,
+  reduzimos o comprimento de corte.
+\end{enumerate}
+
+O processo de reduzir um corte de comprimento~$1$ é chamado de
+\emph{conversão de redução} (ou \emph{conversão de desvio}). Os padrões
+de alguns dos pares de regras são apresentados em
+\olref{tab:reduction-conversions}. (Os restantes ficam como exercícios.)
+
+\begin{table}
+\begin{multline*}
+\bottomAlignProof
+\AxiomC{$\Discharge{!B}{x}$}
+\RightLabel{$\delta_2$}
+\shortDeduce
+\DeduceC{$!C$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!B \lif !C$}
+\AxiomC{}
+\RightLabel{$\delta_3$}
+\shortDeduce
+\DeduceC{$!B$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!C$}
+\DisplayProof
+\quad \longrightarrow\quad
+\shoveright{\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_3$}
+\shortDeduce
+\DeduceC{$!B$}
+\RightLabel{$\Subst{\delta_2}{\delta_3}{!B^x}$}
+\shortDeduce
+\DeduceC{$!C$}
+\DisplayProof}
+\\[4ex]
+\shoveleft{\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\shortDeduce
+\DeduceC{$!B$}
+\AxiomC{}
+\RightLabel{$\delta_3$}
+\shortDeduce
+\DeduceC{$!C$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!B \land !C$}
+\RightLabel{\Elim{\land}[1]}
+\UnaryInfC{$!B$}
+\DisplayProof
+\quad \longrightarrow\quad
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\shortDeduce
+\DeduceC{$!B$}
+\DisplayProof}\qquad
+\shoveright{\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\shortDeduce
+\DeduceC{$!B$}
+\AxiomC{}
+\RightLabel{$\delta_3$}
+\shortDeduce
+\DeduceC{$!C$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!B \land !C$}
+\RightLabel{\Elim{\land}[2]}
+\UnaryInfC{$!C$}
+\DisplayProof
+\quad \longrightarrow\quad
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_3$}
+\shortDeduce
+\DeduceC{$!C$}
+\DisplayProof}
+\\[4ex]
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\shortDeduce
+\DeduceC{$!B$}
+\RightLabel{\Intro{\lor}[1]}
+\UnaryInfC{$!B \lor !C$}
+\AxiomC{$\Discharge{!B}{x}$}
+\RightLabel{$\delta_3$}
+\shortDeduce
+\DeduceC{$!D$}
+\AxiomC{$\Discharge{!C}{y}$}
+\RightLabel{$\delta_4$}
+\shortDeduce
+\DeduceC{$!D$}
+\DischargeRule{\Elim{\lor}}{x\,y}
+\TrinaryInfC{$!D$}
+\DisplayProof
+\quad \longrightarrow\quad
+\shoveright{\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\shortDeduce
+\DeduceC{$!B$}
+\RightLabel{$\Subst{\delta_3}{\delta_2}{!B^x}$}
+\shortDeduce
+\DeduceC{$!D$}
+\DisplayProof}
+\\[2ex]
+\shoveleft{\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\shortDeduce
+\DeduceC{$!B(c)$}
+\RightLabel{\Intro{\lforall}}
+\UnaryInfC{$\lforall[x][!B(x)]$}
+\RightLabel{\Elim{\lforall}}
+\UnaryInfC{$!B(t)$}
+\DisplayProof
+\quad \longrightarrow\quad
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\Subst{\delta_2}{t}{c}$}
+\shortDeduce
+\DeduceC{$!B(t)$}
+\DisplayProof}
+\\[4ex]
+\shoveright{\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\shortDeduce
+\DeduceC{$!B(t)$}
+\RightLabel{\Intro{\lexists}}
+\UnaryInfC{$\lexists[x][!B(x)]$}
+\AxiomC{$\Discharge{!B(c)}{x}$}
+\RightLabel{$\delta_3$}
+\shortDeduce
+\DeduceC{$!D$}
+\DischargeRule{\Elim{\lexists}}{x}
+\BinaryInfC{$!D$}
+\DisplayProof
+\quad \longrightarrow\quad
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\shortDeduce
+\DeduceC{$!B(t)$}
+\RightLabel{$\Subst{\Subst{\delta_3}{t}{c}}{\delta_2}{!B(t)^x}$}
+\shortDeduce
+\DeduceC{$!D$}
+\DisplayProof}
+\end{multline*}
+\caption{Algumas conversões de redução para \Log{N1i}.}
+\ollabel{tab:reduction-conversions}
+\end{table}
+
+\begin{prob}
+Apresente a conversão de redução para \Intro{\lnot} seguida de
+\Elim{\lnot}.
+\end{prob}
+
+Resta considerar um caso. A definição de corte inclui o caso em que o
+comprimento do corte é~$1$ e $!A$ é tanto a conclusão de~\FalseInt{}
+quanto a premissa maior de uma inferência de !!a{elimination}. Esse caso
+é tratado de maneira semelhante ao caso em que $!A$ é a conclusão de
+uma regra de !!a{introduction}. Por exemplo, substitua
+\[
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\DeduceC{$\lfalse$}
+\UnaryInfC{$!B \lif !C$}
+\AxiomC{}
+\RightLabel{$\delta_3$}
+\DeduceC{$!B$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!C$}
+\DisplayProof
+\quad\text{por}\quad
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\DeduceC{$\lfalse$}
+\UnaryInfC{$!C$}
+\DisplayProof
+\]
+Precisamos ter um pouco de cuidado nos casos em que $!A \ident (!B
+\lor !C)$ ou $!A \ident \lexists[x][!B(x)]$. Por exemplo, se
+substituíssemos
+\[
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\DeduceC{$\lfalse$}
+\RightLabel{\FalseInt}
+\UnaryInfC{$!B \lor !C$}
+\AxiomC{$\Discharge{!B}{x}$}
+\RightLabel{$\delta_3$}
+\DeduceC{$!D$}
+\AxiomC{$\Discharge{!C}{x}$}
+\RightLabel{$\delta_4$}
+\DeduceC{$!D$}
+\RightLabel{\Elim{\lor}}
+\TrinaryInfC{$!D$}
+\DisplayProof
+\quad\text{por}\quad
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\DeduceC{$\lfalse$}
+\RightLabel{\FalseInt}
+\UnaryInfC{$!D$}
+\DisplayProof
+\]
+poderíamos estar introduzindo um novo corte cuja !!{formula} de corte
+é~$!D$, e não há garantia de que $\depth{!D} < \depth{!B \lor !C}$!{}
+Portanto, devemos proceder aqui da mesma maneira que na redução
+\Intro{\lor}/\Elim{\lor} e substituir por
+\[
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\DeduceC{$\lfalse$}
+\RightLabel{\FalseInt}
+\UnaryInfC{$!B$}
+\RightLabel{$\delta_3$}
+\DeduceC{$!D$}
+\DisplayProof
+\quad\text{ou}\quad
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\DeduceC{$\lfalse$}
+\RightLabel{\FalseInt}
+\UnaryInfC{$!C$}
+\RightLabel{$\delta_4$}
+\DeduceC{$!D$}
+\DisplayProof
+\]
+
+\end{document}

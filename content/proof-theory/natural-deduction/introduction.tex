@@ -1,0 +1,108 @@
+% Part: proof-theory
+% Chapter: natural-deduction
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{pt}{nat}{int}
+
+\olsection{Introdução}
+
+A dedução natural é uma família de sistemas de !!{proof} nos quais cada
+conectivo lógico ou quantificador tem um par de inferências: uma que
+``introduz'' o operador (uma regra de !!a{introduction}) e outra que
+``elimina'' o operador (uma regra de !!a{elimination}). Por exemplo,
+\Intro{\lif} tem !!{formula}s da forma~$!A \lif !B$ como conclusão, e
+\Elim{\lif} tem !!{formula}s da forma~$!A \lif !B$ como premissas.
+
+As duas primeiras versões da dedução natural foram introduzidas na década
+de 1930 por Gerhard Gentzen e Stanisław Jaśkowski. O sistema de Gentzen é o
+mais discutido pelos teóricos da prova, e o de Jaśkowski deu origem aos
+sistemas mais amplamente usados no ensino. Em ambos os sistemas, pode-se
+começar com \emph{hipóteses}---!!{formula}s que não precisam ser
+!!{prove}d, mas que podem ser usadas para !!{proving} outras !!{formula}s.
+Um !!{proof} inteiro pode depender de tais hipóteses e, como elas não foram
+demonstradas, o !!{proof} não estabelece sua conclusão (sua
+\emph{!!{formula} final}), mas apenas que a conclusão decorre das
+hipóteses.
+
+Algumas regras de inferência são tais que suas conclusões deixam de depender
+de certas hipóteses: elas ``descarregam'' hipóteses. Por exemplo, a regra
+\Intro{\lif} toma !!a{proof} da conclusão~$!B$ a partir de uma hipótese~$!A$
+e tem $!A \lif !B$ como conclusão. O !!{proof} que termina em $!A \lif !B$
+já não depende de~$!A$; a hipótese $!A$ é descarregada. Nos sistemas de
+Gentzen, os !!{proof}s são árvores de !!{formula}s, as hipóteses são as
+!!{formula}s no topo, e regras como~\Intro{\lif} trazem rótulos que indicam
+quais hipóteses são descarregadas. Nos sistemas de Jaśkowski, as partes do
+!!{proof} que dependem de uma hipótese são destacadas de algum modo, por
+exemplo, recuadas atrás de uma linha vertical ou colocadas em uma caixa, com
+a hipótese~$!A$ descarregada e o consequente $!B$ da condicional como primeira
+e última linhas da caixa, e a conclusão~$!A \lif !B$ de \Intro{\lif} fora da
+caixa.
+
+Os sistemas são ``naturais'' porque as regras de inferência refletem a
+maneira como nós (ou, pelo menos, os matemáticos) raciocinamos naturalmente.
+Para estabelecer um resultado hipotético (uma condicional), supomos o
+antecedente e o usamos para demonstrar o consequente. Isso é~\Intro{\lif}.
+Quando conhecemos uma condicional $!A \lif !B$ e seu antecedente~$!A$,
+concluímos~$!B$. Isso é~\Elim{\lif}. Usamos demonstração por casos para
+mostrar que, supondo uma disjunção~$!A \lor !B$, certa conclusão vale. Isso
+é~\Elim{\lor}. Para demonstrar uma afirmação geral~$\lforall[x][!A(x)]$,
+demonstramos que $!A(c)$ vale para um~$c$ arbitrário. Isso
+é~\Intro{\lforall}. E assim por diante.
+
+Por exemplo, eis um !!{proof} simples de~$!A \lif (!A \lor !B)$ em dedução
+natural ao estilo de Gentzen:
+\[
+\AxiomC{$\Discharge{!A}{x}$}
+\RightLabel{\Intro{\lor}}
+\UnaryInfC{$!A \lor !B$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!A \lif (!A \lor !B)$}
+\DisplayProof
+\]
+Ele começa com a hipótese~$!A$, usa \Intro{\lor} para inferir~$!A \lor !B$
+e depois \Intro{\lif} para inferir~$!A \lif (!A \lor !B)$. A inferência
+\Intro{\lif} descarrega a hipótese~$!A$; isso é indicado pelo rótulo~$x$.
+
+Os teóricos da prova preferem os sistemas originais de Gentzen, que trabalham
+com árvores de !!{formula}s, embora uma variante também seja importante na
+teoria da prova. !!^a{proof} de~$!A$ a partir das hipóteses~$\Gamma$ mostra
+que $!A$ decorre de~$\Gamma$, isto é, $\Gamma \Entails !A$. As regras de
+inferência da dedução natural podem ser lidas naturalmente como afirmações
+sobre essas relações de consequência; por exemplo, \Intro{\lif} diz que, se
+$\Gamma + !A \Entails !B$, então $\Gamma \Entails !B$. É natural formular
+as regras diretamente de modo que operem tanto sobre as hipóteses quanto
+sobre a conclusão que delas decorre nas premissas e na conclusão da regra de
+inferência, isto é, que operem sobre sequentes $\Gamma \Sequent !A$. O
+A demonstração simples acima teria a seguinte aparência em tal sistema:
+\[
+\Axiom$x:!A \fCenter !A$
+\RightLabel{\Intro{\lor}}
+\UnaryInf$x:!A \fCenter !A \lor !B$
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInf$\fCenter !A \lif (!A \lor !B)$
+\DisplayProof
+\]
+Como se vê, as regras são as mesmas: elas operam sobre a !!{formula} à
+direita de~$\Sequent$; as !!{formula}s à esquerda apenas enumeram as
+hipóteses das quais elas dependem em cada passo.
+
+O conjunto completo dos pares de regras de !!{introduction}/!!{elimination}
+não é, por si só, completo para a lógica clássica. Precisamos acrescentar
+duas regras relativas a~$\lfalse$. A primeira é a ``regra intuicionista do
+absurdo''~\FalseInt, ou ``explosão'', segundo a qual de $\lfalse$ podemos
+inferir qualquer coisa. A segunda é o princípio clássico da demonstração
+indireta~\FalseCl{} (ou a ``regra clássica do absurdo''), segundo o qual, se
+podemos !!{prove}~$\lfalse$ a partir de~$\lnot !A$, então !!{prove}d~$!A$.
+Se omitirmos~\FalseCl, obteremos um sistema adequado à lógica intuicionista.
+Se omitirmos ambas, teremos o que se conhece como ``lógica mínima''.
+
+Discutiremos a dedução natural ao estilo de Gentzen para as lógicas clássica
+e intuicionista. Esses são os sistemas \Log{N1c} e \Log{N1i}. Os sistemas
+\Log{N2c} e \Log{N2i} são os sistemas correspondentes que trabalham com
+sequentes $\Gamma \Sequent !A$, em vez de !!{formula}s isoladas~$!A$.
+
+\end{document}

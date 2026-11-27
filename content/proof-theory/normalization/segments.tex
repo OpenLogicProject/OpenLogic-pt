@@ -1,0 +1,109 @@
+% Part: proof-theory
+% Chapter: normalization
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{pt}{nor}{seg}
+
+\olsection{Segmentos e cortes}
+
+!!^a{introduction} seguida por !!a{elimination} constitui um desvio em
+!!a{proof}, e normalizar !!a{proof} é eliminar desvios desse tipo. No
+entanto, \Elim{\lor} e \Elim{\lexists} tornam um pouco complicada até a
+definição de ``desvio que queremos eliminar''. O problema é o seguinte.
+Por causa dessas regras, não há garantia de que, em um desvio, a
+!!{elimination} siga \emph{imediatamente} a !!{introduction}. Pode haver
+uma \Elim{\lor} ou uma \Elim{\lexists} entre elas, por exemplo:
+\[
+\AxiomC{}
+\DeduceC{$\lexists[x][!C(x)]$}
+\AxiomC{$\Discharge{!A}{x}$}
+\DeduceC{$!B$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!A \lif !B$}
+\DischargeRule{\Elim{\lexists}}{y}
+\BinaryInfC{$!A \lif !B$}
+\AxiomC{}
+\DeduceC{$!A$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!B$}
+\DisplayProof
+\]
+Na verdade, qualquer número de \Elim{\lor} ou de
+\Elim{\lexists} pode separar \Intro{\lif} de \Elim{\lif}, por exemplo:
+\[
+\AxiomC{}
+\DeduceC{$\lexists[x][!C(x)]$}
+\AxiomC{}
+\DeduceC{$!D \lor !E$}
+\AxiomC{$\Discharge{!A}{x}$}
+\DeduceC{$!B$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!A \lif !B$}
+\AxiomC{$\Discharge{!A}{x}$}
+\DeduceC{$!B$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!A \lif !B$}
+\RightLabel{\Elim{\lor}}
+\TrinaryInfC{$!A \lif !B$}
+\DischargeRule{\Elim{\lexists}}{y}
+\BinaryInfC{$!A \lif !B$}
+\AxiomC{}
+\DeduceC{$!A$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!B$}
+\DisplayProof
+\]
+Esse exemplo mostra até que a mesma \Elim{\lif} pode estar envolvida em
+vários desvios, pois sucede a mais de uma~\Intro{\lif}. Para levar em
+conta todas essas possibilidades, definimos os desvios usando certos
+tipos de sequências de ocorrências de !!{formula} em uma prova de
+\Log{N1i}, chamadas \emph{segmentos}. Em nosso exemplo, trata-se de uma
+sequência de ocorrências de~$!A \lif !B$ em que uma premissa menor de
+$\Elim{\lor}$ ou de $\Elim{\lexists}$ sucede à conclusão correspondente.
+No exemplo, há dois segmentos desse tipo, cada um com três ocorrências
+de~$!A \lif !B$. Eis a definição oficial.
+
+\begin{defn}
+Um \emph{segmento} em uma !!{proof} de \Log{N1i}~$\delta$ é uma sequência
+de ocorrências $!A_1$, \dots, $!A_n$ da mesma !!{formula}~$!A$ em
+$\delta$, na qual
+\begin{enumerate}
+  \item $!A_1$ não é a conclusão de \Elim{\lor} nem de \Elim{\lexists};
+  \item $!A_n$ não é uma premissa menor de \Elim{\lor} nem de
+  \Elim{\lexists};
+  \item Para $i = 1$, \dots,~$n-1$, $!A_i$ é uma premissa menor de
+  \Elim{\lor} ou de \Elim{\lexists}, e $A_{i+1}$ é a conclusão dessa
+  inferência.
+\end{enumerate}
+O \emph{comprimento} desse segmento é~$n$.
+\end{defn}
+
+Nem todo segmento é alvo de eliminação (um desvio). Os segmentos que são
+recebem o nome de \emph{cortes}.
+
+\begin{defn}
+Um \emph{corte} é um segmento no qual $!A_n$ é a premissa maior de
+!!a{elimination} e ocorre uma das seguintes condições: $n=1$ e
+$!A_1 = !A_n$ é a conclusão de !!a{introduction} ou de~\FalseInt;
+ou~$n>1$.
+\end{defn}
+
+Observe que um segmento de corte não precisa começar com a conclusão de
+!!a{introduction}. Exige-se apenas que ele termine com a premissa maior
+de !!a{elimination}. No entanto, um segmento de comprimento~$1$ precisa
+ser a conclusão de uma regra de !!{introduction} para contar como corte.
+
+\begin{defn}
+O \emph{posto} de um corte é~$\depth{!A}$. O \emph{posto de
+corte}~$\cutrank{\delta}$ de !!a{proof}~$\delta$ é o maior posto dos
+cortes em~$\delta$. Um corte é \emph{máximo} em~$\delta$ se seu posto é
+$\cutrank{\delta}$, isto é, se tem posto máximo. O \emph{comprimento de
+corte} de~$\delta$ é a soma dos comprimentos de todos os seus cortes
+máximos.
+\end{defn}
+
+\end{document}

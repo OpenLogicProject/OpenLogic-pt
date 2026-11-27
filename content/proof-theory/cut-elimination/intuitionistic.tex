@@ -1,4 +1,4 @@
-If $!A \ident (!B \lif !C)$ then $\pi$ ends in
+Se $!A \ident (!B \lif !C)$, então $\pi$ termina em
 \[
 \AxiomC{}
 \RightLabel{$\pi_1'$}
@@ -19,7 +19,7 @@ If $!A \ident (!B \lif !C)$ then $\pi$ ends in
 \BinaryInf$\Gamma, \Pi \fCenter \Delta, \Lambda$
 \DisplayProof
 \]
-The !!{proof} ending in \Cut,
+A !!{proof} que termina em \Cut,
 \[
 \AxiomC{}
 \RightLabel{$\pi_1'$}
@@ -34,9 +34,9 @@ The !!{proof} ending in \Cut,
 \BinaryInf$\Gamma, \Pi \fCenter \Delta, \Lambda, !B$
 \DisplayProof
 \]
-has lower cut !!{height} than~$\pi$. The inductive hypthesis yields
-!!a{proof}~$\pi_1''$ of $\Gamma, \Pi \fCenter \Delta, \Lambda, !B$.
-The !!{proof} ending in \Cut,
+tem !!{height} de corte menor que a de~$\pi$. A hipótese indutiva fornece
+!!a{proof}~$\pi_1''$ de $\Gamma, \Pi \fCenter \Delta, \Lambda, !B$.
+A !!{proof} que termina em \Cut,
 \[
 \AxiomC{}
 \RightLabel{$\pi_1'$}
@@ -48,11 +48,11 @@ The !!{proof} ending in \Cut,
 \BinaryInf$!B, \Gamma, \Pi \fCenter \Delta, \Lambda$
 \DisplayProof
 \]
-Both its cut rank and cut !!{height} are less than the cut rank and
-!!{height} of~$\pi$, so the induction hypothesis yields a
-\Log{G3c}-!!{proof}~$\pi_2'''$ of $!B, \Gamma, \Pi, \Pi \fCenter \Delta, \Lambda,
-\Lambda$. Now apply the inductive hypothesis to the !!{proof} ending
-in \Cut,
+Tanto seu posto de corte quanto sua !!{height} de corte são menores que o
+posto de corte e a !!{height} de~$\pi$; assim, a hipótese de indução fornece
+uma \Log{G3c}-!!{proof}~$\pi_2'''$ de $!B, \Gamma, \Pi, \Pi \fCenter \Delta, \Lambda,
+\Lambda$. Agora aplique a hipótese indutiva à !!{proof} que termina
+em \Cut,
 \[
 \AxiomC{}
 \RightLabel{$\pi_1''$}
@@ -65,7 +65,7 @@ in \Cut,
 \BinaryInf$!B, \Gamma, \Pi \fCenter \Delta, \Lambda$
 \DisplayProof
 \]
-(it has cut rank $< \cutr{\pi}$) to obtain !!a{proof} of $\Gamma,
-\Gamma, \Pi, \Pi, \Pi \fCenter \Delta, \Lambda, \Lambda, \Lambda$. We
-obtain the !!{proof} $\pi'$ of $\Gamma, \Pi \fCenter \Delta, \Lambda$
-by applying \olref[seq][inv]{prop:G3c-cont-adm}.
+(ela tem posto de corte $< \cutr{\pi}$) para obter !!a{proof} de $\Gamma,
+\Gamma, \Pi, \Pi, \Pi \fCenter \Delta, \Lambda, \Lambda, \Lambda$. Obtemos
+a !!{proof} $\pi'$ de $\Gamma, \Pi \fCenter \Delta, \Lambda$
+aplicando \olref[seq][inv]{prop:G3c-cont-adm}.

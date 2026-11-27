@@ -8,10 +8,10 @@
 
 \begin{table}
 \begin{tabular}{@{}c@{}c@{}}
-\multicolumn{2}{@{}c@{}}{Axioms}\\[2ex]
+\multicolumn{2}{@{}c@{}}{Axiomas}\\[2ex]
 $!A \Sequent !A$ & $\lfalse \Sequent \quad$
 \\[2ex]
-\multicolumn{2}{@{}c@{}}{Structural Rules}\\[2ex]
+\multicolumn{2}{@{}c@{}}{Regras estruturais}\\[2ex]
 \Axiom$ \Gamma \fCenter \Delta $
 \RightLabel{\LeftR{\Weakening}}
 \UnaryInf$ !A, \Gamma \fCenter \Delta$
@@ -32,7 +32,7 @@ $!A \Sequent !A$ & $\lfalse \Sequent \quad$
 \UnaryInf$ \Gamma \fCenter \Delta, !A$
 \DisplayProof
 \\[4ex]
-\multicolumn{2}{@{}c@{}}{Logical Rules}\\[2ex]
+\multicolumn{2}{@{}c@{}}{Regras lógicas}\\[2ex]
 \Axiom$ \Gamma \fCenter \Delta, !A $
 \RightLabel{\LeftR{\lnot}}
 \UnaryInf$ \lnot !A, \Gamma \fCenter \Delta$
@@ -108,10 +108,9 @@ $!A \Sequent !A$ & $\lfalse \Sequent \quad$
 \UnaryInf$ \Gamma \fCenter \Delta, \lexists[x][!A(x)]$
 \DisplayProof
 \end{tabular}
-\caption{Rules of \Log{G1c}. In $\RightR{\forall}$ and
-$\LeftR{\exists}$, the !!{constant}~$a$ must not occur in the
-conclusion sequent. $\Gamma$~and $\Delta$ are
-multisets of !!{formula}s.}
+\caption{Regras de \Log{G1c}. Em $\RightR{\forall}$ e
+$\LeftR{\exists}$, a !!{constant}~$a$ não pode ocorrer no sequente de
+conclusão. $\Gamma$~e $\Delta$ são multiconjuntos de !!{formula}s.}
 \ollabel{tab:G1c}
 \end{table}
 

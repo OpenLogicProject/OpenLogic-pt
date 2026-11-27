@@ -1,0 +1,116 @@
+% part: intuitionistic-logic
+% chapter: propositions-as-types
+% section: type-preservation
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{int}{pty}{tpr}
+
+\olsection{Preservação de tipos}
+
+As conversões de redução e de permutação consideradas também podem ser
+definidas diretamente para os sistemas \Log{tN2i} e \Log{tN3i}. O
+sistema \Log{tN3i} define o tipo de um termo-$\lambd$~$N$ em relação ao
+contexto~$\Gamma$ como a !!{formula}~$!A$ tal que
+$\Gamma \Sequent N : !A$ tem !!a{proof} em \Log{tN3i}. O fato de as
+regras de redução-$\beta$ para termos-$\lambd$ espelharem exatamente as
+conversões de redução e de permutação de !!{proof}s tem uma consequência
+importante: o tipo de um termo-$\lambd$ em relação a um contexto~$\Gamma$
+permanece o mesmo depois da conversão-$\beta$. Essa propriedade é
+chamada de \emph{preservação de tipos}.
+
+\begin{prop}
+Se $N$ tem tipo~$!A$ em relação a $\Gamma$ e $N \redone N'$, então
+$N'$ tem tipo~$!A$ em relação a~$\Gamma$.
+\end{prop}
+
+\begin{proof}
+  Por indução sobre~$N$ e sobre a altura das !!{proof}s~$\delta$ de
+  $\Gamma \Sequent N : !A$, podemos estabelecer facilmente o seguinte:
+  se $M$ é um subtermo de~$N$, então $\delta$ contém uma
+  sub-!!{proof}~$\delta_1$ que termina em $\Gamma' \Sequent M : !B$. Se
+  $M$ é um redex, então uma conversão se aplica a~$\delta_1$. Aplicando a
+  redução a $\delta_1$, obtemos !!a{proof}~$\delta_1'$ de
+  $\Gamma' \Sequent M' : !B$. Pela inspeção das conversões de
+  \Log{tN3i}, $M'$ é o reduto de~$M$. Substituir $\delta_1$ em~$\delta$
+  por $\delta_1'$ resulta em !!a{proof}~$\delta'$ de
+  $\Gamma \Sequent N' : !A$, em que $N'$ resulta de~$N$ pela
+  substituição do subtermo~$M$ por~$M'$.
+
+  Por exemplo, considere a conversão de redução para~\Intro{\land}
+  seguida de \Elim{\land}:
+  \[
+  \bottomAlignProof
+  \AxiomC{}
+  \Deduce$\Gamma \fCenter N_1 : !B_1$
+  \AxiomC{}
+  \Deduce$\Gamma \fCenter N_2 : !B_2$
+  \RightLabel{\Intro{\land}}
+  \BinaryInf$\Gamma \fCenter \pair{N_1}{N_2} : !B_1 \land !B_2$
+  \RightLabel{\Elim{\land}[i]}
+  \UnaryInf$\Gamma \fCenter \proj{i}{\pair{N_1}{N_2}} : !B_i$
+  \DisplayProof
+  \quad\redone\quad
+  \bottomAlignProof
+  \AxiomC{}
+  \Deduce$\Gamma \fCenter N_i : !B_i$
+  \DisplayProof
+  \]
+  Vemos que o termo de prova da !!{proof} à direita, isto é,
+  $\delta_1'$, é $N_i$. Ele é exatamente o resultado de aplicar a
+  conversão-$\beta$ ao termo de prova $\proj{i}{\pair{N_1}{N_2}}$ da
+  !!{proof} à esquerda~($\delta_1$).
+
+  Considere também uma \Intro{\lif} seguida de uma inferência de
+  \Elim{\lif} e a conversão de redução aplicada a ela:
+  \begin{multline*}
+  \bottomAlignProof
+  \AxiomC{$\delta_2$}
+  \Deduce$x: !B_1, \Gamma \fCenter N : !B_2$
+  \RightLabel{\Intro{\lif}}
+  \UnaryInf$\Gamma \fCenter \lambd[\typeof{x}{!B_1}][N] : !B_1 \lif !B_2$
+  \AxiomC{}
+  \RightLabel{$\delta_3$}
+  \Deduce$\Gamma \fCenter M : !B_1$
+  \RightLabel{\Elim{\lif}}
+  \BinaryInf$\Gamma \fCenter (\lambd[\typeof{x}{!B_1}][N] M) : !B_2$
+  \DisplayProof
+  \quad\redone\\
+  \bottomAlignProof
+  \AxiomC{}
+  \RightLabel{$\delta_3$}
+  \Deduce$\Gamma \fCenter M : !B_1$
+  \RightLabel{$\Subst{\delta_2}{\delta_3}{x:!B_1}$}
+  \Deduce$\Gamma \fCenter \Subst{N}{M}{x} : !B_2$
+  \DisplayProof
+  \end{multline*}
+  Novamente, o termo de prova da !!{proof} à direita é exatamente o
+  resultado da redução-$\beta$ do termo de prova da !!{proof} à
+  esquerda. É claro que seria necessário verificar cuidadosamente (por
+  indução sobre a altura de~$\delta_2$) que substituir todos os axiomas
+  da forma $\Gamma' \Sequent x:!B_1$ em~$\delta_2$ pela
+  !!{proof}~$\delta_3$ de $\Gamma \Sequent M:!B_1$ realmente resulta em
+  !!a{proof} $\Subst{\delta_2}{\delta_3}{x:!B_1}$ de
+  $\Gamma \Sequent \Subst{N}{M}{x} : !B_2$.
+\end{proof}
+
+A estreita correspondência entre !!{proof}s e termos-$\lambd$ tem outra
+consequência. Se $N$ é um termo-$\lambd$ de tipo $!A$ em relação a um
+contexto~$\Gamma$ e contém um redex~$M$ (isto é, não está em forma
+normal), então a prova correspondente de \Log{tN3i}~$\delta$ de
+$\Gamma \Sequent N : !A$ contém uma sub-!!{proof} (que termina em
+$\Gamma' \Sequent M: !B$) à qual se pode aplicar uma conversão. Se
+$N \redone N'$ pela substituição de $M$ por seu reduto, o resultado
+correspondente da aplicação da redução a~$\delta$ é !!a{proof} de
+$\Gamma \Sequent N' : !A$. Portanto, todo termo-$\lambd$ que não está em
+forma normal se reduz por $\beta$ a outro. Essa propriedade é chamada de
+\emph{progresso}.
+
+O progresso e a preservação de tipos, juntos, garantem que a
+redução-$\beta$ de termos-$\lambd$ nunca fique ``bloqueada'': se um termo
+é bem tipado e não está em forma normal, ele se reduz a outro termo bem
+tipado (e esse termo tem o mesmo tipo).
+
+\end{document}

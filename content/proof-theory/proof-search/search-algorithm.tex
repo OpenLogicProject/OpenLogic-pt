@@ -1,0 +1,154 @@
+% Part: proof-theory
+% Chapter: proof-search
+% Section: search-algorithm
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[pt]{pt}{ps}{sal}
+
+\olsection{Algoritmo de busca para \Log{G3c}}
+
+Descrevemos um algoritmo de busca para \Log{G3c}. Ele não é o único
+possível, nem sequer o mais eficiente. Mas é correto: se um sequente
+$\Gamma \Sequent \Delta$ tiver !!a{proof}, o algoritmo acabará parando
+e encontrará !!a{proof}. Ele também é infalível: se parar sem ter
+encontrado !!a{proof}, ou nunca parar, então $\Gamma \Sequent \Delta$
+não era válido desde o início.
+
+Uma característica necessária e essencial do algoritmo é garantir que
+toda !!{formula} em $\Gamma \Sequent \Delta$, ou em um sequente
+produzido durante a busca de provas, seja ``reduzida'', isto é, seja
+tratada como a fórmula principal de uma regra de inferência aplicada de
+trás para a frente, e que isso aconteça tantas vezes quanto necessário.
+Chamamos essa característica de \emph{equidade}
+
+O algoritmo funciona em estágios. A saída de cada estágio é uma árvore
+de sequentes, e a saída do estágio seguinte é produzida reduzindo
+!!a{formula} em cada sequente superior que ainda não seja um axioma.
+
+No estágio $0$, começamos com $\Gamma \Sequent \Delta$. Para garantir a
+equidade, atribuímos números como índices às !!{formula}s de $\Gamma$ e
+$\Delta$, de modo que !!{formula}s diferentes recebam números
+diferentes. Por exemplo, imagine contar as !!{formula}s da esquerda
+para a direita. Escrevemos os números como sobrescritos. Por exemplo,
+se estivermos buscando !!a{proof} de $!A, !B \Sequent !C$, a saída do
+estágio~$0$ será $!A^1, !B^2 \Sequent !C^3$. O maior~$n$ que ocorre
+como sobrescrito em um sequente indexado desse tipo é seu \emph{índice
+máximo} ($3$~no exemplo).
+
+Se o sequente contiver quantificadores, também precisaremos saber quais
+termos usar ao reduzir $\lexists[x][!A(x)]$ à direita ou
+$\lforall[x][!A(x)]$ à esquerda. Precisaremos apenas de termos
+construídos a partir das !!{constant}s $\Obj c_0$, $\Obj c_1$, $\Obj
+c_2$, \dots, usando quaisquer símbolos de função que ocorram
+em~$\Gamma$ e $\Delta$. Supomos que o conjunto de todos esses termos
+seja fornecido em alguma enumeração fixa, para que possamos falar, por
+exemplo, da ``primeira !!{constant} que não ocorre em $\Gamma \Sequent
+\Delta$''. Cada sequente indexado da árvore produzida pelo algoritmo tem
+um conjunto associado de !!{constant}s. O conjunto de !!{constant}s
+atribuído ao sequente no estágio~$0$ é o conjunto de todas as
+!!{constant}s que ocorrem nele (se houver alguma), e $\{\Obj c_0\}$ se
+ele não contiver !!{constant}s.
+
+Suponha que o algoritmo tenha gerado, no estágio~$n$, uma árvore de
+sequentes indexados com conjuntos associados de !!{constant}s. No
+estágio~$n+1$, fazemos o seguinte para cada sequente superior.
+
+Se houver !!a{formula}~$!A$ que ocorra tanto à esquerda quanto à direita
+do sequente, ou se o lado esquerdo contiver~$\lfalse$, não fazemos nada:
+tais sequentes têm !!{proof}s em~\Log{G3c}, e não resta nada a fazer
+para esse sequente superior específico.
+
+Se não houver nenhuma !!{formula} não atômica no sequente, aborte o
+algoritmo. Não há prova de $\Gamma \Sequent \Delta$.
+
+Caso contrário, escolha a !!{formula} não atômica~$!A$ com o menor
+índice~$i$. Então, o sequente superior em questão é $!A^i, \Pi \Sequent
+\Lambda$ ou $\Pi \Sequent \Lambda, !A^i$. Seja $k$ o índice máximo do
+sequente e $C$ o conjunto de !!{constant}s atribuído a ele.
+
+``Reduzimos'' $!A^i$, isto é, geramos novos sequentes superiores de
+acordo com a regra de inferência determinada pelo !!{main operator}
+de~$!A$ e conforme $!A^i$ apareça à esquerda ou à direita.
+
+\begin{enumerate}
+  \item $!A \ident !B \land !C$ e ocorre à esquerda: acrescente um novo
+  sequente superior acima de $(!B \land !C)^i, \Pi \Sequent \Lambda$:
+  \[
+  \Axiom$!B^k, !C^{k+1}, \Pi \fCenter \Lambda$
+  \RightLabel{\LeftR{\land}}
+  \UnaryInf$(!B \land !C)^i, \Pi \fCenter \Lambda$
+  \DisplayProof
+  \]
+  O conjunto de !!{constant}s atribuído ao novo sequente é~$C$.
+  \item $!A \ident !B \land !C$ e ocorre à direita: acrescente dois
+  novos sequentes superiores acima de $\Pi \Sequent \Lambda, (!B \land
+  !C)^i$:
+  \[
+  \Axiom$\Pi \fCenter \Lambda, !B^k$
+  \Axiom$\Pi \fCenter \Lambda, !C^k$
+  \RightLabel{\RightR{\land}}
+  \BinaryInf$\Pi \fCenter \Lambda, (!B \land !C)^i$
+  \DisplayProof
+  \]
+  O conjunto de !!{constant}s atribuído ao novo sequente é~$C$.
+
+  \item Os casos em que $!A \ident \lnot !B$, $!A \ident !B \lor !C$
+  e $!A \ident !B \lif !C$ são semelhantes e ficam como exercícios.
+
+  \item $!A \ident \lexists[x][!B(x)]$ e ocorre à esquerda: acrescente
+  um novo sequente superior acima de $\lexists[x][!B(x)]^i, \Pi
+  \Sequent \Lambda$:
+  \[
+  \Axiom$!B(c)^k, \Pi \fCenter \Lambda$
+  \RightLabel{\LeftR{\lexists}}
+  \UnaryInf$\lexists[x][!B(x)]^i, \Pi \fCenter \Lambda$
+  \DisplayProof
+  \]
+  em que $c$ é a primeira !!{constant} que não pertence a~$C$. O
+  conjunto de !!{constant}s atribuído ao novo sequente é $C \cup
+  \{c\}$.
+  \item $!A \ident \lexists[x][!B(x)]$ e ocorre à direita: acrescente um
+  novo sequente superior acima de $\Pi \Sequent \Lambda,
+  \lexists[x][!B(x)]$:
+  \[
+  \Axiom$\Pi \fCenter \Lambda, \lexists[x][!B(x)]^k, !B(t)^{k+1}$
+  \RightLabel{\LeftR{\lexists}}
+  \UnaryInf$\Pi \fCenter \Lambda, \lexists[x][!B(x)]^i$
+  \DisplayProof
+  \]
+  em que $t$ é o primeiro termo que contém apenas !!{constant}s de~$C$
+  e que ainda não foi usado na redução de $\lexists[x][!B(x)]$ à
+  direita abaixo desse sequente (ou $\Obj c_0$ se todos esses termos já
+  tiverem sido usados). O conjunto de !!{constant}s atribuído ao novo
+  sequente é $C$.
+  \item Os casos em que $!A \ident \lforall[x][!B(x)]$ são semelhantes
+  e ficam como exercícios.
+\end{enumerate}
+
+Se, no estágio $n+1$, não tivermos acrescentado um novo sequente a
+nenhum sequente superior, o algoritmo terminará com êxito. Nesse caso,
+teremos encontrado !!a{proof} de~$\Gamma \Sequent \Delta$, obtida da
+árvore no estágio $n+1$ apagando todos os índices. Todos os sequentes
+superiores têm a forma $!A, \Pi \Sequent \Lambda, !A$ ou a forma
+$\lfalse, \Pi \Sequent \Lambda$. Todas as inferências são inferências
+corretas de~\Log{G3c}. Isso é evidente para as inferências
+proposicionais. Observe que, em cada passo, o conjunto~$C$ de
+!!{constant}s atribuído a um sequente contém todas as !!{constant}s que
+ocorrem no sequente. Portanto, na redução que usa \LeftR{\lexists} e
+\RightR{\lforall}, a condição de variável própria é satisfeita, pois a
+variável própria~$c$ era !!a{constant} que não pertencia ao conjunto~$C$
+atribuído à conclusão; $c$ também não ocorria na conclusão. Temos:
+
+\begin{prop}
+O algoritmo de busca de provas para \Log{G3c} é correto: se terminar
+com êxito, o sequente inicial~$\Gamma \Sequent \Delta$ terá !!a{proof}.
+\end{prop}
+
+
+
+
+
+\end{document}
