@@ -6,54 +6,54 @@
 
 \begin{document}
 
-\olfileid{inc}{req}{pri}
-\olsection{Simulating Primitive Recursion}
+\olfileid[pt]{inc}{req}{pri}
+\olsection{Simulação da recursão primitiva}
 
-Now we can show that definition by primitive recursion can be
-``simulated'' by regular minimization using the beta function. Suppose
-we have $f(\vec x)$ and $g(\vec x, y, z)$. Then the function~$h(x,\vec
-z)$ defined from $f$ and~$g$ by primitive recursion is
+Agora podemos mostrar que a definição por recursão primitiva pode ser
+``simulada'' por minimização regular usando a função beta. Suponha que
+tenhamos $f(\vec x)$ e $g(\vec x, y, z)$. Então a função~$h(x,\vec z)$
+definida a partir de $f$ e~$g$ por recursão primitiva é
 \begin{align*}
 h(\vec x, 0) & =  f(\vec x) \\
 h(\vec x, y+1) & =  g(\vec x, y, h(\vec x, y)).
 \end{align*}
-We need to show that $h$ can be defined from $f$ and~$g$ using just
-composition and regular minimization, using the basic functions and
-functions defined from them using composition and regular minimization
-(such as~$\beta$).
+Precisamos mostrar que $h$ pode ser definida a partir de $f$ e~$g$
+usando apenas composição e minimização regular, com as funções básicas
+e as funções delas definidas por composição e minimização regular
+(como~$\beta$).
 
 \begin{lem}
 \ollabel{lem:prim-rec}
-If $h$ can be defined from $f$ and $g$ using primitive recursion, it
-can be defined from $f$, $g$, the functions $\Zero$, $\Succ$,
-$\Proj{n}{i}$, $\Add$, $\Mult$, $\Char{=}$, using composition and
-regular minimization.
+Se $h$ pode ser definida a partir de $f$ e $g$ por recursão primitiva,
+então pode ser definida a partir de $f$, $g$ e das funções $\Zero$,
+$\Succ$, $\Proj{n}{i}$, $\Add$, $\Mult$, $\Char{=}$, usando composição
+e minimização regular.
 \end{lem}
 
 \begin{proof}
-First, define an auxiliary function $\hat h(\vec x, y)$ which returns
-the least number~$d$ such that $d$ codes a sequence which satisfies
+Primeiro, defina uma função auxiliar $\hat h(\vec x, y)$ que devolve o
+menor número~$d$ tal que $d$ codifica uma sequência que satisfaz
 \begin{enumerate}
-\item $(d)_0 = f(\vec x)$, and
-\item for each $i < y$, $(d)_{i+1} = g(\vec x, i, (d)_i)$,
+\item $(d)_0 = f(\vec x)$, e
+\item para cada $i < y$, $(d)_{i+1} = g(\vec x, i, (d)_i)$,
 \end{enumerate}
-where now $(d)_i$ is short for $\beta(d,i)$. In other words, $\hat h$
-returns the sequence $\tuple{h(\vec x, 0), h(\vec x, 1), \dots, h(\vec
-x, y)}$. We can write $\hat h$ as
+em que agora $(d)_i$ abrevia $\beta(d,i)$. Em outras palavras, $\hat h$
+devolve a sequência $\tuple{h(\vec x, 0), h(\vec x, 1), \dots, h(\vec
+x, y)}$. Podemos escrever $\hat h$ como
 \[
 \hat h(\vec x, y) = \umin{d}{(\beta(d,0) = f(\vec x) \land \bforall{i <
   y}{\beta(d,i+1) = g(\vec x, i,\beta(d,i)})}.
 \]
-Note: no primitive recursion is needed here, just minimization. The
-function we minimize is regular because of the beta function lemma
+Observe: aqui não é necessária recursão primitiva, apenas minimização.
+A função que minimizamos é regular por causa do lema da função beta
 \olref[bet]{lem:beta}.
 
-But now we have
+Mas agora temos
 \[
 h(\vec x, y) = \beta(\hat h(\vec x, y), y),
 \]
-so $h$ can be defined from the basic functions using just composition
-and regular minimization.
+portanto, $h$ pode ser definida a partir das funções básicas usando
+apenas composição e minimização regular.
 \end{proof}
 
 \end{document}

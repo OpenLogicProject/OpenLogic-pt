@@ -6,123 +6,123 @@
 
 \begin{document}
 
-\olfileid{inc}{inp}{1in}
+\olfileid[pt]{inc}{inp}{1in}
 
-\olsection{The First Incompleteness Theorem}
+\olsection{O primeiro teorema da incompletude}
 
-We can now describe G\"odel's original proof of the first
-incompleteness theorem. Let $\Th{T}$ be any computably axiomatized theory
-in a language extending the language of arithmetic, such that $\Th{T}$
-includes the axioms of $\Th{Q}$. This means that, in particular, $\Th{T}$
-represents computable functions and relations.
+Podemos agora descrever a prova original de G\"odel do primeiro teorema da
+incompletude. Seja $\Th{T}$ qualquer teoria axiomatizada computavelmente em
+uma linguagem que estenda a linguagem da aritmética, tal que $\Th{T}$
+contenha os axiomas de $\Th{Q}$. Isso significa, em particular, que $\Th{T}$
+representa funções e relações computáveis.
 
-We have argued that, given a reasonable coding of formulas and proofs
-as numbers, the relation $\Prf[\Th{T}](x,y)$ is computable, where
-$\Prf[\Th{T}](x,y)$ holds if and only if $x$ is the G\"odel number of
-!!a{derivation} of the !!{formula} with G\"odel number~$y$
-in~$\Th{T}$. In fact, for the particular theory that G\"odel had in
-mind, G\"odel was able to show that this relation is primitive
-recursive, using the list of 45 functions and relations in his
-paper. The 45th relation, $x B y$, is just $\Prf[\Th{T}](x,y)$ for his
-particular choice of~$\Th{T}$. Remember that where G\"odel uses the
-word ``recursive'' in his paper, we would now use the phrase
-``primitive recursive.''
+Argumentamos que, dada uma codificação razoável de fórmulas e provas por
+números, a relação $\Prf[\Th{T}](x,y)$ é computável, onde
+$\Prf[\Th{T}](x,y)$ vale se, e somente se, $x$ é o número de G\"odel de
+!!a{derivation} da !!{formula} com número de G\"odel~$y$ em~$\Th{T}$. De
+fato, para a teoria específica que G\"odel tinha em mente, G\"odel conseguiu
+mostrar que essa relação é recursiva primitiva, usando a lista de 45 funções
+e relações de seu artigo. A 45ª relação, $x B y$, é simplesmente
+$\Prf[\Th{T}](x,y)$ para sua escolha particular de~$\Th{T}$. Lembre-se de
+que, onde G\"odel usa a palavra ``recursiva'' em seu artigo, hoje usaríamos
+a expressão ``recursiva primitiva''.
 
-Since $\Prf[\Th{T}](x,y)$ is computable, it is representable in $\Th{T}$. We
-will use $\OPrf[\Th{T}](x,y)$ to refer to the formula that represents
-it. Let $\OProv[\Th{T}](y)$ be the formula
-$\lexists[x][\OPrf[\Th{T}](x,y)]$. This describes the 46th relation,
-$\fn{Bew}(y)$, on G\"odel's list. As G\"odel notes, this is the only
-relation that ``cannot be asserted to be recursive.''  What he
-probably meant is this: from the definition, it is not clear that it
-is computable; and later developments, in fact, show that it isn't.
+Como $\Prf[\Th{T}](x,y)$ é computável, ela é representável em $\Th{T}$.
+Usaremos $\OPrf[\Th{T}](x,y)$ para designar a fórmula que a representa.
+Seja $\OProv[\Th{T}](y)$ a fórmula
+$\lexists[x][\OPrf[\Th{T}](x,y)]$. Ela descreve a 46ª relação,
+$\fn{Bew}(y)$, da lista de G\"odel. Como observa G\"odel, essa é a única
+relação que ``não se pode afirmar ser recursiva''. Provavelmente ele queria
+dizer o seguinte: pela definição, não está claro que ela seja computável;
+e desenvolvimentos posteriores mostram, de fato, que não é.
 
-Let $\Th{T}$ be an !!{axiomatizable} theory containing~$\Th{Q}$. Then
-$\Prf[\Th{T}](x, y)$ is decidable, hence representable in~$\Th{Q}$ by
-!!a{formula}~$\OPrf[\Th{T}](x, y)$. Let $\OProv[\Th{T}](y)$ be the formula we
-described above. By the fixed-point lemma, there is a formula
-$!G_\Th{T}$ such that $\Th{Q}$ (and hence $\Th{T}$) !!{derive}s
+Seja $\Th{T}$ uma teoria !!{axiomatizable} que contenha~$\Th{Q}$. Então
+$\Prf[\Th{T}](x, y)$ é decidível e, portanto, representável em~$\Th{Q}$ por
+!!a{formula}~$\OPrf[\Th{T}](x, y)$. Seja $\OProv[\Th{T}](y)$ a fórmula
+descrita acima. Pelo lema do ponto fixo, existe uma fórmula $!G_\Th{T}$ tal
+que $\Th{Q}$ (e, portanto, $\Th{T}$) !!{derive}s
 \begin{equation}
 \ollabel{eqn:qpf}
 !G_\Th{T} \liff \lnot \OProv[\Th{T}](\gn{!G_\Th{T}}).
 \end{equation}
-Note that $!G_\Th{T}$ says, in essence, ``$!G_\Th{T}$ is not
-!!{derivable} in~$\Th{T}$.''
+Observe que $!G_\Th{T}$ diz, em essência, ``$!G_\Th{T}$ não é
+!!{derivable} em~$\Th{T}$.''
 
 \begin{lem}\ollabel{lem:cons-G-unprov}
-If $\Th{T}$ is a consistent, !!{axiomatizable} theory
-extending~$\Th{Q}$, then $\Th{T} \Proves/ !G_\Th{T}$.
+Se $\Th{T}$ é uma teoria consistente e !!{axiomatizable} que
+estende~$\Th{Q}$, então $\Th{T} \Proves/ !G_\Th{T}$.
 \end{lem}
 
 \begin{proof}
-Suppose $\Th{T}$ !!{derive}s $!G_\Th{T}$. Then there \emph{is}
-!!a{derivation}, and so, for some number $m$, the relation $\Prf[\Th{T}](m,
-\Gn{!G_\Th{T}})$ holds. But then $\Th{Q}$ !!{derive}s the sentence
-$\OPrf[\Th{T}](\num m, \gn{!G_\Th{T}})$. So $\Th{Q}$ !!{derive}s
-$\lexists[x][\OPrf[\Th{T}](x,\gn{!G_\Th{T}})]$, which is, by definition,
-$\OProv[\Th{T}](\gn{!G_\Th{T}})$. By \olref{eqn:qpf}, $\Th{Q}$ !!{derive}s
-$\lnot !G_\Th{T}$, and since $\Th{T}$ extends $\Th{Q}$, so
-does~$\Th{T}$. We have shown that if $\Th{T}$ !!{derive}s $!G_\Th{T}$, then
-it also !!{derive}s $\lnot !G_\Th{T}$, and hence it would be inconsistent.
+Suponha que $\Th{T}$ !!{derive}s $!G_\Th{T}$. Então \emph{existe}
+!!a{derivation} e, portanto, para algum número $m$, vale a relação
+$\Prf[\Th{T}](m, \Gn{!G_\Th{T}})$. Mas então $\Th{Q}$ !!{derive}s a sentença
+$\OPrf[\Th{T}](\num m, \gn{!G_\Th{T}})$. Logo $\Th{Q}$ !!{derive}s
+$\lexists[x][\OPrf[\Th{T}](x,\gn{!G_\Th{T}})]$, que, por definição, é
+$\OProv[\Th{T}](\gn{!G_\Th{T}})$. Por \olref{eqn:qpf}, $\Th{Q}$ !!{derive}s
+$\lnot !G_\Th{T}$ e, como $\Th{T}$ estende $\Th{Q}$, $\Th{T}$ também a
+!!{derive}. Mostramos que, se $\Th{T}$ !!{derive}s $!G_\Th{T}$, então também
+!!{derive}s $\lnot !G_\Th{T}$ e, portanto, seria inconsistente.
 \end{proof}
 
 \begin{defn}
 \ollabel{thm:oconsis-q}
-A theory $\Th{T}$ is \emph{$\omega$-consistent} if the following holds: if
-$\lexists[x][!A(x)]$ is any sentence and $\Th{T}$ !!{derive}s $\lnot
-!A(\num 0)$, $\lnot !A(\num 1)$, $\lnot !A(\num 2)$, \dots then $\Th{T}$
-does not prove $\lexists[x][!A(x)]$.
+Uma teoria $\Th{T}$ é \emph{$\omega$-consistente} se vale o seguinte: se
+$\lexists[x][!A(x)]$ é qualquer sentença e $\Th{T}$ !!{derive}s $\lnot
+!A(\num 0)$, $\lnot !A(\num 1)$, $\lnot !A(\num 2)$, \dots, então $\Th{T}$
+não prova $\lexists[x][!A(x)]$.
 \end{defn}
 
-Note that every $\omega$-consistent theory is also consistent. This
-follows simply from the fact that if $\Th{T}$ is inconsistent, then
-$\Th{T} \Proves !A$ for every~$!A$. In particular, if $\Th{T}$ is
-inconsistent, it !!{derive}s both $\lnot !A(\num n)$ for every~$n$ and
-also !!{derive}s~$\lexists[x][!A(x)]$. So, if $\Th{T}$ is
-inconsistent, it is $\omega$-inconsistent. By contraposition, if
-$\Th{T}$ is $\omega$-consistent, it must be consistent.
+Observe que toda teoria $\omega$-consistente também é consistente. Isso
+decorre simplesmente do fato de que, se $\Th{T}$ é inconsistente, então
+$\Th{T} \Proves !A$ para todo~$!A$. Em particular, se $\Th{T}$ é
+inconsistente, ela !!{derive}s tanto $\lnot !A(\num n)$ para todo~$n$ quanto
+$\lexists[x][!A(x)]$. Assim, se $\Th{T}$ é inconsistente, ela é
+$\omega$-inconsistente. Por contraposição, se $\Th{T}$ é
+$\omega$-consistente, ela deve ser consistente.
 
 \begin{lem}\ollabel{lem:omega-cons-G-unref}
-If $\Th{T}$ is an $\omega$-consistent, !!{axiomatizable} theory
-extending~$\Th{Q}$, then $\Th{T} \Proves/ \lnot !G_\Th{T}$.
+Se $\Th{T}$ é uma teoria $\omega$-consistente e !!{axiomatizable} que
+estende~$\Th{Q}$, então $\Th{T} \Proves/ \lnot !G_\Th{T}$.
 \end{lem}
 
 \begin{proof}
-We show that if $\Th{T}$ !!{derive}s $\lnot !G_\Th{T}$, then it is
-$\omega$-inconsistent. Suppose $\Th{T}$ !!{derive}s $\lnot !G_\Th{T}$. If
-$\Th{T}$ is inconsistent, it is $\omega$-inconsistent, and we are
-done. Otherwise, $\Th{T}$ is consistent, so it does not !!{derive}
-$!G_\Th{T}$ by \olref{lem:cons-G-unprov}. Since there is no
-!!{derivation} of $!G_\Th{T}$ in $\Th{T}$, $\Th{Q}$ !!{derive}s
+Mostramos que, se $\Th{T}$ !!{derive}s $\lnot !G_\Th{T}$, então ela é
+$\omega$-inconsistente. Suponha que $\Th{T}$ !!{derive}s
+$\lnot !G_\Th{T}$. Se $\Th{T}$ é inconsistente, ela é
+$\omega$-inconsistente, e terminamos. Caso contrário, $\Th{T}$ é
+consistente, logo não !!{derive} $!G_\Th{T}$ por
+\olref{lem:cons-G-unprov}. Como não há !!{derivation} de $!G_\Th{T}$ em
+$\Th{T}$, $\Th{Q}$ !!{derive}s
 \[
 \lnot \OPrf[\Th{T}](\num 0, \gn{!G_\Th{T}}), \lnot \OPrf[\Th{T}](\num 1,
 \gn{!G_\Th{T}}), \lnot \OPrf[\Th{T}](\num 2, \gn{!G_\Th{T}}), \dots
 \]
-and so does~$\Th{T}$.  On the other hand, by \olref{eqn:qpf}, $\lnot
-!G_\Th{T}$ is equivalent to
-$\lexists[x][\OPrf[\Th{T}](x,\gn{!G_\Th{T}})]$. So $\Th{T}$ is
-$\omega$-inconsistent.
+e $\Th{T}$ também. Por outro lado, por \olref{eqn:qpf},
+$\lnot !G_\Th{T}$ é equivalente a
+$\lexists[x][\OPrf[\Th{T}](x,\gn{!G_\Th{T}})]$. Logo $\Th{T}$ é
+$\omega$-inconsistente.
 \end{proof}
 
 \begin{prob}
-  Every $\omega$-consistent theory is consistent. Show that the
-  converse does not hold, O.s.\@, that there are consistent but
-  $\omega$-inconsistent theories. Do this by showing that $\Th{Q} \cup
-  \{\lnot !G_\Th{Q}\}$ is consistent but $\omega$-inconsistent.
+  Toda teoria $\omega$-consistente é consistente. Mostre que a recíproca não
+  vale, O.s.\@, que existem teorias consistentes, mas
+  $\omega$-inconsistentes. Faça isso mostrando que $\Th{Q} \cup
+  \{\lnot !G_\Th{Q}\}$ é consistente, mas $\omega$-inconsistente.
 \end{prob}
 
 \begin{thm}
-\ollabel{thm:first-incompleteness} Let $\Th{T}$ be any
-$\omega$-consistent, !!{axiomatizable} theory extending~$\Th{Q}$. Then
-$\Th{T}$ is not complete.
+\ollabel{thm:first-incompleteness} Seja $\Th{T}$ qualquer teoria
+$\omega$-consistente e !!{axiomatizable} que estenda~$\Th{Q}$. Então
+$\Th{T}$ não é completa.
 \end{thm}
 
 \begin{proof}
-  If $\Th{T}$ is $\omega$-consistent, it is consistent, so $\Th{T}
-  \Proves/ !G_\Th{T}$ by \olref{lem:cons-G-unprov}.  By
+  Se $\Th{T}$ é $\omega$-consistente, ela é consistente; portanto,
+  $\Th{T} \Proves/ !G_\Th{T}$ por \olref{lem:cons-G-unprov}. Por
   \olref{lem:omega-cons-G-unref}, $\Th{T} \Proves/ \lnot !G_\Th{T}$.
-  This means that $\Th{T}$ is incomplete, since it !!{derive}s neither
-  $!G_\Th{T}$ nor $\lnot !G_\Th{T}$.
+  Isso significa que $\Th{T}$ é incompleta, pois não !!{derive}s nem
+  $!G_\Th{T}$ nem $\lnot !G_\Th{T}$.
 \end{proof}
 
 \end{document}

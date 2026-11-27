@@ -6,123 +6,124 @@
 
 \begin{document}
 
-\olfileid{inc}{inp}{2in}
+\olfileid[pt]{inc}{inp}{2in}
 
-\olsection{The Second Incompleteness Theorem}
+\olsection{O segundo teorema da incompletude}
 
-How can we express the assertion that $\Th{PA}$ doesn't prove its own
-consistency? Saying $\Th{PA}$ is inconsistent amounts to saying that
-$\Th{PA} \Proves \eq[0][1]$. So we can take the consistency statement
-$\OCon[\Th{PA}]$ to be the !!{sentence} $\lnot
-\OProv[\Th{PA}](\gn{\eq[0][1]})$, and then the following theorem does
-the job:
+Como podemos expressar a afirmação de que $\Th{PA}$ não prova a própria
+consistência? Dizer que $\Th{PA}$ é inconsistente equivale a dizer que
+$\Th{PA} \Proves \eq[0][1]$. Portanto, podemos tomar a afirmação de
+consistência $\OCon[\Th{PA}]$ como a !!{sentence} $\lnot
+\OProv[\Th{PA}](\gn{\eq[0][1]})$; então o teorema seguinte cumpre o papel:
 
 \begin{thm}
 \ollabel{thm:second-incompleteness} 
-Assuming $\Th{PA}$ is consistent, then $\Th{PA}$ does not !!{derive}
+Supondo que $\Th{PA}$ seja consistente, $\Th{PA}$ não !!{derive}
 $\OCon[\Th{PA}]$.
 \end{thm}
 
-It is important to note that the theorem depends on the particular
-representation of $\OCon[\Th{PA}]$ (O.s.\@, the particular
-representation of $\OProv[\Th{PA}](y)$). All we will use is that the
-representation of $\OProv[\Th{PA}](y)$ satisfies the three
-!!{derivability} conditions, so the theorem generalizes to any theory
-with !!a{derivability} predicate having these properties.
+É importante observar que o teorema depende da representação específica de
+$\OCon[\Th{PA}]$ (O.s.\@, da representação específica de
+$\OProv[\Th{PA}](y)$). Usaremos apenas o fato de que a representação de
+$\OProv[\Th{PA}](y)$ satisfaz as três condições de !!{derivability}; assim,
+o teorema se generaliza para qualquer teoria com !!a{derivability}
+predicado que tenha essas propriedades.
 
-It is informative to read G\"odel's sketch of an argument, since the
-theorem follows like a good punch line. It goes like this. Let
-$!G_\Th{PA}$ be the G\"odel sentence that we constructed in the proof
-of \olref[1in]{thm:first-incompleteness}. We have shown ``If $\Th{PA}$
-is consistent, then $\Th{PA}$ does not !!{derive} $!G_\Th{PA}$.'' If we
-formalize this \emph{in} $\Th{PA}$, we have a proof of
+É esclarecedor ler o esboço do argumento de G\"odel, pois o teorema surge
+como uma boa conclusão de efeito. O argumento é o seguinte. Seja
+$!G_\Th{PA}$ a sentença de G\"odel que construímos na prova de
+\olref[1in]{thm:first-incompleteness}. Mostramos: ``Se $\Th{PA}$ é
+consistente, então $\Th{PA}$ não !!{derive} $!G_\Th{PA}$.'' Se
+formalizarmos isso \emph{em} $\Th{PA}$, teremos uma prova de
 \[
 \OCon[\Th{PA}] \lif \lnot \OProv[\Th{PA}](\gn{!G_\Th{PA}}).
 \]
-Now suppose $\Th{PA}$ !!{derive}s $\OCon[\Th{PA}]$. Then it !!{derive}s $\lnot
-\Prov[\Th{PA}](\gn{!G_\Th{PA}})$. But since $!G_\Th{PA}$ is a G\"odel
-sentence, this is equivalent to $!G_\Th{PA}$. So $\Th{PA}$ !!{derive}s
-$!G_\Th{PA}$.
+Suponha agora que $\Th{PA}$ !!{derive}s $\OCon[\Th{PA}]$. Então ela
+!!{derive}s $\lnot \Prov[\Th{PA}](\gn{!G_\Th{PA}})$. Mas, como
+$!G_\Th{PA}$ é uma sentença de G\"odel, isso é equivalente a
+$!G_\Th{PA}$. Portanto, $\Th{PA}$ !!{derive}s $!G_\Th{PA}$.
 
-But: we know that if $\Th{PA}$ is consistent, it doesn't !!{derive}
-$!G_\Th{PA}$!{}  So if $\Th{PA}$ is consistent, it can't !!{derive}
+Mas sabemos que, se $\Th{PA}$ é consistente, ela não !!{derive}
+$!G_\Th{PA}$!{} Assim, se $\Th{PA}$ é consistente, ela não pode !!{derive}
 $\OCon[\Th{PA}]$.
 
-To make the argument more precise, we will let $!G_\Th{PA}$ be the
-G\"odel sentence for~$\Th{PA}$ and use the !!{derivability} conditions
-(P1)--(P3) to show that $\Th{PA}$ !!{derive}s $\OCon[\Th{PA}] \lif
-!G_\Th{PA}$. This will show that $\Th{PA}$ doesn't !!{derive}
-$\OCon[\Th{PA}]$. Here is a sketch of the proof, in~$\Th{PA}$. (For
-simplicity, we drop the $\Th{PA}$ subscripts.)
+Para tornar o argumento mais preciso, tomaremos $!G_\Th{PA}$ como a
+sentença de G\"odel para~$\Th{PA}$ e usaremos as condições de
+!!{derivability} (P1)--(P3) para mostrar que $\Th{PA}$ !!{derive}s
+$\OCon[\Th{PA}] \lif !G_\Th{PA}$. Isso mostrará que $\Th{PA}$ não
+!!{derive} $\OCon[\Th{PA}]$. Eis um esboço da prova, em~$\Th{PA}$.
+(Para simplificar, omitimos os índices $\Th{PA}$.)
 \begin{align}
 & !G \liff \lnot \OProv(\gn{!G}) \ollabel{G2-1}\\
-& \qquad\text{$!G$ is a G\"odel sentence}\notag \\
+& \qquad\text{$!G$ é uma sentença de G\"odel}\notag \\
 & !G \lif \lnot \OProv(\gn{!G}) \ollabel{G2-2}\\
-  & \qquad\text{from \olref{G2-1}} \notag\\
+  & \qquad\text{de \olref{G2-1}} \notag\\
 & !G \lif
   (\OProv(\gn{!G}) \lif \lfalse) \ollabel{G2-3}\\
-  & \qquad\text{from \olref{G2-2} by logic}\notag\\
+  & \qquad\text{de \olref{G2-2}, pela lógica}\notag\\
 & \OProv(\gn{
     !G \lif
     (\OProv(\gn{!G}) \lif \lfalse)
   }) \ollabel{G2-4}\\
-  & \qquad\text{by from \olref{G2-3} by condition P1} \notag\\
+  & \qquad\text{de \olref{G2-3}, pela condição P1} \notag\\
 & \OProv(\gn{!G}) \lif
   \OProv(\gn{
     (\OProv(\gn{!G}) \lif \lfalse)
     }) \ollabel{G2-5}\\
-  & \qquad\text{from \olref{G2-4} by condition P2} \notag\\
+  & \qquad\text{de \olref{G2-4}, pela condição P2} \notag\\
 & \OProv(\gn{!G}) \lif (\OProv(\gn{\OProv(\gn{!G})}) \lif \OProv(\gn{\lfalse})) \ollabel{G2-6}\\
-  & \qquad\text{from \olref{G2-5} by condition P2 and logic} \notag\\
+  & \qquad\text{de \olref{G2-5}, pela condição P2 e pela lógica} \notag\\
 & \OProv(\gn{!G}) \lif 
   \OProv(\gn{\OProv(\gn{!G})}) \ollabel{G2-7}\\
-   & \qquad\text{by P3} \notag\\
+   & \qquad\text{por P3} \notag\\
 & \OProv(\gn{!G}) \lif \OProv(\gn{\lfalse}) \ollabel{G2-8}\\
-  & \qquad \text{from \olref{G2-6} and \olref{G2-7} by logic}\notag\\
+  & \qquad \text{de \olref{G2-6} e \olref{G2-7}, pela lógica}\notag\\
 & \OCon \lif \lnot \OProv(\gn{!G}) \ollabel{G2-9}\\
-  & \qquad\text{contraposition of \olref{G2-8} and $\OCon \ident \lnot \OProv(\gn{\lfalse})$}\notag \\
+  & \qquad\text{contraposição de \olref{G2-8} e $\OCon \ident \lnot \OProv(\gn{\lfalse})$}\notag \\
 & \OCon \lif !G \notag\\
-  & \qquad\text{from \olref{G2-1} and \olref{G2-9} by logic}\notag
+  & \qquad\text{de \olref{G2-1} e \olref{G2-9}, pela lógica}\notag
 \end{align}
-The use of logic in the above just elementary facts from propositional
-logic, p.ex., \olref{G2-3} uses $\Proves \lnot!A \liff (!A\lif
-\lfalse)$ and \olref{G2-8} uses $!A \lif (!B \lif !C), !A \lif !B
-\Proves !A \lif !C$. The use of condition~P2 in \olref{G2-5} and
-\olref{G2-6} relies on instances of~P2, $\OProv(\gn{!A \lif !B}) \lif
-(\OProv(\gn{!A}) \lif \OProv(\gn{!B}))$. In the first one, $!A \ident
-!G$ and $!B \ident \OProv(\gn{!G}) \lif \lfalse$; in the second, $!A
-\ident \OProv(\gn{G})$ and $!B \ident \lfalse$.
+O uso da lógica acima consiste apenas em fatos elementares da lógica
+proposicional; p.ex., \olref{G2-3} usa $\Proves \lnot!A \liff (!A\lif
+\lfalse)$, e \olref{G2-8} usa $!A \lif (!B \lif !C), !A \lif !B
+\Proves !A \lif !C$. O uso da condição~P2 em \olref{G2-5} e
+\olref{G2-6} se apoia em instâncias de~P2,
+$\OProv(\gn{!A \lif !B}) \lif
+(\OProv(\gn{!A}) \lif \OProv(\gn{!B}))$. Na primeira, $!A \ident !G$ e
+$!B \ident \OProv(\gn{!G}) \lif \lfalse$; na segunda, $!A \ident
+\OProv(\gn{G})$ e $!B \ident \lfalse$.
 
-The more abstract version of the second incompleteness theorem is as follows:
+A versão mais abstrata do segundo teorema da incompletude é a seguinte:
 
 \begin{thm}
-\ollabel{thm:second-incompleteness-gen} Let $\Th{T}$ be any
-consistent, !!{axiomatized} theory extending $\Th{Q}$ and let
-$\OProv[\Th{T}](y)$ be any formula satisfying !!{derivability} conditions
-P1--P3 for~$\Th{T}$. Then $\Th{T}$ does not !!{derive}~$\OCon[T]$.
+\ollabel{thm:second-incompleteness-gen} Seja $\Th{T}$ qualquer teoria
+consistente e !!{axiomatized} que estenda $\Th{Q}$, e seja
+$\OProv[\Th{T}](y)$ qualquer fórmula que satisfaça as condições de
+!!{derivability} P1--P3 para~$\Th{T}$. Então $\Th{T}$ não !!{derive}
+~$\OCon[T]$.
 \end{thm}
 
 \begin{prob}
-Show that $\Th{PA}$ !!{derive}s $!G_{\Th{PA}} \lif \OCon[\Th{PA}]$.
+Mostre que $\Th{PA}$ !!{derive}s $!G_{\Th{PA}} \lif \OCon[\Th{PA}]$.
 \end{prob}
 
 \begin{digress}
-The moral of the story is that no ``reasonable'' consistent theory for
-mathematics can !!{derive} its own consistency statement. Suppose
-$\Th{T}$ is a theory of mathematics that includes $\Th{Q}$ and
-Hilbert's ``finitary'' reasoning (whatever that may be). Then, the
-whole of $\Th{T}$ cannot !!{derive} the consistency statement of
-$\Th{T}$, and so, a fortiori, the finitary fragment can't !!{derive}
-the consistency statement of~$\Th{T}$ either. In that sense, there
-cannot be a finitary consistency proof for ``all of mathematics.''
+A moral da história é que nenhuma teoria consistente ``razoável'' para a
+matemática pode !!{derive} sua própria afirmação de consistência. Suponha que
+$\Th{T}$ seja uma teoria da matemática que contenha $\Th{Q}$ e o raciocínio
+``finitário'' de Hilbert (seja o que for isso). Então nem toda a teoria
+$\Th{T}$ pode !!{derive} a afirmação de consistência de $\Th{T}$ e,
+a fortiori, o fragmento finitário tampouco pode !!{derive} a
+afirmação de consistência de~$\Th{T}$. Nesse sentido, não pode haver uma
+prova finitária de consistência para ``toda a matemática''.
 
-There is some leeway in interpreting the term ``finitary,'' and
-G\"odel, in the 1931 paper, grants the possibility that something we
-may consider ``finitary'' may lie outside the kinds of mathematics
-Hilbert wanted to formalize. But G\"odel was being charitable; today,
-it is hard to see how we might find something that can reasonably be
-called finitary but is not formalizable in, say, $\Th{ZFC}$,
-Zermelo--Fraenkel set theory with the axiom of choice.
+Há alguma margem de interpretação do termo ``finitário'', e G\"odel, no
+artigo de 1931, admite a possibilidade de que algo que consideremos
+``finitário'' esteja fora dos tipos de matemática que Hilbert queria
+formalizar. Mas G\"odel estava sendo generoso; hoje é difícil imaginar como
+poderíamos encontrar algo que possa razoavelmente ser chamado de finitário,
+mas que não seja formalizável, digamos, em $\Th{ZFC}$, a teoria dos conjuntos
+de Zermelo--Fraenkel com o axioma da escolha.
 \end{digress}
 
 \end{document}

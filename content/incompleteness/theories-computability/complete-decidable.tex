@@ -6,34 +6,36 @@
 
 \begin{document}
 
-\olfileid{inc}{tcp}{cdc}
+\olfileid[pt]{inc}{tcp}{cdc}
 
-\olsection{\printtoken{S}{axiomatizable} Complete Theories are Decidable}
+\olsection{Teorias completas e \printtoken{S}{axiomatizable} são decidíveis}
 
-A theory is said to be {\em complete} if for every sentence $!A$,
-either $!A$ or $\lnot !A$ is provable.
+Dizemos que uma teoria é {\em completa} se, para toda sentença $!A$,
+ou $!A$ ou $\lnot !A$ é demonstrável.
 
 \begin{lem}
-Suppose a theory $\Th{T}$ is complete and !!{axiomatizable}. Then
-$\Th{T}$ is decidable.
+Suponha que uma teoria $\Th{T}$ seja completa e !!{axiomatizable}.
+Então $\Th{T}$ é decidível.
 \end{lem}
 
 \begin{proof}
-Suppose $\Th{T}$ is complete and $A$ is a computable set of axioms.
-If $\Th{T}$ is inconsistent, it is clearly computable. (Algorithm: ``just
-say yes.'') So we can assume that $\Th{T}$ is also consistent.
+Suponha que $\Th{T}$ seja completa e que $A$ seja um conjunto
+computável de axiomas. Se $\Th{T}$ é inconsistente, ela é claramente
+computável. (Algoritmo: ``basta responder sim''.) Portanto, podemos
+supor que $\Th{T}$ também é consistente.
 
-To decide whether or not a sentence $!A$ is in~$\Th{T}$,
-simultaneously search for !!a{derivation} of~$!A$ from~$\Th{T}$ and
-!!a{derivation} of~$\lnot !A$. Since $\Th{T}$ is complete, you are
-bound to find one or the other; and since $\Th{T}$ is consistent, if you
-find !!a{derivation} of~$\lnot !A$, there is no !!{derivation} of~$!A$.
+Para decidir se uma sentença $!A$ pertence ou não a~$\Th{T}$, procure
+simultaneamente !!a{derivation} de~$!A$ a partir de~$\Th{T}$ e
+!!a{derivation} de~$\lnot !A$. Como $\Th{T}$ é completa, você
+necessariamente encontrará uma ou outra; e, como $\Th{T}$ é
+consistente, se encontrar !!a{derivation} de~$\lnot !A$, não existe
+!!{derivation} de~$!A$.
 
-Put in different terms, we already know that $\Th{T}$ is !!{c.e.}; so
-by a theorem we proved before, it suffices to show that the complement
-of~$\Th{T}$ is !!{c.e.} also. But !!a{formula}~$!A$ is in~$\Th{\bar
-T}$ if and only if $\lnot !A$ is in~$\Th{T}$; so $\Th{\bar T} \leq_m
-\Th{T}$.
+Em outros termos, já sabemos que $\Th{T}$ é !!{c.e.}; assim, por um
+teorema que provamos antes, basta mostrar que o complemento de~$\Th{T}$
+também é !!{c.e.}. Mas !!a{formula}~$!A$ pertence a~$\Th{\bar T}$ se,
+e somente se, $\lnot !A$ pertence a~$\Th{T}$; logo,
+$\Th{\bar T} \leq_m \Th{T}$.
 \end{proof}
 
 \end{document}

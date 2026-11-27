@@ -6,61 +6,62 @@
 
 \begin{document}
 
-\olfileid{inc}{req}{bet}
-\olsection{The Beta Function Lemma}
+\olfileid[pt]{inc}{req}{bet}
+\olsection{O lema da função beta}
 
 
-In order to show that we can carry out primitive recursion if
-addition, multiplication, and $\Char{=}$ are available, we need to
-develop functions that handle sequences. (If we had exponentiation as
-well, our task would be easier.) When we had primitive recursion, we
-could define things like the ``$n$-th prime,'' and pick a fairly
-straightforward coding. But here we do not have primitive
-recursion---in fact we want to show that we can do primitive recursion
-using minimization---so we need to be more clever.
+Para mostrar que podemos efetuar recursão primitiva quando dispomos de
+adição, multiplicação e $\Char{=}$, precisamos desenvolver funções que
+tratem sequências. (Se também tivéssemos exponenciação, nossa tarefa
+seria mais fácil.) Quando dispúnhamos de recursão primitiva, podíamos
+definir coisas como o ``$n$-ésimo primo'' e escolher uma codificação
+bastante direta. Aqui, porém, não dispomos de recursão primitiva---na
+verdade, queremos mostrar que podemos realizá-la usando minimização---,
+e por isso precisamos ser mais engenhosos.
 
 \begin{lem}
 \ollabel{lem:beta}
-There is a function $\beta(d,i)$ such that for every sequence $a_0$,
-\dots,~$a_n$ there is a number~$d$, such that for every $i \le n$,
-$\beta(d,i) = a_i$. Moreover, $\beta$ can be defined from the basic
-functions using just composition and regular minimization.
+Existe uma função $\beta(d,i)$ tal que, para toda sequência $a_0$,
+\dots,~$a_n$, existe um número~$d$ tal que, para todo $i \le n$,
+$\beta(d,i) = a_i$. Além disso, $\beta$ pode ser definida a partir das
+funções básicas usando apenas composição e minimização regular.
 \end{lem}
 
-Think of $d$ as coding the sequence $\tuple{a_0, \dots, a_n}$, and
-$\beta(d,i)$ returning the $i$-th element. (Note that this ``coding''
-does \emph{not} use the power-of-primes coding we're already familiar
-with!). The lemma is fairly minimal; it doesn't say we can concatenate
-sequences or append elements, or even that we can \emph{compute}~$d$
-from $a_0$, \dots,~$a_n$ using functions definable by composition and
-regular minimization. All it says is that there is a ``decoding''
-function such that every sequence is ``coded.''
+Pense em $d$ como um código da sequência $\tuple{a_0, \dots, a_n}$ e
+em $\beta(d,i)$ como a função que devolve o $i$-ésimo elemento. (Note
+que essa ``codificação'' \emph{não} usa a codificação por potências de
+primos que já conhecemos!) O lema é bastante minimalista: não afirma
+que podemos concatenar sequências ou acrescentar elementos, nem sequer
+que podemos \emph{computar}~$d$ a partir de $a_0$, \dots,~$a_n$ usando
+funções definíveis por composição e minimização regular. Afirma apenas
+que existe uma função de ``decodificação'' tal que toda sequência é
+``codificada''.
 
-The use of the notation $\beta$ is G\"odel's. To repeat, the hard part
-of proving the lemma is defining a suitable~$\beta$ using the
-seemingly restricted resources, O.s.\@, using just composition and
-minimization---however, we're allowed to use addition, multiplication,
-and~$\Char{=}$. There are various ways to prove this lemma, but one of
-the cleanest is still G\"odel's original method, which used a
-number-theoretic fact called Sunzi's Theorem
-(traditionally, the ``Chinese Remainder Theorem'').
+O uso da notação $\beta$ é de G\"odel. Repetindo: a parte difícil da
+prova do lema é definir uma~$\beta$ adequada usando recursos
+aparentemente restritos, O.s.\@, apenas composição e minimização---mas
+podemos usar adição, multiplicação e~$\Char{=}$. Há várias maneiras de
+provar esse lema, mas uma das mais elegantes continua sendo o método
+original de G\"odel, que usava um fato da teoria dos números chamado
+Teorema de Sunzi (tradicionalmente, o ``Teorema Chinês do Resto'').
 
 \begin{defn}
-Two natural numbers $a$ and $b$ are \emph{relatively prime} iff their
-greatest common divisor is~$1$; in other words, they have no other
-divisors in common.
+Dois números naturais $a$ e $b$ são \emph{primos entre si} sse seu
+máximo divisor comum é~$1$; em outras palavras, não têm nenhum outro
+divisor em comum.
 \end{defn}
 
 \begin{defn}
-Natural numbers $a$ and $b$ are \emph{congruent modulo~$c$},
-$a \equiv b \mod c$, iff $c \mid (a-b)$, O.s.\@, $a$ and $b$ have the
-same remainder when divided by~$c$.
+Os números naturais $a$ e $b$ são \emph{congruentes módulo~$c$},
+$a \equiv b \mod c$, sse $c \mid (a-b)$, O.s.\@, $a$ e $b$ deixam o
+mesmo resto quando divididos por~$c$.
 \end{defn}
 
-Here is Sunzi's Theorem:
+Eis o Teorema de Sunzi:
 \begin{thm}
-Suppose $x_0$, \dots,~$x_n$ are (pairwise) relatively prime. Let
-$y_0$, \dots,~$y_n$ be any numbers. Then there is a number $z$ such that
+Suponha que $x_0$, \dots,~$x_n$ sejam dois a dois primos entre si.
+Sejam $y_0$, \dots,~$y_n$ números quaisquer. Então existe um número $z$
+tal que
 \begin{align*}
 z & \equiv y_0 \mod x_0 \\
 z & \equiv y_1 \mod x_1 \\
@@ -69,20 +70,20 @@ z & \equiv y_n \mod x_n.
 \end{align*}
 \end{thm}
 
-Here is how we will use Sunzi's Theorem: if $x_0$,
-\dots,~$x_n$ are bigger than $y_0$, \dots,~$y_n$ respectively, then we
-can take $z$ to code the sequence $\tuple{y_0, \dots,y_n}$. To
-recover~$y_i$, we need only divide $z$ by~$x_i$ and take the
-remainder. To use this coding, we will need to find suitable values
-for $x_0$, \dots,~$x_n$.
+Usaremos o Teorema de Sunzi da seguinte maneira: se $x_0$,
+\dots,~$x_n$ forem maiores, respectivamente, que $y_0$, \dots,~$y_n$,
+podemos tomar $z$ como código da sequência $\tuple{y_0, \dots,y_n}$.
+Para recuperar~$y_i$, basta dividir $z$ por~$x_i$ e tomar o resto. Para
+usar essa codificação, precisaremos encontrar valores adequados para
+$x_0$, \dots,~$x_n$.
 
-A couple of observations will help us in this regard. Given
-$y_0$, \dots,~$y_n$, let
+Algumas observações nos ajudarão nesse ponto. Dados
+$y_0$, \dots,~$y_n$, sejam
 \begin{align*}
 j &= \max(n, y_0 + 1, \dots, y_n + 1), \\
 m &= \lcm(1,\dots,j),
 \end{align*}
-and let
+e sejam
 \begin{align*}
 x_0 & = 1 + m \\
 x_1 & = 1 + 2 \cdot m \\
@@ -90,92 +91,94 @@ x_2 & = 1 + 3 \cdot m \\
 & \vdots  \\
 x_n & = 1 + (n+1) \cdot m
 \end{align*}
-Then two things are true:
+Então duas coisas são verdadeiras:
 \begin{enumerate}
-\item\ollabel{rel-prime} $x_0,\dots,x_n$ are relatively prime.
-\item\ollabel{less} For each $i$, $y_i < x_i$.
+\item\ollabel{rel-prime} $x_0,\dots,x_n$ são primos entre si.
+\item\ollabel{less} Para cada $i$, $y_i < x_i$.
 \end{enumerate}
-To see that \olref{rel-prime} is true, note that if $p$ is a prime number
-and $p \mid x_i$ and $p \mid x_k$, then $p \mid 1 + (i+1) m$ and
-$p \mid 1 + (k+1) m$. But then $p$ divides their difference,
+Para ver que \olref{rel-prime} é verdadeira, observe que, se $p$ é um
+número primo, $p \mid x_i$ e $p \mid x_k$, então
+$p \mid 1 + (i+1) m$ e $p \mid 1 + (k+1) m$. Mas, nesse caso, $p$
+divide a diferença entre eles,
 \[
 (1 + (i+1)m) - (1+ (k+1)m) = (i-k) m.
 \]
-Since $p$ divides $1 + (i+1)m$, it can't divide $m$ as well
-(otherwise, the first division would leave a remainder of~$1$). So $p$
-divides $i-k$, since $p$ divides $(i-k)m$. But $\left|i-k\right|$ is at
-most~$n$, and we have chosen $j \geq n$, so this implies that
-$p \mid m$, again a contradiction. So there is no prime number dividing
-both $x_i$ and $x_k$. Clause~\olref{less} is easy:
-we have $y_i < j \leq m < x_i$.
+Como $p$ divide $1 + (i+1)m$, ele não pode dividir também $m$ (caso
+contrário, a primeira divisão deixaria resto~$1$). Logo, $p$ divide
+$i-k$, pois $p$ divide $(i-k)m$. Mas $\left|i-k\right|$ é no máximo~$n$
+e escolhemos $j \geq n$; portanto, isso implica que $p \mid m$, outra
+contradição. Assim, não há número primo que divida simultaneamente
+$x_i$ e $x_k$. A cláusula~\olref{less} é fácil: temos
+$y_i < j \leq m < x_i$.
 
-Now let us prove the $\beta$ function lemma. Remember that we can use
-$0$, successor, plus, times, $\Char{=}$, projections, and any function
-defined from them using composition and minimization applied to
-regular functions. We can also use a relation if its characteristic
-function is so definable. As before we can show that these relations
-are closed under Boolean combinations and bounded quantification; for
-example:
+Provemos agora o lema da função $\beta$. Lembre-se de que podemos usar
+$0$, sucessor, adição, multiplicação, $\Char{=}$, projeções e qualquer
+função definida a partir deles usando composição e minimização aplicada
+a funções regulares. Também podemos usar uma relação se sua função
+característica for definível dessa forma. Como antes, podemos mostrar
+que essas relações são fechadas sob combinações booleanas e
+quantificação limitada; por exemplo:
 \begin{align*}
 \fn{not}(x) & \defis \Char{=}(x,0)\\
 \bmin{x \leq z}{R(x,y)} & \defis \umin{x}{(R(x,y) \lor x = z)}\\
 \bexists{x \leq z}{R(x,y)} & \defiff R(\bmin{x \leq z}{R(x,y)}, y)
 \end{align*}
-We can then show that all of the following are also definable without
-primitive recursion:
+Podemos então mostrar que todos os itens a seguir também são definíveis
+sem recursão primitiva:
 \begin{enumerate}
-\item The pairing function, $J(x,y) = \frac{1}{2}[(x+y)(x+y+1)] + x$;
-% maybe explain more what is going on here, a bit confusing.
-\item the projection functions
+\item A função de emparelhamento,
+  $J(x,y) = \frac{1}{2}[(x+y)(x+y+1)] + x$;
+% talvez explicar melhor o que está acontecendo aqui; é um pouco confuso.
+\item as funções de projeção
 \begin{align*}
 K(z) & = \bmin{x \leq z}{\bexists{y \leq z}{z = J(x,y)}},\\
 L(z) & = \bmin{y \leq z}{\bexists{x \leq z}{z = J(x,y)}};
 \end{align*}
-\item the less-than relation $x < y$;
-\item the divisibility relation $x \mid y$;
+\item a relação de menor que $x < y$;
+\item a relação de divisibilidade $x \mid y$;
 % \item $x \tsub y$
 % \item $\fn{Prime}(x)$
 % \item Assuming $p$ is prime, the relation ``$x$ is a power of $p$'':
 % \[
 % \bforall{y \leq x}{(y \mid x \lif y = 1 \lor y = x)}.
 % \]
-\item the function $\fn{rem}(x,y)$ which returns the remainder when
-  $y$ is divided by~$x$.
+\item a função $\fn{rem}(x,y)$, que devolve o resto da divisão de $y$
+  por~$x$.
 \end{enumerate}
-Now define
+Defina agora
 \begin{align*}
-\beta^*(d_0,d_1,i) & = \fn{rem}(1+(i+1) d_1,d_0) \text{ and}\\
+\beta^*(d_0,d_1,i) & = \fn{rem}(1+(i+1) d_1,d_0) \text{ e}\\
 \beta(d,i) & = \beta^*(K(d),L(d),i).
 \end{align*}
-This is the function we want. Given $a_0,\dots,a_n$ as above, let
+Esta é a função que queremos. Dados $a_0,\dots,a_n$ como acima, seja
 \[
 j = \max(n,a_0+1,\dots,a_n+1),
 \]
-and let $d_1 = \lcm(1,\dots,j)$. By \olref{rel-prime} above,
-we know that $1+d_1$, $1+2 d_1$, \dots, $1+(n+1) d_1$ are relatively
-prime, and by~\olref{less} that all are greater than $a_0,\dots,a_n$.
-By Sunzi's Theorem there is a value~$d_0$ such that for each~$i$,
+e seja $d_1 = \lcm(1,\dots,j)$. Por \olref{rel-prime}, sabemos que
+$1+d_1$, $1+2 d_1$, \dots, $1+(n+1) d_1$ são primos entre si e, por
+\olref{less}, que todos são maiores que $a_0,\dots,a_n$. Pelo Teorema
+de Sunzi, existe um valor~$d_0$ tal que, para cada~$i$,
 \[
 d_0 \equiv a_i \mod (1+(i+1)d_1)
 \]
-and so (because $d_1$ is greater than~$a_i$),
+e, portanto (como $d_1$ é maior que~$a_i$),
 \[
 a_i = \fn{rem}(1+(i+1)d_1,d_0).
 \]
-Let $d = J(d_0,d_1)$. Then for each $i \le n$, we have
+Seja $d = J(d_0,d_1)$. Então, para cada $i \le n$, temos
 \begin{align*}
 \beta(d,i) & =  \beta^*(d_0,d_1,i) \\
 & =  \fn{rem}(1+(i+1) d_1,d_0) \\
 & =  a_i
 \end{align*}
-which is what we need. This completes the proof of the
-$\beta$-function lemma.
+que é o que precisávamos. Isso conclui a prova do lema da função
+$\beta$.
 
 \begin{prob}
-  Show that the relations $x < y$, $x \mid y$, and the
-  function~$\fn{rem}(x,y)$ can be defined without primitive recursion.
-  You may use $0$, successor, plus, times, $\Char{=}$, projections,
-  and bounded minimization and quantification.
+  Mostre que as relações $x < y$, $x \mid y$ e a
+  função~$\fn{rem}(x,y)$ podem ser definidas sem recursão primitiva.
+  Você pode usar $0$, sucessor, adição, multiplicação, $\Char{=}$,
+  projeções, minimização limitada e quantificação limitada.
 \end{prob}
 
 \end{document}

@@ -6,49 +6,50 @@
 
 \begin{document}
 
-\olfileid{inc}{tcp}{qce}
+\olfileid[pt]{inc}{tcp}{qce}
 
-\olsection{$\Th{Q}$ is \printtoken{S}{c.e.}-Complete}
+\olsection{$\Th{Q}$ é \printtoken{S}{c.e.}-completa}
 
 
 \begin{thm}
-$\Th{Q}$ is !!{c.e.} but not decidable. In fact, it is a complete
-  !!{c.e.} set.
+$\Th{Q}$ é !!{c.e.}, mas não decidível. Na verdade, é um conjunto
+  !!{c.e.} completo.
 \end{thm}
 
 \begin{proof}
-It is not hard to see that $\Th{Q}$ is !!{c.e.}, since it is the set of
-(codes for) sentences $y$ such that there is a proof $x$ of $y$ in
+Não é difícil ver que $\Th{Q}$ é !!{c.e.}, pois ela é o conjunto dos
+(códigos de) sentenças $y$ tais que existe uma prova $x$ de $y$ em
 $\Th{Q}$:
 \[
 Q = \Setabs{y}{\lexists[x][\Prf[\Th{Q}](x,y)]}.
 \]
-But we know that $\Prf[\Th{Q}](x,y)$ is computable (in fact, primitive
-recursive), and any set that can be written in the above form is c.e.
+Mas sabemos que $\Prf[\Th{Q}](x,y)$ é computável (na verdade, recursiva
+primitiva), e todo conjunto que pode ser escrito na forma acima é c.e.
 
-Saying that it is a complete c.e.\ set is equivalent to saying that $K
-\leq_m Q$, where $K = \Setabs{x}{!A_x(x) \downarrow}$. So let us show
-that $K$ is reducible to $\Th{Q}$. Since Kleene's predicate $T(e,x,s)$ is
-primitive recursive, it is representable in $\Th{Q}$, say, by $!A_T$. Then
-for every $x$, we have
+Dizer que ela é um conjunto c.e.\ completo equivale a dizer que
+$K \leq_m Q$, em que $K = \Setabs{x}{!A_x(x) \downarrow}$. Mostremos,
+portanto, que $K$ é redutível a $\Th{Q}$. Como o predicado de Kleene
+$T(e,x,s)$ é recursivo primitivo, ele é representável em $\Th{Q}$,
+digamos, por $!A_T$. Então, para todo $x$, temos
 \begin{align*}
 x \in K & \lif \lexists[s][T(x,x,s)] \\
 & \lif \lexists[s][(\Th{Q} \Proves !A_T(\num x,\num x, \num s))]
   \\
 & \lif \Th{Q} \Proves \lexists[s][!A_T(\num x, \num x, s)].
 \end{align*}
-Conversely, if $\Th{Q} \Proves \lexists[s][!A_T(\num x, \num x, s)]$,
-then, in fact, for some natural number $n$ the formula $!A_T(\num x,
-\num x, \num n)$ must be true.  Now, if $T(x,x,n)$ were false,
-$\Th{Q}$ would prove $\lnot !A_T(\num x, \num x, \num n)$, since
-$!A_T$ represents $T$.  But then $\Th{Q}$ proves a false formula,
-which is a contradiction. So $T(x,x,n)$ must be true, which implies
+Reciprocamente, se $\Th{Q} \Proves
+\lexists[s][!A_T(\num x, \num x, s)]$, então, de fato, para algum
+número natural $n$, a fórmula $!A_T(\num x, \num x, \num n)$ deve ser
+verdadeira. Ora, se $T(x,x,n)$ fosse falsa, $\Th{Q}$ provaria
+$\lnot !A_T(\num x, \num x, \num n)$, pois $!A_T$ representa $T$.
+Mas, nesse caso, $\Th{Q}$ provaria uma fórmula falsa, o que é uma
+contradição. Logo, $T(x,x,n)$ deve ser verdadeira, o que implica
 $!A_x(x) \downarrow$.
 
-In short, we have that for every $x$, $x$ is in $K$ if and only if
-$\Th{Q}$ proves $\lexists[s][T(\num x,\num x,s)]$. So the function $f$
-which takes $x$ to (a code for) the sentence $\lexists[s][T(\num x,
-  \num x, s)]$ is a reduction of $K$ to $\Th{Q}$.
+Em suma, para todo $x$, temos que $x$ pertence a $K$ se, e somente se,
+$\Th{Q}$ prova $\lexists[s][T(\num x,\num x,s)]$. Assim, a função $f$
+que leva $x$ a (um código para) a sentença $\lexists[s][T(\num x,
+  \num x, s)]$ é uma redução de $K$ a $\Th{Q}$.
 \end{proof}
 
 \end{document}

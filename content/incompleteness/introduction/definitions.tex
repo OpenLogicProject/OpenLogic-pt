@@ -6,103 +6,105 @@
 
 \begin{document}
 
-\olfileid{inc}{int}{def}
+\olfileid[pt]{inc}{int}{def}
 
-\olsection{Definitions}
+\olsection{Definições}
 
-In order to carry out Hilbert's project of formalizing mathematics and
-showing that such a formalization is consistent and complete, the
-first order of business would be that of picking a language, logical
-framework, and a system of axioms.  For our purposes, let us suppose
-that mathematics can be formalized in a first-order language, O.s.\@,
-that there is some set of !!{constant}s, !!{function}s, and
-!!{predicate}s which, together with the connectives and quantifiers of
-first-order logic, allow us to express the claims of mathematics.
-Most people agree that such a language exists: the language of set
-theory, in which $\in$ is the only non-logical symbol.  That such a
-simple language is so expressive is of course a very implausible claim
-at first sight, and it took a lot of work to establish that
-practically all of mathematics can be expressed in this very austere
-vocabulary.  To keep things simple, for now, let's restrict our
-discussion to arithmetic, so the part of mathematics that just deals
-with the natural numbers~$\Nat$.  The natural language in which to
-express facts of arithmetic is~$\Lang L_A$. $\Lang L_A$ contains a
-single two-place !!{predicate}~$<$, a single !!{constant}~$\Obj 0$,
-one one-place !!{function}~$\prime$, and two two-place
-!!{function}s~$+$ and~$\times$.
+Para realizar o projeto de Hilbert de formalizar a matemática e mostrar
+que tal formalização é consistente e completa, a primeira providência
+seria escolher uma linguagem, um arcabouço lógico e um sistema de
+axiomas. Para nossos fins, suponhamos que a matemática possa ser
+formalizada em uma linguagem de primeira ordem, O.s.\@, que exista
+algum conjunto de !!{constant}s, !!{function}s e !!{predicate}s que,
+juntamente com os conectivos e quantificadores da lógica de primeira
+ordem, nos permita expressar as afirmações da matemática. A maioria das
+pessoas concorda que tal linguagem existe: a linguagem da teoria dos
+conjuntos, na qual $\in$ é o único símbolo não lógico. À primeira
+vista, é claro, parece muito pouco plausível que uma linguagem tão
+simples seja tão expressiva, e foi necessário muito trabalho para
+estabelecer que praticamente toda a matemática pode ser expressa nesse
+vocabulário tão austero. Para simplificar, por enquanto restrinjamos a
+discussão à aritmética, isto é, à parte da matemática que trata apenas
+dos números naturais~$\Nat$. A linguagem natural para expressar fatos
+da aritmética é~$\Lang L_A$. $\Lang L_A$ contém um único
+!!{predicate} de dois lugares~$<$, uma única !!{constant}~$\Obj 0$,
+uma !!{function} de um lugar~$\prime$ e duas !!{function}s de dois
+lugares,~$+$ e~$\times$.
 
 \begin{defn}
-A set of !!{sentence}s~$\Gamma$ is a \emph{theory} if it is closed
-under entailment, O.s.\@, if $\Gamma = \Setabs{!A}{\Gamma \Entails
-!A}$.
+Um conjunto de !!{sentence}s~$\Gamma$ é uma \emph{teoria} se for
+fechado sob acarretamento, O.s.\@, se $\Gamma = \Setabs{!A}{\Gamma
+\Entails !A}$.
 \end{defn}
 
-There are two easy ways to specify theories. One is as the set of
-!!{sentence}s true in some !!{structure}.  For instance, consider the
-!!{structure} for $\Lang L_A$ in which the !!{domain} is~$\Nat$ and
-all non-logical symbols are interpreted as you would expect.
+Há duas maneiras simples de especificar teorias. Uma delas é como o
+conjunto de !!{sentence}s verdadeiras em alguma !!{structure}.
+Considere, por exemplo, a !!{structure} para $\Lang L_A$ cujo
+!!{domain} é~$\Nat$ e na qual todos os símbolos não lógicos são
+interpretados da maneira esperada.
 
 \begin{defn}\ollabel{def:standard-model}
-The \emph{standard model of arithmetic} is the !!{structure}~$\Struct
-N$ defined as follows:
+O \emph{modelo padrão da aritmética} é a !!{structure}~$\Struct N$
+definida da seguinte maneira:
 \begin{enumerate}
 \item $\Domain N = \Nat$
 \item $\Assign{\Obj 0}{N} = 0$
-\item $\Assign{\Obj \prime}{N}(n) = n + 1$ for all $n \in \Nat$
-\item $\Assign{\Obj +}{N}(n, m) = n + m$ for all $n, m \in \Nat$
-\item $\Assign{\Obj \times}{N}(n, m) = n\cdot m$ for all $n, m \in \Nat$
+\item $\Assign{\Obj \prime}{N}(n) = n + 1$ para todo $n \in \Nat$
+\item $\Assign{\Obj +}{N}(n, m) = n + m$ para todos $n, m \in \Nat$
+\item $\Assign{\Obj \times}{N}(n, m) = n\cdot m$ para todos $n, m \in \Nat$
 \item $\Assign{\Obj <}{N} = \Setabs{\tuple{n, m}}{n \in \Nat, m \in
   \Nat, n < m}$
 \end{enumerate}
 \end{defn}
 
-Note the difference between `$\times$' and `$\cdot$': $\times$ is a
-symbol in the language of arithmetic. Of course, we've chosen it to
-remind us of multiplication, but $\times$ is not the multiplication
-operation but a two-place function symbol (officially, $\Obj f^2_1$).
-By contrast, $\cdot$~\emph{is} the ordinary multiplication function.
-When you see something like $n \cdot m$, we mean the product of the
-numbers $n$ and~$m$; when you see something like $x \times y$ we are
-talking about a term in the language of arithmetic. In the standard
-model, the function symbol~$\times$ is interpreted as the function
-$\cdot$ on the natural numbers. For addition, we use $+$ as both the
-function symbol of the language of arithmetic, and the addition
-function on the natural numbers. Here you have to use the context to
-determine what is meant.
+Observe a diferença entre `$\times$' e `$\cdot$': $\times$ é um
+símbolo da linguagem da aritmética. Naturalmente, nós o escolhemos para
+lembrar a multiplicação, mas $\times$ não é a operação de multiplicação;
+é um símbolo de função de dois lugares (oficialmente, $\Obj f^2_1$).
+Em contraste, $\cdot$~\emph{é} a função usual de multiplicação. Quando
+você vê algo como $n \cdot m$, queremos dizer o produto dos números
+$n$ e~$m$; quando vê algo como $x \times y$, estamos falando de um termo
+na linguagem da aritmética. No modelo padrão, o símbolo de
+função~$\times$ é interpretado como a função $\cdot$ sobre os números
+naturais. Para a adição, usamos $+$ tanto como símbolo de função da
+linguagem da aritmética quanto como função de adição sobre os números
+naturais. Aqui, é preciso usar o contexto para determinar o sentido.
 
 \begin{defn}
-The theory of \emph{true arithmetic} is the set of !!{sentence}s
-satisfied in the standard model of arithmetic, O.s.\@,
+A teoria da \emph{aritmética verdadeira} é o conjunto de
+!!{sentence}s satisfeitas no modelo padrão da aritmética, O.s.\@,
 \[
 \Th{TA} = \Setabs{!A}{\Sat{N}{!A}}.
 \]
 \end{defn}
 
-$\Th{TA}$ is a theory, for whenever $\Th{TA} \Entails !A$, $!A$ is
-satisfied in every !!{structure} which satisfies~$\Th{TA}$. Since
-$\Sat{N}{\Th{TA}}$, we have that~$\Sat{N}{!A}$, and so $!A \in \Th{TA}$.
+$\Th{TA}$ é uma teoria, pois, sempre que $\Th{TA} \Entails !A$,
+$!A$ é satisfeita em toda !!{structure} que satisfaz~$\Th{TA}$. Como
+$\Sat{N}{\Th{TA}}$, temos~$\Sat{N}{!A}$ e, portanto,
+$!A \in \Th{TA}$.
 
-The other way to specify a theory~$\Gamma$ is as the set of
-!!{sentence}s entailed by some set of sentences~$\Gamma_0$. In that
-case, $\Gamma$ is the ``closure'' of $\Gamma_0$ under entailment.
-Specifying a theory this way is only interesting if $\Gamma_0$ is
-explicitly specified, p.ex., if the !!{element}s of~$\Gamma_0$ are
-listed. At the very least, $\Gamma_0$ has to be decidable, O.s.\@, there
-has to be a computable test for when !!a{sentence} counts as an
-element of~$\Gamma_0$ or not. We call the !!{sentence}s
-in~$\Gamma_0$ \emph{axioms} for~$\Gamma$, and $\Gamma$
-\emph{axiomatized} by~$\Gamma_0$.
+A outra maneira de especificar uma teoria~$\Gamma$ é como o conjunto
+de !!{sentence}s acarretadas por algum conjunto de sentenças~$\Gamma_0$.
+Nesse caso, $\Gamma$ é o ``fecho'' de $\Gamma_0$ sob acarretamento.
+Especificar uma teoria dessa forma só é interessante se $\Gamma_0$ for
+explicitamente especificado, p.ex., se os !!{element}s
+de~$\Gamma_0$ forem listados. No mínimo, $\Gamma_0$ precisa ser
+decidível, O.s.\@, deve existir um teste computável para determinar se
+!!a{sentence} conta ou não como elemento de~$\Gamma_0$. Chamamos as
+!!{sentence}s de~$\Gamma_0$ de \emph{axiomas} de~$\Gamma$ e dizemos que
+$\Gamma$ é \emph{axiomatizada} por~$\Gamma_0$.
 
 \begin{defn}
-A theory~$\Gamma$ is \emph{axiomatized} by~$\Gamma_0$ iff
+Uma teoria~$\Gamma$ é \emph{axiomatizada} por~$\Gamma_0$ sse
 \[
 \Gamma = \Setabs{!A}{\Gamma_0 \Entails !A}
 \]
 \end{defn}
 
 \begin{defn}
-The theory $\Th{Q}$ axiomatized by the following sentences is known
-as ``Robinson's $\Th{Q}$'' and is a very simple theory of arithmetic.
+A teoria $\Th{Q}$ axiomatizada pelas sentenças a seguir é conhecida
+como ``$\Th{Q}$ de Robinson'' e é uma teoria da aritmética muito
+simples.
 \begin{align*}
 & \lforall[x][\lforall[y][(\eq[x'][y'] \lif \eq[x][y])]] \tag{$!Q_1$}\\
 & \lforall[x][\eq/[\Obj 0][x']] \tag{$!Q_2$}\\
@@ -113,201 +115,209 @@ as ``Robinson's $\Th{Q}$'' and is a very simple theory of arithmetic.
 & \lforall[x][\lforall[y][\eq[(x \times y')][((x \times y) + x)]]] \tag{$!Q_7$}\\
 & \lforall[x][\lforall[y][(x < y \liff \lexists[z][\eq[(z' + x)][y]])]] \tag{$!Q_8$}
 \end{align*}
-The set of !!{sentence}s $\{!Q_1, \dots, !Q_8\}$ are the axioms of
-$\Th{Q}$, so $\Th{Q}$ consists of all !!{sentence}s entailed by them:
+O conjunto de !!{sentence}s $\{!Q_1, \dots, !Q_8\}$ constitui os
+axiomas de $\Th{Q}$; portanto, $\Th{Q}$ consiste em todas as
+!!{sentence}s acarretadas por eles:
 \[
 \Th{Q} = \Setabs{!A}{\{!Q_1, \dots, !Q_8\} \Entails !A}.
 \]
 \end{defn}
 
 \begin{defn}
-Suppose $!A(x)$ is !!a{formula} in $\Lang L_A$ with free variables~$x$
-and $y_1$, \dots, $y_n$. Then any !!{sentence} of the form
+Suponha que $!A(x)$ seja !!a{formula} em $\Lang L_A$ com variáveis
+livres~$x$ e $y_1$, \dots, $y_n$. Então qualquer !!{sentence} da forma
 \[
 \lforall[y_1][\dots\lforall[y_n][((!A(\Obj 0) \land \lforall[x][(!A(x)
 \lif !A(x'))]) \lif \lforall[x][!A(x)])]]
 \]
-is an instance of the \emph{induction schema}.
+é uma instância do \emph{esquema de indução}.
 
-\emph{Peano arithmetic}~$\Th{PA}$ is the theory axiomatized by the
-axioms of $\Th{Q}$ together with all instances of the induction
-schema.
+A \emph{aritmética de Peano}~$\Th{PA}$ é a teoria axiomatizada pelos
+axiomas de $\Th{Q}$ juntamente com todas as instâncias do esquema de
+indução.
 \end{defn}
 
 \begin{explain}
-Every instance of the induction schema is true in~$\Struct{N}$. This
-is easiest to see if the !!{formula}~$!A$ only has one free
-!!{variable}~$x$.  Then $!A(x)$ defines a subset~$X_{!A}$ of~$\Nat$
-in~$\Struct{N}$.  $X_{!A}$ is the set of all~$n \in \Nat$ such that
-$\Sat{N}{!A(x)}[s]$ when $s(x) = n$.  The corresponding instance of
-the induction schema is
+Toda instância do esquema de indução é verdadeira em~$\Struct{N}$.
+Isso é mais fácil de ver quando a !!{formula}~$!A$ tem apenas uma
+!!{variable} livre~$x$. Nesse caso, $!A(x)$ define um subconjunto
+$X_{!A}$ de~$\Nat$ em~$\Struct{N}$. $X_{!A}$ é o conjunto de todos os
+$n \in \Nat$ tais que $\Sat{N}{!A(x)}[s]$ quando $s(x) = n$. A
+instância correspondente do esquema de indução é
 \[
 ((!A(\Obj 0) \land \lforall[x][(!A(x) \lif !A(x'))]) \lif 
   \lforall[x][!A(x)]).
 \]
-If its antecedent is true in~$\Struct{N}$, then $0 \in X_{!A}$ and,
-whenever $n \in X_{!A}$, so is $n+1$.  Since $0 \in X_{!A}$, we get
-$1 \in X_{!A}$. With $1 \in X_{!A}$ we get $2 \in X_{!A}$. And so on.
-So for every $n \in \Nat$, $n \in X_{!A}$. But this means that
-$\lforall[x][!A(x)]$ is satisfied in~$\Struct{N}$.
+Se seu antecedente for verdadeiro em~$\Struct{N}$, então
+$0 \in X_{!A}$ e, sempre que $n \in X_{!A}$, o mesmo vale para $n+1$.
+Como $0 \in X_{!A}$, obtemos $1 \in X_{!A}$. De $1 \in X_{!A}$,
+obtemos $2 \in X_{!A}$, e assim por diante. Logo, para todo
+$n \in \Nat$, $n \in X_{!A}$. Mas isso significa que
+$\lforall[x][!A(x)]$ é satisfeita em~$\Struct{N}$.
 \end{explain}
 
-Both $\Th{Q}$ and $\Th{PA}$ are axiomatized theories.  The big
-question is, how strong are they? For instance, can $\Th{PA}$ prove
-all the truths about~$\Nat$ that can be expressed in~$\Lang L_A$?
-Specifically, do the axioms of $\Th{PA}$ settle all the questions
-that can be formulated in~$\Lang L_A$?
+Tanto $\Th{Q}$ quanto $\Th{PA}$ são teorias axiomatizadas. A grande
+questão é: quão fortes elas são? Por exemplo, $\Th{PA}$ pode provar
+todas as verdades sobre~$\Nat$ que podem ser expressas em~$\Lang L_A$?
+Mais especificamente, os axiomas de $\Th{PA}$ decidem todas as questões
+que podem ser formuladas em~$\Lang L_A$?
 
-Another way to put this is to ask: Is $\Th{PA} = \Th{TA}$?
-$\Th{TA}$ obviously does prove (O.s.\@, it includes) all the truths
-about~$\Nat$, and it settles all the questions that can be formulated
-in~$\Lang L_A$, since if $!A$ is !!a{sentence} in $\Lang L_A$, then
-either $\Sat{N}{!A}$ or $\Sat{N}{\lnot !A}$, and so either $\Th{TA}
-\Entails !A$ or $\Th{TA} \Entails \lnot !A$.  Call such a theory
-\emph{!!{complete}}.
+Outra maneira de formular isso é perguntar: $\Th{PA} = \Th{TA}$?
+Evidentemente, $\Th{TA}$ prova (O.s.\@, inclui) todas as verdades
+sobre~$\Nat$ e decide todas as questões que podem ser formuladas
+em~$\Lang L_A$, pois, se $!A$ é !!a{sentence} em $\Lang L_A$, então ou
+$\Sat{N}{!A}$ ou $\Sat{N}{\lnot !A}$ e, portanto, ou
+$\Th{TA} \Entails !A$ ou $\Th{TA} \Entails \lnot !A$. Chamamos tal
+teoria de \emph{!!{complete}}.
 
 \begin{defn}
-A theory $\Gamma$ is \emph{!!{complete}} iff for every
-!!{sentence}~$!A$ in its language, either $\Gamma \Entails !A$ or
+Uma teoria $\Gamma$ é \emph{!!{complete}} sse, para toda
+!!{sentence}~$!A$ de sua linguagem, ou $\Gamma \Entails !A$ ou
 $\Gamma \Entails \lnot !A$.
 \end{defn}
 
 \begin{explain}
-By the Completeness Theorem, $\Gamma \Entails !A$ iff $\Gamma \Proves
-!A$, so $\Gamma$ is complete iff for every !!{sentence}~$!A$ in its
-language, either $\Gamma \Proves !A$ or $\Gamma \Proves \lnot !A$.
+Pelo Teorema da Completude, $\Gamma \Entails !A$ sse $\Gamma \Proves
+!A$; assim, $\Gamma$ é completa sse, para toda !!{sentence}~$!A$ de
+sua linguagem, ou $\Gamma \Proves !A$ ou $\Gamma \Proves \lnot !A$.
 \end{explain}
 
-Another question we are led to ask is this: Is there a computational
-procedure we can use to test if !!a{sentence} is in~$\Th{TA}$, in
-$\Th{PA}$, or even just in~$\Th{Q}$?  We can make this more precise
-by defining when a set (p.ex., a set of !!{sentence}s) is
-!!{decidable}.
+Outra questão que somos levados a formular é esta: existe um
+procedimento computacional que possamos usar para testar se
+!!a{sentence} pertence a~$\Th{TA}$, a $\Th{PA}$ ou mesmo apenas
+a~$\Th{Q}$? Podemos tornar isso mais preciso definindo quando um
+conjunto (p.ex., um conjunto de !!{sentence}s) é !!{decidable}.
 
 \begin{defn}
-A set $X$ is \emph{!!{decidable}} iff there is a computational procedure
-which on input~$x$ returns~$1$ if $x \in X$ and $0$ otherwise.
+Um conjunto $X$ é \emph{!!{decidable}} sse existe um procedimento
+computacional que, com entrada~$x$, devolve~$1$ se $x \in X$ e~$0$ caso
+contrário.
 \end{defn}
 
-So our question becomes: Is $\Th{TA}$ ($\Th{PA}$, $\Th{Q}$) !!{decidable}?
+Assim, nossa questão passa a ser: $\Th{TA}$ ($\Th{PA}$, $\Th{Q}$) é
+!!{decidable}?
 
-The answer to all these questions will be: no. None of these theories
-are decidable. However, this phenomenon is not specific to these
-particular theories. In fact, \emph{any} theory that satisfies certain
-conditions is subject to the same results. One of these conditions,
-which $\Th{Q}$ and $\Th{PA}$ satisfy, is that they are axiomatized by
-!!a{decidable} set of axioms.
+A resposta a todas essas questões será: não. Nenhuma dessas teorias é
+decidível. Contudo, esse fenômeno não é específico dessas teorias. Na
+verdade, \emph{qualquer} teoria que satisfaça certas condições está
+sujeita aos mesmos resultados. Uma dessas condições, satisfeita por
+$\Th{Q}$ e $\Th{PA}$, é ser axiomatizada por !!a{decidable} conjunto
+de axiomas.
 
 \begin{defn}
-A theory is \emph{!!{axiomatizable}} if it is axiomatized
-by !!a{decidable} set of axioms.
+Uma teoria é \emph{!!{axiomatizable}} se for axiomatizada por
+!!a{decidable} conjunto de axiomas.
 \end{defn}
 
 \begin{ex}
-Any theory axiomatized by a finite set of !!{sentence}s is
-!!{axiomatizable}, since any finite set is !!{decidable}.
-Thus, $\Th{Q}$, for instance, is !!{axiomatizable}.
+Toda teoria axiomatizada por um conjunto finito de !!{sentence}s é
+!!{axiomatizable}, pois todo conjunto finito é !!{decidable}. Assim,
+$\Th{Q}$, por exemplo, é !!{axiomatizable}.
 
-Schematically axiomatized theories like~$\Th{PA}$ are also
-!!{axiomatizable}. For to test if $!B$ is among the axioms
-of~$\Th{PA}$, O.s.\@, to compute the function $\Char{X}$ where
-$\Char{X}(!B) = 1$ if $!B$ is an axiom of~$\Th{PA}$ and $= 0$
-otherwise, we can do the following: First, check if $!B$ is one of the
-axioms of~$\Th{Q}$. If it is, the answer is ``yes'' and the value of
-$\Char{X}(!B) = 1$. If not, test if it is an instance of the induction
-schema.  This can be done systematically; in this case, perhaps it's
-easiest to see that it can be done as follows: Any instance of the
-induction schema begins with a number of universal quantifiers, and
-then a sub-!!{formula} that is a conditional. The consequent of that
-conditional is $\lforall[x][!A(x, y_1, \dots, y_n)]$ where $x$ and
-$y_1$, \dots, $y_n$ are all the free variables of~$!A$ and the initial
-quantifiers of~$!B$ bind the variables~$y_1$, \dots,~$y_n$.  Once we
-have extracted this~$!A$ and checked that its free variables match the
-variables bound by the universal quantifiers at the front
-and~$\lforall[x]$, we go on to check that the antecedent of the
-conditional matches
+Teorias axiomatizadas por esquemas, como~$\Th{PA}$, também são
+!!{axiomatizable}. Para testar se $!B$ está entre os axiomas
+de~$\Th{PA}$, O.s.\@, para computar a função $\Char{X}$ tal que
+$\Char{X}(!B) = 1$ se $!B$ é um axioma de~$\Th{PA}$ e $= 0$ caso
+contrário, podemos proceder assim: primeiro, verificamos se $!B$ é um
+dos axiomas de~$\Th{Q}$. Se for, a resposta é ``sim'' e o valor de
+$\Char{X}(!B) = 1$. Se não for, testamos se é uma instância do esquema
+de indução. Isso pode ser feito sistematicamente; neste caso, talvez a
+maneira mais fácil de perceber seja a seguinte: toda instância do
+esquema de indução começa com certo número de quantificadores
+universais e, depois, uma sub-!!{formula} que é um condicional. O
+consequente desse condicional é
+$\lforall[x][!A(x, y_1, \dots, y_n)]$, em que $x$ e $y_1$, \dots,
+$y_n$ são todas as variáveis livres de~$!A$, e os quantificadores
+iniciais de~$!B$ ligam as variáveis~$y_1$, \dots,~$y_n$. Depois de
+extrair essa~$!A$ e verificar que suas variáveis livres correspondem às
+variáveis ligadas pelos quantificadores universais iniciais e
+por~$\lforall[x]$, passamos a verificar se o antecedente do condicional
+corresponde a
 \[
 !A(\Obj 0, y_1, \dots, y_n) \land \lforall[x][(!A(x, y_1, \dots, y_n)
 \lif !A(x', y_1, \dots, y_n))]
 \]
-Again, if it does, $!B$ is an instance of the induction schema, and if
-it doesn't, $!B$ isn't.
+Novamente, se corresponder, $!B$ é uma instância do esquema de indução;
+se não corresponder, $!B$ não é.
 \end{ex}
 
-In answering this question---and the more general question of which
-theories are complete or decidable---it will be useful to consider
-also the following definition. Recall that a set $X$ is !!{enumerable}
-iff it is empty or if there is !!a{surjective} function~$f \colon \Nat
-\to X$. Such a function is called an enumeration of~$X$.
+Para responder a essa questão---e à questão mais geral de quais teorias
+são completas ou decidíveis---será útil considerar também a definição
+a seguir. Lembre-se de que um conjunto $X$ é !!{enumerable} sse é vazio
+ou existe !!a{surjective} função~$f \colon \Nat \to X$. Tal função é
+chamada de enumeração de~$X$.
 
 \begin{defn}
-A set $X$ is called \emph{!!{computably enumerable}} (!!{c.e.} for
-short) iff it is empty or it has a computable enumeration.
+Um conjunto $X$ é chamado de \emph{!!{computably enumerable}}
+(abreviadamente, !!{c.e.}) sse é vazio ou possui uma enumeração
+computável.
 \end{defn}
 
-In addition to !!{axiomatizability}, another condition on theories to
-which the incompleteness theorems apply will be that they are strong
-enough to prove basic facts about computable functions and
-!!{decidable} relations. By ``basic facts,'' we mean !!{sentence}s
-which express what the values of computable functions are for each of
-their arguments.  And by ``strong enough'' we mean that the theories
-in question count these sentences among its theorems. For instance,
-consider a prototypical computable function: addition.  The value of
-$+$ for arguments $2$ and $3$ is~$5$, O.s.\@, $2+3 = 5$. A sentence in
-the language of arithmetic that expresses that the value of $+$ for
-arguments $2$ and $3$ is~$5$ is: $(\num{2} + \num{3}) = \num{5}$.
-And, p.ex., $\Th{Q}$ proves this sentence.  More generally, we would
-like there to be, for each computable function $f(x_1, x_2)$
-!!a{formula}~$!A_f(x_1, x_2, y)$ in~$\Lang{L_A}$ such that $\Th{Q}
-\Proves !A_f(\num{n_1}, \num{n_2}, \num{m})$ whenever $f(n_1, n_2) =
-m$. In this way, $\Th{Q}$ proves that the value of~$f$ for arguments
-$n_1$, $n_2$ is~$m$. In fact, we require that it proves a bit more,
-namely that no other number is the value of~$f$ for arguments
-$n_1$,~$n_2$. And the same goes for !!{decidable} relations. This is
-made precise in the following two definitions.
+Além da !!{axiomatizability}, outra condição imposta às teorias às quais
+os teoremas da incompletude se aplicam será que elas sejam fortes o
+suficiente para provar fatos básicos sobre funções computáveis e
+relações !!{decidable}. Por ``fatos básicos'', entendemos !!{sentence}s
+que expressam quais são os valores de funções computáveis para cada um
+de seus argumentos. E, por ``fortes o suficiente'', entendemos que as
+teorias em questão contam essas sentenças entre seus teoremas.
+Considere, por exemplo, uma função computável prototípica: a adição. O
+valor de $+$ para os argumentos $2$ e $3$ é~$5$, O.s.\@, $2+3 = 5$.
+Uma sentença na linguagem da aritmética que expressa que o valor de $+$
+para os argumentos $2$ e $3$ é~$5$ é:
+$(\num{2} + \num{3}) = \num{5}$. E, p.ex., $\Th{Q}$ prova essa
+sentença. Mais geralmente, gostaríamos que, para cada função computável
+$f(x_1, x_2)$, houvesse !!a{formula}~$!A_f(x_1, x_2, y)$ em
+$\Lang{L_A}$ tal que $\Th{Q} \Proves
+!A_f(\num{n_1}, \num{n_2}, \num{m})$ sempre que $f(n_1, n_2) = m$.
+Desse modo, $\Th{Q}$ prova que o valor de~$f$ para os argumentos $n_1$,
+$n_2$ é~$m$. Na verdade, exigimos que prove um pouco mais: que nenhum
+outro número é o valor de~$f$ para os argumentos $n_1$,~$n_2$. E o
+mesmo vale para relações !!{decidable}. Isso é formulado com precisão
+nas duas definições a seguir.
 
 \begin{defn}
-A !!{formula}~$!A(x_1, \dots, x_k, y)$ \emph{!!{represents}} the
-function $f\colon \Nat^k \to \Nat$ in~$\Gamma$ iff whenever $f(n_1,
-\dots, n_k) = m$, then
+Uma !!{formula}~$!A(x_1, \dots, x_k, y)$ \emph{!!{represents}} a
+função $f\colon \Nat^k \to \Nat$ em~$\Gamma$ sse, sempre que
+$f(n_1, \dots, n_k) = m$, então
 \begin{enumerate}
-\item $\Gamma \Proves !A(\num{n_1}, \dots, \num{n_k}, \num{m})$, and
+\item $\Gamma \Proves !A(\num{n_1}, \dots, \num{n_k}, \num{m})$, e
 \item $\Gamma \Proves \lforall[y](!A(\num{n_1}, \dots, \num{n_k},
 y) \lif y = \num{m})$.
 \end{enumerate}
 \end{defn}
 
 \begin{defn}
-A !!{formula}~$!A(x_1, \dots, x_k)$ \emph{!!{represents}} the
-relation $R \subseteq \Nat^k$ iff,
+Uma !!{formula}~$!A(x_1, \dots, x_k)$ \emph{!!{represents}} a relação
+$R \subseteq \Nat^k$ sse,
 \begin{enumerate}
-\item whenever $R(n_1, \dots, n_k)$, $\Gamma \Proves !A(\num{n_1},
-\dots, \num{n_k})$, and
-\item whenever not $R(n_1, \dots, n_k)$, $\Gamma \Proves \lnot
+\item sempre que $R(n_1, \dots, n_k)$, $\Gamma \Proves
+!A(\num{n_1}, \dots, \num{n_k})$, e
+\item sempre que não $R(n_1, \dots, n_k)$, $\Gamma \Proves \lnot
 !A(\num{n_1}, \dots, \num{n_k})$.
 \end{enumerate}
 \end{defn}
 
-A theory is ``strong enough'' for the incompleteness theorems to
-apply if it !!{represents} all computable functions and all
-!!{decidable} relations. $\Th{Q}$~and its extensions satisfy this
-condition, but it will take us a while to establish this---it's a
-non-trivial fact about the kinds of things $\Th{Q}$ can prove, and
-it's hard to show because $\Th{Q}$ has only a few axioms from which
-we'll have to prove all these facts. However, $\Th{Q}$ is a very weak
-theory. So although it's hard to prove that $\Th{Q}$ represents all
-computable functions, most interesting theories are stronger
-than~$\Th{Q}$, O.s.\@, prove more than $\Th{Q}$ does. And if $\Th{Q}$
-proves something, any stronger theory does; since $\Th{Q}$ represents
-all computable functions, every stronger theory does. This means that
-many interesting theories meet this condition of the incompleteness
-theorems. So our hard work will pay off, since it shows that the
-incompleteness theorems apply to a wide range of theories. Certainly,
-any theory aiming to formalize ``all of mathematics'' must prove
-everything that $\Th{Q}$ proves, since it should at the very least be
-able to capture the results of elementary computations.  So any theory
-that is a candidate for a theory of ``all of mathematics'' will be one
-to which the incompleteness theorems apply.
+Uma teoria é ``forte o suficiente'' para que os teoremas da
+incompletude se apliquem se ela !!{represents} todas as funções
+computáveis e todas as relações !!{decidable}. $\Th{Q}$ e suas
+extensões satisfazem essa condição, mas levaremos algum tempo para
+estabelecê-la---trata-se de um fato não trivial sobre os tipos de coisa
+que $\Th{Q}$ pode provar, e é difícil demonstrá-lo porque $\Th{Q}$ tem
+apenas alguns axiomas a partir dos quais teremos de provar todos esses
+fatos. Contudo, $\Th{Q}$ é uma teoria muito fraca. Assim, embora seja
+difícil provar que $\Th{Q}$ representa todas as funções computáveis, a
+maioria das teorias interessantes é mais forte que~$\Th{Q}$, O.s.\@,
+prova mais do que $\Th{Q}$. E, se $\Th{Q}$ prova alguma coisa, toda
+teoria mais forte também a prova; como $\Th{Q}$ representa todas as
+funções computáveis, toda teoria mais forte também as representa. Isso
+significa que muitas teorias interessantes satisfazem essa condição
+dos teoremas da incompletude. Portanto, nosso trabalho árduo dará
+resultado, pois mostrará que os teoremas da incompletude se aplicam a
+uma ampla classe de teorias. Certamente, toda teoria que pretenda
+formalizar ``toda a matemática'' deve provar tudo o que $\Th{Q}$ prova,
+pois deve, no mínimo, ser capaz de captar os resultados de computações
+elementares. Assim, toda candidata a teoria de ``toda a matemática''
+será uma teoria à qual se aplicam os teoremas da incompletude.
 
 
 \end{document}

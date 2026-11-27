@@ -6,34 +6,35 @@
 
 \begin{document}
 
-\olfileid{inc}{art}{cod}
-\olsection{Coding Symbols}
+\olfileid[pt]{inc}{art}{cod}
+\olsection{Codificação de símbolos}
 
-The basic language~$\Lang L$ of first order logic makes use of the symbols
+A linguagem básica~$\Lang L$ da lógica de primeira ordem utiliza os símbolos
 \[
 \lfalse \quad \lnot \quad \lor \quad \land \quad \lif \quad \lforall
 \quad \lexists \quad \eq \quad ( \quad ) \quad ,
 \]
-together with !!{enumerable} sets of variables and !!{constant}s, and
-!!{enumerable} sets of !!{function}s and !!{predicate}s of arbitrary
-arity.  We can assign \emph{codes} to each of these symbols in such a
-way that every symbol is assigned a unique number as its code, and no
-two different symbols are assigned the same number.  We know that this
-is possible since the set of all symbols is !!{enumerable} and so
-there is !!a{bijection} between it and the set of natural numbers.
-But we want to make sure that we can recover the symbol (as well as
-some information about it, p.ex., the arity of !!a{function}) from its
-code in a computable way.  There are many possible ways of doing this,
-of course.  Here is one such way, which uses primitive recursive
-functions.  (Recall that $\tuple{n_0, \dots, n_k}$ is the number
-coding the sequence of numbers $n_0$, \dots, $n_k$.)
+juntamente com conjuntos !!{enumerable} de variáveis e !!{constant}s e
+com conjuntos !!{enumerable} de !!{function}s e !!{predicate}s de
+aridade arbitrária. Podemos atribuir \emph{códigos} a cada um desses
+símbolos de tal maneira que cada símbolo receba um único número como
+código e dois símbolos diferentes nunca recebam o mesmo número. Sabemos
+que isso é possível porque o conjunto de todos os símbolos é
+!!{enumerable}; portanto, existe !!a{bijection} entre ele e o conjunto
+dos números naturais. Mas queremos garantir que seja possível recuperar
+o símbolo (bem como alguma informação sobre ele, p.ex., a aridade
+de !!a{function}) a partir de seu código de maneira computável. Há,
+naturalmente, muitas maneiras possíveis de fazer isso. Eis uma delas,
+que usa funções recursivas primitivas. (Lembre-se de que
+$\tuple{n_0, \dots, n_k}$ é o número que codifica a sequência de
+números $n_0$, \dots, $n_k$.)
 
 \begin{defn}
-If $s$ is a symbol of~$\Lang L$, let the \emph{symbol code}~$\scode s$ be
-defined as follows:
+Se $s$ é um símbolo de~$\Lang L$, defina o \emph{código do
+  símbolo}~$\scode s$ da seguinte maneira:
 \begin{enumerate}
-\item If $s$ is among the logical symbols, $\scode s$ is given by the
-  following table:
+\item Se $s$ está entre os símbolos lógicos, $\scode s$ é dado pela
+  tabela a seguir:
 \[
 \begin{array}{cccccccccc}
   \lfalse & \lnot & \lor & \land & \lif & \lforall \\
@@ -44,59 +45,60 @@ defined as follows:
 \tuple{0, 8} & \tuple{0, 9} & \tuple{0, 10}
 \end{array}
 \]
-\item If $s$ is the $i$-th variable $\Obj v_i$, then $\scode s = \tuple{1, i}$.
-\item If $s$ is the $i$-th !!{constant}~$\Obj c_i$, then
+\item Se $s$ é a $i$-ésima variável $\Obj v_i$, então
+  $\scode s = \tuple{1, i}$.
+\item Se $s$ é a $i$-ésima !!{constant}~$\Obj c_i$, então
   $\scode s = \tuple{2, i}$.
-\item If $s$ is the $i$-th $n$-ary !!{function}~$\Obj f_i^n$, then
+\item Se $s$ é a $i$-ésima !!{function} $n$-ária~$\Obj f_i^n$, então
   $\scode s = \tuple{3, n, i}$.
-\item If $s$ is the $i$-th $n$-ary !!{predicate}~$\Obj P_i^n$, then
+\item Se $s$ é o $i$-ésimo !!{predicate} $n$-ário~$\Obj P_i^n$, então
   $\scode s = \tuple{4, n, i}$.
 \end{enumerate}
 \end{defn}
 
 \begin{prop}
-The following relations are primitive recursive:
+As relações a seguir são recursivas primitivas:
 \begin{enumerate}
-\item $\fn{Fn}(x, n)$ iff $x$ is the code of $\Obj f^n_i$ for
-  some~$i$, O.s.\@, $x$ is the code of an $n$-ary !!{function}.
-\item $\fn{Pred}(x, n)$ iff $x$ is the code of $\Obj P^n_i$ for
-  some~$i$ or $x$ is the code of $\eq$ and $n = 2$, O.s.\@, $x$ is the
-  code of an $n$-ary !!{predicate}.
+\item $\fn{Fn}(x, n)$ sse $x$ é o código de $\Obj f^n_i$ para algum~$i$,
+  O.s.\@, $x$ é o código de !!a{function} $n$-ária.
+\item $\fn{Pred}(x, n)$ sse $x$ é o código de $\Obj P^n_i$ para
+  algum~$i$, ou $x$ é o código de $\eq$ e $n = 2$, O.s.\@, $x$ é o
+  código de !!a{predicate} $n$-ário.
 \end{enumerate}
 \end{prop}
 
 \begin{defn}
-If $s_0, \dots, s_{n-1}$ is a sequence of symbols, its \emph{G\"odel
-  number} is $\tuple{\scode{s_0}, \dots, \scode{s_{n-1}}}$.
+Se $s_0, \dots, s_{n-1}$ é uma sequência de símbolos, seu \emph{número
+  de G\"odel} é $\tuple{\scode{s_0}, \dots, \scode{s_{n-1}}}$.
 \end{defn}
 
 \begin{explain}
-Note that \emph{codes} and \emph{G\"odel numbers} are different
-things. For instance, the variable~$\Obj v_5$ has a code~$\scode{\Obj
-  v_5} = \tuple{1, 5} = 2^2\cdot 3^6$. But the variable~$\Obj v_5$
-considered as a term is also a sequence of symbols (of
-length~$1$). The \emph{G\"odel number}~$\Gn{\Obj v_5}$ of the
-\emph{term}~$\Obj v_5$ is $\tuple{\scode{\Obj v_5}} = 2^{\scode{\Obj
+Observe que \emph{códigos} e \emph{números de G\"odel} são coisas
+diferentes. Por exemplo, a variável~$\Obj v_5$ tem o código~$\scode{\Obj
+  v_5} = \tuple{1, 5} = 2^2\cdot 3^6$. Mas a variável~$\Obj v_5$,
+considerada como termo, também é uma sequência de símbolos (de
+comprimento~$1$). O \emph{número de G\"odel}~$\Gn{\Obj v_5}$ do
+\emph{termo}~$\Obj v_5$ é $\tuple{\scode{\Obj v_5}} = 2^{\scode{\Obj
     v_5} + 1} = 2^{2^2\cdot 3^6 + 1}$.
 \end{explain}
 
 \begin{ex}
-Recall that if $k_0$, \dots, $k_{n-1}$ is a sequence of numbers, then
-the code of the sequence $\tuple{k_0, \dots, k_{n-1}}$ in the
-power-of-primes coding is
+Lembre-se de que, se $k_0$, \dots, $k_{n-1}$ é uma sequência de
+números, então o código da sequência $\tuple{k_0, \dots, k_{n-1}}$ na
+codificação por potências de primos é
 \[
 2^{k_0+1}\cdot3^{k_1+1}\cdot \dots \cdot p_{n-1}^{k_{n-1}+1},
 \]
-where $p_i$ is the $i$-th prime (starting with $p_0 = 2$). So for
-instance, the formula $\eq[\Obj v_0][\Obj 0]$, or, more explicitly,
-${\eq}(\Obj v_0,\Obj c_0)$, has the G\"odel number
+em que $p_i$ é o $i$-ésimo primo (começando com $p_0 = 2$). Assim, por
+exemplo, a fórmula $\eq[\Obj v_0][\Obj 0]$, ou, mais explicitamente,
+${\eq}(\Obj v_0,\Obj c_0)$, tem o número de G\"odel
 \[
 \tuple{\scode{\eq},\scode{(},\scode{\Obj v_0},\scode{,}, \scode{\Obj
     c_0},\scode{)}}.
 \]
-Here, $\scode{\eq}$ is $\tuple{0,7} = 2^{0+1}\cdot
-3^{7+1}$, $\scode{\Obj v_0}$ is $\tuple{1,0} = 2^{1+1}\cdot3^{0+1}$,
-etc. So $\Gn{=(\Obj v_0,\Obj c_0)}$ is
+Aqui, $\scode{\eq}$ é $\tuple{0,7} = 2^{0+1}\cdot
+3^{7+1}$, $\scode{\Obj v_0}$ é $\tuple{1,0} = 2^{1+1}\cdot3^{0+1}$,
+etc. Portanto, $\Gn{=(\Obj v_0,\Obj c_0)}$ é
 \begin{multline*}
 2^{\scode{=} + 1}\cdot 3^{\scode{(}+1}\cdot 5^{\scode{\Obj v_0}+1}
 \cdot 7^{\scode{,} + 1} \cdot 11^{\scode{\Obj c_0}+1} \cdot

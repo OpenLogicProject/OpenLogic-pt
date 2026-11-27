@@ -6,95 +6,98 @@
 
 \begin{document}
 
-\olfileid{inc}{int}{ovr}
+\olfileid[pt]{inc}{int}{ovr}
 
-\olsection{Overview of Incompleteness Results}
+\olsection{Panorama dos resultados de incompletude}
 
-Hilbert expected that mathematics could be formalized in an
-!!{axiomatizable} theory which it would be possible to prove
-!!{complete} and !!{decidable}. Moreover, he aimed to prove the
-consistency of this theory with very weak, ``finitary,'' means, which
-would defend classical mathematics against the challenges of
-intuitionism.  G\"odel's incompleteness theorems showed that these
-goals cannot be achieved.
+Hilbert esperava que a matemática pudesse ser formalizada em uma
+teoria !!{axiomatizable} que fosse possível provar !!{complete} e
+!!{decidable}. Além disso, pretendia provar a consistência dessa teoria
+por meios muito fracos, ``finitários'', o que defenderia a matemática
+clássica dos desafios do intuicionismo. Os teoremas da incompletude de
+G\"odel mostraram que esses objetivos não podem ser alcançados.
 
-G\"odel's first incompleteness theorem showed that a version of
-Russell and Whitehead's \emph{Principia Mathematica} is not
-!!{complete}.  But the proof was actually very general and applies to
-a wide variety of theories.  This means that it wasn't just that
-\emph{Principia Mathematica} did not manage to completely capture
-mathematics, but that \emph{no} acceptable theory does.  It took a
-while to isolate the features of theories that suffice for the
-incompleteness theorems to apply, and to generalize G\"odel's proof to
-apply make it depend only on these features.  But we are now in a
-position to state a very general version of the first incompleteness
-theorem for theories in the language $\Lang L_A$ of arithmetic.
+O primeiro teorema da incompletude de G\"odel mostrou que uma versão
+dos \emph{Principia Mathematica} de Russell e Whitehead não é
+!!{complete}. Mas a prova era, na verdade, muito geral e se aplica a
+uma ampla variedade de teorias. Isso significa que não foi apenas o
+caso de os \emph{Principia Mathematica} não conseguirem captar
+completamente a matemática: \emph{nenhuma} teoria aceitável consegue.
+Levou algum tempo para isolar as características das teorias que bastam
+para a aplicação dos teoremas da incompletude e generalizar a prova de
+G\"odel de modo que dependesse apenas delas. Agora, porém, estamos em
+condições de enunciar uma versão muito geral do primeiro teorema da
+incompletude para teorias na linguagem aritmética $\Lang L_A$.
 
 \begin{thm}
-If $\Gamma$ is a consistent and !!{axiomatizable} theory in~$\Lang
-L_A$ which !!{represents} all computable functions and !!{decidable}
-relations, then $\Gamma$ is not !!{complete}.
+Se $\Gamma$ é uma teoria consistente e !!{axiomatizable} em~$\Lang
+L_A$ que !!{represents} todas as funções computáveis e relações
+!!{decidable}, então $\Gamma$ não é !!{complete}.
 \end{thm}
 
-To say that $\Gamma$ is not !!{complete} is to say that for at least
-one !!{sentence}~$!A$, $\Gamma \Proves/ !A$ and $\Gamma \Proves/ \lnot
-!A$.  Such !!a{sentence} is called \emph{independent} (of~$\Gamma)$.
-We can in fact relatively quickly prove that there must be independent
-sentences. But the power of G\"odel's proof of the theorem lies in the
-fact that it exhibits a \emph{specific example} of such an independent
-!!{sentence}. The intriguing construction produces
-!!a{sentence}~$!G_\Gamma$, called a \emph{G\"odel sentence}
-for~$\Gamma$, which is unprovable because in $\Gamma$, $!G_\Gamma$ is
-equivalent to the claim that $!G_\Gamma$ is unprovable in~$\Gamma$.  It
-does so \emph{constructively}, O.s.\@, given an axiomatization
-of~$\Gamma$ and a description of the !!{derivation} system, the proof gives a
-method for actually writing down~$!G_\Gamma$.
+Dizer que $\Gamma$ não é !!{complete} é dizer que, para pelo menos uma
+!!{sentence}~$!A$, $\Gamma \Proves/ !A$ e $\Gamma \Proves/ \lnot !A$.
+Tal !!a{sentence} é chamada de \emph{independente} (de~$\Gamma)$. Na
+verdade, podemos provar com relativa rapidez que devem existir
+sentenças independentes. Mas a força da prova do teorema de G\"odel
+reside no fato de que ela apresenta um \emph{exemplo específico} de
+tal !!{sentence} independente. A engenhosa construção produz
+!!a{sentence}~$!G_\Gamma$, chamada de \emph{sentença de G\"odel}
+para~$\Gamma$, que não é demonstrável porque, em $\Gamma$,
+$!G_\Gamma$ equivale à afirmação de que $!G_\Gamma$ não é demonstrável
+em~$\Gamma$. A construção faz isso \emph{construtivamente}, O.s.\@,
+dadas uma axiomatização de~$\Gamma$ e uma descrição do sistema de
+!!{derivation}, a prova fornece um método para escrever efetivamente
+$!G_\Gamma$.
 
-The construction in G\"odel's proof requires that we find a way to
-express in $\Lang L_A$ the properties of and operations on terms and
-!!{formula}s of $\Lang L_A$ itself. These include properties such as
-``$!A$ is !!a{sentence},'' ``$\delta$ is !!a{derivation} of~$!A$,''
-and operations such as $\Subst{!A}{t}{x}$.  This way must (a) express
-these properties and relations via a ``coding'' of symbols and
-sequences thereof (which is what terms, !!{formula}s, !!{derivation}s,
-etc. are) as natural numbers (which is what $\Lang L_A$ can talk
-about). It must (b) do this in such a way that $\Gamma$ will prove the
-relevant facts, so we must show that these properties are coded by
-!!{decidable} properties of natural numbers and the operations
-correspond to computable functions on natural numbers. This is called
-``arithmetization of syntax.''
+A construção da prova de G\"odel exige que encontremos uma maneira de
+expressar em $\Lang L_A$ as propriedades de termos e !!{formula}s da
+própria $\Lang L_A$, bem como as operações sobre eles. Entre essas
+propriedades estão ``$!A$ é !!a{sentence}'' e ``$\delta$ é
+!!a{derivation} de~$!A$'', e entre as operações está
+$\Subst{!A}{t}{x}$. Essa maneira deve (a) expressar tais propriedades e
+relações mediante uma ``codificação'' dos símbolos e de suas sequências
+(que é o que são termos, !!{formula}s, !!{derivation}s etc.) como
+números naturais (aquilo de que $\Lang L_A$ pode falar). Deve também
+(b) fazer isso de tal modo que $\Gamma$ prove os fatos pertinentes;
+portanto, precisamos mostrar que essas propriedades são codificadas por
+propriedades !!{decidable} dos números naturais e que as operações
+correspondem a funções computáveis sobre os números naturais. Isso se
+chama ``aritmetização da sintaxe''.
 
-Before we investigate how syntax can be arithmetized, however, we will
-consider the condition that~$\Gamma$ is ``strong enough,'' O.s.\@,
-!!{represents} all computable functions and !!{decidable} relations.
-This requires that we give a precise definition of ``computable.''
-This can be done in a number of ways, p.ex., via the model of Turing
-machines, or as those functions computable by programs in some
-general-purpose programming language.  Since our aim is to
-!!{represents}s these functions and relations in a theory in the
-language~$\Lang L_A$, however, it is best to pick a simple definition
-of computability of just numerical functions.  This is the notion of
-\emph{recursive function}.  So we will first discuss the recursive
-functions. We will then show that $\Th{Q}$ already !!{represents} all
-recursive functions and relations.  This will allow us to apply the
-incompleteness theorem to specific theories such as $\Th{Q}$ and
-$\Th{PA}$, since we will have established that these are examples of
-theories that are ``strong enough.''
+Antes de investigar como a sintaxe pode ser aritmetizada, porém,
+consideraremos a condição de que~$\Gamma$ seja ``forte o suficiente'',
+O.s.\@, de que !!{represents} todas as funções computáveis e relações
+!!{decidable}. Isso exige uma definição precisa de ``computável''. Ela
+pode ser dada de várias maneiras, p.ex., pelo modelo das máquinas
+de Turing ou como as funções computáveis por programas em alguma
+linguagem de programação de uso geral. Contudo, como nosso objetivo é
+!!{represents} essas funções e relações em uma teoria na
+linguagem~$\Lang L_A$, convém escolher uma definição simples de
+computabilidade apenas para funções numéricas. Trata-se da noção de
+\emph{função recursiva}. Assim, discutiremos primeiro as funções
+recursivas. Em seguida, mostraremos que $\Th{Q}$ já !!{represents}
+todas as funções e relações recursivas. Isso nos permitirá aplicar o
+teorema da incompletude a teorias específicas, como $\Th{Q}$ e
+$\Th{PA}$, pois teremos estabelecido que elas são exemplos de teorias
+``fortes o suficiente''.
 
-The end result of the arithmetization of syntax is
-!!a{formula} $\OProv[\Gamma](x)$ which, via the coding of !!{formula}s
-as numbers, expresses provability from the axioms of~$\Gamma$.
-Specifically, if $!A$ is coded by the number~$n$, and $\Gamma \Proves
-!A$, then $\Gamma \Proves \Prov[\Gamma](\num{n})$.  This ``provability
-predicate'' for $\Gamma$ allows us also to express, in a certain
-sense, the consistency of $\Gamma$ as !!a{sentence} of~$\Lang L_A$:
-let the ``consistency statement'' for~$\Gamma$ be the !!{sentence}
-$\lnot \Prov[\Gamma](\num{n})$, where we take $n$ to be the code of a
-contradiction, p.ex., of~$\lfalse$.  The second incompleteness theorem
-states that consistent !!{axiomatizable} theories also do not prove
-their own consistency statements.  The conditions required for this
-theorem to apply are a bit more stringent than just that the theory
-represents all computable functions and !!{decidable} relations, but
-we will show that $\Th{PA}$ satisfies them.
+O resultado final da aritmetização da sintaxe é !!a{formula}
+$\OProv[\Gamma](x)$ que, mediante a codificação de !!{formula}s como
+números, expressa a demonstrabilidade a partir dos axiomas
+de~$\Gamma$. Mais especificamente, se $!A$ é codificada pelo
+número~$n$ e $\Gamma \Proves !A$, então
+$\Gamma \Proves \Prov[\Gamma](\num{n})$. Esse ``predicado de
+demonstrabilidade'' de $\Gamma$ também nos permite expressar, em certo
+sentido, a consistência de $\Gamma$ como !!a{sentence} de~$\Lang L_A$:
+seja a ``afirmação de consistência'' de~$\Gamma$ a !!{sentence}
+$\lnot \Prov[\Gamma](\num{n})$, na qual tomamos $n$ como o código de
+uma contradição, p.ex., de~$\lfalse$. O segundo teorema da
+incompletude afirma que teorias consistentes e !!{axiomatizable}
+também não provam suas próprias afirmações de consistência. As
+condições necessárias para que esse teorema se aplique são um pouco
+mais exigentes do que simplesmente a teoria representar todas as
+funções computáveis e relações !!{decidable}, mas mostraremos que
+$\Th{PA}$ as satisfaz.
 
 \end{document}

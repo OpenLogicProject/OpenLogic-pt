@@ -6,132 +6,135 @@
 
 \begin{document}
 
-\olfileid{inc}{int}{dec}
+\olfileid[pt]{inc}{int}{dec}
 
-\olsection{Undecidability and Incompleteness}
+\olsection{Indecidibilidade e incompletude}
 
-G\"odel's proof of the incompleteness theorems require arithmetization
-of syntax. But even without that we can obtain some nice results just
-on the assumption that a theory !!{represents} all !!{decidable}
-relations.  The proof is a diagonal argument similar to the proof of
-the undecidability of the halting problem.
+A prova dos teoremas da incompletude de G\"odel exige a aritmetização
+da sintaxe. Mas, mesmo sem ela, podemos obter alguns resultados
+interessantes apenas com a hipótese de que uma teoria !!{represents}
+todas as relações !!{decidable}. A prova é um argumento diagonal
+semelhante à prova da indecidibilidade do problema da parada.
 
 \begin{thm}
-If $\Gamma$ is a consistent theory that !!{represents} every
-!!{decidable} relation, then $\Gamma$ is not !!{decidable}.
+Se $\Gamma$ é uma teoria consistente que !!{represents} toda relação
+!!{decidable}, então $\Gamma$ não é !!{decidable}.
 \end{thm}
 
 \begin{proof}
-Suppose $\Gamma$ were !!{decidable}. We show that if $\Gamma$
-!!{represents} every !!{decidable} relation, it must be inconsistent.
+Suponha que $\Gamma$ fosse !!{decidable}. Mostraremos que, se $\Gamma$
+!!{represents} toda relação !!{decidable}, então ela deve ser
+inconsistente.
 
-!!^{decidable} properties (one-place relations) are represented by
-!!{formula}s with one free variable. Let $!A_0(x)$, $!A_1(x)$, \dots,
-be a computable enumeration of all such !!{formula}s.  Now consider
-the following set $D \subseteq \Nat$:
+Propriedades !!^{decidable} (relações de um lugar) são representadas
+por !!{formula}s com uma variável livre. Seja $!A_0(x)$, $!A_1(x)$,
+\dots, uma enumeração computável de todas essas !!{formula}s. Considere
+agora o seguinte conjunto $D \subseteq \Nat$:
 \[
 D = \Setabs{n}{\Gamma \Proves \lnot !A_n(\num{n})}
 \]
-The set $D$ is !!{decidable}, since we can test if $n \in D$ by first
-computing $!A_n(x)$, and from this $\lnot !A_n(\num{n})$. Obviously,
-substituting the term $\num{n}$ for every free occurrence of $x$ in
-$!A_n(x)$ and prefixing $!A(\num{n})$ by $\lnot$ is a mechanical
-matter.  By assumption, $\Gamma$ is !!{decidable}, so we can test if
-$\lnot !A(\num{n}) \in \Gamma$. If it is, $n \in D$, and if it isn't,
-$n \notin D$. So $D$ is likewise !!{decidable}.
+O conjunto $D$ é !!{decidable}, pois podemos testar se $n \in D$
+computando primeiro $!A_n(x)$ e, a partir dela,
+$\lnot !A_n(\num{n})$. Evidentemente, substituir o termo $\num{n}$ por
+toda ocorrência livre de $x$ em $!A_n(x)$ e prefixar
+$!A(\num{n})$ por $\lnot$ é uma operação mecânica. Por hipótese,
+$\Gamma$ é !!{decidable}, de modo que podemos testar se
+$\lnot !A(\num{n}) \in \Gamma$. Se pertencer, $n \in D$; se não
+pertencer, $n \notin D$. Logo, $D$ também é !!{decidable}.
 
-Since $\Gamma$ !!{represents} all !!{decidable} properties, it
-!!{represents}~$D$.  And the !!{formula}s which !!{represents}s $D$
-in~$\Gamma$ are all among $!A_0(x)$, $!A_1(x)$, \dots. So let $d$ be a
-number such that $!A_d(x)$ !!{represents} $D$ in~$\Gamma$.  If $d
-\notin D$, then, since $!A_d(x)$ !!{represents}~$D$, $\Gamma \Proves
-\lnot !A_d(\num{d})$. But that means that $d$ meets the defining
-condition of~$D$, and so $d \in D$. This contradicts $d \notin D$. So
-by indirect proof, $d \in D$.
+Como $\Gamma$ !!{represents} todas as propriedades !!{decidable}, ela
+!!{represents}~$D$. E as !!{formula}s que !!{represents} $D$
+em~$\Gamma$ estão todas entre $!A_0(x)$, $!A_1(x)$, \dots. Seja, então,
+$d$ um número tal que $!A_d(x)$ !!{represents} $D$ em~$\Gamma$. Se
+$d \notin D$, então, como $!A_d(x)$ !!{represents}~$D$,
+$\Gamma \Proves \lnot !A_d(\num{d})$. Mas isso significa que $d$
+satisfaz a condição definidora de~$D$ e, portanto, $d \in D$. Isso
+contradiz $d \notin D$. Logo, por prova indireta, $d \in D$.
 
-Since $d \in D$, by the definition of~$D$, $\Gamma \Proves \lnot
-!A_d(\num{d})$. On the other hand, since $!A_d(x)$ !!{represents}~$D$
-in $\Gamma$, $\Gamma \Proves !A_d(\num{d})$. Hence, $\Gamma$ is
-inconsistent.
+Como $d \in D$, pela definição de~$D$, $\Gamma \Proves \lnot
+!A_d(\num{d})$. Por outro lado, como $!A_d(x)$ !!{represents}~$D$
+em $\Gamma$, $\Gamma \Proves !A_d(\num{d})$. Portanto, $\Gamma$ é
+inconsistente.
 \end{proof}
 
 \begin{explain}
-The preceding theorem shows that no consistent theory that
-!!{represents} all !!{decidable} relations can be !!{decidable}. We
-will show that $\Th{Q}$ does !!{represents}s all !!{decidable}
-relations; this means that all theories that include $\Th{Q}$, such as
-$\Th{PA}$ and $\Th{TA}$, also do, and hence also are not
-!!{decidable}. (Since all these theories are true in the standard
-model, they are all consistent.)
+O teorema anterior mostra que nenhuma teoria consistente que
+!!{represents} todas as relações !!{decidable} pode ser !!{decidable}.
+Mostraremos que $\Th{Q}$ de fato !!{represents} todas as relações
+!!{decidable}; isso significa que todas as teorias que incluem
+$\Th{Q}$, como $\Th{PA}$ e $\Th{TA}$, também as representam e, por
+conseguinte, tampouco são !!{decidable}. (Como todas essas teorias são
+verdadeiras no modelo padrão, todas são consistentes.)
 
-We can also use this result to obtain a weak version of the first
-incompleteness theorem.  Any theory that is !!{axiomatizable} and
-!!{complete} is !!{decidable}.  Consistent theories that are
-!!{axiomatizable} and !!{represents}s all !!{decidable} properties
-then cannot be !!{complete}.
+Também podemos usar esse resultado para obter uma versão fraca do
+primeiro teorema da incompletude. Toda teoria !!{axiomatizable} e
+!!{complete} é !!{decidable}. Assim, teorias consistentes que são
+!!{axiomatizable} e !!{represents} todas as propriedades !!{decidable}
+não podem ser !!{complete}.
 \end{explain}
 
 \begin{thm}
-If $\Gamma$ is !!{axiomatizable} and !!{complete} it is !!{decidable}.
+Se $\Gamma$ é !!{axiomatizable} e !!{complete}, então é !!{decidable}.
 \end{thm}
 
 \begin{proof}
-Any inconsistent theory is !!{decidable}, since inconsistent theories
-contain all !!{sentence}s, so the answer to the question ``is $!A \in
-\Gamma$'' is always ``yes,'' O.s.\@, can be decided.
+Toda teoria inconsistente é !!{decidable}, pois teorias inconsistentes
+contêm todas as !!{sentence}s; assim, a resposta à pergunta ``$!A \in
+\Gamma$?'' é sempre ``sim'', O.s.\@, pode ser decidida.
 
-So suppose $\Gamma$ is consistent, and furthermore is
-!!{axiomatizable}, and !!{complete}. Since $\Gamma$ is
-!!{axiomatizable}, it is !!{computably enumerable}. For we can
-enumerate all the correct !!{derivation}s from the axioms of~$\Gamma$
-by a computable function. From a correct !!{derivation} we can compute
-the !!{sentence} it !!{derive}s, and so together there is a computable
-function that enumerates all theorems of~$\Gamma$.  A !!{sentence} is
-a theorem of~$\Gamma$ iff $\lnot !A$ is not a theorem, since $\Gamma$
-is consistent and !!{complete}.  We can therefore decide if $!A \in
-\Gamma$ as follows. Enumerate all theorems of $\Gamma$. When $!A$
-appears on this list, we know that $\Gamma \Proves !A$. When $\lnot
-!A$ appears on this list, we know that $\Gamma \Proves/ !A$.  Since
-$\Gamma$ is !!{complete}, one of these cases eventually obtains, so
-the procedure eventually produces an answer.
+Suponha, então, que $\Gamma$ seja consistente e, além disso,
+!!{axiomatizable} e !!{complete}. Como $\Gamma$ é !!{axiomatizable},
+ela é !!{computably enumerable}. Com efeito, podemos enumerar por uma
+função computável todas as !!{derivation}s corretas a partir dos
+axiomas de~$\Gamma$. De uma !!{derivation} correta podemos computar a
+!!{sentence} que ela !!{derive}; conjuntamente, portanto, há uma função
+computável que enumera todos os teoremas de~$\Gamma$. Uma !!{sentence}
+é teorema de~$\Gamma$ sse $\lnot !A$ não é teorema, pois $\Gamma$
+é consistente e !!{complete}. Podemos, então, decidir se
+$!A \in \Gamma$ da seguinte maneira. Enumeramos todos os teoremas de
+$\Gamma$. Quando $!A$ aparece nessa lista, sabemos que
+$\Gamma \Proves !A$. Quando $\lnot !A$ aparece nela, sabemos que
+$\Gamma \Proves/ !A$. Como $\Gamma$ é !!{complete}, um desses casos
+acabará ocorrendo e o procedimento acabará produzindo uma resposta.
 \end{proof}
 
 \begin{cor}
 \ollabel{cor:incompleteness}
-If $\Gamma$ is consistent, !!{axiomatizable}, and !!{represents} every
-!!{decidable} property, it is not !!{complete}.
+Se $\Gamma$ é consistente, !!{axiomatizable} e !!{represents} toda
+propriedade !!{decidable}, então não é !!{complete}.
 \end{cor}
 
 \begin{proof}
-If $\Gamma$ were !!{complete}, it would be !!{decidable} by the
-previous theorem (since it is !!{axiomatizable} and consistent). But
-since $\Gamma$ !!{represents} every !!{decidable} property, it is not
-!!{decidable}, by the first theorem.
+Se $\Gamma$ fosse !!{complete}, seria !!{decidable} pelo teorema
+anterior (pois é !!{axiomatizable} e consistente). Mas, como $\Gamma$
+!!{represents} toda propriedade !!{decidable}, ela não é !!{decidable},
+pelo primeiro teorema.
 \end{proof}
 
 \begin{prob}
-Show that $\Th{TA} = \Setabs{!A}{\Sat{N}{!A}}$ is not
-!!{axiomatizable}. You may assume that $\Th{TA}$ represents all
-decidable properties.
+Mostre que $\Th{TA} = \Setabs{!A}{\Sat{N}{!A}}$ não é
+!!{axiomatizable}. Você pode supor que $\Th{TA}$ representa todas as
+propriedades decidíveis.
 \end{prob}
 
-Once we have established that, p.ex., $\Th{Q}$, !!{represents} all
-!!{decidable} properties, the corollary tells us that $\Th{Q}$ must be
-incomplete. However, its proof does not provide an example of an
-independent !!{sentence}; it merely shows that such !!a{sentence}
-must exist. For this, we have to arithmetize syntax and follow
-G\"odel's original proof idea.  And of course, we still have to show
-the first claim, namely that $\Th{Q}$ does, in fact, !!{represents}s
-all !!{decidable} properties.
+Uma vez estabelecido que, p.ex., $\Th{Q}$ !!{represents} todas
+as propriedades !!{decidable}, o corolário nos diz que $\Th{Q}$ deve
+ser incompleta. Contudo, sua prova não fornece um exemplo de
+!!{sentence} independente; apenas mostra que tal !!a{sentence} deve
+existir. Para obtê-lo, precisamos aritmetizar a sintaxe e seguir a ideia
+original da prova de G\"odel. E, naturalmente, ainda precisamos mostrar
+a primeira afirmação: que $\Th{Q}$ de fato !!{represents} todas as
+propriedades !!{decidable}.
 
-It should be noted that not every \emph{interesting} theory is
-incomplete or undecidable. There are many theories that are
-sufficiently strong to describe interesting mathematical facts that do
-not satisify the conditions of G\"odel's result. For instance,
-$\Th{Pres} = \Setabs{!A \in \Lang{L_{A^+}}}{\Sat{N}{!A}}$, the set of
-!!{sentence}s of the language of arithmetic without~$\times$ true in
-the standard model, is both complete and decidable. This theory is
-called Presburger arithmetic, and proves all the truths about natural
-numbers that can be formulated just with $\Obj{0}$, $\prime$, and~$+$.
+Convém observar que nem toda teoria \emph{interessante} é incompleta ou
+indecidível. Há muitas teorias suficientemente fortes para descrever
+fatos matemáticos interessantes que não satisfazem as condições do
+resultado de G\"odel. Por exemplo,
+$\Th{Pres} = \Setabs{!A \in \Lang{L_{A^+}}}{\Sat{N}{!A}}$, o conjunto
+das !!{sentence}s da linguagem da aritmética sem~$\times$ que são
+verdadeiras no modelo padrão, é completo e decidível. Essa teoria é
+chamada aritmética de Presburger e prova todas as verdades sobre os
+números naturais que podem ser formuladas apenas com $\Obj{0}$,
+$\prime$ e~$+$.
 
 \end{document}
