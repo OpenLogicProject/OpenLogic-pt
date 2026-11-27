@@ -6,118 +6,118 @@
 
 \begin{document}
 
-\olfileid{pl}{prp}{com}
+\olfileid[pt]{pl}{prp}{com}
 
-\olsection{Completeness of Propositional Logic}
+\olsection{Completude da lógica proposicional}
 
 \begin{defn}
 \ollabel{def:MaxCon}
-A set $\Gamma$ of !!{formula}s is \emph{maximally consistent} if it is
-consistent and if $\Delta$ is a consistent set such that $\Gamma
-\subseteq \Delta$ then $\Gamma = \Delta$.
+Um conjunto $\Gamma$ de !!{formula}s é \emph{maximalmente consistente}
+se é consistente e, sempre que $\Delta$ é um conjunto consistente tal
+que $\Gamma \subseteq \Delta$, temos $\Gamma = \Delta$.
 \end{defn}
 
-\begin{lem}[Truth Lemma]
+\begin{lem}[Lema da verdade]
   \ollabel{lem:truth}
-Let $\Gamma$ be maximally consistent; then:
+Seja $\Gamma$ maximalmente consistente; então:
 \begin{enumerate}
-\item \ollabel{lem:truth-1} $!A \in \Gamma$ if and only if $\lnot !A
+\item \ollabel{lem:truth-1} $!A \in \Gamma$ se, e somente se, $\lnot !A
   \notin \Gamma$;
-\item \ollabel{lem:truth-2} $\Gamma \Proves !A$ if and only if $!A \in \Gamma$; 
-\item \ollabel{lem:truth-3} $!A \lif !B \in \Gamma$ if and only if
-  either $!A \notin \Gamma$ or $!B \in \Gamma$.
+\item \ollabel{lem:truth-2} $\Gamma \Proves !A$ se, e somente se, $!A \in \Gamma$; 
+\item \ollabel{lem:truth-3} $!A \lif !B \in \Gamma$ se, e somente se,
+  $!A \notin \Gamma$ ou $!B \in \Gamma$.
 \end{enumerate}
 \end{lem}
 
 \begin{proof}
 \begin{enumerate}
-\item Suppose $!A \in \Gamma$. If also $\lnot !A \in \Gamma$, then
-  $\Gamma$ is inconsistent; and if neither $!A$ nor $\lnot!A$ is in
-  $\Gamma$ then by \olref[axd]{prop:phi} one of $\Gamma\cup\{!A\}$ and
-  $\Gamma \cup \{\lnot !A\}$ is consistent, which means that $\Gamma$
-  is not maximal. The other direction is proved the same way.
-\item If $!A \in \Gamma$ then of course $\Gamma \Proves !A$.  On the
-  other hand, suppose $\Gamma \Proves !A$. If $!A \notin \Gamma$ then,
-  by \olref{lem:truth-1}, $\lnot !A \in \Gamma$.  So $\Gamma \Proves
-  !A$ and $\Gamma \Proves \lnot !A$, a contradiction.
-\item Exercise.
+\item Suponha $!A \in \Gamma$. Se também $\lnot !A \in \Gamma$, então
+  $\Gamma$ é inconsistente; e, se nem $!A$ nem $\lnot!A$ pertencem a
+  $\Gamma$, então, por \olref[axd]{prop:phi}, um dos conjuntos
+  $\Gamma\cup\{!A\}$ e $\Gamma \cup \{\lnot !A\}$ é consistente, o que
+  significa que $\Gamma$ não é maximal. A outra direção é demonstrada
+  da mesma maneira.
+\item Se $!A \in \Gamma$, então, naturalmente, $\Gamma \Proves !A$.
+  Por outro lado, suponha $\Gamma \Proves !A$. Se $!A \notin \Gamma$,
+  então, por \olref{lem:truth-1}, $\lnot !A \in \Gamma$. Logo,
+  $\Gamma \Proves !A$ e $\Gamma \Proves \lnot !A$, uma contradição.
+\item Exercício.
 \end{enumerate}
 \end{proof}
 
-The left-to-right direction of \olref{lem:truth}\olref{lem:truth-2} shows that
-$\Gamma$ is \emph{deductively closed}, O.s.\@, if $\Gamma \Proves !A$ then $!A
-\in \Gamma$ for all~$!A$.
+A direção da esquerda para a direita de \olref{lem:truth}\olref{lem:truth-2}
+mostra que $\Gamma$ é \emph{dedutivamente fechado}, O.s.\@, se
+$\Gamma \Proves !A$, então $!A \in \Gamma$ para todo~$!A$.
 
 \begin{prob}
-  Complete the proof of \olref{lem:truth}.
+  Complete a demonstração de \olref{lem:truth}.
 \end{prob}
 
-\begin{thm}[Completeness] 
+\begin{thm}[Completude] 
 \ollabel{thm:completeness} 
-If $\Gamma$ is consistent then $\Gamma$ is satisfiable.
+Se $\Gamma$ é consistente, então $\Gamma$ é satisfatível.
 \end{thm}
 
 \begin{proof}
-Let $!A_0$, $!A_1$,~\dots be an exhaustive listing of all the
-!!{formula}s of the language. We recursively define an increasing
-sequence of sets of !!{formula}s $\Gamma_0$, $\Gamma_1$,~\dots, by
-putting:
+Seja $!A_0$, $!A_1$,~\dots uma enumeração exaustiva de todas as
+!!{formula}s da linguagem. Definimos recursivamente uma sequência
+crescente de conjuntos de !!{formula}s $\Gamma_0$, $\Gamma_1$,~\dots,
+estabelecendo:
 \begin{align*}
 \Gamma_0 & = \Gamma\\
 \Gamma_{n+1} &  =
 \begin{cases}
-  \Gamma_n \cup \{!A_n\} & \text{if $\Gamma_n \cup \{!A_n\}$ is
-    consistent;}\\
-  \Gamma_n \cup \{\lnot !A_n\} & \text{otherwise}.
+  \Gamma_n \cup \{!A_n\} & \text{se $\Gamma_n \cup \{!A_n\}$ é
+    consistente;}\\
+  \Gamma_n \cup \{\lnot !A_n\} & \text{caso contrário}.
 \end{cases}
 \end{align*}
-Then define:
+Defina, então:
 \[
 \Gamma^* = \bigcup_{0\le n}\Gamma_n.
 \]
-The proof now proceeds by establishing, in turn, the following
-facts:
+A demonstração prossegue estabelecendo, na ordem, os seguintes fatos:
 \begin{enumerate}
-\item For each $n$, the set $\Gamma_n$ is consistent (by induction on
-  $n$, using \olref[axd]{prop:phi});
-\item $\Gamma^*$ is consistent;
-\item $\Gamma^*$ is maximal.
+\item Para cada $n$, o conjunto $\Gamma_n$ é consistente (por indução
+  sobre $n$, usando \olref[axd]{prop:phi});
+\item $\Gamma^*$ é consistente;
+\item $\Gamma^*$ é maximal.
 \end{enumerate}
-Then define a valuation $v$ by putting $v(p_i) = \True$ if and
-only if $p_i \in \Gamma^*$. By induction on $!A$ it is then shown that
-membership in $\Gamma^*$ coincides with truth according to $v$ also
-for more complex !!{sentence}s: $\overline{v}(!A) = \True$ if and
-only if $!A \in \Gamma^*$. In particular, $v$ satisfies $\Gamma^*$, and
-since $\Gamma \subseteq \Gamma^*$, also $\Gamma$ is satisfiable, as
-desired.
+Defina uma valoração $v$ estabelecendo $v(p_i) = \True$ se, e somente
+se, $p_i \in \Gamma^*$. Por indução sobre $!A$, mostra-se então que a
+pertença a $\Gamma^*$ coincide com a verdade segundo $v$ também para
+!!{sentence}s mais complexas: $\overline{v}(!A) = \True$ se, e somente
+se, $!A \in \Gamma^*$. Em particular, $v$ satisfaz $\Gamma^*$ e, como
+$\Gamma \subseteq \Gamma^*$, $\Gamma$ também é satisfatível, como
+queríamos.
 \end{proof}
 
 \begin{cor}
-If $\Gamma \Entails !A$ then $\Gamma \Proves !A$.
+Se $\Gamma \Entails !A$, então $\Gamma \Proves !A$.
 \end{cor}
 
 \begin{proof}
-If $\Gamma\Proves/ !A$ then $\Gamma \cup \{\lnot !A\}$ is consistent,
-by \olref[axd]{prop:prov-incons}. So by the completeness theorem, $\Gamma \cup
-\{\lnot !A\}$ is satisfiable, and $\Gamma \Entails/ !A$.
+Se $\Gamma\Proves/ !A$, então $\Gamma \cup \{\lnot !A\}$ é consistente,
+por \olref[axd]{prop:prov-incons}. Portanto, pelo teorema da completude,
+$\Gamma \cup \{\lnot !A\}$ é satisfatível, e $\Gamma \Entails/ !A$.
 \end{proof}
 
-\begin{prop}[Compactness Theorem]
+\begin{prop}[Teorema da compacidade]
 \ollabel{prop:compactness}
-$\Gamma$ is satisfiable if and only if every \emph{finite} subset
-$\Gamma_0$ of $\Gamma$ is satisfiable.
+$\Gamma$ é satisfatível se, e somente se, todo subconjunto \emph{finito}
+$\Gamma_0$ de $\Gamma$ é satisfatível.
 \end{prop}
 
 \begin{proof}
-$\Gamma$ is unsatisfiable if and only if it is inconsistent, if and
-  only if some finite subset $\Gamma_0$ of $\Gamma$ is inconsistent,
-  if and only if some finite subset $\Gamma_0$ of $\Gamma$ is
-  unsatisfiable.
+$\Gamma$ é insatisfatível se, e somente se, é inconsistente; se, e
+  somente se, algum subconjunto finito $\Gamma_0$ de $\Gamma$ é
+  inconsistente; se, e somente se, algum subconjunto finito $\Gamma_0$
+  de $\Gamma$ é insatisfatível.
 \end{proof}
 
 \begin{cor}
-$\Gamma \Entails !A$ if and only if for some finite subset
-$\Gamma_0$ of $\Gamma$, $\Gamma_0 \Entails !A$.
+$\Gamma \Entails !A$ se, e somente se, para algum subconjunto finito
+$\Gamma_0$ de $\Gamma$, $\Gamma_0 \Entails !A$.
 \end{cor}
 
 \end{document}

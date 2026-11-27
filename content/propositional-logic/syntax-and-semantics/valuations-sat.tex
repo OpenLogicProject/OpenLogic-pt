@@ -6,58 +6,58 @@
 
 \begin{document}
 
-\olfileid{pl}{syn}{val}
+\olfileid[pt]{pl}{syn}{val}
 
-\olsection{\usetoken{P}{valuation} and Satisfaction}
+\olsection{\usetoken{P}{valuation} e Satisfação}
 
 \begin{defn}[!!^{valuation}s]
-Let $\{\True, \False\}$ be the set of the two truth values, ``true''
-and ``false.'' A \emph{!!{valuation}} for $\Lang{L_0}$ is a
-function~$\pAssign{v}$ assigning either $\True$ or $\False$ to the
-!!{propositional variable}s of the language, O.s.\@, $\pAssign{v} \colon
+Seja $\{\True, \False\}$ o conjunto dos dois valores de verdade,
+``verdadeiro'' e ``falso''. Uma \emph{!!{valuation}} para $\Lang{L_0}$ é
+uma função~$\pAssign{v}$ que atribui $\True$ ou $\False$ às
+!!{propositional variable}s da linguagem, O.s.\@, $\pAssign{v} \colon
 \PVar \to \{\True, \False \}$.
 \end{defn}
 
 \begin{defn}
-  Given !!a{valuation}~$\pAssign{v}$, define the evaluation function
-  $\pValue{v} \colon \Frm[L_0] \to \{\True, \False \}$ inductively by:
+  Dada !!a{valuation}~$\pAssign{v}$, defina indutivamente a função de
+  avaliação $\pValue{v} \colon \Frm[L_0] \to \{\True, \False \}$ por:
   \begin{align*}
     \iftag{prvFalse}{\pValue{v}(\lfalse) & = \False; \\}{}
     \iftag{prvTrue}{\pValue{v}(\ltrue) & = \True; \\}{}
     \pValue{v}(\Obj p_n) & = \pAssign{v}(\Obj p_n); \\
     \iftag{prvNot}{\pValue{v}(\lnot !A) & = \begin{cases}
-        \True & \text{if } \pValue{v}(!A) = \False;\\
-        \False & \text{otherwise.}
+        \True & \text{se } \pValue{v}(!A) = \False;\\
+        \False & \text{caso contrário.}
       \end{cases} \\ }{}
     \iftag{prvAnd}{\pValue{v}(!A \land !B) & = \begin{cases}
         \True &
-        \text{if $\pValue{v}(!A) = \True$ and $\pValue{v}(!B) = \True$;}\\
+        \text{se $\pValue{v}(!A) = \True$ e $\pValue{v}(!B) = \True$;}\\
         \False &
-        \text{if $\pValue{v}(!A) = \False$ or $\pValue{v}(!B) = \False$}.
+        \text{se $\pValue{v}(!A) = \False$ ou $\pValue{v}(!B) = \False$}.
       \end{cases}\\}{}
     \iftag{prvOr}{\pValue{v}(!A \lor !B) & = \begin{cases}
         \True &
-        \text{if $\pValue{v}(!A) = \True$ or $\pValue{v}(!B) = \True$;}\\
+        \text{se $\pValue{v}(!A) = \True$ ou $\pValue{v}(!B) = \True$;}\\
         \False &
-        \text{if $\pValue{v}(!A) = \False$ and $\pValue{v}(!B) = \False$}.
+        \text{se $\pValue{v}(!A) = \False$ e $\pValue{v}(!B) = \False$}.
       \end{cases}\\}{}
     \iftag{prvIf}{\pValue{v}(!A \lif !B) & = \begin{cases}
         \True &
-        \text{if $\pValue{v}(!A) = \False$ or $\pValue{v}(!B) = \True$;}\\
+        \text{se $\pValue{v}(!A) = \False$ ou $\pValue{v}(!B) = \True$;}\\
         \False &
-        \text{if $\pValue{v}(!A) = \True$ and $\pValue{v}(!B) = \False$}.
+        \text{se $\pValue{v}(!A) = \True$ e $\pValue{v}(!B) = \False$}.
       \end{cases}\\}{}
     \iftag{prvIff}{\pValue{v}(!A \liff !B) & = \begin{cases}
         \True &
-        \text{if $\pValue{v}(!A) = \pValue{v}(!B)$;}\\
+        \text{se $\pValue{v}(!A) = \pValue{v}(!B)$;}\\
         \False &
-        \text{if $\pValue{v}(!A) \neq \pValue{v}(!B)$}.
+        \text{se $\pValue{v}(!A) \neq \pValue{v}(!B)$}.
       \end{cases}}{}
 \end{align*}
 \end{defn}
 
 \begin{explain}
-The clauses correspond to the following truth tables:
+As cláusulas correspondem às seguintes tabelas de verdade:
 \begin{center}
 \iftag{prvNot}{
   \begin{tabular}{|c||c|} \hline
@@ -117,37 +117,37 @@ The clauses correspond to the following truth tables:
 \end{explain}
 
 \begin{prob}
-Consider adding to $\Lang{L_0}$ a ternary connective $\diamondsuit$
-with evaluation given by
+Considere acrescentar a $\Lang{L_0}$ um conectivo ternário $\diamondsuit$
+com avaliação dada por
 \begin{gather*}
   \pValue{v}(\diamondsuit( !A , !B , !C ) ) = \begin{cases}
     \pValue{v}( !B ) &
-    \text{if $\pValue{v}(!A) = \True$;}\\
+    \text{se $\pValue{v}(!A) = \True$;}\\
     \pValue{v}( !C ) &
-    \text{if $\pValue{v}(!A) = \False $}.
+    \text{se $\pValue{v}(!A) = \False $}.
   \end{cases}
 \end{gather*}
-Write down the truth table for this connective.
+Escreva a tabela de verdade desse conectivo.
 \end{prob}
 
-\begin{thm}[Local Determination]
-\ollabel{thm:LocalDetermination} Suppose that $\pAssign{v_1}$ and
-$\pAssign{v_2}$ are !!{valuation}s that agree on the !!{propositional
-variable}s occurring in $!A$, O.s.\@, $\pAssign{v_1}(\Obj p_n) =
-\pAssign{v_2}(\Obj p_n)$ whenever $\Obj p_n$ occurs in some
-!!{formula}~$!A$. Then $\pValue{v_1}$ and $\pValue{v_2}$ also agree
-on~$!A$, O.s.\@, $\pValue{v_1}(!A) = \pValue{v_2}(!A)$.
+\begin{thm}[Determinação Local]
+\ollabel{thm:LocalDetermination} Suponha que $\pAssign{v_1}$ e
+$\pAssign{v_2}$ sejam !!{valuation}s que coincidam nas !!{propositional
+variable}s que ocorrem em $!A$, O.s.\@, $\pAssign{v_1}(\Obj p_n) =
+\pAssign{v_2}(\Obj p_n)$ sempre que $\Obj p_n$ ocorrer em alguma
+!!{formula}~$!A$. Então $\pValue{v_1}$ e $\pValue{v_2}$ também coincidem
+em~$!A$, O.s.\@, $\pValue{v_1}(!A) = \pValue{v_2}(!A)$.
 \end{thm}
 
 \begin{proof}
-By induction on $!A$.
+Por indução sobre $!A$.
 \end{proof}
 
-\begin{defn}[Satisfaction]
-\ollabel{defn:satisfaction} We can inductively define the notion of
-  \emph{satisfaction of !!a{formula}~$!A$ by
-  !!a{valuation}~$\pAssign{v}$}, $\pSat{v}{!A}$, as follows.
-  (We write $\pSat/{v}{!A}$ to mean ``not $\pSat{v}{!A}$.'')
+\begin{defn}[Satisfação]
+\ollabel{defn:satisfaction} Podemos definir indutivamente a noção de
+  \emph{satisfação de !!a{formula}~$!A$ por
+  !!a{valuation}~$\pAssign{v}$}, $\pSat{v}{!A}$, da seguinte maneira.
+  (Escrevemos $\pSat/{v}{!A}$ com o significado de ``não $\pSat{v}{!A}$.'')
 \begin{enumerate}
 \tagitem{prvFalse}{%
   \indcase{!A}{\lfalse}{$\pSat/{v}{\indfrm}$.}}{}
@@ -156,43 +156,43 @@ By induction on $!A$.
   \indcase{!A}{\ltrue}{$\pSat{v}{\indfrm}$.}}{}
 
 \item \indcase{!A}{\Obj p_i}{$\pSat{v}{\indfrm}$
-  iff $\pAssign{v}(\Obj p_i) = \True$.}
+  sse $\pAssign{v}(\Obj p_i) = \True$.}
 
 \tagitem{prvNot}{%
-  \indcase{!A}{\lnot !B}{$\pSat{v}{\indfrm}$ iff
+  \indcase{!A}{\lnot !B}{$\pSat{v}{\indfrm}$ sse
     $\pSat/{v}{!B}$.}}{}
 
 \tagitem{prvAnd}{%
-  \indcase{!A}{(!B \land !C)}{$\pSat{v}{\indfrm}$ iff $\pSat{v}{!B}$
-    and $\pSat{v}{!C}$.}}{}
+  \indcase{!A}{(!B \land !C)}{$\pSat{v}{\indfrm}$ sse $\pSat{v}{!B}$
+    e $\pSat{v}{!C}$.}}{}
 
 \tagitem{prvOr}{%
-  \indcase{!A}{(!B \lor !C)}{$\pSat{v}{\indfrm}$ iff
-    $\pSat{v}{!B}$ or $\pSat{v}{!C}$ (or both).}}{}
+  \indcase{!A}{(!B \lor !C)}{$\pSat{v}{\indfrm}$ sse
+    $\pSat{v}{!B}$ ou $\pSat{v}{!C}$ (ou ambos).}}{}
 
 \tagitem{prvIf}{%
-  \indcase{!A}{(!B \lif !C)}{$\pSat{v}{\indfrm}$ iff $\pSat/{v}{!B}$
-    or $\pSat{v}{!C}$ (or both).}}{}
+  \indcase{!A}{(!B \lif !C)}{$\pSat{v}{\indfrm}$ sse $\pSat/{v}{!B}$
+    ou $\pSat{v}{!C}$ (ou ambos).}}{}
 
 \tagitem{prvIff}{%
-  \indcase{!A}{(!B \liff !C)}{$\pSat{v}{\indfrm}$ iff either both
-    $\pSat{v}{!B}$ and $\pSat{v}{!C}$, or neither $\pSat{v}{!B}$
-    nor $\pSat{v}{!C}$.}}{}
+  \indcase{!A}{(!B \liff !C)}{$\pSat{v}{\indfrm}$ sse ambos
+    $\pSat{v}{!B}$ e $\pSat{v}{!C}$, ou nem $\pSat{v}{!B}$
+    nem $\pSat{v}{!C}$.}}{}
 \end{enumerate}
-If $\Gamma$ is a set of !!{formula}s, $\pSat{v}{\Gamma}$ iff
-$\pSat{v}{!A}$ for every~$!A \in \Gamma$.
+Se $\Gamma$ é um conjunto de !!{formula}s, $\pSat{v}{\Gamma}$ sse
+$\pSat{v}{!A}$ para todo~$!A \in \Gamma$.
 \end{defn}
 
 \begin{prop}\ollabel{prop:sat-value}
-  $\pSat{v}{!A}$ iff $\pValue{v}(!A) = \True$.
+  $\pSat{v}{!A}$ sse $\pValue{v}(!A) = \True$.
 \end{prop}
 
 \begin{proof}
-  By induction on~$!A$.
+  Por indução sobre~$!A$.
 \end{proof}
 
 \begin{prob}
-  Prove \olref[pl][syn][val]{prop:sat-value}
+  Demonstre \olref[pl][syn][val]{prop:sat-value}
 \end{prob}
 
 \end{document}
