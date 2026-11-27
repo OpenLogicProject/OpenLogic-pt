@@ -6,67 +6,65 @@
 
 \begin{document}
 
-\olfileid{mod}{mar}{int}
-\section{Introduction}
+\olfileid[pt]{mod}{mar}{int}
+\section{Introdução}
 
-The \emph{standard model} of arithmetic is the
-!!{structure}~$\Struct{N}$ with $\Domain{N} = \Nat$ in which
-$\Obj{0}$, $\prime$, $+$, $\times$, and $<$ are interpreted as you
-would expect. That is, $\Obj{0}$ is $0$, $\prime$ is the successor
-function, $+$ is interpreted as addition and $\times$ as multiplication
-of the numbers in~$\Nat$. Specifically,
+O \emph{modelo padrão} da aritmética é a
+!!{structure}~$\Struct{N}$ com $\Domain{N} = \Nat$, na qual
+$\Obj{0}$, $\prime$, $+$, $\times$ e $<$ são interpretados como se
+espera. Isto é, $\Obj{0}$ é $0$, $\prime$ é a função sucessor,
+$+$ é interpretado como a adição e $\times$ como a multiplicação
+dos números em~$\Nat$. Mais precisamente,
 \begin{align*}
   \Assign{\Obj{0}}{N} & = 0\\
   \Assign{\prime}{N}(n) & = n + 1\\
   \Assign{+}{N}(n, m) & = n + m\\
   \Assign{\times}{N}(n, m) & = nm
 \end{align*}
-Of course, there are structures for $\Lang{L_A}$ that have domains
-other than~$\Nat$. For instance, we can take $\Struct{M}$ with domain
-$\Domain{M} = \{a\}^*$ (the finite sequences of the single
-symbol~$a$, O.s.\@, $\emptyset$, $a$, $aa$, $aaa$, \dots), and
-interpretations
+É claro que existem estruturas para $\Lang{L_A}$ cujos domínios são
+diferentes de~$\Nat$. Por exemplo, podemos tomar $\Struct{M}$ com domínio
+$\Domain{M} = \{a\}^*$ (as sequências finitas do único
+símbolo~$a$, O.s.\@, $\emptyset$, $a$, $aa$, $aaa$, \dots) e as
+interpretações
 \begin{align*}
   \Assign{\Obj{0}}{M} & = \emptyset\\
   \Assign{\prime}{M}(s) & = s \concat a\\
   \Assign{+}{M}(n, m) & = a^{n + m}\\
   \Assign{\times}{M}(n, m) & = a^{nm}
 \end{align*}
-These two structures are ``essentially the same'' in the sense that
-the only difference is the !!{element}s of the !!{domain}s but not how
-the !!{element}s of the !!{domain}s are related among each other by
-the interpretation functions. We say that the two !!{structure}s are
-\emph{isomorphic}.
+Essas duas estruturas são ``essencialmente iguais'', no sentido de que
+a única diferença está nos !!{element}s dos !!{domain}s, e não na maneira
+como os !!{element}s dos !!{domain}s se relacionam entre si por meio
+das funções de interpretação. Dizemos que as duas !!{structure}s são
+\emph{isomorfas}.
 
-It is an easy consequence of the compactness theorem that any theory
-true in~$\Struct{N}$ also has models that are not isomorphic
-to~$\Struct{N}$.  Such structures are called \emph{non-standard}.  The
-interesting thing about them is that while the !!{element}s of a
-standard model (O.s.\@, $\Struct{N}$, but also all !!{structure}s
-isomorphic to it) are exhausted by the values of the standard
-numerals~$\num{n}$, O.s.\@,
+É uma consequência simples do teorema da compacidade que toda teoria
+verdadeira em~$\Struct{N}$ também tem modelos que não são isomorfos
+a~$\Struct{N}$.  Tais estruturas são chamadas \emph{não padrão}.  O
+interessante é que, enquanto os !!{element}s de um modelo padrão (O.s.\@, $\Struct{N}$, mas também todas as !!{structure}s isomorfas a ele) se
+esgotam nos valores dos numerais padrão~$\num{n}$, O.s.\@,
 \[
 \Domain{N} = \Setabs{\Value{\num{n}}{N}}{n \in \Nat}
 \]
-that isn't the case in non-standard models: if $\Struct{M}$ is
-non-standard, then there is at least one $x \in \Domain{M}$ such that
-$x \neq \Value{\num{n}}{M}$ for all~$n$.
+isso não ocorre nos modelos não padrão: se $\Struct{M}$ é não padrão,
+então existe pelo menos um $x \in \Domain{M}$ tal que
+$x \neq \Value{\num{n}}{M}$ para todo~$n$.
 
-These non-standard elements are pretty neat: they are ``infinite
-natural numbers.'' But their existence also explains, in a sense, the
-incompleteness phenomena.  Consider an example, p.ex., the consistency
-statement for Peano arithmetic, $\OCon[\Th{PA}]$, O.s.\@, $\lnot
-\lexists[x][\OPrf[\Th{PA}](x, \gn{\lfalse})]$. Since $\Th{PA}$ neither
-proves $\OCon[\Th{PA}]$ nor $\lnot \OCon[\Th{PA}]$, either can be
-consistently added to $\Th{PA}$. Since $\Th{PA}$ is consistent,
-$\Sat{N}{\OCon[\Th{PA}]}$, and consequently $\Sat/{N}{\lnot
-  \OCon[\Th{PA}]}$.  So $\Struct{N}$ is \emph{not} a model of $\Th{PA}
-\cup \{\lnot \OCon[\Th{PA}]\}$, and all its models must be
-nonstandard. Models of $\Th{PA} \cup \{\lnot \OCon[\Th{PA}]\}$ must
-contain some !!{element} that serves as the witness that makes
-$\lexists[x][\OPrf[\Th{PA}](\gn{\lfalse})]$ true, O.s.\@, a G\"odel
-number of !!a{derivation} of a contradiction from~$\Th{PA}$.  Such
-!!a{element} can't be standard---since $\Th{PA} \Proves \lnot
-\OPrf[\Th{PA}](\num{n}, \gn{\lfalse})$ for every~$n$.
+Esses elementos não padrão são bastante interessantes: são ``números
+naturais infinitos.'' Mas sua existência também explica, em certo
+sentido, os fenômenos de incompletude.  Considere, p.ex., a
+sentença de consistência da aritmética de Peano, $\OCon[\Th{PA}]$, O.s.\@, $\lnot \lexists[x][\OPrf[\Th{PA}](x, \gn{\lfalse})]$. Como $\Th{PA}$
+não demonstra $\OCon[\Th{PA}]$ nem $\lnot \OCon[\Th{PA}]$, qualquer uma
+das duas pode ser adicionada consistentemente a $\Th{PA}$. Como
+$\Th{PA}$ é consistente, $\Sat{N}{\OCon[\Th{PA}]}$ e, consequentemente,
+$\Sat/{N}{\lnot \OCon[\Th{PA}]}$.  Portanto, $\Struct{N}$ \emph{não} é
+um modelo de $\Th{PA} \cup \{\lnot \OCon[\Th{PA}]\}$, e todos os seus
+modelos devem ser não padrão. Modelos de $\Th{PA} \cup \{\lnot
+\OCon[\Th{PA}]\}$ devem conter algum !!{element} que sirva como
+testemunha e torne $\lexists[x][\OPrf[\Th{PA}](\gn{\lfalse})]$
+verdadeira, O.s.\@, um número de G\"odel de !!a{derivation} de uma
+contradição a partir de~$\Th{PA}$.  Tal !!a{element} não pode ser
+padrão---pois $\Th{PA} \Proves \lnot
+\OPrf[\Th{PA}](\num{n}, \gn{\lfalse})$ para todo~$n$.
 
 \end{document}

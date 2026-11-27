@@ -6,44 +6,45 @@
 
 \begin{document}
 
-\olfileid{mod}{bas}{sub}
+\olfileid[pt]{mod}{bas}{sub}
 \olsection{Sub\printtoken{p}{structure}}
 
-The !!{domain} of !!a{structure}~$\Struct{M}$ may be a subset of
-another~$\Struct{M'}$.  But we should obviously only consider
-$\Struct{M}$ a ``part'' of $\Struct{M'}$ if not only $\Domain{M}
-\subseteq \Domain{M'}$, but $\Struct{M}$ and $\Struct{M'}$ ``agree''
-in how they interpret the symbols of the language at least on the
-shared part~$\Domain{M}$.
+O !!{domain} de !!a{structure}~$\Struct{M}$ pode ser um subconjunto do
+domínio de outra~$\Struct{M'}$.  Mas, obviamente, só devemos considerar
+$\Struct{M}$ uma ``parte'' de $\Struct{M'}$ se não apenas $\Domain{M}
+\subseteq \Domain{M'}$, mas também $\Struct{M}$ e $\Struct{M'}$
+``concordarem'' quanto à maneira como interpretam os símbolos da
+linguagem, ao menos na parte compartilhada~$\Domain{M}$.
 
 \begin{defn}
 \ollabel{defn:substructure}
-Given !!{structure}s $\Struct M$ and $\Struct M'$ for the same
-language~$\Lang L$, we say that $\Struct M$ is a \emph{sub!!{structure}}
-of $\Struct M'$, and $\Struct M'$ an \emph{extension} of $\Struct M$,
-written $\Struct M \substruct \Struct M'$, iff
+Dadas !!{structure}s $\Struct M$ e $\Struct M'$ para a mesma
+linguagem~$\Lang L$, dizemos que $\Struct M$ é uma
+\emph{sub!!{structure}} de $\Struct M'$ e que $\Struct M'$ é uma
+\emph{extensão} de $\Struct M$, escrito $\Struct M \substruct \Struct M'$,
+se, e somente se,
 \begin{enumerate}
 \item $\Domain{M} \subseteq \Domain{M'}$,
-\item For each constant $c \in \Lang L$, $\Assign{c}{M} =
+\item Para cada constante $c \in \Lang L$, $\Assign{c}{M} =
     \Assign{c}{M'}$;
-\item For each $n$-place !!{function} $f \in \Lang L$
+\item Para cada !!{function} $n$-ária $f \in \Lang L$,
   $\Assign{f}{M}(a_1, \dots, a_n) = \Assign{f}{M'}(a_1, \dots, a_n)$
-  for all $a_1$, \dots, $a_n \in \Domain{M}$.
-\item For each $n$-place !!{predicate} $R \in \Lang L$, $\langle
-  a_1, \dots, a_n\rangle \in \Assign{R}{M}$ iff $\langle a_1, \dots,
-  a_n\rangle \in \Assign{R}{M'}$ for all $a_1$, \dots, $a_n \in
+  para todos $a_1$, \dots, $a_n \in \Domain{M}$.
+\item Para cada !!{predicate} $n$-ário $R \in \Lang L$, $\langle
+  a_1, \dots, a_n\rangle \in \Assign{R}{M}$ sse $\langle a_1, \dots,
+  a_n\rangle \in \Assign{R}{M'}$ para todos $a_1$, \dots, $a_n \in
   \Domain{M}$.
 \end{enumerate}
 \end{defn}
 
 \begin{rem}
 \ollabel{rem:substructure}
-If the language contains no constant or !!{function}s, then any $N
-\subseteq \Domain{M}$ determines a sub!!{structure}~$\Struct{N}$ of
-$\Struct M$ with !!{domain}~$\Domain{N} = N$ by putting $\Assign{R}{N} =
+Se a linguagem não contém constantes nem !!{function}s, então qualquer
+$N \subseteq \Domain{M}$ determina uma sub!!{structure}~$\Struct{N}$ de
+$\Struct M$ com !!{domain}~$\Domain{N} = N$, pondo $\Assign{R}{N} =
 \Assign{R}{M} \cap N^n$.
 \end{rem}
 
-% prove something about this? Examples?
+% provar algo sobre isso? Exemplos?
 
 \end{document}

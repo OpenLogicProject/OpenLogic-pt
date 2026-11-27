@@ -6,29 +6,30 @@
 
 \begin{document}
 
-\olfileid{mod}{int}{sep}
+\olfileid[pt]{mod}{int}{sep}
 
-\olsection{Separation of \printtoken{P}{sentence}}
+\olsection{Separação de \printtoken{P}{sentence}}
 
-A bit of groundwork is needed before we can proceed with the proof of
-the interpolation theorem. An interpolant for $!A$ and $!B$ is
-!!a{sentence}~$!C$ such that $!A \Entails !C$ and $!C \Entails !B$.
-By contraposition, the latter is true iff $\lnot !B \Entails \lnot
-!C$. !!^a{sentence}~$!C$ with this property is said to \emph{separate}
-$!A$ and $\lnot !B$.  So finding an interpolant for $!A$ and $!B$
-amounts to finding !!a{sentence} that separates $!A$ and $\lnot !B$.
-As so often, it will be useful to consider a generalization: a
-sentence that separates two \emph{sets} of !!{sentence}s.
+Precisamos de alguma preparação antes de prosseguir com a demonstração
+do teorema da interpolação. Um interpolante para $!A$ e $!B$ é
+!!a{sentence}~$!C$ tal que $!A \Entails !C$ e $!C \Entails !B$. Por
+contraposição, esta última relação vale se, e somente se,
+$\lnot !B \Entails \lnot !C$. Dizemos que !!^a{sentence}~$!C$ com essa
+propriedade \emph{separa} $!A$ e $\lnot !B$. Assim, encontrar um
+interpolante para $!A$ e $!B$ equivale a encontrar !!a{sentence} que
+separe $!A$ e $\lnot !B$. Como tantas vezes ocorre, será útil
+considerar uma generalização: uma sentença que separa dois
+\emph{conjuntos} de !!{sentence}s.
 
 \begin{defn}
-A sentence $!C$ \emph{separates} sets of sentences $\Gamma$ and
-$\Delta$ if and only if $\Gamma \Entails !C$ and $\Delta \Entails
-\lnot !C$. If no such !!{sentence} exists, then $\Gamma$ and $\Delta$
-are \emph{inseparable}.
+Uma sentença $!C$ \emph{separa} os conjuntos de sentenças $\Gamma$ e
+$\Delta$ se, e somente se, $\Gamma \Entails !C$ e $\Delta \Entails
+\lnot !C$. Se não existe tal !!{sentence}, então $\Gamma$ e $\Delta$
+são \emph{inseparáveis}.
 \end{defn}
 
-The inclusion relations between the classes of
-models of $\Gamma$, $\Delta$ and $!C$ are represented below:
+As relações de inclusão entre as classes de modelos de $\Gamma$,
+$\Delta$ e $!C$ são representadas abaixo:
 \begin{figure}[h]
   \centering
   \begin{tikzpicture}[node distance=2cm, auto, thick]
@@ -41,78 +42,82 @@ models of $\Gamma$, $\Delta$ and $!C$ are represented below:
     \path node at (3.4,0.4) {\Large $\lnot \formula{C}$};
     \draw (2.5,0) .. controls (2.5,1.5) and (3.5,1.5) .. (3.5,3);
   \end{tikzpicture}
-  \caption{$!C$ separates $\Gamma$ and $\Delta$}
+  \caption{$!C$ separa $\Gamma$ e $\Delta$}
   \ollabel{fig:sep}
 \end{figure}
 
 
 \begin{lem}\ollabel{lem:sep1}
-Suppose $\Lang{L}_0$ is the language containing every !!{constant},
-!!{function} and !!{predicate} (other than $\doteq$) that occurs in
-\emph{both} $\Gamma$ and $\Delta$, and let $\Lang{L}'_0$ be obtained
-by the addition of infinitely many new !!{constant}s $\Obj c_n$ for $n
-\ge 0$. Then if $\Gamma$ and $\Delta$ are inseparable in $\Lang{L}_0$,
-they are also inseparable in $\Lang{L}'_0$.
+Suponha que $\Lang{L}_0$ seja a linguagem que contém toda
+!!{constant}, !!{function} e !!{predicate} (exceto $\doteq$) que ocorre
+\emph{tanto} em $\Gamma$ quanto em $\Delta$, e obtenha $\Lang{L}'_0$
+acrescentando infinitas novas !!{constant}s $\Obj c_n$ para $n \ge 0$.
+Se $\Gamma$ e $\Delta$ são inseparáveis em $\Lang{L}_0$, então também
+são inseparáveis em $\Lang{L}'_0$.
 \end{lem}
 
 \begin{proof}
-We proceed indirectly: suppose by way of contradiction that $\Gamma$
-and $\Delta$ are separated in $\Lang{L}'_0$. Then $\Gamma \Entails
-\Subst{!C}{c}{x}$ and $\Delta \Entails \lnot \Subst{!C}{c}{x}$ for some $!C \in
-\Lang{L}_0$ (where $c$ is a new !!{constant}---the case where $!C$
-contains more than one such new !!{constant} is similar). By
-compactness, there are \emph{finite} subsets $\Gamma_0$ of $\Gamma$
-and $\Delta_0$ of $\Delta$ such that $\Gamma_0 \Entails \Subst{!C}{c}{x}$
-and $\Delta_0 \Entails \lnot \Subst{!C}{c}{x}$. Let $!G$ be the
-conjunction of all !!{formula}s in $\Gamma_0$ and $!H$ the
-conjunction of all !!{formula}s in $\Delta_0$. Then
+Procedemos indiretamente: suponha, para obter uma contradição, que
+$\Gamma$ e $\Delta$ sejam separados em $\Lang{L}'_0$. Então
+$\Gamma \Entails \Subst{!C}{c}{x}$ e
+$\Delta \Entails \lnot \Subst{!C}{c}{x}$ para algum
+$!C \in \Lang{L}_0$ (onde $c$ é uma nova !!{constant}---o caso em que
+$!C$ contém mais de uma nova !!{constant} desse tipo é semelhante).
+Pela compacidade, existem subconjuntos \emph{finitos} $\Gamma_0$ de
+$\Gamma$ e $\Delta_0$ de $\Delta$ tais que
+$\Gamma_0 \Entails \Subst{!C}{c}{x}$ e
+$\Delta_0 \Entails \lnot \Subst{!C}{c}{x}$. Seja $!G$ a conjunção de
+todas as !!{formula}s em $\Gamma_0$ e $!H$ a conjunção de todas as
+!!{formula}s em $\Delta_0$. Então
 \begin{align*}
   !G & \Entails \Subst{!C}{c}{x}, & !H  \Entails \lnot \Subst{!C}{c}{x}.
 \end{align*}
-From the former, by Generalization, we have $!G \Entails
-\lforall[x][!C]$, and from the latter by contraposition,
-$\Subst{!C}{c}{x} \Entails \lnot !H$, whence also $\lforall[x][!C]
-\Entails \lnot \delta$. Contraposition again gives $!H \Entails
-\lnot \lforall[x][!C]$. By monotonicity,
+Da primeira relação, por Generalização, obtemos
+$!G \Entails \lforall[x][!C]$; da segunda, por contraposição, obtemos
+$\Subst{!C}{c}{x} \Entails \lnot !H$, donde também
+$\lforall[x][!C] \Entails \lnot \delta$. Outra contraposição fornece
+$!H \Entails \lnot \lforall[x][!C]$. Por monotonicidade,
 \begin{align*}
   \Gamma &\Entails \lforall[x][!C], & 
   \Delta & \Entails \lnot \lforall[x][!C],
 \end{align*}
-so that $\lforall[x][!C]$ separates $\Gamma$ and $\Delta$ in
-$\Lang{L}_0$. 
+de modo que $\lforall[x][!C]$ separa $\Gamma$ e $\Delta$ em
+$\Lang{L}_0$.
 \end{proof}
 
 \begin{lem}\ollabel{lem:sep2}
-Suppose that $\Gamma \cup \{ \lexists[x][!S] \}$ and $\Delta$ are
-inseparable, and $c$ is a new !!{constant} not in $\Gamma$, $\Delta$,
-or $!S$. Then $\Gamma \cup \{ \lexists[x][!S], \Subst{!S}{c}{x} \}$
-and $\Delta$ are also inseparable.
+Suponha que $\Gamma \cup \{ \lexists[x][!S] \}$ e $\Delta$ sejam
+inseparáveis e que $c$ seja uma nova !!{constant} que não ocorre em
+$\Gamma$, $\Delta$ nem em $!S$. Então
+$\Gamma \cup \{ \lexists[x][!S], \Subst{!S}{c}{x} \}$ e $\Delta$
+também são inseparáveis.
 \end{lem}
 
 \begin{proof}
-Suppose for contradiction that $!C$ separates $\Gamma \cup \{
-\lexists[x][!S], \Subst{!S}{c}{x}\}$ and $\Delta$, while at the same
-time $\Gamma \cup \{\lexists[x]{!S} \}$ and $\Delta$ are
-inseparable. We distinguish two cases:
+Suponha, para obter uma contradição, que $!C$ separe
+$\Gamma \cup \{ \lexists[x][!S], \Subst{!S}{c}{x}\}$ e $\Delta$,
+enquanto $\Gamma \cup \{\lexists[x]{!S} \}$ e $\Delta$ sejam
+inseparáveis. Distinguimos dois casos:
 \begin{enumerate}
-\item $c$ does not occur in $!C$: in this case $\Gamma \cup
-  \{\lexists[x][!S], \lnot!C \}$ is satisfiable (otherwise $!C$
-  separates $\Gamma \cup \{\lexists[x][!S] \}$ and $\Delta$). It
-  remains so if $\Subst{!S}{c}{x}$ is added, so $!C$ does not separate
-  $\Gamma \cup \{ \lexists[x][!S], \Subst{!S}{c}{x} \}$ and $\Delta$
-  after all.
-\item $c$ does occur in $!C$ so that $!C$ has the form
-  $\Subst{!C}{c}{x}$. Then we have that
+\item $c$ não ocorre em $!C$: nesse caso,
+  $\Gamma \cup \{\lexists[x][!S], \lnot!C \}$ é satisfatível (caso
+  contrário, $!C$ separa $\Gamma \cup \{\lexists[x][!S] \}$ e
+  $\Delta$). O conjunto permanece satisfatível se acrescentarmos
+  $\Subst{!S}{c}{x}$, logo, afinal, $!C$ não separa
+  $\Gamma \cup \{ \lexists[x][!S], \Subst{!S}{c}{x} \}$ e $\Delta$.
+\item $c$ ocorre em $!C$, de modo que $!C$ tem a forma
+  $\Subst{!C}{c}{x}$. Então temos
   \[
   \Gamma \cup \{ \lexists[x][!S], \Subst{!S}{c}{x}\} \Entails \Subst{!C}{c}{x},
   \]
-  whence $\Gamma, \lexists[x][!S] \Entails \lforall[x][(!S \lif !C)]$
-  by the Deduction Theorem and Generalization, and finally $\Gamma
-  \cup \{ \lexists[x][!S] \} \Entails \lexists[x][!C]$. On the other
-  hand, $\Delta \Entails \lnot \Subst{!C}{c}{x}$ and hence by
-  Generalization $\Delta \Entails \lnot \lexists[x][!C]$. So $\Gamma
-  \cup \{\lexists[x][!S] \}$ and $\Delta$ are separable, a
-  contradiction.
+  donde $\Gamma, \lexists[x][!S] \Entails
+  \lforall[x][(!S \lif !C)]$ pelo Teorema da Dedução e por
+  Generalização, e, por fim,
+  $\Gamma \cup \{ \lexists[x][!S] \} \Entails \lexists[x][!C]$. Por
+  outro lado, $\Delta \Entails \lnot \Subst{!C}{c}{x}$ e, portanto,
+  por Generalização, $\Delta \Entails \lnot \lexists[x][!C]$. Logo,
+  $\Gamma \cup \{\lexists[x][!S] \}$ e $\Delta$ são separáveis, uma
+  contradição.
 \end{enumerate}
 \end{proof}
 
