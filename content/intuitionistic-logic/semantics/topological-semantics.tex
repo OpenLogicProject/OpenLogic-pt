@@ -6,42 +6,43 @@
 
 \begin{document}
 
-\olfileid{int}{sem}{top}
+\olfileid[pt]{int}{sem}{top}
 
-\olsection{Topological Semantics}
+\olsection{Semântica topológica}
 
-Another way to provide a semantics for intuitionistic logic is using
-the mathematical concept of a topology.
+Outra maneira de fornecer uma semântica para a lógica intuicionista é
+usar o conceito matemático de topologia.
 
 \begin{defn}
-  Let $X$ be a set. A \emph{topology on~$X$} is a set $\Top{O}
-  \subseteq \Pow{X}$ that satisfies the properties below. The
-  !!{element}s of~$\Top{O}$ are called the \emph{open sets} of the
-  topology. The set $X$ together with $\Top{O}$ is called a
-  \emph{topological space}.
+  Seja $X$ um conjunto. Uma \emph{topologia sobre~$X$} é um conjunto
+  $\Top{O} \subseteq \Pow{X}$ que satisfaz as propriedades abaixo. Os
+  !!{element}s de~$\Top{O}$ são chamados de \emph{conjuntos abertos}
+  da topologia. O conjunto $X$, juntamente com $\Top{O}$, é chamado de
+  \emph{espaço topológico}.
   \begin{enumerate}
-  \item The empty set and the entire space are open: $\emptyset$, $X \in
+  \item O conjunto vazio e o espaço inteiro são abertos: $\emptyset$, $X \in
     \Top{O}$.
-  \item Open sets are closed under finite intersections: if $U$, $V \in
-    \Top{O}$ then $U \cap V \in \Top{O}$
-  \item Open sets are closed under arbitrary unions: if $U_i \in
-    \Top{O}$ for all $i \in I$, then $\bigcup \Setabs{U_i}{i \in
+  \item Os conjuntos abertos são fechados sob interseções finitas: se
+    $U$, $V \in \Top{O}$, então $U \cap V \in \Top{O}$.
+  \item Os conjuntos abertos são fechados sob uniões arbitrárias: se
+    $U_i \in \Top{O}$ para todo $i \in I$, então $\bigcup \Setabs{U_i}{i \in
       I} \in \Top{O}$.
   \end{enumerate}
 \end{defn}
 
-We may write $X$ for a topology if the collection of open sets can be
-inferred from the context; note that, still, only after $X$ is endowed
-with open sets can it be called a topology.
+Podemos escrever $X$ para uma topologia quando a coleção de conjuntos
+abertos puder ser inferida do contexto; observe, ainda assim, que $X$
+só pode ser chamado de topologia depois de ser dotado de conjuntos
+abertos.
 
 \begin{defn}
-  A \emph{topological model} of intuitionistic propositional logic is
-  a triple $\mModel{X} = \tuple{X, \Top{O}, V}$ where $\Top{O}$ is a
-  topology on~$X$ and $V$ is a function assigning an open set in
-  $\Top{O}$ to each propositional variable.
+  Um \emph{modelo topológico} da lógica proposicional intuicionista é
+  uma tripla $\mModel{X} = \tuple{X, \Top{O}, V}$, em que $\Top{O}$ é
+  uma topologia sobre~$X$ e $V$ é uma função que atribui a cada
+  variável proposicional um conjunto aberto de $\Top{O}$.
 
-  Given a topological model~$\mModel{X}$, we can define $\Prop{X}{!A}$
-  inductively as follows:
+  Dado um modelo topológico~$\mModel{X}$, podemos definir
+  $\Prop{X}{!A}$ indutivamente da seguinte maneira:
   \begin{enumerate}
   \item $\Prop{X}{\lfalse} = \emptyset$
   \item $\Prop{X}{p} = V(p)$
@@ -50,46 +51,49 @@ with open sets can it be called a topology.
   \item $\Prop{X}{!A \lif !B} = \Interior{(X \setminus \Prop{X}{!A}) \cup
     \Prop{X}{!B}}$
   \end{enumerate}
-  Here, $\Interior{V}$ is the function that maps a set $V \subseteq X$
-  to its \emph{interior}, that is, the union of all open sets it
-  contains. In other words,
+  Aqui, $\Interior{V}$ é a função que leva um conjunto $V \subseteq X$
+  a seu \emph{interior}, isto é, à união de todos os conjuntos abertos
+  que ele contém. Em outras palavras,
   \[
-  \Interior{V} = \bigcup \Setabs{U}{U \subseteq V \text{ and } U \in \Top{O}}.
+  \Interior{V} = \bigcup \Setabs{U}{U \subseteq V \text{ e } U \in \Top{O}}.
   \]
 \end{defn}
 
-Note that the interior of any set is always open, since it is a union
-of open sets. Thus, $\Prop{X}{!A}$ is always an open set.
+Observe que o interior de qualquer conjunto é sempre aberto, pois é
+uma união de conjuntos abertos. Portanto, $\Prop{X}{!A}$ é sempre um
+conjunto aberto.
 
-Although topological semantics is highly abstract, there are ways to
-think about it that might motivate it. Suppose that the !!{element}s,
-or ``points,'' of $X$ are points at which statements can be
-evaluated. The set of all points where $!A$ is true is the proposition
-expressed by~$!A$. Not every set of points is a potential proposition;
-only the !!{element}s of $\Top{O}$ are.  $!A \Entails !B$ iff $!B$ is
-true at every point at which~$!A$ is true, O.s.\@, $\Prop{X}{!A}
-\subseteq \Prop{X}{!B}$, for all~$X$. The absurd statement~$\lfalse$
-is never true, so $\Prop{X}{\lfalse} = \emptyset$.
+Embora a semântica topológica seja muito abstrata, há maneiras de
+entendê-la que podem motivá-la. Suponha que os !!{element}s, ou
+``pontos'', de $X$ sejam pontos nos quais afirmações podem ser
+avaliadas. O conjunto de todos os pontos nos quais $!A$ é verdadeira é
+a proposição expressa por~$!A$. Nem todo conjunto de pontos é uma
+proposição possível; somente os !!{element}s de $\Top{O}$ o são.
+$!A \Entails !B$ sse $!B$ é verdadeira em todo ponto no qual~$!A$ é
+verdadeira, O.s.\@, $\Prop{X}{!A} \subseteq \Prop{X}{!B}$, para
+todo~$X$. A afirmação absurda~$\lfalse$ nunca é verdadeira; portanto,
+$\Prop{X}{\lfalse} = \emptyset$.
 
-How must the propositions expressed by $!B \land !C$, $!B \lor !C$,
-and $!B \lif !C$ be related to those expressed by $!B$ and~$!C$ for
-the intuitionistically valid laws to hold, O.s.\@, so that $!A \Proves
-!B$ iff $\Prop{X}{!A} \subset \Prop{X}{!B}$? We require $\lfalse
-\Proves !A$ for any $!A$, which is satisfied because $\emptyset
-\subseteq U$ for all $U$.  Since $!B \land !C \Proves !B$, we require
-that $\Prop{X}{!B \land !C} \subseteq \Prop{X}{!B}$, and similarly
-$\Prop{X}{!B \land !C} \subseteq \Prop{X}{!C}$. The largest set
-satisfying $W \subseteq U$ and $W \subseteq V$ is $U \cap V$.
-Conversely, $!B \Proves !B \lor !C$ and $!C \Proves !B \lor !C$, and
-so we require that $\Prop{X}{!B} \subseteq \Prop{X}{!B \lor !C}$ and
-$\Prop{X}{!C} \subseteq \Prop{X}{!B \lor !C}$. The smallest set~$W$
-such that $U \subseteq W$ and $V \subseteq W$ is $U \cup V$.
+Como devem as proposições expressas por $!B \land !C$, $!B \lor !C$
+e $!B \lif !C$ relacionar-se com as expressas por $!B$ e~$!C$ para que
+valham as leis intuicionisticamente válidas, O.s.\@, para que
+$!A \Proves !B$ sse $\Prop{X}{!A} \subset \Prop{X}{!B}$? Exigimos
+$\lfalse \Proves !A$ para todo $!A$, o que é satisfeito porque
+$\emptyset \subseteq U$ para todo $U$. Como $!B \land !C \Proves !B$,
+exigimos $\Prop{X}{!B \land !C} \subseteq \Prop{X}{!B}$ e, de modo
+semelhante, $\Prop{X}{!B \land !C} \subseteq \Prop{X}{!C}$. O maior
+conjunto que satisfaz $W \subseteq U$ e $W \subseteq V$ é $U \cap V$.
+Reciprocamente, $!B \Proves !B \lor !C$ e $!C \Proves !B \lor !C$;
+portanto, exigimos $\Prop{X}{!B} \subseteq \Prop{X}{!B \lor !C}$ e
+$\Prop{X}{!C} \subseteq \Prop{X}{!B \lor !C}$. O menor conjunto~$W$
+tal que $U \subseteq W$ e $V \subseteq W$ é $U \cup V$.
 
-The definition for $\lif$ is tricky: $!A \lif !B$ expresses the
-weakest proposition that, combined with $!A$, entails $!B$. That $!A
-\lif !B$ combined with $!A$ entails~$!B$ is clear from $(!A \lif !B)
-\land !A \Proves !B $. So $\Prop{X}{!A \lif !B}$ should be the
-greatest open set such that $\Prop{X}{!A \lif !B} \cap \Prop{X}{!A}
-\subset \Prop{X}{!B}$, leading to our definition.
+A definição de $\lif$ é delicada: $!A \lif !B$ expressa a proposição
+mais fraca que, combinada com $!A$, implica $!B$. Que $!A \lif !B$,
+combinada com $!A$, implica~$!B$ fica claro por
+$(!A \lif !B) \land !A \Proves !B $. Assim, $\Prop{X}{!A \lif !B}$
+deve ser o maior conjunto aberto tal que
+$\Prop{X}{!A \lif !B} \cap \Prop{X}{!A} \subset \Prop{X}{!B}$, o que
+leva à nossa definição.
 
 \end{document}
