@@ -6,39 +6,39 @@
 
 \begin{document}
 
-\olfileid{aml}{tl}{ext}
+\olfileid[pt]{aml}{tl}{ext}
 
-\olsection{Additional Operators for Temporal Logic}
+\olsection{Operadores adicionais da lógica temporal}
 
-In addition to the unary operators for past and future, temporal
-logics also sometimes include binary operators $\Since $ and~$\Until$,
-intended to symbolize ``since'' and ``until''. This means adding
-$\Since $ and~$\Until$ into the language of temporal logic and adding
-the following clause into the definition of a temporal !!{formula}:
+Além dos operadores unários de passado e futuro, as lógicas temporais
+às vezes também incluem os operadores binários $\Since $ e~$\Until$,
+destinados a simbolizar ``desde que'' e ``até que''. Isso significa
+acrescentar $\Since $ e~$\Until$ à linguagem da lógica temporal e
+incluir a seguinte cláusula na definição de uma !!{formula} temporal:
 
 \begin{itemize}
-\item[] If $!A$ and $!B$ are !!{formula}s, then $(\Since  !A !B)$ and
-  $(\Until !A !B)$ are both !!{formula}s.
+\item[] Se $!A$ e $!B$ são !!{formula}s, então $(\Since  !A !B)$ e
+  $(\Until !A !B)$ são ambas !!{formula}s.
 \end{itemize}
 
-The semantics for these operators are then given as follows:
+A semântica desses operadores é dada da seguinte maneira:
 
 \begin{defn}\ollabel{defn:since-until}
-  \emph{Truth of !!a{formula}~$!A$ at~$t$} in a~$\mModel M$:
+  A \emph{verdade de !!a{formula}~$!A$ em~$t$} em um~$\mModel M$:
   \begin{enumerate}
   \item\ollabel{defn:sub:mmodels-since} \indcase{!A}{\Since  !B
-    !C}{$\mSat{M}{\indfrm}[t]$ iff $\mSat{M}{!B}[t']$ for some $t' \in
-    T$ with $t' \prec t$, and for all $s$ with $t' \prec s \prec t$,
+    !C}{$\mSat{M}{\indfrm}[t]$ sse $\mSat{M}{!B}[t']$ para algum $t' \in
+    T$ tal que $t' \prec t$, e, para todo $s$ tal que $t' \prec s \prec t$,
     $\mSat{M}{!C}[s]$}
    \item\ollabel{defn:sub:mmodels-until} \indcase{!A}{\Until !B
-    !C}{$\mSat{M}{\indfrm}[t]$ iff $\mSat{M}{!B}[t']$ for some $t' \in
-    T$ with $t \prec t'$, and for all $s$ with $t \prec s \prec t'$,
+    !C}{$\mSat{M}{\indfrm}[t]$ sse $\mSat{M}{!B}[t']$ para algum $t' \in
+    T$ tal que $t \prec t'$, e, para todo $s$ tal que $t \prec s \prec t'$,
     $\mSat{M}{!C}[s]$}
   \end{enumerate} 
 \end{defn}
 
-The intuitive reading of $\Since  !B !C$ is ``Since $!B$ was the case,
-$!C$~has been the case.'' And the intuitive reading of $\Until !B !C$
-is ``Until $!B$ will be the case, $!C$~will be the case.''
+A leitura intuitiva de $\Since  !B !C$ é ``Desde que $!B$ ocorreu,
+$!C$~tem ocorrido.'' E a leitura intuitiva de $\Until !B !C$
+é ``Até que $!B$ ocorra, $!C$~ocorrerá.''
 
 \end{document}
