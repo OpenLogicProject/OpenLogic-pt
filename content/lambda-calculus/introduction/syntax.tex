@@ -6,67 +6,66 @@
 
 \begin{document}
 
-\olfileid{lam}{int}{syn}
-\olsection{The Syntax of the Lambda Calculus}
+\olfileid[pt]{lam}{int}{syn}
+\olsection{A sintaxe do cálculo lambda}
 
-One starts with a sequence of variables $x$, $y$, $z$,~\dots and some
-constant symbols $a$, $b$, $c$,~\dots. The set of terms is defined
-inductively, as follows:
+Começamos com uma sequência de variáveis $x$, $y$, $z$,~\dots e alguns
+símbolos de constante $a$, $b$, $c$,~\dots. O conjunto dos termos é definido
+indutivamente da seguinte maneira:
 \begin{enumerate}
-\item Each variable is a term.
-\item Each constant is a term.
-\item If $M$ and $N$ are terms, so is $(MN)$.
-\item If $M$ is a term and $x$ is a variable, then $(\lambd[x][M])$ is a
-  term.
+\item Cada variável é um termo.
+\item Cada constante é um termo.
+\item Se $M$ e $N$ são termos, então $(MN)$ também é um termo.
+\item Se $M$ é um termo e $x$ é uma variável, então $(\lambd[x][M])$ é um
+  termo.
 \end{enumerate}
-Terms of the form $(MN)$ are called \emph{applications} and those of
-the form $(\lambd[x][M])$ \emph{abstractions}.
+Termos da forma $(MN)$ são chamados de \emph{aplicações}, e os da forma
+$(\lambd[x][M])$, de \emph{abstrações}.
 
-The system without any constants at all is called the \emph{pure}
-lambda calculus. We'll mainly be working in the pure
-$\lambd$-calculus, so all lowercase letters will stand for variables.
-We use uppercase letters ($M$, $N$, etc.) to stand for terms of the
-$\lambd$-calculus.
+O sistema sem constante alguma é chamado de cálculo lambda \emph{puro}.
+Trabalharemos principalmente no cálculo-$\lambd$ puro, de modo que todas as
+letras minúsculas representarão variáveis. Usamos letras maiúsculas ($M$,
+$N$ etc.) para representar termos do cálculo-$\lambd$.
 
-We will follow a few notational conventions:
+Seguiremos algumas convenções de notação:
 
 \begin{conv}
 \begin{enumerate}
-\item When parentheses are left out, application takes place from left
-  to right. For example, if $M$, $N$, $P$, and $Q$ are terms, then
-  $MNPQ$ abbreviates $(((MN)P)Q)$.
-\item Again, when parentheses are left out, lambda abstraction is to
-  be given the widest scope possible. From example, $\lambd[x][MNP]$ is
-  read $(\lambd[x][((MN)P)])$.
-\item A lambda can be used to abstract multiple variables. For
-  example, $\lambd[xyz][M]$ is short for
+\item Quando os parênteses são omitidos, a aplicação é feita da esquerda
+  para a direita. Por exemplo, se $M$, $N$, $P$ e $Q$ são termos, então
+  $MNPQ$ abrevia $(((MN)P)Q)$.
+\item Novamente, quando os parênteses são omitidos, a abstração lambda recebe
+  o maior escopo possível. Por exemplo, $\lambd[x][MNP]$ é lido como
+  $(\lambd[x][((MN)P)])$.
+\item Um lambda pode ser usado para abstrair várias variáveis. Por exemplo,
+  $\lambd[xyz][M]$ abrevia
   $\lambd[x][\lambd[y][\lambd[z][M]]]$.
 \end{enumerate}
 \end{conv}
 
-For example,
+Por exemplo,
 \[
 \lambd[xy][xxyx \lambd[z][xz]]
 \]
-abbreviates
+abrevia
 \[
 \lambd[x][\lambd[y][((((xx)y)x)(\lambd[z][(xz)]))]].
 \]
-You should memorize these conventions. They will drive you crazy at
-first, but you will get used to them, and after a while they will
-drive you less crazy than having to deal with a morass of parentheses.
+Você deve memorizar essas convenções. No início elas o deixarão maluco, mas
+você se acostumará e, depois de algum tempo, elas o deixarão menos maluco do
+que ter de lidar com um emaranhado de parênteses.
 
-Two terms that differ only in the names of the bound variables are
-called $\alpha$-equivalent; for example, $\lambd[x][x]$ and
-$\lambd[y][y]$. It will be convenient to think of these as being the
-``same'' term; in other words, when we say that $M$ and $N$ are the
-same, we also mean ``up to renamings of the bound variables.''
-Variables that are in the scope of a $\lambd$ are called ``bound'',
-while others are called ``free.'' There are no free variables in the
-previous example; but in
+Dois termos que diferem apenas nos nomes das variáveis ligadas são chamados
+de $\alpha$-equivalentes; por exemplo, $\lambd[x][x]$ e $\lambd[y][y]$.
+Será conveniente considerá-los o ``mesmo'' termo; em outras palavras,
+quando dizemos que $M$ e $N$ são iguais, também queremos dizer ``a menos de
+renomeações das variáveis ligadas''. Variáveis que estão no escopo de um
+$\lambd$ são chamadas de ``ligadas'', enquanto as demais são chamadas de
+``livres''. Não há variáveis livres no exemplo anterior; mas, em
 \[
 (\lambd[z][yz])x
 \]
-$y$ and $x$ are free, and $z$ is bound.
+$y$ e $x$ são livres, e $z$ é ligada.
 
 \end{document}
+

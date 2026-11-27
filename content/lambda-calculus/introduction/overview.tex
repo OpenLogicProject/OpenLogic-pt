@@ -6,68 +6,68 @@
 
 \begin{document}
 
-\olfileid{lam}{int}{ovr}
-\olsection{Overview}
+\olfileid[pt]{lam}{int}{ovr}
+\olsection{Visão geral}
 
-The lambda calculus was originally designed by Alonzo Church in the
-early 1930s as a basis for constructive logic, and \emph{not} as a
-model of the computable functions. But it was soon shown to be
-equivalent to other definitions of computability, such as the Turing
-computable functions and the partial recursive functions. The fact
-that this initially came as a small surprise makes the
-characterization all the more interesting.
+O cálculo lambda foi originalmente concebido por Alonzo Church, no início
+da década de 1930, como base para a lógica construtiva, e \emph{não} como
+modelo das funções computáveis. Logo, porém, mostrou-se que ele era
+equivalente a outras definições de computabilidade, como as funções
+computáveis por Turing e as funções recursivas parciais. O fato de isso ter
+causado inicialmente uma pequena surpresa torna a caracterização ainda mais
+interessante.
 
-Lambda notation is a convenient way of referring to a function
-directly by a symbolic expression which defines it, instead of
-defining a name for it. Instead of saying ``let $f$ be the function
-defined by $f(x) = x + 3$,'' one can say, ``let $f$ be the function
-$\lambd[x][(x + 3)]$.''  In other words, $\lambd[x][(x+3)]$ is just a
-\emph{name} for the function that adds three to its argument. In this
-expression, $x$ is a dummy variable, or a placeholder: the same
-function can just as well be denoted by $\lambd[y][(y + 3)]$. The
-notation works even with other parameters around. For example, suppose
-$g(x, y)$ is a function of two variables, and $k$ is a natural
-number. Then $\lambd[x][g(x,k)]$ is the function which maps any~$x$
-to~$g(x, k)$.
+A notação lambda é uma maneira conveniente de se referir diretamente a uma
+função por meio de uma expressão simbólica que a define, em vez de lhe dar
+um nome. Em vez de dizer ``seja $f$ a função definida por
+$f(x) = x + 3$'', podemos dizer ``seja $f$ a função
+$\lambd[x][(x + 3)]$''. Em outras palavras, $\lambd[x][(x+3)]$ é apenas um
+\emph{nome} para a função que soma três a seu argumento. Nessa expressão,
+$x$ é uma variável muda, ou um marcador de posição: a mesma função pode
+igualmente ser denotada por $\lambd[y][(y + 3)]$. A notação também funciona
+na presença de outros parâmetros. Por exemplo, suponha que $g(x, y)$ seja
+uma função de duas variáveis e $k$ um número natural. Então
+$\lambd[x][g(x,k)]$ é a função que leva cada~$x$ em~$g(x, k)$.
 
-This way of defining a function from a symbolic expression is known as
-\emph{lambda abstraction}. The flip side of lambda abstraction is
-\emph{application}: assuming one has a function $f$ (say, defined on
-the natural numbers), one can \emph{apply} it to any value, like 2. In
-conventional notation, of course, we write~$f(2)$ for the result.
+Essa maneira de definir uma função a partir de uma expressão simbólica é
+conhecida como \emph{abstração lambda}. O outro lado da abstração lambda é a
+\emph{aplicação}: supondo que tenhamos uma função $f$ (digamos, definida nos
+números naturais), podemos \emph{aplicá-la} a qualquer valor, como 2. Na
+notação convencional, é claro, escrevemos~$f(2)$ para o resultado.
 
-What happens when you combine lambda abstraction with application?
-Then the resulting expression can be simplified, by ``plugging'' the
-applicand in for the abstracted variable. For example,
+O que acontece quando combinamos abstração lambda com aplicação? A
+expressão resultante pode ser simplificada ``inserindo'' o aplicando no
+lugar da variável abstraída. Por exemplo,
 \[
 (\lambd[x][(x + 3)])(2)
 \]
-can be simplified to~$2 + 3$.
+pode ser simplificada para~$2 + 3$.
 
-Up to this point, we have done nothing but introduce new notations for
-conventional notions. The lambda calculus, however, represents a more
-radical departure from the set-theoretic viewpoint. In this framework:
+Até aqui, nada fizemos além de introduzir novas notações para noções
+convencionais. O cálculo lambda, porém, representa um afastamento mais
+radical do ponto de vista da teoria dos conjuntos. Nesse quadro:
 \begin{enumerate}
-\item Everything denotes a function.
-\item Functions can be defined using lambda abstraction.
-\item Anything can be applied to anything else.
+\item Tudo denota uma função.
+\item Funções podem ser definidas por abstração lambda.
+\item Qualquer coisa pode ser aplicada a qualquer outra coisa.
 \end{enumerate}
-For example, if $F$ is a term in the lambda calculus, $F(F)$ is always
-assumed to be meaningful. This liberal framework is known as the
-\emph{untyped} lambda calculus, where ``untyped'' means ``no
-restriction on what can be applied to what.''
+Por exemplo, se $F$ é um termo no cálculo lambda, sempre se supõe que $F(F)$
+tenha sentido. Esse quadro liberal é conhecido como cálculo lambda
+\emph{não tipado}, onde ``não tipado'' significa ``sem restrição sobre o que
+pode ser aplicado a quê''.
 
 \begin{digress}
-There is also a \emph{typed} lambda calculus, which is an important
-variation on the untyped version. Although in many ways the typed
-lambda calculus is similar to the untyped one, it is much easier to
-reconcile with a classical set-theoretic framework, and has some very
-different properties.
+Há também um cálculo lambda \emph{tipado}, que é uma variação importante da
+versão não tipada. Embora o cálculo lambda tipado seja, em muitos aspectos,
+semelhante ao não tipado, ele é muito mais fácil de conciliar com um quadro
+clássico da teoria dos conjuntos e tem algumas propriedades bastante
+diferentes.
 
-Research on the lambda calculus has proved to be central in
-theoretical computer science, and in the design of programming
-languages. LISP, designed by John McCarthy in the 1950s, is an early
-example of a language that was influenced by these ideas.
+A pesquisa sobre o cálculo lambda mostrou-se central para a ciência da
+computação teórica e para o projeto de linguagens de programação. LISP,
+projetada por John McCarthy na década de 1950, é um dos primeiros exemplos
+de linguagem influenciada por essas ideias.
 \end{digress}
 
 \end{document}
+
