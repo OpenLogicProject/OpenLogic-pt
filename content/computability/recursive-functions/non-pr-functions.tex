@@ -6,47 +6,49 @@
 
 \begin{document}
 
-\olfileid{cmp}{rec}{npr}
-\olsection{Non-Primitive Recursive Functions}
+\olfileid[pt]{cmp}{rec}{npr}
+\olsection{Funções que não são recursivas primitivas}
 
-The primitive recursive functions do not exhaust the intuitively
-computable functions. It should be intuitively clear that we can make
-a list of all the unary primitive recursive functions,
-$f_0$, $f_1$, $f_2$,~\dots such that we can effectively compute the value of
-$f_x$ on input $y$; in other words, the function $g(x,y)$, defined by
+As funções recursivas primitivas não esgotam as funções intuitivamente
+computáveis. Deve ser intuitivamente claro que podemos fazer uma lista
+de todas as funções recursivas primitivas unárias,
+$f_0$, $f_1$, $f_2$,~\dots, de modo que possamos calcular efetivamente
+o valor de $f_x$ na entrada $y$; em outras palavras, a função $g(x,y)$,
+definida por
 \[
 g(x,y) = f_x(y)
 \]
-is computable. But then so is the function
+é computável. Mas então também é computável a função
 \begin{eqnarray*}
 h(x) & = & g(x,x) + 1 \\
 & = & f_x(x) +1.
 \end{eqnarray*}
-For each primitive recursive function $f_i$, the value of $h$ and
-$f_i$ differ at $i$. So $h$ is computable, but not primitive
-recursive; and one can say the same about $g$. This is an
-``effective'' version of Cantor's diagonalization argument.
+Para cada função recursiva primitiva $f_i$, os valores de $h$ e
+$f_i$ diferem em $i$. Logo, $h$ é computável, mas não é recursiva
+primitiva; e o mesmo se pode dizer de $g$. Esta é uma versão
+``efetiva'' do argumento de diagonalização de Cantor.
 
-One can provide more explicit examples of computable functions that
-are not primitive recursive. For example, let the notation $g^n(x)$
-denote $g(g(\dots g(x)))$, with $n$ $g$'s in all; and define a
-sequence $g_0,g_1,\dots$ of functions by
+Podemos dar exemplos mais explícitos de funções computáveis que não
+são recursivas primitivas. Por exemplo, seja $g^n(x)$ a notação para
+$g(g(\dots g(x)))$, com um total de $n$ ocorrências de $g$; e defina
+uma sequência $g_0,g_1,\dots$ de funções por
 \begin{eqnarray*}
 g_0(x) & = & x+1 \\
 g_{n + 1}(x) & = & g_n^x(x)
 \end{eqnarray*}
-You can confirm that each function $g_n$ is primitive recursive. Each
-successive function grows much faster than the one before; $g_1(x)$ is
-equal to $2x$, $g_2(x)$ is equal to $2^x \cdot x$, and $g_3(x)$ grows
-roughly like an exponential stack of $x$ $2$'s. The Ackermann--P\'eter
-function is essentially the function $G(x) = g_x(x)$, and one can show
-that this grows faster than any primitive recursive function.
+Você pode verificar que cada função $g_n$ é recursiva primitiva.
+Cada função sucessiva cresce muito mais depressa do que a anterior;
+$g_1(x)$ é igual a $2x$, $g_2(x)$ é igual a $2^x \cdot x$, e
+$g_3(x)$ cresce aproximadamente como uma torre exponencial de $x$
+algarismos $2$. A função de Ackermann--P\'eter é essencialmente a
+função $G(x) = g_x(x)$, e pode-se mostrar que ela cresce mais depressa
+do que qualquer função recursiva primitiva.
 
-Let us return to the issue of enumerating the primitive recursive
-functions. Remember that we have assigned symbolic notations to each
-primitive recursive function; so it suffices to enumerate
-notations. We can assign a natural number $\#(F)$ to each notation $F$,
-recursively, as follows:
+Voltemos à questão de enumerar as funções recursivas primitivas.
+Lembre-se de que atribuímos notações simbólicas a cada função recursiva
+primitiva; portanto, basta enumerar as notações. Podemos atribuir um
+número natural $\#(F)$ a cada notação $F$, recursivamente, da seguinte
+maneira:
 \begin{eqnarray*}
 \#(0) & = & \langle 0 \rangle \\
 \#(S) & = & \langle 1 \rangle \\
@@ -55,43 +57,44 @@ recursively, as follows:
 3,k,l,\#(H),\#(G_0),\dots,\#(G_{k-1}) \rangle \\
 \#(\fn{Rec}_l[G,H]) & = & \langle 4, l, \#(G), \#(H) \rangle
 \end{eqnarray*}
-Here we are using the fact that every sequence of numbers can be viewed
-as a natural number, using the codes from the last section. The upshot
-is that every code is assigned a natural number. Of course, some
-sequences (and hence some numbers) do not correspond to notations; but
-we can let $f_i$ be the unary primitive recursive function with
-notation coded as $i$, if $i$ codes such a notation; and the constant
-$0$ function otherwise. The net result is that we have an explicit way of
-enumerating the unary primitive recursive functions.
+Aqui usamos o fato de que toda sequência de números pode ser vista como
+um número natural, por meio dos códigos da seção anterior. O resultado
+é que cada código recebe um número natural. Naturalmente, algumas
+sequências (e, portanto, alguns números) não correspondem a notações;
+mas podemos tomar $f_i$ como a função recursiva primitiva unária cuja
+notação tem código $i$, se $i$ codificar tal notação, e como a função
+constante de valor $0$ caso contrário. O resultado final é um modo
+explícito de enumerar as funções recursivas primitivas unárias.
 
-(In fact, some functions, like the constant zero function, will appear
-more than once on the list. This is not just an artifact of our
-coding, but also a result of the fact that the constant zero function has
-more than one notation. We will later see that one can not computably
-avoid these repetitions; for example, there is no computable function
-that decides whether or not a given notation represents the constant
-zero function.)
+(Na verdade, algumas funções, como a função constante zero, aparecerão
+mais de uma vez na lista. Isso não é apenas um artefato de nossa
+codificação, mas também decorre do fato de que a função constante zero
+tem mais de uma notação. Veremos mais adiante que não se pode evitar
+computavelmente essas repetições; por exemplo, não existe uma função
+computável que decida se uma dada notação representa ou não a função
+constante zero.)
 
-We can now take the function $g(x,y)$ to be given by $f_x(y)$, where
-$f_x$ refers to the enumeration we have just described. How do we know
-that $g(x,y)$ is computable? Intuitively, this is clear: to compute
-$g(x,y)$, first ``unpack'' $x$, and see if it is a notation for a unary
-function. If it is, compute the value of that function on input~$y$.
+Podemos agora tomar a função $g(x,y)$ como sendo dada por $f_x(y)$,
+em que $f_x$ se refere à enumeração que acabamos de descrever. Como
+sabemos que $g(x,y)$ é computável? Intuitivamente, isso é claro: para
+calcular $g(x,y)$, primeiro ``desempacote'' $x$ e verifique se ele é
+uma notação para uma função unária. Se for, calcule o valor dessa função
+na entrada~$y$.
 
 \begin{tagblock}{TMs}
 \begin{digress}
-You may already be convinced that (with some work!) one can write a
-program (say, in Java or C++) that does this; and now we can appeal to
-the Church--Turing thesis, which says that anything that, intuitively,
-is computable can be computed by a Turing machine.
+Talvez você já esteja convencido de que (com algum trabalho!) é possível
+escrever um programa (digamos, em Java ou C++) que faça isso; e agora
+podemos apelar à tese de Church--Turing, segundo a qual tudo o que é
+intuitivamente computável pode ser computado por uma máquina de Turing.
 
-Of course, a more direct way to show that $g(x,y)$ is computable is to
-describe a Turing machine that computes it, explicitly. This would,
-in particular, avoid the Church--Turing thesis and appeals to
-intuition. Soon we will have built up enough machinery to show
-that $g(x,y)$ is computable, appealing to a model of computation that
-can be \emph{simulated} on a Turing machine: namely, the recursive
-functions.
+Naturalmente, uma maneira mais direta de mostrar que $g(x,y)$ é
+computável seria descrever explicitamente uma máquina de Turing que a
+calcule. Isso evitaria, em particular, a tese de Church--Turing e os
+apelos à intuição. Em breve teremos desenvolvido recursos suficientes
+para mostrar que $g(x,y)$ é computável recorrendo a um modelo de
+computação que pode ser \emph{simulado} em uma máquina de Turing:
+a saber, as funções recursivas.
 \end{digress}
 \end{tagblock}
 

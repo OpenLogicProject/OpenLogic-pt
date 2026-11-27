@@ -6,96 +6,99 @@
 
 \begin{document}
 
-\olfileid{cmp}{thy}{hlt}
-\olsection{The Halting Problem}
+\olfileid[pt]{cmp}{thy}{hlt}
+\olsection{O problema da parada}
 
-By construction, the universal partial computable
-function~$\fn{Un}(e,x)$ is defined if and only if the computation of
-the function coded by~$e$ produces a value for input~$x$. It is
-natural to ask if we can decide whether this is the case. In fact, it
-is not. For the Turing machine model of computation, this means that
-whether a given Turing machine halts on a given input is
-computationally undecidable. The following theorem is therefore known
-as the ``undecidability of the halting problem.'' We will provide two
-proofs below. The first continues the thread of our previous
-discussion, while the second is more direct.
+Por construção, a função parcialmente computável
+universal~$\fn{Un}(e,x)$ está definida se, e somente se, a computação
+da função codificada por~$e$ produz um valor para a entrada~$x$. É
+natural perguntar se podemos decidir quando esse é o caso. Na verdade,
+não podemos. Para o modelo de computação das máquinas de Turing, isso
+significa que é computacionalmente indecidível se uma dada máquina de
+Turing para em uma dada entrada. Por isso, o teorema a seguir é
+conhecido como a ``indecidibilidade do problema da parada''.
+Apresentaremos duas demonstrações a seguir. A primeira dá continuidade
+ao fio de nossa discussão anterior, enquanto a segunda é mais direta.
 
 \begin{thm}
 \ollabel{thm:halting-problem}
-Let
+Seja
 \[
 h(e, x)  =
 \begin{cases}
-1 & \text{if\/ $\fn{Un}(e, x)$ is defined} \\
-0 & \text{otherwise.}
+1 & \text{se\/ $\fn{Un}(e, x)$ está definida} \\
+0 & \text{caso contrário.}
 \end{cases}
 \]
-Then $h$ is not computable.
+Então $h$ não é computável.
 \end{thm}
 
 \begin{proof}
-Suppose $h$ is computable. We show that this would let us define a
-universal computable function. Define
+Suponha que $h$ seja computável. Mostraremos que isso nos permitiria
+definir uma função computável universal. Defina
 \[
 \fn{Un'}(e,x) =
 \begin{cases}
-\fn{Un}(e,x) & \text{if $h(e,x) = 1$} \\
-0 & \text{otherwise.}
+\fn{Un}(e,x) & \text{se $h(e,x) = 1$} \\
+0 & \text{caso contrário.}
 \end{cases}
 \]
-But now $\fn{Un'}(e, x)$ is a total function, and is computable if~$h$
-is. For instance, we could define $g$ using primitive recursion, by
+Mas agora $\fn{Un'}(e, x)$ é uma função total e será computável se~$h$
+o for. Por exemplo, poderíamos definir $g$ por recursão primitiva:
 \begin{align*}
 g(0, e, x) & \simeq 0 \\
 g(y+1, e, x) & \simeq \fn{Un}(e,x);
 \end{align*}
-then
+então
 \[
 \fn{Un'}(e,x) \simeq g(h(e,x),e,x).
 \]
-Since $\fn{Un'}(e,x)$ agrees with $\fn{Un}(e,x)$ wherever the latter
-is defined, $\fn{Un'}$ is universal for those partial computable
-functions that happen to be total. But this contradicts
+Como $\fn{Un'}(e,x)$ coincide com $\fn{Un}(e,x)$ sempre que esta
+última está definida, $\fn{Un'}$ é universal para as funções
+parcialmente computáveis que são totais. Mas isso contradiz
 \olref[nou]{thm:no-univ}.
 \end{proof}
 
 \begin{proof}
-Suppose $h(e,x)$ were computable. Define the function $g$ by
+Suponha que $h(e,x)$ fosse computável. Defina a função $g$ por
 \[
 g(x) =
 \begin{cases}
-  0                & \text{if $h(x,x) = 0$} \\
-  \fundefined & \text{otherwise.}
+  0                & \text{se $h(x,x) = 0$} \\
+  \fundefined & \text{caso contrário.}
 \end{cases}
 \]
-The function $g$ is partial computable. For example, one can define it
-as $\umin{y}{h(x,x) = 0}$. So, for some~$e$, $g(x) \simeq \fn{Un}(e,
-x)$ for every~$x$. Is $g$ defined at $e$?  If it is, then, by the
-definition of~$g$, $h(e,e) = 0$ ($h$~can only take the value~$0$ if it
-is defined). By the definition of~$h$, this means that $\fn{Un}(e, e)$
-is undefined. By our assumption that $g(x) \simeq \fn{Un}(e, x)$
-for every~$x$, we have that $g(e)$ is undefined, a contradiction.
-On the other hand, if $g(e)$ is undefined, then $h(e,e) \neq 0$, and
-so $h(e,e) = 1$. It follows that $\fn{Un}(e, e)$ is defined. But since
-$g(x) \simeq \fn{Un}(e, x)$, then $g(e)$ would also be defined. Again,
-a contradiction.
+A função $g$ é parcialmente computável. Por exemplo, podemos defini-la
+como $\umin{y}{h(x,x) = 0}$. Assim, para algum~$e$,
+$g(x) \simeq \fn{Un}(e, x)$ para todo~$x$. $g$ está definida em $e$?
+Se estiver, então, pela definição de~$g$, $h(e,e) = 0$ ($h$~só pode
+assumir o valor~$0$ se estiver definida). Pela definição de~$h$, isso
+significa que $\fn{Un}(e, e)$ é indefinida. Por nossa suposição de que
+$g(x) \simeq \fn{Un}(e, x)$ para todo~$x$, temos que $g(e)$ é
+indefinida, uma contradição. Por outro lado, se $g(e)$ é indefinida,
+então $h(e,e) \neq 0$ e, portanto, $h(e,e) = 1$. Segue-se que
+$\fn{Un}(e, e)$ está definida. Mas, como
+$g(x) \simeq \fn{Un}(e, x)$, $g(e)$ também estaria definida. Novamente,
+uma contradição.
 \end{proof}
 
 \begin{tagblock}{TMs}
 \begin{explain}
-We can describe this argument in terms of Turing machines.  Suppose
-there were a Turing machine~$H$ that takes as input a description of a
-Turing machine~$E$ and an input~$x$, and decides whether or not $E$
-halts on input~$x$. Then we could build another Turing machine~$G$
-which takes a single input~$x$, runs $H$ to decide if the machine
-$M_x$ with index~$x$ halts on input~$x$, and does the opposite. In
-other words, if $H$ reports that $M_x$ halts on input~$x$, $G$ goes
-into an infinite loop, and if $H$ reports that $M_x$ doesn't halt on
-input~$x$, then $G$ just halts. Does $G$ halt on its own index as
-input? The argument above shows that it does if and only if it
-doesn't---a contradiction. So our supposition that there is a such
-Turing machine~$H$ must be false.
+Podemos descrever esse argumento em termos de máquinas de Turing.
+Suponha que existisse uma máquina de Turing~$H$ que recebesse como
+entrada uma descrição de uma máquina de Turing~$E$ e uma entrada~$x$,
+e decidisse se $E$ para ou não na entrada~$x$. Poderíamos então
+construir outra máquina de Turing~$G$ que recebesse uma única entrada~$x$,
+executasse $H$ para decidir se a máquina $M_x$ de índice~$x$ para na
+entrada~$x$, e fizesse o contrário. Em outras palavras, se $H$
+informar que $M_x$ para na entrada~$x$, $G$ entra em um laço infinito;
+se $H$ informar que $M_x$ não para na entrada~$x$, então $G$
+simplesmente para. $G$ para quando recebe seu próprio índice como
+entrada? O argumento acima mostra que ela para se, e somente se, não
+para---uma contradição. Logo, nossa suposição de que existe tal máquina
+de Turing~$H$ deve ser falsa.
 \end{explain}
 \end{tagblock}
 
 \end{document}
+

@@ -6,75 +6,77 @@
 
 \begin{document}
 
-\olfileid{cmp}{rec}{pri}
-\olsection{Primes}
+\olfileid[pt]{cmp}{rec}{pri}
+\olsection{Números primos}
 
-Bounded quantification and bounded minimization provide us with a good
-deal of machinery to show that natural functions and relations are
-primitive recursive. For example, consider the relation ``$x$
-divides $y$'', written $x \mid y$.  The relation $x \mid y$ holds if
-division of $y$ by~$x$ is possible without remainder, O.s.\@, if $y$ is
-an integer multiple of~$x$.  (If it doesn't hold, O.s.\@, the remainder
-when dividing $x$ by $y$ is $> 0$, we write $x \nmid y$.) In other
-words, $x \mid y$ iff for some~$z$, $x \cdot z = y$.  Obviously, any
-such $z$, if it exists, must be $\leq y$. So, we have that $x \mid y$
-iff for some $z \le y$, $x \cdot z = y$.  We can define the relation
-$x \mid y$ by bounded existential quantification from $=$ and
-multiplication by
+A quantificação limitada e a minimização limitada nos fornecem um bom
+conjunto de recursos para mostrar que funções e relações naturais são
+recursivas primitivas. Por exemplo, considere a relação ``$x$ divide
+$y$'', escrita $x \mid y$. A relação $x \mid y$ vale quando é possível
+dividir $y$ por~$x$ sem resto, O.s.\@, quando $y$ é um múltiplo inteiro
+de~$x$. (Quando ela não vale, O.s.\@, quando o resto da divisão de $x$
+por $y$ é $> 0$, escrevemos $x \nmid y$.) Em outras palavras, $x \mid y$
+se, e somente se, para algum~$z$, $x \cdot z = y$. Evidentemente, tal
+$z$, se existir, deve ser $\leq y$. Assim, $x \mid y$ se, e somente se,
+para algum $z \le y$, $x \cdot z = y$. Podemos definir a relação
+$x \mid y$ por quantificação existencial limitada a partir de $=$ e da
+multiplicação:
 \[
 x \mid y \defiff \bexists{z \leq y}{(x \cdot z) = y}.
 \]
-We've thus shown that $x \mid y$ is primitive recursive.
+Mostramos, portanto, que $x \mid y$ é recursiva primitiva.
 
-A natural number~$x$ is \emph{prime} if it is neither $0$ nor $1$ and
-is only divisible by $1$ and itself. In other words, prime numbers are
-such that, whenever $y \mid x$, either $y = 1$ or~$y=x$.  To test if
-$x$~is prime, we only have to check if $y \mid x$ for all $y \le x$,
-since if $y > x$, then automatically~$y \nmid x$.  So, the relation
-$\fn{Prime}(x)$, which holds iff $x$ is prime, can be defined by
+Um número natural~$x$ é \emph{primo} se não é nem $0$ nem $1$ e só é
+divisível por $1$ e por ele mesmo. Em outras palavras, os números primos
+são tais que, sempre que $y \mid x$, ou $y = 1$ ou~$y=x$. Para verificar
+se $x$~é primo, basta verificar se $y \mid x$ para todo $y \le x$, pois,
+se $y > x$, então automaticamente~$y \nmid x$. Logo, a relação
+$\fn{Prime}(x)$, que vale se, e somente se, $x$ é primo, pode ser definida
+por
 \[
 \fn{Prime}(x) \defiff x \geq 2 \land \bforall{y \leq x}{(y \mid x \lif y
   = 1 \lor y = x)}
 \]
-and is thus primitive recursive.
+e, portanto, é recursiva primitiva.
 
-The primes are $2$, $3$, $5$, $7$, $11$, etc. Consider the function
-$p(x)$ which returns the $x$th prime in that sequence, O.s.\@, $p(0) =
-2$, $p(1) = 3$, $p(2) = 5$, etc. (For convenience we will often write
-$p(x)$ as $p_x$ ($p_0=2$, $p_1=3$, etc.)
+Os números primos são $2$, $3$, $5$, $7$, $11$ etc. Considere a função
+$p(x)$ que devolve o $x$-ésimo primo dessa sequência, O.s.\@, $p(0) =
+2$, $p(1) = 3$, $p(2) = 5$ etc. (Por conveniência, muitas vezes
+escreveremos $p(x)$ como $p_x$ ($p_0=2$, $p_1=3$ etc.)
 
-If we had a function
-$\fn{nextPrime(x)}$, which returns the first prime number larger
-than~$x$, $p$~can be easily defined using primitive recursion:
+Se tivéssemos uma função
+$\fn{nextPrime(x)}$ que devolvesse o primeiro número primo maior
+que~$x$, seria fácil definir~$p$ por recursão primitiva:
 \begin{align*}
   p(0) & = 2\\
   p(x+1) & = \fn{nextPrime}(p(x))
 \end{align*}
-Since $\fn{nextPrime}(x)$ is the least $y$ such that $y > x$ and
-$y$~is prime, it can be easily computed by unbounded search. But it
-can also be defined by bounded minimization, thanks to a result due to
-Euclid: there is always a prime number between $x$ and $\fact{x}+1$.
+Como $\fn{nextPrime}(x)$ é o menor $y$ tal que $y > x$ e $y$~é primo,
+ela pode ser facilmente calculada por busca ilimitada. Mas também pode
+ser definida por minimização limitada, graças a um resultado de Euclides:
+sempre existe um número primo entre $x$ e $\fact{x}+1$.
 \[
   \fn{nextPrime(x)} =
   \bmin{y \leq \fact{x}+1}{(y > x \land \fn{Prime}(y))}.
 \]
-This shows, that $\fn{nextPrime}(x)$ and hence $p(x)$ are (not just
-computable but) primitive recursive.
+Isso mostra que $\fn{nextPrime}(x)$ e, portanto, $p(x)$ são recursivas
+primitivas (e não apenas computáveis).
 
-(If you're curious, here's a quick proof of Euclid's theorem. Suppose
-$p_n$ is the largest prime $\le x$ and consider the product $p =
-p_0\cdot p_1 \cdot \dots \cdot p_n$ of all primes~$\le x$. Either
-$p+1$ is prime or there is a prime between $x$ and~$p+1$.  Why?
-Suppose $p+1$ is not prime. Then some prime number $q \mid p+1$ where
-$q < p+1$. None of the primes $\le x$ divide $p+1$. (By definition
-of~$p$, each of the primes $p_i \le x$ divides~$p$, O.s.\@, with
-remainder~$0$. So, each of the primes $p_i \le x$ divides $p+1$ with
-remainder~$1$, and so $p_i \nmid p+1$.)  Hence, $q$ is a prime $>
-x$ and $< p+1$.  And $p \le \fact{x}$, so there is a prime $> x$ and $\le
+(Se você estiver curioso, eis uma demonstração rápida do teorema de
+Euclides. Suponha que $p_n$ seja o maior primo $\le x$ e considere o
+produto $p = p_0\cdot p_1 \cdot \dots \cdot p_n$ de todos os
+primos~$\le x$. Ou $p+1$ é primo, ou existe um primo entre $x$
+e~$p+1$. Por quê? Suponha que $p+1$ não seja primo. Então algum número
+primo $q \mid p+1$, com $q < p+1$. Nenhum dos primos $\le x$ divide
+$p+1$. (Pela definição de~$p$, cada um dos primos $p_i \le x$
+divide~$p$, O.s.\@, com resto~$0$. Logo, cada um dos primos
+$p_i \le x$ divide $p+1$ com resto~$1$ e, portanto,
+$p_i \nmid p+1$.) Assim, $q$ é um primo $> x$ e $< p+1$. E
+$p \le \fact{x}$, portanto existe um primo $> x$ e $\le
 \fact{x}+1$.)
 
 \begin{prob}
-Define integer division $d(x, y)$ using bounded minimization.
+Defina a divisão inteira $d(x, y)$ usando minimização limitada.
 \end{prob}
 
 \end{document}

@@ -6,89 +6,89 @@
 
 \begin{document}
 
-\olfileid{cmp}{rec}{hlt}
-\olsection{The Halting Problem}
+\olfileid[pt]{cmp}{rec}{hlt}
+\olsection{O problema da parada}
 
-The \emph{halting problem} in general is the problem of deciding,
-given the specification~$e$ (p.ex., program) of a computable function
-and a number~$n$, whether the computation of the function on input~$n$
-halts, O.s.\@, produces a result.  Famously, Alan Turing proved that
-this problem itself cannot be solved by a computable function, O.s.\@,
-the function
+O \emph{problema da parada}, em geral, é o problema de decidir, dada a
+especificação~$e$ (p.ex., um programa) de uma função computável e
+um número~$n$, se a computação da função na entrada~$n$ para, O.s.\@,
+se produz um resultado. Alan Turing demonstrou, em um resultado célebre,
+que esse próprio problema não pode ser resolvido por uma função
+computável, O.s.\@, a função
 \[
 h(e, n) =
 \begin{cases}
-1 & \text{if computation $e$ halts on input $n$}\\
-0 & \text{otherwise,}
+1 & \text{se a computação $e$ para na entrada $n$}\\
+0 & \text{caso contrário,}
 \end{cases}
 \]
-is not computable.
+não é computável.
 
-In the context of partial recursive functions, the role of the
-specification of a program may be played by the index~$e$ given in
-Kleene's normal form theorem.  If $f$ is a partial recursive function,
-any $e$~for which the equation in the normal form theorem holds, is an
-index of~$f$. Given a number~$e$, the normal form theorem states that
+No contexto das funções recursivas parciais, o papel da especificação
+de um programa pode ser desempenhado pelo índice~$e$ dado no teorema
+da forma normal de Kleene. Se $f$ é uma função recursiva parcial,
+qualquer $e$~para o qual vale a equação do teorema da forma normal é
+um índice de~$f$. Dado um número~$e$, o teorema da forma normal afirma
+que
 \[
 \cfind{e}(x) \simeq U(\mu s \; T(e, x, s))
 \]
-is partial recursive, and for every partial recursive $f\colon \Nat
-\to \Nat$, there is an $e \in \Nat$ such that $\cfind{e}(x) \simeq
-f(x)$ for all~$x \in \Nat$.  In fact, for each such $f$ there is not
-just one, but infinitely many such~$e$.  The \emph{halting function}~$h$
-is defined by
+é recursiva parcial e, para toda função recursiva parcial $f\colon \Nat
+\to \Nat$, existe um $e \in \Nat$ tal que $\cfind{e}(x) \simeq
+f(x)$ para todo~$x \in \Nat$. Na verdade, para cada função~$f$ assim
+há não apenas um, mas infinitos~$e$ com essa propriedade. A
+\emph{função de parada}~$h$ é definida por
 \[
 h(e, x) =
 \begin{cases}
-1 & \text{if $\cfind{e}(x) \fdefined$}\\
-0 & \text{otherwise.}
+1 & \text{se $\cfind{e}(x) \fdefined$}\\
+0 & \text{caso contrário.}
 \end{cases}
 \]
-Note that $h(e, x) = 0$ if $\cfind{e}(x) \fundefined$, but also
-when~$e$ is not the index of a partial recursive function at all.
+Observe que $h(e, x) = 0$ se $\cfind{e}(x) \fundefined$, mas também
+quando~$e$ não é índice de nenhuma função recursiva parcial.
 
 \begin{thm}
 \ollabel{thm:halting-problem}
-The halting function~$h$ is not partial recursive.
+A função de parada~$h$ não é recursiva parcial.
 \end{thm}
 
 \begin{proof}
-If $h$
-were partial recursive, we could define
+Se $h$
+fosse recursiva parcial, poderíamos definir
 \[
 d(y) =
 \begin{cases}
-1 & \text{if $h(y, y) = 0$}\\
-\umin{x}{x \neq x} & \text{otherwise.}
+1 & \text{se $h(y, y) = 0$}\\
+\umin{x}{x \neq x} & \text{caso contrário.}
 \end{cases}
 \]
-Since no number $x$ satisfies $x \neq x$, there is no $\umin{x}{x \neq
-x}$, and so $d(y) \fundefined$ iff $h(y,y) \neq 0$. From this
-definition it follows that
+Como nenhum número $x$ satisfaz $x \neq x$, não existe
+$\umin{x}{x \neq x}$; portanto, $d(y) \fundefined$ se, e somente se,
+$h(y,y) \neq 0$. Dessa definição segue que
 \begin{enumerate}
-\item $d(y) \fdefined$ iff $\cfind{y}(y) \fundefined$ or $y$ is
-  not the index of a partial recursive function.
-\item $d(y) \fundefined$ iff $\cfind{y}(y) \fdefined$.
+\item $d(y) \fdefined$ se, e somente se, $\cfind{y}(y) \fundefined$
+  ou $y$ não é índice de uma função recursiva parcial.
+\item $d(y) \fundefined$ se, e somente se, $\cfind{y}(y) \fdefined$.
 \end{enumerate}
-If $h$ were partial recursive, then $d$ would be partial recursive as
-well.  Thus, by the Kleene normal form theorem, it has an index~$e_d$.
-Consider the value of $h(e_d, e_d)$. There are two possible cases, $0$
-and~$1$.
+Se $h$ fosse recursiva parcial, então $d$ também seria recursiva
+parcial. Assim, pelo teorema da forma normal de Kleene, ela teria um
+índice~$e_d$. Considere o valor de $h(e_d, e_d)$. Há dois casos
+possíveis, $0$ e~$1$.
 \begin{enumerate}
-\item If $h(e_d, e_d) = 1$ then $\cfind{e_d}(e_d) \fdefined$.  But
-  $\cfind{e_d} \simeq d$, and $d(e_d)$ is defined iff $h(e_d, e_d) = 0$.
-  So $h(e_d, e_d) \neq 1$.
-\item If $h(e_d, e_d) = 0$ then either $e_d$ is not the index of a
-  partial recursive function, or it is and $\cfind{e_d}(e_d)
-  \fundefined$. But again, $\cfind{e_d} \simeq d$, and $d(e_d)$ is undefined
-  iff $\cfind{e_d}(e_d) \fdefined$.
+\item Se $h(e_d, e_d) = 1$, então $\cfind{e_d}(e_d) \fdefined$. Mas
+  $\cfind{e_d} \simeq d$, e $d(e_d)$ está definida se, e somente se,
+  $h(e_d, e_d) = 0$. Logo, $h(e_d, e_d) \neq 1$.
+\item Se $h(e_d, e_d) = 0$, então ou $e_d$ não é índice de uma função
+  recursiva parcial, ou ele é e $\cfind{e_d}(e_d) \fundefined$. Mas,
+  novamente, $\cfind{e_d} \simeq d$, e $d(e_d)$ é indefinida se, e
+  somente se, $\cfind{e_d}(e_d) \fdefined$.
 \end{enumerate}
-The upshot is that $e_d$ cannot, after all, be the index of a partial
-recursive function.  But if $h$ were partial recursive, $d$ would be
-too, and so our definition of $e_d$ as an index of it would be
-admissible.  We must conclude that $h$ cannot be partial recursive.
+O resultado é que $e_d$ não pode, afinal, ser o índice de uma função
+recursiva parcial. Mas, se $h$ fosse recursiva parcial, $d$ também
+seria, e nossa definição de $e_d$ como um índice dela seria
+admissível. Devemos concluir que $h$ não pode ser recursiva parcial.
 \end{proof}
 
 \end{document}
-
 
