@@ -6,29 +6,29 @@
 
 \begin{document}
 
-\olfileid{fol}{axd}{qua}
+\olfileid[pt]{fol}{axd}{qua}
 
-\olsection{Axioms and Rules for Quantifiers}
+\olsection{Axiomas e regras para quantificadores}
 
-\begin{defn}[Axioms for quantifiers]
-The \emph{axioms} governing quantifiers are
-all instances of the following:
+\begin{defn}[Axiomas para quantificadores]
+Os \emph{axiomas} que regem os quantificadores são
+todas as instâncias dos seguintes:
 \begin{align}
 \ollabel{ax:q1} & \lforall[x][!B] \lif !B(t), \\
 \ollabel{ax:q2} & !B(t) \lif \lexists[x][!B].
 \end{align}
-for any closed term~$t$.
+para qualquer termo fechado~$t$.
 \end{defn}
 
-\begin{defn}[Rules for quantifiers]
-\item If $!B \lif !A(a)$ already occurs in the !!{derivation} and $a$
-  does not occur in~$\Gamma$ or~$!B$, then $!B \lif
-  \lforall[x][!A(x)]$ is a correct inference step.
-\item If $!A(a) \lif !B$ already occurs in the !!{derivation} and $a$
-  does not occur in~$\Gamma$ or~$!B$, then $\lexists[x][!A(x)] \lif
-  !B$ is a correct inference step.
+\begin{defn}[Regras para quantificadores]
+\item Se $!B \lif !A(a)$ já ocorre na !!{derivation} e $a$
+  não ocorre em~$\Gamma$ nem em~$!B$, então $!B \lif
+  \lforall[x][!A(x)]$ é um passo de inferência correto.
+\item Se $!A(a) \lif !B$ já ocorre na !!{derivation} e $a$
+  não ocorre em~$\Gamma$ nem em~$!B$, então $\lexists[x][!A(x)] \lif
+  !B$ é um passo de inferência correto.
 \end{defn}
 
-We'll abbreviate either of these by ``\QR.''
+Abreviaremos qualquer uma dessas regras por ``\QR''.
 
 \end{document}
