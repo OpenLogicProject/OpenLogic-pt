@@ -6,71 +6,73 @@
 
 \begin{document}
 
-\olfileid{nml}{fil}{pre}
+\olfileid[pt]{nml}{fil}{pre}
 
-\olsection{Preliminaries}
+\olsection{Preliminares}
 
-Filtrations allow us to establish the decidability of our systems of
-modal logic by showing that they have the \emph{finite model
-  property}, O.s.\@, that any !!{formula} that is true (false) in a
-model is also true (false) in a \emph{finite} model.  Filtrations are
-defined relative to sets of !!{formula}s which are closed under
-subformulas.
+As filtrações nos permitem estabelecer a decidibilidade de nossos
+sistemas de lógica modal mostrando que eles têm a \emph{propriedade
+  dos modelos finitos}, O.s.\@, que toda !!{formula} verdadeira
+(falsa) em um modelo também é verdadeira (falsa) em um modelo
+\emph{finito}. As filtrações são definidas relativamente a conjuntos
+de !!{formula}s fechados sob subfórmulas.
 
 \begin{defn}\ollabel{defn:modallyclosed}
-  A set $\Gamma$ of !!{formula}s is \emph{closed under subformulas} if it
-  contains every subformula of !!a{formula} in $\Gamma$. Further,
-  $\Gamma$ is \emph{modally closed} if it is closed under subformulas
-  and moreover $!A \in \Gamma$ implies $\Box!A,
+  Um conjunto $\Gamma$ de !!{formula}s é \emph{fechado sob
+  subfórmulas} se contém toda subfórmula de !!a{formula} em $\Gamma$.
+  Além disso, $\Gamma$ é \emph{modalmente fechado} se é fechado sob
+  subfórmulas e, ademais, $!A \in \Gamma$ implica $\Box!A,
   \Diamond!A \in \Gamma$. 
 \end{defn}
 
-For instance, given !!a{formula}~$!A$, the set of all its
-sub-!!{formula}s is closed under sub-!!{formula}s. When we're defining
-a filtration of a model through the set of sub-!!{formula}s of~$!A$,
-it will have the property we're after: it makes $!A$ true (false) iff
-the original model does.
+Por exemplo, dada !!a{formula}~$!A$, o conjunto de todas as suas
+sub-!!{formula}s é fechado sob sub-!!{formula}s. Quando definimos uma
+filtração de um modelo pelo conjunto de sub-!!{formula}s de~$!A$, ela
+tem a propriedade que buscamos: torna $!A$ verdadeira (falsa) se e
+somente se o modelo original o faz.
 
-The set of worlds of a filtration of~$\mModel{M}$ through~$\Gamma$ is
-defined as the set of all equivalence classes of the following
-equivalence relation.
+O conjunto de mundos de uma filtração de~$\mModel{M}$ por~$\Gamma$ é
+definido como o conjunto de todas as classes de equivalência da
+seguinte relação de equivalência.
 
 \begin{defn}
-Let $\mModel{M} =\tuple{W, R, V}$ and suppose $\Gamma$ is closed under
-sub-!!{formula}s. Define a relation $\equiv$ on $W$ to hold of any two
-worlds that make the same !!{formula}s from $\Gamma$ true, O.s.:
+Seja $\mModel{M} =\tuple{W, R, V}$ e suponha que $\Gamma$ seja fechado
+sob sub-!!{formula}s. Defina uma relação $\equiv$ em $W$ que valha para
+quaisquer dois mundos que tornem verdadeiras as mesmas !!{formula}s de
+$\Gamma$, O.s.:
 \[
-u \equiv v \quad \text{if and only if } \quad 
+u \equiv v \quad \text{se e somente se } \quad
 \forall !A \in \Gamma : \mSat{M}{!A}[u] \Leftrightarrow \mSat{M}{!A}[v].
 \]
-The equivalence class~$[w]_\equiv$ of a world~$w$, or $[w]$ for short,
-is the set of all worlds $\equiv$-equivalent to~$w$:
+A classe de equivalência~$[w]_\equiv$ de um mundo~$w$, ou simplesmente
+$[w]$, é o conjunto de todos os mundos $\equiv$-equivalentes a~$w$:
 \[
 [w] = \Setabs{v}{v \equiv w}.
 \]
 \end{defn}
 
 \begin{prop}
-  Given $\mModel{M}$ and $\Gamma$, $\equiv$ as defined above is an
-  equivalence relation, O.s.\@, it is reflexive, symmetric, and
-  transitive.
+  Dados $\mModel{M}$ e $\Gamma$, a relação $\equiv$ definida acima é
+  uma relação de equivalência, O.s.\@, é reflexiva, simétrica e
+  transitiva.
 \end{prop}
 
 \begin{proof}
-  The relation $\equiv$ is reflexive, since $w$ makes exactly the same
-  !!{formula}s from~$\Gamma$ true as itself. It is symmetric since if
-  $u$ makes the same !!{formula}s from~$\Gamma$ true as $v$, the same
-  holds for $v$ and~$u$. It is also transitive, since if $u$ makes the
-  same !!{formula}s from~$\Gamma$ true as~$v$, and $v$ as $w$, then
-  $u$ makes the same !!{formula}s from~$\Gamma$ true as~$w$.
+  A relação $\equiv$ é reflexiva, pois $w$ torna verdadeiras exatamente
+  as mesmas !!{formula}s de~$\Gamma$ que ele próprio. É simétrica,
+  pois, se $u$ torna verdadeiras as mesmas !!{formula}s de~$\Gamma$
+  que $v$, o mesmo vale para $v$ e~$u$. Também é transitiva, pois, se
+  $u$ torna verdadeiras as mesmas !!{formula}s de~$\Gamma$ que~$v$, e
+  $v$ as mesmas que $w$, então $u$ torna verdadeiras as mesmas
+  !!{formula}s de~$\Gamma$ que~$w$.
 \end{proof}
 
-The relation $\equiv$, like any equivalence relation, divides~$W$ into
-\emph{partitions}, O.s.\@, subsets of~$W$ which are pairwise disjoint,
-and together cover all of~$W$. Every $w \in W$ is !!a{element} of one
-of the partitions, namely of~$[w]$, since $w \equiv w$. So the
-partitions $[w]$ cover all of~$W$. They are pairwise disjoint, for if
-$u \in [w]$ and $u \in [v]$, then $u \equiv w$ and $u \equiv v$, and
-by symmetry and transitivity, $w \equiv v$, and so $[w] = [v]$.
+A relação $\equiv$, como qualquer relação de equivalência, divide~$W$
+em \emph{partes}, O.s.\@, subconjuntos de~$W$ dois a dois disjuntos
+que, em conjunto, cobrem todo~$W$. Todo $w \in W$ é !!a{element} de
+uma das partes, a saber, de~$[w]$, pois $w \equiv w$. Portanto, as
+partes $[w]$ cobrem todo~$W$. Elas são duas a duas disjuntas, pois, se
+$u \in [w]$ e $u \in [v]$, então $u \equiv w$ e $u \equiv v$ e, pela
+simetria e transitividade, $w \equiv v$; logo, $[w] = [v]$.
 
 \end{document}

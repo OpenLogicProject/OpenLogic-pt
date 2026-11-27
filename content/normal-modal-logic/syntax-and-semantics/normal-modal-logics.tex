@@ -6,59 +6,59 @@
 
 \begin{document}
 
-\olfileid{nml}{syn}{nor}
+\olfileid[pt]{nml}{syn}{nor}
 
-\olsection{Normal Modal Logics}
+\olsection{Lógicas Modais Normais}
 
-A modal logic can be seen as any suitably well-behaved set of
-!!{formula}s.  There are some modal logics which are of particular
-interest, both because they have interesting interpretations and
-applications, but mainly because they are theoretically well
-understood.  Those are the so-called normal modal logics.
+Uma lógica modal pode ser vista como qualquer conjunto adequadamente bem-comportado de
+!!{formula}s. Há algumas lógicas modais de particular
+interesse, por terem interpretações e
+aplicações interessantes, mas principalmente por serem teoricamente bem
+compreendidas. Essas são as chamadas lógicas modais normais.
 
 \begin{defn}\ollabel{defn:modal-logic}
-A \emph{modal logic}~$\Log L$ is a set of !!{formula}s of the basic
-modal language which 
+Uma \emph{lógica modal}~$\Log L$ é um conjunto de !!{formula}s da linguagem
+modal básica que 
 \begin{enumerate}
-\item contains all propositional tautologies, 
-\item is closed under uniform substitution, and 
-\item is closed under modus ponens, O.s.\@, whenever $!A$ and $(!A \lif
-  !B) \in \Log L$ then also $!B \in \Log L$.
+\item contém todas as tautologias proposicionais, 
+\item é fechado sob substituição uniforme e 
+\item é fechado sob modus ponens, O.s.\@, sempre que $!A$ e $(!A \lif
+  !B) \in \Log L$, então também $!B \in \Log L$.
 \end{enumerate}
 \end{defn}
 
 \begin{ex}
-Some admittedly not very interesting sets of !!{formula}s which
-satisfy this definition and therefore count as modal logics are:
+Alguns conjuntos de !!{formula}s reconhecidamente pouco interessantes que
+satisfazem essa definição e, portanto, contam como lógicas modais são:
 \begin{enumerate}
-\item the set of all tautologies
-\item the set of all !!{formula}s (the inconsistent modal logic)
+\item o conjunto de todas as tautologias
+\item o conjunto de todas as !!{formula}s (a lógica modal inconsistente)
 \end{enumerate}
 \end{ex}
 
 \begin{defn}\label{defn:normal-modal-logic}
-A modal logic~$\Log L$ is \emph{normal} iff 
+Uma lógica modal~$\Log L$ é \emph{normal} se, e somente se, 
 \begin{enumerate}
-\item it contains both
+\item contém ambas as fórmulas
 \begin{align}
 \tag{K} \Box(p \lif q) & \lif (\Box p \lif \Box q) \\
 \tag{Dual} \Diamond p & \liff \lnot \Box \lnot p
 \end{align}
-\item and it is closed under necessitation, O.s.\@, whenever $!A \in
-  \Log L$, then also $\Box !A \in \Log L$.
+\item e é fechada sob necessitação, O.s.\@, sempre que $!A \in
+  \Log L$, então também $\Box !A \in \Log L$.
 \end{enumerate}
 \end{defn}
 
-We will encounter two main ways of defining modal logics.  One is
-proof-theoretically, as the set of !!{formula}s that can be derived in
-certain !!{derivation} systems. The other is model-theoretically, as
-sets of !!{formula}s which are valid in certain classes of
-models. This mirrors the situation in ordinary propositional logic (or
-first-order logic, for that matter).  Here we can also single out a
-set of !!{formula}s in two different ways, p.ex., as the set of
-tautologies which are true in all truth-value assignments and as the
-set of all !!{derivable} !!{formula}s in some !!{derivation} system.
-For normal modal logics, this two-fold way of specifying modal logics
-is possible using relational models and axiomatic (Hilbert-type) proof
-systems.
+Encontraremos duas maneiras principais de definir lógicas modais. Uma é
+em termos de teoria da prova, como o conjunto de !!{formula}s que podem ser derivadas em
+certos sistemas de !!{derivation}. A outra é em termos de teoria dos modelos, como
+conjuntos de !!{formula}s válidas em certas classes de
+modelos. Isso reflete a situação na lógica proposicional usual (ou, aliás, na
+lógica de primeira ordem). Também aqui podemos determinar um
+conjunto de !!{formula}s de duas maneiras diferentes, p.ex., como o conjunto de
+tautologias verdadeiras em todas as valorações e como o
+conjunto de todas as !!{derivable} !!{formula}s em algum sistema de !!{derivation}.
+No caso das lógicas modais normais, essa dupla maneira de especificar lógicas modais
+é possível por meio de modelos relacionais e sistemas de prova
+axiomáticos (do tipo Hilbert).
 \end{document}

@@ -6,51 +6,53 @@
 
 \begin{document}
 
-\olfileid{nml}{prf}{snd}
+\olfileid[pt]{nml}{prf}{snd}
 
-\olsection{Soundness}
+\olsection{Correção}
 
-!!^a{derivation} system is called sound if everything that can be
-!!{derive}d is valid. When considering modal systems, O.s.\@,
-!!{derivation}s where in addition to \Ax{K} we can use instances of
-some !!{formula}s $!A_1$, \dots,~$!A_n$, we want every !!{derivable}
-formula to be true in any model in which $!A_1$, \dots, $!A_n$ are
-true.  
+!!^a{derivation} é dito correto se tudo o que pode ser !!{derive}d é
+válido. Ao considerar sistemas modais, O.s.\@, !!{derivation}s nas
+quais, além de \Ax{K}, podemos usar instâncias de certas !!{formula}s
+$!A_1$, \dots,~$!A_n$, queremos que toda fórmula !!{derivable} seja
+verdadeira em qualquer modelo no qual $!A_1$, \dots, $!A_n$ sejam
+verdadeiras.
 
-\begin{thm}[Soundness Theorem]\ollabel{thm:soundness}
-  If every instance of $!A_1$, \dots, $!A_n$ is valid in the
-  classes of models $\mClass{C}_1$, \dots, $\mClass{C}_n$,
-  respectively, then $\Log{K}!A_1\dots !A_n
-  \Proves !B$ implies that $!B$ is valid in the class of
-  models $\mClass{C}_1 \cap \dots \cap \mClass{C}_n$.
+\begin{thm}[Teorema da correção]\ollabel{thm:soundness}
+  Se toda instância de $!A_1$, \dots, $!A_n$ é válida nas classes de
+  modelos $\mClass{C}_1$, \dots, $\mClass{C}_n$, respectivamente,
+  então $\Log{K}!A_1\dots !A_n \Proves !B$ implica que $!B$ é válida
+  na classe de modelos
+  $\mClass{C}_1 \cap \dots \cap \mClass{C}_n$.
 \end{thm}
 
 \begin{proof}
-  By induction on length of proofs. For brevity, put $\mClass{C} =
+  Por indução no comprimento das demonstrações. Para abreviar, ponha $\mClass{C} =
   \mClass{C}_1 \cap \dots \cap \mClass{C}_n$.
   \begin{enumerate}
-  \item Induction Basis: If $!B$ has a proof of length~$1$, then it is
-    either a tautological instance, an instance
-    of~\Ax{K},\iftag{prvDiamond}{ or of~\Dual{},}{} or an instance of
-    one of $!A_1$, \dots,~$!A_n$. In the first case, $!B$ is valid in
-    $\mClass{C}$, since tautological instance are valid in \emph{any}
-    class of models, by \olref[syn][tau]{prop:valid-taut}. Similarly
-    in the second case, by
-    \olref[syn][sch]{prop:Kvalid}\iftag{prvDiamond}{ and
-      \olref[syn][sch]{prop:Dual-valid}}{}. Finally in the third case,
-    since $!B$ is valid in $\mClass{C}_i$ and $\mClass{C} \subseteq
-    \mClass{C}_i$, we have that $!B$ is valid in $\mClass{C}$ as well
-    by \olref[syn][val]{prop:subset-class}.
-  \item Inductive step: Suppose $!B$ has a proof of length $k>1$. If
-    $!B$ is a tautological instance or an instance of one of $!A_1$,
-    \dots, $!A_n$, we proceed as in the previous step. So suppose $!B$ is
-    obtained by \MP{} from previous !!{formula}s $!C \lif !B$ and
-    $!C$. Then $!C \lif !B$ and $!C$ have proofs of length $<k$, and
-    by inductive hypothesis they are valid in~$\mClass{C}$. By
-    \olref[syn][sch]{prop:soundMP}, $!B$ is valid in $\mClass{C}$ as
-    well. Finally suppose $!B$ is obtained by \Nec{} from $!C$ (so
-    that $!B = \Box!C$). By inductive hypothesis, $!C$ is valid in
-    $\mClass{C}$, and by \olref[syn][val]{prop:Nec-rule} so is~$!B$.
+  \item Base da indução: Se $!B$ tem uma demonstração de
+    comprimento~$1$, então ela é ou uma instância tautológica, ou uma
+    instância de~\Ax{K},\iftag{prvDiamond}{ ou de~\Dual{},}{} ou uma
+    instância de um dos axiomas $!A_1$, \dots,~$!A_n$. No primeiro
+    caso, $!B$ é válida em $\mClass{C}$, pois instâncias tautológicas
+    são válidas em \emph{qualquer} classe de modelos, por
+    \olref[syn][tau]{prop:valid-taut}. O mesmo vale no segundo caso,
+    por \olref[syn][sch]{prop:Kvalid}\iftag{prvDiamond}{ e
+      \olref[syn][sch]{prop:Dual-valid}}{}. Finalmente, no terceiro
+    caso, como $!B$ é válida em $\mClass{C}_i$ e $\mClass{C} \subseteq
+    \mClass{C}_i$, temos que $!B$ também é válida em $\mClass{C}$ por
+    \olref[syn][val]{prop:subset-class}.
+  \item Passo indutivo: Suponha que $!B$ tenha uma demonstração de
+    comprimento $k>1$. Se $!B$ é uma instância tautológica ou uma
+    instância de um dos axiomas $!A_1$, \dots, $!A_n$, procedemos como
+    no passo anterior. Suponha, portanto, que $!B$ seja obtida por
+    \MP{} a partir das !!{formula}s anteriores $!C \lif !B$ e $!C$.
+    Então $!C \lif !B$ e $!C$ têm demonstrações de comprimento $<k$ e,
+    pela hipótese de indução, são válidas em~$\mClass{C}$. Por
+    \olref[syn][sch]{prop:soundMP}, $!B$ também é válida em
+    $\mClass{C}$. Finalmente, suponha que $!B$ seja obtida por \Nec{}
+    a partir de $!C$ (de modo que $!B = \Box!C$). Pela hipótese de
+    indução, $!C$ é válida em $\mClass{C}$, e por
+    \olref[syn][val]{prop:Nec-rule}, $!B$ também o é.
   \end{enumerate}
 \end{proof}
 

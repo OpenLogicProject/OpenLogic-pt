@@ -6,18 +6,20 @@
 
 \begin{document}
 
-\olfileid{nml}{prf}{prg}
+\olfileid[pt]{nml}{prf}{prg}
 
-\olsection{\usetoken{S}{derivability} from a Set of \usetoken{P}{formula}}
+\olsection{\usetoken{S}{derivability} a partir de um conjunto de \usetoken{P}{formula}}
 
-In \olref[prf][prs]{sec} we defined a notion of provability
-of !!a{formula} in a system~$\Sigma$. We now extend this notion to
-provability in $\Sigma$ from !!{formula}s in a set~$\Gamma$.
+Em \olref[prf][prs]{sec}, definimos uma noção de demonstrabilidade de
+!!a{formula} em um sistema~$\Sigma$. Estendemos agora essa noção à
+demonstrabilidade em $\Sigma$ a partir de !!{formula}s em um
+conjunto~$\Gamma$.
 
 \begin{defn}\ollabel{defn:Gammaproves}
-  !!^a{formula}~$!A$ is !!{derivable} in a system~$\Sigma$ from a set of
-  !!{formula}s $\Gamma$, written $\Gamma \Proves[\Sigma] !A$ if and
-  only if there are $!B_1$, \dots, $!B_n \in \Gamma$ such that
+  !!^a{formula}~$!A$ é !!{derivable} em um sistema~$\Sigma$ a partir de
+  um conjunto de !!{formula}s $\Gamma$, o que escrevemos
+  $\Gamma \Proves[\Sigma] !A$, se e somente se existem $!B_1$, \dots,
+  $!B_n \in \Gamma$ tais que
   $\Sigma \Proves !B_1 \lif (!B_2 \lif \cdots (!B_n \lif !A)
   \cdots)$. 
 \end{defn}

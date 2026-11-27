@@ -6,12 +6,12 @@
 
 \begin{document}
 
-\olfileid{nml}{tab}{mru}
+\olfileid[pt]{nml}{tab}{mru}
 
-\olsection{Rules for Other Accessibility Relations}
+\olsection{Regras para outras relações de acessibilidade}
 
-In order to deal with logics determined by special accessibility
-relations, we consider the additional rules in \olref{tab:more-rules}.
+Para tratar de lógicas determinadas por relações de acessibilidade
+especiais, consideramos as regras adicionais de \olref{tab:more-rules}.
 
 \begin{table}
   \begin{center}
@@ -72,8 +72,8 @@ relations, we consider the additional rules in \olref{tab:more-rules}.
       \DisplayProof}{}
     \\
     \iftag{notprvBox,notprvDiamond}
-         {$\sigma.n$ is used}
-         {$\sigma.n$ is used & $\sigma.n$ is used}
+         {$\sigma.n$ é usado}
+         {$\sigma.n$ é usado & $\sigma.n$ é usado}
     \\[1ex]
     \hline
     \iftag{prvBox}{
@@ -91,20 +91,20 @@ relations, we consider the additional rules in \olref{tab:more-rules}.
     \hline
     \end{tabular}
   \end{center}
-  \caption{More modal rules.}
+  \caption{Outras regras modais.}
   \ollabel{tab:more-rules}
 \end{table}
 
-Adding these rules results in systems that are sound and complete for
-the logics given in \olref{tab:logics-rules}.
+Acrescentar essas regras produz sistemas corretos e completos para as
+lógicas apresentadas em \olref{tab:logics-rules}.
 
 \begin{table}
   \begin{center}
     \begin{tabular}{lll}
       \hline
-      Logic & $R$ is \dots & Rules\\
+      Lógica & $R$ é \dots & Regras\\
       \hline
-      $\Log{T} = \Log{KT}$ & reflexive &
+      $\Log{T} = \Log{KT}$ & reflexiva &
       \iftag{prvBox}{T$\Box$}{}%
       \iftag{notprvBox,notprvDiamond}{}{, }%
       \iftag{prvDiamond}{T$\Diamond$}{}
@@ -114,51 +114,51 @@ the logics given in \olref{tab:logics-rules}.
       \iftag{notprvBox,notprvDiamond}{}{, }%
       \iftag{prvDiamond}{D$\Diamond$}{}
       \\ \hline
-      $\Log{K4}$ & transitive &
+      $\Log{K4}$ & transitiva &
       \iftag{prvBox}{4$\Box$}{}%
       \iftag{notprvBox,notprvDiamond}{}{, }%
       \iftag{prvDiamond}{4$\Diamond$}{}
       \\ \hline
-      $\Log{B} = \Log{KTB}$ & reflexive, &
+      $\Log{B} = \Log{KTB}$ & reflexiva, &
       \iftag{prvBox}{T$\Box$}{}%
       \iftag{notprvBox,notprvDiamond}{}{, }%
       \iftag{prvDiamond}{T$\Diamond$}{}\\
-      & symmetric &
+      & simétrica &
       \iftag{prvBox}{B$\Box$}{}%
       \iftag{notprvBox,notprvDiamond}{}{, }%
       \iftag{prvDiamond}{B$\Diamond$}{}
       \\ \hline
-      $\Log{S4} = \Log{KT4}$ & reflexive, &
+      $\Log{S4} = \Log{KT4}$ & reflexiva, &
       \iftag{prvBox}{T$\Box$}{}%
       \iftag{notprvBox,notprvDiamond}{}{, }%
       \iftag{prvDiamond}{T$\Diamond$}{},\\
-      & transitive &
+      & transitiva &
       \iftag{prvBox}{4$\Box$}{}%
       \iftag{notprvBox,notprvDiamond}{}{, }%
       \iftag{prvDiamond}{4$\Diamond$}{}
       \\ \hline
-      $\Log{S5} = \Log{KT4B}$ & reflexive, &
+      $\Log{S5} = \Log{KT4B}$ & reflexiva, &
       \iftag{prvBox}{T$\Box$}{}%
       \iftag{notprvBox,notprvDiamond}{}{, }%
       \iftag{prvDiamond}{T$\Diamond$}{},\\
-      & transitive, &
+      & transitiva, &
       \iftag{prvBox}{4$\Box$}{}%
       \iftag{notprvBox,notprvDiamond}{}{, }%
       \iftag{prvDiamond}{4$\Diamond$}{},\\
-      &  euclidean &
+      &  euclidiana &
       \iftag{prvBox}{4r$\Box$}{}%
       \iftag{notprvBox,notprvDiamond}{}{, }%
       \iftag{prvDiamond}{4r$\Diamond$}{}
       \\ \hline
     \end{tabular}
   \end{center}
-  \caption{!!^{tableau} rules for various modal logics.}
+  \caption{Regras de !!^{tableau} para várias lógicas modais.}
   \ollabel{tab:logics-rules}
 \end{table}
 
 
 \begin{ex}
-  We give a closed tableau that shows $\Log{S5} \Proves \Ax{5}$, O.s.\@,
+  Apresentamos um tableau fechado que mostra $\Log{S5} \Proves \Ax{5}$, O.s.\@,
   $\Box!A \lif \Box\Diamond!A$.
   \begin{oltableau}
     [\pFmla{\False}{\Box\formula{A} \lif \Box\Diamond \formula{A}}{1},
@@ -184,7 +184,7 @@ the logics given in \olref{tab:logics-rules}.
 \end{ex}
 
 \begin{prob}
-Give closed !!{tableau}s that show the following:
+Apresente !!{tableau}s fechados que mostrem o seguinte:
   \begin{enumerate}
   \item $\Log{KT5} \Proves \Ax{B}$;
   \item $\Log{KT5} \Proves \Ax{4}$;
