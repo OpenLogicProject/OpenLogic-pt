@@ -6,51 +6,51 @@
 
 \begin{document}
 
-\olfileid{sol}{met}{lst}
+\olfileid[pt]{sol}{met}{lst}
 
-\olsection{The L\"owenheim--Skolem Theorem Fails for Second-order Logic}
+\olsection{O teorema de L\"owenheim--Skolem falha para a lógica de segunda ordem}
 
 \begin{explain}
-The (Downward) L\"owenheim--Skolem Theorem states that every set of
-!!{sentence}s with an infinite model has !!a{enumerable} model.  It,
-too, is a consequence of the completeness theorem: the proof of
-completeness generates a model for any consistent set of
-!!{sentence}s, and that model is !!{enumerable}.  There is also an
-Upward L\"owenheim--Skolem Theorem, which guarantees that if a set of
-!!{sentence}s has !!a{denumerable} model it also has
-!!a{nonenumerable} model.  Both theorems fail in second-order logic.
+O teorema (descendente) de L\"owenheim--Skolem afirma que todo conjunto de
+!!{sentence}s que tenha um modelo infinito tem !!a{enumerable} modelo. Ele
+também é consequência do teorema da completude: a prova de completude gera
+um modelo para qualquer conjunto consistente de !!{sentence}s, e esse
+modelo é !!{enumerable}. Há também um teorema ascendente de
+L\"owenheim--Skolem, que garante que, se um conjunto de !!{sentence}s tem
+!!a{denumerable} modelo, então também tem !!a{nonenumerable} modelo. Ambos
+os teoremas falham na lógica de segunda ordem.
 \end{explain}
 
 
 \begin{thm}
-\ollabel{thm:sol-no-ls} The L\"owenheim--Skolem Theorem fails for
-second-order logic: There are !!{sentence}s with infinite models but
-no !!{enumerable} models.
+\ollabel{thm:sol-no-ls} O teorema de L\"owenheim--Skolem falha para a
+lógica de segunda ordem: há !!{sentence}s com modelos infinitos, mas sem
+modelos !!{enumerable}.
 \end{thm}
 
 \begin{proof}
-Recall that 
+Lembre-se de que
 \[
 \fn{Count} \ident \lexists[z][\lexists[u][\lforall[X][((X(z) \land
       \lforall[x][(X(x) \lif X(u(x)))]) \lif \lforall[x][X(x)])]]]
 \]
-is true in !!a{structure}~$\Struct{M}$ iff $\Domain{M}$ is
-!!{enumerable}, so $\lnot\fn{Count}$ is true in~$\Struct{M}$
-iff $\Domain{M}$ is !!{nonenumerable}.  There are
-such !!{structure}s---take any !!{nonenumerable} set as the
-!!{domain}, p.ex., $\Pow{\Nat}$ or~$\Real$. So $\lnot \fn{Count}$ 
-has infinite models but no !!{enumerable} models.
+é verdadeira em !!a{structure}~$\Struct{M}$ sse $\Domain{M}$ é
+!!{enumerable}; portanto, $\lnot\fn{Count}$ é verdadeira em~$\Struct{M}$
+sse $\Domain{M}$ é !!{nonenumerable}. Existem !!{structure}s desse
+tipo---basta tomar qualquer conjunto !!{nonenumerable} como !!{domain}, p.ex., $\Pow{\Nat}$ ou~$\Real$. Logo, $\lnot \fn{Count}$ tem modelos
+infinitos, mas não tem modelos !!{enumerable}.
 \end{proof}
 
 \begin{thm}
-There are !!{sentence}s with !!{denumerable} but no
-!!{nonenumerable} models.
+Há !!{sentence}s com modelos !!{denumerable}, mas sem modelos
+!!{nonenumerable}.
 \end{thm}
 
 \begin{proof}
-$\fn{Count} \land \fn{Inf}$ is true in $\Nat$ but not in any
-  !!{structure}~$\Struct{M}$ with $\Domain{M}$ !!{nonenumerable}.
+$\fn{Count} \land \fn{Inf}$ é verdadeira em $\Nat$, mas não em nenhuma
+  !!{structure}~$\Struct{M}$ com $\Domain{M}$ !!{nonenumerable}.
 \end{proof}
 
 
 \end{document}
+
