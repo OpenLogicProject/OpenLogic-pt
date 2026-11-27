@@ -6,36 +6,36 @@
 
 \begin{document}
 
-\olfileid{mvl}{syn}{mat}
+\olfileid[pt]{mvl}{syn}{mat}
 
-\olsection{Matrices}
+\olsection{Matrizes}
 
-A many-valued logic is defined by its language, its set of truth
-values~$V$, a subset of designated truth values, and truth functions
-for its connective.  Together, these elements are called a \emph{matrix}.  
+Uma lógica multivalorada é definida por sua linguagem, seu conjunto de valores de
+verdade~$V$, um subconjunto de valores de verdade designados e funções de verdade
+para seus conectivos. Em conjunto, esses elementos são chamados de \emph{matriz}.  
 
-\begin{defn}[Matrix]
+\begin{defn}[Matriz]
 \ollabel{defn:matrix}
-A \emph{matrix} for the logic~$\Log L$ consists of:
+Uma \emph{matriz} para a lógica~$\Log L$ consiste em:
 \begin{enumerate}
-\item a set of connectives making up a language~$\Lang L$;
-\item a set $V \neq \emptyset$ of truth values;
-\item a set $V^+ \subseteq V$ of designated truth values;
-\item for each $n$-place connective $\star$ in $\Lang L$, a truth
-function~$\tf{\star} : V^n \to V$. If $n = 0$, then $\tf{\star}$ is
-just an element of~$V$.
+\item um conjunto de conectivos que constitui uma linguagem~$\Lang L$;
+\item um conjunto $V \neq \emptyset$ de valores de verdade;
+\item um conjunto $V^+ \subseteq V$ de valores de verdade designados;
+\item para cada conectivo $n$-ário $\star$ de $\Lang L$, uma função de
+verdade~$\tf{\star} : V^n \to V$. Se $n = 0$, então $\tf{\star}$ é
+simplesmente um elemento de~$V$.
 \end{enumerate}
 \end{defn}
 
 \begin{ex}
-The matrix for classical logic~\LogCL{} consists of:
+A matriz da lógica clássica~\LogCL{} consiste em:
 \begin{enumerate}
-  \item The standard propositional language $\Lang L_0$ with
+  \item A linguagem proposicional padrão $\Lang L_0$, com
   $\lfalse$, $\lnot$, $\land$, $\lor$, $\lif$.
-  \item The set of truth values $V = \{\True, \False\}$.
-  \item $\True$ is the only designated value, O.s.\@, $V^+ = \{\True\}$.
-  \item For $\lfalse$, we have $\tf{\lfalse} = \False$. The other
-  truth functions are given by the usual truth tables (see
+  \item O conjunto de valores de verdade $V = \{\True, \False\}$.
+  \item $\True$ é o único valor designado, O.s.\@, $V^+ = \{\True\}$.
+  \item Para $\lfalse$, temos $\tf{\lfalse} = \False$. As demais
+  funções de verdade são dadas pelas tabelas-verdade usuais (veja
   \olref{fig:tf-CL}).
 \end{enumerate}
 \begin{figure}
@@ -68,7 +68,7 @@ The matrix for classical logic~\LogCL{} consists of:
         $\False$ & $\True$ & $\True$ 
       \end{tabular}
     \end{center} 
-    \caption{Truth functions for classical logic~$\LogCL$.}
+    \caption{Funções de verdade da lógica clássica~$\LogCL$.}
     \ollabel{fig:tf-CL}
   \end{figure}
   \end{ex}

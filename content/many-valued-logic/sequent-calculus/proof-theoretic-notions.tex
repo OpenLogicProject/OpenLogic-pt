@@ -6,44 +6,45 @@
 
 \begin{document}
 
-\olfileid{mvl}{seq}{prf}
+\olfileid[pt]{mvl}{seq}{prf}
 
-\olsection{Proof-Theoretic Notions}
+\olsection{Noções da teoria da prova}
 
 \begin{explain}
-Just as we've defined a number of important semantic notions
-(validity, entailment, satisfiability), we now define corresponding
-\emph{proof-theoretic notions}.  These are not defined by appeal to
-satisfaction of !!{sentence}s in !!{structure}s, but by appeal to the
-!!{derivability} or !!{nonderivability} of certain sequents.  It was
-an important discovery that these notions coincide.  That they do is
-the content of the \emph{soundness} and \emph{completeness theorem}.
+Assim como definimos várias noções semânticas importantes (validade,
+consequência, satisfatibilidade), agora definimos as correspondentes
+\emph{noções da teoria da prova}. Elas não são definidas recorrendo à
+satisfação de !!{sentence}s em !!{structure}s, mas recorrendo à
+!!{derivability} ou à !!{nonderivability} de certos sequentes. Foi uma
+descoberta importante que essas noções coincidem. O fato de
+coincidirem é o conteúdo da \emph{correção} e do \emph{teorema da
+completude}.
 \end{explain}
 
-\begin{defn}[Theorems]
-!!^a{sentence}~$!A$ is a \emph{theorem} if there is !!a{derivation}
-in~$\Log{LK}$ of the sequent $\quad \Sequent !A$.  We write $\Proves
-!A$ if $!A$ is a theorem and $\Proves/ !A$ if it is not.
+\begin{defn}[Teoremas]
+!!^a{sentence}~$!A$ é um \emph{teorema} se existe !!a{derivation}
+em~$\Log{LK}$ do sequente $\quad \Sequent !A$. Escrevemos $\Proves
+!A$ se $!A$ é um teorema e $\Proves/ !A$ se não é.
 \end{defn}
 
 \begin{defn}[!!^{derivability}]
-!!^a{sentence}~$!A$ is \emph{!!{derivable} from} a set of
-!!{sentence}s~$\Gamma$, $\Gamma \Proves !A$, iff there is a
-finite subset~$\Gamma_0 \subseteq \Gamma$ and a sequence $\Gamma_0'$
-of the !!{sentence}s in~$\Gamma_0$ such that $\Log{LK}$ !!{derive}s
-$\Gamma_0' \Sequent !A$.  If $!A$ is not !!{derivable} from $\Gamma$
-we write $\Gamma \Proves/ !A$.
+!!^a{sentence}~$!A$ é \emph{!!{derivable} a partir de} um conjunto de
+!!{sentence}s~$\Gamma$, $\Gamma \Proves !A$, sse existe um
+subconjunto finito~$\Gamma_0 \subseteq \Gamma$ e uma sequência
+$\Gamma_0'$ das !!{sentence}s em~$\Gamma_0$ tais que $\Log{LK}$
+!!{derive}s $\Gamma_0' \Sequent !A$. Se $!A$ não é !!{derivable} a
+partir de $\Gamma$, escrevemos $\Gamma \Proves/ !A$.
 \end{defn}
 
-Because of the contraction, weakening, and exchange rules, the order
-and number of !!{sentence}s in~$\Gamma_0'$ does not matter: if a
-sequent $\Gamma_0' \Sequent !A$ is !!{derivable}, then so is
-$\Gamma_0'' \Sequent !A$ for any $\Gamma_0''$ that contains the same
-!!{sentence}s as~$\Gamma_0'$.  For instance, if $\Gamma_0 = \{!B, !C\}$
-then both $\Gamma_0' = \tuple{!B, !B, !C}$ and $\Gamma_0'' =
-\tuple{!C, !C, !B}$ are sequences containing just the !!{sentence}s
-in~$\Gamma_0$. If a sequent containing one is !!{derivable}, so is the
-other, p.ex.:
+Por causa das regras de contração, enfraquecimento e troca, a ordem e
+o número de !!{sentence}s em~$\Gamma_0'$ não importam: se um sequente
+$\Gamma_0' \Sequent !A$ é !!{derivable}, então $\Gamma_0'' \Sequent
+!A$ também é, para qualquer $\Gamma_0''$ que contenha as mesmas
+!!{sentence}s que~$\Gamma_0'$. Por exemplo, se $\Gamma_0 = \{!B, !C\}$,
+então tanto $\Gamma_0' = \tuple{!B, !B, !C}$ quanto $\Gamma_0'' =
+\tuple{!C, !C, !B}$ são sequências que contêm apenas as !!{sentence}s
+em~$\Gamma_0$. Se um sequente que contém uma delas é !!{derivable}, o
+que contém a outra também é, p.ex.:
 \begin{prooftree}
   \AxiomC{}
   \Deduce$!B, !B, !C \fCenter !A$
@@ -54,56 +55,57 @@ other, p.ex.:
   \RightLabel{\LeftR{\Weakening}}
   \UnaryInf$!C, !C, !B \fCenter !A$
 \end{prooftree}
-From now on we'll say that if $\Gamma_0$ is a finite set of
-!!{sentence}s then $\Gamma_0 \Sequent !A$ is any sequent where the
-antecedent is a sequence of !!{sentence}s in~$\Gamma_0$ and tacitly include
-contractions, exchanges, and weakenings if necessary.
+De agora em diante, diremos que, se $\Gamma_0$ é um conjunto finito de
+!!{sentence}s, então $\Gamma_0 \Sequent !A$ é qualquer sequente cujo
+antecedente seja uma sequência de !!{sentence}s em~$\Gamma_0$, e
+incluiremos tacitamente contrações, trocas e enfraquecimentos quando
+necessário.
 
-\begin{defn}[Consistency]
-A set of sentences~$\Gamma$ is \emph{inconsistent} iff there is a
-finite subset~$\Gamma_0 \subseteq \Gamma$ such that $\Log{LK}$
-!!{derive}s $\Gamma_0 \Sequent \quad$. If $\Gamma$ is not
-inconsistent, O.s.\@, if for every finite $\Gamma_0 \subseteq \Gamma$,
-$\Log{LK}$ does not !!{derive} $\Gamma_0 \Sequent \quad$, we say it is
-\emph{consistent}.
+\begin{defn}[Consistência]
+Um conjunto de sentenças~$\Gamma$ é \emph{inconsistente} sse existe um
+subconjunto finito~$\Gamma_0 \subseteq \Gamma$ tal que $\Log{LK}$
+!!{derive}s $\Gamma_0 \Sequent \quad$. Se $\Gamma$ não é inconsistente,
+O.s.\@, se, para todo $\Gamma_0 \subseteq \Gamma$ finito, $\Log{LK}$
+não !!{derive} $\Gamma_0 \Sequent \quad$, dizemos que é
+\emph{consistente}.
 \end{defn}
 
-\begin{prop}[Reflexivity]
+\begin{prop}[Reflexividade]
 \ollabel{prop:reflexivity}
-If $!A \in \Gamma$, then $\Gamma \Proves !A$.
+Se $!A \in \Gamma$, então $\Gamma \Proves !A$.
 \end{prop}
 
 \begin{proof}
-The initial sequent $!A \Sequent !A$ is !!{derivable}, and $\{!A\}
+O sequente inicial $!A \Sequent !A$ é !!{derivable}, e $\{!A\}
 \subseteq \Gamma$.
 \end{proof}
   
-\begin{prop}[Monotonicity]
+\begin{prop}[Monotonicidade]
 \ollabel{prop:monotonicity}
-If $\Gamma \subseteq \Delta$ and $\Gamma \Proves !A$, then $\Delta
+Se $\Gamma \subseteq \Delta$ e $\Gamma \Proves !A$, então $\Delta
 \Proves !A$.
 \end{prop}
 
 \begin{proof}
-Suppose $\Gamma \Proves !A$, O.s.\@, there is a finite $\Gamma_0
-\subseteq \Gamma$ such that $\Gamma_0 \Sequent !A$ is
-!!{derivable}. Since $\Gamma \subseteq \Delta$, then $\Gamma_0$ is
-also a finite subset of~$\Delta$. The !!{derivation} of $\Gamma_0
-\Sequent !A$ thus also shows $\Delta \Proves !A$.
+Suponha $\Gamma \Proves !A$, O.s.\@, existe um conjunto finito
+$\Gamma_0 \subseteq \Gamma$ tal que $\Gamma_0 \Sequent !A$ é
+!!{derivable}. Como $\Gamma \subseteq \Delta$, então $\Gamma_0$ também
+é um subconjunto finito de~$\Delta$. A !!{derivation} de $\Gamma_0
+\Sequent !A$ também mostra, portanto, que $\Delta \Proves !A$.
 \end{proof}
 
-\begin{prop}[Transitivity]
+\begin{prop}[Transitividade]
 \ollabel{prop:transitivity}
-If $\Gamma \Proves !A$ and $\{!A\} \cup \Delta \Proves
-!B$, then $\Gamma \cup \Delta \Proves !B$.
+Se $\Gamma \Proves !A$ e $\{!A\} \cup \Delta \Proves !B$, então
+$\Gamma \cup \Delta \Proves !B$.
 \end{prop}
 
 \begin{proof}
-If $\Gamma \Proves !A$, there is a finite $\Gamma_0 \subseteq \Gamma$
-and !!a{derivation}~$\pi_0$ of $\Gamma_0 \Sequent !A$.  If $\{!A\}
-\cup \Delta \Proves !B$, then for some finite subset $\Delta_0
-\subseteq \Delta$, there is !!a{derivation}~$\pi_1$ of $!A, \Delta_0
-\Sequent !B$. Consider the following !!{derivation}:
+Se $\Gamma \Proves !A$, existe um $\Gamma_0 \subseteq \Gamma$ finito
+e !!a{derivation}~$\pi_0$ de $\Gamma_0 \Sequent !A$. Se $\{!A\} \cup
+\Delta \Proves !B$, então, para algum subconjunto finito $\Delta_0
+\subseteq \Delta$, existe !!a{derivation}~$\pi_1$ de $!A, \Delta_0
+\Sequent !B$. Considere a seguinte !!{derivation}:
 \begin{prooftree}
   \AxiomC{}
   \RightLabel{$\pi_0$}
@@ -114,49 +116,49 @@ and !!a{derivation}~$\pi_0$ of $\Gamma_0 \Sequent !A$.  If $\{!A\}
   \RightLabel{\Cut}
   \BinaryInf$\Gamma_0, \Delta_0 \fCenter !B$
 \end{prooftree}
-Since $\Gamma_0 \cup \Delta_0 \subseteq \Gamma \cup \Delta$, this
-shows $\Gamma \cup \Delta \Proves !B$.
+Como $\Gamma_0 \cup \Delta_0 \subseteq \Gamma \cup \Delta$, isso
+mostra que $\Gamma \cup \Delta \Proves !B$.
 \end{proof}
 
-Note that this means that in particular if $\Gamma \Proves !A$ and $!A
-\Proves !B$, then $\Gamma \Proves !B$. It follows also that if $!A_1,
-\dots, !A_n \Proves !B$ and $\Gamma \Proves !A_i$ for each~$i$, then
-$\Gamma \Proves !B$.
+Observe que isso significa, em particular, que, se $\Gamma \Proves
+!A$ e $!A \Proves !B$, então $\Gamma \Proves !B$. Também se segue
+que, se $!A_1, \dots, !A_n \Proves !B$ e $\Gamma \Proves !A_i$ para
+cada~$i$, então $\Gamma \Proves !B$.
 
 \begin{prop}
 \ollabel{prop:incons}
-$\Gamma$ is inconsistent iff $\Gamma \Proves {!A}$ for every
-  sentence~$!A$.
+$\Gamma$ é inconsistente sse $\Gamma \Proves {!A}$ para toda
+  sentença~$!A$.
 \end{prop}
 
 \begin{proof}
-Exercise.
+Exercício.
 \end{proof}
 
 \begin{prob}
-Prove \olref[fol][seq][ptn]{prop:incons}
+Demonstre \olref[fol][seq][ptn]{prop:incons}
 \end{prob}
 
-\begin{prop}[Compactness]
+\begin{prop}[Compacidade]
   \ollabel{prop:proves-compact}
   \begin{enumerate}
-  \item If $\Gamma \Proves !A$ then there is a finite subset $\Gamma_0
-    \subseteq \Gamma$ such that $\Gamma_0 \Proves !A$.
-  \item If every finite subset of~$\Gamma$ is
-    consistent, then $\Gamma$ is consistent.
+  \item Se $\Gamma \Proves !A$, então existe um subconjunto finito
+    $\Gamma_0 \subseteq \Gamma$ tal que $\Gamma_0 \Proves !A$.
+  \item Se todo subconjunto finito de~$\Gamma$ é consistente, então
+    $\Gamma$ é consistente.
   \end{enumerate}
 \end{prop}
 
 \begin{proof}
   \begin{enumerate}
-    \item If $\Gamma \Proves !A$, then there is a finite subset
-      $\Gamma_0 \subseteq \Gamma$ such that the sequent $\Gamma_0
-      \Sequent !A$ has !!a{derivation}. Consequently, $\Gamma_0
+    \item Se $\Gamma \Proves !A$, então existe um subconjunto finito
+      $\Gamma_0 \subseteq \Gamma$ tal que o sequente $\Gamma_0
+      \Sequent !A$ tem !!a{derivation}. Consequentemente, $\Gamma_0
       \Proves !A$.
-    \item If $\Gamma$ is inconsistent, there is a finite
-      subset~$\Gamma_0 \subseteq \Gamma$ such that $\Log{LK}$
-      !!{derive}s $\Gamma_0 \Sequent \quad$. But then $\Gamma_0$ is a
-      finite subset of~$\Gamma$ that is inconsistent.
+    \item Se $\Gamma$ é inconsistente, existe um subconjunto
+      finito~$\Gamma_0 \subseteq \Gamma$ tal que $\Log{LK}$
+      !!{derive}s $\Gamma_0 \Sequent \quad$. Mas então $\Gamma_0$ é um
+      subconjunto finito inconsistente de~$\Gamma$.
   \end{enumerate}
 \end{proof}
 

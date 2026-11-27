@@ -6,20 +6,20 @@
 
 \begin{document}
 
-\olfileid{mvl}{seq}{prl}
+\olfileid[pt]{mvl}{seq}{prl}
 
-\olsection{Propositional Rules for Selected Logics}
+\olsection{Regras proposicionais para lógicas selecionadas}
 
-The inference rules for a connective in an $n$-sided sequent calculus
-only depend on the characteristic truth function for the connective.
-Thus, if some connective is defined by the same truth function in
-different logics, these $n$-sided sequent rules for the connective are
-the same in those logics.
+As regras de inferência para um conectivo em um cálculo de sequentes de
+$n$ lados dependem apenas da função de verdade característica desse
+conectivo. Assim, se um conectivo é definido pela mesma função de verdade
+em lógicas diferentes, as regras de sequentes de $n$ lados para esse
+conectivo são as mesmas nessas lógicas.
 
-\subsection{Rules for $\lnot$}
+\subsection{Regras para $\lnot$}
 
-The following rules for $\lnot$ apply to \L ukasiewicz and Kleene
-logics, and their variants.
+As regras a seguir para $\lnot$ aplicam-se às lógicas de \L ukasiewicz
+e de Kleene e às suas variantes.
 
 \begin{defish}
   \begin{center}
@@ -40,7 +40,7 @@ logics, and their variants.
   \end{center}
 \end{defish}
 
-The following rules for $\lnot$ apply to G\"odel logic.
+As regras a seguir para $\lnot$ aplicam-se à lógica de G\"odel.
 
 \begin{defish}
 \AxiomC{$ \Gamma \nSequent !A, \Pi \nSequent \Delta, !A $}
@@ -55,13 +55,13 @@ The following rules for $\lnot$ apply to G\"odel logic.
 \hfill
 \end{defish}
 
-(In G\"odel logic, $\lnot !A$ can never take the value~$\Undef$, so
-there is no rule for the middle position.)
+(Na lógica de G\"odel, $\lnot !A$ nunca pode assumir o valor~$\Undef$;
+por isso, não há regra para a posição intermediária.)
 
-\subsection{Rules for $\land$}
+\subsection{Regras para $\land$}
 
-These are the rules for $\land$ in \L ukasiewicz, strong Kleene, and
-G\"odel logic.
+Estas são as regras para $\land$ nas lógicas de \L ukasiewicz, de
+Kleene forte e de G\"odel.
 
 \begin{defish}
 \begin{center}
@@ -85,10 +85,10 @@ G\"odel logic.
 \end{center}
 \end{defish}
 
-\subsection{Rules for $\lor$}
+\subsection{Regras para $\lor$}
 
-These are the rules for $\lor$ in \L ukasiewicz, strong Kleene, and
-G\"odel logic.
+Estas são as regras para $\lor$ nas lógicas de \L ukasiewicz, de
+Kleene forte e de G\"odel.
 
 \begin{defish}
 \begin{center}
@@ -112,9 +112,9 @@ G\"odel logic.
 \end{center}
 \end{defish}
 
-\subsection{Rules for $\lif$}
+\subsection{Regras para $\lif$}
 
-These are the rules for $\lif$ in \L ukasiewicz logic.
+Estas são as regras para $\lif$ na lógica de \L ukasiewicz.
 
 \begin{defish}
 \begin{center}
@@ -138,7 +138,7 @@ These are the rules for $\lif$ in \L ukasiewicz logic.
 \end{center}
 \end{defish}
 
-These are the rules for $\lif$ in strong Kleene logic.
+Estas são as regras para $\lif$ na lógica de Kleene forte.
 
 \begin{defish}
 \begin{center}
@@ -162,7 +162,7 @@ These are the rules for $\lif$ in strong Kleene logic.
 \end{center}
 \end{defish}
 
-These are the rules for $\lif$ in G\"odel logic.
+Estas são as regras para $\lif$ na lógica de G\"odel.
 
 \begin{defish}
 \begin{center}
@@ -229,7 +229,7 @@ These are the rules for $\lif$ in G\"odel logic.
   \BinaryInfC{$A \lif B, A \nSequent A \lif B, A \nSequent B$}
   \DisplayProof
   \end{center}
-  \caption{Example !!{derivation} in~$\LogLuk[3]$}
+  \caption{Exemplo de !!{derivation} em~$\LogLuk[3]$}
 \end{sidewaysfigure}
 
 \end{document}
